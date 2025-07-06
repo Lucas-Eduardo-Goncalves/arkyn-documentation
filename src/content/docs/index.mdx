@@ -1,0 +1,38 @@
+---
+title: Bem-vindo à Documentação Arkyn
+description: Explore os guias e referências para utilizar os utilitários e classes do Arkyn.
+template: splash
+hero:
+  tagline: A documentação completa para você integrar e utilizar todas as funcionalidades do Arkyn de forma eficiente.
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Utilitários do Servidor
+      link: /server/instances/apiinstance/
+      icon: right-arrow
+    - text: Utilitários Compartilhados
+      link: /shared/formats/formatdate/
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## Explore a Documentação
+
+<CardGrid stagger>
+  <Card title="Instâncias do Servidor" icon="setting">
+    Aprenda a usar `ApiInstance` e `ArkynLogInstance` para gerenciar requisições
+    e logs.
+  </Card>
+  <Card title="Respostas HTTP" icon="document">
+    Consulte as classes de respostas de sucesso e de erro para padronizar suas
+    APIs.
+  </Card>
+  <Card title="Funções de Formatação" icon="pencil">
+    Descubra funções úteis para formatar datas, moedas, documentos e muito mais.
+  </Card>
+  <Card title="Validadores de Dados" icon="approve-check">
+    Utilize nossas funções para validar CPF, CNPJ, CEP e outros tipos de dados.
+  </Card>
+</CardGrid>
