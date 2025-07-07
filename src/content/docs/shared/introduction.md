@@ -1,5 +1,5 @@
 ---
-title: Introdução ao Pacote Shared
+title: Introdução ao @arkyn/shared
 description: Um guia de instalação e visão geral do pacote @arkyn/shared.
 ---
 
