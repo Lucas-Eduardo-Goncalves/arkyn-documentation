@@ -3,9 +3,13 @@ title: BadRequest
 description: Representa uma resposta de erro HTTP com status 400 (Bad Request).
 ---
 
-## Descrição
-
 A classe `BadRequest` é usada para padronizar a estrutura de uma resposta de erro "Bad Request", incluindo o corpo da resposta, cabeçalhos, status e texto de status.
+
+## Importação
+
+```ts
+import { BadRequest } from "@arkyn/server";
+```
 
 ## Construtor
 

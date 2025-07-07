@@ -3,9 +3,13 @@ title: ArkynLogInstance
 description: A classe ArkynLogInstance gerencia a configuração para o fluxo de logs da Arkyn.
 ---
 
-## Descrição
-
 A classe `ArkynLogInstance` permite definir e recuperar a configuração dos logs da Arkyn, incluindo o ID da fonte de tráfego, o token do usuário e a URL da API.
+
+## Importação
+
+```ts
+import { ArkynLogInstance } from "@arkyn/server";
+```
 
 ## Métodos
 

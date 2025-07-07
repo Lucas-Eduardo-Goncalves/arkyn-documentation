@@ -3,9 +3,13 @@ title: getCaller
 description: Recupera informações sobre o chamador da função atual.
 ---
 
-## Descrição
-
 A função `getCaller` analisa o rastreamento de pilha para determinar o caminho do arquivo e o nome da função do chamador. Ela exclui entradas de rastreamento de pilha relacionadas ao pacote `@arkyn/server` e tenta resolver o caminho do arquivo em relação ao diretório raiz do projeto.
+
+## Importação
+
+```ts
+import { getCaller } from "@arkyn/server";
+```
 
 ## Retorno
 

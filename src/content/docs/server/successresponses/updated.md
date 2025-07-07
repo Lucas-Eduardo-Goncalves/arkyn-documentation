@@ -3,9 +3,13 @@ title: Updated
 description: Representa uma resposta HTTP de sucesso com status 200 (OK) ou outros códigos de status personalizados.
 ---
 
-## Descrição
-
 A classe `Updated` é usada para padronizar a estrutura de uma resposta "Updated", incluindo o corpo da resposta, cabeçalhos, status e texto de status.
+
+## Importação
+
+```ts
+import { Updated } from "@arkyn/server";
+```
 
 ## Genéricos
 

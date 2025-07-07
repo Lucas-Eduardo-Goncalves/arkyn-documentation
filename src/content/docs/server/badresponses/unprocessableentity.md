@@ -3,9 +3,13 @@ title: UnprocessableEntity
 description: Representa uma resposta de erro HTTP com status 422 (Unprocessable Entity).
 ---
 
-## Descrição
-
 A classe `UnprocessableEntity` é usada para padronizar a estrutura de uma resposta de erro "Unprocessable Entity".
+
+## Importação
+
+```ts
+import { UnprocessableEntity } from "@arkyn/server";
+```
 
 ## Construtor
 

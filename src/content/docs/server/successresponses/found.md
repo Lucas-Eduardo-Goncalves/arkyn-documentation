@@ -3,9 +3,13 @@ title: Found
 description: Representa uma resposta HTTP 302 Found.
 ---
 
-## Descrição
-
 A classe `Found` é usada para criar uma resposta HTTP padronizada com status 302 (Found), incluindo cabeçalhos opcionais e um corpo de resposta.
+
+## Importação
+
+```ts
+import { Found } from "@arkyn/server";
+```
 
 ## Genéricos
 

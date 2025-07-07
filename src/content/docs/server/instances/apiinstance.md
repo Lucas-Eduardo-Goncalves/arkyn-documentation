@@ -3,9 +3,13 @@ title: ApiInstance
 description: Classe que representa uma instância de API para lidar com requisições HTTP com configurações base.
 ---
 
-## Descrição
-
 A classe `ApiInstance` é utilizada para criar uma instância que gerencia requisições HTTP, permitindo a configuração de uma URL base, cabeçalhos e token de autorização que serão utilizados em todas as chamadas.
+
+## Importação
+
+```ts
+import { ApiInstance } from "@arkyn/server";
+```
 
 ## Construtor
 

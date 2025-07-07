@@ -16,6 +16,7 @@ export default defineConfig({
         {
           label: "@arkyn/server",
           items: [
+            { label: "Introdução", slug: "server/introduction" },
             {
               label: "Instances",
               collapsed: true,
@@ -105,6 +106,7 @@ export default defineConfig({
         {
           label: "@arkyn/shared",
           items: [
+            { label: "Introdução", slug: "shared/introduction" },
             {
               label: "Formats",
               collapsed: true,

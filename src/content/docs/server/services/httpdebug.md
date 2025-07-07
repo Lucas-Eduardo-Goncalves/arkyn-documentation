@@ -3,9 +3,13 @@ title: httpDebug
 description: Registra informações de depuração no console em modo de desenvolvimento.
 ---
 
-## Descrição
-
 A função `httpDebug` registra informações detalhadas no console, mas apenas quando a aplicação está em modo de desenvolvimento (`NODE_ENV === "development"`) ou quando a variável de ambiente `SHOW_ERRORS_IN_CONSOLE` está definida como `"true"`.
+
+## Importação
+
+```ts
+import { httpDebug } from "@arkyn/server";
+```
 
 ## Parâmetros
 

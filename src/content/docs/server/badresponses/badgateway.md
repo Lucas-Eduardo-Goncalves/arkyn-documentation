@@ -3,9 +3,13 @@ title: BadGateway
 description: Representa uma resposta de erro HTTP com status 502 (Bad Gateway).
 ---
 
-## Descrição
-
 A classe `BadGateway` é usada para padronizar a estrutura de uma resposta de erro "Bad Gateway", incluindo o corpo da resposta, cabeçalhos, status e texto de status.
+
+## Importação
+
+```ts
+import { BadGateway } from "@arkyn/server";
+```
 
 ## Construtor
 

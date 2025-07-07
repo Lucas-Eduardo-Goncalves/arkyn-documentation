@@ -3,9 +3,13 @@ title: ServerError
 description: Representa uma resposta de erro HTTP com status 500 (Internal Server Error).
 ---
 
-## Descrição
-
 A classe `ServerError` é usada para padronizar a estrutura de uma resposta de "Server Error".
+
+## Importação
+
+```ts
+import { ServerError } from "@arkyn/server";
+```
 
 ## Construtor
 

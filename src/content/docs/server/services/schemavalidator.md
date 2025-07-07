@@ -3,9 +3,13 @@ title: SchemaValidator
 description: Uma classe para validar dados usando esquemas Zod.
 ---
 
-## Descrição
-
 A classe `SchemaValidator` fornece uma maneira de validar dados em relação a um esquema Zod, com métodos para diferentes tipos de validação (segura, com lançamento de erro e específica para formulários).
+
+## Importação
+
+```ts
+import { SchemaValidator } from "@arkyn/server";
+```
 
 ## Construtor
 

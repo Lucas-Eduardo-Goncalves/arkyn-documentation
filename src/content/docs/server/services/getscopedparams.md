@@ -3,9 +3,13 @@ title: getScopedParams
 description: Extrai parâmetros de URL de uma requisição, opcionalmente dentro de um escopo.
 ---
 
-## Descrição
-
 A função `getScopedParams` analisa a URL de uma `Request` e retorna um objeto `URLSearchParams`. Se um `scope` for fornecido, ela extrai apenas os parâmetros que pertencem a esse escopo (prefixados com `scope[key]`).
+
+## Importação
+
+```ts
+import { getScopedParams } from "@arkyn/server";
+```
 
 ## Parâmetros
 

@@ -3,9 +3,13 @@ title: Conflict
 description: Representa uma resposta de erro HTTP com status 409 (Conflict).
 ---
 
-## Descrição
-
 A classe `Conflict` é usada para padronizar a estrutura de uma resposta de erro "Conflict", incluindo o corpo da resposta, cabeçalhos, status e texto de status.
+
+## Importação
+
+```ts
+import { Conflict } from "@arkyn/server";
+```
 
 ## Construtor
 

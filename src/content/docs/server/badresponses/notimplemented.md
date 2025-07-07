@@ -3,9 +3,13 @@ title: NotImplemented
 description: Representa uma resposta de erro HTTP com status 501 (Not Implemented).
 ---
 
-## Descrição
-
 A classe `NotImplemented` é usada para padronizar a estrutura de uma resposta de erro "Not Implemented".
+
+## Importação
+
+```ts
+import { NotImplemented } from "@arkyn/server";
+```
 
 ## Construtor
 

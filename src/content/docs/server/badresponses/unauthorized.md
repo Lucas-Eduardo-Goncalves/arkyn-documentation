@@ -3,9 +3,13 @@ title: Unauthorized
 description: Representa uma resposta de erro HTTP com status 401 (Unauthorized).
 ---
 
-## Descrição
-
 A classe `Unauthorized` é usada para padronizar a estrutura de uma resposta de erro "Unauthorized".
+
+## Importação
+
+```ts
+import { Unauthorized } from "@arkyn/server";
+```
 
 ## Construtor
 

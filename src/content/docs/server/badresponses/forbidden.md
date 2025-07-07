@@ -3,9 +3,13 @@ title: Forbidden
 description: Representa uma resposta de erro HTTP com status 403 (Forbidden).
 ---
 
-## Descrição
-
 A classe `Forbidden` é usada para padronizar a estrutura de uma resposta de erro "Forbidden".
+
+## Importação
+
+```ts
+import { Forbidden } from "@arkyn/server";
+```
 
 ## Construtor
 

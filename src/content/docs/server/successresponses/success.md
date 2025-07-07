@@ -3,9 +3,13 @@ title: Success
 description: Representa uma resposta HTTP de sucesso com status 200 (OK).
 ---
 
-## Descrição
-
 A classe `Success` é usada para padronizar a estrutura de uma resposta "Success", incluindo o corpo da resposta, cabeçalhos, status e texto de status.
+
+## Importação
+
+```ts
+import { Success } from "@arkyn/server";
+```
 
 ## Genéricos
 

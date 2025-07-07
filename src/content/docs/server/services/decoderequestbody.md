@@ -3,13 +3,17 @@ title: decodeRequestBody
 description: Decodifica o corpo de uma requisição em um objeto JavaScript.
 ---
 
-## Descrição
-
 A função `decodeRequestBody` tenta analisar o corpo da requisição na seguinte ordem:
 
 1.  Tenta analisar o corpo como JSON.
 2.  Se a análise JSON falhar, tenta analisar como dados de formulário codificados em URL.
 3.  Se ambas as tentativas de análise falharem, registra os erros e retorna um objeto vazio.
+
+## Importação
+
+```ts
+import { decodeRequestBody } from "@arkyn/server";
+```
 
 ## Parâmetros
 
