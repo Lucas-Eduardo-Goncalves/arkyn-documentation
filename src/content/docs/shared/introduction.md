@@ -7,24 +7,26 @@ O pacote `@arkyn/shared` é uma biblioteca de utilitários robusta e versátil, 
 
 Desde a formatação e validação de dados específicos do contexto brasileiro, como CPF, CNPJ e CEP, até a geração de IDs únicos e manipulação de strings, o `@arkyn/shared` encapsula lógicas complexas em métodos simples e fáceis de usar.
 
+É importante notar que o `@arkyn/shared` possui uma dependência direta do pacote `@arkyn/templates`. Portanto, ao instalar o `shared`, o `templates` será necessário, fazendo isto, será garantindo que todas as funcionalidades que dependem de templates, como a formatação de moedas, funcionem corretamente.
+
 ## Instalação
 
 Para começar a usar o pacote em seu projeto, instale-o utilizando seu gerenciador de pacotes de preferência:
 
 ```bash
-npm install @arkyn/shared
+npm install @arkyn/shared @arkyn/templates
 ```
 
 ```bash
-yarn add @arkyn/shared
+yarn add @arkyn/shared @arkyn/templates
 ```
 
 ```bash
-pnpm add @arkyn/shared
+pnpm add @arkyn/shared @arkyn/templates
 ```
 
 ```bash
-bun add @arkyn/shared
+bun add @arkyn/shared @arkyn/templates
 ```
 
 ## Visão Geral

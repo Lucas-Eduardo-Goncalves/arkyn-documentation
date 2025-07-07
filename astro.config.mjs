@@ -225,6 +225,14 @@ export default defineConfig({
             },
           ],
         },
+        {
+          label: "@arkyn/templates",
+          items: [
+            { label: "Introdução", slug: "templates/introduction" },
+            { label: "Países", slug: "templates/countries" },
+            { label: "Moedas", slug: "templates/countrycurrencies" },
+          ],
+        },
       ],
     }),
   ],
