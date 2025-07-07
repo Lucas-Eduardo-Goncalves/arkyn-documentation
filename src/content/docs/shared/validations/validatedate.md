@@ -3,9 +3,13 @@ title: validateDate
 description: Valida uma string de data com base no formato e configuração fornecidos.
 ---
 
-## Descrição
-
 A função `validateDate` verifica se uma string de data é válida, com base em um formato de entrada e configurações opcionais como ano mínimo e máximo.
+
+## Importação
+
+```ts
+import { validateDate } from "@arkyn/shared";
+```
 
 ## Parâmetros
 

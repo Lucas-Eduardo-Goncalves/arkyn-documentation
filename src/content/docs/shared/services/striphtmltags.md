@@ -5,6 +5,12 @@ description: Remove todas as tags HTML de uma string.
 
 A função `stripHtmlTags` remove todas as tags HTML de uma string de entrada, deixando apenas o texto puro.
 
+## Importação
+
+```ts
+import { stripHtmlTags } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita o seguinte parâmetro:

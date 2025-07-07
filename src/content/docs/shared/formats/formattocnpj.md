@@ -5,6 +5,12 @@ description: Formata uma string para o formato de CNPJ (Cadastro Nacional da Pes
 
 A função `formatToCnpj` remove todos os caracteres não numéricos de uma string e a formata como um CNPJ no padrão `XX.XXX.XXX/XXXX-XX`.
 
+## Importação
+
+```ts
+import { formatToCnpj } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita o seguinte parâmetro:

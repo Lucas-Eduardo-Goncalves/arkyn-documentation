@@ -5,6 +5,12 @@ description: Formata uma string JSON para um formato mais legível.
 
 A função `formatJsonString` analisa uma string JSON e a formata em uma representação mais legível, utilizando a função `formatJsonObject` internamente.
 
+## Importação
+
+```ts
+import { formatJsonString } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita o seguinte parâmetro:

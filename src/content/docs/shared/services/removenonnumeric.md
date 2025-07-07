@@ -5,6 +5,12 @@ description: Remove todos os caracteres não numéricos de uma string.
 
 A função `removeNonNumeric` remove todos os caracteres que não são dígitos de uma string de entrada, retornando apenas os números.
 
+## Importação
+
+```ts
+import { removeNonNumeric } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita o seguinte parâmetro:

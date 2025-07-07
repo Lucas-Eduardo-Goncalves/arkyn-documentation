@@ -5,6 +5,12 @@ description: Formata uma string para o formato de CEP (Código de Endereçamento
 
 A função `formatToCep` remove todos os caracteres não numéricos de uma string e a formata como um CEP brasileiro no padrão `XXXXX-XXX`.
 
+## Importação
+
+```ts
+import { formatToCep } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita o seguinte parâmetro:

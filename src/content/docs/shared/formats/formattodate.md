@@ -5,6 +5,12 @@ description: Converte uma string de data e hora em um objeto Date do JavaScript.
 
 A função `formatToDate` converte uma string de data (com hora opcional) de vários formatos para um objeto `Date` do JavaScript, aplicando um ajuste de fuso horário.
 
+## Importação
+
+```ts
+import { formatToDate } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita os seguintes parâmetros:

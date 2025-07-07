@@ -5,6 +5,12 @@ description: Gera um slug amigável para URL a partir de uma string.
 
 A função `generateSlug` converte uma string de entrada em um "slug" amigável para URLs, realizando uma série de transformações para garantir que o resultado seja limpo e adequado para uso em endereços web.
 
+## Importação
+
+```ts
+import { generateSlug } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita o seguinte parâmetro:

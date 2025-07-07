@@ -5,6 +5,12 @@ description: Formata uma string para o formato de CPF ou CNPJ, dependendo do com
 
 A função `formatToCpfCnpj` remove todos os caracteres não numéricos de uma string e a formata como um CPF (se tiver 11 dígitos) ou como um CNPJ (se tiver 14 dígitos).
 
+## Importação
+
+```ts
+import { formatToCpfCnpj } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita o seguinte parâmetro:

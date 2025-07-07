@@ -5,6 +5,12 @@ description: Gera um identificador único (UUID) no formato e tipo especificados
 
 A função `generateId` gera um Identificador Único Universal (UUID) e o retorna no formato e tipo solicitados.
 
+## Importação
+
+```ts
+import { generateId } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita os seguintes parâmetros:

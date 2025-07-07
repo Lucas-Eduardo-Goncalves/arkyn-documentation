@@ -3,9 +3,13 @@ title: validateCnpj
 description: Valida um número de CNPJ (Cadastro Nacional da Pessoa Jurídica) brasileiro.
 ---
 
-## Descrição
-
 A função `validateCnpj` realiza a validação de um número de CNPJ. Ela efetua a sanitização (removendo caracteres não numéricos), verifica o comprimento (deve ter 14 dígitos), checa por dígitos repetidos e valida os dois dígitos verificadores.
+
+## Importação
+
+```ts
+import { validateCnpj } from "@arkyn/shared";
+```
 
 ## Parâmetros
 

@@ -5,6 +5,12 @@ description: Remove símbolos de moeda de uma string formatada.
 
 A função `removeCurrencySymbols` remove símbolos de moeda de uma string de entrada. A função usa uma expressão regular para remover símbolos comuns como `R$`, `$`, `€`, `¥`, `£` e outros símbolos de moeda (`\p{Sc}`).
 
+## Importação
+
+```ts
+import { removeCurrencySymbols } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita o seguinte parâmetro:

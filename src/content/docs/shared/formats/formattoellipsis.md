@@ -5,6 +5,12 @@ description: Trunca um texto para um comprimento máximo e adiciona reticências
 
 A função `formatToEllipsis` trunca uma string para um comprimento máximo especificado e anexa reticências (`...`) se o texto original exceder esse comprimento.
 
+## Importação
+
+```ts
+import { formatToEllipsis } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita os seguintes parâmetros:

@@ -5,6 +5,12 @@ description: Gera um código de cor hexadecimal com base em uma string de entrad
 
 A função `generateColorByString` cria um código de cor hexadecimal a partir de uma string de entrada. A função calcula um hash da string e o utiliza para derivar os valores RGB, que são então convertidos para um código de cor hexadecimal.
 
+## Importação
+
+```ts
+import { generateColorByString } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita o seguinte parâmetro:

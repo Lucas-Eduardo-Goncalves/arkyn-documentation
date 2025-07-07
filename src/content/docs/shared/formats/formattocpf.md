@@ -5,6 +5,12 @@ description: Formata uma string para o formato de CPF (Cadastro de Pessoas Físi
 
 A função `formatToCpf` remove todos os caracteres não numéricos de uma string e a formata como um CPF no padrão `XXX.XXX.XXX-XX`.
 
+## Importação
+
+```ts
+import { formatToCpf } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita o seguinte parâmetro:

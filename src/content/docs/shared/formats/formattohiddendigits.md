@@ -5,6 +5,12 @@ description: Oculta dígitos específicos em uma string dentro de um determinado
 
 A função `formatToHiddenDigits` formata uma string substituindo dígitos dentro de um intervalo especificado por um caractere de ocultação, como `*`.
 
+## Importação
+
+```ts
+import { formatToHiddenDigits } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita os seguintes parâmetros:

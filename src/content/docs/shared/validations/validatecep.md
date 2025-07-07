@@ -3,9 +3,13 @@ title: validateCep
 description: Valida um CEP (Código de Endereçamento Postal) brasileiro.
 ---
 
-## Descrição
-
 A função `validateCep` verifica se um CEP brasileiro é válido. Um CEP válido deve conter 8 dígitos numéricos. A função remove caracteres não numéricos antes da validação.
+
+## Importação
+
+```ts
+import { validateCep } from "@arkyn/shared";
+```
 
 ## Parâmetros
 

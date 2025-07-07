@@ -3,19 +3,23 @@ title: validatePhone
 description: Valida um número de telefone com base em formatos de países.
 ---
 
-## Descrição
-
 A função `validatePhone` verifica se um número de telefone corresponde a um formato de país predefinido. Ela itera por uma lista de países e utiliza expressões regulares para validar o número com base no código do país, prefixo e máscara.
 
 Um tratamento especial é aplicado para números de telefone brasileiros (código ISO "BR"), que permite um nono dígito opcional.
 
+## Importação
+
+```ts
+import { validatePhone } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
--   **rawPhone** (`string`): O número de telefone a ser validado.
+- **rawPhone** (`string`): O número de telefone a ser validado.
 
 ## Retorno
 
--   **(`boolean`)**: Retorna `true` se o número de telefone corresponder a qualquer formato de país, caso contrário, retorna `false`.
+- **(`boolean`)**: Retorna `true` se o número de telefone corresponder a qualquer formato de país, caso contrário, retorna `false`.
 
 ## Exemplo de Uso
 

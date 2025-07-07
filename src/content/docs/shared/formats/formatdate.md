@@ -5,6 +5,12 @@ description: Formats a date and time based on the given input and output formats
 
 A função `formatDate` é uma ferramenta versátil para converter e formatar strings de data e hora de vários formatos de entrada para um formato de saída personalizável.
 
+## Importação
+
+```ts
+import { formatDate } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita os seguintes parâmetros:

@@ -5,6 +5,12 @@ description: Formata uma string de número de telefone com base no código do pa
 
 A função `formatToPhone` formata uma string de número de telefone de acordo com as regras de formatação de um país específico, identificadas pelo código do país e um prefixo opcional.
 
+## Importação
+
+```ts
+import { formatToPhone } from "@arkyn/shared";
+```
+
 ## Formato de Entrada
 
 A string de entrada (`prop`) deve seguir um dos seguintes formatos:

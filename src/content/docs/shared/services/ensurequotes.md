@@ -5,6 +5,12 @@ description: Garante que uma string esteja entre aspas.
 
 A função `ensureQuotes` verifica se uma string de entrada já está entre aspas (simples ou duplas). Se não estiver, a função a envolve em aspas duplas.
 
+## Importação
+
+```ts
+import { ensureQuotes } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita o seguinte parâmetro:

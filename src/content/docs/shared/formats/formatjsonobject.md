@@ -5,6 +5,12 @@ description: Formata um objeto JSON em uma string legível com indentação adeq
 
 A função `formatJsonObject` é um utilitário para formatar um objeto ou valor JSON em uma string bem formatada e legível, com controle sobre o nível de indentação.
 
+## Importação
+
+```ts
+import { formatJsonObject } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita os seguintes parâmetros:

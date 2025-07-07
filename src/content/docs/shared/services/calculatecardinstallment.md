@@ -5,6 +5,12 @@ description: Calcula o valor da parcela e o preço total para um plano de pagame
 
 A função `calculateCardInstallment` calcula o preço total e o valor de cada parcela para um plano de pagamento com juros.
 
+## Importação
+
+```ts
+import { calculateCardInstallment } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita um objeto `props` com os seguintes campos:

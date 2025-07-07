@@ -3,9 +3,13 @@ title: validateCpf
 description: Valida um número de CPF (Cadastro de Pessoas Físicas) brasileiro.
 ---
 
-## Descrição
-
 A função `validateCpf` valida um número de CPF. Ela remove caracteres não numéricos, verifica o comprimento (11 dígitos), garante que os dígitos não são todos iguais e calcula os dígitos verificadores para confirmar a validade.
+
+## Importação
+
+```ts
+import { validateCpf } from "@arkyn/shared";
+```
 
 ## Parâmetros
 

@@ -5,6 +5,12 @@ description: Mascara dados sensíveis em uma string JSON, substituindo os valore
 
 A função `maskSensitiveData` processa uma string JSON e mascara os valores associados a chaves sensíveis, substituindo-os por `****`.
 
+## Importação
+
+```ts
+import { maskSensitiveData } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita os seguintes parâmetros:

@@ -5,6 +5,12 @@ description: Formata um valor numérico em uma string de moeda com base na moeda
 
 A função `formatToCurrency` formata um valor numérico para uma string de moeda, permitindo a especificação da moeda e a opção de exibir ou não o prefixo do símbolo da moeda.
 
+## Importação
+
+```ts
+import { formatToCurrency } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita os seguintes parâmetros:

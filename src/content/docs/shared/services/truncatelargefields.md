@@ -5,6 +5,12 @@ description: Trunca campos de string grandes em uma string JSON para um comprime
 
 A função `truncateLargeFields` analisa uma string JSON, percorre sua estrutura recursivamente e trunca quaisquer campos de string que excedam um comprimento máximo especificado. Se um campo de string for truncado, ele é substituído por uma mensagem indicando o comprimento original do campo.
 
+## Importação
+
+```ts
+import { truncateLargeFields } from "@arkyn/shared";
+```
+
 ## Parâmetros
 
 A função aceita os seguintes parâmetros:
