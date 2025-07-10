@@ -7,9 +7,14 @@ export default defineConfig({
       title: "Arkyn Documentation",
       social: [
         {
+          icon: "linkedin",
+          label: "LinkedIn",
+          href: "https://www.linkedin.com/in/lucas-eduardo-goncalves",
+        },
+        {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/Lucas-Eduardo-Goncalves/Arkyn",
+          href: "https://github.com/Lucas-Eduardo-Goncalves/arkyn-logs",
         },
       ],
       sidebar: [
