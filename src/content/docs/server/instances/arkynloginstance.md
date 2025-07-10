@@ -32,3 +32,11 @@ Recupera a configuração atual dos logs.
 ### `resetArkynConfig()`
 
 Redefine a configuração dos logs para `undefined`.
+
+## Documentação da API de Logs
+
+Para desenvolvedores que desejam utilizar a API de logs do Arkyn diretamente, sem usar o pacote `@arkyn/server`, consulte a documentação completa da API em:
+
+**[https://arkyn-logs-documentation.netlify.app/](https://arkyn-logs-documentation.netlify.app/)**
+
+Esta documentação contém informações detalhadas sobre endpoints, parâmetros, exemplos de requisições e respostas, permitindo que você integre os logs do Arkyn em qualquer aplicação ou framework.
