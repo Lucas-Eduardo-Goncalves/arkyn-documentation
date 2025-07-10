@@ -1,0 +1,38 @@
+---
+title: Welcome to Arkyn Documentation
+description: Explore the guides and references to use Arkyn's utilities and classes.
+template: splash
+hero:
+  tagline: The complete documentation for you to integrate and use all of Arkyn's features efficiently.
+  image:
+    file: ../../../assets/image.png
+  actions:
+    - text: Server Utilities
+      link: /en/server/introduction
+      icon: right-arrow
+    - text: Shared Utilities
+      link: /en/shared/introduction
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid } from "@astrojs/starlight/components";
+
+## Explore the Documentation
+
+<CardGrid stagger>
+  <Card title="Server Instances" icon="setting">
+    Learn how to use `ApiInstance` and `ArkynLogInstance` to manage requests and
+    logs.
+  </Card>
+  <Card title="HTTP Responses" icon="document">
+    Check the success and error response classes to standardize your APIs.
+  </Card>
+  <Card title="Formatting Functions" icon="pencil">
+    Discover useful functions to format dates, currencies, documents, and much
+    more.
+  </Card>
+  <Card title="Data Validators" icon="approve-check">
+    Use our functions to validate CPF, CNPJ, ZIP codes, and other types of data.
+  </Card>
+</CardGrid>

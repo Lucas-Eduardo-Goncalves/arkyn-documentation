@@ -5,6 +5,12 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Arkyn Documentation",
+      customCss: ["./src/styles/global.css", "./src/styles/update.css"],
+      defaultLocale: "en",
+      locales: {
+        en: { label: "English" },
+        ptbr: { label: "Português" },
+      },
       social: [
         {
           icon: "linkedin",
