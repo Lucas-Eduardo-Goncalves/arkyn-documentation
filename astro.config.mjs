@@ -5,6 +5,10 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "Arkyn Documentation",
+      logo: {
+        replacesTitle: true,
+        src: "./src/assets/frame-1.png",
+      },
       customCss: ["./src/styles/global.css", "./src/styles/update.css"],
       defaultLocale: "en",
       locales: {
