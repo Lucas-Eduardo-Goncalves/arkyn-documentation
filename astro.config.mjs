@@ -31,10 +31,15 @@ export default defineConfig({
         {
           label: "@arkyn/server",
           items: [
-            { label: "Introdução", slug: "server/introduction" },
+            {
+              label: "Introdução",
+              slug: "server/introduction",
+              translations: { ptbr: "Introdução", en: "Introduction" },
+            },
             {
               label: "Instances",
               collapsed: true,
+              translations: { ptbr: "Instâncias", en: "Instances" },
               items: [
                 { label: "ApiInstance", slug: "server/instances/apiinstance" },
                 {
@@ -46,6 +51,7 @@ export default defineConfig({
             {
               label: "Bad responses",
               collapsed: true,
+              translations: { ptbr: "Respostas de erro", en: "Bad responses" },
               items: [
                 {
                   label: "BadGateway",
@@ -79,6 +85,10 @@ export default defineConfig({
             {
               label: "Success responses",
               collapsed: true,
+              translations: {
+                ptbr: "Respostas de sucesso",
+                en: "Success responses",
+              },
               items: [
                 { label: "Created", slug: "server/successresponses/created" },
                 { label: "Found", slug: "server/successresponses/found" },
@@ -93,6 +103,7 @@ export default defineConfig({
             {
               label: "Services",
               collapsed: true,
+              translations: { ptbr: "Serviços", en: "Services" },
               items: [
                 {
                   label: "decodeErrorMessageFromRequest",
@@ -121,10 +132,15 @@ export default defineConfig({
         {
           label: "@arkyn/shared",
           items: [
-            { label: "Introdução", slug: "shared/introduction" },
+            {
+              label: "Introdução",
+              slug: "shared/introduction",
+              translations: { ptbr: "Introdução", en: "Introduction" },
+            },
             {
               label: "Formats",
               collapsed: true,
+              translations: { ptbr: "Formatadores", en: "Formats" },
               items: [
                 { label: "formatDate", slug: "shared/formats/formatdate" },
                 {
@@ -164,6 +180,7 @@ export default defineConfig({
             {
               label: "Generates",
               collapsed: true,
+              translations: { ptbr: "Geradores", en: "Generates" },
               items: [
                 {
                   label: "generateColorByString",
@@ -179,6 +196,7 @@ export default defineConfig({
             {
               label: "Services",
               collapsed: true,
+              translations: { ptbr: "Serviços", en: "Services" },
               items: [
                 {
                   label: "calculateCardInstallment",
@@ -210,6 +228,7 @@ export default defineConfig({
             {
               label: "Validations",
               collapsed: true,
+              translations: { ptbr: "Validações", en: "Validations" },
               items: [
                 {
                   label: "validateCep",
@@ -243,9 +262,21 @@ export default defineConfig({
         {
           label: "@arkyn/templates",
           items: [
-            { label: "Introdução", slug: "templates/introduction" },
-            { label: "Países", slug: "templates/countries" },
-            { label: "Moedas", slug: "templates/countrycurrencies" },
+            {
+              label: "Introdução",
+              slug: "templates/introduction",
+              translations: { ptbr: "Introdução", en: "Introduction" },
+            },
+            {
+              label: "Países",
+              slug: "templates/countries",
+              translations: { ptbr: "Países", en: "Countries" },
+            },
+            {
+              label: "Moedas",
+              slug: "templates/countrycurrencies",
+              translations: { ptbr: "Moedas", en: "Currencies" },
+            },
           ],
         },
       ],
