@@ -279,6 +279,346 @@ export default defineConfig({
             },
           ],
         },
+        {
+          label: "@arkyn/api-logs",
+          items: [
+            {
+              label: "Introdução",
+              slug: "api/introduction",
+              translations: { ptbr: "Introdução", en: "Introduction" },
+            },
+            {
+              label: "TrafficSource",
+              collapsed: true,
+              translations: { ptbr: "TrafficSource", en: "TrafficSource" },
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "api/trafficsource/introduction",
+                  translations: { ptbr: "Introdução", en: "Introduction" },
+                },
+                {
+                  label: "Criar TrafficSource",
+                  slug: "api/trafficsource/createtrafficsource",
+                  translations: {
+                    ptbr: "Criar TrafficSource",
+                    en: "Create TrafficSource",
+                  },
+                },
+                {
+                  label: "Atualizar TrafficSource",
+                  slug: "api/trafficsource/updatetrafficsource",
+                  translations: {
+                    ptbr: "Atualizar TrafficSource",
+                    en: "Update TrafficSource",
+                  },
+                },
+                {
+                  label: "Deletar TrafficSource",
+                  slug: "api/trafficsource/deletetrafficsource",
+                  translations: {
+                    ptbr: "Deletar TrafficSource",
+                    en: "Delete TrafficSource",
+                  },
+                },
+                {
+                  label: "Listar TrafficSources",
+                  slug: "api/trafficsource/listtrafficsources",
+                  translations: {
+                    ptbr: "Listar TrafficSources",
+                    en: "List TrafficSources",
+                  },
+                },
+              ],
+            },
+            {
+              label: "CoreLog",
+              collapsed: true,
+              translations: { ptbr: "CoreLog", en: "CoreLog" },
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "api/corelog/introduction",
+                  translations: { ptbr: "Introdução", en: "Introduction" },
+                },
+                {
+                  label: "Criar CoreLog",
+                  slug: "api/corelog/createcorelog",
+                  translations: { ptbr: "Criar CoreLog", en: "Create CoreLog" },
+                },
+                {
+                  label: "Listar CoreLogs",
+                  slug: "api/corelog/listcorelogs",
+                  translations: {
+                    ptbr: "Listar CoreLogs",
+                    en: "List CoreLogs",
+                  },
+                },
+              ],
+            },
+            {
+              label: "CorePathname",
+              collapsed: true,
+              translations: { ptbr: "CorePathname", en: "CorePathname" },
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "api/corepathname/introduction",
+                  translations: { ptbr: "Introdução", en: "Introduction" },
+                },
+                {
+                  label: "Criar CorePathname",
+                  slug: "api/corepathname/createcorepathname",
+                  translations: {
+                    ptbr: "Criar CorePathname",
+                    en: "Create CorePathname",
+                  },
+                },
+                {
+                  label: "Deletar CorePathname",
+                  slug: "api/corepathname/deletecorepathname",
+                  translations: {
+                    ptbr: "Deletar CorePathname",
+                    en: "Delete CorePathname",
+                  },
+                },
+                {
+                  label: "Listar CorePathnames",
+                  slug: "api/corepathname/listcorepathnames",
+                  translations: {
+                    ptbr: "Listar CorePathnames",
+                    en: "List CorePathnames",
+                  },
+                },
+              ],
+            },
+            {
+              label: "HttpTraffic",
+              collapsed: true,
+              translations: { ptbr: "HttpTraffic", en: "HttpTraffic" },
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "api/httptraffic/introduction",
+                  translations: { ptbr: "Introdução", en: "Introduction" },
+                },
+                {
+                  label: "Criar HttpTraffic",
+                  slug: "api/httptraffic/createhttptraffic",
+                  translations: {
+                    ptbr: "Criar HttpTraffic",
+                    en: "Create HttpTraffic",
+                  },
+                },
+                {
+                  label: "Deletar HttpTraffic",
+                  slug: "api/httptraffic/deletehttptraffic",
+                  translations: {
+                    ptbr: "Deletar HttpTraffic",
+                    en: "Delete HttpTraffic",
+                  },
+                },
+                {
+                  label: "Listar HttpTraffics",
+                  slug: "api/httptraffic/listhttptraffics",
+                  translations: {
+                    ptbr: "Listar HttpTraffics",
+                    en: "List HttpTraffics",
+                  },
+                },
+              ],
+            },
+            {
+              label: "Domain",
+              collapsed: true,
+              translations: { ptbr: "Domain", en: "Domain" },
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "api/domain/introduction",
+                  translations: { ptbr: "Introdução", en: "Introduction" },
+                },
+                {
+                  label: "Criar Domain",
+                  slug: "api/domain/createdomain",
+                  translations: { ptbr: "Criar Domain", en: "Create Domain" },
+                },
+                {
+                  label: "Deletar Domain",
+                  slug: "api/domain/deletedomain",
+                  translations: { ptbr: "Deletar Domain", en: "Delete Domain" },
+                },
+                {
+                  label: "Listar Domains",
+                  slug: "api/domain/listdomains",
+                  translations: { ptbr: "Listar Domains", en: "List Domains" },
+                },
+              ],
+            },
+            {
+              label: "Pathname",
+              collapsed: true,
+              translations: { ptbr: "Pathname", en: "Pathname" },
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "api/pathname/introduction",
+                  translations: { ptbr: "Introdução", en: "Introduction" },
+                },
+                {
+                  label: "Criar Pathname",
+                  slug: "api/pathname/createpathname",
+                  translations: {
+                    ptbr: "Criar Pathname",
+                    en: "Create Pathname",
+                  },
+                },
+                {
+                  label: "Deletar Pathname",
+                  slug: "api/pathname/deletepathname",
+                  translations: {
+                    ptbr: "Deletar Pathname",
+                    en: "Delete Pathname",
+                  },
+                },
+                {
+                  label: "Listar Pathnames",
+                  slug: "api/pathname/listpathnames",
+                  translations: {
+                    ptbr: "Listar Pathnames",
+                    en: "List Pathnames",
+                  },
+                },
+              ],
+            },
+            {
+              label: "Request",
+              collapsed: true,
+              translations: { ptbr: "Request", en: "Request" },
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "api/request/introduction",
+                  translations: { ptbr: "Introdução", en: "Introduction" },
+                },
+                {
+                  label: "Criar Request",
+                  slug: "api/request/createrequest",
+                  translations: { ptbr: "Criar Request", en: "Create Request" },
+                },
+              ],
+            },
+            {
+              label: "Response",
+              collapsed: true,
+              translations: { ptbr: "Response", en: "Response" },
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "api/response/introduction",
+                  translations: { ptbr: "Introdução", en: "Introduction" },
+                },
+                {
+                  label: "Criar Response",
+                  slug: "api/response/createresponse",
+                  translations: {
+                    ptbr: "Criar Response",
+                    en: "Create Response",
+                  },
+                },
+              ],
+            },
+            {
+              label: "HttpTrafficRecord",
+              collapsed: true,
+              translations: {
+                ptbr: "HttpTrafficRecord",
+                en: "HttpTrafficRecord",
+              },
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "api/httptrafficrecord/introduction",
+                  translations: { ptbr: "Introdução", en: "Introduction" },
+                },
+                {
+                  label: "Compor HttpTrafficRecord",
+                  slug: "api/httptrafficrecord/composehttptrafficrecord",
+                  translations: {
+                    ptbr: "Compor HttpTrafficRecord",
+                    en: "Compose HttpTrafficRecord",
+                  },
+                },
+                {
+                  label: "Listar HttpTrafficRecords",
+                  slug: "api/httptrafficrecord/listhttptrafficrecords",
+                  translations: {
+                    ptbr: "Listar HttpTrafficRecords",
+                    en: "List HttpTrafficRecords",
+                  },
+                },
+              ],
+            },
+            {
+              label: "Webhook",
+              collapsed: true,
+              translations: { ptbr: "Webhook", en: "Webhook" },
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "api/webhook/introduction",
+                  translations: { ptbr: "Introdução", en: "Introduction" },
+                },
+                {
+                  label: "Hot to configure Webhook",
+                  slug: "api/webhook/howtoconfigure",
+                  translations: {
+                    ptbr: "Como configurar o webhook",
+                    en: "Hot to configure Webhook",
+                  },
+                },
+                {
+                  label: "Listar Webhook",
+                  slug: "api/webhook/listwebhook",
+                  translations: { ptbr: "Listar Webhook", en: "List Webhook" },
+                },
+                {
+                  label: "Atualizar Webhook",
+                  slug: "api/webhook/updatewebhook",
+                  translations: {
+                    ptbr: "Atualizar Webhook",
+                    en: "Update Webhook",
+                  },
+                },
+              ],
+            },
+            {
+              label: "User",
+              collapsed: true,
+              translations: { ptbr: "User", en: "User" },
+              items: [
+                {
+                  label: "Introdução",
+                  slug: "api/user/introduction",
+                  translations: { ptbr: "Introdução", en: "Introduction" },
+                },
+                {
+                  label: "Autenticar User",
+                  slug: "api/user/authuser",
+                  translations: {
+                    ptbr: "Autenticar User",
+                    en: "Authenticate User",
+                  },
+                },
+                {
+                  label: "Atualizar User",
+                  slug: "api/user/updateuser",
+                  translations: { ptbr: "Atualizar User", en: "Update User" },
+                },
+              ],
+            },
+          ],
+        },
       ],
     }),
   ],
