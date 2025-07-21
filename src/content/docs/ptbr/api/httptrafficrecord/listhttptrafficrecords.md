@@ -77,6 +77,21 @@ Authorization: Bearer <seu-token-aqui>
 }
 ```
 
+## Resposta para lista vazia
+
+Se não houver webhooks configurados, será retornado um array vazio:
+
+```json
+{
+  "data": [],
+  "meta": {
+    "total": 0,
+    "page": 1,
+    "limit": 10
+  }
+}
+```
+
 ## Respostas de erro
 
 - **Código:** `400 Bad Request`

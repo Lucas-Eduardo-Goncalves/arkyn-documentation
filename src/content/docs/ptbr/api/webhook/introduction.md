@@ -1,33 +1,45 @@
 ---
-title: Entidade Webhook
+title: Entidade Webhook (Webhook)
 ---
 
-A entidade `Webhook` representa as configurações de notificação automática do sistema Arkyn Logs. Cada `Webhook` está associada a uma `TrafficSource` e permite enviar notificações para plataformas externas quando eventos específicos ocorrem.
+A entidade `Webhook` representa um endpoint de notificação configurado para receber alertas automáticos quando eventos específicos ocorrem no sistema Arkyn Logs. Cada webhook está associado a uma `TrafficSource` e permite que o sistema envie notificações em tempo real para serviços externos.
 
 ## Atributos principais
 
 - **id**: Identificador único para cada webhook.
-- **discordChannelId**: ID do canal do Discord para onde as notificações serão enviadas (pode ser nulo).
+- **type**: Tipo do webhook (atualmente suporta apenas "discord").
+- **level**: Nível de severidade que dispara o webhook ("fatal", "warning", "info").
+- **value**: URL ou configuração específica do webhook (ex: URL do Discord webhook).
 - **trafficSourceId**: Chave estrangeira que vincula o webhook a uma `TrafficSource`.
 - **createdAt**: Data e hora de criação do registro.
 - **updatedAt**: Data e hora da última atualização do registro.
 
+## Tipos de webhook suportados
+
+### Discord
+
+- **Tipo**: `discord`
+- **Descrição**: Envia notificações para canais do Discord através de webhooks do Discord.
+- **Configuração**: Requer a URL completa do webhook do Discord.
+
+## Níveis de severidade
+
+Os webhooks podem ser configurados para diferentes níveis de severidade:
+
+- **fatal**: Erros críticos que requerem atenção imediata
+- **warning**: Alertas importantes que devem ser monitorados
+- **info**: Informações gerais sobre o sistema
+
 ## Relacionamentos
 
-O `Webhook` se conecta diretamente com:
+- [**TrafficSource**](/ptbr/trafficsource/introduction): Cada webhook pertence a uma única fonte de tráfego.
 
-- [**TrafficSource**](/ptbr/trafficsource/introduction): Cada webhook pertence a uma única fonte de tráfego, permitindo notificações específicas para cada projeto ou aplicação monitorada.
+## Regras de negócio
 
-## Funcionalidades
-
-Atualmente, o sistema suporta notificações para:
-
-- **Discord**: Envio de mensagens automáticas para canais específicos do Discord através do ID do canal configurado.
-
-## Configuração automática
-
-Por padrão, um webhook é criado juntamente com uma fonte de tráfego. Esta configuração pode ser posteriormente atualizada através das funcionalidades de atualização do webhook.
+1. **Unicidade por nível**: Cada `TrafficSource` pode ter apenas um webhook por nível de severidade.
+2. **Propriedade**: Apenas o proprietário da `TrafficSource` pode gerenciar seus webhooks.
+3. **Tipos suportados**: Atualmente, apenas webhooks do Discord são suportados.
 
 ## Resumo
 
-Em resumo, o `Webhook` atua como um mecanismo de notificação que permite aos usuários receber alertas automáticos sobre eventos importantes em suas aplicações monitoradas pelo Arkyn Logs.
+Os webhooks no Arkyn Logs funcionam como um sistema de notificação em tempo real, permitindo que os usuários recebam alertas automáticos sobre eventos importantes em suas aplicações monitoradas.

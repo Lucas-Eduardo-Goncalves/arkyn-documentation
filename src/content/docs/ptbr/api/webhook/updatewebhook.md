@@ -2,12 +2,12 @@
 title: Atualizar Webhook
 ---
 
-Esta funcionalidade permite atualizar as configurações de webhook de uma fonte de tráfego específica.
+Esta funcionalidade permite a atualização da configuração de um webhook existente.
 
 ## Rota
 
 ```bash
-PUT /webhooks/:trafficSourceId
+PUT /webhooks/:webhookId
 ```
 
 ## Autenticação
@@ -20,33 +20,25 @@ Authorization: Bearer <seu-token-aqui>
 
 ## Descrição
 
-Permite atualizar as configurações de notificação do webhook associado a uma fonte de tráfego. Atualmente, é possível atualizar o ID do canal do Discord para onde as notificações serão enviadas.
+Para atualizar um webhook, é necessário fornecer o `webhookId` como parâmetro na URL e os novos dados no corpo da requisição. Apenas o proprietário da fonte de tráfego associada ao webhook pode realizar atualizações.
 
-## Parâmetros da rota
+## Parâmetros da Rota
 
-| Parâmetro         | Tipo   | Descrição                                       | Obrigatório |
-| :---------------- | :----- | :---------------------------------------------- | :---------- |
-| `trafficSourceId` | string | ID da fonte de tráfego para atualizar o webhook | Sim         |
+| Parâmetro   | Tipo   | Descrição                       | Obrigatório |
+| :---------- | :----- | :------------------------------ | :---------- |
+| `webhookId` | string | ID do webhook a ser atualizado. | Sim         |
 
 ## Corpo da requisição
 
-| Campo              | Tipo   | Descrição                                | Obrigatório |
-| :----------------- | :----- | :--------------------------------------- | :---------- |
-| `discordChannelId` | string | ID do canal do Discord para notificações | Não         |
+| Campo   | Tipo   | Descrição                            | Obrigatório |
+| :------ | :----- | :----------------------------------- | :---------- |
+| `value` | string | Nova URL ou configuração do webhook. | Sim         |
 
 **Exemplo:**
 
 ```json
 {
-  "discordChannelId": "987654321098765432"
-}
-```
-
-**Para desabilitar notificações do Discord:**
-
-```json
-{
-  "discordChannelId": null
+  "value": "999888777"
 }
 ```
 
@@ -60,28 +52,29 @@ Permite atualizar as configurações de notificação do webhook associado a uma
 
 ```json
 {
-  "id": "webhook-uuid-12345",
-  "discordChannelId": "987654321098765432",
-  "trafficSourceId": "12345678-1234-1234-1234-123456789abc",
-  "createdAt": "2024-01-15T10:30:00.000Z",
-  "updatedAt": "2024-01-20T15:20:00.000Z"
+  "id": "w1x2y3z4-a5b6-7890-1234-567890abcdef",
+  "type": "discord",
+  "level": "fatal",
+  "value": "999888777",
+  "trafficSourceId": "c1d2e3f4-g5h6-7890-1234-567890abcdef",
+  "createdAt": "2025-07-21T14:30:00.000Z",
+  "updatedAt": "2025-07-21T16:45:00.000Z"
 }
 ```
 
 ## Respostas de erro
 
-## Respostas de erro
-
 - **Código:** `400 Bad Request`
-  - **Motivo:** Dados de entrada inválidos.
+  - **Motivo:** Dados de entrada inválidos (ex: campo `value` ausente ou inválido).
+  - **Motivo:** O `webhookId` fornecido é inválido.
   - **Motivo:** Ausência do token de autenticação.
 - **Código:** `401 Unauthorized`
   - **Motivo:** O solicitante não está autenticado.
-  - **Motivo:** O token fornecido é inválido
+  - **Motivo:** O token fornecido é inválido.
 - **Código:** `403 Forbidden`
-  - **Motivo:** O solicitante não tem permissão para atualizar o webhook.
+  - **Motivo:** O usuário não tem permissão para atualizar este webhook.
 - **Código:** `404 Not Found`
-  - **Motivo:** A `TrafficSource` com o ID fornecido não foi encontrada.
-  - **Motivo:** O `Webhook` com o ID fornecido não foi encontrado.
+  - **Motivo:** Nenhum webhook foi encontrado com o `webhookId` fornecido.
+  - **Motivo:** A fonte de tráfego associada ao webhook não foi encontrada.
 - **Código:** `500 Internal Server Error`
   - **Motivo:** Erro inesperado no servidor.

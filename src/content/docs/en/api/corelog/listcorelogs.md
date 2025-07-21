@@ -61,6 +61,21 @@ curl -X GET http://localhost:3000/core-log/d290f1ee-6c54-4b01-90e6-d701748f0851
 }
 ```
 
+## Response for empty list
+
+If no webhooks are configured, an empty array will be returned:
+
+```json
+{
+  "data": [],
+  "meta": {
+    "total": 0,
+    "page": 1,
+    "limit": 10
+  }
+}
+```
+
 ## Error Responses
 
 ### Traffic Source not found

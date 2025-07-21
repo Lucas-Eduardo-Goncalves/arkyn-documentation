@@ -69,6 +69,21 @@ Returns a paginated list of domains belonging to the `TrafficSource` specified i
 }
 ```
 
+## Response for empty list
+
+If no webhooks are configured, an empty array will be returned:
+
+```json
+{
+  "data": [],
+  "meta": {
+    "total": 0,
+    "page": 1,
+    "limit": 10
+  }
+}
+```
+
 ## Error Responses
 
 - **Code:** `400 Bad Request`

@@ -570,25 +570,30 @@ export default defineConfig({
                   translations: { ptbr: "Introdução", en: "Introduction" },
                 },
                 {
-                  label: "Hot to configure Webhook",
-                  slug: "api/webhook/howtoconfigure",
+                  label: "Criar Webhook",
+                  slug: "api/webhook/createwebhook",
+                  translations: { ptbr: "Criar Webhook", en: "Create Webhook" },
+                },
+                {
+                  label: "Deletar Webhook",
+                  slug: "api/webhook/deletewebhook",
                   translations: {
-                    ptbr: "Como configurar o webhook",
-                    en: "Hot to configure Webhook",
+                    ptbr: "Deletar Webhook",
+                    en: "Delete Webhook",
                   },
                 },
                 {
-                  label: "Listar Webhook",
-                  slug: "api/webhook/listwebhook",
-                  translations: { ptbr: "Listar Webhook", en: "List Webhook" },
-                },
-                {
-                  label: "Atualizar Webhook",
+                  label: "Update Webhook",
                   slug: "api/webhook/updatewebhook",
                   translations: {
                     ptbr: "Atualizar Webhook",
                     en: "Update Webhook",
                   },
+                },
+                {
+                  label: "Listar Webhook",
+                  slug: "api/webhook/listwebhooks",
+                  translations: { ptbr: "Listar Webhook", en: "List Webhook" },
                 },
               ],
             },
@@ -616,6 +621,24 @@ export default defineConfig({
                   translations: { ptbr: "Atualizar User", en: "Update User" },
                 },
               ],
+            },
+          ],
+        },
+
+        {
+          label: "Guias",
+          translations: {
+            ptbr: "Guias",
+            en: "Guides",
+          },
+          items: [
+            {
+              label: "Hot to configure Webhook",
+              slug: "guides/howtoconfigurediscordwebhook",
+              translations: {
+                ptbr: "Como configurar o webhook do Discord",
+                en: "How to configure Discord webhook",
+              },
             },
           ],
         },
