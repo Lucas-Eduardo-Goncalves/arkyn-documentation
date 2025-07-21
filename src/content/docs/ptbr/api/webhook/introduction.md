@@ -32,7 +32,7 @@ Os webhooks podem ser configurados para diferentes níveis de severidade:
 
 ## Relacionamentos
 
-- [**TrafficSource**](/ptbr/trafficsource/introduction): Cada webhook pertence a uma única fonte de tráfego.
+- [**TrafficSource**](/ptbr/api/trafficsource/introduction): Cada webhook pertence a uma única fonte de tráfego.
 
 ## Regras de negócio
 

@@ -31,7 +31,7 @@ Webhooks can be configured for different severity levels:
 
 ## Relationships
 
-- [**TrafficSource**](/ptbr/trafficsource/introduction): Each webhook belongs to a single traffic source.
+- [**TrafficSource**](/en/api/trafficsource/introduction): Each webhook belongs to a single traffic source.
 
 ## Business Rules
 

@@ -14,7 +14,7 @@ The `Request` entity stores the details of an individual HTTP request captured b
 
 ## Relationships
 
-- [**HttpTraffic**](/en/httptraffic/introduction): A `Request` can be associated with an `HttpTraffic` record, representing the "input" portion of a complete HTTP traffic log.
-- [**CoreLog**](/en/corelog/introduction): Similarly, a `Request` can be associated with a `CoreLog`, detailing the request that generated that main log.
+- [**HttpTraffic**](/en/api/httptraffic/introduction): A `Request` can be associated with an `HttpTraffic` record, representing the "input" portion of a complete HTTP traffic log.
+- [**CoreLog**](/en/api/corelog/introduction): Similarly, a `Request` can be associated with a `CoreLog`, detailing the request that generated that main log.
 
 In short, the `Request` entity provides a complete "snapshot" of the data entering the system with each HTTP request, making it an indispensable resource for monitoring and maintaining any web application.
