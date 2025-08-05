@@ -273,6 +273,14 @@ export default defineConfig({
               translations: { ptbr: "Países", en: "Countries" },
             },
             {
+              label: "Estados brasileiros",
+              slug: "templates/brazilianstates",
+              translations: {
+                ptbr: "Estados brasileiros",
+                en: "Brazilian States",
+              },
+            },
+            {
               label: "Moedas",
               slug: "templates/countrycurrencies",
               translations: { ptbr: "Moedas", en: "Currencies" },
