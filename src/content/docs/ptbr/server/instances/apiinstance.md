@@ -22,41 +22,41 @@ import { ApiInstance } from "@arkyn/server";
 
 A `ApiInstance` fornece métodos para os verbos HTTP mais comuns. Todos os métodos retornam uma `Promise` que resolve para um objeto `ApiResponseDTO`.
 
-### `GET`
+### `get`
 
-Envia uma requisição GET para a rota especificada.
+Envia uma requisição get para a rota especificada.
 
 - **Parâmetros**:
   - `route` (`string`): A rota da API.
   - `data` (`ApiRequestDataWithoutBodyProps`, opcional): Dados da requisição, incluindo `headers` e `token`.
 
-### `POST`
+### `post`
 
-Envia uma requisição POST para a rota especificada.
-
-- **Parâmetros**:
-  - `route` (`string`): A rota da API.
-  - `data` (`ApiRequestDataWithBodyProps`, opcional): Dados da requisição, incluindo `body`, `headers` e `token`.
-
-### `PUT`
-
-Envia uma requisição PUT para a rota especificada.
+Envia uma requisição post para a rota especificada.
 
 - **Parâmetros**:
   - `route` (`string`): A rota da API.
   - `data` (`ApiRequestDataWithBodyProps`, opcional): Dados da requisição, incluindo `body`, `headers` e `token`.
 
-### `PATCH`
+### `put`
 
-Envia uma requisição PATCH para a rota especificada.
+Envia uma requisição put para a rota especificada.
 
 - **Parâmetros**:
   - `route` (`string`): A rota da API.
   - `data` (`ApiRequestDataWithBodyProps`, opcional): Dados da requisição, incluindo `body`, `headers` e `token`.
 
-### `DELETE`
+### `patch`
 
-Envia uma requisição DELETE para a rota especificada.
+Envia uma requisição patch para a rota especificada.
+
+- **Parâmetros**:
+  - `route` (`string`): A rota da API.
+  - `data` (`ApiRequestDataWithBodyProps`, opcional): Dados da requisição, incluindo `body`, `headers` e `token`.
+
+### `delete`
+
+Envia uma requisição delete para a rota especificada.
 
 - **Parâmetros**:
   - `route` (`string`): A rota da API.
@@ -64,7 +64,7 @@ Envia uma requisição DELETE para a rota especificada.
 
 ## Funcionamento Interno e Padrão de Retorno
 
-Cada método de requisição (`GET`, `POST`, etc.) da `ApiInstance` utiliza uma função auxiliar correspondente (`getRequest`, `postRequest`, etc.). Essas funções, por sua vez, são invólucros para a função central `makeRequest`, que é responsável por executar a chamada `fetch` e padronizar a resposta.
+Cada método de requisição (`get`, `post`, etc.) da `ApiInstance` utiliza uma função auxiliar correspondente (`getRequest`, `postRequest`, etc.). Essas funções, por sua vez, são invólucros para a função central `makeRequest`, que é responsável por executar a chamada `fetch` e padronizar a resposta.
 
 A função `makeRequest` realiza as seguintes ações:
 
@@ -82,7 +82,7 @@ A `arkynLogRequest` realiza as seguintes ações:
 
 1.  **Obtém Configuração**: Recupera a URL da API de log e o token de usuário a partir de `ArkynLogInstance`. Se a configuração não estiver disponível, a função não faz nada.
 2.  **Ignora Ambiente de Desenvolvimento**: A função não executa em ambiente de desenvolvimento (`process.env.NODE_ENV === "development"`) para evitar o envio de logs desnecessários.
-3.  **Coleta e Envio de Dados**: Monta um objeto com informações detalhadas da requisição e o envia via `POST` para a API de logs. Os dados coletados incluem:
+3.  **Coleta e Envio de Dados**: Monta um objeto com informações detalhadas da requisição e o envia via `post` para a API de logs. Os dados coletados incluem:
     - URL, status, método, e protocolo (HTTP/HTTPS).
     - Tempo de resposta (`elapsedTime`).
     - Cabeçalhos e corpo da requisição e da resposta.
@@ -102,9 +102,9 @@ Todos os métodos de requisição retornam uma `Promise` que resolve com um obje
 
 ### Exemplo de fluxo
 
-1.  `api.PATCH("/users/1", { body: { name: "John" } })` é chamado.
-2.  O método `PATCH` da `ApiInstance` chama `patchRequest`.
-3.  `patchRequest` chama `makeRequest` com o método "PATCH".
+1.  `api.patch("/users/1", { body: { name: "John" } })` é chamado.
+2.  O método `patch` da `ApiInstance` chama `patchRequest`.
+3.  `patchRequest` chama `makeRequest` com o método "patch".
 4.  `makeRequest` executa a requisição `fetch` e retorna o `ApiResponseDTO`.
 
 ```js
@@ -112,7 +112,7 @@ Todos os métodos de requisição retornam uma `Promise` que resolve com um obje
 const api = new ApiInstance({ baseUrl: "https://api.example.com" });
 
 async function updateUser() {
-  const result = await api.PATCH("/users/1", {
+  const result = await api.patch("/users/1", {
     body: { name: "Jane Doe" },
   });
 
