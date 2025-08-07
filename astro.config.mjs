@@ -151,6 +151,10 @@ export default defineConfig({
                   label: "formatJsonString",
                   slug: "shared/formats/formatjsonstring",
                 },
+                {
+                  label: "formatToCapitalizeFirstWordLetter",
+                  slug: "shared/formats/formattocapitalizefirstwordletter",
+                },
                 { label: "formatToCep", slug: "shared/formats/formattocep" },
                 { label: "formatToCnpj", slug: "shared/formats/formattocnpj" },
                 { label: "formatToCpf", slug: "shared/formats/formattocpf" },
