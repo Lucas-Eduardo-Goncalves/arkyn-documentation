@@ -12,19 +12,19 @@ Instead of recreating these structures in each project, `@arkyn/templates` offer
 To start using the package in your project, install it using your preferred package manager:
 
 ```bash
-npm install @arkyn/templates
+npm install @arkyn/templates@3.0.1-beta.33
 ```
 
 ```bash
-yarn add @arkyn/templates
+yarn add @arkyn/templates@3.0.1-beta.33
 ```
 
 ```bash
-pnpm add @arkyn/templates
+pnpm add @arkyn/templates@3.0.1-beta.33
 ```
 
 ```bash
-bun add @arkyn/templates
+bun add @arkyn/templates@3.0.1-beta.33
 ```
 
 ## Overview

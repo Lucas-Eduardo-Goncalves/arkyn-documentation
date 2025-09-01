@@ -7,19 +7,19 @@ The `@arkyn/server` package is a library for Node.js designed to accelerate and 
 To start using `@arkyn/server`, you can install it in your project using your preferred package manager:
 
 ```bash
-npm install @arkyn/server
+npm install @arkyn/server@3.0.1-beta.33
 ```
 
 ```bash
-yarn add @arkyn/server
+yarn add @arkyn/server@3.0.1-beta.33
 ```
 
 ```bash
-pnpm add @arkyn/server
+pnpm add @arkyn/server@3.0.1-beta.33
 ```
 
 ```bash
-bun add @arkyn/server
+bun add @arkyn/server@3.0.1-beta.33
 ```
 
 ## Overview
