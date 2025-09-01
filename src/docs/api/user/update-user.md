@@ -1,6 +1,4 @@
----
-title: Update User
----
+# Update User
 
 This feature allows you to update the data of an existing user.
 

@@ -1,6 +1,4 @@
----
-title: Delete Webhook
----
+# Delete Webhook
 
 This feature allows you to remove an existing webhook from the system.
 

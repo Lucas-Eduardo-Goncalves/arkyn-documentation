@@ -1,6 +1,4 @@
----
-title: List Webhooks
----
+# List Webhooks
 
 This feature allows you to view all webhooks configured for a specific traffic source.
 

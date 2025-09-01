@@ -1,6 +1,4 @@
----
-title: CorePathname Entity (Main URL Path)
----
+# CorePathname Entity (Main URL Path)
 
 The `CorePathname` entity represents a "normalized" or "aggregated" version of a `Pathname`. While `Pathname` can contain dynamic values (e.g., `/users/123`, `/users/456`), `CorePathname` represents the route template (e.g., `/users/:id`). This allows you to group logs and exceptions that belong to the same logical route, regardless of specific parameters.
 

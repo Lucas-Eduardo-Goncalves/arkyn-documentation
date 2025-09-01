@@ -1,6 +1,4 @@
----
-title: Create Traffic Source
----
+# Create Traffic Source
 
 This feature allows you to register a new traffic source in the system.
 

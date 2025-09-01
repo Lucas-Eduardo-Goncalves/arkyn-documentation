@@ -1,6 +1,4 @@
----
-title: Domain Entity
----
+# Domain Entity
 
 The `Domain` entity represents the specific domains and subdomains being monitored within a `TrafficSource`. It allows for a more granular level of log organization and filtering.
 

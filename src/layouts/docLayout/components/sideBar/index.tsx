@@ -7,6 +7,7 @@ import { SideGroup } from "../sideGroup";
 import { SideLink } from "../sideLink";
 import { SideBarContainer } from "./styles";
 import { TEMPLATES_MENU } from "../menu/templates";
+import { API_MENU } from "../menu/api";
 
 function ItemSwitch({ label, children, to }: MenuType) {
   if (!children && to) {
@@ -34,6 +35,7 @@ function SideBar() {
     if (pathname.includes("server")) return SERVER_MENU;
     if (pathname.includes("shared")) return SHARED_MENU;
     if (pathname.includes("templates")) return TEMPLATES_MENU;
+    if (pathname.includes("api")) return API_MENU;
     return [];
   }
 

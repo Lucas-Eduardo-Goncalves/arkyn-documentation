@@ -1,6 +1,4 @@
----
-title: List HttpTraffics
----
+# List HttpTraffics
 
 This feature allows you to search and list HTTP traffic records for a specific traffic source, with several filter options.
 

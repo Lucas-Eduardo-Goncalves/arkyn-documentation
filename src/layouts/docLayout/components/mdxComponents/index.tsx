@@ -1,6 +1,6 @@
 import { useId, type HTMLAttributes } from "react";
 import { CodeBlock } from "./codeBlock";
-import { A, H1, H2, H3, H4, H5, Hr, Li, P, Strong, Ul } from "./styled";
+import { A, H1, H2, H3, H4, H5, Hr, Li, Ol, P, Strong, Ul } from "./styled";
 
 type HeadingType = HTMLAttributes<HTMLHeadingElement>;
 type UlType = HTMLAttributes<HTMLUListElement>;
@@ -15,10 +15,11 @@ const mdxComponents = {
   h3: (props: HeadingType) => <H3 id={useId()} {...props} />,
   h4: (props: HeadingType) => <H4 id={useId()} {...props} />,
   h5: (props: HeadingType) => <H5 id={useId()} {...props} />,
-  ul: (props: UlType) => <Ul id={useId()} {...props} />,
-  li: (props: LiType) => <Li id={useId()} {...props} />,
-  p: (props: PType) => <P id={useId()} {...props} />,
-  a: (props: AType) => <A id={useId()} {...props} />,
+  ul: (props: UlType) => <Ul {...props} />,
+  ol: (props: UlType) => <Ol {...props} />,
+  li: (props: LiType) => <Li {...props} />,
+  p: (props: PType) => <P {...props} />,
+  a: (props: AType) => <A {...props} />,
   hr: () => <Hr />,
   strong: (props: GenericType) => <Strong {...props} />,
   pre: (props: any) => <div {...props} />,

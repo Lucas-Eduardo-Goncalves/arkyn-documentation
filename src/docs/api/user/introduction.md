@@ -1,6 +1,4 @@
----
-title: User Entity
----
+# User Entity
 
 The `User` entity is one of the core pillars of the Arkyn Logs system. It represents the individuals who have access to and interact with the platform. User management is essential for the security and personalization of the log monitoring experience.
 

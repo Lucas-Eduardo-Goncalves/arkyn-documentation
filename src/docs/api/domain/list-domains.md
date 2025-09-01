@@ -1,6 +1,4 @@
----
-title: List Domains
----
+# List Domains
 
 This feature allows you to get a list of all domains associated with a specific traffic source (`TrafficSource`).
 

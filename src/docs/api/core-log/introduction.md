@@ -1,6 +1,4 @@
----
-title: CoreLog Entity
----
+# CoreLog Entity
 
 The `CoreLog` entity is very similar to `HttpTraffic`, but with one key difference: it is associated with a `CorePathname` instead of an individual `Pathname`. This means that `CoreLog` represents a log record that has already been aggregated at the route template level.
 

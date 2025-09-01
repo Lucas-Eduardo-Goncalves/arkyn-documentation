@@ -1,6 +1,4 @@
----
-title: Delete HttpTraffic
----
+# Delete HttpTraffic
 
 This feature allows you to remove a specific HTTP traffic record.
 

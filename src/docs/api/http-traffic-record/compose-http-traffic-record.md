@@ -1,6 +1,4 @@
----
-title: Compose HTTP Traffic Record
----
+# Compose HTTP Traffic Record
 
 This endpoint is responsible for receiving data from a complete HTTP transaction (request, response, and traffic metadata) and composing a consolidated `HttpTrafficRecord`. This process is usually triggered by an internal event after a monitored request completes.
 

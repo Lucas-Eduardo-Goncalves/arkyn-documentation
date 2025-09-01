@@ -1,6 +1,4 @@
----
-title: Request Entity
----
+# Request Entity
 
 The `Request` entity stores the details of an individual HTTP request captured by the monitoring system. Each `Request` record is directly associated with an `HttpTraffic` or `CoreLog`, providing a complete breakdown of the incoming transaction data.
 

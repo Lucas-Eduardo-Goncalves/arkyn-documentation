@@ -1,6 +1,4 @@
----
-title: Response Entity
----
+# Response Entity
 
 The `Response` entity stores the details of the HTTP response corresponding to a `Request`. Like the `Request`, each `Response` record is directly linked to an `HttpTraffic` or `CoreLog`, completing the HTTP transaction cycle.
 

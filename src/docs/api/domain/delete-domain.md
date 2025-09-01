@@ -1,6 +1,4 @@
----
-title: Delete domain
----
+# Delete domain
 
 This feature allows you to remove an existing domain from the system.
 

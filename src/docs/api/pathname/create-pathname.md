@@ -1,6 +1,4 @@
----
-title: Create Pathname
----
+# Create Pathname
 
 This feature allows you to register a new URL path (`Pathname`) associated with a domain and a traffic source.
 

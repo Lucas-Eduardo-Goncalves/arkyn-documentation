@@ -1,6 +1,4 @@
----
-title: TrafficSource Entity
----
+# TrafficSource Entity
 
 The `TrafficSource` entity represents the origin of the logs and events monitored by Arkyn. Each `TrafficSource` is associated with a `User` and functions as a container for grouping data from a specific application, service, or system.
 

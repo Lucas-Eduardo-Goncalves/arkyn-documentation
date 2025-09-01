@@ -1,6 +1,4 @@
----
-title: Create HttpTraffic
----
+# Create HttpTraffic
 
 This functionality is used to create a complete HTTP traffic record. It is a central route that combines information from multiple entities.
 

@@ -1,6 +1,4 @@
----
-title: Create Request
----
+# Create Request
 
 This functionality is used internally by the system to record the details of an HTTP request. It is generally not an exposed route for direct consumption by end users, but rather by log collection agents or other parts of the Arkyn Logs system.
 

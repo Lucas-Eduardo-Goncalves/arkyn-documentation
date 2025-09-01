@@ -1,6 +1,4 @@
----
-title: Create domain
----
+# Create domain
 
 This feature allows you to register a new domain associated with a traffic source (`TrafficSource`).
 

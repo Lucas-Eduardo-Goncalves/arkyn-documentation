@@ -1,6 +1,4 @@
----
-title: Pathname Lists
----
+# Pathname Lists
 
 This feature allows you to obtain a list of all URL paths (`Pathname`) associated with a specific domain.
 

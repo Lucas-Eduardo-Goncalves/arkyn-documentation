@@ -1,6 +1,4 @@
----
-title: Update TrafficSource
----
+# Update TrafficSource
 
 This feature allows you to update the data of an existing traffic source.
 

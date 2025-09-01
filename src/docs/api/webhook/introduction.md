@@ -1,6 +1,4 @@
----
-title: Webhook Entity
----
+# Webhook Entity
 
 The `Webhook` entity represents a notification endpoint configured to receive automatic alerts when specific events occur in the Arkyn Logs system. Each webhook is associated with a `TrafficSource` and allows the system to send real-time notifications to external services.
 

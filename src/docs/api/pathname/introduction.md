@@ -1,6 +1,4 @@
----
-title: Pathname Entity
----
+# Pathname Entity
 
 The `Pathname` entity represents the specific paths (routes or pages) within a `Domain` that are being monitored. For example, if the domain is `mysite.com`, the pathnames could be `/home`, `/products`, or `/contact`.
 

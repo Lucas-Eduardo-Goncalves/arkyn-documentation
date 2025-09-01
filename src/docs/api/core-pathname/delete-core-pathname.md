@@ -1,6 +1,4 @@
----
-title: Delete CorePathname
----
+# Delete CorePathname
 
 This feature allows you to remove a core URL path (`CorePathname`) from the system.
 

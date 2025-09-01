@@ -1,6 +1,4 @@
----
-title: List Traffic Sources
----
+# List Traffic Sources
 
 This feature allows you to obtain a list of all traffic sources associated with the authenticated user.
 

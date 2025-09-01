@@ -1,6 +1,4 @@
----
-title: List Core Logs
----
+# List Core Logs
 
 This endpoint allows you to list core logs associated with a specific traffic source.
 

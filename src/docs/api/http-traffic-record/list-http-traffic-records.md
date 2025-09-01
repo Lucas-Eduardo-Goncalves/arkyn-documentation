@@ -1,6 +1,4 @@
----
-title: Listar Registros de Tráfego HTTP
----
+# Listar Registros de Tráfego HTTP
 
 Esta funcionalidade permite buscar e listar os registros de tráfego HTTP completos de uma determinada fonte de tráfego.
 

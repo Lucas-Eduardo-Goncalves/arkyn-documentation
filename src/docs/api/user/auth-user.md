@@ -1,6 +1,4 @@
----
-title: Authenticate User
----
+# Authenticate User
 
 This feature allows a user to authenticate to the system to gain access.
 

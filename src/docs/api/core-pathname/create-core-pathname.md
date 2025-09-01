@@ -1,6 +1,4 @@
----
-title: Create CorePathname
----
+# Create CorePathname
 
 This feature allows you to register a new core URL path (route template) for a traffic source.
 

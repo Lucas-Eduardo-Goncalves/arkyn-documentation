@@ -69,6 +69,34 @@ const Ul = styled.ul`
   flex-direction: column;
   gap: 4px;
   margin-left: 32px;
+
+  li::before {
+    content: " ";
+    position: absolute;
+    left: -16px;
+    top: 0.85em;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: var(--text-body);
+  }
+`;
+
+const Ol = styled.ol`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-left: 32px;
+
+  li::before {
+    content: counter(list-item) ".";
+    position: absolute;
+    left: -24px;
+    top: 0;
+    font-weight: 600;
+    color: var(--text-body);
+  }
 `;
 
 const Li = styled.li`
@@ -78,22 +106,10 @@ const Li = styled.li`
 
   line-height: 170%;
   color: var(--text-body);
-
-  &::before {
-    content: " ";
-    position: absolute;
-    left: -16px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background-color: var(--text-body);
-  }
 `;
 
 const Hr = styled(Divider)`
   /* margin-top: 16px; */
 `;
 
-export { A, H1, H2, H3, H4, H5, Hr, Li, P, Strong, Ul };
+export { A, H1, H2, H3, H4, H5, Hr, Li, P, Strong, Ul, Ol };

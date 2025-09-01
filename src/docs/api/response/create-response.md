@@ -1,6 +1,4 @@
----
-title: Create Response
----
+# Create Response
 
 Like the `Request` route, this functionality is primarily for internal use in the Arkyn Logs system, intended to record the details of an HTTP response.
 

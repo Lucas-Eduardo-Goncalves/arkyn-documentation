@@ -20,11 +20,13 @@ function DocLayout() {
           <SideBar />
         </StickyBox>
 
-        <DocContentContainer>
-          <MDXProvider components={mdxComponents}>
-            <Outlet />
-          </MDXProvider>
-        </DocContentContainer>
+        <StickyBox offsetTop={60}>
+          <DocContentContainer>
+            <MDXProvider components={mdxComponents}>
+              <Outlet />
+            </MDXProvider>
+          </DocContentContainer>
+        </StickyBox>
 
         <PageToc />
       </DocLayoutWrapper>

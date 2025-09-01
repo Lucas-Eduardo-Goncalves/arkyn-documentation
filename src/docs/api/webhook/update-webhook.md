@@ -1,6 +1,4 @@
----
-title: Update Webhook
----
+# Update Webhook
 
 This feature allows you to update the configuration of an existing webhook.
 

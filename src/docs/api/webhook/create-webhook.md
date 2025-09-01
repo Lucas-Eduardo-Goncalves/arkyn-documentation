@@ -1,6 +1,4 @@
----
-title: Create Webhook
----
+# Create Webhook
 
 This feature allows you to register a new webhook to receive automatic notifications from a specific traffic source.
 

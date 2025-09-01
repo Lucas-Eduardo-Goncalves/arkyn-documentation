@@ -1,6 +1,4 @@
----
-title: List CorePathnames
----
+# List CorePathnames
 
 This feature allows you to get a list of all core URL paths (route templates) associated with a traffic source.
 

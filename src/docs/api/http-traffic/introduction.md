@@ -1,6 +1,4 @@
----
-title: HttpTraffic Entity (HTTP Traffic)
----
+# HttpTraffic Entity (HTTP Traffic)
 
 The `HttpTraffic` entity is one of the most comprehensive log records in the system. It consolidates information from an entire HTTP transaction, combining data from the `Request`, `Response`, and metadata about the transaction's performance and context.
 

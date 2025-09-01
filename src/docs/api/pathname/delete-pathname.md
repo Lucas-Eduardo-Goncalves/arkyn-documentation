@@ -1,6 +1,4 @@
----
-title: Delete Pathname
----
+# Delete Pathname
 
 This feature allows you to remove an existing URL path (`Pathname`) from the system.
 

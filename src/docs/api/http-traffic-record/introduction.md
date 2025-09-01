@@ -1,6 +1,4 @@
----
-title: Entidade HttpTrafficRecord (Registro de tráfego HTTP)
----
+# Entidade HttpTrafficRecord (Registro de tráfego HTTP)
 
 O `HttpTrafficRecord` é uma visão (view) que consolida informações de várias entidades relacionadas para fornecer um registro completo e detalhado do tráfego HTTP. Ele não é uma tabela física no banco de dados, mas sim uma representação de dados agregados para facilitar consultas e análises.
 

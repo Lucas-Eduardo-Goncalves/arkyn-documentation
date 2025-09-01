@@ -1,6 +1,4 @@
----
-title: Create CoreLog
----
+# Create CoreLog
 
 This functionality is used to create a core log record, which is already associated with a `CorePathname`.
 

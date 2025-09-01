@@ -1,6 +1,4 @@
----
-title: Delete TrafficSource
----
+# Delete TrafficSource
 
 This feature allows you to remove an existing traffic source from the system.
 
