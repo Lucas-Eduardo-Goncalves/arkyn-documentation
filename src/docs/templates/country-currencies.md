@@ -1,7 +1,4 @@
----
-title: Currencies by Country
-description: Documentation for the `countryCurrencies` template, which provides a mapping between currency codes and locale settings.
----
+# Currencies by Country
 
 The `countryCurrencies.ts` file exports an object that maps currency codes (ISO 4217) to an object containing the locale (`countryLanguage`) and the currency code (`countryCurrency`).
 

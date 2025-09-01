@@ -1,7 +1,4 @@
----
-title: "Introduction to @arkyn/templates"
-description: "A guide to the @arkyn/templates package, which offers a collection of ready-to-use templates and constants."
----
+# Introduction to @arkyn/templates
 
 The `@arkyn/templates` package is a companion library that provides a set of ready-to-use data structures and constants designed to streamline the development of features that rely on standardized information, such as country lists or currency settings.
 

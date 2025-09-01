@@ -1,7 +1,4 @@
----
-title: Countries
-description: Documentation for the `countries` template, which provides a list of countries with useful information for country selection forms and components.
----
+# Countries
 
 The `countries.ts` file exports an array of objects, where each object represents a country and contains useful information for interface components, such as country selectors in phone number forms.
 

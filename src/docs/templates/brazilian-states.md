@@ -1,7 +1,4 @@
----
-title: Brazilian States
-description: Documentation for the `brazilianStates` template, which provides a complete list of Brazilian states with their respective acronym codes.
----
+# Brazilian States
 
 The `brazilianStates` const exports an array of objects, where each object represents a Brazilian state and contains the full name of the state along with its official acronym.
 
