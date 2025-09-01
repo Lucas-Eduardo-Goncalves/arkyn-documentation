@@ -1,0 +1,616 @@
+# MaskedInput
+
+import {
+  MaskedInput,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  Phone,
+  CreditCard,
+  Calendar,
+  MapPin,
+  User,
+  Building,
+  FileText,
+  Shield,
+  DollarSign,
+  Hash,
+  Clock,
+  Globe,
+} from "lucide-react";
+
+O componente `MaskedInput` é uma versão especializada do input que aplica máscaras de formatação automática conforme o usuário digita. É ideal para campos que requerem formatos específicos como CPF, CNPJ, telefone, CEP, cartão de crédito e outros.
+
+## Importação
+
+```tsx
+import { MaskedInput } from "@arkyn/components";
+```
+
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários
+
+**`mask`** - `string` (obrigatório)
+Padrão da máscara (ex: "**_._**.**\_-**" para CPF)
+
+**`replacement`** - `string | Replacement` (obrigatório)
+Caractere ou configuração de substituição para posições da máscara
+
+**`separate`** - `boolean`
+Se deve separar caracteres da máscara do valor do input
+
+**`showMask`** - `boolean`
+Se deve mostrar o placeholder da máscara
+
+**`label`** - `string`
+Texto do rótulo a ser exibido acima do input
+
+**`errorMessage`** - `string`
+Mensagem de erro a ser exibida abaixo do input
+
+**`isLoading`** - `boolean` (padrão: `false`)
+Controla o estado de carregamento com spinner
+
+**`size`** - `"md" | "lg"` (padrão: `"md"`)
+Tamanho do input
+
+**`variant`** - `"solid" | "outline" | "underline"` (padrão: `"solid"`)
+Variante visual do input
+
+**`prefix`** - `string | LucideIcon`
+Texto ou ícone para exibir no início do input
+
+**`suffix`** - `string | LucideIcon`
+Texto ou ícone para exibir no final do input
+
+**`showAsterisk`** - `boolean`
+Se deve mostrar asterisco no rótulo para campos obrigatórios
+
+**`leftIcon`** - `LucideIcon`
+Ícone opcional para exibir no lado esquerdo
+
+**`rightIcon`** - `LucideIcon`
+Ícone opcional para exibir no lado direito
+
+Todas as outras propriedades HTML padrão de `<input>` também são suportadas, exceto `type` que é controlado pela máscara.
+
+## Tamanhos
+
+Os tamanhos disponíveis são `md` e `lg`, seguindo o mesmo padrão do componente `Input`.
+
+<div className="noContent column">
+  <MaskedInput
+    name="phone-md"
+    mask="(__) _____-____"
+    replacement={{ _: /\d/ }}
+    placeholder="(00) 00000-0000"
+    size="md"
+  />
+  <MaskedInput
+    name="phone-lg"
+    mask="(__) _____-____"
+    replacement={{ _: /\d/ }}
+    placeholder="(00) 00000-0000"
+    size="lg"
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="phone-md"
+  mask="(__) _____-____"
+  replacement={{ _: /\d/ }}
+  placeholder="(00) 00000-0000"
+  size="md"
+/>
+<MaskedInput
+  name="phone-lg"
+  mask="(__) _____-____"
+  replacement={{ _: /\d/ }}
+  placeholder="(00) 00000-0000"
+  size="lg"
+/>
+```
+
+## Variantes
+
+As variantes disponíveis são `solid`, `outline` e `underline`, proporcionando diferentes estilos visuais.
+
+<div className="noContent column">
+  <MaskedInput
+    name="cpf-solid"
+    mask="___.___.___-__"
+    replacement="_"
+    placeholder="000.000.000-00"
+    variant="solid"
+  />
+  <MaskedInput
+    name="cpf-outline"
+    mask="___.___.___-__"
+    replacement="_"
+    placeholder="000.000.000-00"
+    variant="outline"
+  />
+  <MaskedInput
+    name="cpf-underline"
+    mask="___.___.___-__"
+    replacement="_"
+    placeholder="000.000.000-00"
+    variant="underline"
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="cpf-solid"
+  mask="___.___.___-__"
+  replacement="_"
+  placeholder="000.000.000-00"
+  variant="solid"
+/>
+<MaskedInput
+  name="cpf-outline"
+  mask="___.___.___-__"
+  replacement="_"
+  placeholder="000.000.000-00"
+  variant="outline"
+/>
+<MaskedInput
+  name="cpf-underline"
+  mask="___.___.___-__"
+  replacement="_"
+  placeholder="000.000.000-00"
+  variant="underline"
+/>
+```
+
+## Configurações Avançadas de Máscara
+
+### Mostrando a máscara
+
+Use `showMask` para exibir o padrão da máscara como placeholder visual.
+
+<div className="noContent column">
+  <MaskedInput
+    name="cpf-show-mask"
+    label="CPF (com máscara visível)"
+    mask="___.___.___-__"
+    replacement="_"
+    showMask
+    leftIcon={User}
+  />
+  <MaskedInput
+    name="phone-show-mask"
+    label="Telefone (com máscara visível)"
+    mask="(__) _____-____"
+    replacement={{ _: /\d/ }}
+    showMask
+    leftIcon={Phone}
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="cpf-show-mask"
+  label="CPF (com máscara visível)"
+  mask="___.___.___-__"
+  replacement="_"
+  showMask
+  leftIcon={User}
+/>
+<MaskedInput
+  name="phone-show-mask"
+  label="Telefone (com máscara visível)"
+  mask="(__) _____-____"
+  replacement={{ _: /\d/ }}
+  showMask
+  leftIcon={Phone}
+/>
+```
+
+### Separação de valor
+
+Use `separate` para separar os caracteres da máscara do valor real do input.
+
+<div className="noContent column">
+  <MaskedInput
+    name="cpf-separate"
+    label="CPF (valor separado)"
+    mask="___.___.___-__"
+    replacement="_"
+    separate
+    leftIcon={User}
+  />
+  <MaskedInput
+    name="cep-separate"
+    label="CEP (valor separado)"
+    mask="_____-___"
+    replacement={{ _: /\d/ }}
+    separate
+    leftIcon={MapPin}
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="cpf-separate"
+  label="CPF (valor separado)"
+  mask="___.___.___-__"
+  replacement="_"
+  separate
+  leftIcon={User}
+/>
+<MaskedInput
+  name="cep-separate"
+  label="CEP (valor separado)"
+  mask="_____-___"
+  replacement={{ _: /\d/ }}
+  separate
+  leftIcon={MapPin}
+/>
+```
+
+## Configurações de Replacement
+
+### Replacement simples
+
+Use uma string simples para substituir todas as posições marcadas.
+
+<div className="noContent column">
+  <MaskedInput
+    name="simple-replacement"
+    label="Replacement simples"
+    mask="___-___-___"
+    replacement="_"
+    placeholder="000-000-000"
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="simple-replacement"
+  label="Replacement simples"
+  mask="___-___-___"
+  replacement="_"
+  placeholder="000-000-000"
+/>
+```
+
+### Replacement com regex
+
+Use um objeto com regex para controlar exatamente que caracteres são aceitos.
+
+<div className="noContent column">
+  <MaskedInput
+    name="regex-replacement"
+    label="Apenas números"
+    mask="(__) _____-____"
+    replacement={{ _: /\d/ }}
+    placeholder="(00) 00000-0000"
+    leftIcon={Phone}
+  />
+  <MaskedInput
+    name="alpha-replacement"
+    label="Apenas letras"
+    mask="AAA-AAA"
+    replacement={{ A: /[A-Za-z]/ }}
+    placeholder="ABC-DEF"
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="regex-replacement"
+  label="Apenas números"
+  mask="(__) _____-____"
+  replacement={{ _: /\d/ }}
+  placeholder="(00) 00000-0000"
+  leftIcon={Phone}
+/>
+<MaskedInput
+  name="alpha-replacement"
+  label="Apenas letras"
+  mask="AAA-AAA"
+  replacement={{ A: /[A-Za-z]/ }}
+  placeholder="ABC-DEF"
+/>
+```
+
+## Prefix e Suffix
+
+Como no componente `Input`, é possível adicionar texto ou ícones no início ou final.
+
+<div className="noContent column">
+  <MaskedInput
+    name="price-mask"
+    label="Preço"
+    mask="____.___,__"
+    replacement={{ _: /\d/ }}
+    prefix="R$"
+    suffix="/mês"
+    placeholder="0000.000,00"
+  />
+  <MaskedInput
+    name="website-mask"
+    label="Website"
+    mask="AAAAAAAAAA"
+    replacement={{ A: /[A-Za-z0-9]/ }}
+    prefix="https://"
+    suffix=".com"
+    placeholder="meusite"
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="price-mask"
+  label="Preço"
+  mask="____.___,__"
+  replacement={{ _: /\d/ }}
+  prefix="R$"
+  suffix="/mês"
+  placeholder="0000.000,00"
+  leftIcon={DollarSign}
+/>
+<MaskedInput
+  name="website-mask"
+  label="Website"
+  mask="AAAAAAAAAA"
+  replacement={{ A: /[A-Za-z0-9]/ }}
+  prefix="https://"
+  suffix=".com.br"
+  placeholder="meusite"
+  leftIcon={Globe}
+/>
+```
+
+## Estados do Input
+
+### Input desabilitado
+
+<div className="noContent column">
+  <MaskedInput
+    name="disabled-cpf"
+    label="CPF desabilitado"
+    mask="___.___.___-__"
+    replacement="_"
+    placeholder="000.000.000-00"
+    disabled
+    leftIcon={User}
+  />
+  <MaskedInput
+    name="disabled-phone"
+    label="Telefone desabilitado"
+    mask="(__) _____-____"
+    replacement={{ _: /\d/ }}
+    value="(11) 99999-9999"
+    disabled
+    leftIcon={Phone}
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="disabled-cpf"
+  label="CPF desabilitado"
+  mask="___.___.___-__"
+  replacement="_"
+  placeholder="000.000.000-00"
+  disabled
+  leftIcon={User}
+/>
+<MaskedInput
+  name="disabled-phone"
+  label="Telefone desabilitado"
+  mask="(__) _____-____"
+  replacement={{ _: /\d/ }}
+  value="(11) 99999-9999"
+  disabled
+  leftIcon={Phone}
+/>
+```
+
+### Input apenas leitura
+
+<div className="noContent column">
+  <MaskedInput
+    name="readonly-cpf"
+    label="CPF apenas leitura"
+    mask="___.___.___-__"
+    replacement="_"
+    value="123.456.789-00"
+    readOnly
+    leftIcon={User}
+  />
+  <MaskedInput
+    name="readonly-card"
+    label="Cartão apenas leitura"
+    mask="____ ____ ____ ____"
+    replacement={{ _: /\d/ }}
+    value="1234 5678 9012 3456"
+    readOnly
+    leftIcon={CreditCard}
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="readonly-cpf"
+  label="CPF apenas leitura"
+  mask="___.___.___-__"
+  replacement="_"
+  value="123.456.789-00"
+  readOnly
+  leftIcon={User}
+/>
+<MaskedInput
+  name="readonly-card"
+  label="Cartão apenas leitura"
+  mask="____ ____ ____ ____"
+  replacement={{ _: /\d/ }}
+  value="1234 5678 9012 3456"
+  readOnly
+  leftIcon={CreditCard}
+/>
+```
+
+### Estado de carregamento
+
+<div className="noContent column">
+  <MaskedInput
+    name="loading-cpf"
+    label="Validando CPF..."
+    mask="___.___.___-__"
+    replacement="_"
+    placeholder="000.000.000-00"
+    isLoading
+    leftIcon={User}
+  />
+  <MaskedInput
+    name="loading-card"
+    label="Validando cartão..."
+    mask="____ ____ ____ ____"
+    replacement={{ _: /\d/ }}
+    placeholder="0000 0000 0000 0000"
+    rightIcon={Shield}
+    isLoading
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="loading-cpf"
+  label="Validando CPF..."
+  mask="___.___.___-__"
+  replacement="_"
+  placeholder="000.000.000-00"
+  isLoading
+  leftIcon={User}
+/>
+<MaskedInput
+  name="loading-card"
+  label="Validando cartão..."
+  mask="____ ____ ____ ____"
+  replacement={{ _: /\d/ }}
+  placeholder="0000 0000 0000 0000"
+  rightIcon={Shield}
+  isLoading
+/>
+```
+
+## Validação e Erros
+
+<div className="noContent column">
+  <MaskedInput
+    name="invalid-cpf"
+    label="CPF"
+    mask="___.___.___-__"
+    replacement="_"
+    placeholder="000.000.000-00"
+    errorMessage="CPF inválido"
+    leftIcon={User}
+    showAsterisk
+  />
+  <MaskedInput
+    name="invalid-phone"
+    label="Telefone"
+    mask="(__) _____-____"
+    replacement={{ _: /\d/ }}
+    placeholder="(00) 00000-0000"
+    errorMessage="Número de telefone inválido"
+    leftIcon={Phone}
+    showAsterisk
+  />
+  <MaskedInput
+    name="invalid-card"
+    label="Cartão de Crédito"
+    mask="____ ____ ____ ____"
+    replacement={{ _: /\d/ }}
+    placeholder="0000 0000 0000 0000"
+    errorMessage="Número do cartão inválido"
+    leftIcon={CreditCard}
+    showAsterisk
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="invalid-cpf"
+  label="CPF"
+  mask="___.___.___-__"
+  replacement="_"
+  placeholder="000.000.000-00"
+  errorMessage="CPF inválido"
+  leftIcon={User}
+  showAsterisk
+/>
+<MaskedInput
+  name="invalid-phone"
+  label="Telefone"
+  mask="(__) _____-____"
+  replacement={{ _: /\d/ }}
+  placeholder="(00) 00000-0000"
+  errorMessage="Número de telefone inválido"
+  leftIcon={Phone}
+  showAsterisk
+/>
+<MaskedInput
+  name="invalid-card"
+  label="Cartão de Crédito"
+  mask="____ ____ ____ ____"
+  replacement={{ _: /\d/ }}
+  placeholder="0000 0000 0000 0000"
+  errorMessage="Número do cartão inválido"
+  leftIcon={CreditCard}
+  showAsterisk
+/>
+```
+
+## Acessibilidade
+
+O componente `MaskedInput` mantém todas as funcionalidades de acessibilidade do `Input`:
+
+- Associação automática entre label e input via `htmlFor` e `id`
+- Suporte completo a navegação por teclado
+- Estados visuais claros para focus, error e disabled
+- Mensagens de erro são anunciadas por leitores de tela
+- A máscara não interfere na leitura do conteúdo por tecnologias assistivas
+
+## Integração com Formulários
+
+O componente se integra nativamente com sistemas de gerenciamento de formulário:
+
+- Validação automática considerando a máscara aplicada
+- Exibição de erros contextuais
+- Gerenciamento de estado do formulário
+- Suporte a valores separados ou com máscara
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Formulários customizáveis</AlertTitle>
+    <AlertDescription>
+      Para formulários mais complexos, é recomendado utilizar o [Form
+      Provider](/components/providers/form-provider) que oferece integração
+      nativa com todas as ferramentas de formulário de uma única só vez.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notas Importantes
+
+- A propriedade `name` é obrigatória para integração com formulários
+- As propriedades `mask` e `replacement` são obrigatórias para o funcionamento da máscara
+- O tipo `type` não é suportado pois é controlado pela máscara
+- Use `separate: true` quando quiser apenas os valores digitados sem os caracteres da máscara
+- O `showMask` ajuda usuários a entender o formato esperado
+- Quando `isLoading` é `true`, o input é automaticamente desabilitado
+- O componente é baseado na biblioteca `@react-input/mask` para funcionalidades avançadas de máscara
+- Todas as propriedades HTML padrão de `<input>` são suportadas, exceto aquelas sobrescritas pela máscara
