@@ -1,7 +1,8 @@
 {
-  "name": "test-mdx",
+  "name": "@arkyn/documentation",
   "private": true,
   "type": "module",
+  "version": "3.0.1",
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
