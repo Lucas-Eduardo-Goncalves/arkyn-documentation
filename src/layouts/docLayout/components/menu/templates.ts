@@ -3,19 +3,19 @@ import type { MenuType } from "./_type";
 const TEMPLATES_MENU: MenuType[] = [
   {
     label: "Introduction",
-    to: "/shared/introduction",
+    to: "/templates/introduction",
   },
   {
     label: "Brazilian states",
-    to: "/shared/brazilian-states",
+    to: "/templates/brazilian-states",
   },
   {
     label: "Countries",
-    to: "/shared/countries",
+    to: "/templates/countries",
   },
   {
     label: "Country currencies",
-    to: "/shared/country-currencies",
+    to: "/templates/country-currencies",
   },
 ];
 
