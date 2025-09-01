@@ -152,7 +152,7 @@ const COMPONENTS_MENU: MenuType[] = [
     children: [
       {
         label: "Table",
-        to: "/components/data-display",
+        to: "/components/data-display/table",
       },
     ],
   },

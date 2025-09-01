@@ -1,0 +1,139 @@
+/* MDX Components Styles */
+
+/* Headings */
+.mdx-h1 {
+  position: relative;
+  font-size: 36px;
+  color: var(--text-heading);
+  padding-bottom: 24px;
+}
+
+.mdx-h1::after {
+  content: "";
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  min-height: 1px;
+  position: absolute;
+  background-color: var(--border);
+}
+
+.mdx-h2 {
+  font-size: 28px;
+  color: var(--text-heading);
+}
+
+.mdx-h3 {
+  font-size: 24px;
+  color: var(--text-heading);
+}
+
+.mdx-h4 {
+  font-size: 20px;
+  color: var(--text-heading);
+}
+
+.mdx-h5 {
+  font-size: 16px;
+  color: var(--text-heading);
+}
+
+/* Paragraph */
+.mdx-p {
+  font-size: 16px;
+  line-height: 170%;
+  color: var(--text-body);
+}
+
+/* Strong */
+.mdx-strong {
+  font-size: 16px;
+  line-height: 170%;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+/* Links */
+.mdx-a {
+  font-size: 16px;
+  line-height: 170%;
+  color: rgb(var(--spotlight-primary));
+  text-decoration: none;
+}
+
+.mdx-a:hover {
+  text-decoration: underline;
+}
+
+/* Lists */
+.mdx-ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-left: 32px;
+}
+
+.mdx-ul .mdx-li::before {
+  content: " ";
+  position: absolute;
+  left: -16px;
+  top: 0.85em;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--text-body);
+}
+
+.mdx-ol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-left: 32px;
+}
+
+.mdx-ol .mdx-li::before {
+  content: counter(list-item) ".";
+  position: absolute;
+  left: -24px;
+  top: 0;
+  font-weight: 600;
+  color: var(--text-body);
+}
+
+.mdx-li {
+  position: relative;
+  list-style: none;
+  font-size: 16px;
+  line-height: 170%;
+  color: var(--text-body);
+}
+
+/* NoContent - Escape hatch para componentes que não devem ser afetados pelos estilos MDX */
+
+.noContent {
+  display: block;
+}
+
+.noContent.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Garantir que elementos dentro de noContent não herdem estilos MDX */
+.noContent .mdx-h1,
+.noContent .mdx-h2,
+.noContent .mdx-h3,
+.noContent .mdx-h4,
+.noContent .mdx-h5,
+.noContent .mdx-p,
+.noContent .mdx-strong,
+.noContent .mdx-a,
+.noContent .mdx-ul,
+.noContent .mdx-ol,
+.noContent .mdx-li {
+  all: unset;
+  display: revert;
+  box-sizing: revert;
+}

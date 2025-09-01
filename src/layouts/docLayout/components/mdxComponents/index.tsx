@@ -1,6 +1,7 @@
 import { useId, type HTMLAttributes } from "react";
+import { Divider } from "@arkyn/components";
 import { CodeBlock } from "./codeBlock";
-import { A, H1, H2, H3, H4, H5, Hr, Li, Ol, P, Strong, Ul } from "./styled";
+import "./styles.css";
 
 type HeadingType = HTMLAttributes<HTMLHeadingElement>;
 type UlType = HTMLAttributes<HTMLUListElement>;
@@ -10,18 +11,18 @@ type AType = HTMLAttributes<HTMLAnchorElement>;
 type GenericType = HTMLAttributes<HTMLElement>;
 
 const mdxComponents = {
-  h1: (props: HeadingType) => <H1 id={useId()} {...props} />,
-  h2: (props: HeadingType) => <H2 id={useId()} {...props} />,
-  h3: (props: HeadingType) => <H3 id={useId()} {...props} />,
-  h4: (props: HeadingType) => <H4 id={useId()} {...props} />,
-  h5: (props: HeadingType) => <H5 id={useId()} {...props} />,
-  ul: (props: UlType) => <Ul {...props} />,
-  ol: (props: UlType) => <Ol {...props} />,
-  li: (props: LiType) => <Li {...props} />,
-  p: (props: PType) => <P {...props} />,
-  a: (props: AType) => <A {...props} />,
-  hr: () => <Hr />,
-  strong: (props: GenericType) => <Strong {...props} />,
+  h1: (props: HeadingType) => <h1 className="mdx-h1" id={useId()} {...props} />,
+  h2: (props: HeadingType) => <h2 className="mdx-h2" id={useId()} {...props} />,
+  h3: (props: HeadingType) => <h3 className="mdx-h3" id={useId()} {...props} />,
+  h4: (props: HeadingType) => <h4 className="mdx-h4" id={useId()} {...props} />,
+  h5: (props: HeadingType) => <h5 className="mdx-h5" id={useId()} {...props} />,
+  ul: (props: UlType) => <ul className="mdx-ul" {...props} />,
+  ol: (props: UlType) => <ol className="mdx-ol" {...props} />,
+  li: (props: LiType) => <li className="mdx-li" {...props} />,
+  p: (props: PType) => <div className="mdx-p" {...props} />,
+  a: (props: AType) => <a className="mdx-a" {...props} />,
+  hr: () => <Divider />,
+  strong: (props: GenericType) => <strong className="mdx-strong" {...props} />,
   pre: (props: any) => <div {...props} />,
   code: (props: any) => <CodeBlock {...props} />,
 };

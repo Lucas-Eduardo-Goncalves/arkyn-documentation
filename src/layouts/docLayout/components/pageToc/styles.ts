@@ -40,11 +40,11 @@ const PageTocList = styled.ul`
     &.h4,
     &.h5,
     &.h6 {
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     &.h3 {
-      margin-left: 8px;
+      margin-left: 10px;
     }
   }
 `;
