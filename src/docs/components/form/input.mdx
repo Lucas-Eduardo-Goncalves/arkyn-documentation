@@ -1,0 +1,741 @@
+# Input
+
+import {
+  Input,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  Search,
+  User,
+  Mail,
+  Lock,
+  Phone,
+  MapPin,
+  DollarSign,
+  Calendar,
+  Globe,
+  Filter,
+  Eye,
+  EyeOff,
+  CreditCard,
+  Building,
+} from "lucide-react";
+
+O componente `Input` é usado para campos de entrada de texto com suporte para rótulos, validação, ícones, estados de carregamento e muito mais. É um componente altamente configurável que se integra com sistemas de formulário.
+
+## Importação
+
+```tsx
+import { Input } from "@arkyn/components";
+```
+
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários
+
+**`label`** - `string`
+Texto do rótulo a ser exibido acima do input
+
+**`errorMessage`** - `string`
+Mensagem de erro a ser exibida abaixo do input
+
+**`isLoading`** - `boolean` (padrão: `false`)
+Controla o estado de carregamento com spinner
+
+**`size`** - `"md" | "lg"` (padrão: `"md"`)
+Tamanho do input
+
+**`variant`** - `"solid" | "outline" | "underline"` (padrão: `"solid"`)
+Variante visual do input
+
+**`prefix`** - `string | LucideIcon`
+Texto ou ícone para exibir no início do input
+
+**`suffix`** - `string | LucideIcon`
+Texto ou ícone para exibir no final do input
+
+**`showAsterisk`** - `boolean`
+Se deve mostrar asterisco no rótulo para campos obrigatórios
+
+**`leftIcon`** - `LucideIcon`
+Ícone opcional para exibir no lado esquerdo
+
+**`rightIcon`** - `LucideIcon`
+Ícone opcional para exibir no lado direito
+
+Todas as outras propriedades HTML padrão de `<input>` também são suportadas, exceto `size`, `prefix` e `name`.
+
+## Tamanhos
+
+Os tamanhos disponíveis são `md` e `lg`. Cada tamanho oferece uma altura e padding diferentes para se adequar às necessidades do layout.
+
+<div className="noContent column">
+  <Input name="input-md" placeholder="Tamanho médio" size="md" />
+  <Input name="input-lg" placeholder="Tamanho grande" size="lg" />
+</div>
+
+```tsx
+<Input name="input-md" placeholder="Tamanho médio" size="md" />
+<Input name="input-lg" placeholder="Tamanho grande" size="lg" />
+```
+
+## Variantes
+
+As variantes disponíveis são `solid`, `outline` e `underline`. Cada variante oferece um estilo visual diferente para se adequar ao design da interface.
+
+<div className="noContent column">
+  <Input name="input-solid" placeholder="Variante sólida" variant="solid" />
+  <Input
+    name="input-outline"
+    placeholder="Variante contorno"
+    variant="outline"
+  />
+  <Input
+    name="input-underline"
+    placeholder="Variante sublinhada"
+    variant="underline"
+  />
+</div>
+
+```tsx
+<Input name="input-solid" placeholder="Variante sólida" variant="solid" />
+<Input name="input-outline" placeholder="Variante contorno" variant="outline" />
+<Input name="input-underline" placeholder="Variante sublinhada" variant="underline" />
+```
+
+## Inputs com Rótulos
+
+Os rótulos ajudam a identificar o propósito do campo e podem incluir um asterisco para indicar campos obrigatórios.
+
+<div className="noContent column">
+  <Input
+    name="username"
+    label="Nome de usuário"
+    placeholder="Digite seu nome de usuário"
+  />
+  <Input
+    name="email"
+    label="Email"
+    placeholder="Digite seu email"
+    showAsterisk
+  />
+  <Input
+    name="password"
+    label="Senha"
+    type="password"
+    placeholder="Digite sua senha"
+    showAsterisk
+  />
+</div>
+
+```tsx
+<Input
+  name="username"
+  label="Nome de usuário"
+  placeholder="Digite seu nome de usuário"
+/>
+<Input
+  name="email"
+  label="Email"
+  placeholder="Digite seu email"
+  showAsterisk
+/>
+<Input
+  name="password"
+  label="Senha"
+  type="password"
+  placeholder="Digite sua senha"
+  showAsterisk
+/>
+```
+
+## Inputs com Ícones
+
+Os inputs podem incluir ícones à esquerda ou à direita para fornecer contexto visual adicional.
+
+### Ícone à esquerda
+
+<div className="noContent column">
+  <Input
+    name="search"
+    label="Buscar"
+    placeholder="Digite para buscar..."
+    leftIcon={Search}
+  />
+  <Input
+    name="user-email"
+    label="Email do usuário"
+    placeholder="usuario@exemplo.com"
+    leftIcon={Mail}
+  />
+  <Input
+    name="phone"
+    label="Telefone"
+    placeholder="(11) 99999-9999"
+    leftIcon={Phone}
+  />
+</div>
+
+```tsx
+<Input
+  name="search"
+  label="Buscar"
+  placeholder="Digite para buscar..."
+  leftIcon={Search}
+/>
+<Input
+  name="user-email"
+  label="Email do usuário"
+  placeholder="usuario@exemplo.com"
+  leftIcon={Mail}
+/>
+<Input
+  name="phone"
+  label="Telefone"
+  placeholder="(11) 99999-9999"
+  leftIcon={Phone}
+/>
+```
+
+### Ícone à direita
+
+<div className="noContent column">
+  <Input
+    name="filter-search"
+    label="Busca com filtro"
+    placeholder="Digite e use o filtro..."
+    rightIcon={Filter}
+  />
+  <Input
+    name="location"
+    label="Localização"
+    placeholder="Digite sua cidade"
+    rightIcon={MapPin}
+  />
+  <Input
+    name="website"
+    label="Website"
+    placeholder="Digite a URL"
+    rightIcon={Globe}
+  />
+</div>
+
+```tsx
+<Input
+  name="filter-search"
+  label="Busca com filtro"
+  placeholder="Digite e use o filtro..."
+  rightIcon={Filter}
+/>
+<Input
+  name="location"
+  label="Localização"
+  placeholder="Digite sua cidade"
+  rightIcon={MapPin}
+/>
+<Input
+  name="website"
+  label="Website"
+  placeholder="Digite a URL"
+  rightIcon={Globe}
+/>
+```
+
+### Ambos os ícones
+
+<div className="noContent column">
+  <Input
+    name="search-filter"
+    label="Busca avançada"
+    placeholder="Digite para buscar..."
+    leftIcon={Search}
+    rightIcon={Filter}
+  />
+  <Input
+    name="user-location"
+    label="Usuário e localização"
+    placeholder="Digite informações..."
+    leftIcon={User}
+    rightIcon={MapPin}
+  />
+</div>
+
+```tsx
+<Input
+  name="search-filter"
+  label="Busca avançada"
+  placeholder="Digite para buscar..."
+  leftIcon={Search}
+  rightIcon={Filter}
+/>
+<Input
+  name="user-location"
+  label="Usuário e localização"
+  placeholder="Digite informações..."
+  leftIcon={User}
+  rightIcon={MapPin}
+/>
+```
+
+## Prefix e Suffix
+
+Use prefix e suffix para adicionar texto ou ícones fixos no início ou final do input.
+
+### Com texto
+
+<div className="noContent column">
+  <Input
+    name="website-url"
+    label="Website"
+    placeholder="meusite"
+    prefix="https://"
+    suffix=".com"
+  />
+  <Input
+    name="price"
+    label="Preço"
+    placeholder="100,00"
+    prefix="R$"
+    suffix="/mês"
+  />
+  <Input name="weight" label="Peso" placeholder="75" suffix="kg" />
+</div>
+
+```tsx
+<Input
+  name="website-url"
+  label="Website"
+  placeholder="meusite"
+  prefix="https://"
+  suffix=".com"
+/>
+<Input
+  name="price"
+  label="Preço"
+  placeholder="100,00"
+  prefix="R$"
+  suffix="/mês"
+/>
+<Input
+  name="weight"
+  label="Peso"
+  placeholder="75"
+  suffix="kg"
+/>
+```
+
+### Com ícones
+
+<div className="noContent column">
+  <Input name="salary" label="Salário" placeholder="5000" prefix={DollarSign} />
+  <Input
+    name="company"
+    label="Empresa"
+    placeholder="Nome da empresa"
+    suffix={Building}
+  />
+  <Input
+    name="card-number"
+    label="Número do cartão"
+    placeholder="1234 5678 9012 3456"
+    prefix={CreditCard}
+  />
+</div>
+
+```tsx
+<Input
+  name="salary"
+  label="Salário"
+  placeholder="5000"
+  prefix={DollarSign}
+/>
+<Input
+  name="company"
+  label="Empresa"
+  placeholder="Nome da empresa"
+  suffix={Building}
+/>
+<Input
+  name="card-number"
+  label="Número do cartão"
+  placeholder="1234 5678 9012 3456"
+  prefix={CreditCard}
+/>
+```
+
+## Tipos de Input
+
+O componente suporta todos os tipos HTML de input, permitindo diferentes tipos de entrada de dados.
+
+<div className="noContent column">
+  <Input
+    name="email-type"
+    label="Email"
+    type="email"
+    placeholder="usuario@exemplo.com"
+    leftIcon={Mail}
+  />
+  <Input
+    name="password-type"
+    label="Senha"
+    type="password"
+    placeholder="Digite sua senha"
+    leftIcon={Lock}
+  />
+  <Input
+    name="tel-type"
+    label="Telefone"
+    type="tel"
+    placeholder="(11) 99999-9999"
+    leftIcon={Phone}
+  />
+  <Input
+    name="date-type"
+    label="Data de nascimento"
+    type="date"
+    leftIcon={Calendar}
+  />
+  <Input
+    name="number-type"
+    label="Idade"
+    type="number"
+    placeholder="25"
+    min="0"
+    max="120"
+  />
+</div>
+
+```tsx
+<Input
+  name="email-type"
+  label="Email"
+  type="email"
+  placeholder="usuario@exemplo.com"
+  leftIcon={Mail}
+/>
+<Input
+  name="password-type"
+  label="Senha"
+  type="password"
+  placeholder="Digite sua senha"
+  leftIcon={Lock}
+/>
+<Input
+  name="tel-type"
+  label="Telefone"
+  type="tel"
+  placeholder="(11) 99999-9999"
+  leftIcon={Phone}
+/>
+<Input
+  name="date-type"
+  label="Data de nascimento"
+  type="date"
+  leftIcon={Calendar}
+/>
+<Input
+  name="number-type"
+  label="Idade"
+  type="number"
+  placeholder="25"
+  min="0"
+  max="120"
+/>
+```
+
+## Estados do Input
+
+### Input desabilitado
+
+<div className="noContent column">
+  <Input
+    name="disabled-input"
+    label="Campo desabilitado"
+    placeholder="Este campo está desabilitado"
+    disabled
+  />
+  <Input
+    name="disabled-with-value"
+    label="Desabilitado com valor"
+    value="Valor não editável"
+    disabled
+    leftIcon={User}
+  />
+</div>
+
+```tsx
+<Input
+  name="disabled-input"
+  label="Campo desabilitado"
+  placeholder="Este campo está desabilitado"
+  disabled
+/>
+<Input
+  name="disabled-with-value"
+  label="Desabilitado com valor"
+  value="Valor não editável"
+  disabled
+  leftIcon={User}
+/>
+```
+
+### Input apenas leitura
+
+<div className="noContent column">
+  <Input
+    name="readonly-input"
+    label="Campo apenas leitura"
+    value="Este valor não pode ser editado"
+    readOnly
+  />
+  <Input
+    name="readonly-with-icon"
+    label="Apenas leitura com ícone"
+    value="usuario@exemplo.com"
+    readOnly
+    leftIcon={Mail}
+  />
+</div>
+
+```tsx
+<Input
+  name="readonly-input"
+  label="Campo apenas leitura"
+  value="Este valor não pode ser editado"
+  readOnly
+/>
+<Input
+  name="readonly-with-icon"
+  label="Apenas leitura com ícone"
+  value="usuario@exemplo.com"
+  readOnly
+  leftIcon={Mail}
+/>
+```
+
+### Estado de carregamento
+
+O estado de carregamento mostra um spinner e desabilita o input automaticamente. O spinner aparece à esquerda por padrão, ou à direita se houver um `rightIcon`.
+
+<div className="noContent column">
+  <Input
+    name="loading-left"
+    label="Carregando (esquerda)"
+    placeholder="Carregando..."
+    isLoading
+  />
+  <Input
+    name="loading-right"
+    label="Carregando (direita)"
+    placeholder="Carregando..."
+    rightIcon={Search}
+    isLoading
+  />
+  <Input
+    name="loading-with-prefix"
+    label="Carregando com prefix"
+    placeholder="Carregando..."
+    prefix="https://"
+    isLoading
+  />
+</div>
+
+```tsx
+<Input
+  name="loading-left"
+  label="Carregando (esquerda)"
+  placeholder="Carregando..."
+  isLoading
+/>
+<Input
+  name="loading-right"
+  label="Carregando (direita)"
+  placeholder="Carregando..."
+  rightIcon={Search}
+  isLoading
+/>
+<Input
+  name="loading-with-prefix"
+  label="Carregando com prefix"
+  placeholder="Carregando..."
+  prefix="https://"
+  isLoading
+/>
+```
+
+## Validação e Erros
+
+O componente se integra com sistemas de validação de formulário e pode exibir mensagens de erro.
+
+<div className="noContent column">
+  <Input
+    name="invalid-email"
+    label="Email"
+    placeholder="Digite seu email"
+    errorMessage="Por favor, digite um email válido"
+    leftIcon={Mail}
+    showAsterisk
+  />
+  <Input
+    name="short-password"
+    label="Senha"
+    type="password"
+    placeholder="Digite sua senha"
+    errorMessage="A senha deve ter pelo menos 8 caracteres"
+    leftIcon={Lock}
+    showAsterisk
+  />
+  <Input
+    name="invalid-phone"
+    label="Telefone"
+    placeholder="(11) 99999-9999"
+    errorMessage="Formato de telefone inválido"
+    leftIcon={Phone}
+  />
+</div>
+
+```tsx
+<Input
+  name="invalid-email"
+  label="Email"
+  placeholder="Digite seu email"
+  errorMessage="Por favor, digite um email válido"
+  leftIcon={Mail}
+  showAsterisk
+/>
+<Input
+  name="short-password"
+  label="Senha"
+  type="password"
+  placeholder="Digite sua senha"
+  errorMessage="A senha deve ter pelo menos 8 caracteres"
+  leftIcon={Lock}
+  showAsterisk
+/>
+<Input
+  name="invalid-phone"
+  label="Telefone"
+  placeholder="(11) 99999-9999"
+  errorMessage="Formato de telefone inválido"
+  leftIcon={Phone}
+/>
+```
+
+## Casos de Uso Avançados
+
+### Formulário de login
+
+<div className="noContent column">
+  <Input
+    name="login-email"
+    label="Email"
+    type="email"
+    placeholder="Digite seu email"
+    leftIcon={Mail}
+    showAsterisk
+    variant="outline"
+  />
+  <Input
+    name="login-password"
+    label="Senha"
+    type="password"
+    placeholder="Digite sua senha"
+    leftIcon={Lock}
+    showAsterisk
+    variant="outline"
+  />
+</div>
+
+```tsx
+<Input
+  name="login-email"
+  label="Email"
+  type="email"
+  placeholder="Digite seu email"
+  leftIcon={Mail}
+  showAsterisk
+  variant="outline"
+/>
+<Input
+  name="login-password"
+  label="Senha"
+  type="password"
+  placeholder="Digite sua senha"
+  leftIcon={Lock}
+  showAsterisk
+  variant="outline"
+/>
+```
+
+### Busca avançada
+
+<div className="noContent column">
+  <Input
+    name="search-query"
+    label="Buscar produtos"
+    placeholder="Digite o nome do produto..."
+    leftIcon={Search}
+    rightIcon={Filter}
+    size="lg"
+    variant="solid"
+  />
+</div>
+
+```tsx
+<Input
+  name="search-query"
+  label="Buscar produtos"
+  placeholder="Digite o nome do produto..."
+  leftIcon={Search}
+  rightIcon={Filter}
+  size="lg"
+  variant="solid"
+/>
+```
+
+## Acessibilidade
+
+O componente `Input` foi desenvolvido com acessibilidade em mente:
+
+- Associação automática entre label e input via `htmlFor` e `id`
+- Suporte completo a navegação por teclado
+- Estados visuais claros para focus, error e disabled
+- Mensagens de erro são anunciadas por leitores de tela
+- Suporte a `aria-label` e outros atributos ARIA
+
+## Integração com Formulários
+
+O componente se integra nativamente com sistemas de gerenciamento de formulário através do hook `useForm` interno, permitindo:
+
+- Validação automática de campos
+- Exibição de erros contextuais
+- Gerenciamento de estado do formulário
+- Submissão e reset de dados
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Formulários customizáveis</AlertTitle>
+    <AlertDescription>
+      Para formulários mais complexos, é recomendado utilizar o [Form
+      Provider](/components/providers/form-provider) que oferece integração
+      nativa com todas as ferramentas de formulário de uma única só vez.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notas Importantes
+
+- A propriedade `name` é obrigatória para integração com formulários
+- Quando `isLoading` é `true`, o input é automaticamente desabilitado
+- O spinner de carregamento aparece à esquerda por padrão, ou à direita se `rightIcon` estiver presente
+- Inputs do tipo `hidden` são renderizados com `display: none`
+- O componente suporta todos os eventos padrão de input (onChange, onFocus, onBlur, etc.)
+- Ícones são redimensionados automaticamente com base no tamanho do input
+- O componente herda todas as propriedades HTML padrão de `<input>`, exceto `size`, `prefix` e `name`

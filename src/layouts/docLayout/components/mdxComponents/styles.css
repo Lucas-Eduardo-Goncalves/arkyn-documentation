@@ -121,6 +121,12 @@
   gap: 8px;
 }
 
+.noContent.column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 /* Garantir que elementos dentro de noContent não herdem estilos MDX */
 .noContent .mdx-h1,
 .noContent .mdx-h2,
