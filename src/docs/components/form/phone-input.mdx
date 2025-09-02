@@ -1,0 +1,486 @@
+# PhoneInput
+
+import {
+  PhoneInput,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  Phone,
+  Globe,
+  User,
+  Building,
+  MapPin,
+  Contact,
+  Shield,
+  UserCheck,
+} from "lucide-react";
+
+O componente `PhoneInput` é um campo de entrada especializado para números de telefone internacionais que oferece seleção de país e formatação automática. Inclui um dropdown pesquisável com bandeiras dos países e aplica máscaras de formatação específicas para cada região.
+
+## Importação
+
+```tsx
+import { PhoneInput } from "@arkyn/components";
+```
+
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários e identificação
+
+**`label`** - `string`
+Texto do rótulo a ser exibido acima do input
+
+**`showAsterisk`** - `boolean`
+Se deve mostrar asterisco no rótulo para campos obrigatórios
+
+**`errorMessage`** - `string`
+Mensagem de erro a ser exibida abaixo do input
+
+**`size`** - `"md" | "lg"` (padrão: `"md"`)
+Variante de tamanho do input
+
+**`variant`** - `"solid" | "outline"` (padrão: `"solid"`)
+Variante visual do input
+
+**`defaultValue`** - `string`
+Valor padrão do número de telefone
+
+**`defaultCountry`** - `string`
+Código ISO do país padrão a ser selecionado
+
+**`disabled`** - `boolean` (padrão: `false`)
+Se o input está desabilitado
+
+**`readOnly`** - `boolean` (padrão: `false`)
+Se o input é apenas leitura
+
+**`isLoading`** - `boolean` (padrão: `false`)
+Se o input está em estado de carregamento
+
+**`className`** - `string`
+Classes CSS adicionais para estilização
+
+**`id`** - `string`
+Identificador único opcional para o input
+
+**`searchCountryPlaceholder`** - `string` (padrão: `"Pesquisar país"`)
+Texto placeholder para o campo de busca de países
+
+**`notFoundCountryText`** - `string` (padrão: `"Nenhum país encontrado"`)
+Texto exibido quando nenhum país corresponde à busca
+
+**`onChange`** - `(formattedPhone: string) => void`
+Função callback chamada quando o número muda, recebe o valor formatado com código do país
+
+## Tamanhos
+
+Os tamanhos disponíveis são `md` e `lg`, seguindo o padrão dos outros componentes de input.
+
+<div className="noContent column">
+  <PhoneInput name="phone-md" label="Telefone (médio)" size="md" />
+  <PhoneInput name="phone-lg" label="Telefone (grande)" size="lg" />
+</div>
+
+```tsx
+<PhoneInput
+  name="phone-md"
+  label="Telefone (médio)"
+  size="md"
+/>
+<PhoneInput
+  name="phone-lg"
+  label="Telefone (grande)"
+  size="lg"
+/>
+```
+
+## Variantes
+
+As variantes disponíveis são `solid` e `outline`, proporcionando diferentes estilos visuais.
+
+<div className="noContent column">
+  <PhoneInput name="phone-solid" label="Telefone (sólido)" variant="solid" />
+  <PhoneInput
+    name="phone-outline"
+    label="Telefone (contorno)"
+    variant="outline"
+  />
+</div>
+
+```tsx
+<PhoneInput
+  name="phone-solid"
+  label="Telefone (sólido)"
+  variant="solid"
+/>
+<PhoneInput
+  name="phone-outline"
+  label="Telefone (contorno)"
+  variant="outline"
+/>
+```
+
+## Países e Formatação
+
+O componente suporta formatação automática para diversos países, aplicando a máscara apropriada baseada na seleção.
+
+### Brasil (BR)
+
+<div className="noContent column">
+  <PhoneInput name="phone-br" label="Telefone Brasil" defaultCountry="BR" />
+  <PhoneInput
+    name="phone-br-value"
+    label="Telefone com valor"
+    defaultCountry="BR"
+    defaultValue="+55 11999999999"
+  />
+</div>
+
+```tsx
+<PhoneInput
+  name="phone-br"
+  label="Telefone Brasil"
+  defaultCountry="BR"
+/>
+<PhoneInput
+  name="phone-br-value"
+  label="Telefone com valor"
+  defaultCountry="BR"
+  defaultValue="+55 11999999999"
+/>
+```
+
+### Estados Unidos (US)
+
+<div className="noContent column">
+  <PhoneInput name="phone-us" label="Phone USA" defaultCountry="US" />
+  <PhoneInput
+    name="phone-us-value"
+    label="Phone with value"
+    defaultCountry="US"
+    defaultValue="+1-408 1234567"
+  />
+</div>
+
+```tsx
+<PhoneInput
+  name="phone-us"
+  label="Phone USA"
+  defaultCountry="US"
+/>
+<PhoneInput
+  name="phone-us-value"
+  label="Phone with value"
+  defaultCountry="US"
+  defaultValue="+1-408 1234567"
+/>
+```
+
+## Busca de Países
+
+O componente oferece funcionalidade de busca para facilitar a seleção do país desejado.
+
+<div className="noContent column">
+  <PhoneInput
+    name="phone-search"
+    label="Telefone com busca personalizada"
+    searchCountryPlaceholder="Digite o nome do país..."
+    notFoundCountryText="País não encontrado"
+  />
+  <PhoneInput
+    name="phone-search-en"
+    label="Phone with custom search"
+    searchCountryPlaceholder="Type country name..."
+    notFoundCountryText="Country not found"
+  />
+</div>
+
+```tsx
+<PhoneInput
+  name="phone-search"
+  label="Telefone com busca personalizada"
+  searchCountryPlaceholder="Digite o nome do país..."
+  notFoundCountryText="País não encontrado"
+/>
+<PhoneInput
+  name="phone-search-en"
+  label="Phone with custom search"
+  searchCountryPlaceholder="Type country name..."
+  notFoundCountryText="Country not found"
+/>
+```
+
+## Estados do Input
+
+### Input desabilitado
+
+<div className="noContent column">
+  <PhoneInput
+    name="phone-disabled"
+    label="Telefone desabilitado"
+    defaultCountry="BR"
+    disabled
+  />
+  <PhoneInput
+    name="phone-disabled-value"
+    label="Telefone desabilitado com valor"
+    defaultCountry="US"
+    defaultValue="+1-408 9876543"
+    disabled
+  />
+</div>
+
+```tsx
+<PhoneInput
+  name="phone-disabled"
+  label="Telefone desabilitado"
+  defaultCountry="BR"
+  disabled
+/>
+<PhoneInput
+  name="phone-disabled-value"
+  label="Telefone desabilitado com valor"
+  defaultCountry="US"
+  defaultValue="+1-408 9876543"
+  disabled
+/>
+```
+
+### Input apenas leitura
+
+<div className="noContent column">
+  <PhoneInput
+    name="phone-readonly"
+    label="Telefone apenas leitura"
+    defaultCountry="BR"
+    defaultValue="+55 11987654321"
+    readOnly
+  />
+  <PhoneInput
+    name="phone-readonly-display"
+    label="Telefone registrado"
+    defaultCountry="GB"
+    defaultValue="+44 2012345678"
+    readOnly
+    variant="outline"
+  />
+</div>
+
+```tsx
+<PhoneInput
+  name="phone-readonly"
+  label="Telefone apenas leitura"
+  defaultCountry="BR"
+  defaultValue="+55 11987654321"
+  readOnly
+/>
+<PhoneInput
+  name="phone-readonly-display"
+  label="Telefone registrado"
+  defaultCountry="GB"
+  defaultValue="+44 2012345678"
+  readOnly
+  variant="outline"
+/>
+```
+
+### Estado de carregamento
+
+<div className="noContent column">
+  <PhoneInput
+    name="phone-loading"
+    label="Carregando telefone..."
+    defaultCountry="BR"
+    isLoading
+  />
+  <PhoneInput
+    name="phone-loading-value"
+    label="Validando número..."
+    defaultCountry="US"
+    defaultValue="+1-408 0000000"
+    isLoading
+  />
+</div>
+
+```tsx
+<PhoneInput
+  name="phone-loading"
+  label="Carregando telefone..."
+  defaultCountry="BR"
+  isLoading
+/>
+<PhoneInput
+  name="phone-loading-value"
+  label="Validando número..."
+  defaultCountry="US"
+  defaultValue="+1-408 0000000"
+  isLoading
+/>
+```
+
+## Validação e Erros
+
+<div className="noContent column">
+  <PhoneInput
+    name="phone-invalid"
+    label="Telefone"
+    defaultCountry="BR"
+    errorMessage="Número de telefone inválido"
+    showAsterisk
+  />
+  <PhoneInput
+    name="phone-invalid-us"
+    label="Contact Phone"
+    defaultCountry="US"
+    errorMessage="Please enter a valid phone number"
+    showAsterisk
+  />
+  <PhoneInput
+    name="phone-required"
+    label="Telefone Obrigatório"
+    defaultCountry="BR"
+    errorMessage="Este campo é obrigatório"
+    showAsterisk
+  />
+</div>
+
+```tsx
+<PhoneInput
+  name="phone-invalid"
+  label="Telefone"
+  defaultCountry="BR"
+  errorMessage="Número de telefone inválido"
+  showAsterisk
+/>
+<PhoneInput
+  name="phone-invalid-us"
+  label="Contact Phone"
+  defaultCountry="US"
+  errorMessage="Please enter a valid phone number"
+  showAsterisk
+/>
+<PhoneInput
+  name="phone-required"
+  label="Telefone Obrigatório"
+  defaultCountry="BR"
+  errorMessage="Este campo é obrigatório"
+  showAsterisk
+/>
+```
+
+## Callback onChange
+
+O callback `onChange` fornece o número formatado completo com código do país:
+
+```tsx
+const handlePhoneChange = (formattedPhone) => {
+  // formattedPhone: string - número formatado com código do país
+  console.log("Número completo:", formattedPhone); // "+55 11999999999"
+
+  // Use para salvar no estado ou enviar para API
+  setPhoneNumber(formattedPhone);
+};
+
+<PhoneInput
+  name="user-phone"
+  label="Seu Telefone"
+  defaultCountry="BR"
+  onChange={handlePhoneChange}
+/>;
+```
+
+## Formatação Automática
+
+O componente aplica formatação automática baseada no país selecionado:
+
+- **Brasil**: +55 11 99999-9999
+- **Estados Unidos**: +1 (408) 123-4567
+- **Reino Unido**: +44 20 7946 0958
+- **França**: +33 1 42 34 56 78
+- **Alemanha**: +49 30 12345678
+- **E muitos outros...**
+
+A formatação é aplicada em tempo real conforme o usuário digita, seguindo os padrões específicos de cada país.
+
+## Busca de Países
+
+O dropdown de países inclui:
+
+- **Bandeiras**: Representação visual de cada país
+- **Códigos**: Código de discagem internacional
+- **Nomes**: Nome completo do país
+- **Busca**: Filtragem em tempo real por nome do país
+- **Suporte**: Mais de 200 países disponíveis
+
+## Acessibilidade
+
+O componente `PhoneInput` foi desenvolvido com acessibilidade em mente:
+
+- Associação automática entre label e input via `htmlFor` e `id`
+- Suporte completo a navegação por teclado
+- Estados visuais claros para focus, error e disabled
+- Mensagens de erro são anunciadas por leitores de tela
+- Dropdown navegável por teclado com busca
+- Bandeiras dos países com textos alternativos apropriados
+
+## Integração com Formulários
+
+O componente se integra nativamente com sistemas de gerenciamento de formulário:
+
+- Validação automática considerando a máscara aplicada
+- Exibição de erros contextuais
+- Gerenciamento de estado do formulário
+- Suporte a valores separados ou com máscara
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Formulários customizáveis</AlertTitle>
+    <AlertDescription>
+      Para formulários mais complexos, é recomendado utilizar o [Form
+      Provider](/components/providers/form-provider) que oferece integração
+      nativa com todas as ferramentas de formulário de uma única só vez.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Detecção Automática de País
+
+O componente pode detectar automaticamente o país baseado no valor padrão fornecido:
+
+```tsx
+// Detecta automaticamente que é um número brasileiro
+<PhoneInput
+  name="auto-detect"
+  label="Telefone"
+  defaultValue="+55 11999999999"
+  // Não precisa especificar defaultCountry
+/>
+
+// Detecta automaticamente que é um número americano
+<PhoneInput
+  name="auto-detect-us"
+  label="Phone"
+  defaultValue="+1-408 1234567"
+  // Não precisa especificar defaultCountry
+/>
+```
+
+## Notas Importantes
+
+- A propriedade `name` é obrigatória para integração com formulários
+- O país padrão é o índice 30 da lista de países se não especificado
+- A formatação é aplicada automaticamente baseada no país selecionado
+- O valor retornado no `onChange` inclui o código do país e formatação completa
+- O componente usa dados de países do `@arkyn/templates`
+- A busca de países é insensível a maiúsculas/minúsculas
+- Suporta mais de 200 países com suas respectivas formatações
+- O campo hidden garante que o valor formatado seja enviado no formulário
+- Estados de loading, disabled e readOnly afetam tanto o input quanto o dropdown
+- A formatação segue padrões internacionais para cada região
