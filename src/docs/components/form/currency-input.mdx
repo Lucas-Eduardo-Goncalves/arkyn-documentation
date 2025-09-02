@@ -1,0 +1,539 @@
+# CurrencyInput
+
+import {
+  CurrencyInput,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  DollarSign,
+  Calculator,
+  TrendingUp,
+  PiggyBank,
+  CreditCard,
+  Banknote,
+  Wallet,
+  Receipt,
+  ShoppingCart,
+  Building,
+  Target,
+  BarChart3,
+} from "lucide-react";
+
+O componente `CurrencyInput` é um campo de entrada especializado para valores monetários que aplica formatação automática baseada na localização da moeda. Suporta mais de 20 moedas diferentes e oferece formatação em tempo real conforme o usuário digita.
+
+## Importação
+
+```tsx
+import { CurrencyInput } from "@arkyn/components";
+```
+
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários
+
+**`locale`** - `Locale` (obrigatório)
+Localização da moeda para formatação (ex: "USD", "EUR", "BRL", etc.)
+
+**`label`** - `string`
+Texto do rótulo a ser exibido acima do input
+
+**`errorMessage`** - `string`
+Mensagem de erro a ser exibida abaixo do input
+
+**`isLoading`** - `boolean` (padrão: `false`)
+Controla o estado de carregamento com spinner
+
+**`size`** - `"md" | "lg"` (padrão: `"md"`)
+Tamanho do input
+
+**`variant`** - `"solid" | "outline" | "underline"` (padrão: `"solid"`)
+Variante visual do input
+
+**`prefix`** - `string | LucideIcon`
+Texto ou ícone para exibir no início do input
+
+**`suffix`** - `string | LucideIcon`
+Texto ou ícone para exibir no final do input
+
+**`showAsterisk`** - `boolean`
+Se deve mostrar asterisco no rótulo para campos obrigatórios
+
+**`leftIcon`** - `LucideIcon`
+Ícone opcional para exibir no lado esquerdo
+
+**`rightIcon`** - `LucideIcon`
+Ícone opcional para exibir no lado direito
+
+**`max`** - `number`
+Valor máximo permitido para o input
+
+**`value`** - `number`
+Valor controlado (número) para o input
+
+**`defaultValue`** - `number | null`
+Valor padrão (número) para uso não controlado
+
+**`onChange`** - `(event, originalValue, maskedValue) => void`
+Função callback chamada quando o valor muda, recebe evento, valor original e valor formatado
+
+Todas as outras propriedades HTML padrão de `<input>` também são suportadas, exceto `type`, `max`, `defaultValue`, `value` e `onChange` que são controladas pelo componente.
+
+## Moedas Suportadas
+
+O componente suporta mais de 20 localizações de moeda diferentes:
+
+- **USD** - Dólar Americano
+- **EUR** - Euro
+- **BRL** - Real Brasileiro
+- **GBP** - Libra Esterlina
+- **JPY** - Yen Japonês
+- **CAD** - Dólar Canadense
+- **AUD** - Dólar Australiano
+- **CHF** - Franco Suíço
+- **CNY** - Yuan Chinês
+- **SEK** - Coroa Sueca
+- **NZD** - Dólar Neozelandês
+- **INR** - Rupia Indiana
+- **RUB** - Rublo Russo
+- **ZAR** - Rand Sul-africano
+- **MXN** - Peso Mexicano
+- **SGD** - Dólar de Singapura
+- **HKD** - Dólar de Hong Kong
+- **NOK** - Coroa Norueguesa
+- **KRW** - Won Sul-coreano
+- **TRY** - Lira Turca
+- **IDR** - Rupia Indonésia
+- **THB** - Baht Tailandês
+
+## Tamanhos
+
+Os tamanhos disponíveis são `md` e `lg`, seguindo o mesmo padrão dos outros componentes de input.
+
+<div className="noContent column">
+  <CurrencyInput
+    name="price-md"
+    locale="USD"
+    placeholder="Digite o valor"
+    size="md"
+  />
+  <CurrencyInput
+    name="price-lg"
+    locale="USD"
+    placeholder="Digite o valor"
+    size="lg"
+  />
+</div>
+
+```tsx
+<CurrencyInput
+  name="price-md"
+  locale="USD"
+  placeholder="Digite o valor"
+  size="md"
+/>
+<CurrencyInput
+  name="price-lg"
+  locale="USD"
+  placeholder="Digite o valor"
+  size="lg"
+/>
+```
+
+## Variantes
+
+As variantes disponíveis são `solid`, `outline` e `underline`, proporcionando diferentes estilos visuais.
+
+<div className="noContent column">
+  <CurrencyInput
+    name="amount-solid"
+    locale="BRL"
+    placeholder="R$ 0,00"
+    variant="solid"
+  />
+  <CurrencyInput
+    name="amount-outline"
+    locale="BRL"
+    placeholder="R$ 0,00"
+    variant="outline"
+  />
+  <CurrencyInput
+    name="amount-underline"
+    locale="BRL"
+    placeholder="R$ 0,00"
+    variant="underline"
+  />
+</div>
+
+```tsx
+<CurrencyInput
+  name="amount-solid"
+  locale="BRL"
+  placeholder="R$ 0,00"
+  variant="solid"
+/>
+<CurrencyInput
+  name="amount-outline"
+  locale="BRL"
+  placeholder="R$ 0,00"
+  variant="outline"
+/>
+<CurrencyInput
+  name="amount-underline"
+  locale="BRL"
+  placeholder="R$ 0,00"
+  variant="underline"
+/>
+```
+
+## Prefix e Suffix
+
+Como nos outros componentes de input, é possível adicionar texto ou ícones no início ou final.
+
+<div className="noContent column">
+  <CurrencyInput
+    name="monthly-cost"
+    label="Custo Mensal"
+    locale="BRL"
+    prefix="R$"
+    suffix="/mês"
+    placeholder="0,00"
+    leftIcon={Calculator}
+  />
+  <CurrencyInput
+    name="annual-fee"
+    label="Taxa Anual"
+    locale="USD"
+    prefix="$"
+    suffix="USD"
+    placeholder="0.00"
+    leftIcon={Receipt}
+  />
+  <CurrencyInput
+    name="hourly-rate"
+    label="Valor por Hora"
+    locale="EUR"
+    prefix="€"
+    suffix="/h"
+    placeholder="0.00"
+    leftIcon={DollarSign}
+  />
+</div>
+
+```tsx
+<CurrencyInput
+  name="monthly-cost"
+  label="Custo Mensal"
+  locale="BRL"
+  prefix="R$"
+  suffix="/mês"
+  placeholder="0,00"
+  leftIcon={Calculator}
+/>
+<CurrencyInput
+  name="annual-fee"
+  label="Taxa Anual"
+  locale="USD"
+  prefix="$"
+  suffix="USD"
+  placeholder="0.00"
+  leftIcon={Receipt}
+/>
+<CurrencyInput
+  name="hourly-rate"
+  label="Valor por Hora"
+  locale="EUR"
+  prefix="€"
+  suffix="/h"
+  placeholder="0.00"
+  leftIcon={DollarSign}
+/>
+```
+
+## Input com Valor Máximo
+
+<div className="noContent column">
+  <CurrencyInput
+    name="limit-amount"
+    label="Valor com Limite"
+    locale="BRL"
+    max={10000}
+    placeholder="Máximo: R$ 10.000,00"
+    leftIcon={Target}
+    showAsterisk
+  />
+</div>
+
+```tsx
+<CurrencyInput
+  name="limit-amount"
+  label="Valor com Limite"
+  locale="BRL"
+  max={10000}
+  placeholder="Máximo: R$ 10.000,00"
+  leftIcon={Target}
+  showAsterisk
+/>
+```
+
+## Estados do Input
+
+### Input desabilitado
+
+<div className="noContent column">
+  <CurrencyInput
+    name="disabled-amount"
+    label="Valor desabilitado"
+    locale="BRL"
+    placeholder="R$ 0,00"
+    disabled
+    leftIcon={DollarSign}
+  />
+  <CurrencyInput
+    name="disabled-with-value"
+    label="Desabilitado com valor"
+    locale="USD"
+    value={1000}
+    disabled
+    leftIcon={Banknote}
+  />
+</div>
+
+```tsx
+<CurrencyInput
+  name="disabled-amount"
+  label="Valor desabilitado"
+  locale="BRL"
+  placeholder="R$ 0,00"
+  disabled
+  leftIcon={DollarSign}
+/>
+<CurrencyInput
+  name="disabled-with-value"
+  label="Desabilitado com valor"
+  locale="USD"
+  value={1000}
+  disabled
+  leftIcon={Banknote}
+/>
+```
+
+### Input apenas leitura
+
+<div className="noContent column">
+  <CurrencyInput
+    name="readonly-amount"
+    label="Valor apenas leitura"
+    locale="EUR"
+    value={2500.99}
+    readOnly
+    leftIcon={Receipt}
+  />
+  <CurrencyInput
+    name="readonly-total"
+    label="Total calculado"
+    locale="BRL"
+    value={15750.8}
+    readOnly
+    leftIcon={Calculator}
+  />
+</div>
+
+```tsx
+<CurrencyInput
+  name="readonly-amount"
+  label="Valor apenas leitura"
+  locale="EUR"
+  value={2500.99}
+  readOnly
+  leftIcon={Receipt}
+/>
+<CurrencyInput
+  name="readonly-total"
+  label="Total calculado"
+  locale="BRL"
+  value={15750.80}
+  readOnly
+  leftIcon={Calculator}
+/>
+```
+
+### Estado de carregamento
+
+<div className="noContent column">
+  <CurrencyInput
+    name="loading-left"
+    label="Calculando valor..."
+    locale="BRL"
+    placeholder="R$ 0,00"
+    isLoading
+    leftIcon={Calculator}
+  />
+  <CurrencyInput
+    name="loading-right"
+    label="Processando pagamento..."
+    locale="USD"
+    placeholder="$0.00"
+    rightIcon={CreditCard}
+    isLoading
+  />
+</div>
+
+```tsx
+<CurrencyInput
+  name="loading-left"
+  label="Calculando valor..."
+  locale="BRL"
+  placeholder="R$ 0,00"
+  isLoading
+  leftIcon={Calculator}
+/>
+<CurrencyInput
+  name="loading-right"
+  label="Processando pagamento..."
+  locale="USD"
+  placeholder="$0.00"
+  rightIcon={CreditCard}
+  isLoading
+/>
+```
+
+## Validação e Erros
+
+<div className="noContent column">
+  <CurrencyInput
+    name="invalid-salary"
+    label="Salário"
+    locale="BRL"
+    placeholder="R$ 0,00"
+    errorMessage="Valor deve ser maior que R$ 1.000,00"
+    leftIcon={DollarSign}
+    showAsterisk
+  />
+  <CurrencyInput
+    name="invalid-budget"
+    label="Orçamento"
+    locale="USD"
+    placeholder="$0.00"
+    errorMessage="Orçamento excede o limite permitido"
+    leftIcon={PiggyBank}
+    showAsterisk
+  />
+  <CurrencyInput
+    name="invalid-price"
+    label="Preço"
+    locale="EUR"
+    placeholder="€0.00"
+    errorMessage="Preço não pode ser negativo"
+    leftIcon={ShoppingCart}
+  />
+</div>
+
+```tsx
+<CurrencyInput
+  name="invalid-salary"
+  label="Salário"
+  locale="BRL"
+  placeholder="R$ 0,00"
+  errorMessage="Valor deve ser maior que R$ 1.000,00"
+  leftIcon={DollarSign}
+  showAsterisk
+/>
+<CurrencyInput
+  name="invalid-budget"
+  label="Orçamento"
+  locale="USD"
+  placeholder="$0.00"
+  errorMessage="Orçamento excede o limite permitido"
+  leftIcon={PiggyBank}
+  showAsterisk
+/>
+<CurrencyInput
+  name="invalid-price"
+  label="Preço"
+  locale="EUR"
+  placeholder="€0.00"
+  errorMessage="Preço não pode ser negativo"
+  leftIcon={ShoppingCart}
+/>
+```
+
+## Callback onChange
+
+O callback `onChange` fornece três parâmetros para máxima flexibilidade:
+
+```tsx
+const handleCurrencyChange = (event, originalValue, maskedValue) => {
+  // event: ChangeEvent<HTMLInputElement> - evento original
+  // originalValue: string - valor numérico sem formatação
+  // maskedValue: string - valor formatado com máscara da moeda
+
+  console.log("Valor original:", originalValue); // "1500.50"
+  console.log("Valor formatado:", maskedValue); // "R$ 1.500,50"
+
+  // Use originalValue para cálculos
+  const numericValue = Number(originalValue);
+
+  // Use maskedValue para exibição
+  setDisplayValue(maskedValue);
+};
+```
+
+## Formatação Automática
+
+O componente aplica formatação automática baseada na localização:
+
+- **BRL**: R$ 1.234,56
+- **USD**: $1,234.56
+- **EUR**: €1.234,56
+- **GBP**: £1,234.56
+- **JPY**: ¥1,235 (sem casas decimais)
+- **E muito mais...**
+
+## Acessibilidade
+
+O componente `CurrencyInput` mantém todas as funcionalidades de acessibilidade:
+
+- Associação automática entre label e input via `htmlFor` e `id`
+- Suporte completo a navegação por teclado
+- Estados visuais claros para focus, error e disabled
+- Mensagens de erro são anunciadas por leitores de tela
+- A formatação da moeda é preservada para tecnologias assistivas
+
+## Integração com Formulários
+
+O componente se integra nativamente com sistemas de gerenciamento de formulário:
+
+- Validação automática considerando a máscara aplicada
+- Exibição de erros contextuais
+- Gerenciamento de estado do formulário
+- Suporte a valores separados ou com máscara
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Formulários customizáveis</AlertTitle>
+    <AlertDescription>
+      Para formulários mais complexos, é recomendado utilizar o [Form
+      Provider](/components/providers/form-provider) que oferece integração
+      nativa com todas as ferramentas de formulário de uma única só vez.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notas Importantes
+
+- A propriedade `name` é obrigatória para integração com formulários
+- A propriedade `locale` é obrigatória para definir o formato da moeda
+- O valor retornado no `onChange` é sempre numérico (originalValue) para facilitar cálculos
+- O `max` limita o valor que pode ser inserido, impedindo valores maiores
+- A formatação é aplicada automaticamente conforme o usuário digita
+- Quando `isLoading` é `true`, o input é automaticamente desabilitado
+- O componente usa internamente `maskCurrencyValues` para formatação
+- Todas as propriedades HTML padrão de `<input>` são suportadas, exceto aquelas controladas pelo componente
+- A formatação segue padrões internacionais para cada localização de moeda
