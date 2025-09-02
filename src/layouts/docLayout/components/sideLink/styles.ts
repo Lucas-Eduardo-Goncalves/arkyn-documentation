@@ -11,8 +11,10 @@ const SideLinkContainer = styled(Link)`
   text-decoration: none;
   color: var(--text-body);
 
+  background-color: var(--background);
+
   &:hover {
-    background: var(--background);
+    filter: brightness(0.97);
   }
 
   &.active {
