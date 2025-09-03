@@ -1,0 +1,378 @@
+# FileUpload
+
+import {
+  FileUpload,
+  Button,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  Upload,
+  File,
+  Image,
+  FileText,
+  Video,
+  Music,
+  Archive,
+  Download,
+  X,
+  Check,
+  AlertCircle,
+} from "lucide-react";
+
+O `FileUpload` é um componente avançado para upload de arquivos com funcionalidades de drag and drop, validação automática e integração com APIs de upload. Oferece uma interface intuitiva para seleção e envio de arquivos com feedback visual completo.
+
+## Importação
+
+```tsx
+import { FileUpload } from "@arkyn/components";
+```
+
+## Uso Básico
+
+<div className="noContent column">
+  <FileUpload name="basicFile" action="/api/upload" label="Upload de Arquivo" />
+</div>
+
+```tsx
+<FileUpload name="document" action="/api/upload" label="Selecione um arquivo" />
+```
+
+## Upload com Validação
+
+Configure tipos de arquivo aceitos e validação automática.
+
+<div className="noContent column">
+  <FileUpload
+    name="imageFile"
+    action="/api/upload/image"
+    label="Upload de Imagem"
+    showAsterisk
+    acceptFile="image/*"
+    selectFileButtonText="Escolher Imagem"
+    changeFileButtonText="Trocar Imagem"
+    dropFileText="Arraste sua imagem aqui"
+  />
+</div>
+
+```tsx
+<FileUpload
+  name="avatar"
+  action="/api/upload/avatar"
+  label="Foto de Perfil"
+  showAsterisk
+  acceptFile="image/*"
+  selectFileButtonText="Escolher Imagem"
+  changeFileButtonText="Trocar Imagem"
+  dropFileText="Arraste sua imagem aqui"
+  onChange={(url) => console.log("Avatar uploaded:", url)}
+/>
+```
+
+## Tipos de Arquivo Específicos
+
+<div className="noContent column">
+  <FileUpload
+    name="pdfDocument"
+    action="/api/upload/pdf"
+    label="Documento PDF"
+    acceptFile=".pdf"
+    selectFileButtonText="Selecionar PDF"
+    dropFileText="Arraste o arquivo PDF aqui"
+  />
+
+  <FileUpload
+    name="videoFile"
+    action="/api/upload/video"
+    label="Upload de Vídeo"
+    acceptFile="video/*"
+    selectFileButtonText="Escolher Vídeo"
+    dropFileText="Arraste o vídeo aqui"
+  />
+</div>
+
+```tsx
+{
+  /* Upload de PDF */
+}
+<FileUpload
+  name="contract"
+  action="/api/upload/document"
+  label="Contrato (PDF)"
+  acceptFile=".pdf"
+  selectFileButtonText="Selecionar PDF"
+  dropFileText="Arraste o arquivo PDF aqui"
+/>;
+
+{
+  /* Upload de vídeo */
+}
+<FileUpload
+  name="presentation"
+  action="/api/upload/video"
+  label="Vídeo de Apresentação"
+  acceptFile="video/mp4,video/webm"
+  selectFileButtonText="Escolher Vídeo"
+  dropFileText="Arraste o vídeo aqui (MP4 ou WebM)"
+/>;
+
+{
+  /* Múltiplos tipos */
+}
+<FileUpload
+  name="media"
+  action="/api/upload/media"
+  label="Imagem ou Vídeo"
+  acceptFile="image/*,video/*"
+  selectFileButtonText="Selecionar Mídia"
+/>;
+```
+
+## Upload com Configuração Customizada
+
+<div className="noContent column">
+  <FileUpload
+    name="customUpload"
+    action="/api/files"
+    method="PUT"
+    fileName="uploadedFile"
+    fileResponseName="fileUrl"
+    label="Upload Customizado"
+    selectFileButtonText="Enviar Arquivo"
+    changeFileButtonText="Substituir"
+    dropFileText="Solte o arquivo aqui para envio"
+  />
+</div>
+
+```tsx
+<FileUpload
+  name="attachment"
+  action="/api/files/upload"
+  method="PUT"
+  fileName="attachment"
+  fileResponseName="downloadUrl"
+  label="Anexo do Email"
+  selectFileButtonText="Anexar Arquivo"
+  changeFileButtonText="Trocar Anexo"
+  dropFileText="Arraste o anexo aqui"
+  onChange={(url) => {
+    if (url) {
+      setAttachmentUrl(url);
+      console.log("Attachment uploaded:", url);
+    }
+  }}
+/>
+```
+
+## Estados e Variações
+
+### Upload Desabilitado
+
+<div className="noContent column">
+  <FileUpload
+    name="disabledUpload"
+    action="/api/upload"
+    label="Upload Desabilitado"
+    disabled
+    selectFileButtonText="Não Disponível"
+  />
+</div>
+
+```tsx
+<FileUpload
+  name="document"
+  action="/api/upload"
+  label="Upload Temporariamente Indisponível"
+  disabled
+/>
+```
+
+### Upload com Callback Avançado
+
+```tsx
+function DocumentUploadForm() {
+  const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
+  const [isUploading, setIsUploading] = useState(false);
+
+  const handleFileUpload = (url?: string) => {
+    if (url) {
+      setUploadedFiles((prev) => [...prev, url]);
+      // Processar arquivo uploaded
+      processUploadedFile(url);
+    }
+  };
+
+  return (
+    <FileUpload
+      name="documents"
+      action="/api/upload/documents"
+      label="Documentos do Projeto"
+      showAsterisk
+      acceptFile=".pdf,.doc,.docx,.txt"
+      onChange={handleFileUpload}
+      selectFileButtonText="Adicionar Documento"
+      changeFileButtonText="Substituir Documento"
+      dropFileText="Arraste documentos aqui (.pdf, .doc, .docx, .txt)"
+    />
+  );
+}
+```
+
+## Configuração de API
+
+### Estrutura da Resposta Esperada
+
+O componente espera que a API retorne um JSON com a seguinte estrutura:
+
+```json
+// Sucesso (configuração padrão)
+{
+  "url": "https://example.com/uploads/file123.pdf"
+}
+
+// Sucesso (configuração customizada)
+{
+  "fileUrl": "https://example.com/files/document.pdf",
+  "fileName": "document.pdf",
+  "size": 1024000
+}
+
+// Erro
+{
+  "error": "Arquivo muito grande. Máximo permitido: 5MB"
+}
+```
+
+### Exemplo de Endpoint Node.js
+
+```javascript
+// server.js
+app.post("/api/upload", upload.single("file"), (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({
+        error: "Nenhum arquivo foi enviado",
+      });
+    }
+
+    // Validações
+    const maxSize = 10 * 1024 * 1024; // 10MB
+    if (req.file.size > maxSize) {
+      return res.status(400).json({
+        error: "Arquivo muito grande. Máximo: 10MB",
+      });
+    }
+
+    // Processar upload (S3, local, etc.)
+    const fileUrl = processFileUpload(req.file);
+
+    res.json({
+      url: fileUrl,
+      fileName: req.file.originalname,
+      size: req.file.size,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: "Erro interno do servidor",
+    });
+  }
+});
+```
+
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulário
+
+**`action`** - `string` (obrigatório)
+URL do endpoint onde o arquivo será enviado
+
+**`disabled`** - `boolean` (padrão: `false`)
+Se o upload de arquivo está desabilitado
+
+**`label`** - `string`
+Texto do label a ser exibido acima da área de upload
+
+**`showAsterisk`** - `boolean` (padrão: `false`)
+Se deve exibir asterisco no label para campos obrigatórios
+
+**`changeFileButtonText`** - `string` (padrão: `"Alterar arquivo"`)
+Texto do botão para trocar/substituir um arquivo já enviado
+
+**`selectFileButtonText`** - `string` (padrão: `"Selecionar arquivo"`)
+Texto do botão para selecionar um arquivo
+
+**`dropFileText`** - `string` (padrão: `"Ou arraste e solte o arquivo aqui"`)
+Texto exibido na área de drop zone
+
+**`method`** - `string` (padrão: `"POST"`)
+Método HTTP para a requisição de upload
+
+**`fileName`** - `string` (padrão: `"file"`)
+Nome do campo no FormData para o arquivo
+
+**`fileResponseName`** - `string` (padrão: `"url"`)
+Nome da propriedade no objeto de resposta que contém a URL do arquivo
+
+**`acceptFile`** - `string` (padrão: `"*"`)
+Tipos de arquivo aceitos pelo input (ex: "image/\*", ".pdf")
+
+**`onChange`** - `(url?: string) => void`
+Função callback chamada quando o upload é concluído com sucesso
+
+## Validação e Tratamento de Erros
+
+O componente oferece tratamento automático de erros:
+
+- **Erros de rede** - Capturados automaticamente
+- **Erros da API** - Exibidos via propriedade `error` na resposta
+- **Validação de formulário** - Integração com `useForm`
+- **Feedback visual** - Estados de loading e erro
+
+## Acessibilidade
+
+O FileUpload foi desenvolvido com foco em acessibilidade:
+
+- **Navegação por teclado** - Suporte completo para navegação via Tab
+- **Labels semânticos** - Associação correta entre labels e campos
+- **Estados visuais** - Feedback claro para diferentes estados
+- **Drag and drop acessível** - Funciona tanto com mouse quanto teclado
+- **Mensagens de erro** - Anunciadas por leitores de tela
+- **Tipos de arquivo** - Descrição clara dos formatos aceitos
+
+## Integração com Formulários
+
+O componente se integra nativamente com sistemas de gerenciamento de formulário:
+
+- Exibição de erros contextuais
+- Gerenciamento de estado do formulário
+- Suporte a valores separados ou com máscara
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Formulários customizáveis</AlertTitle>
+    <AlertDescription>
+      Para formulários mais complexos, é recomendado utilizar o [Form
+      Provider](/components/providers/form-provider) que oferece integração
+      nativa com todas as ferramentas de formulário de uma única só vez.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notas Importantes
+
+- **Endpoint obrigatório** - Sempre configure uma URL válida em `action`
+- **Formato de resposta** - API deve retornar JSON com URL ou erro
+- **Validação de tipos** - Use `acceptFile` para restringir formatos
+- **Tratamento de erro** - Implemente callback `onChange` para feedback
+- **Tamanho de arquivo** - Validação deve ser feita no servidor
+- **Segurança** - Sempre valide arquivos no backend
+- **Performance** - Para arquivos grandes, considere upload progressivo
+- **FormData** - Arquivos são enviados via FormData automaticamente
+- **Estados visuais** - Componente fornece feedback visual automático
+- **Acessibilidade** - Suporte completo para navegação por teclado e leitores de tela

@@ -71,16 +71,8 @@ const COMPONENTS_MENU: MenuType[] = [
         to: "/components/form/slider",
       },
       {
-        label: "FieldLabel",
-        to: "/components/form/field-label",
-      },
-      {
-        label: "FieldError",
-        to: "/components/form/field-error",
-      },
-      {
-        label: "FieldWrapper",
-        to: "/components/form/field-wrapper",
+        label: "Field",
+        to: "/components/form/field",
       },
       {
         label: "FileUpload",

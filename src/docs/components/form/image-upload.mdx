@@ -1,0 +1,424 @@
+# ImageUpload
+
+import {
+  ImageUpload,
+  Button,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  Camera,
+  Image,
+  Upload,
+  User,
+  Star,
+  Heart,
+  Settings,
+  Edit,
+  X,
+  Check,
+  AlertCircle,
+  RefreshCw,
+} from "lucide-react";
+
+O `ImageUpload` é um componente especializado para upload de imagens com preview em tempo real, drag and drop e validação automática. Ideal para avatares, fotos de perfil, imagens de produtos e qualquer cenário que requeira upload visual de imagens.
+
+## Importação
+
+```tsx
+import { ImageUpload } from "@arkyn/components";
+```
+
+## Uso Básico
+
+<div className="noContent column">
+  <ImageUpload
+    name="basicImage"
+    action="/api/upload/image"
+    label="Upload de Imagem"
+  />
+</div>
+
+```tsx
+<ImageUpload
+  name="avatar"
+  action="/api/upload/image"
+  label="Selecione uma imagem"
+/>
+```
+
+## Upload com Preview Padrão
+
+Configure uma imagem inicial para exibição e edição.
+
+<div className="noContent column">
+  <ImageUpload
+    name="profilePicture"
+    action="/api/upload/avatar"
+    label="Foto de Perfil"
+    showAsterisk
+    defaultValue="https://images.unsplash.com/photo-1611651338412-8403fa6e3599?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    selectImageButtonText="Escolher Foto"
+    changeImageButtonText="Trocar Foto"
+    dropImageText="Arraste sua foto aqui"
+  />
+</div>
+
+```tsx
+<ImageUpload
+  name="profilePicture"
+  action="/api/upload/avatar"
+  label="Foto de Perfil"
+  showAsterisk
+  defaultValue={user.avatarUrl}
+  selectImageButtonText="Escolher Foto"
+  changeImageButtonText="Trocar Foto"
+  dropImageText="Arraste sua foto aqui"
+  onChange={(url) => updateUserAvatar(url)}
+/>
+```
+
+## Formatos Específicos de Imagem
+
+<div className="noContent column">
+  <ImageUpload
+    name="productImage"
+    action="/api/upload/product"
+    label="Imagem do Produto (JPG/PNG)"
+    acceptImage=".jpg,.jpeg,.png"
+    selectImageButtonText="Selecionar Produto"
+    dropImageText="Arraste imagem JPG ou PNG aqui"
+  />
+
+  <ImageUpload
+    name="logoImage"
+    action="/api/upload/logo"
+    label="Logo da Empresa (PNG/SVG)"
+    acceptImage=".png,.svg"
+    selectImageButtonText="Escolher Logo"
+    dropImageText="Arraste logo PNG ou SVG aqui"
+  />
+</div>
+
+```tsx
+{
+  /* Upload de produto com formatos específicos */
+}
+<ImageUpload
+  name="productImage"
+  action="/api/upload/product"
+  label="Imagem do Produto"
+  acceptImage=".jpg,.jpeg,.png,.webp"
+  selectImageButtonText="Selecionar Produto"
+  dropImageText="Arraste imagem do produto aqui (JPG, PNG, WebP)"
+  onChange={(url) => setProductImage(url)}
+/>;
+
+{
+  /* Logo com formatos vetoriais */
+}
+<ImageUpload
+  name="companyLogo"
+  action="/api/upload/logo"
+  label="Logo da Empresa"
+  acceptImage=".png,.svg,.jpg"
+  selectImageButtonText="Escolher Logo"
+  dropImageText="Arraste logo aqui (PNG, SVG, JPG)"
+/>;
+
+{
+  /* Avatar com alta qualidade */
+}
+<ImageUpload
+  name="highResAvatar"
+  action="/api/upload/avatar"
+  label="Avatar Alta Resolução"
+  acceptImage="image/jpeg,image/png"
+  selectImageButtonText="Selecionar Avatar"
+  dropImageText="Arraste avatar em alta resolução"
+/>;
+```
+
+## Upload com Configuração Avançada
+
+<div className="noContent column">
+  <ImageUpload
+    name="customImageUpload"
+    action="/api/images"
+    method="PUT"
+    fileName="imageFile"
+    fileResponseName="imageUrl"
+    label="Upload Customizado"
+    selectImageButtonText="Enviar Imagem"
+    changeImageButtonText="Substituir"
+    dropImageText="Solte a imagem aqui para envio"
+  />
+</div>
+
+```tsx
+<ImageUpload
+  name="galleryImage"
+  action="/api/gallery/upload"
+  method="PUT"
+  fileName="galleryImage"
+  fileResponseName="downloadUrl"
+  label="Imagem da Galeria"
+  selectImageButtonText="Adicionar à Galeria"
+  changeImageButtonText="Trocar Imagem"
+  dropImageText="Arraste imagem para galeria"
+  onChange={(url) => {
+    if (url) {
+      addToGallery(url);
+      console.log("Image added to gallery:", url);
+    }
+  }}
+/>
+```
+
+## Estados e Variações
+
+### Upload Desabilitado com Imagem
+
+<div className="noContent column">
+  <ImageUpload
+    name="disabledWithImage"
+    action="/api/upload"
+    label="Imagem Não Editável"
+    defaultValue="https://images.unsplash.com/photo-1611651338412-8403fa6e3599?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    disabled
+    selectImageButtonText="Bloqueado"
+  />
+</div>
+
+```tsx
+<ImageUpload
+  name="readonlyImage"
+  action="/api/upload"
+  label="Imagem do Sistema"
+  defaultValue={systemImage.url}
+  disabled
+/>
+```
+
+### Upload com Callback Avançado
+
+```tsx
+function ImageUploadWithCallback() {
+  const [uploadStatus, setUploadStatus] = useState({
+    loading: false,
+    error: "",
+    imageUrl: "",
+  });
+
+  const handleImageUpload = (url?: string) => {
+    if (url) {
+      setUploadStatus({
+        loading: false,
+        error: "",
+        imageUrl: url,
+      });
+
+      // Processar imagem uploaded
+      processUploadedImage(url);
+
+      // Atualizar estado da aplicação
+      updateAppState({ profileImage: url });
+    }
+  };
+
+  return (
+    <ImageUpload
+      name="profileImage"
+      action="/api/upload/profile"
+      label="Foto de Perfil"
+      showAsterisk
+      onChange={handleImageUpload}
+      selectImageButtonText="Escolher Foto"
+      dropImageText="Arraste sua foto de perfil aqui"
+    />
+  );
+}
+```
+
+## Configuração de API
+
+### Estrutura da Resposta Esperada
+
+O componente espera que a API retorne um JSON com a seguinte estrutura:
+
+```json
+// Sucesso (configuração padrão)
+{
+  "url": "https://example.com/uploads/image123.jpg"
+}
+
+// Sucesso (configuração customizada)
+{
+  "imageUrl": "https://example.com/images/avatar.png",
+  "thumbnailUrl": "https://example.com/images/avatar_thumb.png",
+  "fileName": "avatar.png",
+  "size": 1024000
+}
+
+// Erro
+{
+  "error": "Arquivo muito grande. Máximo permitido: 5MB para imagens"
+}
+```
+
+### Exemplo de Endpoint Node.js para Imagens
+
+```javascript
+// server.js
+const multer = require("multer");
+const sharp = require("sharp"); // Para processamento de imagem
+
+const upload = multer({
+  dest: "uploads/",
+  fileFilter: (req, file, cb) => {
+    // Validar tipos de imagem
+    if (file.mimetype.startsWith("image/")) {
+      cb(null, true);
+    } else {
+      cb(new Error("Apenas arquivos de imagem são permitidos"));
+    }
+  },
+  limits: {
+    fileSize: 10 * 1024 * 1024, // 10MB
+  },
+});
+
+app.post("/api/upload/image", upload.single("file"), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({
+        error: "Nenhuma imagem foi enviada",
+      });
+    }
+
+    // Validações de imagem
+    const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
+    if (!allowedTypes.includes(req.file.mimetype)) {
+      return res.status(400).json({
+        error: "Formato não suportado. Use JPEG, PNG ou WebP",
+      });
+    }
+
+    // Processamento da imagem (opcional)
+    const processedImageBuffer = await sharp(req.file.path)
+      .resize(800, 600, { fit: "inside", withoutEnlargement: true })
+      .jpeg({ quality: 85 })
+      .toBuffer();
+
+    // Upload para storage (S3, CloudFront, etc.)
+    const imageUrl = await uploadToStorage(processedImageBuffer, {
+      filename: `image_${Date.now()}.jpg`,
+      contentType: "image/jpeg",
+    });
+
+    res.json({
+      url: imageUrl,
+      originalName: req.file.originalname,
+      size: processedImageBuffer.length,
+    });
+  } catch (error) {
+    console.error("Upload error:", error);
+    res.status(500).json({
+      error: "Erro ao processar imagem",
+    });
+  }
+});
+```
+
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulário
+
+**`action`** - `string` (obrigatório)
+URL do endpoint onde a imagem será enviada
+
+**`defaultValue`** - `string | null`
+URL da imagem inicial para exibição como preview
+
+**`disabled`** - `boolean` (padrão: `false`)
+Se o upload de imagem está desabilitado
+
+**`label`** - `string`
+Texto do label a ser exibido acima da área de upload
+
+**`showAsterisk`** - `boolean` (padrão: `false`)
+Se deve exibir asterisco no label para campos obrigatórios
+
+**`changeImageButtonText`** - `string` (padrão: `"Alterar imagem"`)
+Texto do botão para trocar/substituir uma imagem já enviada
+
+**`selectImageButtonText`** - `string` (padrão: `"Selecionar imagem"`)
+Texto do botão para selecionar uma imagem
+
+**`dropImageText`** - `string` (padrão: `"Ou arraste e solte a imagem aqui"`)
+Texto exibido na área de drop zone
+
+**`method`** - `string` (padrão: `"POST"`)
+Método HTTP para a requisição de upload
+
+**`fileName`** - `string` (padrão: `"file"`)
+Nome do campo no FormData para o arquivo de imagem
+
+**`fileResponseName`** - `string` (padrão: `"url"`)
+Nome da propriedade no objeto de resposta que contém a URL da imagem
+
+**`acceptImage`** - `string` (padrão: `"image/*"`)
+Tipos de imagem aceitos pelo input (ex: "image/\*", ".jpg,.png")
+
+**`onChange`** - `(url?: string) => void`
+Função callback chamada quando o upload é concluído com sucesso
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Especialização para Imagens</AlertTitle>
+    <AlertDescription>
+      O ImageUpload é uma versão especializada do FileUpload, otimizada
+      especificamente para imagens com preview em tempo real e validação de
+      formatos de imagem.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Validação e Processamento
+
+### Validações Automáticas
+
+- **Tipos de arquivo** - Apenas imagens são aceitas por padrão
+- **Preview instantâneo** - Exibe a imagem imediatamente após seleção
+- **Tratamento de erro** - Feedback específico para problemas de imagem
+- **Estados visuais** - Loading e preview durante upload
+
+## Acessibilidade
+
+O ImageUpload foi desenvolvido com foco em acessibilidade:
+
+- **Preview semântico** - Imagens com alt text apropriado
+- **Navegação por teclado** - Suporte completo para navegação via Tab
+- **Estados visuais** - Feedback claro para diferentes estados
+- **Drag and drop acessível** - Funciona tanto com mouse quanto teclado
+- **Descrições de formato** - Tipos de arquivo aceitos são claramente comunicados
+- **Feedback de erro** - Mensagens específicas para problemas de imagem
+
+## Notas Importantes
+
+- **Preview instantâneo** - Imagem é exibida imediatamente após seleção
+- **Formato de imagem** - Por padrão aceita todos os formatos de imagem
+- **Validação no servidor** - Sempre valide formato e tamanho no backend
+- **Processamento de imagem** - Considere redimensionamento automático
+- **Performance** - Para imagens grandes, implemente upload progressivo
+- **Segurança** - Valide tipos MIME e conteúdo no servidor
+- **Acessibilidade** - Forneça alt text apropriado para imagens
+- **Estados visuais** - Componente fornece feedback visual automático
+- **Cache** - URLs de preview são criadas automaticamente
+- **Limpeza de memória** - URLs temporárias são gerenciadas automaticamente

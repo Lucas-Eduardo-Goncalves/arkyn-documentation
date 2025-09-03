@@ -1,0 +1,486 @@
+# Field Components
+
+import {
+  FieldWrapper,
+  FieldLabel,
+  FieldError,
+  Input,
+  Switch,
+  RadioGroup,
+  RadioBox,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  User,
+  Mail,
+  Lock,
+  Search,
+  Settings,
+  Info,
+  AlertCircle,
+  CheckCircle,
+  XCircle,
+  Star,
+  Heart,
+} from "lucide-react";
+
+Os componentes Field (`FieldWrapper`, `FieldLabel` e `FieldError`) são elementos fundamentais para construção de formulários no Arkyn. Eles fornecem estrutura consistente, acessibilidade e estilização para campos de formulário. Embora todos os componentes de formulário já incluam esses elementos internamente, eles podem ser usados independentemente para casos customizados.
+
+## Importação
+
+```tsx
+import { FieldWrapper, FieldLabel, FieldError } from "@arkyn/components";
+```
+
+## FieldWrapper
+
+O `FieldWrapper` é um container que organiza os elementos de um campo de formulário (label, input, mensagem de erro) de forma consistente e acessível.
+
+### Uso Básico
+
+<div className="noContent column">
+  <FieldWrapper>
+    <FieldLabel>Nome de usuário</FieldLabel>
+    <div
+      style={{
+        padding: "8px 12px",
+        border: "1px solid #e2e8f0",
+        borderRadius: "6px",
+        backgroundColor: "#ffffff",
+      }}
+    >
+      Campo de exemplo
+    </div>
+  </FieldWrapper>
+</div>
+
+```tsx
+<FieldWrapper>
+  <FieldLabel>Nome de usuário</FieldLabel>
+  <Input name="username" placeholder="Digite seu nome" />
+  <FieldError>Este campo é obrigatório</FieldError>
+</FieldWrapper>
+```
+
+### Orientações
+
+O `FieldWrapper` suporta diferentes orientações para layouts flexíveis.
+
+<div className="noContent column">
+  <FieldWrapper orientation="vertical">
+    <FieldLabel>Orientação Vertical (padrão)</FieldLabel>
+    <div
+      style={{
+        padding: "8px 12px",
+        border: "1px solid #e2e8f0",
+        borderRadius: "6px",
+        backgroundColor: "#ffffff",
+      }}
+    >
+      Label acima do campo
+    </div>
+  </FieldWrapper>
+  <FieldWrapper orientation="horizontal">
+    <FieldLabel>Horizontal:</FieldLabel>
+    <div
+      style={{
+        padding: "8px 12px",
+        border: "1px solid #e2e8f0",
+        borderRadius: "6px",
+        backgroundColor: "#ffffff",
+        flex: 1,
+      }}
+    >
+      Label ao lado do campo
+    </div>
+  </FieldWrapper>
+  <FieldWrapper orientation="horizontalReverse">
+    <FieldLabel>Horizontal Reverso</FieldLabel>
+    <div
+      style={{
+        padding: "8px 12px",
+        border: "1px solid #e2e8f0",
+        borderRadius: "6px",
+        backgroundColor: "#ffffff",
+        flex: 1,
+      }}
+    >
+      Campo antes do label
+    </div>
+  </FieldWrapper>
+</div>
+
+```tsx
+{
+  /* Vertical (padrão) - Label acima do campo */
+}
+<FieldWrapper orientation="vertical">
+  <FieldLabel>Nome</FieldLabel>
+  <Input name="name" />
+</FieldWrapper>;
+
+{
+  /* Horizontal - Label ao lado do campo */
+}
+<FieldWrapper orientation="horizontal">
+  <FieldLabel>Email</FieldLabel>
+  <Input name="email" />
+</FieldWrapper>;
+
+{
+  /* Horizontal Reverso - Campo antes do label */
+}
+<FieldWrapper orientation="horizontalReverse">
+  <FieldLabel>Aceito os termos</FieldLabel>
+  <Input name="terms" type="checkbox" />
+</FieldWrapper>;
+```
+
+## FieldLabel
+
+O `FieldLabel` fornece rótulos consistentes para campos de formulário, com suporte a indicação de campos obrigatórios.
+
+### Uso Básico
+
+<div className="noContent column">
+  <FieldLabel>Label simples</FieldLabel>
+  <FieldLabel showAsterisk>Label obrigatório</FieldLabel>
+  <FieldLabel showAsterisk>
+    <User size={16} style={{ marginRight: "6px" }} />
+    Label com ícone
+  </FieldLabel>
+</div>
+
+```tsx
+{
+  /* Label simples */
+}
+<FieldLabel htmlFor="username">Nome de usuário</FieldLabel>;
+
+{
+  /* Label obrigatório com asterisco */
+}
+<FieldLabel htmlFor="email" showAsterisk>
+  Email
+</FieldLabel>;
+
+{
+  /* Label com ícone */
+}
+<FieldLabel htmlFor="password" showAsterisk>
+  <Lock size={16} style={{ marginRight: "6px" }} />
+  Senha
+</FieldLabel>;
+```
+
+### Associação com Campos
+
+<div className="noContent column">
+  <FieldWrapper>
+    <FieldLabel htmlFor="example-field" showAsterisk>
+      Campo Associado
+    </FieldLabel>
+    <input
+      id="example-field"
+      style={{
+        padding: "8px 12px",
+        border: "1px solid #e2e8f0",
+        borderRadius: "6px",
+        backgroundColor: "#ffffff",
+        width: "100%",
+      }}
+      placeholder="Clique no label para focar aqui"
+    />
+  </FieldWrapper>
+</div>
+
+```tsx
+<FieldWrapper>
+  <FieldLabel htmlFor="username-field" showAsterisk>
+    Nome de usuário
+  </FieldLabel>
+  <Input id="username-field" name="username" />
+</FieldWrapper>
+```
+
+## FieldError
+
+O `FieldError` exibe mensagens de erro de forma consistente e acessível.
+
+### Tipos de Erro
+
+<div className="noContent column">
+  <FieldError>Erro simples: Este campo é obrigatório</FieldError>
+
+<FieldError>
+  <AlertCircle size={16} style={{ marginRight: "6px" }} />
+  Erro com ícone: Email inválido
+</FieldError>
+
+  <FieldError style={{ color: "#dc2626" }}>
+    Erro customizado: Senha muito fraca
+  </FieldError>
+</div>
+
+```tsx
+{
+  /* Erro simples */
+}
+<FieldError>Este campo é obrigatório</FieldError>;
+
+{
+  /* Erro com ícone */
+}
+<FieldError>
+  <AlertCircle size={16} style={{ marginRight: "6px" }} />
+  Email inválido
+</FieldError>;
+
+{
+  /* Erro customizado */
+}
+<FieldError className="custom-error">
+  Senha deve ter pelo menos 8 caracteres
+</FieldError>;
+```
+
+### Erro Condicional
+
+```tsx
+const [error, setError] = useState("");
+
+// Exibe erro apenas quando existe
+{
+  error && <FieldError>{error}</FieldError>;
+}
+
+// Ou usando operador ternário
+{
+  isInvalid ? <FieldError>Campo inválido</FieldError> : null;
+}
+```
+
+## Integração com Componentes Existentes
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Componentes de formulário integrados</AlertTitle>
+    <AlertDescription>
+      Todos os componentes de formulário do Arkyn (Input, Select, Switch, etc.)
+      já incluem FieldWrapper, FieldLabel e FieldError internamente. Você só
+      precisa usar esses componentes independentemente para casos especiais ou
+      campos totalmente customizados.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+### Comparação: Componente Integrado vs Manual
+
+```tsx
+// ✅ Usando componente integrado (recomendado)
+<Input
+  name="username"
+  label="Nome de usuário"
+  showAsterisk
+  errorMessage="Campo obrigatório"
+  leftIcon={User}
+/>
+
+// ⚙️ Equivalente manual (para casos especiais)
+<FieldWrapper>
+  <FieldLabel showAsterisk>
+    <User size={16} style={{ marginRight: '6px' }} />
+    Nome de usuário
+  </FieldLabel>
+  <input name="username" className="custom-input" />
+  <FieldError>Campo obrigatório</FieldError>
+</FieldWrapper>
+```
+
+### Casos de Uso para Componentes Independentes
+
+#### Quando usar componentes Field independentes:
+
+- **Campos totalmente customizados** que não existem no Arkyn
+- **Layouts específicos** que requerem estrutura diferente
+- **Componentes de terceiros** que precisam de wrapper consistente
+- **Casos especiais** onde o comportamento padrão não atende
+
+#### Quando NÃO usar independentemente:
+
+- **Campos padrão** - Use os componentes integrados do Arkyn
+- **Formulários simples** - Os componentes já incluem tudo necessário
+- **Prototipagem rápida** - Componentes integrados são mais rápidos
+
+## Formulário de Exemplo Completo
+
+<div className="noContent column">
+  <FieldWrapper>
+    <FieldLabel showAsterisk>Nome completo</FieldLabel>
+    <Input name="fullName" placeholder="Digite seu nome completo" />
+  </FieldWrapper>
+  <FieldWrapper>
+    <FieldLabel showAsterisk>Email</FieldLabel>
+    <Input name="email" type="email" placeholder="seu@email.com" />
+  </FieldWrapper>
+  <FieldWrapper orientation="horizontal">
+    <FieldLabel>Receber newsletter</FieldLabel>
+    <Switch name="newsletter" defaultChecked />
+  </FieldWrapper>
+  <FieldWrapper>
+    <FieldLabel>Tipo de conta</FieldLabel>
+    <RadioGroup name="accountType" defaultValue="personal">
+      <RadioBox value="personal">Pessoal</RadioBox>
+      <RadioBox value="business">Empresarial</RadioBox>
+    </RadioGroup>
+  </FieldWrapper>
+</div>
+
+```tsx
+function CustomForm() {
+  return (
+    <form>
+      {/* Campo integrado padrão */}
+      <Input
+        name="fullName"
+        label="Nome completo"
+        showAsterisk
+        placeholder="Digite seu nome completo"
+      />
+
+      {/* Campo integrado com validação */}
+      <Input
+        name="email"
+        label="Email"
+        type="email"
+        showAsterisk
+        placeholder="seu@email.com"
+        errorMessage={errors.email}
+      />
+
+      {/* Switch com orientação horizontal */}
+      <FieldWrapper orientation="horizontal">
+        <FieldLabel>Receber newsletter</FieldLabel>
+        <Switch name="newsletter" />
+      </FieldWrapper>
+
+      {/* Radio group padrão */}
+      <RadioGroup name="accountType" label="Tipo de conta">
+        <RadioBox value="personal">Pessoal</RadioBox>
+        <RadioBox value="business">Empresarial</RadioBox>
+      </RadioGroup>
+
+      {/* Campo totalmente customizado */}
+      <FieldWrapper>
+        <FieldLabel showAsterisk>
+          <Settings size={16} style={{ marginRight: "6px" }} />
+          Configuração especial
+        </FieldLabel>
+        <CustomSlider name="customValue" />
+        <FieldError>{errors.customValue}</FieldError>
+      </FieldWrapper>
+    </form>
+  );
+}
+```
+
+## Propriedades
+
+### FieldWrapper
+
+**`children`** - `ReactNode` (obrigatório)
+Elementos filhos que compõem o campo (label, input, erro, etc.)
+
+**`orientation`** - `"vertical" | "horizontal" | "horizontalReverse"` (padrão: `"vertical"`)
+Orientação dos elementos dentro do wrapper
+
+**`className`** - `string`
+Classes CSS adicionais para estilização
+
+### FieldLabel
+
+**`showAsterisk`** - `boolean` (padrão: `false`)
+Se deve exibir asterisco (\*) para indicar campo obrigatório
+
+**`htmlFor`** - `string`
+ID do elemento de input associado ao label
+
+**`children`** - `ReactNode`
+Conteúdo do label (texto, ícones, etc.)
+
+**`className`** - `string`
+Classes CSS adicionais para estilização
+
+### FieldError
+
+**`children`** - `ReactNode`
+Conteúdo da mensagem de erro
+
+**`className`** - `string`
+Classes CSS adicionais para estilização
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      FieldWrapper suporta propriedades de `section`, FieldLabel suporta
+      propriedades de `label`, e FieldError suporta propriedades de `strong`.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Acessibilidade
+
+Os componentes Field foram desenvolvidos com acessibilidade em mente:
+
+- **FieldLabel** - Associação correta com campos via `htmlFor`
+- **FieldError** - Usa `<strong>` para enfatizar erros em leitores de tela
+- **FieldWrapper** - Usa `<section>` para agrupamento semântico
+- **Estados visuais** - Classes CSS para diferentes estados
+- **Hierarquia clara** - Estrutura HTML semântica
+- **Suporte ARIA** - Compatível com propriedades ARIA
+
+## Integração com Formulários
+
+Os componentes se integram naturalmente com sistemas de formulário:
+
+```tsx
+// Com biblioteca de validação
+const {
+  register,
+  formState: { errors },
+} = useForm();
+
+<FieldWrapper>
+  <FieldLabel showAsterisk>Email</FieldLabel>
+  <input {...register("email", { required: true })} />
+  {errors.email && <FieldError>Email é obrigatório</FieldError>}
+</FieldWrapper>;
+
+// Com hook useForm do Arkyn
+const { fieldErrors } = useForm();
+
+<FieldWrapper>
+  <FieldLabel showAsterisk>Username</FieldLabel>
+  <input name="username" />
+  {fieldErrors?.username && <FieldError>{fieldErrors.username}</FieldError>}
+</FieldWrapper>;
+```
+
+## Notas Importantes
+
+- **Uso integrado preferível** - Use componentes de formulário do Arkyn que já incluem esses elementos
+- **Casos especiais** - Use componentes independentes para campos totalmente customizados
+- **Acessibilidade** - Sempre associe labels com campos via `htmlFor`
+- **Estrutura semântica** - FieldWrapper usa `<section>` para agrupamento
+- **Renderização condicional** - FieldError só renderiza quando tem conteúdo
+- **Orientações flexíveis** - Suporte a layouts vertical e horizontal
+- **Estilização consistente** - Classes CSS padrão para aparência uniforme
+- **Integração com forms** - Compatível com bibliotecas de validação
