@@ -169,6 +169,73 @@ const COMPONENTS_MENU: MenuType[] = [
       },
     ],
   },
+  {
+    label: "Hooks",
+    children: [
+      {
+        label: "useDrawer",
+        to: "/components/hooks/use-drawer",
+      },
+      {
+        label: "useForm",
+        to: "/components/hooks/use-form",
+      },
+      {
+        label: "useHydrated",
+        to: "/components/hooks/use-hydrated",
+      },
+      {
+        label: "useModal",
+        to: "/components/hooks/use-modal",
+      },
+      {
+        label: "useScopedParams",
+        to: "/components/hooks/use-scoped-params",
+      },
+      {
+        label: "useScrollLock",
+        to: "/components/hooks/use-scroll-lock",
+      },
+      {
+        label: "useSlider",
+        to: "/components/hooks/use-slider",
+      },
+    ],
+  },
+  {
+    label: "Providers",
+    children: [
+      {
+        label: "DrawerProvider",
+        to: "/components/providers/drawer-provider",
+      },
+      {
+        label: "FormProvider",
+        to: "/components/providers/form-provider",
+      },
+      {
+        label: "ModalProvider",
+        to: "/components/providers/modal-provider",
+      },
+      {
+        label: "ToastProvider",
+        to: "/components/providers/toast-provider",
+      },
+    ],
+  },
+  {
+    label: "Services",
+    children: [
+      {
+        label: "toHtml",
+        to: "/components/services/to-html",
+      },
+      {
+        label: "toRichTextValue",
+        to: "/components/services/to-rich-text-value",
+      },
+    ],
+  },
 ];
 
 export { COMPONENTS_MENU };
