@@ -50,15 +50,25 @@ Os tamanhos disponíveis são `sm`, `md` e `lg`, oferecendo diferentes dimensõe
 Os rótulos ajudam a identificar o propósito do checkbox e tornam a área clicável maior.
 
 <div className="noContent column">
-  <Checkbox name="terms" label="Aceito os termos e condições" />
-  <Checkbox name="newsletter" label="Quero receber newsletter por email" />
+  <Checkbox
+    name="terms"
+    label="Aceito os termos e condições"
+    orientation="horizontalReverse"
+  />
+  <Checkbox
+    name="newsletter"
+    label="Quero receber newsletter por email"
+    orientation="horizontalReverse"
+  />
   <Checkbox
     name="privacy"
     label="Li e concordo com a política de privacidade"
+    orientation="horizontalReverse"
   />
   <Checkbox
     name="marketing"
     label="Permito o uso de meus dados para fins de marketing"
+    orientation="horizontalReverse"
   />
 </div>
 
@@ -66,19 +76,69 @@ Os rótulos ajudam a identificar o propósito do checkbox e tornam a área clic�
 <Checkbox
   name="terms"
   label="Aceito os termos e condições"
+  orientation="horizontalReverse"
 />
 <Checkbox
   name="newsletter"
   label="Quero receber newsletter por email"
+  orientation="horizontalReverse"
 />
 <Checkbox
   name="privacy"
   label="Li e concordo com a política de privacidade"
+  orientation="horizontalReverse"
 />
 <Checkbox
   name="marketing"
   label="Permito o uso de meus dados para fins de marketing"
+  orientation="horizontalReverse"
 />
+```
+
+## Orientação
+
+As opções de checkbox podem ser dispostas em uma única linha ou em colunas, dependendo do espaço disponível e da preferência de design.
+
+### Horizontal
+
+<div className="noContent column">
+  <Checkbox name="option1" label="Opção 1" orientation="horizontal" />
+  <Checkbox name="option2" label="Opção 2" orientation="horizontal" />
+  <Checkbox name="option3" label="Opção 3" orientation="horizontal" />
+</div>
+
+```tsx
+<Checkbox name="option1" label="Opção 1" orientation="horizontal" />
+<Checkbox name="option2" label="Opção 2" orientation="horizontal" />
+<Checkbox name="option3" label="Opção 3" orientation="horizontal" />
+```
+
+### Horizontal reverse
+
+<div className="noContent column">
+  <Checkbox name="option1" label="Opção 1" orientation="horizontalReverse" />
+  <Checkbox name="option2" label="Opção 2" orientation="horizontalReverse" />
+  <Checkbox name="option3" label="Opção 3" orientation="horizontalReverse" />
+</div>
+
+```tsx
+<Checkbox name="option1" label="Opção 1" orientation="horizontalReverse" />
+<Checkbox name="option2" label="Opção 2" orientation="horizontalReverse" />
+<Checkbox name="option3" label="Opção 3" orientation="horizontalReverse" />
+```
+
+### Vertical
+
+<div className="noContent column">
+  <Checkbox name="option1" label="Opção 1" orientation="vertical" />
+  <Checkbox name="option2" label="Opção 2" orientation="vertical" />
+  <Checkbox name="option3" label="Opção 3" orientation="vertical" />
+</div>
+
+```tsx
+<Checkbox name="option1" label="Opção 1" orientation="vertical" />
+<Checkbox name="option2" label="Opção 2" orientation="vertical" />
+<Checkbox name="option3" label="Opção 3" orientation="vertical" />
 ```
 
 ## Estados de Marcação
