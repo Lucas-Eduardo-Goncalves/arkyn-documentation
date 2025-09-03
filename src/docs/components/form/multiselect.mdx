@@ -1,0 +1,834 @@
+# MultiSelect
+
+import {
+  MultiSelect,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  Globe,
+  Users,
+  Tag,
+  Star,
+  Heart,
+  Code,
+  Palette,
+  Music,
+  Camera,
+  Book,
+  Gamepad2,
+  Plane,
+  Car,
+  Home,
+  Building,
+  MapPin,
+} from "lucide-react";
+
+O componente `MultiSelect` permite aos usuários selecionar múltiplas opções de uma lista dropdown. Oferece funcionalidades avançadas como busca, carregamento, validação e diferentes variantes visuais. É ideal para casos onde múltiplas seleções são necessárias.
+
+## Importação
+
+```tsx
+import { MultiSelect } from "@arkyn/components";
+```
+
+## Uso Básico
+
+O uso básico requer as propriedades `name` e `options`. As opções devem ser um array de objetos com `label` e `value`.
+
+<div className="noContent column">
+  <MultiSelect
+    name="basic-multi"
+    options={[
+      { label: "JavaScript", value: "js" },
+      { label: "TypeScript", value: "ts" },
+      { label: "Python", value: "python" },
+      { label: "Java", value: "java" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="basic-multi"
+  options={[
+    { label: "JavaScript", value: "js" },
+    { label: "TypeScript", value: "ts" },
+    { label: "Python", value: "python" },
+    { label: "Java", value: "java" },
+  ]}
+/>
+```
+
+## Tamanhos
+
+Os tamanhos disponíveis são `md` e `lg`, sendo `md` o padrão.
+
+<div className="noContent column">
+  <MultiSelect
+    name="multi-md"
+    label="Tamanho médio"
+    size="md"
+    options={[
+      { label: "Opção 1", value: "opt1" },
+      { label: "Opção 2", value: "opt2" },
+      { label: "Opção 3", value: "opt3" },
+    ]}
+  />
+
+  <MultiSelect
+    name="multi-lg"
+    label="Tamanho grande"
+    size="lg"
+    options={[
+      { label: "Opção 1", value: "opt1" },
+      { label: "Opção 2", value: "opt2" },
+      { label: "Opção 3", value: "opt3" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="multi-md"
+  label="Tamanho médio"
+  size="md"
+  options={[
+    { label: "Opção 1", value: "opt1" },
+    { label: "Opção 2", value: "opt2" },
+    { label: "Opção 3", value: "opt3" }
+  ]}
+/>
+
+<MultiSelect
+  name="multi-lg"
+  label="Tamanho grande"
+  size="lg"
+  options={[
+    { label: "Opção 1", value: "opt1" },
+    { label: "Opção 2", value: "opt2" },
+    { label: "Opção 3", value: "opt3" }
+  ]}
+/>
+```
+
+## Variantes
+
+As variantes disponíveis são `solid`, `outline` e `underline`, proporcionando diferentes estilos visuais.
+
+<div className="noContent column">
+  <MultiSelect
+    name="multi-solid"
+    label="Variante sólida"
+    variant="solid"
+    options={[
+      { label: "Design", value: "design" },
+      { label: "Frontend", value: "frontend" },
+      { label: "Backend", value: "backend" },
+    ]}
+  />
+
+<MultiSelect
+  name="multi-outline"
+  label="Variante contorno"
+  variant="outline"
+  options={[
+    { label: "Design", value: "design" },
+    { label: "Frontend", value: "frontend" },
+    { label: "Backend", value: "backend" },
+  ]}
+/>
+
+  <MultiSelect
+    name="multi-underline"
+    label="Variante sublinhada"
+    variant="underline"
+    options={[
+      { label: "Design", value: "design" },
+      { label: "Frontend", value: "frontend" },
+      { label: "Backend", value: "backend" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="multi-solid"
+  label="Variante sólida"
+  variant="solid"
+  options={[
+    { label: "Design", value: "design" },
+    { label: "Frontend", value: "frontend" },
+    { label: "Backend", value: "backend" }
+  ]}
+/>
+
+<MultiSelect
+  name="multi-outline"
+  label="Variante contorno"
+  variant="outline"
+  options={[
+    { label: "Design", value: "design" },
+    { label: "Frontend", value: "frontend" },
+    { label: "Backend", value: "backend" }
+  ]}
+/>
+
+<MultiSelect
+  name="multi-underline"
+  label="Variante sublinhada"
+  variant="underline"
+  options={[
+    { label: "Design", value: "design" },
+    { label: "Frontend", value: "frontend" },
+    { label: "Backend", value: "backend" }
+  ]}
+/>
+```
+
+## MultiSelect com Ícones
+
+Adicione ícones para melhorar a experiência visual e contextual.
+
+<div className="noContent column">
+  <MultiSelect
+    name="multi-with-icon"
+    label="Tecnologias"
+    leftIcon={Code}
+    options={[
+      { label: "React", value: "react" },
+      { label: "Vue", value: "vue" },
+      { label: "Angular", value: "angular" },
+      { label: "Svelte", value: "svelte" },
+    ]}
+  />
+
+  <MultiSelect
+    name="multi-countries"
+    label="Países"
+    leftIcon={Globe}
+    placeholder="Selecione os países..."
+    options={[
+      { label: "Brasil", value: "br" },
+      { label: "Estados Unidos", value: "us" },
+      { label: "Reino Unido", value: "uk" },
+      { label: "França", value: "fr" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="multi-with-icon"
+  label="Tecnologias"
+  leftIcon={Code}
+  options={[
+    { label: "React", value: "react" },
+    { label: "Vue", value: "vue" },
+    { label: "Angular", value: "angular" },
+    { label: "Svelte", value: "svelte" }
+  ]}
+/>
+
+<MultiSelect
+  name="multi-countries"
+  label="Países"
+  leftIcon={Globe}
+  placeholder="Selecione os países..."
+  options={[
+    { label: "Brasil", value: "br" },
+    { label: "Estados Unidos", value: "us" },
+    { label: "Reino Unido", value: "uk" },
+    { label: "França", value: "fr" }
+  ]}
+/>
+```
+
+## Prefix
+
+Use prefix para adicionar texto ou ícone no início do campo.
+
+<div className="noContent column">
+  <MultiSelect
+    name="multi-prefix-text"
+    label="Departamentos"
+    prefix="Dept:"
+    options={[
+      { label: "Recursos Humanos", value: "hr" },
+      { label: "Tecnologia", value: "tech" },
+      { label: "Marketing", value: "marketing" },
+      { label: "Vendas", value: "sales" },
+    ]}
+  />
+
+  <MultiSelect
+    name="multi-prefix-icon"
+    label="Categorias"
+    prefix={Tag}
+    options={[
+      { label: "Urgente", value: "urgent" },
+      { label: "Normal", value: "normal" },
+      { label: "Baixa", value: "low" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="multi-prefix-text"
+  label="Departamentos"
+  prefix="Dept:"
+  options={[
+    { label: "Recursos Humanos", value: "hr" },
+    { label: "Tecnologia", value: "tech" },
+    { label: "Marketing", value: "marketing" },
+    { label: "Vendas", value: "sales" }
+  ]}
+/>
+
+<MultiSelect
+  name="multi-prefix-icon"
+  label="Categorias"
+  prefix={Tag}
+  options={[
+    { label: "Urgente", value: "urgent" },
+    { label: "Normal", value: "normal" },
+    { label: "Baixa", value: "low" }
+  ]}
+/>
+```
+
+## MultiSelect Pesquisável
+
+Ative a funcionalidade de busca com `isSearchable` para facilitar a seleção em listas grandes.
+
+<div className="noContent column">
+  <MultiSelect
+    name="searchable-multi"
+    label="Cidades"
+    isSearchable
+    placeholder="Pesquise e selecione cidades..."
+    notFoundText="Nenhuma cidade encontrada"
+    leftIcon={MapPin}
+    options={[
+      { label: "São Paulo", value: "sp" },
+      { label: "Rio de Janeiro", value: "rj" },
+      { label: "Belo Horizonte", value: "bh" },
+      { label: "Porto Alegre", value: "poa" },
+      { label: "Salvador", value: "salvador" },
+      { label: "Fortaleza", value: "fortaleza" },
+      { label: "Brasília", value: "brasilia" },
+      { label: "Curitiba", value: "curitiba" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="searchable-multi"
+  label="Cidades"
+  isSearchable
+  placeholder="Pesquise e selecione cidades..."
+  notFoundText="Nenhuma cidade encontrada"
+  leftIcon={MapPin}
+  options={[
+    { label: "São Paulo", value: "sp" },
+    { label: "Rio de Janeiro", value: "rj" },
+    { label: "Belo Horizonte", value: "bh" },
+    { label: "Porto Alegre", value: "poa" },
+    { label: "Salvador", value: "salvador" },
+    { label: "Fortaleza", value: "fortaleza" },
+    { label: "Brasília", value: "brasilia" },
+    { label: "Curitiba", value: "curitiba" },
+  ]}
+/>
+```
+
+## Valores Padrão
+
+Use `defaultValue` para pré-selecionar opções específicas.
+
+<div className="noContent column">
+  <MultiSelect
+    name="default-values"
+    label="Habilidades"
+    defaultValue={["js", "react"]}
+    leftIcon={Code}
+    options={[
+      { label: "JavaScript", value: "js" },
+      { label: "TypeScript", value: "ts" },
+      { label: "React", value: "react" },
+      { label: "Vue", value: "vue" },
+      { label: "Node.js", value: "node" },
+      { label: "Python", value: "python" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="default-values"
+  label="Habilidades"
+  defaultValue={["js", "react"]}
+  leftIcon={Code}
+  options={[
+    { label: "JavaScript", value: "js" },
+    { label: "TypeScript", value: "ts" },
+    { label: "React", value: "react" },
+    { label: "Vue", value: "vue" },
+    { label: "Node.js", value: "node" },
+    { label: "Python", value: "python" },
+  ]}
+/>
+```
+
+## Comportamento de Fechamento
+
+Configure quando o dropdown deve fechar após uma seleção com `closeOnSelect`.
+
+<div className="noContent column">
+  <MultiSelect
+    name="close-on-select"
+    label="Tags (fecha ao selecionar)"
+    closeOnSelect={true}
+    leftIcon={Tag}
+    options={[
+      { label: "React", value: "react" },
+      { label: "JavaScript", value: "js" },
+      { label: "CSS", value: "css" },
+      { label: "HTML", value: "html" },
+    ]}
+  />
+
+  <MultiSelect
+    name="keep-open"
+    label="Categorias (mantém aberto)"
+    closeOnSelect={false}
+    leftIcon={Tag}
+    options={[
+      { label: "Frontend", value: "frontend" },
+      { label: "Backend", value: "backend" },
+      { label: "DevOps", value: "devops" },
+      { label: "Mobile", value: "mobile" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="close-on-select"
+  label="Tags (fecha ao selecionar)"
+  closeOnSelect={true}
+  leftIcon={Tag}
+  options={[
+    { label: "React", value: "react" },
+    { label: "JavaScript", value: "js" },
+    { label: "CSS", value: "css" },
+    { label: "HTML", value: "html" }
+  ]}
+/>
+
+<MultiSelect
+  name="keep-open"
+  label="Categorias (mantém aberto)"
+  closeOnSelect={false}
+  leftIcon={Tag}
+  options={[
+    { label: "Frontend", value: "frontend" },
+    { label: "Backend", value: "backend" },
+    { label: "DevOps", value: "devops" },
+    { label: "Mobile", value: "mobile" }
+  ]}
+/>
+```
+
+## Estados do MultiSelect
+
+### MultiSelect desabilitado
+
+<div className="noContent column">
+  <MultiSelect
+    name="disabled-multi"
+    label="Seleção desabilitada"
+    disabled
+    defaultValue={["opt1"]}
+    options={[
+      { label: "Opção 1", value: "opt1" },
+      { label: "Opção 2", value: "opt2" },
+      { label: "Opção 3", value: "opt3" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="disabled-multi"
+  label="Seleção desabilitada"
+  disabled
+  defaultValue={["opt1"]}
+  options={[
+    { label: "Opção 1", value: "opt1" },
+    { label: "Opção 2", value: "opt2" },
+    { label: "Opção 3", value: "opt3" },
+  ]}
+/>
+```
+
+### MultiSelect apenas leitura
+
+<div className="noContent column">
+  <MultiSelect
+    name="readonly-multi"
+    label="Apenas leitura"
+    readOnly
+    defaultValue={["frontend", "backend"]}
+    options={[
+      { label: "Frontend", value: "frontend" },
+      { label: "Backend", value: "backend" },
+      { label: "Mobile", value: "mobile" },
+      { label: "DevOps", value: "devops" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="readonly-multi"
+  label="Apenas leitura"
+  readOnly
+  defaultValue={["frontend", "backend"]}
+  options={[
+    { label: "Frontend", value: "frontend" },
+    { label: "Backend", value: "backend" },
+    { label: "Mobile", value: "mobile" },
+    { label: "DevOps", value: "devops" },
+  ]}
+/>
+```
+
+### Estado de carregamento
+
+<div className="noContent column">
+  <MultiSelect
+    name="loading-multi"
+    label="Carregando opções..."
+    isLoading
+    options={[]}
+  />
+
+  <MultiSelect
+    name="loading-with-data"
+    label="Processando seleção..."
+    isLoading
+    defaultValue={["opt1"]}
+    options={[
+      { label: "Opção 1", value: "opt1" },
+      { label: "Opção 2", value: "opt2" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="loading-multi"
+  label="Carregando opções..."
+  isLoading
+  options={[]}
+/>
+
+<MultiSelect
+  name="loading-with-data"
+  label="Processando seleção..."
+  isLoading
+  defaultValue={["opt1"]}
+  options={[
+    { label: "Opção 1", value: "opt1" },
+    { label: "Opção 2", value: "opt2" }
+  ]}
+/>
+```
+
+## Validação e Erros
+
+<div className="noContent column">
+  <MultiSelect
+    name="required-multi"
+    label="Habilidades Obrigatórias"
+    showAsterisk
+    errorMessage="Selecione pelo menos uma habilidade"
+    leftIcon={Code}
+    options={[
+      { label: "JavaScript", value: "js" },
+      { label: "TypeScript", value: "ts" },
+      { label: "React", value: "react" },
+      { label: "Vue", value: "vue" },
+    ]}
+  />
+
+  <MultiSelect
+    name="invalid-multi"
+    label="Categorias"
+    errorMessage="Seleção inválida. Máximo 3 categorias."
+    leftIcon={Tag}
+    options={[
+      { label: "Frontend", value: "frontend" },
+      { label: "Backend", value: "backend" },
+      { label: "Mobile", value: "mobile" },
+      { label: "DevOps", value: "devops" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="required-multi"
+  label="Habilidades Obrigatórias"
+  showAsterisk
+  errorMessage="Selecione pelo menos uma habilidade"
+  leftIcon={Code}
+  options={[
+    { label: "JavaScript", value: "js" },
+    { label: "TypeScript", value: "ts" },
+    { label: "React", value: "react" },
+    { label: "Vue", value: "vue" }
+  ]}
+/>
+
+<MultiSelect
+  name="invalid-multi"
+  label="Categorias"
+  errorMessage="Seleção inválida. Máximo 3 categorias."
+  leftIcon={Tag}
+  options={[
+    { label: "Frontend", value: "frontend" },
+    { label: "Backend", value: "backend" },
+    { label: "Mobile", value: "mobile" },
+    { label: "DevOps", value: "devops" }
+  ]}
+/>
+```
+
+## Callbacks avançados
+
+O MultiSelect oferece vários callbacks para controle avançado do comportamento.
+
+```tsx
+const [selectedSkills, setSelectedSkills] = useState([]);
+const [searchTerm, setSearchTerm] = useState("");
+const [skillOptions, setSkillOptions] = useState([]);
+
+const handleSkillChange = (values) => {
+  console.log("Habilidades selecionadas:", values);
+  setSelectedSkills(values);
+
+  // Validação customizada
+  if (values.length > 5) {
+    alert("Máximo 5 habilidades permitidas");
+  }
+};
+
+const handleSkillSearch = (term) => {
+  console.log("Pesquisando por:", term);
+  setSearchTerm(term);
+
+  // Busca assíncrona
+  fetchSkills(term).then(setSkillOptions);
+};
+
+const handleFocus = () => {
+  console.log("MultiSelect focado");
+  // Carregar opções quando focar
+  loadSkillOptions();
+};
+
+const handleBlur = () => {
+  console.log("MultiSelect perdeu o foco");
+  // Validar seleção ao perder o foco
+  validateSelection();
+};
+
+<MultiSelect
+  name="advanced-skills"
+  label="Habilidades Técnicas"
+  value={selectedSkills}
+  onChange={handleSkillChange}
+  onSearch={handleSkillSearch}
+  onFocus={handleFocus}
+  onBlur={handleBlur}
+  isSearchable
+  closeOnSelect={false}
+  options={skillOptions}
+  placeholder="Digite para buscar habilidades..."
+  notFoundText="Nenhuma habilidade encontrada"
+/>;
+```
+
+## MultiSelect Controlado vs Não Controlado
+
+### Não controlado (defaultValue)
+
+```tsx
+// O componente gerencia seu próprio estado
+<MultiSelect
+  name="uncontrolled"
+  defaultValue={["react", "js"]}
+  options={techOptions}
+/>
+```
+
+### Controlado (value + onChange)
+
+```tsx
+const [selectedValues, setSelectedValues] = useState(["react"]);
+
+// O estado é gerenciado externamente
+<MultiSelect
+  name="controlled"
+  value={selectedValues}
+  onChange={setSelectedValues}
+  options={techOptions}
+/>;
+```
+
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários
+
+**`options`** - `{ label: string; value: string }[]` (obrigatório)
+Array de opções com label e value
+
+**`id`** - `string`
+Identificador único opcional para o componente
+
+**`value`** - `string[]`
+Valor controlado - array dos valores selecionados
+
+**`defaultValue`** - `string[]` (padrão: `[]`)
+Valores padrão selecionados para uso não controlado
+
+**`showAsterisk`** - `boolean`
+Se deve mostrar asterisco no rótulo para campos obrigatórios
+
+**`label`** - `string`
+Texto do rótulo a ser exibido acima do multiselect
+
+**`errorMessage`** - `string`
+Mensagem de erro a ser exibida abaixo do multiselect
+
+**`placeholder`** - `string` (padrão: `"Selecione..."`)
+Texto placeholder quando nenhuma opção está selecionada
+
+**`notFoundText`** - `string` (padrão: `"Sem opções disponíveis"`)
+Texto exibido quando nenhuma opção corresponde à busca
+
+**`className`** - `string`
+Classes CSS adicionais para estilização
+
+**`disabled`** - `boolean` (padrão: `false`)
+Se o multiselect está desabilitado
+
+**`readOnly`** - `boolean` (padrão: `false`)
+Se o multiselect é apenas leitura
+
+**`isLoading`** - `boolean` (padrão: `false`)
+Controla o estado de carregamento com spinner
+
+**`isSearchable`** - `boolean` (padrão: `false`)
+Se suporta funcionalidade de busca
+
+**`closeOnSelect`** - `boolean` (padrão: `false`)
+Se deve fechar o dropdown após selecionar uma opção
+
+**`onSearch`** - `(value: string) => void`
+Função callback chamada quando o valor de busca muda
+
+**`onChange`** - `(value: string[]) => void`
+Função callback chamada quando os valores selecionados mudam
+
+**`onFocus`** - `() => void`
+Função callback chamada quando o multiselect ganha foco
+
+**`onBlur`** - `(e: FocusEvent<HTMLDivElement>) => void`
+Função callback chamada quando o multiselect perde foco
+
+**`size`** - `"md" | "lg"` (padrão: `"md"`)
+Tamanho do multiselect
+
+**`variant`** - `"solid" | "outline" | "underline"` (padrão: `"solid"`)
+Variante visual do multiselect
+
+**`prefix`** - `string | LucideIcon`
+Texto ou ícone para exibir no início do multiselect
+
+**`leftIcon`** - `LucideIcon`
+Ícone opcional para exibir no lado esquerdo
+
+**`optionMaxHeight`** - `number`
+Altura máxima para o dropdown de opções
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Formato das opções</AlertTitle>
+    <AlertDescription>
+      As opções devem sempre seguir o formato `{ label: string; value: string }[]` onde `label` é o texto exibido e `value` é o valor interno usado pelo formulário.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Acessibilidade
+
+O componente `MultiSelect` foi desenvolvido com acessibilidade em mente:
+
+- Navegação por teclado completa (Enter/Space para selecionar, Escape para fechar)
+- Suporte a leitores de tela com ARIA labels apropriados
+- Estados visuais claros para focus, hover e seleção
+- Mensagens de erro são anunciadas por tecnologias assistivas
+- Associação automática entre label e campo
+- Indicação visual clara de opções selecionadas
+
+## Integração com Formulários
+
+O componente se integra nativamente com sistemas de gerenciamento de formulário:
+
+- Campo hidden automático com JSON das seleções
+- Validação automática com exibição de erros
+- Suporte ao hook `useForm` do Arkyn
+- Compatibilidade com bibliotecas de validação
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Formulários customizáveis</AlertTitle>
+    <AlertDescription>
+      Para formulários mais complexos, é recomendado utilizar o [Form
+      Provider](/components/providers/form-provider) que oferece integração
+      nativa com todas as ferramentas de formulário de uma única só vez.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Performance
+
+Para listas muito grandes (>1000 itens), considere:
+
+- Implementar busca no servidor com `onSearch`
+- Usar paginação ou carregamento sob demanda
+- Implementar debounce na busca
+- Usar virtualização para renderização eficiente
+
+## Notas Importantes
+
+- A propriedade `name` é obrigatória para integração com formulários
+- As `options` devem sempre ter `label` e `value` únicos
+- O valor é armazenado como JSON stringificado no campo hidden
+- `isSearchable` permite busca local por padrão, use `onSearch` para busca customizada
+- `closeOnSelect={true}` é útil para seleções únicas ocasionais
+- Estados de loading, disabled e readOnly desabilitam todas as interações
+- O componente suporta refs para controle programático
+- A busca local é case-insensitive e busca no texto do label
