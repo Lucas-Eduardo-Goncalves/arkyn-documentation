@@ -1,0 +1,412 @@
+# Switch
+
+import {
+  Switch,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  Bell,
+  Moon,
+  Sun,
+  Wifi,
+  Volume2,
+  VolumeX,
+  Eye,
+  EyeOff,
+  Shield,
+  Globe,
+  Smartphone,
+  Laptop,
+  Settings,
+  Power,
+  Lock,
+  Unlock,
+} from "lucide-react";
+
+O componente `Switch` é um interruptor de alternância usado para estados ligado/desligado, ativo/inativo ou habilitado/desabilitado. Oferece uma interface intuitiva para alternar entre dois estados distintos com feedback visual claro.
+
+## Importação
+
+```tsx
+import { Switch } from "@arkyn/components";
+```
+
+## Uso Básico
+
+O uso básico requer apenas a propriedade `name` obrigatória. O switch pode ter um rótulo opcional.
+
+<div className="noContent column">
+  <Switch name="basic-switch" label="Notificações" />
+  <Switch name="simple-switch" label="Modo escuro" />
+  <Switch name="toggle-switch" />
+</div>
+
+```tsx
+<Switch name="basic-switch" label="Notificações" />
+<Switch name="simple-switch" label="Modo escuro" />
+<Switch name="toggle-switch" />
+```
+
+## Tamanhos
+
+Os tamanhos disponíveis são `sm`, `md` e `lg`, sendo `lg` o padrão.
+
+<div className="noContent column">
+  <Switch name="switch-sm" label="Tamanho pequeno" size="sm" />
+  <Switch name="switch-md" label="Tamanho médio" size="md" />
+  <Switch name="switch-lg" label="Tamanho grande" size="lg" />
+</div>
+
+```tsx
+<Switch name="switch-sm" label="Tamanho pequeno" size="sm" />
+<Switch name="switch-md" label="Tamanho médio" size="md" />
+<Switch name="switch-lg" label="Tamanho grande" size="lg" />
+```
+
+## Orientações
+
+O componente suporta diferentes orientações para o layout do switch e rótulo.
+
+<div className="noContent column">
+  <Switch
+    name="switch-vertical"
+    label="Orientação vertical"
+    orientation="vertical"
+  />
+  <Switch
+    name="switch-horizontal"
+    label="Orientação horizontal"
+    orientation="horizontal"
+  />
+  <Switch
+    name="switch-horizontal-reverse"
+    label="Horizontal reverso"
+    orientation="horizontalReverse"
+  />
+</div>
+
+```tsx
+<Switch
+  name="switch-vertical"
+  label="Orientação vertical"
+  orientation="vertical"
+/>
+<Switch
+  name="switch-horizontal"
+  label="Orientação horizontal"
+  orientation="horizontal"
+/>
+<Switch
+  name="switch-horizontal-reverse"
+  label="Horizontal reverso"
+  orientation="horizontalReverse"
+/>
+```
+
+## Estado Padrão
+
+Use `defaultChecked` para definir o estado inicial do switch em uso não controlado.
+
+<div className="noContent column">
+  <Switch
+    name="default-checked"
+    label="Wi-Fi (ativado por padrão)"
+    defaultChecked={true}
+  />
+  <Switch
+    name="default-unchecked"
+    label="Bluetooth (desativado por padrão)"
+    defaultChecked={false}
+  />
+  <Switch
+    name="auto-save"
+    label="Salvamento automático"
+    defaultChecked={true}
+    size="md"
+  />
+</div>
+
+```tsx
+<Switch
+  name="default-checked"
+  label="Wi-Fi (ativado por padrão)"
+  defaultChecked={true}
+/>
+<Switch
+  name="default-unchecked"
+  label="Bluetooth (desativado por padrão)"
+  defaultChecked={false}
+/>
+<Switch
+  name="auto-save"
+  label="Salvamento automático"
+  defaultChecked={true}
+  size="md"
+/>
+```
+
+## Valores Customizados
+
+Configure valores específicos para os estados ativado e desativado usando `value` e `unCheckedValue`.
+
+<div className="noContent column">
+  <Switch
+    name="theme-switch"
+    label="Tema da aplicação"
+    value="dark"
+    unCheckedValue="light"
+    defaultChecked={false}
+  />
+  <Switch
+    name="subscription-switch"
+    label="Assinatura premium"
+    value="subscribed"
+    unCheckedValue="unsubscribed"
+    size="md"
+  />
+  <Switch
+    name="privacy-switch"
+    label="Perfil público"
+    value="public"
+    unCheckedValue="private"
+    defaultChecked={true}
+  />
+</div>
+
+```tsx
+<Switch
+  name="theme-switch"
+  label="Tema da aplicação"
+  value="dark"
+  unCheckedValue="light"
+  defaultChecked={false}
+/>
+<Switch
+  name="subscription-switch"
+  label="Assinatura premium"
+  value="subscribed"
+  unCheckedValue="unsubscribed"
+  size="md"
+/>
+<Switch
+  name="privacy-switch"
+  label="Perfil público"
+  value="public"
+  unCheckedValue="private"
+  defaultChecked={true}
+/>
+```
+
+## Estados do Switch
+
+### Switch desabilitado
+
+<div className="noContent column">
+  <Switch
+    name="disabled-on"
+    label="Função premium (desabilitado)"
+    disabled
+    defaultChecked={true}
+  />
+  <Switch
+    name="disabled-off"
+    label="Recurso indisponível"
+    disabled
+    defaultChecked={false}
+    size="md"
+  />
+  <Switch name="maintenance" label="Em manutenção" disabled size="sm" />
+</div>
+
+```tsx
+<Switch
+  name="disabled-on"
+  label="Função premium (desabilitado)"
+  disabled
+  defaultChecked={true}
+/>
+<Switch
+  name="disabled-off"
+  label="Recurso indisponível"
+  disabled
+  defaultChecked={false}
+  size="md"
+/>
+<Switch
+  name="maintenance"
+  label="Em manutenção"
+  disabled
+  size="sm"
+/>
+```
+
+## Callback onCheck
+
+O callback `onCheck` é chamado sempre que o estado do switch muda, recebendo o valor atual.
+
+```tsx
+const [themeMode, setThemeMode] = useState("light");
+const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+
+const handleThemeChange = (value) => {
+  console.log("Tema alterado para:", value);
+  setThemeMode(value);
+
+  // Aplicar tema globalmente
+  document.documentElement.setAttribute('data-theme', value);
+};
+
+const handleNotificationToggle = (value) => {
+  const isEnabled = value === "enabled";
+  setNotificationsEnabled(isEnabled);
+
+  if (isEnabled) {
+    // Solicitar permissão para notificações
+    requestNotificationPermission();
+  }
+};
+
+<Switch
+  name="app-theme"
+  label="Tema escuro"
+  value="dark"
+  unCheckedValue="light"
+  onCheck={handleThemeChange}
+/>
+
+<Switch
+  name="push-notifications"
+  label="Notificações push"
+  value="enabled"
+  unCheckedValue="disabled"
+  onCheck={handleNotificationToggle}
+/>
+```
+
+## Switch Controlado vs Não Controlado
+
+### Não controlado (defaultChecked)
+
+```tsx
+// O componente gerencia seu próprio estado
+<Switch
+  name="wifi"
+  label="Wi-Fi"
+  defaultChecked={true}
+  value="connected"
+  unCheckedValue="disconnected"
+/>
+```
+
+### Controlado (checked + onCheck)
+
+```tsx
+const [isWifiEnabled, setIsWifiEnabled] = useState(true);
+
+// O estado é gerenciado externamente
+<Switch
+  name="wifi"
+  label="Wi-Fi"
+  checked={isWifiEnabled}
+  value="connected"
+  unCheckedValue="disconnected"
+  onCheck={(value) => setIsWifiEnabled(value === "connected")}
+/>;
+```
+
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários e identificação
+
+**`label`** - `string`
+Texto do rótulo a ser exibido ao lado do switch
+
+**`size`** - `"sm" | "md" | "lg"` (padrão: `"lg"`)
+Variante de tamanho do switch
+
+**`defaultChecked`** - `boolean` (padrão: `false`)
+Estado padrão marcado para uso não controlado
+
+**`checked`** - `boolean`
+Estado controlado do switch (usado com onCheck)
+
+**`value`** - `string` (padrão: `"checked"`)
+Valor a ser usado quando o switch está ativado
+
+**`unCheckedValue`** - `string` (padrão: `""`)
+Valor a ser usado quando o switch está desativado
+
+**`onCheck`** - `(value: string) => void`
+Função callback chamada quando o estado muda, recebe o valor atual
+
+**`orientation`** - `"vertical" | "horizontal" | "horizontalReverse"` (padrão: `"vertical"`)
+Orientação do switch e rótulo
+
+**`disabled`** - `boolean` (padrão: `false`)
+Se o switch está desabilitado
+
+**`className`** - `string`
+Classes CSS adicionais para estilização
+
+**`id`** - `string`
+Identificador único opcional para o switch
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      Todas as outras propriedades HTML padrão de `<button>` também são suportadas, exceto `children`, `onChange`, `defaultValue`, `onCheck` e `value` que são controladas pelo componente.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Acessibilidade
+
+O componente `Switch` foi desenvolvido com acessibilidade em mente:
+
+- Uso semântico adequado com `<button>` para interação
+- Estados visuais claros para focus, checked e disabled
+- Associação automática entre switch e label quando fornecido
+- Suporte completo a navegação por teclado (Space/Enter para alternar)
+- Feedback visual claro do estado atual
+- Valores apropriados para tecnologias assistivas
+
+## Integração com Formulários
+
+O componente se integra nativamente com sistemas de gerenciamento de formulário:
+
+- Campo hidden automático para envio do valor atual
+- Valores customizáveis para estados ativado/desativado
+- Gerenciamento de estado interno ou externo
+- Compatibilidade com bibliotecas de validação
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Formulários customizáveis</AlertTitle>
+    <AlertDescription>
+      Para formulários mais complexos, é recomendado utilizar o [Form
+      Provider](/components/providers/form-provider) que oferece integração
+      nativa com todas as ferramentas de formulário de uma única só vez.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notas Importantes
+
+- A propriedade `name` é obrigatória para integração com formulários
+- O valor padrão para estado ativado é `"checked"` se não especificado
+- O valor padrão para estado desativado é `""` (string vazia) se não especificado
+- O componente usa um input hidden para garantir que o valor seja enviado com o formulário
+- O tamanho padrão é `lg` para melhor acessibilidade e usabilidade
+- A orientação padrão é `vertical` com o switch acima do rótulo
+- O callback `onCheck` recebe sempre o valor atual (value ou unCheckedValue)
+- Estados controlados têm precedência sobre estados não controlados
+- O componente gerencia automaticamente focus e estados visuais
