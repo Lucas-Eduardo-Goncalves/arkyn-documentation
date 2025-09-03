@@ -1,0 +1,486 @@
+# Radio
+
+import {
+  RadioGroup,
+  RadioBox,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  User,
+  Settings,
+  Bell,
+  Shield,
+  Star,
+  Heart,
+  Check,
+  X,
+  Sun,
+  Moon,
+  Palette,
+  Globe,
+  CreditCard,
+  Building,
+  MapPin,
+  Clock,
+} from "lucide-react";
+
+O componente `Radio` é composto por dois elementos principais: `RadioGroup` e `RadioBox`. O `RadioGroup` gerencia o estado e contexto dos botões de rádio, enquanto o `RadioBox` representa cada opção individual. É ideal para seleções exclusivas onde apenas uma opção pode ser escolhida por vez.
+
+## Importação
+
+```tsx
+import { RadioGroup, RadioBox } from "@arkyn/components";
+```
+
+## Uso Básico
+
+O uso básico requer um `RadioGroup` contendo um ou mais `RadioBox` com valores únicos.
+
+<div className="noContent column">
+  <RadioGroup name="basic-radio" label="Escolha uma opção">
+    <RadioBox value="option1">Opção 1</RadioBox>
+    <RadioBox value="option2">Opção 2</RadioBox>
+    <RadioBox value="option3">Opção 3</RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="basic-radio" label="Escolha uma opção">
+  <RadioBox value="option1">Opção 1</RadioBox>
+  <RadioBox value="option2">Opção 2</RadioBox>
+  <RadioBox value="option3">Opção 3</RadioBox>
+</RadioGroup>
+```
+
+## Tamanhos
+
+Os tamanhos disponíveis são `sm`, `md` e `lg`, aplicados através do `RadioGroup` e herdados pelos `RadioBox`.
+
+<div className="noContent column">
+  <RadioGroup name="radio-sm" label="Tamanho pequeno" size="sm">
+    <RadioBox value="small1">Opção pequena 1</RadioBox>
+    <RadioBox value="small2">Opção pequena 2</RadioBox>
+  </RadioGroup>
+  <RadioGroup name="radio-md" label="Tamanho médio" size="md">
+    <RadioBox value="medium1">Opção média 1</RadioBox>
+    <RadioBox value="medium2">Opção média 2</RadioBox>
+  </RadioGroup>
+  <RadioGroup name="radio-lg" label="Tamanho grande" size="lg">
+    <RadioBox value="large1">Opção grande 1</RadioBox>
+    <RadioBox value="large2">Opção grande 2</RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="radio-sm" label="Tamanho pequeno" size="sm">
+  <RadioBox value="small1">Opção pequena 1</RadioBox>
+  <RadioBox value="small2">Opção pequena 2</RadioBox>
+</RadioGroup>
+
+<RadioGroup name="radio-md" label="Tamanho médio" size="md">
+  <RadioBox value="medium1">Opção média 1</RadioBox>
+  <RadioBox value="medium2">Opção média 2</RadioBox>
+</RadioGroup>
+
+<RadioGroup name="radio-lg" label="Tamanho grande" size="lg">
+  <RadioBox value="large1">Opção grande 1</RadioBox>
+  <RadioBox value="large2">Opção grande 2</RadioBox>
+</RadioGroup>
+```
+
+## Tamanhos Individuais
+
+É possível sobrescrever o tamanho de um `RadioBox` específico.
+
+<div className="noContent column">
+  <RadioGroup name="mixed-sizes" label="Prioridades" size="md">
+    <RadioBox value="low" size="sm">
+      Baixa Prioridade
+    </RadioBox>
+    <RadioBox value="medium">Prioridade Média</RadioBox>
+    <RadioBox value="high" size="lg">
+      Alta Prioridade
+    </RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="mixed-sizes" label="Prioridades" size="md">
+  <RadioBox value="low" size="sm">
+    Baixa Prioridade
+  </RadioBox>
+  <RadioBox value="medium">Prioridade Média</RadioBox>
+  <RadioBox value="high" size="lg">
+    Alta Prioridade
+  </RadioBox>
+</RadioGroup>
+```
+
+## Valor Padrão
+
+Use `defaultValue` para definir qual opção deve estar selecionada inicialmente.
+
+<div className="noContent column">
+  <RadioGroup name="default-radio" label="Tema preferido" defaultValue="dark">
+    <RadioBox value="light">Claro</RadioBox>
+    <RadioBox value="dark">Escuro</RadioBox>
+    <RadioBox value="auto">Automático</RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="default-radio" label="Tema preferido" defaultValue="dark">
+  <RadioBox value="light">Claro</RadioBox>
+  <RadioBox value="dark">Escuro</RadioBox>
+  <RadioBox value="auto">Automático</RadioBox>
+</RadioGroup>
+```
+
+## Radio com Conteúdo Rico
+
+Os `RadioBox` podem conter qualquer conteúdo JSX, permitindo layouts mais complexos e informativos.
+
+<div className="noContent column">
+  <RadioGroup name="plans" label="Escolha seu plano">
+    <RadioBox value="basic">
+      <div>
+        <strong>Plano Básico</strong>
+        <p>R$ 19,99/mês - Ideal para uso pessoal</p>
+        <small>Até 5 projetos • 10GB storage • Suporte por email</small>
+      </div>
+    </RadioBox>
+
+    <RadioBox value="premium">
+      <div>
+        <strong>Plano Premium</strong>
+        <p>R$ 49,99/mês - Perfeito para equipes</p>
+        <small>Projetos ilimitados • 100GB storage • Suporte prioritário</small>
+      </div>
+    </RadioBox>
+
+    <RadioBox value="enterprise">
+      <div>
+        <strong>Plano Enterprise</strong>
+        <p>R$ 99,99/mês - Para grandes organizações</p>
+        <small>Recursos avançados • Storage ilimitado • Suporte dedicado</small>
+      </div>
+    </RadioBox>
+
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="plans" label="Escolha seu plano">
+  <RadioBox value="basic">
+    <div>
+      <strong>Plano Básico</strong>
+      <p>R$ 19,99/mês - Ideal para uso pessoal</p>
+      <small>Até 5 projetos • 10GB storage • Suporte por email</small>
+    </div>
+  </RadioBox>
+
+  <RadioBox value="premium">
+    <div>
+      <strong>Plano Premium</strong>
+      <p>R$ 49,99/mês - Perfeito para equipes</p>
+      <small>Projetos ilimitados • 100GB storage • Suporte prioritário</small>
+    </div>
+  </RadioBox>
+
+  <RadioBox value="enterprise">
+    <div>
+      <strong>Plano Enterprise</strong>
+      <p>R$ 99,99/mês - Para grandes organizações</p>
+      <small>Recursos avançados • Storage ilimitado • Suporte dedicado</small>
+    </div>
+  </RadioBox>
+</RadioGroup>
+```
+
+## Radio com Ícones
+
+Combine ícones com texto para melhorar a experiência visual.
+
+<div className="noContent column">
+  <RadioGroup name="preferences" label="Configurações de notificação">
+    <RadioBox value="all">
+      <Bell size={16} style={{ marginRight: "8px" }} />
+      Todas as notificações
+    </RadioBox>
+    <RadioBox value="important">
+      <Star size={16} style={{ marginRight: "8px" }} />
+      Apenas importantes
+    </RadioBox>
+    <RadioBox value="none">
+      <X size={16} style={{ marginRight: "8px" }} />
+      Desabilitadas
+    </RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="preferences" label="Configurações de notificação">
+  <RadioBox value="all">
+    <Bell size={16} style={{ marginRight: "8px" }} />
+    Todas as notificações
+  </RadioBox>
+  <RadioBox value="important">
+    <Star size={16} style={{ marginRight: "8px" }} />
+    Apenas importantes
+  </RadioBox>
+  <RadioBox value="none">
+    <X size={16} style={{ marginRight: "8px" }} />
+    Desabilitadas
+  </RadioBox>
+</RadioGroup>
+```
+
+## Estados do Radio
+
+### Radio desabilitado
+
+Opções individuais podem ser desabilitadas usando a propriedade `disabled` no `RadioBox`.
+
+<div className="noContent column">
+  <RadioGroup name="disabled-options" label="Opções de pagamento">
+    <RadioBox value="credit">Cartão de Crédito</RadioBox>
+    <RadioBox value="debit">Cartão de Débito</RadioBox>
+    <RadioBox value="pix" disabled>
+      PIX (Em manutenção)
+    </RadioBox>
+    <RadioBox value="boleto" disabled>
+      Boleto (Indisponível)
+    </RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="disabled-options" label="Opções de pagamento">
+  <RadioBox value="credit">Cartão de Crédito</RadioBox>
+  <RadioBox value="debit">Cartão de Débito</RadioBox>
+  <RadioBox value="pix" disabled>
+    PIX (Em manutenção)
+  </RadioBox>
+  <RadioBox value="boleto" disabled>
+    Boleto (Indisponível)
+  </RadioBox>
+</RadioGroup>
+```
+
+## Validação e Erros
+
+O componente se integra com sistemas de validação e pode exibir mensagens de erro.
+
+<div className="noContent column">
+  <RadioGroup
+    name="required-radio"
+    label="Selecione seu gênero"
+    showAsterisk
+    errorMessage="Por favor, selecione uma opção"
+  >
+    <RadioBox value="male">
+      <User size={16} style={{ marginRight: "8px" }} />
+      Masculino
+    </RadioBox>
+    <RadioBox value="female">
+      <User size={16} style={{ marginRight: "8px" }} />
+      Feminino
+    </RadioBox>
+    <RadioBox value="other">
+      <User size={16} style={{ marginRight: "8px" }} />
+      Outro
+    </RadioBox>
+    <RadioBox value="prefer-not-say">
+      <User size={16} style={{ marginRight: "8px" }} />
+      Prefiro não informar
+    </RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup
+  name="required-radio"
+  label="Selecione seu gênero"
+  showAsterisk
+  errorMessage="Por favor, selecione uma opção"
+>
+  <RadioBox value="male">
+    <User size={16} style={{ marginRight: "8px" }} />
+    Masculino
+  </RadioBox>
+  <RadioBox value="female">
+    <User size={16} style={{ marginRight: "8px" }} />
+    Feminino
+  </RadioBox>
+  <RadioBox value="other">
+    <User size={16} style={{ marginRight: "8px" }} />
+    Outro
+  </RadioBox>
+  <RadioBox value="prefer-not-say">
+    <User size={16} style={{ marginRight: "8px" }} />
+    Prefiro não informar
+  </RadioBox>
+</RadioGroup>
+```
+
+## Callback onChange
+
+O `RadioGroup` oferece um callback que é chamado sempre que a seleção muda.
+
+```tsx
+const [selectedValue, setSelectedValue] = useState("");
+
+const handleRadioChange = (value) => {
+  console.log("Valor selecionado:", value);
+  setSelectedValue(value);
+
+  // Lógica adicional baseada no valor
+  if (value === "premium") {
+    // Habilitar recursos premium
+  }
+};
+
+<RadioGroup
+  name="subscription"
+  label="Plano de assinatura"
+  onChange={handleRadioChange}
+  value={selectedValue}
+>
+  <RadioBox value="basic">Básico</RadioBox>
+  <RadioBox value="premium">Premium</RadioBox>
+  <RadioBox value="enterprise">Enterprise</RadioBox>
+</RadioGroup>;
+```
+
+## Radio Controlado vs Não Controlado
+
+### Não controlado (defaultValue)
+
+```tsx
+// O componente gerencia seu próprio estado
+<RadioGroup name="theme" defaultValue="light">
+  <RadioBox value="light">Claro</RadioBox>
+  <RadioBox value="dark">Escuro</RadioBox>
+</RadioGroup>
+```
+
+### Controlado (value + onChange)
+
+```tsx
+const [theme, setTheme] = useState("light");
+
+// O estado é gerenciado externamente
+<RadioGroup name="theme" value={theme} onChange={setTheme}>
+  <RadioBox value="light">Claro</RadioBox>
+  <RadioBox value="dark">Escuro</RadioBox>
+</RadioGroup>;
+```
+
+## Propriedades do RadioGroup
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários e agrupamento dos radio buttons
+
+**`label`** - `string`
+Texto do rótulo a ser exibido acima do grupo de radio
+
+**`showAsterisk`** - `boolean`
+Se deve mostrar asterisco no rótulo para campos obrigatórios
+
+**`errorMessage`** - `string`
+Mensagem de erro a ser exibida abaixo do grupo
+
+**`value`** - `string`
+Valor controlado para a opção selecionada
+
+**`defaultValue`** - `string` (padrão: `""`)
+Valor padrão selecionado para uso não controlado
+
+**`onChange`** - `(value: string) => void`
+Função callback chamada quando a seleção muda
+
+**`size`** - `"sm" | "md" | "lg"` (padrão: `"md"`)
+Variante de tamanho para todos os radio buttons do grupo
+
+**`className`** - `string`
+Classes CSS adicionais para estilização
+
+## Propriedades do RadioBox
+
+**`value`** - `string` (obrigatório)
+Valor único para esta opção de radio dentro do grupo
+
+**`isError`** - `boolean`
+Indicador de estado de erro para estilização
+
+**`size`** - `"sm" | "md" | "lg"`
+Sobrescreve o tamanho herdado do RadioGroup
+
+**`disabled`** - `boolean`
+Se esta opção específica está desabilitada
+
+**`children`** - `ReactNode`
+Conteúdo a ser exibido ao lado do botão de radio
+
+**`className`** - `string`
+Classes CSS adicionais para estilização
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      O RadioGroup suporta todas as propriedades HTML de `div` (exceto
+      `onChange`), e o RadioBox suporta todas as propriedades HTML de `button`.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Acessibilidade
+
+O componente `Radio` foi desenvolvido com acessibilidade em mente:
+
+- Uso de `<label>` para associação automática entre radio e conteúdo
+- Suporte completo a navegação por teclado (setas para navegar entre opções)
+- Estados visuais claros para focus, checked, error e disabled
+- Mensagens de erro são anunciadas por leitores de tela
+- Gerenciamento adequado de ARIA states
+- Agrupamento semântico correto para leitores de tela
+
+## Integração com Formulários
+
+O componente se integra nativamente com sistemas de gerenciamento de formulário:
+
+- Campo hidden automático para envio do valor selecionado
+- Validação automática com exibição de erros
+- Gerenciamento de estado do formulário
+- Suporte ao hook `useForm` do Arkyn
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Formulários customizáveis</AlertTitle>
+    <AlertDescription>
+      Para formulários mais complexos, é recomendado utilizar o [Form
+      Provider](/components/providers/form-provider) que oferece integração
+      nativa com todas as ferramentas de formulário de uma única só vez.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notas Importantes
+
+- A propriedade `name` é obrigatória no `RadioGroup` para integração com formulários
+- A propriedade `value` é obrigatória em cada `RadioBox` e deve ser única dentro do grupo
+- O `RadioBox` deve sempre ser usado como filho direto ou descendente do `RadioGroup`
+- O componente gerencia automaticamente o estado de seleção entre as opções
+- Apenas uma opção pode estar selecionada por vez dentro de um grupo
+- O tamanho definido no `RadioGroup` é herdado pelos `RadioBox`, mas pode ser sobrescrito individualmente
+- Estados de erro são propagados automaticamente do grupo para as opções individuais
+- O componente usa um input hidden para garantir que o valor seja enviado com o formulário
+- Click e focus events são tratados automaticamente para melhor usabilidade
