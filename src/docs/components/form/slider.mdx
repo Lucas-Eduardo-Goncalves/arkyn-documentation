@@ -1,0 +1,372 @@
+# Slider
+
+import {
+  Slider,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  Volume2,
+  VolumeX,
+  Sun,
+  Moon,
+  Thermometer,
+  Gauge,
+  Settings,
+  Sliders,
+  Camera,
+  Music,
+  Monitor,
+  Wifi,
+  Battery,
+  Speaker,
+  Palette,
+  Target,
+} from "lucide-react";
+
+O componente `Slider` é um controle interativo para seleção de valores numéricos em um intervalo de 0 a 100. Oferece uma interface intuitiva de arrastar e soltar, ideal para configurações como volume, brilho, opacidade ou qualquer valor que se beneficie de ajuste visual contínuo.
+
+## Importação
+
+```tsx
+import { Slider, useSlider } from "@arkyn/components";
+```
+
+## Uso Básico
+
+O uso básico requer as propriedades `value` e `onChange`. O componente é sempre controlado.
+
+<div className="noContent column">
+  <Slider value={25} onChange={() => {}} />
+  <Slider value={50} onChange={() => {}} />
+  <Slider value={75} onChange={() => {}} />
+</div>
+
+```tsx
+const [value, setValue] = useState(25);
+
+<Slider value={value} onChange={setValue} />;
+```
+
+## Hook useSlider (Recomendado)
+
+O hook `useSlider` é uma utilidade conveniente que gerencia o estado do slider com validação automática de limites. É a forma recomendada de controlar sliders, garantindo que os valores sempre permaneçam entre 0 e 100.
+
+<div className="noContent column">
+  <Slider value={30} onChange={() => {}} />
+  <p style={{ fontSize: "14px", color: "#666" }}>
+    Usando useSlider com valor padrão
+  </p>
+</div>
+
+```tsx
+// Importação
+import { useSlider } from "@arkyn/components";
+
+// Uso básico
+const [value, setValue] = useSlider(); // Inicia em 0
+
+// Com valor padrão
+const [value, setValue] = useSlider(50); // Inicia em 50
+
+// Em um componente
+function VolumeControl() {
+  const [volume, setVolume] = useSlider(75);
+
+  return (
+    <div>
+      <label>Volume: {Math.round(volume)}%</label>
+      <Slider value={volume} onChange={setVolume} />
+    </div>
+  );
+}
+```
+
+## Estados do Slider
+
+### Slider desabilitado
+
+<div className="noContent column">
+  <Slider value={60} onChange={() => {}} disabled />
+  <p style={{ fontSize: "14px", color: "#666" }}>Slider desabilitado em 60%</p>
+</div>
+
+```tsx
+<Slider value={60} onChange={() => {}} disabled />
+```
+
+### Diferentes valores
+
+<div className="noContent column">
+  <div style={{ marginBottom: "16px" }}>
+    <Slider value={0} onChange={() => {}} />
+    <p style={{ fontSize: "12px", color: "#666" }}>Mínimo (0%)</p>
+  </div>
+
+<div style={{ marginBottom: "16px" }}>
+  <Slider value={25} onChange={() => {}} />
+  <p style={{ fontSize: "12px", color: "#666" }}>Baixo (25%)</p>
+</div>
+
+<div style={{ marginBottom: "16px" }}>
+  <Slider value={50} onChange={() => {}} />
+  <p style={{ fontSize: "12px", color: "#666" }}>Médio (50%)</p>
+</div>
+
+<div style={{ marginBottom: "16px" }}>
+  <Slider value={75} onChange={() => {}} />
+  <p style={{ fontSize: "12px", color: "#666" }}>Alto (75%)</p>
+</div>
+
+  <div>
+    <Slider value={100} onChange={() => {}} />
+    <p style={{ fontSize: "12px", color: "#666" }}>Máximo (100%)</p>
+  </div>
+</div>
+
+```tsx
+<Slider value={0} onChange={setValue} />    {/* Mínimo */}
+<Slider value={25} onChange={setValue} />   {/* Baixo */}
+<Slider value={50} onChange={setValue} />   {/* Médio */}
+<Slider value={75} onChange={setValue} />   {/* Alto */}
+<Slider value={100} onChange={setValue} />  {/* Máximo */}
+```
+
+## Callback onDragging
+
+Use o callback `onDragging` para detectar quando o usuário está arrastando o slider.
+
+```tsx
+const [value, setValue] = useSlider(50);
+const [isDragging, setIsDragging] = useState(false);
+
+const handleDragging = (dragging) => {
+  setIsDragging(dragging);
+
+  if (dragging) {
+    console.log("Iniciou o arraste");
+    // Pausar atualizações automáticas
+    // Mostrar tooltip com valor
+  } else {
+    console.log("Terminou o arraste");
+    // Retomar atualizações
+    // Salvar valor final
+  }
+};
+
+<Slider value={value} onChange={setValue} onDragging={handleDragging} />;
+
+{
+  isDragging && <div className="tooltip">Arrastando: {Math.round(value)}%</div>;
+}
+```
+
+## Hook useSlider
+
+O hook `useSlider` oferece várias vantagens sobre o gerenciamento manual de estado:
+
+### Validação Automática
+
+```tsx
+const [value, setValue] = useSlider(50);
+
+// Tentativa de definir valor inválido é automaticamente corrigida
+setValue(150); // Automaticamente limitado a 100
+setValue(-10); // Automaticamente limitado a 0
+setValue(75); // Valor válido é mantido
+```
+
+### Inicialização Segura
+
+```tsx
+// Valores de inicialização são validados
+const [volume, setVolume] = useSlider(-5); // Inicia em 0
+const [brightness, setBrightness] = useSlider(150); // Inicia em 100
+const [contrast, setContrast] = useSlider(50); // Inicia em 50
+```
+
+### Simplicidade de Uso
+
+```tsx
+// Sem useSlider (mais código, sem validação)
+const [volume, setVolume] = useState(50);
+const handleVolumeChange = (value) => {
+  const clampedValue = Math.min(Math.max(value, 0), 100);
+  setVolume(clampedValue);
+};
+
+// Com useSlider (menos código, validação automática)
+const [volume, setVolume] = useSlider(50);
+// setValue já inclui toda a validação necessária
+```
+
+## Conversões de Valor
+
+O Slider trabalha com valores de 0-100, mas você pode facilmente converter para outros intervalos:
+
+```tsx
+// Converter para intervalo específico
+const convertRange = (value, min, max) => {
+  return (value / 100) * (max - min) + min;
+};
+
+// Converter de volta para 0-100
+const convertToSlider = (value, min, max) => {
+  return ((value - min) / (max - min)) * 100;
+};
+
+// Exemplo: Slider para temperatura (0°C a 40°C)
+const [tempSliderValue, setTempSliderValue] = useSlider(50); // 50% = 20°C
+const actualTemperature = convertRange(tempSliderValue, 0, 40);
+
+const handleTempChange = (sliderValue) => {
+  setTempSliderValue(sliderValue);
+  const temp = convertRange(sliderValue, 0, 40);
+  console.log(`Temperatura: ${temp.toFixed(1)}°C`);
+};
+
+<div>
+  <label>Temperatura: {actualTemperature.toFixed(1)}°C</label>
+  <Slider value={tempSliderValue} onChange={handleTempChange} />
+</div>;
+
+// Exemplo: Slider para preço (R$ 10 a R$ 500)
+const [priceSliderValue, setPriceSliderValue] = useSlider(20); // 20% = R$ 108
+const actualPrice = convertRange(priceSliderValue, 10, 500);
+
+<div>
+  <label>Preço: R$ {actualPrice.toFixed(2)}</label>
+  <Slider value={priceSliderValue} onChange={setPriceSliderValue} />
+</div>;
+```
+
+## Propriedades
+
+**`value`** - `number` (obrigatório)
+Valor atual do slider (0-100)
+
+**`onChange`** - `(value: number) => void` (obrigatório)
+Função callback chamada quando o valor muda
+
+**`disabled`** - `boolean` (padrão: `false`)
+Se o slider está desabilitado
+
+**`onDragging`** - `(value: boolean) => void`
+Função callback chamada quando o estado de arraste muda
+
+**`className`** - `string`
+Classes CSS adicionais para estilização
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      Todas as outras propriedades HTML padrão de `div` também são suportadas,
+      exceto `onChange` que é controlada pelo componente.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Hook useSlider
+
+**`defaultValue`** - `number` (opcional, padrão: `0`)
+Valor inicial para o slider. Se fornecido um valor fora do intervalo 0-100, será automaticamente ajustado para o limite mais próximo
+
+**Retorna:** `[number, (value: number) => void]`
+
+- **`[0]`** - Valor atual do slider (sempre entre 0-100)
+- **`[1]`** - Função para atualizar o valor com validação automática de limites
+
+### Exemplos de uso do hook
+
+```tsx
+// Uso básico
+const [value, setValue] = useSlider(); // Inicia em 0
+
+// Com valor inicial
+const [volume, setVolume] = useSlider(75); // Inicia em 75
+
+// Valores fora do limite são ajustados automaticamente
+const [brightness, setBrightness] = useSlider(150); // Inicia em 100
+const [contrast, setContrast] = useSlider(-10); // Inicia em 0
+
+// Uso em componente funcional
+function AudioControls() {
+  const [masterVolume, setMasterVolume] = useSlider(80);
+  const [bassLevel, setBassLevel] = useSlider(50);
+
+  return (
+    <div>
+      <Slider value={masterVolume} onChange={setMasterVolume} />
+      <Slider value={bassLevel} onChange={setBassLevel} />
+    </div>
+  );
+}
+```
+
+## Acessibilidade
+
+O componente `Slider` foi desenvolvido com acessibilidade em mente:
+
+- Suporte completo a navegação por mouse
+- Estados visuais claros para hover, active e disabled
+- Feedback visual durante arraste
+- Valores precisos com controle suave
+- Suporte a eventos de mouse nativos
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Navegação por teclado</AlertTitle>
+    <AlertDescription>
+      Atualmente o componente suporta apenas interação por mouse. Para casos que
+      requerem navegação por teclado, considere usar o input type="range" nativo
+      do HTML.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Performance
+
+Para sliders que mudam frequentemente:
+
+```tsx
+// Use throttle para limitar atualizações
+import { throttle } from "lodash";
+
+const throttledOnChange = useMemo(
+  () =>
+    throttle((value) => {
+      // Operações custosas aqui
+      updateExpensiveState(value);
+    }, 100),
+  []
+);
+
+<Slider
+  value={value}
+  onChange={(newValue) => {
+    setValue(newValue); // Atualização imediata da UI
+    throttledOnChange(newValue); // Operações custosas throttled
+  }}
+/>;
+```
+
+## Notas Importantes
+
+- O componente é sempre controlado - requer `value` e `onChange`
+- Valores válidos estão no intervalo de 0 a 100
+- **Recomenda-se usar o hook `useSlider`** para gerenciamento de estado com validação automática
+- Use conversões para trabalhar com outros intervalos numéricos
+- O callback `onDragging` é útil para otimizações de performance
+- Estados de disabled impedem toda interação
+- O componente suporta apenas interação por mouse atualmente
+- Para valores muito precisos, considere combinar com um Input numérico
+- A responsividade é automática - funciona bem em dispositivos móveis
+- O hook `useSlider` valida automaticamente valores fora do intervalo 0-100
+- Preferir `useSlider` ao `useState` garante consistência e previne bugs de validação
