@@ -11,10 +11,10 @@ const SideLinkContainer = styled(Link)`
   text-decoration: none;
   color: var(--text-body);
 
-  background-color: var(--background);
+  background-color: var(--card);
 
   &:hover {
-    filter: brightness(0.97);
+    background-color: var(--card-foreground-primary);
   }
 
   &.active {

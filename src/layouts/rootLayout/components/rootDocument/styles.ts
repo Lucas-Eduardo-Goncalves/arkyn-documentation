@@ -1,7 +1,7 @@
 import { styled } from "@linaria/react";
 
 const RootDocumentContainer = styled.body`
-  background: var(--background);
+  background: var(--card);
   overflow-y: auto;
 
   display: flex;

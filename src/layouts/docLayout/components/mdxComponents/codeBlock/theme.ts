@@ -2,7 +2,7 @@ import type { PrismTheme } from "prism-react-renderer";
 
 const theme: PrismTheme = {
   plain: {
-    backgroundColor: "#f1f5f9",
+    backgroundColor: "var(--card-foreground-primary)",
     color: "#475569",
     fontWeight: "500",
   },

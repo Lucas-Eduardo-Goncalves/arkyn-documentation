@@ -1,0 +1,531 @@
+# Textarea
+
+import {
+  Textarea,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+O componente `Textarea` é usado para entrada de texto de múltiplas linhas com estilização personalizável e suporte a validação. É ideal para campos que requerem texto longo como descrições, comentários, mensagens e biografias.
+
+## Importação
+
+```tsx
+import { Textarea } from "@arkyn/components";
+```
+
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários e identificação
+
+**`label`** - `string`
+Texto do rótulo a ser exibido acima do textarea
+
+**`showAsterisk`** - `boolean`
+Se deve mostrar asterisco no rótulo para campos obrigatórios
+
+**`errorMessage`** - `string`
+Mensagem de erro a ser exibida abaixo do textarea
+
+**`size`** - `"md" | "lg"` (padrão: `"md"`)
+Variante de tamanho do textarea
+
+**`variant`** - `"solid" | "outline"` (padrão: `"solid"`)
+Variante visual do textarea
+
+Todas as outras propriedades HTML padrão de `<textarea>` também são suportadas, exceto `name` que é controlado pelo componente.
+
+## Tamanhos
+
+Os tamanhos disponíveis são `md` e `lg`, oferecendo diferentes alturas e paddings para se adequar às necessidades do layout.
+
+<div className="noContent column">
+  <Textarea
+    name="description-md"
+    label="Descrição (médio)"
+    placeholder="Digite a descrição..."
+    size="md"
+    rows={3}
+  />
+  <Textarea
+    name="description-lg"
+    label="Descrição (grande)"
+    placeholder="Digite a descrição..."
+    size="lg"
+    rows={3}
+  />
+</div>
+
+```tsx
+<Textarea
+  name="description-md"
+  label="Descrição (médio)"
+  placeholder="Digite a descrição..."
+  size="md"
+  rows={3}
+/>
+<Textarea
+  name="description-lg"
+  label="Descrição (grande)"
+  placeholder="Digite a descrição..."
+  size="lg"
+  rows={3}
+/>
+```
+
+## Variantes
+
+As variantes disponíveis são `solid` e `outline`, proporcionando diferentes estilos visuais para se adequar ao design da interface.
+
+<div className="noContent column">
+  <Textarea
+    name="comment-solid"
+    label="Comentário (sólido)"
+    placeholder="Digite seu comentário..."
+    variant="solid"
+    rows={3}
+  />
+  <Textarea
+    name="comment-outline"
+    label="Comentário (contorno)"
+    placeholder="Digite seu comentário..."
+    variant="outline"
+    rows={3}
+  />
+</div>
+
+```tsx
+<Textarea
+  name="comment-solid"
+  label="Comentário (sólido)"
+  placeholder="Digite seu comentário..."
+  variant="solid"
+  rows={3}
+/>
+<Textarea
+  name="comment-outline"
+  label="Comentário (contorno)"
+  placeholder="Digite seu comentário..."
+  variant="outline"
+  rows={3}
+/>
+```
+
+## Textarea com rótulos
+
+Os rótulos ajudam a identificar o propósito do campo e podem incluir um asterisco para indicar campos obrigatórios.
+
+<div className="noContent column">
+  <Textarea
+    name="bio"
+    label="Biografia"
+    placeholder="Conte-nos sobre você..."
+    rows={4}
+  />
+  <Textarea
+    name="description"
+    label="Descrição do Produto"
+    placeholder="Descreva seu produto..."
+    showAsterisk
+    rows={4}
+  />
+  <Textarea
+    name="message"
+    label="Mensagem"
+    placeholder="Digite sua mensagem..."
+    showAsterisk
+    rows={3}
+  />
+</div>
+
+```tsx
+<Textarea
+  name="bio"
+  label="Biografia"
+  placeholder="Conte-nos sobre você..."
+  rows={4}
+/>
+<Textarea
+  name="description"
+  label="Descrição do Produto"
+  placeholder="Descreva seu produto..."
+  showAsterisk
+  rows={4}
+/>
+<Textarea
+  name="message"
+  label="Mensagem"
+  placeholder="Digite sua mensagem..."
+  showAsterisk
+  rows={3}
+/>
+```
+
+## Controle de Tamanho
+
+Use as propriedades `rows` e `cols` para controlar as dimensões do textarea, ou use `style` para controles mais específicos.
+
+<div className="noContent column">
+  <Textarea
+    name="small-text"
+    label="Texto Pequeno"
+    placeholder="Comentário breve..."
+    rows={2}
+    cols={30}
+  />
+  <Textarea
+    name="medium-text"
+    label="Texto Médio"
+    placeholder="Descrição detalhada..."
+    rows={4}
+    cols={50}
+  />
+  <Textarea
+    name="large-text"
+    label="Texto Extenso"
+    placeholder="Artigo ou documentação..."
+    rows={8}
+    cols={70}
+  />
+</div>
+
+```tsx
+<Textarea
+  name="small-text"
+  label="Texto Pequeno"
+  placeholder="Comentário breve..."
+  rows={2}
+  cols={30}
+/>
+<Textarea
+  name="medium-text"
+  label="Texto Médio"
+  placeholder="Descrição detalhada..."
+  rows={4}
+  cols={50}
+/>
+<Textarea
+  name="large-text"
+  label="Texto Extenso"
+  placeholder="Artigo ou documentação..."
+  rows={8}
+  cols={70}
+/>
+```
+
+## Controle de Redimensionamento
+
+Use a propriedade `style` com `resize` para controlar como o usuário pode redimensionar o textarea.
+
+<div className="noContent column">
+  <Textarea
+    name="resize-both"
+    label="Redimensionar (ambos)"
+    placeholder="Pode redimensionar em ambas as direções..."
+    rows={3}
+    style={{ resize: "both" }}
+  />
+  <Textarea
+    name="resize-vertical"
+    label="Redimensionar (vertical)"
+    placeholder="Pode redimensionar apenas verticalmente..."
+    rows={3}
+    style={{ resize: "vertical" }}
+  />
+  <Textarea
+    name="resize-horizontal"
+    label="Redimensionar (horizontal)"
+    placeholder="Pode redimensionar apenas horizontalmente..."
+    rows={3}
+    style={{ resize: "horizontal" }}
+  />
+  <Textarea
+    name="resize-none"
+    label="Sem redimensionamento"
+    placeholder="Não pode ser redimensionado..."
+    rows={3}
+    style={{ resize: "none" }}
+  />
+</div>
+
+```tsx
+<Textarea
+  name="resize-both"
+  label="Redimensionar (ambos)"
+  placeholder="Pode redimensionar em ambas as direções..."
+  rows={3}
+  style={{ resize: 'both' }}
+/>
+<Textarea
+  name="resize-vertical"
+  label="Redimensionar (vertical)"
+  placeholder="Pode redimensionar apenas verticalmente..."
+  rows={3}
+  style={{ resize: 'vertical' }}
+/>
+<Textarea
+  name="resize-horizontal"
+  label="Redimensionar (horizontal)"
+  placeholder="Pode redimensionar apenas horizontalmente..."
+  rows={3}
+  style={{ resize: 'horizontal' }}
+/>
+<Textarea
+  name="resize-none"
+  label="Sem redimensionamento"
+  placeholder="Não pode ser redimensionado..."
+  rows={3}
+  style={{ resize: 'none' }}
+/>
+```
+
+## Limite de Caracteres
+
+Use `maxLength` para limitar a quantidade de caracteres que podem ser inseridos.
+
+<div className="noContent column">
+  <Textarea
+    name="short-message"
+    label="Mensagem Curta (máx. 100 caracteres)"
+    placeholder="Digite uma mensagem breve..."
+    maxLength={100}
+    rows={2}
+  />
+  <Textarea
+    name="tweet-like"
+    label="Tweet (máx. 280 caracteres)"
+    placeholder="O que está acontecendo?"
+    maxLength={280}
+    rows={3}
+  />
+  <Textarea
+    name="feedback"
+    label="Feedback (máx. 500 caracteres)"
+    placeholder="Compartilhe seu feedback..."
+    maxLength={500}
+    rows={4}
+    showAsterisk
+  />
+</div>
+
+```tsx
+<Textarea
+  name="short-message"
+  label="Mensagem Curta (máx. 100 caracteres)"
+  placeholder="Digite uma mensagem breve..."
+  maxLength={100}
+  rows={2}
+/>
+<Textarea
+  name="tweet-like"
+  label="Tweet (máx. 280 caracteres)"
+  placeholder="O que está acontecendo?"
+  maxLength={280}
+  rows={3}
+/>
+<Textarea
+  name="feedback"
+  label="Feedback (máx. 500 caracteres)"
+  placeholder="Compartilhe seu feedback..."
+  maxLength={500}
+  rows={4}
+  showAsterisk
+/>
+```
+
+## Estados do Textarea
+
+### Textarea desabilitado
+
+<div className="noContent column">
+  <Textarea
+    name="disabled-text"
+    label="Campo desabilitado"
+    placeholder="Este campo está desabilitado"
+    disabled
+    rows={3}
+  />
+  <Textarea
+    name="disabled-with-value"
+    label="Desabilitado com valor"
+    value="Este texto não pode ser editado porque o campo está desabilitado."
+    disabled
+    rows={3}
+  />
+</div>
+
+```tsx
+<Textarea
+  name="disabled-text"
+  label="Campo desabilitado"
+  placeholder="Este campo está desabilitado"
+  disabled
+  rows={3}
+/>
+<Textarea
+  name="disabled-with-value"
+  label="Desabilitado com valor"
+  value="Este texto não pode ser editado porque o campo está desabilitado."
+  disabled
+  rows={3}
+/>
+```
+
+### Textarea apenas leitura
+
+<div className="noContent column">
+  <Textarea
+    name="readonly-text"
+    label="Campo apenas leitura"
+    value="Este conteúdo é apenas para leitura e não pode ser editado pelo usuário."
+    readOnly
+    rows={3}
+  />
+  <Textarea
+    name="terms-conditions"
+    label="Termos e Condições"
+    value="Aqui estão os termos e condições da nossa aplicação. Este texto é apenas para visualização e não pode ser modificado."
+    readOnly
+    rows={4}
+    variant="outline"
+  />
+</div>
+
+```tsx
+<Textarea
+  name="readonly-text"
+  label="Campo apenas leitura"
+  value="Este conteúdo é apenas para leitura e não pode ser editado pelo usuário."
+  readOnly
+  rows={3}
+/>
+<Textarea
+  name="terms-conditions"
+  label="Termos e Condições"
+  value="Aqui estão os termos e condições da nossa aplicação. Este texto é apenas para visualização e não pode ser modificado."
+  readOnly
+  rows={4}
+  variant="outline"
+/>
+```
+
+## Validação e Erros
+
+<div className="noContent column">
+  <Textarea
+    name="invalid-description"
+    label="Descrição"
+    placeholder="Digite uma descrição..."
+    errorMessage="A descrição deve ter pelo menos 10 caracteres"
+    showAsterisk
+    rows={3}
+  />
+  <Textarea
+    name="required-message"
+    label="Mensagem"
+    placeholder="Digite sua mensagem..."
+    errorMessage="Este campo é obrigatório"
+    showAsterisk
+    rows={4}
+  />
+  <Textarea
+    name="invalid-feedback"
+    label="Feedback"
+    placeholder="Compartilhe seu feedback..."
+    errorMessage="O feedback não pode conter palavras inadequadas"
+    rows={3}
+  />
+</div>
+
+```tsx
+<Textarea
+  name="invalid-description"
+  label="Descrição"
+  placeholder="Digite uma descrição..."
+  errorMessage="A descrição deve ter pelo menos 10 caracteres"
+  showAsterisk
+  rows={3}
+/>
+<Textarea
+  name="required-message"
+  label="Mensagem"
+  placeholder="Digite sua mensagem..."
+  errorMessage="Este campo é obrigatório"
+  showAsterisk
+  rows={4}
+/>
+<Textarea
+  name="invalid-feedback"
+  label="Feedback"
+  placeholder="Compartilhe seu feedback..."
+  errorMessage="O feedback não pode conter palavras inadequadas"
+  rows={3}
+/>
+```
+
+## Textarea Controlado
+
+Use `value` e `onChange` para controlar o estado do textarea:
+
+```tsx
+const [message, setMessage] = useState("");
+
+<Textarea
+  name="controlled-message"
+  label="Mensagem Controlada"
+  value={message}
+  onChange={(e) => setMessage(e.target.value)}
+  placeholder="Digite sua mensagem..."
+  rows={4}
+  showAsterisk
+/>;
+```
+
+## Acessibilidade
+
+O componente `Textarea` foi desenvolvido com acessibilidade em mente:
+
+- Associação automática entre label e textarea via `htmlFor` e `id`
+- Suporte completo a navegação por teclado
+- Estados visuais claros para focus, error e disabled
+- Mensagens de erro são anunciadas por leitores de tela
+- Suporte a `aria-label` e outros atributos ARIA
+- Redimensionamento acessível via mouse e teclado
+
+## Integração com Formulários
+
+O componente se integra nativamente com sistemas de gerenciamento de formulário:
+
+- Validação automática considerando a máscara aplicada
+- Exibição de erros contextuais
+- Gerenciamento de estado do formulário
+- Suporte a valores separados ou com máscara
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Formulários customizáveis</AlertTitle>
+    <AlertDescription>
+      Para formulários mais complexos, é recomendado utilizar o [Form
+      Provider](/components/providers/form-provider) que oferece integração
+      nativa com todas as ferramentas de formulário de uma única só vez.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notas Importantes
+
+- A propriedade `name` é obrigatória para integração com formulários
+- Use `rows` e `cols` para definir o tamanho inicial do textarea
+- A propriedade `resize` no style controla como o usuário pode redimensionar
+- `maxLength` limita a quantidade de caracteres que podem ser inseridos
+- O componente suporta todos os eventos padrão de textarea (onChange, onFocus, onBlur, etc.)
+- Estados de disabled e readOnly afetam tanto a aparência quanto a funcionalidade
+- O componente herda todas as propriedades HTML padrão de `<textarea>`, exceto `name`
+- Para textarea's grandes, considere usar `resize: 'vertical'` para melhor UX
+- Mensagens de erro são exibidas abaixo do textarea de forma consistente
+- O foco é gerenciado automaticamente quando o usuário clica na área do componente

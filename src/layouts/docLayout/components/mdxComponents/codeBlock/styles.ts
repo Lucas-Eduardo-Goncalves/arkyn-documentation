@@ -12,7 +12,7 @@ const InlineBlockContainer = styled.code`
 `;
 
 const BlockContainer = styled.div`
-  background-color: var(--background);
+  background-color: var(--card-foreground-primary);
   border: 1px solid var(--border);
   border-radius: 8px;
 `;
