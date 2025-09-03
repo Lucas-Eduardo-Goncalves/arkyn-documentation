@@ -1,6 +1,14 @@
 # Button
 
-import { Button } from "@arkyn/components";
+import {
+  Button,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
 import {
   Save,
   Trash2,
@@ -23,31 +31,6 @@ O componente `Button` é usado para interações do usuário e envio de formulá
 ```tsx
 import { Button } from "@arkyn/components";
 ```
-
-## Propriedades
-
-**`isLoading`** - `boolean` (padrão: `false`)
-Controla o estado de carregamento com spinner
-
-**`loadingText`** - `string`
-Texto a ser exibido durante o estado de carregamento
-
-**`size`** - `"xs" | "sm" | "md" | "lg"` (padrão: `"md"`)
-Tamanho do botão
-
-**`variant`** - `"solid" | "outline" | "ghost" | "invisible"` (padrão: `"solid"`)
-Variante visual do botão
-
-**`scheme`** - `"primary" | "success" | "warning" | "danger" | "info"` (padrão: `"primary"`)
-Esquema de cores do botão
-
-**`leftIcon`** - `LucideIcon`
-Ícone opcional para exibir à esquerda
-
-**`rightIcon`** - `LucideIcon`
-Ícone opcional para exibir à direita
-
-Todas as outras propriedades HTML padrão de `<button>` também são suportadas.
 
 ## Tamanhos
 
@@ -230,6 +213,39 @@ O texto personalizado de carregamento permite fornecer contexto específico sobr
 <Button isLoading loadingText="Enviando..." scheme="success">Enviar</Button>
 <Button isLoading loadingText="Processando..." scheme="info">Processar</Button>
 ```
+
+## Propriedades
+
+**`isLoading`** - `boolean` (padrão: `false`)
+Controla o estado de carregamento com spinner
+
+**`loadingText`** - `string`
+Texto a ser exibido durante o estado de carregamento
+
+**`size`** - `"xs" | "sm" | "md" | "lg"` (padrão: `"md"`)
+Tamanho do botão
+
+**`variant`** - `"solid" | "outline" | "ghost" | "invisible"` (padrão: `"solid"`)
+Variante visual do botão
+
+**`scheme`** - `"primary" | "success" | "warning" | "danger" | "info"` (padrão: `"primary"`)
+Esquema de cores do botão
+
+**`leftIcon`** - `LucideIcon`
+Ícone opcional para exibir à esquerda
+
+**`rightIcon`** - `LucideIcon`
+Ícone opcional para exibir à direita
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      Todas as outras propriedades HTML padrão de `<button>` também são suportadas.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
 
 ## Notas Importantes
 

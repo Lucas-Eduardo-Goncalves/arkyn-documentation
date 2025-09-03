@@ -1,6 +1,13 @@
 # Divider
 
-import { Divider } from "@arkyn/components";
+import {
+  Divider,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
 
 O componente `Divider` é usado para separar visualmente seções de conteúdo em uma interface. Ele fornece uma linha horizontal ou vertical que ajuda a organizar e estruturar o layout, melhorando a legibilidade e a hierarquia visual.
 
@@ -9,13 +16,6 @@ O componente `Divider` é usado para separar visualmente seções de conteúdo e
 ```tsx
 import { Divider } from "@arkyn/components";
 ```
-
-## Propriedades
-
-**`orientation`** - `"horizontal" | "vertical"` (padrão: `"horizontal"`)
-Define a orientação do divisor
-
-Todas as outras propriedades HTML padrão de `<div>` também são suportadas.
 
 ## Orientações
 
@@ -26,7 +26,7 @@ O componente oferece duas orientações: horizontal e vertical. A orientação h
 A orientação horizontal é a padrão e é usada para separar seções de conteúdo que estão organizadas verticalmente.
 
 <div className="noContent">
-  <div>
+  <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
     <p>Seção 1</p>
     <Divider />
     <p>Seção 2</p>
@@ -36,7 +36,7 @@ A orientação horizontal é a padrão e é usada para separar seções de conte
 </div>
 
 ```tsx
-<div>
+<div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
   <p>Seção 1</p>
   <Divider />
   <p>Seção 2</p>
@@ -66,222 +66,6 @@ A orientação vertical é usada para separar elementos que estão dispostos hor
   <span>Item 2</span>
   <Divider orientation="vertical" />
   <span>Item 3</span>
-</div>
-```
-
-## Casos de Uso Comuns
-
-O `Divider` é extremamente útil em diversos cenários de interface para organizar e estruturar o conteúdo.
-
-### Separação de Seções
-
-Use o divisor horizontal para separar diferentes seções de conteúdo em uma página ou card.
-
-<div className="noContent">
-  <div
-    style={{
-      padding: "16px",
-      border: "1px solid #e2e8f0",
-      borderRadius: "8px",
-    }}
-  >
-    <h3>Informações Pessoais</h3>
-    <p>Nome: João Silva</p>
-    <p>Email: joao@exemplo.com</p>
-
-    <Divider />
-
-    <h3>Informações de Contato</h3>
-    <p>Telefone: (11) 99999-9999</p>
-    <p>Endereço: São Paulo, SP</p>
-
-    <Divider />
-
-    <h3>Preferências</h3>
-    <p>Tema: Claro</p>
-    <p>Idioma: Português</p>
-
-  </div>
-</div>
-
-```tsx
-<div>
-  <h3>Informações Pessoais</h3>
-  <p>Nome: João Silva</p>
-  <p>Email: joao@exemplo.com</p>
-
-  <Divider />
-
-  <h3>Informações de Contato</h3>
-  <p>Telefone: (11) 99999-9999</p>
-  <p>Endereço: São Paulo, SP</p>
-
-  <Divider />
-
-  <h3>Preferências</h3>
-  <p>Tema: Claro</p>
-  <p>Idioma: Português</p>
-</div>
-```
-
-### Navegação e Menus
-
-Use o divisor vertical para separar itens de navegação ou links em uma barra horizontal.
-
-<div className="noContent">
-  <nav
-    style={{
-      display: "flex",
-      alignItems: "center",
-      gap: "12px",
-      padding: "8px 0",
-    }}
-  >
-    <a href="#" style={{ textDecoration: "none", color: "#3b82f6" }}>
-      Início
-    </a>
-    <Divider orientation="vertical" />
-    <a href="#" style={{ textDecoration: "none", color: "#3b82f6" }}>
-      Produtos
-    </a>
-    <Divider orientation="vertical" />
-    <a href="#" style={{ textDecoration: "none", color: "#3b82f6" }}>
-      Sobre
-    </a>
-    <Divider orientation="vertical" />
-    <a href="#" style={{ textDecoration: "none", color: "#3b82f6" }}>
-      Contato
-    </a>
-  </nav>
-</div>
-
-```tsx
-<nav style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-  <a href="#">Início</a>
-  <Divider orientation="vertical" />
-  <a href="#">Produtos</a>
-  <Divider orientation="vertical" />
-  <a href="#">Sobre</a>
-  <Divider orientation="vertical" />
-  <a href="#">Contato</a>
-</nav>
-```
-
-### Listas e Cards
-
-Organize itens em listas verticais usando divisores horizontais para melhor legibilidade.
-
-<div className="noContent">
-  <div
-    style={{
-      border: "1px solid #e2e8f0",
-      borderRadius: "8px",
-      overflow: "hidden",
-    }}
-  >
-    <div style={{ padding: "12px 16px" }}>
-      <strong>Tarefa 1</strong>
-      <p style={{ margin: "4px 0 0", color: "#64748b" }}>
-        Revisar documentação
-      </p>
-    </div>
-
-    <Divider />
-
-    <div style={{ padding: "12px 16px" }}>
-      <strong>Tarefa 2</strong>
-      <p style={{ margin: "4px 0 0", color: "#64748b" }}>
-        Implementar novo componente
-      </p>
-    </div>
-
-    <Divider />
-
-    <div style={{ padding: "12px 16px" }}>
-      <strong>Tarefa 3</strong>
-      <p style={{ margin: "4px 0 0", color: "#64748b" }}>
-        Fazer testes unitários
-      </p>
-    </div>
-
-  </div>
-</div>
-
-```tsx
-<div>
-  <div>
-    <strong>Tarefa 1</strong>
-    <p>Revisar documentação</p>
-  </div>
-
-  <Divider />
-
-  <div>
-    <strong>Tarefa 2</strong>
-    <p>Implementar novo componente</p>
-  </div>
-
-  <Divider />
-
-  <div>
-    <strong>Tarefa 3</strong>
-    <p>Fazer testes unitários</p>
-  </div>
-</div>
-```
-
-### Grupos de Botões
-
-Use divisores verticais para separar visualmente grupos de botões ou ações relacionadas.
-
-<div className="noContent">
-  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-    <button
-      style={{
-        padding: "8px 16px",
-        border: "1px solid #d1d5db",
-        borderRadius: "6px",
-        background: "white",
-      }}
-    >
-      Salvar
-    </button>
-    <button
-      style={{
-        padding: "8px 16px",
-        border: "1px solid #d1d5db",
-        borderRadius: "6px",
-        background: "white",
-      }}
-    >
-      Cancelar
-    </button>
-
-    <Divider orientation="vertical" />
-
-    <button
-      style={{
-        padding: "8px 16px",
-        border: "1px solid #dc2626",
-        borderRadius: "6px",
-        background: "white",
-        color: "#dc2626",
-      }}
-    >
-      Excluir
-    </button>
-
-  </div>
-</div>
-
-```tsx
-<div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-  <button>Salvar</button>
-  <button>Cancelar</button>
-
-  <Divider orientation="vertical" />
-
-  <button>Excluir</button>
 </div>
 ```
 
@@ -318,6 +102,21 @@ O `Divider` pode ser personalizado através de classes CSS customizadas para se 
   <p>Conteúdo abaixo</p>
 </div>
 ```
+
+## Propriedades
+
+**`orientation`** - `"horizontal" | "vertical"` (padrão: `"horizontal"`)
+Define a orientação do divisor
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      Todas as outras propriedades HTML padrão de `<div>` também são suportadas.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
 
 ## Acessibilidade
 

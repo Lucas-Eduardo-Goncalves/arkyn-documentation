@@ -28,56 +28,6 @@ O componente `PhoneInput` é um campo de entrada especializado para números de 
 import { PhoneInput } from "@arkyn/components";
 ```
 
-## Propriedades
-
-**`name`** - `string` (obrigatório)
-Nome do campo para manipulação de formulários e identificação
-
-**`label`** - `string`
-Texto do rótulo a ser exibido acima do input
-
-**`showAsterisk`** - `boolean`
-Se deve mostrar asterisco no rótulo para campos obrigatórios
-
-**`errorMessage`** - `string`
-Mensagem de erro a ser exibida abaixo do input
-
-**`size`** - `"md" | "lg"` (padrão: `"md"`)
-Variante de tamanho do input
-
-**`variant`** - `"solid" | "outline"` (padrão: `"solid"`)
-Variante visual do input
-
-**`defaultValue`** - `string`
-Valor padrão do número de telefone
-
-**`defaultCountry`** - `string`
-Código ISO do país padrão a ser selecionado
-
-**`disabled`** - `boolean` (padrão: `false`)
-Se o input está desabilitado
-
-**`readOnly`** - `boolean` (padrão: `false`)
-Se o input é apenas leitura
-
-**`isLoading`** - `boolean` (padrão: `false`)
-Se o input está em estado de carregamento
-
-**`className`** - `string`
-Classes CSS adicionais para estilização
-
-**`id`** - `string`
-Identificador único opcional para o input
-
-**`searchCountryPlaceholder`** - `string` (padrão: `"Pesquisar país"`)
-Texto placeholder para o campo de busca de países
-
-**`notFoundCountryText`** - `string` (padrão: `"Nenhum país encontrado"`)
-Texto exibido quando nenhum país corresponde à busca
-
-**`onChange`** - `(formattedPhone: string) => void`
-Função callback chamada quando o número muda, recebe o valor formatado com código do país
-
 ## Tamanhos
 
 Os tamanhos disponíveis são `md` e `lg`, seguindo o padrão dos outros componentes de input.
@@ -179,6 +129,28 @@ O componente suporta formatação automática para diversos países, aplicando a
   label="Phone with value"
   defaultCountry="US"
   defaultValue="+1-408 1234567"
+/>
+```
+
+## Detecção Automática de País
+
+O componente pode detectar automaticamente o país baseado no valor padrão fornecido:
+
+```tsx
+// Detecta automaticamente que é um número brasileiro
+<PhoneInput
+  name="auto-detect"
+  label="Telefone"
+  defaultValue="+55 11999999999"
+  // Não precisa especificar defaultCountry
+/>
+
+// Detecta automaticamente que é um número americano
+<PhoneInput
+  name="auto-detect-us"
+  label="Phone"
+  defaultValue="+1-408 1234567"
+  // Não precisa especificar defaultCountry
 />
 ```
 
@@ -418,6 +390,66 @@ O dropdown de países inclui:
 - **Busca**: Filtragem em tempo real por nome do país
 - **Suporte**: Mais de 200 países disponíveis
 
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários e identificação
+
+**`label`** - `string`
+Texto do rótulo a ser exibido acima do input
+
+**`showAsterisk`** - `boolean`
+Se deve mostrar asterisco no rótulo para campos obrigatórios
+
+**`errorMessage`** - `string`
+Mensagem de erro a ser exibida abaixo do input
+
+**`size`** - `"md" | "lg"` (padrão: `"md"`)
+Variante de tamanho do input
+
+**`variant`** - `"solid" | "outline"` (padrão: `"solid"`)
+Variante visual do input
+
+**`defaultValue`** - `string`
+Valor padrão do número de telefone
+
+**`defaultCountry`** - `string`
+Código ISO do país padrão a ser selecionado
+
+**`disabled`** - `boolean` (padrão: `false`)
+Se o input está desabilitado
+
+**`readOnly`** - `boolean` (padrão: `false`)
+Se o input é apenas leitura
+
+**`isLoading`** - `boolean` (padrão: `false`)
+Se o input está em estado de carregamento
+
+**`className`** - `string`
+Classes CSS adicionais para estilização
+
+**`id`** - `string`
+Identificador único opcional para o input
+
+**`searchCountryPlaceholder`** - `string` (padrão: `"Pesquisar país"`)
+Texto placeholder para o campo de busca de países
+
+**`notFoundCountryText`** - `string` (padrão: `"Nenhum país encontrado"`)
+Texto exibido quando nenhum país corresponde à busca
+
+**`onChange`** - `(formattedPhone: string) => void`
+Função callback chamada quando o número muda, recebe o valor formatado com código do país
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      Todas as outras propriedades HTML padrão de `<input>` também são suportadas, exceto `type` (que é fixo como `tel`).
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
 ## Acessibilidade
 
 O componente `PhoneInput` foi desenvolvido com acessibilidade em mente:
@@ -438,7 +470,7 @@ O componente se integra nativamente com sistemas de gerenciamento de formulário
 - Gerenciamento de estado do formulário
 - Suporte a valores separados ou com máscara
 
-<AlertContainer schema="info">
+<AlertContainer schema="warning">
   <AlertIcon />
   <AlertContent>
     <AlertTitle>Formulários customizáveis</AlertTitle>
@@ -449,28 +481,6 @@ O componente se integra nativamente com sistemas de gerenciamento de formulário
     </AlertDescription>
   </AlertContent>
 </AlertContainer>
-
-## Detecção Automática de País
-
-O componente pode detectar automaticamente o país baseado no valor padrão fornecido:
-
-```tsx
-// Detecta automaticamente que é um número brasileiro
-<PhoneInput
-  name="auto-detect"
-  label="Telefone"
-  defaultValue="+55 11999999999"
-  // Não precisa especificar defaultCountry
-/>
-
-// Detecta automaticamente que é um número americano
-<PhoneInput
-  name="auto-detect-us"
-  label="Phone"
-  defaultValue="+1-408 1234567"
-  // Não precisa especificar defaultCountry
-/>
-```
 
 ## Notas Importantes
 

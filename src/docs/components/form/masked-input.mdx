@@ -32,55 +32,6 @@ O componente `MaskedInput` é uma versão especializada do input que aplica más
 import { MaskedInput } from "@arkyn/components";
 ```
 
-## Propriedades
-
-**`name`** - `string` (obrigatório)
-Nome do campo para manipulação de formulários
-
-**`mask`** - `string` (obrigatório)
-Padrão da máscara (ex: "**_._**.**\_-**" para CPF)
-
-**`replacement`** - `string | Replacement` (obrigatório)
-Caractere ou configuração de substituição para posições da máscara
-
-**`separate`** - `boolean`
-Se deve separar caracteres da máscara do valor do input
-
-**`showMask`** - `boolean`
-Se deve mostrar o placeholder da máscara
-
-**`label`** - `string`
-Texto do rótulo a ser exibido acima do input
-
-**`errorMessage`** - `string`
-Mensagem de erro a ser exibida abaixo do input
-
-**`isLoading`** - `boolean` (padrão: `false`)
-Controla o estado de carregamento com spinner
-
-**`size`** - `"md" | "lg"` (padrão: `"md"`)
-Tamanho do input
-
-**`variant`** - `"solid" | "outline" | "underline"` (padrão: `"solid"`)
-Variante visual do input
-
-**`prefix`** - `string | LucideIcon`
-Texto ou ícone para exibir no início do input
-
-**`suffix`** - `string | LucideIcon`
-Texto ou ícone para exibir no final do input
-
-**`showAsterisk`** - `boolean`
-Se deve mostrar asterisco no rótulo para campos obrigatórios
-
-**`leftIcon`** - `LucideIcon`
-Ícone opcional para exibir no lado esquerdo
-
-**`rightIcon`** - `LucideIcon`
-Ícone opcional para exibir no lado direito
-
-Todas as outras propriedades HTML padrão de `<input>` também são suportadas, exceto `type` que é controlado pela máscara.
-
 ## Tamanhos
 
 Os tamanhos disponíveis são `md` e `lg`, seguindo o mesmo padrão do componente `Input`.
@@ -573,6 +524,63 @@ Como no componente `Input`, é possível adicionar texto ou ícones no início o
 />
 ```
 
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários
+
+**`mask`** - `string` (obrigatório)
+Padrão da máscara (ex: "**_._**.**\_-**" para CPF)
+
+**`replacement`** - `string | Replacement` (obrigatório)
+Caractere ou configuração de substituição para posições da máscara
+
+**`separate`** - `boolean`
+Se deve separar caracteres da máscara do valor do input
+
+**`showMask`** - `boolean`
+Se deve mostrar o placeholder da máscara
+
+**`label`** - `string`
+Texto do rótulo a ser exibido acima do input
+
+**`errorMessage`** - `string`
+Mensagem de erro a ser exibida abaixo do input
+
+**`isLoading`** - `boolean` (padrão: `false`)
+Controla o estado de carregamento com spinner
+
+**`size`** - `"md" | "lg"` (padrão: `"md"`)
+Tamanho do input
+
+**`variant`** - `"solid" | "outline" | "underline"` (padrão: `"solid"`)
+Variante visual do input
+
+**`prefix`** - `string | LucideIcon`
+Texto ou ícone para exibir no início do input
+
+**`suffix`** - `string | LucideIcon`
+Texto ou ícone para exibir no final do input
+
+**`showAsterisk`** - `boolean`
+Se deve mostrar asterisco no rótulo para campos obrigatórios
+
+**`leftIcon`** - `LucideIcon`
+Ícone opcional para exibir no lado esquerdo
+
+**`rightIcon`** - `LucideIcon`
+Ícone opcional para exibir no lado direito
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      Todas as outras propriedades HTML padrão de `<input>` também são suportadas, exceto `type` que é controlado pela máscara.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
 ## Acessibilidade
 
 O componente `MaskedInput` mantém todas as funcionalidades de acessibilidade do `Input`:
@@ -592,7 +600,7 @@ O componente se integra nativamente com sistemas de gerenciamento de formulário
 - Gerenciamento de estado do formulário
 - Suporte a valores separados ou com máscara
 
-<AlertContainer schema="info">
+<AlertContainer schema="warning">
   <AlertIcon />
   <AlertContent>
     <AlertTitle>Formulários customizáveis</AlertTitle>

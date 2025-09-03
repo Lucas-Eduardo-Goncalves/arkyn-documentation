@@ -55,12 +55,8 @@ const COMPONENTS_MENU: MenuType[] = [
         to: "/components/form/checkbox",
       },
       {
-        label: "RadioGroup",
-        to: "/components/form/radiogroup",
-      },
-      {
-        label: "RadioBox",
-        to: "/components/form/radiobox",
+        label: "Radio",
+        to: "/components/form/radio",
       },
       {
         label: "Switch",

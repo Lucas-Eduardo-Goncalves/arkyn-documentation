@@ -34,43 +34,6 @@ O componente `Input` é usado para campos de entrada de texto com suporte para r
 import { Input } from "@arkyn/components";
 ```
 
-## Propriedades
-
-**`name`** - `string` (obrigatório)
-Nome do campo para manipulação de formulários
-
-**`label`** - `string`
-Texto do rótulo a ser exibido acima do input
-
-**`errorMessage`** - `string`
-Mensagem de erro a ser exibida abaixo do input
-
-**`isLoading`** - `boolean` (padrão: `false`)
-Controla o estado de carregamento com spinner
-
-**`size`** - `"md" | "lg"` (padrão: `"md"`)
-Tamanho do input
-
-**`variant`** - `"solid" | "outline" | "underline"` (padrão: `"solid"`)
-Variante visual do input
-
-**`prefix`** - `string | LucideIcon`
-Texto ou ícone para exibir no início do input
-
-**`suffix`** - `string | LucideIcon`
-Texto ou ícone para exibir no final do input
-
-**`showAsterisk`** - `boolean`
-Se deve mostrar asterisco no rótulo para campos obrigatórios
-
-**`leftIcon`** - `LucideIcon`
-Ícone opcional para exibir no lado esquerdo
-
-**`rightIcon`** - `LucideIcon`
-Ícone opcional para exibir no lado direito
-
-Todas as outras propriedades HTML padrão de `<input>` também são suportadas, exceto `size`, `prefix` e `name`.
-
 ## Tamanhos
 
 Os tamanhos disponíveis são `md` e `lg`. Cada tamanho oferece uma altura e padding diferentes para se adequar às necessidades do layout.
@@ -119,19 +82,6 @@ Os rótulos ajudam a identificar o propósito do campo e podem incluir um asteri
     label="Nome de usuário"
     placeholder="Digite seu nome de usuário"
   />
-  <Input
-    name="email"
-    label="Email"
-    placeholder="Digite seu email"
-    showAsterisk
-  />
-  <Input
-    name="password"
-    label="Senha"
-    type="password"
-    placeholder="Digite sua senha"
-    showAsterisk
-  />
 </div>
 
 ```tsx
@@ -139,19 +89,6 @@ Os rótulos ajudam a identificar o propósito do campo e podem incluir um asteri
   name="username"
   label="Nome de usuário"
   placeholder="Digite seu nome de usuário"
-/>
-<Input
-  name="email"
-  label="Email"
-  placeholder="Digite seu email"
-  showAsterisk
-/>
-<Input
-  name="password"
-  label="Senha"
-  type="password"
-  placeholder="Digite sua senha"
-  showAsterisk
 />
 ```
 
@@ -168,18 +105,6 @@ Os inputs podem incluir ícones à esquerda ou à direita para fornecer contexto
     placeholder="Digite para buscar..."
     leftIcon={Search}
   />
-  <Input
-    name="user-email"
-    label="Email do usuário"
-    placeholder="usuario@exemplo.com"
-    leftIcon={Mail}
-  />
-  <Input
-    name="phone"
-    label="Telefone"
-    placeholder="(11) 99999-9999"
-    leftIcon={Phone}
-  />
 </div>
 
 ```tsx
@@ -188,18 +113,6 @@ Os inputs podem incluir ícones à esquerda ou à direita para fornecer contexto
   label="Buscar"
   placeholder="Digite para buscar..."
   leftIcon={Search}
-/>
-<Input
-  name="user-email"
-  label="Email do usuário"
-  placeholder="usuario@exemplo.com"
-  leftIcon={Mail}
-/>
-<Input
-  name="phone"
-  label="Telefone"
-  placeholder="(11) 99999-9999"
-  leftIcon={Phone}
 />
 ```
 
@@ -212,18 +125,6 @@ Os inputs podem incluir ícones à esquerda ou à direita para fornecer contexto
     placeholder="Digite e use o filtro..."
     rightIcon={Filter}
   />
-  <Input
-    name="location"
-    label="Localização"
-    placeholder="Digite sua cidade"
-    rightIcon={MapPin}
-  />
-  <Input
-    name="website"
-    label="Website"
-    placeholder="Digite a URL"
-    rightIcon={Globe}
-  />
 </div>
 
 ```tsx
@@ -233,57 +134,9 @@ Os inputs podem incluir ícones à esquerda ou à direita para fornecer contexto
   placeholder="Digite e use o filtro..."
   rightIcon={Filter}
 />
-<Input
-  name="location"
-  label="Localização"
-  placeholder="Digite sua cidade"
-  rightIcon={MapPin}
-/>
-<Input
-  name="website"
-  label="Website"
-  placeholder="Digite a URL"
-  rightIcon={Globe}
-/>
 ```
 
-### Ambos os ícones
-
-<div className="noContent column">
-  <Input
-    name="search-filter"
-    label="Busca avançada"
-    placeholder="Digite para buscar..."
-    leftIcon={Search}
-    rightIcon={Filter}
-  />
-  <Input
-    name="user-location"
-    label="Usuário e localização"
-    placeholder="Digite informações..."
-    leftIcon={User}
-    rightIcon={MapPin}
-  />
-</div>
-
-```tsx
-<Input
-  name="search-filter"
-  label="Busca avançada"
-  placeholder="Digite para buscar..."
-  leftIcon={Search}
-  rightIcon={Filter}
-/>
-<Input
-  name="user-location"
-  label="Usuário e localização"
-  placeholder="Digite informações..."
-  leftIcon={User}
-  rightIcon={MapPin}
-/>
-```
-
-## Prefix e Suffix
+## Prefix e suffix
 
 Use prefix e suffix para adicionar texto ou ícones fixos no início ou final do input.
 
@@ -627,77 +480,50 @@ O componente se integra com sistemas de validação de formulário e pode exibir
 />
 ```
 
-## Casos de Uso Avançados
+## Propriedades
 
-### Formulário de login
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários
 
-<div className="noContent column">
-  <Input
-    name="login-email"
-    label="Email"
-    type="email"
-    placeholder="Digite seu email"
-    leftIcon={Mail}
-    showAsterisk
-    variant="outline"
-  />
-  <Input
-    name="login-password"
-    label="Senha"
-    type="password"
-    placeholder="Digite sua senha"
-    leftIcon={Lock}
-    showAsterisk
-    variant="outline"
-  />
-</div>
+**`label`** - `string`
+Texto do rótulo a ser exibido acima do input
 
-```tsx
-<Input
-  name="login-email"
-  label="Email"
-  type="email"
-  placeholder="Digite seu email"
-  leftIcon={Mail}
-  showAsterisk
-  variant="outline"
-/>
-<Input
-  name="login-password"
-  label="Senha"
-  type="password"
-  placeholder="Digite sua senha"
-  leftIcon={Lock}
-  showAsterisk
-  variant="outline"
-/>
-```
+**`errorMessage`** - `string`
+Mensagem de erro a ser exibida abaixo do input
 
-### Busca avançada
+**`isLoading`** - `boolean` (padrão: `false`)
+Controla o estado de carregamento com spinner
 
-<div className="noContent column">
-  <Input
-    name="search-query"
-    label="Buscar produtos"
-    placeholder="Digite o nome do produto..."
-    leftIcon={Search}
-    rightIcon={Filter}
-    size="lg"
-    variant="solid"
-  />
-</div>
+**`size`** - `"md" | "lg"` (padrão: `"md"`)
+Tamanho do input
 
-```tsx
-<Input
-  name="search-query"
-  label="Buscar produtos"
-  placeholder="Digite o nome do produto..."
-  leftIcon={Search}
-  rightIcon={Filter}
-  size="lg"
-  variant="solid"
-/>
-```
+**`variant`** - `"solid" | "outline" | "underline"` (padrão: `"solid"`)
+Variante visual do input
+
+**`prefix`** - `string | LucideIcon`
+Texto ou ícone para exibir no início do input
+
+**`suffix`** - `string | LucideIcon`
+Texto ou ícone para exibir no final do input
+
+**`showAsterisk`** - `boolean`
+Se deve mostrar asterisco no rótulo para campos obrigatórios
+
+**`leftIcon`** - `LucideIcon`
+Ícone opcional para exibir no lado esquerdo
+
+**`rightIcon`** - `LucideIcon`
+Ícone opcional para exibir no lado direito
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      Todas as outras propriedades HTML padrão de `<input>` também são suportadas, exceto `size`, `prefix` e `name`.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
 
 ## Acessibilidade
 
@@ -718,7 +544,7 @@ O componente se integra nativamente com sistemas de gerenciamento de formulário
 - Gerenciamento de estado do formulário
 - Suporte a valores separados ou com máscara
 
-<AlertContainer schema="info">
+<AlertContainer schema="warning">
   <AlertIcon />
   <AlertContent>
     <AlertTitle>Formulários customizáveis</AlertTitle>

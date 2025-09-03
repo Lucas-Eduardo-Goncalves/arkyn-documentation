@@ -1,6 +1,14 @@
 # IconButton
 
-import { IconButton } from "@arkyn/components";
+import {
+  IconButton,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
 import {
   Save,
   Trash2,
@@ -29,28 +37,6 @@ O componente `IconButton` é uma versão compacta do botão que renderiza apenas
 ```tsx
 import { IconButton } from "@arkyn/components";
 ```
-
-## Propriedades
-
-**`icon`** - `LucideIcon` (obrigatório)
-Ícone a ser renderizado dentro do botão
-
-**`aria-label`** - `string` (obrigatório)
-Rótulo acessível para leitores de tela
-
-**`isLoading`** - `boolean` (padrão: `false`)
-Controla o estado de carregamento com spinner
-
-**`size`** - `"xs" | "sm" | "md" | "lg"` (padrão: `"md"`)
-Tamanho do botão
-
-**`variant`** - `"solid" | "outline" | "ghost" | "invisible"` (padrão: `"solid"`)
-Variante visual do botão
-
-**`scheme`** - `"primary" | "success" | "warning" | "danger" | "info"` (padrão: `"primary"`)
-Esquema de cores do botão
-
-Todas as outras propriedades HTML padrão de `<button>` também são suportadas, exceto `children` e `aria-label` (que é obrigatório).
 
 ## Tamanhos
 
@@ -139,6 +125,36 @@ O estado de carregamento é usado para indicar que uma operação está em andam
 <IconButton icon={Upload} aria-label="Enviando" isLoading scheme="success" />
 <IconButton icon={Trash2} aria-label="Excluindo" isLoading scheme="danger" />
 ```
+
+## Propriedades
+
+**`icon`** - `LucideIcon` (obrigatório)
+Ícone a ser renderizado dentro do botão
+
+**`aria-label`** - `string` (obrigatório)
+Rótulo acessível para leitores de tela
+
+**`isLoading`** - `boolean` (padrão: `false`)
+Controla o estado de carregamento com spinner
+
+**`size`** - `"xs" | "sm" | "md" | "lg"` (padrão: `"md"`)
+Tamanho do botão
+
+**`variant`** - `"solid" | "outline" | "ghost" | "invisible"` (padrão: `"solid"`)
+Variante visual do botão
+
+**`scheme`** - `"primary" | "success" | "warning" | "danger" | "info"` (padrão: `"primary"`)
+Esquema de cores do botão
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      Todas as outras propriedades HTML padrão de `<button>` também são suportadas, exceto `children` e `aria-label` (que é obrigatório).
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
 
 ## Acessibilidade
 

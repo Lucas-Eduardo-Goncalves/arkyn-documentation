@@ -1,0 +1,419 @@
+# Checkbox
+
+import {
+  Checkbox,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+O componente `Checkbox` é usado para criar inputs de checkbox interativos com estilização personalizável e suporte a validação. É ideal para seleções opcionais, acordos, configurações e listas de múltipla escolha.
+
+## Importação
+
+```tsx
+import { Checkbox } from "@arkyn/components";
+```
+
+## Tamanhos
+
+Os tamanhos disponíveis são `sm`, `md` e `lg`, oferecendo diferentes dimensões para se adequar às necessidades do layout.
+
+<div className="noContent column">
+  <Checkbox name="checkbox-sm" label="Checkbox pequeno" size="sm" />
+  <Checkbox name="checkbox-md" label="Checkbox médio" size="md" />
+  <Checkbox name="checkbox-lg" label="Checkbox grande" size="lg" />
+</div>
+
+```tsx
+<Checkbox
+  name="checkbox-sm"
+  label="Checkbox pequeno"
+  size="sm"
+/>
+<Checkbox
+  name="checkbox-md"
+  label="Checkbox médio"
+  size="md"
+/>
+<Checkbox
+  name="checkbox-lg"
+  label="Checkbox grande"
+  size="lg"
+/>
+```
+
+## Checkboxes com Rótulos
+
+Os rótulos ajudam a identificar o propósito do checkbox e tornam a área clicável maior.
+
+<div className="noContent column">
+  <Checkbox name="terms" label="Aceito os termos e condições" />
+  <Checkbox name="newsletter" label="Quero receber newsletter por email" />
+  <Checkbox
+    name="privacy"
+    label="Li e concordo com a política de privacidade"
+  />
+  <Checkbox
+    name="marketing"
+    label="Permito o uso de meus dados para fins de marketing"
+  />
+</div>
+
+```tsx
+<Checkbox
+  name="terms"
+  label="Aceito os termos e condições"
+/>
+<Checkbox
+  name="newsletter"
+  label="Quero receber newsletter por email"
+/>
+<Checkbox
+  name="privacy"
+  label="Li e concordo com a política de privacidade"
+/>
+<Checkbox
+  name="marketing"
+  label="Permito o uso de meus dados para fins de marketing"
+/>
+```
+
+## Estados de Marcação
+
+### Estado padrão marcado
+
+<div className="noContent column">
+  <Checkbox name="remember-me" label="Lembrar de mim" defaultChecked={true} />
+  <Checkbox
+    name="auto-save"
+    label="Salvamento automático"
+    defaultChecked={true}
+  />
+  <Checkbox
+    name="notifications"
+    label="Notificações push"
+    defaultChecked={false}
+  />
+</div>
+
+```tsx
+<Checkbox
+  name="remember-me"
+  label="Lembrar de mim"
+  defaultChecked={true}
+/>
+<Checkbox
+  name="auto-save"
+  label="Salvamento automático"
+  defaultChecked={true}
+/>
+<Checkbox
+  name="notifications"
+  label="Notificações push"
+  defaultChecked={false}
+/>
+```
+
+## Estados do Checkbox
+
+### Checkbox desabilitado
+
+<div className="noContent column">
+  <Checkbox
+    name="disabled-unchecked"
+    label="Opção desabilitada (desmarcada)"
+    disabled
+  />
+  <Checkbox
+    name="disabled-checked"
+    label="Opção desabilitada (marcada)"
+    disabled
+    defaultChecked={true}
+  />
+  <Checkbox
+    name="disabled-loading"
+    label="Carregando configuração..."
+    disabled
+  />
+</div>
+
+```tsx
+<Checkbox
+  name="disabled-unchecked"
+  label="Opção desabilitada (desmarcada)"
+  disabled
+/>
+<Checkbox
+  name="disabled-checked"
+  label="Opção desabilitada (marcada)"
+  disabled
+  defaultChecked={true}
+/>
+<Checkbox
+  name="disabled-loading"
+  label="Carregando configuração..."
+  disabled
+/>
+```
+
+## Validação e Erros
+
+<div className="noContent column">
+  <Checkbox
+    name="invalid-terms"
+    label="Aceito os termos e condições"
+    errorMessage="É necessário confirmar"
+  />
+  <Checkbox
+    name="invalid-age"
+    label="Confirmo que sou maior de 18 anos"
+    errorMessage="É necessário confirmar"
+  />
+  <Checkbox
+    name="invalid-consent"
+    label="Dou meu consentimento para processamento de dados"
+    errorMessage="É necessário confirmar"
+  />
+</div>
+
+```tsx
+<Checkbox
+  name="invalid-terms"
+  label="Aceito os termos e condições"
+  errorMessage={hasTermsError}
+/>
+<Checkbox
+  name="invalid-age"
+  label="Confirmo que sou maior de 18 anos"
+  errorMessage={hasAgeError}
+/>
+<Checkbox
+  name="invalid-consent"
+  label="Dou meu consentimento para processamento de dados"
+  errorMessage={hasConsentError}
+/>
+```
+
+## Valores Customizados
+
+Use a propriedade `value` para definir um valor específico quando o checkbox estiver marcado.
+
+<div className="noContent column">
+  <Checkbox
+    name="subscription-basic"
+    label="Plano Básico"
+    value="basic"
+    onCheck={(value) => console.log("Selected plan:", value)}
+  />
+  <Checkbox
+    name="subscription-pro"
+    label="Plano Profissional"
+    value="professional"
+    onCheck={(value) => console.log("Selected plan:", value)}
+  />
+  <Checkbox
+    name="subscription-enterprise"
+    label="Plano Enterprise"
+    value="enterprise"
+    onCheck={(value) => console.log("Selected plan:", value)}
+  />
+</div>
+
+```tsx
+<Checkbox
+  name="subscription-basic"
+  label="Plano Básico"
+  value="basic"
+  onCheck={(value) => console.log('Selected plan:', value)}
+/>
+<Checkbox
+  name="subscription-pro"
+  label="Plano Profissional"
+  value="professional"
+  onCheck={(value) => console.log('Selected plan:', value)}
+/>
+<Checkbox
+  name="subscription-enterprise"
+  label="Plano Enterprise"
+  value="enterprise"
+  onCheck={(value) => console.log('Selected plan:', value)}
+/>
+```
+
+## Callback onCheck
+
+O callback `onCheck` fornece o valor do checkbox quando marcado ou string vazia quando desmarcado:
+
+```tsx
+const handleCheckboxChange = (value) => {
+  // value: string - valor definido na prop value ou "checked" se não especificado
+  // Para checkbox desmarcado, value será uma string vazia ""
+
+  if (value) {
+    console.log("Checkbox marcado com valor:", value); // "subscribeNewsletter"
+  } else {
+    console.log("Checkbox desmarcado"); // ""
+  }
+};
+
+<Checkbox
+  name="newsletter"
+  label="Receber newsletter"
+  value="subscribeNewsletter"
+  onCheck={handleCheckboxChange}
+/>;
+```
+
+### Checkbox controlado
+
+<div className="noContent column">
+  <Checkbox
+    name="controlled-premium"
+    label="Recursos premium"
+    onCheck={(value) => console.log("Premium:", value)}
+  />
+  <Checkbox
+    name="controlled-sync"
+    label="Sincronização automática"
+    onCheck={(value) => console.log("Sync:", value)}
+  />
+</div>
+
+```tsx
+const [isPremium, setIsPremium] = useState(true);
+const [autoSync, setAutoSync] = useState(false);
+
+<Checkbox
+  name="controlled-premium"
+  label="Recursos premium"
+  checked={isPremium}
+  onCheck={(value) => setIsPremium(!!value)}
+/>
+<Checkbox
+  name="controlled-sync"
+  label="Sincronização automática"
+  checked={autoSync}
+  onCheck={(value) => setAutoSync(!!value)}
+/>
+```
+
+## Múltipla Seleção
+
+Para implementar múltipla seleção, use múltiplos checkboxes com callback comum:
+
+```tsx
+const [selectedOptions, setSelectedOptions] = useState([]);
+
+const handleOptionChange = (value) => {
+  if (value) {
+    // Adicionar à seleção
+    setSelectedOptions(prev => [...prev, value]);
+  } else {
+    // Remover da seleção
+    setSelectedOptions(prev => prev.filter(option => option !== value));
+  }
+};
+
+<Checkbox
+  name="option-1"
+  label="Opção 1"
+  value="option1"
+  onCheck={handleOptionChange}
+/>
+<Checkbox
+  name="option-2"
+  label="Opção 2"
+  value="option2"
+  onCheck={handleOptionChange}
+/>
+<Checkbox
+  name="option-3"
+  label="Opção 3"
+  value="option3"
+  onCheck={handleOptionChange}
+/>
+```
+
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários e identificação
+
+**`label`** - `string`
+Texto do rótulo a ser exibido ao lado do checkbox
+
+**`errorMessage`** - `boolean`
+Indicador de estado de erro para exibir erros de validação
+
+**`size`** - `"sm" | "md" | "lg"` (padrão: `"md"`)
+Variante de tamanho do checkbox
+
+**`value`** - `string` (padrão: `"checked"`)
+Valor opcional a ser usado quando o checkbox está marcado
+
+**`checked`** - `boolean`
+Estado controlado de marcação do checkbox
+
+**`defaultChecked`** - `boolean` (padrão: `false`)
+Estado padrão de marcação para uso não controlado
+
+**`onCheck`** - `(value: string) => void`
+Função callback chamada quando o estado do checkbox muda, recebe o valor ou string vazia
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      Todas as outras propriedades HTML padrão de `<button>` também são suportadas, exceto `type`, `name`, `defaultValue`, `value`, `onChange`, `onSelect` e `onClick` que são controladas pelo componente.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Acessibilidade
+
+O componente `Checkbox` foi desenvolvido com acessibilidade em mente:
+
+- Usa elemento `<button>` com `type="button"` para melhor compatibilidade
+- Suporte completo a navegação por teclado (Space para marcar/desmarcar)
+- Estados visuais claros para focus, checked e disabled
+- Labels clicáveis que aumentam a área de interação
+- Suporte a leitores de tela com estado adequado
+- Contraste adequado para todos os estados
+
+## Integração com Formulários
+
+O componente se integra nativamente com sistemas de gerenciamento de formulário:
+
+- Validação automática considerando a máscara aplicada
+- Exibição de erros contextuais
+- Gerenciamento de estado do formulário
+- Suporte a valores separados ou com máscara
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Formulários customizáveis</AlertTitle>
+    <AlertDescription>
+      Para formulários mais complexos, é recomendado utilizar o [Form
+      Provider](/components/providers/form-provider) que oferece integração
+      nativa com todas as ferramentas de formulário de uma única só vez.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notas Importantes
+
+- A propriedade `name` é obrigatória para integração com formulários
+- O valor padrão é "checked" quando a propriedade `value` não é especificada
+- Use `checked` para estado controlado e `defaultChecked` para não controlado
+- O callback `onCheck` recebe string (valor ou "") ao invés de boolean
+- O componente usa um campo hidden para envio no formulário
+- Estados disabled afetam tanto a aparência quanto a funcionalidade
+- O ícone Check é automaticamente exibido quando marcado
+- Para múltipla seleção, use múltiplos checkboxes com values únicos
+- A validação através de `errorMessage` ou `useForm` é automática
+- O componente herda propriedades de button, exceto as sobrescritas

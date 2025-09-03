@@ -32,85 +32,6 @@ O componente `CurrencyInput` é um campo de entrada especializado para valores m
 import { CurrencyInput } from "@arkyn/components";
 ```
 
-## Propriedades
-
-**`name`** - `string` (obrigatório)
-Nome do campo para manipulação de formulários
-
-**`locale`** - `Locale` (obrigatório)
-Localização da moeda para formatação (ex: "USD", "EUR", "BRL", etc.)
-
-**`label`** - `string`
-Texto do rótulo a ser exibido acima do input
-
-**`errorMessage`** - `string`
-Mensagem de erro a ser exibida abaixo do input
-
-**`isLoading`** - `boolean` (padrão: `false`)
-Controla o estado de carregamento com spinner
-
-**`size`** - `"md" | "lg"` (padrão: `"md"`)
-Tamanho do input
-
-**`variant`** - `"solid" | "outline" | "underline"` (padrão: `"solid"`)
-Variante visual do input
-
-**`prefix`** - `string | LucideIcon`
-Texto ou ícone para exibir no início do input
-
-**`suffix`** - `string | LucideIcon`
-Texto ou ícone para exibir no final do input
-
-**`showAsterisk`** - `boolean`
-Se deve mostrar asterisco no rótulo para campos obrigatórios
-
-**`leftIcon`** - `LucideIcon`
-Ícone opcional para exibir no lado esquerdo
-
-**`rightIcon`** - `LucideIcon`
-Ícone opcional para exibir no lado direito
-
-**`max`** - `number`
-Valor máximo permitido para o input
-
-**`value`** - `number`
-Valor controlado (número) para o input
-
-**`defaultValue`** - `number | null`
-Valor padrão (número) para uso não controlado
-
-**`onChange`** - `(event, originalValue, maskedValue) => void`
-Função callback chamada quando o valor muda, recebe evento, valor original e valor formatado
-
-Todas as outras propriedades HTML padrão de `<input>` também são suportadas, exceto `type`, `max`, `defaultValue`, `value` e `onChange` que são controladas pelo componente.
-
-## Moedas Suportadas
-
-O componente suporta mais de 20 localizações de moeda diferentes:
-
-- **USD** - Dólar Americano
-- **EUR** - Euro
-- **BRL** - Real Brasileiro
-- **GBP** - Libra Esterlina
-- **JPY** - Yen Japonês
-- **CAD** - Dólar Canadense
-- **AUD** - Dólar Australiano
-- **CHF** - Franco Suíço
-- **CNY** - Yuan Chinês
-- **SEK** - Coroa Sueca
-- **NZD** - Dólar Neozelandês
-- **INR** - Rupia Indiana
-- **RUB** - Rublo Russo
-- **ZAR** - Rand Sul-africano
-- **MXN** - Peso Mexicano
-- **SGD** - Dólar de Singapura
-- **HKD** - Dólar de Hong Kong
-- **NOK** - Coroa Norueguesa
-- **KRW** - Won Sul-coreano
-- **TRY** - Lira Turca
-- **IDR** - Rupia Indonésia
-- **THB** - Baht Tailandês
-
 ## Tamanhos
 
 Os tamanhos disponíveis são `md` e `lg`, seguindo o mesmo padrão dos outros componentes de input.
@@ -191,7 +112,7 @@ As variantes disponíveis são `solid`, `outline` e `underline`, proporcionando 
 />
 ```
 
-## Prefix e Suffix
+## Prefix e suffix
 
 Como nos outros componentes de input, é possível adicionar texto ou ícones no início ou final.
 
@@ -256,6 +177,8 @@ Como nos outros componentes de input, é possível adicionar texto ou ícones no
 ```
 
 ## Input com Valor Máximo
+
+O componente `CurrencyInput` permite definir um valor máximo que o usuário pode inserir. Isso é útil em situações onde há um limite de orçamento ou custo.
 
 <div className="noContent column">
   <CurrencyInput
@@ -403,7 +326,7 @@ Como nos outros componentes de input, é possível adicionar texto ou ícones no
 />
 ```
 
-## Validação e Erros
+## Validação e erros
 
 <div className="noContent column">
   <CurrencyInput
@@ -484,6 +407,93 @@ const handleCurrencyChange = (event, originalValue, maskedValue) => {
 };
 ```
 
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários
+
+**`locale`** - `Locale` (obrigatório)
+Localização da moeda para formatação (ex: "USD", "EUR", "BRL", etc.)
+
+**`label`** - `string`
+Texto do rótulo a ser exibido acima do input
+
+**`errorMessage`** - `string`
+Mensagem de erro a ser exibida abaixo do input
+
+**`isLoading`** - `boolean` (padrão: `false`)
+Controla o estado de carregamento com spinner
+
+**`size`** - `"md" | "lg"` (padrão: `"md"`)
+Tamanho do input
+
+**`variant`** - `"solid" | "outline" | "underline"` (padrão: `"solid"`)
+Variante visual do input
+
+**`prefix`** - `string | LucideIcon`
+Texto ou ícone para exibir no início do input
+
+**`suffix`** - `string | LucideIcon`
+Texto ou ícone para exibir no final do input
+
+**`showAsterisk`** - `boolean`
+Se deve mostrar asterisco no rótulo para campos obrigatórios
+
+**`leftIcon`** - `LucideIcon`
+Ícone opcional para exibir no lado esquerdo
+
+**`rightIcon`** - `LucideIcon`
+Ícone opcional para exibir no lado direito
+
+**`max`** - `number`
+Valor máximo permitido para o input
+
+**`value`** - `number`
+Valor controlado (número) para o input
+
+**`defaultValue`** - `number | null`
+Valor padrão (número) para uso não controlado
+
+**`onChange`** - `(event, originalValue, maskedValue) => void`
+Função callback chamada quando o valor muda, recebe evento, valor original e valor formatado
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      Todas as outras propriedades HTML padrão de `<input>` também são suportadas, exceto `type`, `max`, `defaultValue`, `value` e `onChange` que são controladas pelo componente.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Moedas Suportadas
+
+O componente suporta mais de 20 localizações de moeda diferentes:
+
+- **USD** - Dólar Americano
+- **EUR** - Euro
+- **BRL** - Real Brasileiro
+- **GBP** - Libra Esterlina
+- **JPY** - Yen Japonês
+- **CAD** - Dólar Canadense
+- **AUD** - Dólar Australiano
+- **CHF** - Franco Suíço
+- **CNY** - Yuan Chinês
+- **SEK** - Coroa Sueca
+- **NZD** - Dólar Neozelandês
+- **INR** - Rupia Indiana
+- **RUB** - Rublo Russo
+- **ZAR** - Rand Sul-africano
+- **MXN** - Peso Mexicano
+- **SGD** - Dólar de Singapura
+- **HKD** - Dólar de Hong Kong
+- **NOK** - Coroa Norueguesa
+- **KRW** - Won Sul-coreano
+- **TRY** - Lira Turca
+- **IDR** - Rupia Indonésia
+- **THB** - Baht Tailandês
+
 ## Formatação Automática
 
 O componente aplica formatação automática baseada na localização:
@@ -514,7 +524,7 @@ O componente se integra nativamente com sistemas de gerenciamento de formulário
 - Gerenciamento de estado do formulário
 - Suporte a valores separados ou com máscara
 
-<AlertContainer schema="info">
+<AlertContainer schema="warning">
   <AlertIcon />
   <AlertContent>
     <AlertTitle>Formulários customizáveis</AlertTitle>

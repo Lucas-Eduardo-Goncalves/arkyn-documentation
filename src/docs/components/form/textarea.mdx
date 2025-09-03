@@ -17,28 +17,6 @@ O componente `Textarea` é usado para entrada de texto de múltiplas linhas com 
 import { Textarea } from "@arkyn/components";
 ```
 
-## Propriedades
-
-**`name`** - `string` (obrigatório)
-Nome do campo para manipulação de formulários e identificação
-
-**`label`** - `string`
-Texto do rótulo a ser exibido acima do textarea
-
-**`showAsterisk`** - `boolean`
-Se deve mostrar asterisco no rótulo para campos obrigatórios
-
-**`errorMessage`** - `string`
-Mensagem de erro a ser exibida abaixo do textarea
-
-**`size`** - `"md" | "lg"` (padrão: `"md"`)
-Variante de tamanho do textarea
-
-**`variant`** - `"solid" | "outline"` (padrão: `"solid"`)
-Variante visual do textarea
-
-Todas as outras propriedades HTML padrão de `<textarea>` também são suportadas, exceto `name` que é controlado pelo componente.
-
 ## Tamanhos
 
 Os tamanhos disponíveis são `md` e `lg`, oferecendo diferentes alturas e paddings para se adequar às necessidades do layout.
@@ -485,6 +463,36 @@ const [message, setMessage] = useState("");
 />;
 ```
 
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulários e identificação
+
+**`label`** - `string`
+Texto do rótulo a ser exibido acima do textarea
+
+**`showAsterisk`** - `boolean`
+Se deve mostrar asterisco no rótulo para campos obrigatórios
+
+**`errorMessage`** - `string`
+Mensagem de erro a ser exibida abaixo do textarea
+
+**`size`** - `"md" | "lg"` (padrão: `"md"`)
+Variante de tamanho do textarea
+
+**`variant`** - `"solid" | "outline"` (padrão: `"solid"`)
+Variante visual do textarea
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      Todas as outras propriedades HTML padrão de `<textarea>` também são suportadas, exceto `name` que é controlado pelo componente.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
 ## Acessibilidade
 
 O componente `Textarea` foi desenvolvido com acessibilidade em mente:
@@ -505,7 +513,7 @@ O componente se integra nativamente com sistemas de gerenciamento de formulário
 - Gerenciamento de estado do formulário
 - Suporte a valores separados ou com máscara
 
-<AlertContainer schema="info">
+<AlertContainer schema="warning">
   <AlertIcon />
   <AlertContent>
     <AlertTitle>Formulários customizáveis</AlertTitle>
