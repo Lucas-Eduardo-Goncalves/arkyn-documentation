@@ -1,0 +1,420 @@
+# Tab
+
+import {
+  TabContainer,
+  TabButton,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  Home,
+  User,
+  Settings,
+  BarChart3,
+  Mail,
+  Bell,
+  Shield,
+  CreditCard,
+  FileText,
+  Calendar,
+  Bookmark,
+  Star,
+} from "lucide-react";
+
+Os componentes `TabContainer` e `TabButton` trabalham juntos para criar interfaces de navegação por abas intuitivas e acessíveis. O `TabContainer` atua como wrapper fornecendo contexto e estado, enquanto os `TabButton` são os elementos clicáveis individuais que representam cada aba.
+
+## Importação
+
+```tsx
+import { TabContainer, TabButton } from "@arkyn/components";
+```
+
+## Uso Básico
+
+<div className="noContent column">
+  <TabContainer>
+    <TabButton value="home">Home</TabButton>
+    <TabButton value="about">Sobre</TabButton>
+    <TabButton value="contact">Contato</TabButton>
+  </TabContainer>
+</div>
+
+```tsx
+<TabContainer>
+  <TabButton value="home">Home</TabButton>
+  <TabButton value="about">Sobre</TabButton>
+  <TabButton value="contact">Contato</TabButton>
+</TabContainer>
+```
+
+## Tab com valor padrão
+
+Configure qual aba deve estar ativa inicialmente usando `defaultValue`.
+
+<div className="noContent column">
+  <TabContainer defaultValue="dashboard">
+    <TabButton value="dashboard">Dashboard</TabButton>
+    <TabButton value="analytics">Analytics</TabButton>
+    <TabButton value="settings">Configurações</TabButton>
+  </TabContainer>
+</div>
+
+```tsx
+<TabContainer defaultValue="dashboard">
+  <TabButton value="dashboard">Dashboard</TabButton>
+  <TabButton value="analytics">Analytics</TabButton>
+  <TabButton value="settings">Configurações</TabButton>
+</TabContainer>
+```
+
+## Tab com ícones
+
+Adicione ícones para melhorar a experiência visual e usabilidade.
+
+<div className="noContent column">
+  <TabContainer defaultValue="profile">
+    <TabButton value="profile">
+      <User size={16} style={{ marginRight: "6px" }} />
+      Perfil
+    </TabButton>
+    <TabButton value="settings">
+      <Settings size={16} style={{ marginRight: "6px" }} />
+      Configurações
+    </TabButton>
+    <TabButton value="notifications">
+      <Bell size={16} style={{ marginRight: "6px" }} />
+      Notificações
+    </TabButton>
+  </TabContainer>
+</div>
+
+```tsx
+<TabContainer defaultValue="profile">
+  <TabButton value="profile">
+    <User size={16} style={{ marginRight: "6px" }} />
+    Perfil
+  </TabButton>
+  <TabButton value="settings">
+    <Settings size={16} style={{ marginRight: "6px" }} />
+    Configurações
+  </TabButton>
+  <TabButton value="notifications">
+    <Bell size={16} style={{ marginRight: "6px" }} />
+    Notificações
+  </TabButton>
+</TabContainer>
+```
+
+## Tab com callback de mudança
+
+Use `onChange` para reagir a mudanças de aba e controlar conteúdo dinâmico.
+
+<div className="noContent column">
+  <TabContainer
+    defaultValue="overview"
+    onChange={(value) => console.log("Aba ativa:", value)}
+  >
+    <TabButton value="overview">
+      <BarChart3 size={16} style={{ marginRight: "6px" }} />
+      Visão Geral
+    </TabButton>
+    <TabButton value="reports">
+      <FileText size={16} style={{ marginRight: "6px" }} />
+      Relatórios
+    </TabButton>
+    <TabButton value="calendar">
+      <Calendar size={16} style={{ marginRight: "6px" }} />
+      Calendário
+    </TabButton>
+  </TabContainer>
+</div>
+
+```tsx
+function TabExample() {
+  const [activeTab, setActiveTab] = useState("overview");
+
+  return (
+    <div>
+      <TabContainer
+        defaultValue="overview"
+        onChange={(value) => {
+          setActiveTab(value);
+          console.log("Aba ativa:", value);
+        }}
+      >
+        <TabButton value="overview">
+          <BarChart3 size={16} style={{ marginRight: "6px" }} />
+          Visão Geral
+        </TabButton>
+        <TabButton value="reports">
+          <FileText size={16} style={{ marginRight: "6px" }} />
+          Relatórios
+        </TabButton>
+        <TabButton value="calendar">
+          <Calendar size={16} style={{ marginRight: "6px" }} />
+          Calendário
+        </TabButton>
+      </TabContainer>
+
+      {/* Renderizar conteúdo baseado na aba ativa */}
+      <div
+        style={{
+          marginTop: "16px",
+          padding: "16px",
+          border: "1px solid #e2e8f0",
+        }}
+      >
+        {activeTab === "overview" && <div>Conteúdo da Visão Geral</div>}
+        {activeTab === "reports" && <div>Conteúdo dos Relatórios</div>}
+        {activeTab === "calendar" && <div>Conteúdo do Calendário</div>}
+      </div>
+    </div>
+  );
+}
+```
+
+## Estados das Abas
+
+### Tab individual desabilitada
+
+<div className="noContent column">
+  <TabContainer defaultValue="available">
+    <TabButton value="available">Disponível</TabButton>
+    <TabButton value="disabled" disabled>
+      Desabilitada
+    </TabButton>
+    <TabButton value="coming-soon" disabled>
+      Em Breve
+    </TabButton>
+  </TabContainer>
+</div>
+
+```tsx
+<TabContainer defaultValue="available">
+  <TabButton value="available">Disponível</TabButton>
+  <TabButton value="disabled" disabled>
+    Desabilitada
+  </TabButton>
+  <TabButton value="coming-soon" disabled>
+    Em Breve
+  </TabButton>
+</TabContainer>
+```
+
+### Tab container totalmente desabilitado
+
+<div className="noContent column">
+  <TabContainer disabled>
+    <TabButton value="tab1">Tab 1</TabButton>
+    <TabButton value="tab2">Tab 2</TabButton>
+    <TabButton value="tab3">Tab 3</TabButton>
+  </TabContainer>
+</div>
+
+```tsx
+<TabContainer disabled>
+  <TabButton value="tab1">Tab 1</TabButton>
+  <TabButton value="tab2">Tab 2</TabButton>
+  <TabButton value="tab3">Tab 3</TabButton>
+</TabContainer>
+```
+
+## Tab com click handlers individuais
+
+Cada `TabButton` pode ter seu próprio handler de clique além da mudança de aba.
+
+<div className="noContent column">
+  <TabContainer defaultValue="favorites">
+    <TabButton
+      value="favorites"
+      onClick={() => console.log("Favoritos clicado")}
+    >
+      <Star size={16} style={{ marginRight: "6px" }} />
+      Favoritos
+    </TabButton>
+    <TabButton
+      value="bookmarks"
+      onClick={() => console.log("Marcadores clicado")}
+    >
+      <Bookmark size={16} style={{ marginRight: "6px" }} />
+      Marcadores
+    </TabButton>
+    <TabButton value="history" onClick={() => console.log("Histórico clicado")}>
+      <Calendar size={16} style={{ marginRight: "6px" }} />
+      Histórico
+    </TabButton>
+  </TabContainer>
+</div>
+
+```tsx
+function NavigationTabs() {
+  const handleFavoritesClick = () => {
+    console.log("Favoritos clicado");
+    // Lógica específica para favoritos
+    trackEvent("tab_clicked", { tab: "favorites" });
+  };
+
+  const handleBookmarksClick = () => {
+    console.log("Marcadores clicado");
+    // Lógica específica para marcadores
+    loadBookmarks();
+  };
+
+  return (
+    <TabContainer
+      defaultValue="favorites"
+      onChange={(value) => {
+        console.log("Aba mudou para:", value);
+        updateURL(value);
+      }}
+    >
+      <TabButton value="favorites" onClick={handleFavoritesClick}>
+        <Star size={16} style={{ marginRight: "6px" }} />
+        Favoritos
+      </TabButton>
+      <TabButton value="bookmarks" onClick={handleBookmarksClick}>
+        <Bookmark size={16} style={{ marginRight: "6px" }} />
+        Marcadores
+      </TabButton>
+      <TabButton value="history">
+        <Calendar size={16} style={{ marginRight: "6px" }} />
+        Histórico
+      </TabButton>
+    </TabContainer>
+  );
+}
+```
+
+## Tab controlada com estado externo
+
+Para controle mais avançado, você pode gerenciar o estado das tabs externamente.
+
+```tsx
+function ControlledTabExample() {
+  const [activeTab, setActiveTab] = useState("dashboard");
+  const [tabHistory, setTabHistory] = useState<string[]>(["dashboard"]);
+
+  const handleTabChange = (newTab: string) => {
+    setActiveTab(newTab);
+    setTabHistory((prev) => [...prev, newTab]);
+  };
+
+  const goToPreviousTab = () => {
+    if (tabHistory.length > 1) {
+      const newHistory = tabHistory.slice(0, -1);
+      const previousTab = newHistory[newHistory.length - 1];
+      setTabHistory(newHistory);
+      setActiveTab(previousTab);
+    }
+  };
+
+  return (
+    <div>
+      <div style={{ marginBottom: "16px" }}>
+        <button onClick={goToPreviousTab} disabled={tabHistory.length <= 1}>
+          ← Voltar
+        </button>
+        <span style={{ marginLeft: "16px" }}>Aba atual: {activeTab}</span>
+      </div>
+
+      <TabContainer defaultValue={activeTab} onChange={handleTabChange}>
+        <TabButton value="dashboard">Dashboard</TabButton>
+        <TabButton value="analytics">Analytics</TabButton>
+        <TabButton value="reports">Relatórios</TabButton>
+        <TabButton value="settings">Configurações</TabButton>
+      </TabContainer>
+
+      <div style={{ marginTop: "16px" }}>
+        <strong>Histórico de navegação:</strong>
+        {tabHistory.join(" → ")}
+      </div>
+    </div>
+  );
+}
+```
+
+## Propriedades
+
+### TabContainer
+
+**`children`** - `ReactNode` (obrigatório)
+Componentes TabButton e outros elementos filhos
+
+**`disabled`** - `boolean` (padrão: `false`)
+Se todas as abas devem estar desabilitadas
+
+**`defaultValue`** - `string`
+Valor da aba que deve estar ativa inicialmente
+
+**`onChange`** - `(index: string) => void`
+Função callback chamada quando a aba ativa muda, recebe o valor da nova aba
+
+**`className`** - `string`
+Classes CSS adicionais para estilização do container
+
+### TabButton
+
+**`children`** - `ReactNode` (obrigatório)
+Conteúdo a ser exibido dentro do botão da aba
+
+**`value`** - `string` (obrigatório)
+Identificador único para o botão da aba
+
+**`disabled`** - `boolean` (padrão: `false`)
+Se este botão específico deve estar desabilitado (pode ser sobrescrito pelo TabContainer)
+
+**`onClick`** - `(event: MouseEvent<HTMLButtonElement>) => void`
+Função callback chamada quando o botão é clicado (além da mudança de aba)
+
+**`className`** - `string`
+Classes CSS adicionais para estilização do botão
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      TabContainer suporta todas as propriedades HTML de `nav` exceto
+      `onChange`, `children` e `ref`. TabButton suporta todas as propriedades
+      HTML de `button` exceto `children`, `value` e `type`.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Estados Visuais
+
+Os componentes Tab oferecem diferentes estados visuais:
+
+- **Ativo** - Aba atualmente selecionada
+- **Inativo** - Abas não selecionadas
+- **Hover** - Estado ao passar o mouse
+- **Focus** - Estado de foco para navegação por teclado
+- **Desabilitado** - Abas que não podem ser clicadas
+
+## Acessibilidade
+
+Os componentes Tab foram desenvolvidos com acessibilidade em mente:
+
+- **Navegação por teclado** - Suporte completo para Tab, Seta direita/esquerda
+- **Roles ARIA** - TabContainer usa `role="tablist"`, TabButton usa `role="tab"`
+- **Estados visuais** - Feedback claro para todos os estados
+- **Focus management** - Foco adequado entre elementos
+- **Screen readers** - Anúncio correto da aba ativa
+- **Disabled state** - Elementos desabilitados não são focáveis
+
+## Notas Importantes
+
+- **Valores únicos** - Cada `TabButton` deve ter um `value` único
+- **Context Provider** - `TabContainer` fornece contexto para `TabButton`
+- **Estado controlado** - Use `defaultValue` para estado inicial, `onChange` para mudanças
+- **Botões nativos** - `TabButton` usa elemento `<button>` nativo
+- **Container semântico** - `TabContainer` usa elemento `<nav>` para navegação
+- **Desabilitação hierárquica** - `TabContainer` disabled sobrescreve `TabButton` disabled
+- **Eventos personalizados** - `onClick` em `TabButton` é chamado além da mudança de aba
+- **Acessibilidade** - Suporte completo para navegação por teclado e leitores de tela
+- **Estados visuais** - Classes CSS automáticas para diferentes estados
+- **Flexibilidade** - Suporte a conteúdo rico (ícones, texto, elementos customizados)
