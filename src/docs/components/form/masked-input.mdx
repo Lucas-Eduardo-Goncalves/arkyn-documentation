@@ -36,7 +36,6 @@ import { MaskedInput } from "@arkyn/components";
 <div className="noContent column">
   <MaskedInput
     name="phone"
-    label="Phone"
     mask="(__) _____-____"
     replacement={{ _: /\d/ }}
     placeholder="(00) 00000-0000"
@@ -47,7 +46,6 @@ import { MaskedInput } from "@arkyn/components";
 ```tsx
 <MaskedInput
   name="phone"
-  label="Phone"
   mask="(__) _____-____"
   replacement={{ _: /\d/ }} // Only accepts numbers
   placeholder="(00) 00000-0000"
@@ -55,7 +53,7 @@ import { MaskedInput } from "@arkyn/components";
 />
 ```
 
-## Mask Settings
+## Mask settings
 
 The `mask` property defines the mask pattern using special characters to represent positions to be filled. The `replacement` property defines which characters are accepted in each position.
 
@@ -83,7 +81,7 @@ Use a simple string to replace all marked positions.
 />
 ```
 
-### Replacement with Regex
+### Replacement with regex
 
 Use an object with regex to control exactly which characters are accepted.
 
@@ -109,7 +107,7 @@ Use an object with regex to control exactly which characters are accepted.
 />
 ```
 
-### Showing the Mask
+### Showing the mask
 
 Use `showMask` to display the mask pattern as a visual placeholder.
 
@@ -135,7 +133,7 @@ Use `showMask` to display the mask pattern as a visual placeholder.
 />
 ```
 
-### Value Separation
+### Value separation
 
 Use `separate` to separate the mask characters from the actual input value.
 
@@ -301,11 +299,11 @@ Use prefix and suffix to add text or fixed icons at the beginning or end of the 
 />
 ```
 
-## Input States
+## Input states
 
 The component supports different states, such as disabled, read-only, and loading.
 
-### Disabled Input
+### Disabled input
 
 The disabled state prevents any user interaction with the field and prevents data from being submitted through a form.
 
@@ -361,7 +359,7 @@ The read-only state allows the user to view the field value but cannot edit it. 
 />
 ```
 
-### Loading State
+### Loading state
 
 The loading state displays a spinner and automatically disables input. The spinner appears on the left by default, or on the right if there is a `rightIcon`.
 
@@ -389,7 +387,7 @@ The loading state displays a spinner and automatically disables input. The spinn
 />
 ```
 
-## Validation and Errors
+## Validation and errors
 
 The component integrates with form validation systems and can display error messages. If an error message is provided via the `errorMessage` property, it will take precedence over messages from the form provider.
 
@@ -488,7 +486,7 @@ Optional icon to display on the right side
   </AlertContent>
 </AlertContainer>
 
-## Important Notes
+## Notes
 
 - The `type` type is not supported because it is controlled by the mask.
 - When `isLoading` is `true`, the input is automatically disabled.
