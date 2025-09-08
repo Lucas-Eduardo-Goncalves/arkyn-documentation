@@ -30,155 +30,152 @@ import {
   User,
 } from "lucide-react";
 
-O componente `IconButton` é uma versão compacta do botão que renderiza apenas um ícone. É ideal para interfaces onde o espaço é limitado ou quando o ícone por si só é suficientemente claro para transmitir a ação desejada.
-
-## Importação
+The `IconButton` component is a compact version of the button that renders only an icon. It's ideal for interfaces where space is limited or when the icon itself is clear enough to convey the desired action.
 
 ```tsx
 import { IconButton } from "@arkyn/components";
 ```
 
-## Tamanhos
+## Basic usage
 
-Os tamanhos disponíveis são `lg`, `md`, `sm` e `xs`. Cada tamanho oferece uma altura e padding diferentes, com os ícones sendo redimensionados automaticamente (xs: 12px, sm: 16px, md: 20px, lg: 24px).
-
-<div className="noContent row">
-  <IconButton icon={Plus} aria-label="Adicionar" size="lg" />
-  <IconButton icon={Plus} aria-label="Adicionar" size="md" />
-  <IconButton icon={Plus} aria-label="Adicionar" size="sm" />
-  <IconButton icon={Plus} aria-label="Adicionar" size="xs" />
+<div className="noContent">
+  <IconButton icon={Search} aria-label="Search" />
 </div>
 
 ```tsx
-<IconButton icon={Plus} aria-label="Adicionar" size="xs" />
-<IconButton icon={Plus} aria-label="Adicionar" size="sm" />
-<IconButton icon={Plus} aria-label="Adicionar" size="md" />
-<IconButton icon={Plus} aria-label="Adicionar" size="lg" />
+<IconButton icon={Search} aria-label="Search" />
 ```
 
-## Variantes
+## Accessibility
 
-As variantes disponíveis são `solid`, `outline`, `ghost` e `invisible`. Cada variante oferece um estilo visual diferente, permitindo criar hierarquias e enfatizar diferentes tipos de ações na interface.
+The `aria-label` property is required to provide context for screen reader users.
+
+```tsx
+// ✅ Correct - always provide aria-label
+<IconButton icon={Save} aria-label="Save document" />
+
+// ❌ Incorrect - aria-label is required
+<IconButton icon={Save} />
+```
+
+## Sizes
+
+The available sizes are `lg`, `md`, `sm`, and `xs`. Each size offers a different height and padding, with icons being automatically resized (xs: 12px, sm: 16px, md: 20px, lg: 24px).
 
 <div className="noContent row">
-  <IconButton icon={Settings} aria-label="Configurações" variant="solid" />
-  <IconButton icon={Settings} aria-label="Configurações" variant="outline" />
-  <IconButton icon={Settings} aria-label="Configurações" variant="ghost" />
-  <IconButton icon={Settings} aria-label="Configurações" variant="invisible" />
+  <IconButton icon={Plus} aria-label="Add" size="lg" />
+  <IconButton icon={Plus} aria-label="Add" size="md" />
+  <IconButton icon={Plus} aria-label="Add" size="sm" />
+  <IconButton icon={Plus} aria-label="Add" size="xs" />
 </div>
 
 ```tsx
-<IconButton icon={Settings} aria-label="Configurações" variant="solid" />
-<IconButton icon={Settings} aria-label="Configurações" variant="outline" />
-<IconButton icon={Settings} aria-label="Configurações" variant="ghost" />
-<IconButton icon={Settings} aria-label="Configurações" variant="invisible" />
+<IconButton icon={Plus} aria-label="Add" size="xs" />
+<IconButton icon={Plus} aria-label="Add" size="sm" />
+<IconButton icon={Plus} aria-label="Add" size="md" />
+<IconButton icon={Plus} aria-label="Add" size="lg" />
 ```
 
-## Esquemas de Cores
+## Variants
 
-Os esquemas de cores disponíveis são `primary`, `success`, `warning`, `danger` e `info`. Cada esquema transmite um significado semântico específico e ajuda os usuários a entender o tipo de ação que será executada.
+The available variants are `solid`, `outline`, `ghost`, and `invisible`. Each variant offers a different visual style, allowing you to create hierarchies and emphasize different types of actions in the interface.
 
 <div className="noContent row">
-  <IconButton icon={Info} aria-label="Informação" scheme="primary" />
-  <IconButton icon={Heart} aria-label="Curtir" scheme="success" />
-  <IconButton icon={AlertTriangle} aria-label="Aviso" scheme="warning" />
-  <IconButton icon={Trash2} aria-label="Excluir" scheme="danger" />
-  <IconButton icon={Bell} aria-label="Notificação" scheme="info" />
+  <IconButton icon={Settings} aria-label="Settings" variant="solid" />
+  <IconButton icon={Settings} aria-label="Settings" variant="outline" />
+  <IconButton icon={Settings} aria-label="Settings" variant="ghost" />
+  <IconButton icon={Settings} aria-label="Settings" variant="invisible" />
 </div>
 
 ```tsx
-<IconButton icon={Info} aria-label="Informação" scheme="primary" />
-<IconButton icon={Heart} aria-label="Curtir" scheme="success" />
-<IconButton icon={AlertTriangle} aria-label="Aviso" scheme="warning" />
-<IconButton icon={Trash2} aria-label="Excluir" scheme="danger" />
-<IconButton icon={Bell} aria-label="Notificação" scheme="info" />
+<IconButton icon={Settings} aria-label="Settings" variant="solid" />
+<IconButton icon={Settings} aria-label="Settings" variant="outline" />
+<IconButton icon={Settings} aria-label="Settings" variant="ghost" />
+<IconButton icon={Settings} aria-label="Settings" variant="invisible" />
 ```
 
-## Botão Desabilitado
+## Color Schemes
 
-O estado de não ativação do botão indica que ele não pode ser clicado ou interagido. É ativado pela propriedade `disabled` ou quando estiver em estado de carregamento `isLoading`.
+The available color schemes are `primary`, `success`, `warning`, `danger`, and `info`. Each scheme conveys a specific semantic meaning and helps users understand the type of action that will be performed.
 
 <div className="noContent row">
-  <IconButton icon={Plus} aria-label="Adicionar" disabled />
-  <IconButton icon={Heart} aria-label="Curtir" disabled scheme="success" />
-  <IconButton icon={Star} aria-label="Favoritar" disabled variant="outline" />
+  <IconButton icon={Info} aria-label="Information" scheme="primary" />
+  <IconButton icon={Heart} aria-label="Like" scheme="success" />
+  <IconButton icon={AlertTriangle} aria-label="Warning" scheme="warning" />
+  <IconButton icon={Trash2} aria-label="Delete" scheme="danger" />
+  <IconButton icon={Bell} aria-label="Notification" scheme="info" />
 </div>
 
 ```tsx
-<IconButton icon={Plus} aria-label="Adicionar" disabled />
-<IconButton icon={Heart} aria-label="Curtir" disabled scheme="success" />
-<IconButton icon={Star} aria-label="Favoritar" disabled variant="outline" />
+<IconButton icon={Info} aria-label="Information" scheme="primary" />
+<IconButton icon={Heart} aria-label="Like" scheme="success" />
+<IconButton icon={AlertTriangle} aria-label="Warning" scheme="warning" />
+<IconButton icon={Trash2} aria-label="Delete" scheme="danger" />
+<IconButton icon={Bell} aria-label="Notification" scheme="info" />
 ```
 
-## Estado de Carregamento
+## Disabled Button
 
-O estado de carregamento é usado para indicar que uma operação está em andamento, mostrando um spinner animado no lugar do ícone original e desabilitando automaticamente o botão.
+The button's disabled state indicates that it cannot be clicked or interacted with. It is activated by the `disabled` property or when it is in the `isLoading` loading state.
 
 <div className="noContent row">
-  <IconButton icon={Save} aria-label="Salvando" isLoading />
-  <IconButton icon={Upload} aria-label="Enviando" isLoading scheme="success" />
-  <IconButton icon={Trash2} aria-label="Excluindo" isLoading scheme="danger" />
+  <IconButton icon={Plus} aria-label="Add" disabled />
+  <IconButton icon={Heart} aria-label="Like" disabled scheme="success" />
+  <IconButton icon={Star} aria-label="Favorite" disabled variant="outline" />
 </div>
 
 ```tsx
-<IconButton icon={Save} aria-label="Salvando" isLoading />
-<IconButton icon={Upload} aria-label="Enviando" isLoading scheme="success" />
-<IconButton icon={Trash2} aria-label="Excluindo" isLoading scheme="danger" />
+<IconButton icon={Plus} aria-label="Add" disabled />
+<IconButton icon={Heart} aria-label="Like" disabled scheme="success" />
+<IconButton icon={Star} aria-label="Favorite" disabled variant="outline" />
 ```
 
-## Propriedades
+## Loading State
 
-**`icon`** - `LucideIcon` (obrigatório)
-Ícone a ser renderizado dentro do botão
+The loading state is used to indicate that an operation is in progress by displaying an animated spinner in place of the original icon and automatically disabling the button.
 
-**`aria-label`** - `string` (obrigatório)
-Rótulo acessível para leitores de tela
+<div className="noContent row">
+  <IconButton icon={Save} aria-label="Saving" isLoading />
+  <IconButton icon={Upload} aria-label="Sending" isLoading scheme="success" />
+  <IconButton icon={Trash2} aria-label="Deleting" isLoading scheme="danger" />
+</div>
 
-**`isLoading`** - `boolean` (padrão: `false`)
-Controla o estado de carregamento com spinner
+```tsx
+<IconButton icon={Save} aria-label="Saving" isLoading />
+<IconButton icon={Upload} aria-label="Sending" isLoading scheme="success" />
+<IconButton icon={Trash2} aria-label="Deleting" isLoading scheme="danger" />
+```
 
-**`size`** - `"xs" | "sm" | "md" | "lg"` (padrão: `"md"`)
-Tamanho do botão
+## Properties
 
-**`variant`** - `"solid" | "outline" | "ghost" | "invisible"` (padrão: `"solid"`)
-Variante visual do botão
+**`icon`** - `LucideIcon` (required)
+Icon to render inside the button
 
-**`scheme`** - `"primary" | "success" | "warning" | "danger" | "info"` (padrão: `"primary"`)
-Esquema de cores do botão
+**`aria-label`** - `string` (required)
+Accessible label for screen readers
+
+**`isLoading`** - `boolean` (default: `false`)
+Controls the loading state with a spinner
+
+**`size`** - `"xs" | "sm" | "md" | "lg"` (default: `"md"`)
+Button size
+
+**`variant`** - `"solid" | "outline" | "ghost" | "invisible"` (default: `"solid"`)
+Button visual variant
+
+**`scheme`** - `"primary" | "success" | "warning" | "danger" | "info" (default: `"primary"`)
+Button Color Scheme
 
 <AlertContainer schema="info">
   <AlertIcon />
   <AlertContent>
-    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertTitle>Other Properties</AlertTitle>
     <AlertDescription>
-      Todas as outras propriedades HTML padrão de `<button>` também são suportadas, exceto `children` e `aria-label` (que é obrigatório).
+    All other standard HTML properties for `<button>` are also supported, except `children` and `aria-label` (which is required).
     </AlertDescription>
   </AlertContent>
 </AlertContainer>
 
-## Acessibilidade
+## Notes
 
-O `IconButton` foi projetado com acessibilidade em mente:
-
-- A propriedade `aria-label` é obrigatória para fornecer contexto aos usuários de leitores de tela
-- O botão é automaticamente focável via teclado
-- Estados visuais claros para hover, focus e disabled
-- Suporte completo a navegação por teclado
-
-```tsx
-// ✅ Correto - sempre forneça aria-label
-<IconButton icon={Save} aria-label="Salvar documento" />
-
-// ❌ Incorreto - aria-label é obrigatório
-<IconButton icon={Save} />
-```
-
-## Notas Importantes
-
-- A propriedade `aria-label` é obrigatória para acessibilidade
-- Quando `isLoading` é `true`, o botão é automaticamente desabilitado
-- Os ícones são redimensionados automaticamente com base no tamanho do botão (xs: 12px, sm: 16px, md: 20px, lg: 24px)
-- O componente não aceita `children` - apenas o ícone especificado é renderizado
-- O componente herda todas as propriedades padrão de um elemento HTML `<button>`
-- Durante o carregamento, um spinner da biblioteca Lucide React substitui o ícone original
-- Todos os manipuladores de eventos padrão do HTML são suportados (onClick, onFocus, onBlur, etc.)
+- The loading state displays an animated spinner from the Lucide React library

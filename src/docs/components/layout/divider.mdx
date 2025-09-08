@@ -9,45 +9,53 @@ import {
   AlertTitle,
 } from "@arkyn/components";
 
-O componente `Divider` é usado para separar visualmente seções de conteúdo em uma interface. Ele fornece uma linha horizontal ou vertical que ajuda a organizar e estruturar o layout, melhorando a legibilidade e a hierarquia visual.
-
-## Importação
+The `Divider` component is used to visually separate sections of content in an interface. It provides a horizontal or vertical line that helps organize and structure the layout, improving readability and visual hierarchy.
 
 ```tsx
 import { Divider } from "@arkyn/components";
 ```
 
-## Orientações
+## Basic usage
 
-O componente oferece duas orientações: horizontal e vertical. A orientação horizontal é usada para separar conteúdo verticalmente empilhado, enquanto a vertical separa conteúdo lado a lado.
+<div className="noContent">
+  <Divider />
+</div>
+
+```tsx
+<Divider />
+```
+
+## Orientations
+
+The component offers two orientations: horizontal and vertical. Horizontal orientation is used to separate vertically stacked content, while vertical orientation separates side-by-side content.
 
 ### Horizontal
 
-A orientação horizontal é a padrão e é usada para separar seções de conteúdo que estão organizadas verticalmente.
+Horizontal orientation is the default and is used to separate sections of content that are organized vertically.
 
 <div className="noContent">
   <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-    <p>Seção 1</p>
+    <p>Section 1</p>
     <Divider />
-    <p>Seção 2</p>
+    <p>Section 2</p>
     <Divider orientation="horizontal" />
-    <p>Seção 3</p>
+    <p>Section 3</p>
   </div>
 </div>
 
 ```tsx
 <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-  <p>Seção 1</p>
+  <p>Section 1</p>
   <Divider />
-  <p>Seção 2</p>
+  <p>Section 2</p>
   <Divider orientation="horizontal" />
-  <p>Seção 3</p>
+  <p>Section 3</p>
 </div>
 ```
 
 ### Vertical
 
-A orientação vertical é usada para separar elementos que estão dispostos horizontalmente, como em barras de navegação ou grupos de botões.
+Vertical orientation is used to separate elements that are arranged horizontally, such as navigation bars or groups of buttons.
 
 <div className="noContent">
   <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
@@ -69,67 +77,17 @@ A orientação vertical é usada para separar elementos que estão dispostos hor
 </div>
 ```
 
-## Personalização
+## Properties
 
-O `Divider` pode ser personalizado através de classes CSS customizadas para se adequar ao design da sua aplicação.
-
-<div className="noContent">
-  <div>
-    <p>Conteúdo acima</p>
-    <Divider
-      style={{
-        border: "none",
-        height: "2px",
-        background: "linear-gradient(to right, #3b82f6, #8b5cf6)",
-        margin: "16px 0",
-      }}
-    />
-    <p>Conteúdo abaixo</p>
-  </div>
-</div>
-
-```tsx
-<div>
-  <p>Conteúdo acima</p>
-  <Divider
-    style={{
-      border: "none",
-      height: "2px",
-      background: "linear-gradient(to right, #3b82f6, #8b5cf6)",
-      margin: "16px 0",
-    }}
-  />
-  <p>Conteúdo abaixo</p>
-</div>
-```
-
-## Propriedades
-
-**`orientation`** - `"horizontal" | "vertical"` (padrão: `"horizontal"`)
-Define a orientação do divisor
+**`orientation`** - `"horizontal" | "vertical"` (default: `"horizontal"`)
+Defines the orientation of the divider
 
 <AlertContainer schema="info">
   <AlertIcon />
   <AlertContent>
-    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertTitle>Other properties</AlertTitle>
     <AlertDescription>
-      Todas as outras propriedades HTML padrão de `<div>` também são suportadas.
+      All other standard HTML properties of `<div>` are also supported.
     </AlertDescription>
   </AlertContent>
 </AlertContainer>
-
-## Acessibilidade
-
-O `Divider` é implementado como um elemento `<div>` e é puramente decorativo por padrão. Para melhor acessibilidade:
-
-- É automaticamente ignorado por leitores de tela por ser decorativo
-- Não interfere na navegação por teclado
-- Mantém a estrutura semântica do conteúdo
-
-## Notas Importantes
-
-- O divisor horizontal funciona melhor em layouts com `display: block` ou `flex-direction: column`
-- O divisor vertical requer um container com `display: flex` para funcionar corretamente
-- O componente herda todas as propriedades padrão de um elemento HTML `<div>`
-- É recomendado usar o divisor com moderação para evitar poluição visual
-- O componente é puramente visual e não afeta a estrutura semântica do HTML

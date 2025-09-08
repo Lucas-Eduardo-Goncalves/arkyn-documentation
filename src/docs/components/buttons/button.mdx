@@ -24,233 +24,219 @@ import {
   Home,
 } from "lucide-react";
 
-O componente `Button` é usado para interações do usuário e envio de formulários. Ele oferece várias opções de personalização, incluindo diferentes tamanhos, variantes, esquemas de cores, ícones e estados de carregamento.
-
-## Importação
+The `Button` component is used for user interactions and form submission. It offers several customization options, including different sizes, variants, color schemes, icons, and loading states.
 
 ```tsx
 import { Button } from "@arkyn/components";
 ```
 
-## Tamanhos
+## Basic Usage
 
-Os tamanhos disponíveis são `lg`, `md`, `sm` e `xs`. Cada tamanho oferece uma altura e padding diferentes para se adequar às necessidades do layout e hierarquia visual da interface.
-
-<div className="noContent row">
-  <Button size="lg">Grande</Button>
-  <Button size="md">Médio</Button>
-  <Button size="sm">Pequeno</Button>
-  <Button size="xs">Extra Pequeno</Button>
+<div className="noContent">
+  <Button>Standard Button</Button>
 </div>
 
 ```tsx
-<Button size="xs">Extra Pequeno</Button>
-<Button size="sm">Pequeno</Button>
-<Button size="md">Médio</Button>
-<Button size="lg">Grande</Button>
+<Button>Standard Button</Button>
 ```
 
-## Variantes
+## Sizes
 
-As variantes disponíveis são `solid`, `outline`, `ghost` e `invisible`. Cada variante oferece um estilo visual diferente, permitindo criar hierarquias e enfatizar diferentes tipos de ações na interface.
+The available sizes are `lg`, `md`, `sm`, and `xs`. Each size offers a different height and padding to suit the layout needs and visual hierarchy of the interface.
 
 <div className="noContent row">
-  <Button variant="solid">Sólido</Button>
-  <Button variant="outline">Contorno</Button>
-  <Button variant="ghost">Fantasma</Button>
-  <Button variant="invisible">Invisível</Button>
+  <Button size="lg">Large</Button>
+  <Button size="md">Medium</Button>
+  <Button size="sm">Small</Button>
+  <Button size="xs">Extra Small</Button>
 </div>
 
 ```tsx
-<Button variant="solid">Sólido</Button>
-<Button variant="outline">Contorno</Button>
-<Button variant="ghost">Fantasma</Button>
-<Button variant="invisible">Invisível</Button>
+<Button size="xs">Extra Small</Button>
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
 ```
 
-## Esquemas de Cores
+## Variants
 
-Os esquemas de cores disponíveis são `primary`, `success`, `warning`, `danger` e `info`. Cada esquema transmite um significado semântico específico e ajuda os usuários a entender o tipo de ação que será executada.
+The available variants are `solid`, `outline`, `ghost`, and `invisible`. Each variant offers a different visual style, allowing you to create hierarchies and emphasize different types of actions in the interface.
 
 <div className="noContent row">
-  <Button scheme="primary">Primário</Button>
-  <Button scheme="success">Sucesso</Button>
-  <Button scheme="warning">Aviso</Button>
-  <Button scheme="danger">Perigo</Button>
-  <Button scheme="info">Informação</Button>
+  <Button variant="solid">Solid</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="invisible">Invisible</Button>
 </div>
 
 ```tsx
-<Button scheme="primary">Primário</Button>
-<Button scheme="success">Sucesso</Button>
-<Button scheme="warning">Aviso</Button>
-<Button scheme="danger">Perigo</Button>
-<Button scheme="info">Informação</Button>
+<Button variant="solid">Solid</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button>
 ```
 
-## Botões com Ícones
+## Color schemes
 
-Os botões podem incluir ícones à esquerda, à direita ou em ambos os lados, e devem ser do tipo `LucideIcon`.
+The available color schemes are `primary`, `success`, `warning`, `danger`, and `info`. Each scheme conveys a specific semantic meaning and helps users understand the type of action that will be performed.
 
-### Ícone à esquerda
+<div className="noContent row">
+  <Button scheme="primary">Primary</Button>
+  <Button scheme="success">Success</Button>
+  <Button scheme="warning">Warning</Button>
+  <Button scheme="danger">Danger</Button>
+  <Button scheme="info">Information</Button>
+</div>
 
-Use ícones à esquerda quando quiser enfatizar a ação ou quando o ícone for mais reconhecível que o texto. É especialmente útil para ações primárias e botões de navegação.
+```tsx
+<Button scheme="primary">Primary</Button>
+<Button scheme="success">Success</Button>
+<Button scheme="warning">Warning</Button>
+<Button scheme="danger">Danger</Button>
+<Button scheme="info">Information</Button>
+```
+
+## Buttons with icons
+
+Buttons can include icons on the left, right, or both sides, and must be of the `LucideIcon` type.
+
+### Left-side icon
+
+Use left-side icons when you want to emphasize the action or when the icon is more recognizable than the text. This is especially useful for primary actions and navigation buttons.
 
 <div className="noContent row">
   <Button leftIcon={Save} scheme="success">
-    Salvar
+    Save
   </Button>
   <Button leftIcon={Search} scheme="info">
-    Buscar
+    Search
   </Button>
-  <Button leftIcon={Plus} scheme="primary">
-    Adicionar
-  </Button>
-  <Button leftIcon={Home}>Início</Button>
+  <Button leftIcon={Home}>Home</Button>
 </div>
 
 ```tsx
-<Button leftIcon={Save} scheme="success">Salvar</Button>
-<Button leftIcon={Search} scheme="info">Buscar</Button>
-<Button leftIcon={Plus} scheme="primary">Adicionar</Button>
-<Button leftIcon={Home}>Início</Button>
+<Button leftIcon={Save} scheme="success">Save</Button>
+<Button leftIcon={Search} scheme="info">Search</Button>
+<Button leftIcon={Home}>Home</Button>
 ```
 
-### Ícone à direita
+### Right-side icon
 
-Ícones à direita são ideais para indicar direção ou resultado de uma ação, como enviar, avançar ou executar uma operação. Eles complementam o texto fornecendo contexto visual adicional.
+Right-hand icons are ideal for indicating the direction or result of an action, such as submitting, moving forward, or executing an operation. They complement the text by providing additional visual context.
 
 <div className="noContent row">
   <Button rightIcon={Trash2} scheme="danger">
-    Excluir
+    Delete
   </Button>
   <Button rightIcon={Edit} scheme="warning">
-    Editar
+    Edit
   </Button>
-  <Button rightIcon={Send} scheme="success">
-    Enviar
-  </Button>
+  <Button rightIcon={Send}>Send</Button>
 </div>
 
 ```tsx
-<Button rightIcon={Trash2} scheme="danger">Excluir</Button>
-<Button rightIcon={Edit} scheme="warning">Editar</Button>
-<Button rightIcon={Send} scheme="success">Enviar</Button>
+<Button rightIcon={Trash2} scheme="danger">Delete</Button>
+<Button rightIcon={Edit} scheme="warning">Edit</Button>
+<Button rightIcon={Send}>Send</Button>
 ```
 
-### Ambos os ícones
+## Disabled button
 
-Use ícones em ambos os lados quando quiser representar uma ação complexa que envolve duas operações relacionadas, como sincronização, transferência de dados ou ações que combinam múltiplas funcionalidades.
-
-<div className="noContent row">
-  <Button leftIcon={Download} rightIcon={Upload}>
-    Sincronizar
-  </Button>
-  <Button leftIcon={Save} rightIcon={Send} scheme="success">
-    Salvar e Enviar
-  </Button>
-</div>
-
-```tsx
-<Button leftIcon={Download} rightIcon={Upload}>Sincronizar</Button>
-<Button leftIcon={Save} rightIcon={Send} scheme="success">Salvar e Enviar</Button>
-```
-
-## Botão Desabilitado
-
-O estado de não ativação do botão indica que ele não pode ser clicado ou interagido. E será ativado pela propriedade `disabled` ou quando estiver em estado de carregamento `isLoading`.
+The button's disabled state indicates that it cannot be clicked or interacted with. It will be activated by the disabled property or when it is in the isLoading state.
 
 <div className="noContent row">
-  <Button disabled>Desabilitado</Button>
+  <Button disabled>Disabled</Button>
   <Button disabled scheme="success">
-    Não disponível
+    Not available
   </Button>
   <Button disabled leftIcon={Save}>
-    Salvar
+    Save
   </Button>
 </div>
 
 ```tsx
-<Button disabled>Desabilitado</Button>
-<Button disabled scheme="success">Não disponível</Button>
-<Button disabled leftIcon={Save}>Salvar</Button>
+<Button disabled>Disabled</Button>
+<Button disabled scheme="success">Not available</Button>
+<Button disabled leftIcon={Save}>Save</Button>
 ```
 
-## Estado de Carregamento
+## Loading state
 
-O estado de carregamento é usado para indicar que uma operação está em andamento, fornecendo feedback visual ao usuário e evitando múltiplos cliques acidentais durante o processamento.
+The loading state is used to indicate that an operation is in progress, providing visual feedback to the user and preventing accidental multiple clicks during processing.
 
-### Carregamento simples
+### Simple loading
 
-O carregamento simples mostra apenas um spinner animado sem texto personalizado, mantendo o texto original do botão durante o estado de carregamento.
+Simple loading displays only an animated spinner without custom text, maintaining the original button text during the loading state.
 
 <div className="noContent">
-  <Button isLoading>Carregando...</Button>
+  <Button isLoading>Loading...</Button>
 </div>
 
 ```tsx
-<Button isLoading>Carregando...</Button>
+<Button isLoading>Loading...</Button>
 ```
 
-### Carregamento com texto personalizado
+### Loading with custom text
 
-O texto personalizado de carregamento permite fornecer contexto específico sobre a operação em andamento, melhorando a experiência do usuário ao comunicar claramente o que está sendo processado.
+Custom loading text allows you to provide specific context about the ongoing operation, improving the user experience by clearly communicating what is being processed.
 
 <div className="noContent row">
-  <Button isLoading loadingText="Salvando...">
-    Salvar
-  </Button>
-  <Button isLoading loadingText="Enviando..." scheme="success">
-    Enviar
-  </Button>
-  <Button isLoading loadingText="Processando..." scheme="info">
-    Processar
+  <Button isLoading loadingText="Saving...">
+    Save
   </Button>
 </div>
 
 ```tsx
-<Button isLoading loadingText="Salvando...">Salvar</Button>
-<Button isLoading loadingText="Enviando..." scheme="success">Enviar</Button>
-<Button isLoading loadingText="Processando..." scheme="info">Processar</Button>
+<Button isLoading loadingText="Saving...">
+  Save
+</Button>
 ```
-
-## Propriedades
-
-**`isLoading`** - `boolean` (padrão: `false`)
-Controla o estado de carregamento com spinner
-
-**`loadingText`** - `string`
-Texto a ser exibido durante o estado de carregamento
-
-**`size`** - `"xs" | "sm" | "md" | "lg"` (padrão: `"md"`)
-Tamanho do botão
-
-**`variant`** - `"solid" | "outline" | "ghost" | "invisible"` (padrão: `"solid"`)
-Variante visual do botão
-
-**`scheme`** - `"primary" | "success" | "warning" | "danger" | "info"` (padrão: `"primary"`)
-Esquema de cores do botão
-
-**`leftIcon`** - `LucideIcon`
-Ícone opcional para exibir à esquerda
-
-**`rightIcon`** - `LucideIcon`
-Ícone opcional para exibir à direita
 
 <AlertContainer schema="info">
   <AlertIcon />
   <AlertContent>
-    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertTitle>Button Width</AlertTitle>
     <AlertDescription>
-      Todas as outras propriedades HTML padrão de `<button>` também são suportadas.
+      If the button loading text is too long, the button will automatically
+      adjust to the content size.
     </AlertDescription>
   </AlertContent>
 </AlertContainer>
 
-## Notas Importantes
+## Properties
 
-- Quando `isLoading` é `true`, o botão é automaticamente desabilitado
-- Os ícones são redimensionados automaticamente com base no tamanho do botão (xs: 12px, sm: 16px, md: 20px, lg: 24px)
-- O componente herda todas as propriedades padrão de um elemento HTML `<button>`
-- O estado de carregamento exibe um spinner animado da biblioteca Lucide React
-- Todos os manipuladores de eventos padrão do HTML são suportados (onClick, onFocus, onBlur, etc.)
+**`isLoading`** - `boolean` (default: `false`)
+Controls the loading state with the spinner
+
+**`loadingText`** - `string`
+Text to display during the loading state
+
+**`size`** - `"xs" | "sm" | "md" | "lg"` (default: `"md"`)
+Button size
+
+**`variant`** - `"solid" | "outline" | "ghost" | "invisible"` (default: `"solid"`)
+Button visual variant
+
+**`scheme`** - `"primary" | "success" | "warning" | "danger" | "info" (default: `"primary"`)
+Button Color Scheme
+
+**`leftIcon`** - `LucideIcon`
+Optional icon to display on the left
+
+**`rightIcon`** - `LucideIcon`
+Optional icon to display on the right
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Other Properties</AlertTitle>
+    <AlertDescription>
+    All other standard HTML properties for `<button>` are also supported.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notes
+
+- Icons are automatically resized based on the button size (xs: 12px, sm: 16px, md: 20px, lg: 24px)
+- The loading state displays an animated spinner from the Lucide React library
