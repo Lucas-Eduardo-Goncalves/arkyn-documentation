@@ -3,5 +3,5 @@ import { generateDocRoutes } from "./services/generateDocRoutes";
 
 export default [
   index("./pages/home/index.tsx"),
-  route("/", "./layouts/docLayout/index.tsx", [...generateDocRoutes()]),
+  route("/docs", "./layouts/docLayout/index.tsx", [...generateDocRoutes()]),
 ] satisfies RouteConfig;

@@ -6,8 +6,10 @@ type SideLinkProps = {
   label: string;
 };
 
-function SideLink({ to, label }: SideLinkProps) {
+function SideLink({ to: rawTo, label }: SideLinkProps) {
   const { pathname } = useLocation();
+
+  const to = `/docs${rawTo}`;
   const isActive = pathname === to;
 
   return (

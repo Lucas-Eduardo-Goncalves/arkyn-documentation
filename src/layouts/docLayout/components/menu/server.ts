@@ -2,6 +2,10 @@ import type { MenuType } from "./_type";
 
 const SERVER_MENU: MenuType[] = [
   {
+    label: "Introduction",
+    to: "/server/introduction",
+  },
+  {
     label: "Bad Responses",
     children: [
       {

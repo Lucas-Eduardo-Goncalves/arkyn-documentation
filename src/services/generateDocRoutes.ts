@@ -13,7 +13,9 @@ function generateDocRoutes(): RouteConfigEntry[] {
     keys.push([routePath, path]);
   });
 
-  return keys.map(([routePath, path]) => route(routePath, path));
+  return keys.map(([routePath, path]) =>
+    route(routePath.replace("/", ""), path)
+  );
 }
 
 export { generateDocRoutes };

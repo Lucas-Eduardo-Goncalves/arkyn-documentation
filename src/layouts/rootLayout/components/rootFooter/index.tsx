@@ -31,29 +31,29 @@ function RootFooter() {
             <div>
               <strong>Products</strong>
               <Link to="">Library</Link>
-              <Link to="/api/introduction">Api</Link>
+              <Link to="/docs/api/introduction">Api</Link>
               <Link to="">Design System</Link>
             </div>
 
             <div>
               <strong>Resources</strong>
-              <Link to="/components/introduction">@arkyn/components</Link>
-              <Link to="/server/introduction">@arkyn/server</Link>
-              <Link to="/shared/introduction">@arkyn/shared</Link>
-              <Link to="/templates/introduction">@arkyn/templates</Link>
+              <Link to="/docs/components/introduction">@arkyn/components</Link>
+              <Link to="/docs/server/introduction">@arkyn/server</Link>
+              <Link to="/docs/shared/introduction">@arkyn/shared</Link>
+              <Link to="/docs/templates/introduction">@arkyn/templates</Link>
             </div>
 
             <div>
               <strong>Explore</strong>
-              <Link to="/introduction">Documentation</Link>
-              <Link to="/guides/introduction">Guides</Link>
+              <Link to="/docs/introduction">Documentation</Link>
+              <Link to="/docs/guides/introduction">Guides</Link>
             </div>
 
             <div>
               <strong>Company</strong>
-              <Link to="/about">About</Link>
-              <Link to="/support">Support</Link>
-              <Link to="/privacy">Privacy policy</Link>
+              <Link to="/docs/about">About</Link>
+              <Link to="/docs/support">Support</Link>
+              <Link to="/docs/privacy">Privacy policy</Link>
               <a href="mailto:lucasgoncalvesgithub@gmail.com">Contact us</a>
             </div>
           </ColumnsContainer>

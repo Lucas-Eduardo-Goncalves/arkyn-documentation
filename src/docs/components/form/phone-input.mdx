@@ -22,10 +22,18 @@ import {
 
 O componente `PhoneInput` é um campo de entrada especializado para números de telefone internacionais que oferece seleção de país e formatação automática. Inclui um dropdown pesquisável com bandeiras dos países e aplica máscaras de formatação específicas para cada região.
 
-## Importação
-
 ```tsx
 import { PhoneInput } from "@arkyn/components";
+```
+
+## Uso básico
+
+<div className="noContent column">
+  <PhoneInput name="phone" label="Telefone" />
+</div>
+
+```tsx
+<PhoneInput name="phone" label="Telefone" />
 ```
 
 ## Tamanhos
@@ -76,81 +84,35 @@ As variantes disponíveis são `solid` e `outline`, proporcionando diferentes es
 />
 ```
 
-## Países e Formatação
+## Padronização
 
-O componente suporta formatação automática para diversos países, aplicando a máscara apropriada baseada na seleção.
-
-### Brasil (BR)
+O componente pode detectar automaticamente o país com base no número inserido, sem a necessidade de especificar `defaultCountry`. Porém , é necessário que o número comece com o código do país (ex: +55 para Brasil, +1 para EUA), seguindo o formato internacional E.164. O formato de telefone deverá ser: `+[countryCode]-[countryPrefixCode] [countryNumber]`.
 
 <div className="noContent column">
-  <PhoneInput name="phone-br" label="Telefone Brasil" defaultCountry="BR" />
   <PhoneInput
-    name="phone-br-value"
-    label="Telefone com valor"
-    defaultCountry="BR"
-    defaultValue="+55 11999999999"
+    name="auto-detect"
+    label="Telefone"
+    defaultValue="+55 11999999999" 
+  />
+
+  <PhoneInput
+    name="auto-detect-us"
+    label="Phone"
+    defaultValue="+1-408 1234567" 
   />
 </div>
 
 ```tsx
-<PhoneInput
-  name="phone-br"
-  label="Telefone Brasil"
-  defaultCountry="BR"
-/>
-<PhoneInput
-  name="phone-br-value"
-  label="Telefone com valor"
-  defaultCountry="BR"
-  defaultValue="+55 11999999999"
-/>
-```
-
-### Estados Unidos (US)
-
-<div className="noContent column">
-  <PhoneInput name="phone-us" label="Phone USA" defaultCountry="US" />
-  <PhoneInput
-    name="phone-us-value"
-    label="Phone with value"
-    defaultCountry="US"
-    defaultValue="+1-408 1234567"
-  />
-</div>
-
-```tsx
-<PhoneInput
-  name="phone-us"
-  label="Phone USA"
-  defaultCountry="US"
-/>
-<PhoneInput
-  name="phone-us-value"
-  label="Phone with value"
-  defaultCountry="US"
-  defaultValue="+1-408 1234567"
-/>
-```
-
-## Detecção Automática de País
-
-O componente pode detectar automaticamente o país baseado no valor padrão fornecido:
-
-```tsx
-// Detecta automaticamente que é um número brasileiro
 <PhoneInput
   name="auto-detect"
   label="Telefone"
-  defaultValue="+55 11999999999"
-  // Não precisa especificar defaultCountry
+  defaultValue="+55 11999999999" // Brasil
 />
 
-// Detecta automaticamente que é um número americano
 <PhoneInput
   name="auto-detect-us"
   label="Phone"
-  defaultValue="+1-408 1234567"
-  // Não precisa especificar defaultCountry
+  defaultValue="+1-408 1234567" // EUA
 />
 ```
 
@@ -367,29 +329,6 @@ const handlePhoneChange = (formattedPhone) => {
 />;
 ```
 
-## Formatação Automática
-
-O componente aplica formatação automática baseada no país selecionado:
-
-- **Brasil**: +55 11 99999-9999
-- **Estados Unidos**: +1 (408) 123-4567
-- **Reino Unido**: +44 20 7946 0958
-- **França**: +33 1 42 34 56 78
-- **Alemanha**: +49 30 12345678
-- **E muitos outros...**
-
-A formatação é aplicada em tempo real conforme o usuário digita, seguindo os padrões específicos de cada país.
-
-## Busca de Países
-
-O dropdown de países inclui:
-
-- **Bandeiras**: Representação visual de cada país
-- **Códigos**: Código de discagem internacional
-- **Nomes**: Nome completo do país
-- **Busca**: Filtragem em tempo real por nome do país
-- **Suporte**: Mais de 200 países disponíveis
-
 ## Propriedades
 
 **`name`** - `string` (obrigatório)
@@ -450,46 +389,9 @@ Função callback chamada quando o número muda, recebe o valor formatado com c�
   </AlertContent>
 </AlertContainer>
 
-## Acessibilidade
-
-O componente `PhoneInput` foi desenvolvido com acessibilidade em mente:
-
-- Associação automática entre label e input via `htmlFor` e `id`
-- Suporte completo a navegação por teclado
-- Estados visuais claros para focus, error e disabled
-- Mensagens de erro são anunciadas por leitores de tela
-- Dropdown navegável por teclado com busca
-- Bandeiras dos países com textos alternativos apropriados
-
-## Integração com Formulários
-
-O componente se integra nativamente com sistemas de gerenciamento de formulário:
-
-- Exibição de erros contextuais
-- Gerenciamento de estado do formulário
-- Suporte a valores separados ou com máscara
-
-<AlertContainer schema="warning">
-  <AlertIcon />
-  <AlertContent>
-    <AlertTitle>Formulários customizáveis</AlertTitle>
-    <AlertDescription>
-      Para formulários mais complexos, é recomendado utilizar o [Form
-      Provider](/components/providers/form-provider) que oferece integração
-      nativa com todas as ferramentas de formulário de uma única só vez.
-    </AlertDescription>
-  </AlertContent>
-</AlertContainer>
-
 ## Notas Importantes
 
-- A propriedade `name` é obrigatória para integração com formulários
-- O país padrão é o índice 30 da lista de países se não especificado
-- A formatação é aplicada automaticamente baseada no país selecionado
-- O valor retornado no `onChange` inclui o código do país e formatação completa
 - O componente usa dados de países do `@arkyn/templates`
 - A busca de países é insensível a maiúsculas/minúsculas
 - Suporta mais de 200 países com suas respectivas formatações
-- O campo hidden garante que o valor formatado seja enviado no formulário
 - Estados de loading, disabled e readOnly afetam tanto o input quanto o dropdown
-- A formatação segue padrões internacionais para cada região

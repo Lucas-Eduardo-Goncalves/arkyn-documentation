@@ -2,6 +2,10 @@ import type { MenuType } from "./_type";
 
 const COMPONENTS_MENU: MenuType[] = [
   {
+    label: "Introduction",
+    to: "/components/introduction",
+  },
+  {
     label: "Concepts",
     children: [],
   },
