@@ -21,23 +21,23 @@ function Home() {
       <Header>
         <section>
           <h1>
-            <span>Arkyn</span>, um ecossistema completo <br /> para construir
-            aplicações web modernas.
+            <span>Arkyn</span>, a complete ecosystem for building modern web
+            applications.
           </h1>
           <h2>
-            Construa aplicações modernas de sites de marketing a apps com IA e
-            publique em segundos com o ecossistema Arkyn.
+            Build modern applications from marketing websites to AI-powered apps
+            and publish in seconds with the Arkyn ecosystem.
           </h2>
           <div>
             <Button rightIcon={ArrowRight} onClick={handleStart}>
-              Começar agora
+              Start now
             </Button>
             <Button
               variant="outline"
               rightIcon={ExternalLink}
               onClick={goToGithub}
             >
-              Ver no github
+              View on github
             </Button>
           </div>
         </section>
