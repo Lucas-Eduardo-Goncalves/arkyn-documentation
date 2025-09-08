@@ -1,0 +1,970 @@
+# Modal
+
+import {
+  ModalContainer,
+  ModalHeader,
+  ModalFooter,
+  Button,
+  Input,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import { BasicUsage } from "./examples/modal";
+
+import {
+  X,
+  Trash2,
+  AlertTriangle,
+  CheckCircle,
+  Info,
+  Settings,
+  User,
+  Save,
+  Download,
+  Upload,
+  Edit,
+  Plus,
+} from "lucide-react";
+
+Os componentes Modal (`ModalContainer`, `ModalHeader` e `ModalFooter`) oferecem uma solução completa e acessível para criação de diálogos e overlays. Com animações suaves, bloqueio de scroll e controle de foco, proporcionam uma experiência de usuário profissional e intuitiva.
+
+## Importação
+
+```tsx
+import { ModalContainer, ModalHeader, ModalFooter } from "@arkyn/components";
+```
+
+## Uso Básico
+
+<BasicUsage />
+
+```tsx
+function BasicModalExample() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <div className="noContent column">
+        <Button onClick={() => setIsOpen(true)}>Abrir Modal Básico</Button>
+      </div>
+
+      <ModalContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
+        <ModalHeader>Modal de exemplo</ModalHeader>
+
+        <p style={{ padding: "16px", width: "400px" }}>
+          Conteúdo do modal vai aqui.
+        </p>
+
+        <ModalFooter>
+          <Button onClick={() => setIsOpen(false)}>Fechar</Button>
+        </ModalFooter>
+      </ModalContainer>
+    </>
+  );
+}
+```
+
+## Modal Completo com Header e Footer
+
+Modal estruturado com todos os componentes para máxima organização.
+
+<div className="noContent column">
+  <Button onClick={() => console.log("Abrir modal completo")}>
+    Abrir Modal Completo
+  </Button>
+</div>
+
+```tsx
+function CompleteModalExample() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>Abrir Modal</Button>
+
+      <ModalContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
+        <div className="modal-content">
+          <ModalHeader>
+            <h2>Título do Modal</h2>
+            <p>Descrição ou subtítulo opcional</p>
+          </ModalHeader>
+
+          <main style={{ padding: "24px" }}>
+            <p>Conteúdo principal do modal vai aqui.</p>
+            <p>Pode incluir formulários, textos, imagens, etc.</p>
+          </main>
+
+          <ModalFooter>
+            <Button variant="outline" onClick={() => setIsOpen(false)}>
+              Cancelar
+            </Button>
+            <Button onClick={() => setIsOpen(false)}>Confirmar</Button>
+          </ModalFooter>
+        </div>
+      </ModalContainer>
+    </>
+  );
+}
+```
+
+## Modal de Confirmação
+
+Modal para confirmações de ações importantes com visual de alerta.
+
+<div className="noContent column">
+  <Button
+    variant="danger"
+    onClick={() => console.log("Abrir modal de confirmação")}
+  >
+    Deletar Item
+  </Button>
+</div>
+
+```tsx
+function ConfirmationModalExample() {
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  const handleDelete = () => {
+    // Lógica de exclusão
+    console.log("Item deletado");
+    setIsDeleteModalOpen(false);
+  };
+
+  return (
+    <>
+      <Button variant="danger" onClick={() => setIsDeleteModalOpen(true)}>
+        <Trash2 size={16} style={{ marginRight: "8px" }} />
+        Deletar Item
+      </Button>
+
+      <ModalContainer
+        isVisible={isDeleteModalOpen}
+        makeInvisible={() => setIsDeleteModalOpen(false)}
+      >
+        <div className="modal-content">
+          <ModalHeader>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <AlertTriangle
+                size={24}
+                color="#ef4444"
+                style={{ marginRight: "12px" }}
+              />
+              <div>
+                <h2>Confirmar Exclusão</h2>
+                <p>Esta ação não pode ser desfeita</p>
+              </div>
+            </div>
+          </ModalHeader>
+
+          <main style={{ padding: "24px" }}>
+            <p>
+              Tem certeza de que deseja excluir este item? Todos os dados
+              relacionados serão perdidos permanentemente.
+            </p>
+          </main>
+
+          <ModalFooter alignment="right">
+            <Button
+              variant="outline"
+              onClick={() => setIsDeleteModalOpen(false)}
+            >
+              Cancelar
+            </Button>
+            <Button variant="danger" onClick={handleDelete}>
+              <Trash2 size={16} style={{ marginRight: "8px" }} />
+              Deletar
+            </Button>
+          </ModalFooter>
+        </div>
+      </ModalContainer>
+    </>
+  );
+}
+```
+
+## Modal de Formulário
+
+Modal para entrada de dados com formulários complexos.
+
+<div className="noContent column">
+  <Button onClick={() => console.log("Abrir modal de formulário")}>
+    <Plus size={16} style={{ marginRight: "8px" }} />
+    Novo Usuário
+  </Button>
+</div>
+
+```tsx
+function FormModalExample() {
+  const [isFormModalOpen, setIsFormModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    role: "",
+  });
+
+  const handleSave = () => {
+    // Validar e salvar dados
+    console.log("Dados salvos:", formData);
+    setIsFormModalOpen(false);
+  };
+
+  return (
+    <>
+      <Button onClick={() => setIsFormModalOpen(true)}>
+        <Plus size={16} style={{ marginRight: "8px" }} />
+        Novo Usuário
+      </Button>
+
+      <ModalContainer
+        isVisible={isFormModalOpen}
+        makeInvisible={() => setIsFormModalOpen(false)}
+      >
+        <div className="modal-content" style={{ width: "500px" }}>
+          <ModalHeader>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <User size={24} style={{ marginRight: "12px" }} />
+              <div>
+                <h2>Adicionar Novo Usuário</h2>
+                <p>Preencha as informações do usuário</p>
+              </div>
+            </div>
+          </ModalHeader>
+
+          <main style={{ padding: "24px" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "16px" }}
+            >
+              <Input
+                label="Nome Completo"
+                name="name"
+                placeholder="Digite o nome completo"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    name: e.target.value,
+                  }))
+                }
+              />
+
+              <Input
+                label="Email"
+                name="email"
+                type="email"
+                placeholder="usuario@email.com"
+                value={formData.email}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    email: e.target.value,
+                  }))
+                }
+              />
+
+              <Input
+                label="Função"
+                name="role"
+                placeholder="Ex: Desenvolvedor"
+                value={formData.role}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    role: e.target.value,
+                  }))
+                }
+              />
+            </div>
+          </main>
+
+          <ModalFooter alignment="right">
+            <Button variant="outline" onClick={() => setIsFormModalOpen(false)}>
+              Cancelar
+            </Button>
+            <Button onClick={handleSave}>
+              <Save size={16} style={{ marginRight: "8px" }} />
+              Salvar Usuário
+            </Button>
+          </ModalFooter>
+        </div>
+      </ModalContainer>
+    </>
+  );
+}
+```
+
+## Modal de Informação
+
+Modal para exibir informações importantes ou notificações.
+
+<div className="noContent column">
+  <Button
+    variant="info"
+    onClick={() => console.log("Abrir modal de informação")}
+  >
+    <Info size={16} style={{ marginRight: "8px" }} />
+    Ver Informações
+  </Button>
+</div>
+
+```tsx
+function InfoModalExample() {
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+
+  return (
+    <>
+      <Button variant="info" onClick={() => setIsInfoModalOpen(true)}>
+        <Info size={16} style={{ marginRight: "8px" }} />
+        Ver Informações
+      </Button>
+
+      <ModalContainer
+        isVisible={isInfoModalOpen}
+        makeInvisible={() => setIsInfoModalOpen(false)}
+      >
+        <div className="modal-content">
+          <ModalHeader>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Info size={24} color="#3b82f6" style={{ marginRight: "12px" }} />
+              <div>
+                <h2>Informações do Sistema</h2>
+                <p>Detalhes sobre a versão e recursos</p>
+              </div>
+            </div>
+          </ModalHeader>
+
+          <main style={{ padding: "24px" }}>
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+            >
+              <div>
+                <strong>Versão:</strong> 2.1.4
+              </div>
+              <div>
+                <strong>Última atualização:</strong> 15 de Janeiro, 2024
+              </div>
+              <div>
+                <strong>Recursos disponíveis:</strong>
+                <ul style={{ marginTop: "8px", paddingLeft: "20px" }}>
+                  <li>Dashboard interativo</li>
+                  <li>Relatórios avançados</li>
+                  <li>Integração com APIs</li>
+                  <li>Notificações em tempo real</li>
+                </ul>
+              </div>
+            </div>
+          </main>
+
+          <ModalFooter alignment="center">
+            <Button onClick={() => setIsInfoModalOpen(false)}>
+              <CheckCircle size={16} style={{ marginRight: "8px" }} />
+              Entendi
+            </Button>
+          </ModalFooter>
+        </div>
+      </ModalContainer>
+    </>
+  );
+}
+```
+
+## Configurações de Alinhamento do Footer
+
+O `ModalFooter` oferece diferentes opções de alinhamento para os botões.
+
+<div className="noContent column">
+  <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+    <Button onClick={() => console.log("Left alignment")}>Left</Button>
+    <Button onClick={() => console.log("Center alignment")}>Center</Button>
+    <Button onClick={() => console.log("Right alignment")}>Right</Button>
+    <Button onClick={() => console.log("Between alignment")}>Between</Button>
+    <Button onClick={() => console.log("Around alignment")}>Around</Button>
+  </div>
+</div>
+
+```tsx
+// Alinhamento à esquerda
+<ModalFooter alignment="left">
+  <Button variant="danger">Deletar</Button>
+</ModalFooter>
+
+// Alinhamento centralizado
+<ModalFooter alignment="center">
+  <Button>OK</Button>
+</ModalFooter>
+
+// Alinhamento à direita (padrão)
+<ModalFooter alignment="right">
+  <Button variant="outline">Cancelar</Button>
+  <Button>Confirmar</Button>
+</ModalFooter>
+
+// Espaço entre botões
+<ModalFooter alignment="between">
+  <Button variant="outline">Anterior</Button>
+  <Button>Próximo</Button>
+</ModalFooter>
+
+// Espaço ao redor dos botões
+<ModalFooter alignment="around">
+  <Button variant="outline">Cancelar</Button>
+  <Button variant="info">Salvar Rascunho</Button>
+  <Button>Publicar</Button>
+</ModalFooter>
+```
+
+## Modal sem Botão de Fechar
+
+Para casos onde o fechamento deve ser controlado apenas por ações específicas.
+
+<div className="noContent column">
+  <Button onClick={() => console.log("Abrir modal sem fechar")}>
+    Processo Obrigatório
+  </Button>
+</div>
+
+```tsx
+function MandatoryModalExample() {
+  const [isMandatoryModalOpen, setIsMandatoryModalOpen] = useState(false);
+  const [step, setStep] = useState(1);
+
+  const handleComplete = () => {
+    if (step < 3) {
+      setStep(step + 1);
+    } else {
+      setIsMandatoryModalOpen(false);
+      setStep(1);
+    }
+  };
+
+  return (
+    <>
+      <Button onClick={() => setIsMandatoryModalOpen(true)}>
+        Iniciar Processo Obrigatório
+      </Button>
+
+      <ModalContainer
+        isVisible={isMandatoryModalOpen}
+        makeInvisible={() => {}} // Não permite fechar clicando fora
+      >
+        <div className="modal-content">
+          <ModalHeader showCloseButton={false}>
+            <div>
+              <h2>Processo Obrigatório</h2>
+              <p>Etapa {step} de 3 - Complete para continuar</p>
+            </div>
+          </ModalHeader>
+
+          <main style={{ padding: "24px" }}>
+            {step === 1 && (
+              <div>
+                <h3>Etapa 1: Termos de Uso</h3>
+                <p>Leia e aceite os termos de uso.</p>
+              </div>
+            )}
+            {step === 2 && (
+              <div>
+                <h3>Etapa 2: Configuração</h3>
+                <p>Configure suas preferências iniciais.</p>
+              </div>
+            )}
+            {step === 3 && (
+              <div>
+                <h3>Etapa 3: Confirmação</h3>
+                <p>Confirme suas configurações.</p>
+              </div>
+            )}
+          </main>
+
+          <ModalFooter alignment="right">
+            <Button onClick={handleComplete}>
+              {step < 3 ? "Próximo" : "Finalizar"}
+            </Button>
+          </ModalFooter>
+        </div>
+      </ModalContainer>
+    </>
+  );
+}
+```
+
+## Modal de Upload
+
+Modal especializado para upload de arquivos com feedback visual.
+
+<div className="noContent column">
+  <Button onClick={() => console.log("Abrir modal de upload")}>
+    <Upload size={16} style={{ marginRight: "8px" }} />
+    Upload de Arquivo
+  </Button>
+</div>
+
+```tsx
+function UploadModalExample() {
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [isUploading, setIsUploading] = useState(false);
+
+  const handleUpload = async () => {
+    setIsUploading(true);
+
+    // Simular progresso de upload
+    for (let i = 0; i <= 100; i += 10) {
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      setUploadProgress(i);
+    }
+
+    setIsUploading(false);
+    setUploadProgress(0);
+    setIsUploadModalOpen(false);
+  };
+
+  return (
+    <>
+      <Button onClick={() => setIsUploadModalOpen(true)}>
+        <Upload size={16} style={{ marginRight: "8px" }} />
+        Upload de Arquivo
+      </Button>
+
+      <ModalContainer
+        isVisible={isUploadModalOpen}
+        makeInvisible={() => !isUploading && setIsUploadModalOpen(false)}
+      >
+        <div className="modal-content">
+          <ModalHeader showCloseButton={!isUploading}>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Upload size={24} style={{ marginRight: "12px" }} />
+              <div>
+                <h2>Upload de Arquivo</h2>
+                <p>Selecione e envie seus arquivos</p>
+              </div>
+            </div>
+          </ModalHeader>
+
+          <main style={{ padding: "24px" }}>
+            {!isUploading ? (
+              <div>
+                <div
+                  style={{
+                    border: "2px dashed #d1d5db",
+                    borderRadius: "8px",
+                    padding: "40px",
+                    textAlign: "center",
+                    cursor: "pointer",
+                  }}
+                >
+                  <Upload
+                    size={48}
+                    style={{ margin: "0 auto 16px", opacity: 0.5 }}
+                  />
+                  <p>Clique para selecionar arquivos ou arraste aqui</p>
+                  <p style={{ fontSize: "14px", opacity: 0.7 }}>
+                    Formatos suportados: PDF, DOC, JPG, PNG
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <p>Enviando arquivo...</p>
+                <div
+                  style={{
+                    width: "100%",
+                    height: "8px",
+                    backgroundColor: "#f3f4f6",
+                    borderRadius: "4px",
+                    overflow: "hidden",
+                    marginTop: "12px",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: `${uploadProgress}%`,
+                      height: "100%",
+                      backgroundColor: "#3b82f6",
+                      transition: "width 0.2s ease",
+                    }}
+                  />
+                </div>
+                <p style={{ marginTop: "8px", fontSize: "14px" }}>
+                  {uploadProgress}% concluído
+                </p>
+              </div>
+            )}
+          </main>
+
+          <ModalFooter alignment="right">
+            <Button
+              variant="outline"
+              onClick={() => setIsUploadModalOpen(false)}
+              disabled={isUploading}
+            >
+              Cancelar
+            </Button>
+            <Button onClick={handleUpload} disabled={isUploading}>
+              {isUploading ? "Enviando..." : "Iniciar Upload"}
+            </Button>
+          </ModalFooter>
+        </div>
+      </ModalContainer>
+    </>
+  );
+}
+```
+
+## Modal Aninhado (Nested)
+
+Exemplo de modal dentro de outro modal para fluxos complexos.
+
+<div className="noContent column">
+  <Button onClick={() => console.log("Abrir modal aninhado")}>
+    Configurações Avançadas
+  </Button>
+</div>
+
+```tsx
+function NestedModalExample() {
+  const [isMainModalOpen, setIsMainModalOpen] = useState(false);
+  const [isNestedModalOpen, setIsNestedModalOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setIsMainModalOpen(true)}>
+        Configurações Avançadas
+      </Button>
+
+      {/* Modal Principal */}
+      <ModalContainer
+        isVisible={isMainModalOpen}
+        makeInvisible={() => setIsMainModalOpen(false)}
+      >
+        <div className="modal-content">
+          <ModalHeader>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <Settings size={24} style={{ marginRight: "12px" }} />
+              <div>
+                <h2>Configurações</h2>
+                <p>Gerencie suas preferências</p>
+              </div>
+            </div>
+          </ModalHeader>
+
+          <main style={{ padding: "24px" }}>
+            <p>Configurações gerais do sistema.</p>
+            <Button
+              variant="outline"
+              onClick={() => setIsNestedModalOpen(true)}
+              style={{ marginTop: "16px" }}
+            >
+              Configurações Avançadas
+            </Button>
+          </main>
+
+          <ModalFooter>
+            <Button onClick={() => setIsMainModalOpen(false)}>Fechar</Button>
+          </ModalFooter>
+        </div>
+      </ModalContainer>
+
+      {/* Modal Aninhado */}
+      <ModalContainer
+        isVisible={isNestedModalOpen}
+        makeInvisible={() => setIsNestedModalOpen(false)}
+      >
+        <div className="modal-content">
+          <ModalHeader>
+            <h2>Configurações Avançadas</h2>
+          </ModalHeader>
+
+          <main style={{ padding: "24px" }}>
+            <p>Configurações técnicas e avançadas.</p>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "12px",
+                marginTop: "16px",
+              }}
+            >
+              <Input
+                label="API Endpoint"
+                placeholder="https://api.exemplo.com"
+              />
+              <Input label="Timeout (ms)" placeholder="5000" type="number" />
+            </div>
+          </main>
+
+          <ModalFooter>
+            <Button
+              variant="outline"
+              onClick={() => setIsNestedModalOpen(false)}
+            >
+              Cancelar
+            </Button>
+            <Button onClick={() => setIsNestedModalOpen(false)}>Salvar</Button>
+          </ModalFooter>
+        </div>
+      </ModalContainer>
+    </>
+  );
+}
+```
+
+## Propriedades
+
+### ModalContainer
+
+**`isVisible`** - `boolean` (obrigatório)
+Controla o estado de visibilidade do modal
+
+**`makeInvisible`** - `() => void` (obrigatório)
+Função callback para fechar o modal
+
+**`children`** - `ReactNode`
+Conteúdo a ser exibido dentro do modal
+
+**`className`** - `string`
+Classes CSS adicionais para estilização
+
+### ModalHeader
+
+**`showCloseButton`** - `boolean` (padrão: `true`)
+Se deve exibir o botão de fechar (X) no header
+
+**`children`** - `ReactNode`
+Conteúdo do header (título, descrição, etc.)
+
+**`className`** - `string`
+Classes CSS adicionais para estilização
+
+### ModalFooter
+
+**`alignment`** - `"left" | "center" | "right" | "between" | "around"` (padrão: `"right"`)
+Alinhamento do conteúdo dentro do footer
+
+**`children`** - `ReactNode`
+Conteúdo do footer (botões, links, etc.)
+
+**`className`** - `string`
+Classes CSS adicionais para estilização
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      ModalContainer suporta todas as propriedades HTML de `aside`. ModalHeader
+      e ModalFooter suportam todas as propriedades HTML de `header` e `footer`
+      respectivamente.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Funcionalidades Avançadas
+
+### Bloqueio de Scroll
+
+O modal automaticamente bloqueia o scroll da página quando está aberto:
+
+- **useScrollLock** - Hook interno que gerencia o scroll
+- **Restauração automática** - Scroll é restaurado ao fechar
+- **Compatibilidade** - Funciona em diferentes navegadores
+
+### Animações
+
+Animações suaves usando Framer Motion:
+
+- **Fade in/out** - Overlay com transição de opacidade
+- **Scale animation** - Conteúdo com efeito de escala
+- **Duration configurável** - 0.15s para performance otimizada
+- **Easing personalizado** - Curva "easeOut" para naturalidade
+
+### Fechamento Inteligente
+
+Diferentes formas de fechar o modal:
+
+- **Clique no overlay** - Fechar ao clicar fora do conteúdo
+- **Botão X** - Fechar via botão no header
+- **Escape key** - Suporte para tecla ESC (implementar via onKeyDown)
+- **Programático** - Via função `makeInvisible`
+
+```tsx
+// Exemplo com tecla ESC
+function ModalWithEscapeKey() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("keydown", handleEscape);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isOpen]);
+
+  return (
+    <ModalContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
+      {/* Conteúdo do modal */}
+    </ModalContainer>
+  );
+}
+```
+
+## Acessibilidade
+
+Os componentes Modal foram desenvolvidos com foco em acessibilidade:
+
+- **Focus trap** - Foco fica contido dentro do modal
+- **ARIA attributes** - Suporte a `role="dialog"` e `aria-modal`
+- **Keyboard navigation** - Navegação via Tab e Shift+Tab
+- **Screen readers** - Anúncio adequado de abertura/fechamento
+- **Color contrast** - Contraste adequado para todos os elementos
+- **Focus restoration** - Foco retorna ao elemento que abriu o modal
+
+### Implementação Acessível
+
+```tsx
+<ModalContainer
+  isVisible={isOpen}
+  makeInvisible={() => setIsOpen(false)}
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modal-title"
+  aria-describedby="modal-description"
+>
+  <div className="modal-content">
+    <ModalHeader>
+      <h2 id="modal-title">Título do Modal</h2>
+      <p id="modal-description">Descrição do modal</p>
+    </ModalHeader>
+
+    <main>{/* Conteúdo */}</main>
+
+    <ModalFooter>
+      <Button onClick={() => setIsOpen(false)}>Fechar</Button>
+    </ModalFooter>
+  </div>
+</ModalContainer>
+```
+
+## Casos de Uso Comuns
+
+### Confirmação de Ações
+
+```tsx
+// Deletar, arquivar, desativar
+const useConfirmationModal = (action: () => void) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const confirm = () => {
+    action();
+    setIsOpen(false);
+  };
+
+  return { isOpen, setIsOpen, confirm };
+};
+```
+
+### Formulários de Criação/Edição
+
+```tsx
+// Criar usuário, editar perfil, configurações
+function FormModal({ isOpen, onClose, initialData }) {
+  return (
+    <ModalContainer isVisible={isOpen} makeInvisible={onClose}>
+      <form onSubmit={handleSubmit}>
+        <ModalHeader>
+          <h2>{initialData ? "Editar" : "Criar"} Item</h2>
+        </ModalHeader>
+
+        <main>{/* Campos do formulário */}</main>
+
+        <ModalFooter>
+          <Button type="button" onClick={onClose}>
+            Cancelar
+          </Button>
+          <Button type="submit">Salvar</Button>
+        </ModalFooter>
+      </form>
+    </ModalContainer>
+  );
+}
+```
+
+### Visualização de Detalhes
+
+```tsx
+// Detalhes do produto, informações do usuário
+function DetailsModal({ item, isOpen, onClose }) {
+  return (
+    <ModalContainer isVisible={isOpen} makeInvisible={onClose}>
+      <ModalHeader>
+        <h2>{item.title}</h2>
+      </ModalHeader>
+
+      <main>
+        <div className="details-content">{/* Informações detalhadas */}</div>
+      </main>
+
+      <ModalFooter>
+        <Button onClick={onClose}>Fechar</Button>
+      </ModalFooter>
+    </ModalContainer>
+  );
+}
+```
+
+## Performance e Otimização
+
+### Lazy Loading
+
+```tsx
+// Carregamento sob demanda do conteúdo
+const LazyModalContent = lazy(() => import("./ModalContent"));
+
+function OptimizedModal({ isOpen, onClose }) {
+  return (
+    <ModalContainer isVisible={isOpen} makeInvisible={onClose}>
+      <Suspense fallback={<div>Carregando...</div>}>
+        <LazyModalContent />
+      </Suspense>
+    </ModalContainer>
+  );
+}
+```
+
+### Memoização
+
+```tsx
+// Evitar re-renderizações desnecessárias
+const MemoizedModal = memo(function Modal({ isOpen, onClose, data }) {
+  return (
+    <ModalContainer isVisible={isOpen} makeInvisible={onClose}>
+      {/* Conteúdo */}
+    </ModalContainer>
+  );
+});
+```
+
+## Notas Importantes
+
+- **AnimatePresence** - Requerido do Framer Motion para animações de entrada/saída
+- **useScrollLock** - Hook interno que gerencia o scroll automaticamente
+- **Overlay click** - Clicar fora do conteúdo fecha o modal (configurável)
+- **Portal rendering** - Modal é renderizado fora da árvore DOM normal
+- **Z-index** - Modal tem z-index alto para ficar acima de outros elementos
+- **Memory leaks** - Limpar event listeners ao desmontar componente
+- **Mobile support** - Responsivo para dispositivos móveis
+- **Nested modals** - Suporte a modais aninhados com controle de z-index
+- **Context provider** - ModalProvider fornece contexto para componentes filhos
+- **Performance** - Animações otimizadas para 60fps
+- **Accessibility** - Suporte completo para navegação por teclado e leitores de tela
