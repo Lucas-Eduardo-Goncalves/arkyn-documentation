@@ -29,7 +29,9 @@ function Home() {
             publique em segundos com o ecossistema Arkyn.
           </h2>
           <div>
-            <Button rightIcon={ArrowRight}>Começar agora</Button>
+            <Button rightIcon={ArrowRight} onClick={handleStart}>
+              Começar agora
+            </Button>
             <Button
               variant="outline"
               rightIcon={ExternalLink}
