@@ -1,0 +1,395 @@
+# AudioUpload
+
+import {
+  AudioUpload,
+  Button,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  Upload,
+  Music,
+  Volume2,
+  Mic,
+  Radio,
+  Play,
+  Pause,
+  Download,
+  X,
+  Check,
+  AlertCircle,
+} from "lucide-react";
+
+O `AudioUpload` é um componente especializado para upload de arquivos de áudio com funcionalidades de drag and drop, validação automática e reprodução de preview. Oferece uma interface intuitiva para seleção e envio de arquivos de áudio com feedback visual e controles de reprodução.
+
+## Importação
+
+```tsx
+import { AudioUpload } from "@arkyn/components";
+```
+
+## Uso Básico
+
+<div className="noContent column">
+  <AudioUpload name="basicAudio" action="/api/upload" label="Upload de Áudio" />
+</div>
+
+```tsx
+<AudioUpload
+  name="audio"
+  action="/api/upload"
+  label="Selecione um arquivo de áudio"
+/>
+```
+
+## Uso básico
+
+Configure tipos de arquivo de áudio aceitos e validação automática.
+
+<div className="noContent column">
+  <AudioUpload
+    name="podcastAudio"
+    action="/api/upload/podcast"
+    label="Upload de Podcast"
+    showAsterisk
+    acceptAudio="audio/mp3,audio/wav"
+    selectAudioButtonText="Escolher Áudio"
+    changeAudioButtonText="Trocar Áudio"
+    dropAudioText="Arraste seu arquivo de áudio aqui"
+  />
+</div>
+
+```tsx
+<AudioUpload
+  name="podcast"
+  action="/api/upload/podcast"
+  label="Arquivo de Podcast"
+  showAsterisk
+  acceptAudio="audio/mp3,audio/wav"
+  selectAudioButtonText="Escolher Áudio"
+  changeAudioButtonText="Trocar Áudio"
+  dropAudioText="Arraste seu arquivo de áudio aqui"
+  onChange={(url) => console.log("Podcast uploaded:", url)}
+/>
+```
+
+## Tipos de áudio específicos
+
+<div className="noContent column">
+  <AudioUpload
+    name="musicFile"
+    action="/api/upload/music"
+    label="Música MP3"
+    acceptAudio="audio/mp3"
+    selectAudioButtonText="Selecionar Música"
+    dropAudioText="Arraste o arquivo MP3 aqui"
+  />
+
+  <AudioUpload
+    name="voiceRecording"
+    action="/api/upload/voice"
+    label="Gravação de Voz"
+    acceptAudio="audio/wav,audio/mp3,audio/m4a"
+    selectAudioButtonText="Escolher Gravação"
+    dropAudioText="Arraste a gravação aqui"
+  />
+</div>
+
+```tsx
+{
+  /* Upload de música MP3 */
+}
+<AudioUpload
+  name="backgroundMusic"
+  action="/api/upload/music"
+  label="Música de Fundo (MP3)"
+  acceptAudio="audio/mp3"
+  selectAudioButtonText="Selecionar Música"
+  dropAudioText="Arraste o arquivo MP3 aqui"
+/>;
+
+{
+  /* Upload de gravação de voz */
+}
+<AudioUpload
+  name="voiceNote"
+  action="/api/upload/voice"
+  label="Nota de Voz"
+  acceptAudio="audio/wav,audio/mp3,audio/m4a"
+  selectAudioButtonText="Escolher Gravação"
+  dropAudioText="Arraste a gravação aqui (WAV, MP3 ou M4A)"
+/>;
+
+{
+  /* Múltiplos formatos de áudio */
+}
+<AudioUpload
+  name="audioFile"
+  action="/api/upload/audio"
+  label="Arquivo de Áudio"
+  acceptAudio="audio/*"
+  selectAudioButtonText="Selecionar Áudio"
+/>;
+```
+
+## Estados e Variações
+
+### Upload Desabilitado
+
+<div className="noContent column">
+  <AudioUpload
+    name="disabledAudio"
+    action="/api/upload"
+    label="Upload de Áudio Desabilitado"
+    disabled
+    selectAudioButtonText="Não Disponível"
+  />
+</div>
+
+```tsx
+<AudioUpload
+  name="audio"
+  action="/api/upload"
+  label="Upload Temporariamente Indisponível"
+  disabled
+/>
+```
+
+### Upload com Valor Padrão
+
+<div className="noContent column">
+  <AudioUpload
+    name="defaultAudio"
+    action="/api/upload"
+    label="Áudio com Preview"
+    defaultValue="/sample-audio.mp3"
+    changeAudioButtonText="Trocar Áudio"
+  />
+</div>
+
+```tsx
+<AudioUpload
+  name="existingAudio"
+  action="/api/upload"
+  label="Áudio Atual"
+  defaultValue="/path/to/existing-audio.mp3"
+  changeAudioButtonText="Substituir Áudio"
+/>
+```
+
+## Configuração de API
+
+### Estrutura da Resposta Esperada
+
+O componente espera que a API retorne um JSON com a seguinte estrutura:
+
+```json
+// Sucesso (configuração padrão)
+{
+  "url": "https://example.com/uploads/audio123.mp3"
+}
+
+// Sucesso (configuração customizada)
+{
+  "url": "https://example.com/audio/podcast-episode.mp3",
+  "fileName": "podcast-episode.mp3",
+  "duration": 1800,
+  "size": 15728640
+}
+
+// Erro
+{
+  "error": "Arquivo de áudio muito grande. Máximo permitido: 50MB"
+}
+```
+
+### Exemplo de Endpoint Node.js
+
+```javascript
+// server.js
+app.post("/api/upload/audio", upload.single("file"), (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({
+        error: "Nenhum arquivo de áudio foi enviado",
+      });
+    }
+
+    // Validar tipo de arquivo
+    if (!req.file.mimetype.startsWith("audio/")) {
+      return res.status(400).json({
+        error: "Arquivo deve ser um formato de áudio válido",
+      });
+    }
+
+    // Validações de tamanho
+    const maxSize = 50 * 1024 * 1024; // 50MB
+    if (req.file.size > maxSize) {
+      return res.status(400).json({
+        error: "Arquivo de áudio muito grande. Máximo: 50MB",
+      });
+    }
+
+    // Processar upload de áudio (S3, local, etc.)
+    const audioUrl = processAudioUpload(req.file);
+
+    // Extrair metadata (opcional)
+    const audioMetadata = extractAudioMetadata(req.file);
+
+    res.json({
+      url: audioUrl,
+      fileName: req.file.originalname,
+      size: req.file.size,
+      duration: audioMetadata.duration,
+      format: audioMetadata.format,
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: "Erro interno do servidor",
+    });
+  }
+});
+```
+
+## Propriedades
+
+**`name`** - `string` (obrigatório)
+Nome do campo para manipulação de formulário
+
+**`action`** - `string` (obrigatório)
+URL do endpoint onde o arquivo será enviado
+
+**`disabled`** - `boolean` (padrão: `false`)
+Se o upload de arquivo está desabilitado
+
+**`label`** - `string`
+Texto do label a ser exibido acima da área de upload
+
+**`showAsterisk`** - `boolean` (padrão: `false`)
+Se deve exibir asterisco no label para campos obrigatórios
+
+**`changeAudioButtonText`** - `string` (padrão: `"Trocar arquivo de áudio"`)
+Texto do botão para trocar/substituir um arquivo já enviado
+
+**`selectAudioButtonText`** - `string` (padrão: `"Selecionar arquivo de áudio"`)
+Texto do botão para selecionar um arquivo
+
+**`dropAudioText`** - `string` (padrão: `"Ou arraste e solte um arquivo de áudio aqui"`)
+Texto exibido na área de drop zone
+
+**`method`** - `string` (padrão: `"POST"`)
+Método HTTP para a requisição de upload
+
+**`fileName`** - `string` (padrão: `"file"`)
+Nome do campo no FormData para o arquivo
+
+**`fileResponseName`** - `string` (padrão: `"url"`)
+Nome da propriedade no objeto de resposta que contém a URL do arquivo
+
+**`acceptAudio`** - `string` (padrão: `"audio/*"`)
+Tipos de arquivo de áudio aceitos pelo input (ex: "audio/mp3", "audio/wav")
+
+**`onChange`** - `(url?: string) => void`
+Função callback chamada quando o upload é concluído com sucesso
+
+**`defaultValue`** - `string`
+URL de áudio padrão a ser exibida no componente
+
+## Formatos de Áudio Suportados
+
+O componente suporta os principais formatos de áudio:
+
+- **MP3** - `audio/mp3` - Formato mais comum para música
+- **WAV** - `audio/wav` - Alta qualidade, sem compressão
+- **M4A** - `audio/m4a` - Formato Apple, boa qualidade
+- **OGG** - `audio/ogg` - Formato aberto, boa compressão
+- **FLAC** - `audio/flac` - Sem perdas, alta qualidade
+- **WebM** - `audio/webm` - Formato web moderno
+- **AAC** - `audio/aac` - Boa qualidade e compressão
+
+### Configurações Recomendadas por Tipo
+
+```tsx
+// Para música
+acceptAudio = "audio/mp3,audio/wav,audio/flac";
+
+// Para podcast/fala
+acceptAudio = "audio/mp3,audio/wav,audio/m4a";
+
+// Para gravação web
+acceptAudio = "audio/webm,audio/wav,audio/mp3";
+
+// Para qualquer áudio
+acceptAudio = "audio/*";
+```
+
+## Validação e Tratamento de Erros
+
+O componente oferece tratamento automático de erros:
+
+- **Erros de tipo** - Validação automática de arquivos de áudio
+- **Erros de rede** - Capturados automaticamente
+- **Erros da API** - Exibidos via propriedade `error` na resposta
+- **Validação de formulário** - Integração com `useForm`
+- **Feedback visual** - Estados de loading e erro
+
+## Funcionalidades do Preview
+
+Quando um arquivo de áudio é carregado, o componente oferece:
+
+- **Player de áudio nativo** - Controles de reprodução integrados
+- **Informações do arquivo** - Nome e tamanho do arquivo
+- **Botão de troca** - Facilita substituição do arquivo
+- **Estado de loading** - Feedback durante upload
+- **Preview visual** - Interface clara do arquivo carregado
+
+## Acessibilidade
+
+O AudioUpload foi desenvolvido com foco em acessibilidade:
+
+- **Navegação por teclado** - Suporte completo para navegação via Tab
+- **Labels semânticos** - Associação correta entre labels e campos
+- **Estados visuais** - Feedback claro para diferentes estados
+- **Drag and drop acessível** - Funciona tanto com mouse quanto teclado
+- **Player acessível** - Controles de áudio nativos e acessíveis
+- **Mensagens de erro** - Anunciadas por leitores de tela
+- **Tipos de arquivo** - Descrição clara dos formatos aceitos
+
+## Integração com Formulários
+
+O componente se integra nativamente com sistemas de gerenciamento de formulário:
+
+- Exibição de erros contextuais
+- Gerenciamento de estado do formulário
+- Suporte a valores separados ou com máscara
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Formulários customizáveis</AlertTitle>
+    <AlertDescription>
+      Para formulários mais complexos, é recomendado utilizar o [Form
+      Provider](/components/providers/form-provider) que oferece integração
+      nativa com todas as ferramentas de formulário de uma única só vez.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notas Importantes
+
+- **Endpoint obrigatório** - Sempre configure uma URL válida em `action`
+- **Formato de resposta** - API deve retornar JSON com URL ou erro
+- **Validação de tipos** - Use `acceptAudio` para restringir formatos
+- **Tratamento de erro** - Implemente callback `onChange` para feedback
+- **Tamanho de arquivo** - Validação deve ser feita no servidor
+- **Segurança** - Sempre valide arquivos no backend
+- **Performance** - Para arquivos grandes, considere upload progressivo
+- **FormData** - Arquivos são enviados via FormData automaticamente
+- **Estados visuais** - Componente fornece feedback visual automático
+- **Player nativo** - Usa controles de áudio HTML5 para melhor compatibilidade
+- **Formatos específicos** - Configure `acceptAudio` conforme necessidade
+- **Preview automático** - URLs de preview são geradas automaticamente
