@@ -1,0 +1,481 @@
+# CardTab
+
+import {
+  CardTabContainer,
+  CardTabButton,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import {
+  Home,
+  User,
+  Settings,
+  BarChart3,
+  Mail,
+  Bell,
+  Shield,
+  CreditCard,
+  FileText,
+  Calendar,
+  Bookmark,
+  Star,
+  Package,
+  TrendingUp,
+  Users,
+} from "lucide-react";
+
+Os componentes `CardTabContainer` e `CardTabButton` oferecem uma variação estilizada dos tabs tradicionais, apresentando navegação por abas com visual de cartões. Ideais para dashboards, painéis administrativos e interfaces que precisam de uma separação visual mais definida entre as opções de navegação.
+
+## Importação
+
+```tsx
+import { CardTabContainer, CardTabButton } from "@arkyn/components";
+```
+
+## Uso Básico
+
+<div className="noContent column">
+  <CardTabContainer>
+    <CardTabButton value="overview">Visão Geral</CardTabButton>
+    <CardTabButton value="analytics">Analytics</CardTabButton>
+    <CardTabButton value="reports">Relatórios</CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+<CardTabContainer>
+  <CardTabButton value="overview">Visão Geral</CardTabButton>
+  <CardTabButton value="analytics">Analytics</CardTabButton>
+  <CardTabButton value="reports">Relatórios</CardTabButton>
+</CardTabContainer>
+```
+
+## CardTab com Valor Padrão
+
+Configure qual aba deve estar ativa inicialmente usando `defaultValue`.
+
+<div className="noContent column">
+  <CardTabContainer defaultValue="dashboard">
+    <CardTabButton value="dashboard">Dashboard</CardTabButton>
+    <CardTabButton value="analytics">Analytics</CardTabButton>
+    <CardTabButton value="settings">Configurações</CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+<CardTabContainer defaultValue="dashboard">
+  <CardTabButton value="dashboard">Dashboard</CardTabButton>
+  <CardTabButton value="analytics">Analytics</CardTabButton>
+  <CardTabButton value="settings">Configurações</CardTabButton>
+</CardTabContainer>
+```
+
+## CardTab com Ícones
+
+Adicione ícones para melhorar a experiência visual e comunicação.
+
+<div className="noContent column">
+  <CardTabContainer defaultValue="sales">
+    <CardTabButton value="sales">
+      <TrendingUp size={16} style={{ marginRight: "8px" }} />
+      Vendas
+    </CardTabButton>
+    <CardTabButton value="products">
+      <Package size={16} style={{ marginRight: "8px" }} />
+      Produtos
+    </CardTabButton>
+    <CardTabButton value="customers">
+      <Users size={16} style={{ marginRight: "8px" }} />
+      Clientes
+    </CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+<CardTabContainer defaultValue="sales">
+  <CardTabButton value="sales">
+    <TrendingUp size={16} style={{ marginRight: "8px" }} />
+    Vendas
+  </CardTabButton>
+  <CardTabButton value="products">
+    <Package size={16} style={{ marginRight: "8px" }} />
+    Produtos
+  </CardTabButton>
+  <CardTabButton value="customers">
+    <Users size={16} style={{ marginRight: "8px" }} />
+    Clientes
+  </CardTabButton>
+</CardTabContainer>
+```
+
+## CardTab com Callback de Mudança
+
+Use `onChange` para reagir a mudanças de aba e controlar conteúdo dinâmico.
+
+<div className="noContent column">
+  <CardTabContainer
+    defaultValue="overview"
+    onChange={(value) => console.log("CardTab ativa:", value)}
+  >
+    <CardTabButton value="overview">
+      <BarChart3 size={16} style={{ marginRight: "8px" }} />
+      Visão Geral
+    </CardTabButton>
+    <CardTabButton value="performance">
+      <TrendingUp size={16} style={{ marginRight: "8px" }} />
+      Performance
+    </CardTabButton>
+    <CardTabButton value="reports">
+      <FileText size={16} style={{ marginRight: "8px" }} />
+      Relatórios
+    </CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+function CardTabExample() {
+  const [activeTab, setActiveTab] = useState("overview");
+
+  return (
+    <div>
+      <CardTabContainer
+        defaultValue="overview"
+        onChange={(value) => {
+          setActiveTab(value);
+          console.log("CardTab ativa:", value);
+        }}
+      >
+        <CardTabButton value="overview">
+          <BarChart3 size={16} style={{ marginRight: "8px" }} />
+          Visão Geral
+        </CardTabButton>
+        <CardTabButton value="performance">
+          <TrendingUp size={16} style={{ marginRight: "8px" }} />
+          Performance
+        </CardTabButton>
+        <CardTabButton value="reports">
+          <FileText size={16} style={{ marginRight: "8px" }} />
+          Relatórios
+        </CardTabButton>
+      </CardTabContainer>
+
+      {/* Renderizar conteúdo baseado na aba ativa */}
+      <div
+        style={{
+          marginTop: "20px",
+          padding: "20px",
+          border: "1px solid #e2e8f0",
+          borderRadius: "8px",
+        }}
+      >
+        {activeTab === "overview" && <div>Conteúdo da Visão Geral</div>}
+        {activeTab === "performance" && <div>Conteúdo da Performance</div>}
+        {activeTab === "reports" && <div>Conteúdo dos Relatórios</div>}
+      </div>
+    </div>
+  );
+}
+```
+
+## Estados das CardTabs
+
+### CardTab Individual Desabilitada
+
+<div className="noContent column">
+  <CardTabContainer defaultValue="current">
+    <CardTabButton value="current">Atual</CardTabButton>
+    <CardTabButton value="maintenance" disabled>
+      Em Manutenção
+    </CardTabButton>
+    <CardTabButton value="coming-soon" disabled>
+      Em Breve
+    </CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+<CardTabContainer defaultValue="current">
+  <CardTabButton value="current">Atual</CardTabButton>
+  <CardTabButton value="maintenance" disabled>
+    Em Manutenção
+  </CardTabButton>
+  <CardTabButton value="coming-soon" disabled>
+    Em Breve
+  </CardTabButton>
+</CardTabContainer>
+```
+
+### CardTab Container Totalmente Desabilitado
+
+<div className="noContent column">
+  <CardTabContainer disabled>
+    <CardTabButton value="option1">Opção 1</CardTabButton>
+    <CardTabButton value="option2">Opção 2</CardTabButton>
+    <CardTabButton value="option3">Opção 3</CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+<CardTabContainer disabled>
+  <CardTabButton value="option1">Opção 1</CardTabButton>
+  <CardTabButton value="option2">Opção 2</CardTabButton>
+  <CardTabButton value="option3">Opção 3</CardTabButton>
+</CardTabContainer>
+```
+
+## CardTab com Click Handlers Individuais
+
+Cada `CardTabButton` pode ter seu próprio handler de clique além da mudança de aba.
+
+<div className="noContent column">
+  <CardTabContainer defaultValue="bookmarks">
+    <CardTabButton
+      value="bookmarks"
+      onClick={() => console.log("Favoritos clicado")}
+    >
+      <Bookmark size={16} style={{ marginRight: "8px" }} />
+      Favoritos
+    </CardTabButton>
+    <CardTabButton
+      value="starred"
+      onClick={() => console.log("Destacados clicado")}
+    >
+      <Star size={16} style={{ marginRight: "8px" }} />
+      Destacados
+    </CardTabButton>
+    <CardTabButton
+      value="recent"
+      onClick={() => console.log("Recentes clicado")}
+    >
+      <Calendar size={16} style={{ marginRight: "8px" }} />
+      Recentes
+    </CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+function NavigationCardTabs() {
+  const handleBookmarksClick = () => {
+    console.log("Favoritos clicado");
+    // Lógica específica para favoritos
+    trackEvent("cardtab_clicked", { tab: "bookmarks" });
+    loadUserBookmarks();
+  };
+
+  const handleStarredClick = () => {
+    console.log("Destacados clicado");
+    // Lógica específica para destacados
+    loadStarredItems();
+  };
+
+  return (
+    <CardTabContainer
+      defaultValue="bookmarks"
+      onChange={(value) => {
+        console.log("CardTab mudou para:", value);
+        updateUserPreference("lastTab", value);
+      }}
+    >
+      <CardTabButton value="bookmarks" onClick={handleBookmarksClick}>
+        <Bookmark size={16} style={{ marginRight: "8px" }} />
+        Favoritos
+      </CardTabButton>
+      <CardTabButton value="starred" onClick={handleStarredClick}>
+        <Star size={16} style={{ marginRight: "8px" }} />
+        Destacados
+      </CardTabButton>
+      <CardTabButton value="recent">
+        <Calendar size={16} style={{ marginRight: "8px" }} />
+        Recentes
+      </CardTabButton>
+    </CardTabContainer>
+  );
+}
+```
+
+## CardTab Controlada com Estado Avançado
+
+Para controle mais sofisticado, gerencie o estado das CardTabs externamente.
+
+```tsx
+function AdvancedCardTabExample() {
+  const [activeTab, setActiveTab] = useState("dashboard");
+  const [tabHistory, setTabHistory] = useState<string[]>(["dashboard"]);
+  const [loadingStates, setLoadingStates] = useState<Record<string, boolean>>(
+    {}
+  );
+
+  const handleTabChange = async (newTab: string) => {
+    // Mostrar loading state
+    setLoadingStates((prev) => ({ ...prev, [newTab]: true }));
+
+    try {
+      // Simular carregamento de dados
+      await loadTabData(newTab);
+
+      setActiveTab(newTab);
+      setTabHistory((prev) => [...prev, newTab]);
+
+      // Analytics
+      trackEvent("cardtab_navigation", {
+        from: activeTab,
+        to: newTab,
+        timestamp: Date.now(),
+      });
+    } catch (error) {
+      console.error("Erro ao carregar dados da aba:", error);
+    } finally {
+      setLoadingStates((prev) => ({ ...prev, [newTab]: false }));
+    }
+  };
+
+  const goToPreviousTab = () => {
+    if (tabHistory.length > 1) {
+      const newHistory = tabHistory.slice(0, -1);
+      const previousTab = newHistory[newHistory.length - 1];
+      setTabHistory(newHistory);
+      setActiveTab(previousTab);
+    }
+  };
+
+  return (
+    <div className="advanced-cardtab-container">
+      <div className="cardtab-controls">
+        <button
+          onClick={goToPreviousTab}
+          disabled={tabHistory.length <= 1}
+          className="back-button"
+        >
+          ← Voltar
+        </button>
+        <span className="current-tab-info">
+          Seção atual: <strong>{activeTab}</strong>
+        </span>
+      </div>
+
+      <CardTabContainer
+        defaultValue={activeTab}
+        onChange={handleTabChange}
+        className="advanced-cardtabs"
+      >
+        <CardTabButton value="dashboard">
+          <BarChart3 size={16} style={{ marginRight: "8px" }} />
+          Dashboard
+          {loadingStates.dashboard && <div className="loading-indicator" />}
+        </CardTabButton>
+        <CardTabButton value="analytics">
+          <TrendingUp size={16} style={{ marginRight: "8px" }} />
+          Analytics
+          {loadingStates.analytics && <div className="loading-indicator" />}
+        </CardTabButton>
+        <CardTabButton value="reports">
+          <FileText size={16} style={{ marginRight: "8px" }} />
+          Relatórios
+          {loadingStates.reports && <div className="loading-indicator" />}
+        </CardTabButton>
+        <CardTabButton value="settings">
+          <Settings size={16} style={{ marginRight: "8px" }} />
+          Configurações
+          {loadingStates.settings && <div className="loading-indicator" />}
+        </CardTabButton>
+      </CardTabContainer>
+
+      <div className="cardtab-content">
+        <DynamicTabContent activeTab={activeTab} />
+      </div>
+
+      <div className="navigation-history">
+        <small>Histórico: {tabHistory.join(" → ")}</small>
+      </div>
+    </div>
+  );
+}
+```
+
+## Propriedades
+
+### CardTabContainer
+
+**`children`** - `ReactNode` (obrigatório)
+Componentes CardTabButton e outros elementos filhos
+
+**`disabled`** - `boolean` (padrão: `false`)
+Se todas as abas devem estar desabilitadas
+
+**`defaultValue`** - `string`
+Valor da aba que deve estar ativa inicialmente
+
+**`onChange`** - `(index: string) => void`
+Função callback chamada quando a aba ativa muda, recebe o valor da nova aba
+
+**`className`** - `string`
+Classes CSS adicionais para estilização do container
+
+### CardTabButton
+
+**`children`** - `ReactNode` (obrigatório)
+Conteúdo a ser exibido dentro do botão da aba
+
+**`value`** - `string` (obrigatório)
+Identificador único para o botão da aba
+
+**`disabled`** - `boolean` (padrão: `false`)
+Se este botão específico deve estar desabilitado (pode ser sobrescrito pelo CardTabContainer)
+
+**`onClick`** - `(event: MouseEvent<HTMLButtonElement>) => void`
+Função callback chamada quando o botão é clicado (além da mudança de aba)
+
+**`className`** - `string`
+Classes CSS adicionais para estilização do botão
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertDescription>
+      CardTabContainer suporta todas as propriedades HTML de `nav` exceto
+      `onClick`, `children` e `ref`. CardTabButton suporta todas as propriedades
+      HTML de `button` exceto `children`, `value` e `type`.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Estados Visuais
+
+Os componentes CardTab oferecem diferentes estados visuais:
+
+- **Ativo** - Cartão destacado com cores e sombras específicas
+- **Inativo** - Cartões em estado neutro
+- **Hover** - Efeito de elevação ao passar o mouse
+- **Focus** - Destaque para navegação por teclado
+- **Desabilitado** - Cartões com opacidade reduzida
+
+## Acessibilidade
+
+Os componentes CardTab foram desenvolvidos com acessibilidade em mente:
+
+- **Navegação por teclado** - Suporte completo para Tab, Seta direita/esquerda
+- **Roles ARIA** - CardTabContainer usa `role="tablist"`, CardTabButton usa `role="tab"`
+- **Estados visuais** - Feedback claro para todos os estados
+- **Focus management** - Foco adequado entre elementos
+- **Screen readers** - Anúncio correto da aba ativa
+- **Disabled state** - Elementos desabilitados não são focáveis
+
+## Notas Importantes
+
+- **Valores únicos** - Cada `CardTabButton` deve ter um `value` único
+- **Context Provider** - `CardTabContainer` fornece contexto para `CardTabButton`
+- **Estado controlado** - Use `defaultValue` para estado inicial, `onChange` para mudanças
+- **Botões nativos** - `CardTabButton` usa elemento `<button>` nativo
+- **Container semântico** - `CardTabContainer` usa elemento `<nav>` para navegação
+- **Desabilitação hierárquica** - `CardTabContainer` disabled sobrescreve `CardTabButton` disabled
+- **Eventos personalizados** - `onClick` em `CardTabButton` é chamado além da mudança de aba
+- **Visual destacado** - Design de cartões para melhor separação visual
+- **Ideal para dashboards** - Especialmente adequado para interfaces administrativas
+- **Acessibilidade** - Suporte completo para navegação por teclado e leitores de tela
+- **Estados visuais** - Classes CSS automáticas para diferentes estados
+- **Flexibilidade** - Suporte a conteúdo rico (ícones, texto, elementos customizados)
