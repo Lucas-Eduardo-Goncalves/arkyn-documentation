@@ -9,470 +9,282 @@ import {
   AlertTitle,
 } from "@arkyn/components";
 
-O componente `Checkbox` é usado para criar inputs de checkbox interativos com estilização personalizável e suporte a validação. É ideal para seleções opcionais, acordos, configurações e listas de múltipla escolha.
-
-## Importação
+The `Checkbox` component is used to create interactive checkbox inputs with customizable styling and validation support. It's ideal for optional selections, agreements, settings, and multiple choice lists.
 
 ```tsx
 import { Checkbox } from "@arkyn/components";
 ```
 
-## Tamanhos
-
-Os tamanhos disponíveis são `sm`, `md` e `lg`, oferecendo diferentes dimensões para se adequar às necessidades do layout.
+## Basic usage
 
 <div className="noContent column">
-  <Checkbox name="checkbox-sm" label="Checkbox pequeno" size="sm" />
-  <Checkbox name="checkbox-md" label="Checkbox médio" size="md" />
-  <Checkbox name="checkbox-lg" label="Checkbox grande" size="lg" />
+  <Checkbox name="basic-checkbox" label="Basic checkbox" />
 </div>
 
 ```tsx
-<Checkbox
-  name="checkbox-sm"
-  label="Checkbox pequeno"
-  size="sm"
-/>
-<Checkbox
-  name="checkbox-md"
-  label="Checkbox médio"
-  size="md"
-/>
-<Checkbox
-  name="checkbox-lg"
-  label="Checkbox grande"
-  size="lg"
-/>
+<Checkbox name="basic-checkbox" label="Basic checkbox" />
 ```
 
-## Checkboxes com Rótulos
+## Sizes
 
-Os rótulos ajudam a identificar o propósito do checkbox e tornam a área clicável maior.
+The available sizes are `sm`, `md` and `lg`, offering different dimensions to suit your layout needs.
 
 <div className="noContent column">
-  <Checkbox
-    name="terms"
-    label="Aceito os termos e condições"
-    orientation="horizontalReverse"
-  />
-  <Checkbox
-    name="newsletter"
-    label="Quero receber newsletter por email"
-    orientation="horizontalReverse"
-  />
-  <Checkbox
-    name="privacy"
-    label="Li e concordo com a política de privacidade"
-    orientation="horizontalReverse"
-  />
-  <Checkbox
-    name="marketing"
-    label="Permito o uso de meus dados para fins de marketing"
-    orientation="horizontalReverse"
-  />
+  <Checkbox name="checkbox-sm" label="Small checkbox" size="sm" />
+  <Checkbox name="checkbox-md" label="Medium checkbox" size="md" />
+  <Checkbox name="checkbox-lg" label="Large checkbox" size="lg" />
 </div>
 
 ```tsx
-<Checkbox
-  name="terms"
-  label="Aceito os termos e condições"
-  orientation="horizontalReverse"
-/>
-<Checkbox
-  name="newsletter"
-  label="Quero receber newsletter por email"
-  orientation="horizontalReverse"
-/>
-<Checkbox
-  name="privacy"
-  label="Li e concordo com a política de privacidade"
-  orientation="horizontalReverse"
-/>
-<Checkbox
-  name="marketing"
-  label="Permito o uso de meus dados para fins de marketing"
-  orientation="horizontalReverse"
-/>
+<Checkbox name="checkbox-sm" label="Small checkbox" size="sm" />
+<Checkbox name="checkbox-md" label="Medium checkbox" size="md" />
+<Checkbox name="checkbox-lg" label="Large checkbox" size="lg" />
 ```
 
-## Orientação
+## Checkboxes with labels
 
-As opções de checkbox podem ser dispostas em uma única linha ou em colunas, dependendo do espaço disponível e da preferência de design.
+Labels help identify the purpose of the checkbox and make the clickable area larger.
+
+<div className="noContent column">
+  <Checkbox name="terms" label="I accept the terms and conditions" />
+</div>
+
+```tsx
+<Checkbox name="terms" label="I accept the terms and conditions" />
+```
+
+## Orientation
+
+Checkbox options can be arranged in a single line or in columns, depending on available space and design preference.
 
 ### Horizontal
 
 <div className="noContent column">
-  <Checkbox name="option1" label="Opção 1" orientation="horizontal" />
-  <Checkbox name="option2" label="Opção 2" orientation="horizontal" />
-  <Checkbox name="option3" label="Opção 3" orientation="horizontal" />
+  <Checkbox name="option1" label="Option 1" orientation="horizontal" />
+  <Checkbox name="option2" label="Option 2" orientation="horizontal" />
 </div>
 
 ```tsx
-<Checkbox name="option1" label="Opção 1" orientation="horizontal" />
-<Checkbox name="option2" label="Opção 2" orientation="horizontal" />
-<Checkbox name="option3" label="Opção 3" orientation="horizontal" />
+<Checkbox name="option1" label="Option 1" orientation="horizontal" />
+<Checkbox name="option2" label="Option 2" orientation="horizontal" />
 ```
 
 ### Horizontal reverse
 
+The "reverse horizontal" orientation is default, it is not necessary to inform it.
+
 <div className="noContent column">
-  <Checkbox name="option1" label="Opção 1" orientation="horizontalReverse" />
-  <Checkbox name="option2" label="Opção 2" orientation="horizontalReverse" />
-  <Checkbox name="option3" label="Opção 3" orientation="horizontalReverse" />
+  <Checkbox name="option1" label="Option 1" />
+  <Checkbox name="option2" label="Option 2" />
 </div>
 
 ```tsx
-<Checkbox name="option1" label="Opção 1" orientation="horizontalReverse" />
-<Checkbox name="option2" label="Opção 2" orientation="horizontalReverse" />
-<Checkbox name="option3" label="Opção 3" orientation="horizontalReverse" />
+<Checkbox name="option1" label="Option 1"  />
+<Checkbox name="option2" label="Option 2"  />
 ```
 
 ### Vertical
 
 <div className="noContent column">
-  <Checkbox name="option1" label="Opção 1" orientation="vertical" />
-  <Checkbox name="option2" label="Opção 2" orientation="vertical" />
-  <Checkbox name="option3" label="Opção 3" orientation="vertical" />
+  <Checkbox name="option1" label="Option 1" orientation="vertical" />
+  <Checkbox name="option2" label="Option 2" orientation="vertical" />
 </div>
 
 ```tsx
-<Checkbox name="option1" label="Opção 1" orientation="vertical" />
-<Checkbox name="option2" label="Opção 2" orientation="vertical" />
-<Checkbox name="option3" label="Opção 3" orientation="vertical" />
+<Checkbox name="option1" label="Option 1" orientation="vertical" />
+<Checkbox name="option2" label="Option 2" orientation="vertical" />
 ```
 
-## Estados de Marcação
+## Checkbox states
 
-### Estado padrão marcado
+The component supports different states, such as disabled and with different default checked values.
+
+### Default checked state
 
 <div className="noContent column">
-  <Checkbox name="remember-me" label="Lembrar de mim" defaultChecked={true} />
-  <Checkbox
-    name="auto-save"
-    label="Salvamento automático"
-    defaultChecked={true}
-  />
-  <Checkbox
-    name="notifications"
-    label="Notificações push"
-    defaultChecked={false}
-  />
+  <Checkbox name="remember-me" label="Remember me" defaultChecked={true} />
 </div>
 
 ```tsx
-<Checkbox
-  name="remember-me"
-  label="Lembrar de mim"
-  defaultChecked={true}
-/>
-<Checkbox
-  name="auto-save"
-  label="Salvamento automático"
-  defaultChecked={true}
-/>
-<Checkbox
-  name="notifications"
-  label="Notificações push"
-  defaultChecked={false}
-/>
+<Checkbox name="remember-me" label="Remember me" defaultChecked={true} />
 ```
 
-## Estados do Checkbox
+### Disabled checkbox
 
-### Checkbox desabilitado
+The disabled state prevents any user interaction with the field and prevents data from being submitted through a form.
 
 <div className="noContent column">
   <Checkbox
     name="disabled-unchecked"
-    label="Opção desabilitada (desmarcada)"
+    label="Disabled option (unchecked)"
     disabled
   />
   <Checkbox
     name="disabled-checked"
-    label="Opção desabilitada (marcada)"
+    label="Disabled option (checked)"
     disabled
-    defaultChecked={true}
-  />
-  <Checkbox
-    name="disabled-loading"
-    label="Carregando configuração..."
-    disabled
+    defaultChecked
   />
 </div>
 
 ```tsx
 <Checkbox
   name="disabled-unchecked"
-  label="Opção desabilitada (desmarcada)"
+  label="Disabled option (unchecked)"
   disabled
 />
 <Checkbox
   name="disabled-checked"
-  label="Opção desabilitada (marcada)"
+  label="Disabled option (checked)"
   disabled
-  defaultChecked={true}
-/>
-<Checkbox
-  name="disabled-loading"
-  label="Carregando configuração..."
-  disabled
+  defaultChecked
 />
 ```
 
-## Validação e Erros
+## Validation and errors
+
+The component integrates with form validation systems and can display error messages. If an error message is provided via the `errorMessage` property, it will take precedence over messages from the form provider.
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Customizable Forms</AlertTitle>
+    <AlertDescription>
+      For forms, it is recommended to use the
+      [FormProvider](/components/providers/form-provider) which offers native
+      integration with all form tools.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
 
 <div className="noContent column">
   <Checkbox
     name="invalid-terms"
-    label="Aceito os termos e condições"
-    errorMessage="É necessário confirmar"
-  />
-  <Checkbox
-    name="invalid-age"
-    label="Confirmo que sou maior de 18 anos"
-    errorMessage="É necessário confirmar"
-  />
-  <Checkbox
-    name="invalid-consent"
-    label="Dou meu consentimento para processamento de dados"
-    errorMessage="É necessário confirmar"
+    label="I accept the terms and conditions"
+    errorMessage="You must accept the terms"
+    showAsterisk
   />
 </div>
 
 ```tsx
 <Checkbox
   name="invalid-terms"
-  label="Aceito os termos e condições"
-  errorMessage={hasTermsError}
-/>
-<Checkbox
-  name="invalid-age"
-  label="Confirmo que sou maior de 18 anos"
-  errorMessage={hasAgeError}
-/>
-<Checkbox
-  name="invalid-consent"
-  label="Dou meu consentimento para processamento de dados"
-  errorMessage={hasConsentError}
+  label="I accept the terms and conditions"
+  errorMessage="You must accept the terms"
+  showAsterisk
 />
 ```
 
-## Valores Customizados
+## Custom values
 
-Use a propriedade `value` para definir um valor específico quando o checkbox estiver marcado.
+Use the `value` property to define a specific value when the checkbox is checked.
 
 <div className="noContent column">
   <Checkbox
     name="subscription-basic"
-    label="Plano Básico"
+    label="Basic Plan"
     value="basic"
-    onCheck={(value) => console.log("Selected plan:", value)}
-  />
-  <Checkbox
-    name="subscription-pro"
-    label="Plano Profissional"
-    value="professional"
-    onCheck={(value) => console.log("Selected plan:", value)}
-  />
-  <Checkbox
-    name="subscription-enterprise"
-    label="Plano Enterprise"
-    value="enterprise"
-    onCheck={(value) => console.log("Selected plan:", value)}
+    onCheck={(value) => alert("Selected plan:" + value)}
   />
 </div>
 
 ```tsx
 <Checkbox
   name="subscription-basic"
-  label="Plano Básico"
+  label="Basic Plan"
   value="basic"
-  onCheck={(value) => console.log('Selected plan:', value)}
-/>
-<Checkbox
-  name="subscription-pro"
-  label="Plano Profissional"
-  value="professional"
-  onCheck={(value) => console.log('Selected plan:', value)}
-/>
-<Checkbox
-  name="subscription-enterprise"
-  label="Plano Enterprise"
-  value="enterprise"
-  onCheck={(value) => console.log('Selected plan:', value)}
+  onCheck={(value) => alert("Selected plan:" + value)}
 />
 ```
 
-## Callback onCheck
+## onCheck callback
 
-O callback `onCheck` fornece o valor do checkbox quando marcado ou string vazia quando desmarcado:
+The `onCheck` callback provides the checkbox value when checked or an empty string when unchecked:
 
 ```tsx
-const handleCheckboxChange = (value) => {
-  // value: string - valor definido na prop value ou "checked" se não especificado
-  // Para checkbox desmarcado, value será uma string vazia ""
+function handleCheckboxChange(value: string) {
+  // value: string - value defined in the value prop or "checked" if not specified
+  // For unchecked checkbox, value will be an empty string ""
 
   if (value) {
-    console.log("Checkbox marcado com valor:", value); // "subscribeNewsletter"
+    alert("Checkbox checked with value:" + value); // "subscribeNewsletter"
   } else {
-    console.log("Checkbox desmarcado"); // ""
+    alert("Checkbox unchecked"); // ""
   }
-};
+}
 
 <Checkbox
   name="newsletter"
-  label="Receber newsletter"
+  label="Receive newsletter"
   value="subscribeNewsletter"
   onCheck={handleCheckboxChange}
 />;
 ```
 
-### Checkbox controlado
+### Controlled checkbox
 
 <div className="noContent column">
   <Checkbox
     name="controlled-premium"
-    label="Recursos premium"
+    label="Premium features"
     onCheck={(value) => console.log("Premium:", value)}
-  />
-  <Checkbox
-    name="controlled-sync"
-    label="Sincronização automática"
-    onCheck={(value) => console.log("Sync:", value)}
   />
 </div>
 
 ```tsx
 const [isPremium, setIsPremium] = useState(true);
-const [autoSync, setAutoSync] = useState(false);
 
 <Checkbox
   name="controlled-premium"
-  label="Recursos premium"
+  label="Premium features"
   checked={isPremium}
   onCheck={(value) => setIsPremium(!!value)}
-/>
-<Checkbox
-  name="controlled-sync"
-  label="Sincronização automática"
-  checked={autoSync}
-  onCheck={(value) => setAutoSync(!!value)}
-/>
+/>;
 ```
 
-## Múltipla Seleção
+## Properties
 
-Para implementar múltipla seleção, use múltiplos checkboxes com callback comum:
-
-```tsx
-const [selectedOptions, setSelectedOptions] = useState([]);
-
-const handleOptionChange = (value) => {
-  if (value) {
-    // Adicionar à seleção
-    setSelectedOptions(prev => [...prev, value]);
-  } else {
-    // Remover da seleção
-    setSelectedOptions(prev => prev.filter(option => option !== value));
-  }
-};
-
-<Checkbox
-  name="option-1"
-  label="Opção 1"
-  value="option1"
-  onCheck={handleOptionChange}
-/>
-<Checkbox
-  name="option-2"
-  label="Opção 2"
-  value="option2"
-  onCheck={handleOptionChange}
-/>
-<Checkbox
-  name="option-3"
-  label="Opção 3"
-  value="option3"
-  onCheck={handleOptionChange}
-/>
-```
-
-## Propriedades
-
-**`name`** - `string` (obrigatório)
-Nome do campo para manipulação de formulários e identificação
+**`name`** - `string` (required)
+Field name for form manipulation and identification
 
 **`label`** - `string`
-Texto do rótulo a ser exibido ao lado do checkbox
+Label text to be displayed next to the checkbox
 
-**`errorMessage`** - `boolean`
-Indicador de estado de erro para exibir erros de validação
+**`errorMessage`** - `string`
+Error message to display below the checkbox
 
-**`size`** - `"sm" | "md" | "lg"` (padrão: `"md"`)
-Variante de tamanho do checkbox
+**`showAsterisk`** - `boolean`
+Whether to display an asterisk in the label for required fields
 
-**`value`** - `string` (padrão: `"checked"`)
-Valor opcional a ser usado quando o checkbox está marcado
+**`size`** - `"sm" | "md" | "lg"` (default: `"md"`)
+Checkbox size variant
+
+**`orientation`** - `"horizontal" | "horizontalReverse" | "vertical"` (default: `"horizontal"`)
+Orientation of the checkbox and label
+
+**`value`** - `string` (default: `"checked"`)
+Optional value to be used when the checkbox is checked
 
 **`checked`** - `boolean`
-Estado controlado de marcação do checkbox
+Controlled checked state of the checkbox
 
-**`defaultChecked`** - `boolean` (padrão: `false`)
-Estado padrão de marcação para uso não controlado
+**`defaultChecked`** - `boolean` (default: `false`)
+Default checked state for uncontrolled use
 
 **`onCheck`** - `(value: string) => void`
-Função callback chamada quando o estado do checkbox muda, recebe o valor ou string vazia
+Callback function called when the checkbox state changes, receives the value or empty string
 
 <AlertContainer schema="info">
   <AlertIcon />
   <AlertContent>
-    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertTitle>Other properties</AlertTitle>
     <AlertDescription>
-      Todas as outras propriedades HTML padrão de `<button>` também são suportadas, exceto `type`, `name`, `defaultValue`, `value`, `onChange`, `onSelect` e `onClick` que são controladas pelo componente.
+      All other standard HTML properties of `<button>` are also supported, except `type`, `name`, `defaultValue`, `value`, `onChange`, `onSelect` and `onClick` which are controlled by the component.
     </AlertDescription>
   </AlertContent>
 </AlertContainer>
 
-## Acessibilidade
+## Notes
 
-O componente `Checkbox` foi desenvolvido com acessibilidade em mente:
-
-- Usa elemento `<button>` com `type="button"` para melhor compatibilidade
-- Suporte completo a navegação por teclado (Space para marcar/desmarcar)
-- Estados visuais claros para focus, checked e disabled
-- Labels clicáveis que aumentam a área de interação
-- Suporte a leitores de tela com estado adequado
-- Contraste adequado para todos os estados
-
-## Integração com Formulários
-
-O componente se integra nativamente com sistemas de gerenciamento de formulário:
-
-- Exibição de erros contextuais
-- Gerenciamento de estado do formulário
-- Suporte a valores separados ou com máscara
-
-<AlertContainer schema="warning">
-  <AlertIcon />
-  <AlertContent>
-    <AlertTitle>Formulários customizáveis</AlertTitle>
-    <AlertDescription>
-      Para formulários mais complexos, é recomendado utilizar o [Form
-      Provider](/components/providers/form-provider) que oferece integração
-      nativa com todas as ferramentas de formulário de uma única só vez.
-    </AlertDescription>
-  </AlertContent>
-</AlertContainer>
-
-## Notas Importantes
-
-- A propriedade `name` é obrigatória para integração com formulários
-- O valor padrão é "checked" quando a propriedade `value` não é especificada
-- Use `checked` para estado controlado e `defaultChecked` para não controlado
-- O callback `onCheck` recebe string (valor ou "") ao invés de boolean
-- O componente usa um campo hidden para envio no formulário
-- Estados disabled afetam tanto a aparência quanto a funcionalidade
-- O ícone Check é automaticamente exibido quando marcado
-- Para múltipla seleção, use múltiplos checkboxes com values únicos
-- A validação através de `errorMessage` ou `useForm` é automática
-- O componente herda propriedades de button, exceto as sobrescritas
+- Use `checked` for controlled state and `defaultChecked` for uncontrolled
+- The `onCheck` callback receives string (value or "") instead of boolean
