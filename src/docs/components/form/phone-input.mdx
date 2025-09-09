@@ -20,117 +20,51 @@ import {
   UserCheck,
 } from "lucide-react";
 
-O componente `PhoneInput` é um campo de entrada especializado para números de telefone internacionais que oferece seleção de país e formatação automática. Inclui um dropdown pesquisável com bandeiras dos países e aplica máscaras de formatação específicas para cada região.
+The `PhoneInput` component is a specialized input field for international phone numbers that offers country selection and automatic formatting. It includes a searchable dropdown with country flags and applies region-specific formatting masks.
 
 ```tsx
 import { PhoneInput } from "@arkyn/components";
 ```
 
-## Uso básico
+## Basic usage
 
 <div className="noContent column">
-  <PhoneInput name="phone" label="Telefone" />
+  <PhoneInput name="phone" />
 </div>
 
 ```tsx
-<PhoneInput name="phone" label="Telefone" />
+<PhoneInput name="phone" />
 ```
 
-## Tamanhos
+## Country
 
-Os tamanhos disponíveis são `md` e `lg`, seguindo o padrão dos outros componentes de input.
+The component allows you to set a default country using the `defaultCountry` property (it will only take effect when a phone number is not available in the `defaultValue` property), using the country's ISO code (e.g., "BR" for Brazil, "US" for the USA).
 
-<div className="noContent column">
-  <PhoneInput name="phone-md" label="Telefone (médio)" size="md" />
-  <PhoneInput name="phone-lg" label="Telefone (grande)" size="lg" />
-</div>
+### Standardization
 
-```tsx
-<PhoneInput
-  name="phone-md"
-  label="Telefone (médio)"
-  size="md"
-/>
-<PhoneInput
-  name="phone-lg"
-  label="Telefone (grande)"
-  size="lg"
-/>
-```
-
-## Variantes
-
-As variantes disponíveis são `solid` e `outline`, proporcionando diferentes estilos visuais.
+The component can automatically detect the country based on the number entered, without the need to specify `defaultCountry`. However, the number must begin with the country code (e.g., +55 for Brazil, +1 for the USA), following the international E.164 format. The phone number format should be: `+[countryCode]-[countryPrefixCode][countryNumber]`.
 
 <div className="noContent column">
-  <PhoneInput name="phone-solid" label="Telefone (sólido)" variant="solid" />
-  <PhoneInput
-    name="phone-outline"
-    label="Telefone (contorno)"
-    variant="outline"
-  />
-</div>
-
-```tsx
-<PhoneInput
-  name="phone-solid"
-  label="Telefone (sólido)"
-  variant="solid"
-/>
-<PhoneInput
-  name="phone-outline"
-  label="Telefone (contorno)"
-  variant="outline"
-/>
-```
-
-## Padronização
-
-O componente pode detectar automaticamente o país com base no número inserido, sem a necessidade de especificar `defaultCountry`. Porém , é necessário que o número comece com o código do país (ex: +55 para Brasil, +1 para EUA), seguindo o formato internacional E.164. O formato de telefone deverá ser: `+[countryCode]-[countryPrefixCode] [countryNumber]`.
-
-<div className="noContent column">
-  <PhoneInput
-    name="auto-detect"
-    label="Telefone"
-    defaultValue="+55 11999999999" 
-  />
-
-  <PhoneInput
-    name="auto-detect-us"
-    label="Phone"
-    defaultValue="+1-408 1234567" 
-  />
+  <PhoneInput name="auto-detect" label="Phone" defaultValue="+55 11999999999" />
 </div>
 
 ```tsx
 <PhoneInput
   name="auto-detect"
-  label="Telefone"
-  defaultValue="+55 11999999999" // Brasil
-/>
-
-<PhoneInput
-  name="auto-detect-us"
   label="Phone"
-  defaultValue="+1-408 1234567" // EUA
+  defaultValue="+55 11999999999" // Brazil
 />
 ```
 
-## Busca de Países
+### Country search
 
-O componente oferece funcionalidade de busca para facilitar a seleção do país desejado.
+The component offers search functionality to make it easier to select the desired country.
 
 <div className="noContent column">
   <PhoneInput
     name="phone-search"
-    label="Telefone com busca personalizada"
-    searchCountryPlaceholder="Digite o nome do país..."
-    notFoundCountryText="País não encontrado"
-  />
-  <PhoneInput
-    name="phone-search-en"
     label="Phone with custom search"
-    searchCountryPlaceholder="Type country name..."
+    searchCountryPlaceholder="Enter the country name..."
     notFoundCountryText="Country not found"
   />
 </div>
@@ -138,33 +72,68 @@ O componente oferece funcionalidade de busca para facilitar a seleção do país
 ```tsx
 <PhoneInput
   name="phone-search"
-  label="Telefone com busca personalizada"
-  searchCountryPlaceholder="Digite o nome do país..."
-  notFoundCountryText="País não encontrado"
-/>
-<PhoneInput
-  name="phone-search-en"
   label="Phone with custom search"
-  searchCountryPlaceholder="Type country name..."
+  searchCountryPlaceholder="Enter the country name..."
   notFoundCountryText="Country not found"
 />
 ```
 
-## Estados do Input
+## Sizes
 
-### Input desabilitado
+The available sizes are `md` and `lg`, following the pattern for other input components.
+
+<div className="noContent column">
+  <PhoneInput name="phone-md" label="Phone (medium)" size="md" />
+  <PhoneInput name="phone-lg" label="Phone (large)" size="lg" />
+</div>
+
+```tsx
+<PhoneInput
+  name="phone-md"
+  label="Phone (medium)"
+  size="md"
+/>
+<PhoneInput
+  name="phone-lg"
+  label="Phone (large)"
+  size="lg"
+/>
+```
+
+## Variants
+
+The available variants are `solid` and `outline`, providing different visual styles.
+
+<div className="noContent column">
+  <PhoneInput name="phone-solid" label="Phone (solid)" variant="solid" />
+  <PhoneInput name="phone-outline" label="Phone (outline)" variant="outline" />
+</div>
+
+```tsx
+<PhoneInput
+  name="phone-solid"
+  label="Phone (solid)"
+  variant="solid"
+/>
+<PhoneInput
+  name="phone-outline"
+  label="Phone (outline)"
+  variant="outline"
+/>
+```
+
+## Input states
+
+The component supports different states, such as disabled, read-only, and loading.
+
+### Disabled input
+
+The disabled state prevents any user interaction with the field and prevents data from being submitted through a form.
 
 <div className="noContent column">
   <PhoneInput
     name="phone-disabled"
-    label="Telefone desabilitado"
-    defaultCountry="BR"
-    disabled
-  />
-  <PhoneInput
-    name="phone-disabled-value"
-    label="Telefone desabilitado com valor"
-    defaultCountry="US"
+    label="Disabled phone"
     defaultValue="+1-408 9876543"
     disabled
   />
@@ -173,32 +142,20 @@ O componente oferece funcionalidade de busca para facilitar a seleção do país
 ```tsx
 <PhoneInput
   name="phone-disabled"
-  label="Telefone desabilitado"
-  defaultCountry="BR"
-  disabled
-/>
-<PhoneInput
-  name="phone-disabled-value"
-  label="Telefone desabilitado com valor"
-  defaultCountry="US"
+  label="Disabled phone"
   defaultValue="+1-408 9876543"
   disabled
 />
 ```
 
-### Input apenas leitura
+### Read-only input
+
+The read-only state allows the user to view the field value but cannot edit it. Unlike the disabled state, the value can be selected and copied, and field data can be submitted via a form.
 
 <div className="noContent column">
   <PhoneInput
-    name="phone-readonly"
-    label="Telefone apenas leitura"
-    defaultCountry="BR"
-    defaultValue="+55 11987654321"
-    readOnly
-  />
-  <PhoneInput
     name="phone-readonly-display"
-    label="Telefone registrado"
+    label="Phone"
     defaultCountry="GB"
     defaultValue="+44 2012345678"
     readOnly
@@ -208,15 +165,8 @@ O componente oferece funcionalidade de busca para facilitar a seleção do país
 
 ```tsx
 <PhoneInput
-  name="phone-readonly"
-  label="Telefone apenas leitura"
-  defaultCountry="BR"
-  defaultValue="+55 11987654321"
-  readOnly
-/>
-<PhoneInput
   name="phone-readonly-display"
-  label="Telefone registrado"
+  label="Phone"
   defaultCountry="GB"
   defaultValue="+44 2012345678"
   readOnly
@@ -224,18 +174,14 @@ O componente oferece funcionalidade de busca para facilitar a seleção do país
 />
 ```
 
-### Estado de carregamento
+### Loading state
+
+The loading state displays a spinner and automatically disables input. The spinner appears on the left by default, or on the right if there is a `rightIcon`.
 
 <div className="noContent column">
   <PhoneInput
-    name="phone-loading"
-    label="Carregando telefone..."
-    defaultCountry="BR"
-    isLoading
-  />
-  <PhoneInput
     name="phone-loading-value"
-    label="Validando número..."
+    label="Validating phone number..."
     defaultCountry="US"
     defaultValue="+1-408 0000000"
     isLoading
@@ -244,42 +190,36 @@ O componente oferece funcionalidade de busca para facilitar a seleção do país
 
 ```tsx
 <PhoneInput
-  name="phone-loading"
-  label="Carregando telefone..."
-  defaultCountry="BR"
-  isLoading
-/>
-<PhoneInput
   name="phone-loading-value"
-  label="Validando número..."
+  label="Validating phone number..."
   defaultCountry="US"
   defaultValue="+1-408 0000000"
   isLoading
 />
 ```
 
-## Validação e Erros
+## Validation and errors
+
+The component integrates with form validation systems and can display error messages. If an error message is provided via the `errorMessage` property, it will take precedence over messages from the form provider.
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Customizable Forms</AlertTitle>
+    <AlertDescription>
+      For forms, it is recommended to use the
+      [FormProvider](/components/providers/form-provider) which offers native
+      integration with all form tools.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
 
 <div className="noContent column">
   <PhoneInput
     name="phone-invalid"
-    label="Telefone"
+    label="Phone"
     defaultCountry="BR"
-    errorMessage="Número de telefone inválido"
-    showAsterisk
-  />
-  <PhoneInput
-    name="phone-invalid-us"
-    label="Contact Phone"
-    defaultCountry="US"
-    errorMessage="Please enter a valid phone number"
-    showAsterisk
-  />
-  <PhoneInput
-    name="phone-required"
-    label="Telefone Obrigatório"
-    defaultCountry="BR"
-    errorMessage="Este campo é obrigatório"
+    errorMessage="Invalid phone number"
     showAsterisk
   />
 </div>
@@ -287,33 +227,19 @@ O componente oferece funcionalidade de busca para facilitar a seleção do país
 ```tsx
 <PhoneInput
   name="phone-invalid"
-  label="Telefone"
+  label="Phone"
   defaultCountry="BR"
-  errorMessage="Número de telefone inválido"
-  showAsterisk
-/>
-<PhoneInput
-  name="phone-invalid-us"
-  label="Contact Phone"
-  defaultCountry="US"
-  errorMessage="Please enter a valid phone number"
-  showAsterisk
-/>
-<PhoneInput
-  name="phone-required"
-  label="Telefone Obrigatório"
-  defaultCountry="BR"
-  errorMessage="Este campo é obrigatório"
+  errorMessage="Invalid phone number"
   showAsterisk
 />
 ```
 
-## Callback onChange
+## onChange callback
 
 O callback `onChange` fornece o número formatado completo com código do país:
 
 ```tsx
-const handlePhoneChange = (formattedPhone) => {
+const handlePhoneChange = (formattedPhone: string) => {
   // formattedPhone: string - número formatado com código do país
   console.log("Número completo:", formattedPhone); // "+55 11999999999"
 
@@ -329,69 +255,68 @@ const handlePhoneChange = (formattedPhone) => {
 />;
 ```
 
-## Propriedades
+## Properties
 
-**`name`** - `string` (obrigatório)
-Nome do campo para manipulação de formulários e identificação
+**`name`** - `string` (required)
+Field name for form manipulation and identification
 
 **`label`** - `string`
-Texto do rótulo a ser exibido acima do input
+Label text to display above the input
 
 **`showAsterisk`** - `boolean`
-Se deve mostrar asterisco no rótulo para campos obrigatórios
+Whether to display an asterisk in the label for required fields
 
 **`errorMessage`** - `string`
-Mensagem de erro a ser exibida abaixo do input
+Error message to display below the input
 
-**`size`** - `"md" | "lg"` (padrão: `"md"`)
-Variante de tamanho do input
+**`size`** - `"md" | "lg"` (default: `"md"`)
+Input size variant
 
-**`variant`** - `"solid" | "outline"` (padrão: `"solid"`)
-Variante visual do input
+**`variant`** - `"solid" | "outline" (default: `solid`)
+Visual variant of the input
 
 **`defaultValue`** - `string`
-Valor padrão do número de telefone
+Default phone number value
 
 **`defaultCountry`** - `string`
-Código ISO do país padrão a ser selecionado
+ISO code of the default country to select
 
-**`disabled`** - `boolean` (padrão: `false`)
-Se o input está desabilitado
+**`disabled`** - `boolean` (default: `false`)
+If the input is disabled
 
-**`readOnly`** - `boolean` (padrão: `false`)
-Se o input é apenas leitura
+**`readOnly`** - `boolean` (default: `false`)
+If the input is read-only
 
-**`isLoading`** - `boolean` (padrão: `false`)
-Se o input está em estado de carregamento
+**`isLoading`** - `boolean` (default: `false`)
+If the input is in the loading state
 
 **`className`** - `string`
-Classes CSS adicionais para estilização
+Additional CSS classes for styling
 
 **`id`** - `string`
-Identificador único opcional para o input
+Optional unique identifier for the input
 
-**`searchCountryPlaceholder`** - `string` (padrão: `"Pesquisar país"`)
-Texto placeholder para o campo de busca de países
+**`searchCountryPlaceholder`** - `string` (default: `Search Country``)
+Text Placeholder for the country search field
 
-**`notFoundCountryText`** - `string` (padrão: `"Nenhum país encontrado"`)
-Texto exibido quando nenhum país corresponde à busca
+**`notFoundCountryText`** - `string` (default: `"No country found"`)
+Text displayed when no country matches the search
 
 **`onChange`** - `(formattedPhone: string) => void`
-Função callback chamada quando o número muda, recebe o valor formatado com código do país
+Callback function called when the number changes, receives the value formatted with the country code
 
 <AlertContainer schema="info">
   <AlertIcon />
   <AlertContent>
-    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertTitle>Other properties</AlertTitle>
     <AlertDescription>
-      Todas as outras propriedades HTML padrão de `<input>` também são suportadas, exceto `type` (que é fixo como `tel`).
+    All other standard HTML properties of `<input>` are also supported, except `type` (which is fixed as `tel`).
     </AlertDescription>
   </AlertContent>
 </AlertContainer>
 
-## Notas Importantes
+## Notes
 
-- O componente usa dados de países do `@arkyn/templates`
-- A busca de países é insensível a maiúsculas/minúsculas
-- Suporta mais de 200 países com suas respectivas formatações
-- Estados de loading, disabled e readOnly afetam tanto o input quanto o dropdown
+- The component uses country data from `@arkyn/templates`
+- Country search is case-insensitive
+- Loading, disabled, and readOnly states affect both the input and the dropdown
