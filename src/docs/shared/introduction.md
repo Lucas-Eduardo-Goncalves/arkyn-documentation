@@ -1,4 +1,4 @@
-# Introduction to @arkyn/shared
+# Introduction to shared
 
 The `@arkyn/shared` package is a robust and versatile utility library designed to accelerate application development by providing a set of ready-to-use functions that solve common everyday problems.
 
@@ -9,18 +9,6 @@ It's important to note that `@arkyn/shared` has a direct dependency on the `@ark
 ## Installation
 
 To start using the package in your project, install it using your preferred package manager:
-
-```bash
-npm install @arkyn/shared@3.0.1-beta.33 @arkyn/templates@3.0.1-beta.33
-```
-
-```bash
-yarn add @arkyn/shared@3.0.1-beta.33 @arkyn/templates@3.0.1-beta.33
-```
-
-```bash
-pnpm add @arkyn/shared@3.0.1-beta.33 @arkyn/templates@3.0.1-beta.33
-```
 
 ```bash
 bun add @arkyn/shared@3.0.1-beta.33 @arkyn/templates@3.0.1-beta.33

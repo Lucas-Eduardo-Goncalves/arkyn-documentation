@@ -7,11 +7,11 @@ import {
   Server,
   Waypoints,
 } from "lucide-react";
-import { useState } from "react";
 import { useNavigate } from "react-router";
 
 import arkynLogo from "~/assets/arkynLogo.png";
 
+import { ApiIntroduction } from "./components/apiIntroduction";
 import { ExampleItem } from "./components/exampleItem";
 import { ExampleList } from "./components/exampleList";
 import { Header, HomeContainer } from "./styles";
@@ -81,6 +81,8 @@ function Home() {
           description="Pre-built templates for common application scenarios."
         />
       </ExampleList>
+
+      <ApiIntroduction />
     </HomeContainer>
   );
 }

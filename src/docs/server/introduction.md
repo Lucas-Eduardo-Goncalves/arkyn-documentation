@@ -1,4 +1,4 @@
-# Introduction to @arkyn/server
+# Introduction to server
 
 The `@arkyn/server` package is a library for Node.js designed to accelerate and simplify the development of back-end applications. It offers a set of tools and utilities to handle common tasks, such as handling HTTP requests and responses, data validation, and much more.
 
@@ -7,19 +7,7 @@ The `@arkyn/server` package is a library for Node.js designed to accelerate and 
 To start using `@arkyn/server`, you can install it in your project using your preferred package manager:
 
 ```bash
-npm install @arkyn/server@3.0.1-beta.33
-```
-
-```bash
-yarn add @arkyn/server@3.0.1-beta.33
-```
-
-```bash
-pnpm add @arkyn/server@3.0.1-beta.33
-```
-
-```bash
-bun add @arkyn/server@3.0.1-beta.33
+bun add @arkyn/server
 ```
 
 ## Overview
