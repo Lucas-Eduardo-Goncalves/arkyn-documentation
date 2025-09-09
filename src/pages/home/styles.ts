@@ -52,4 +52,46 @@ const Header = styled.header`
   }
 `;
 
-export { HomeContainer, Header };
+const ExampleContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 64px;
+
+  height: 100vh;
+
+  > section {
+    display: flex;
+    flex-direction: column;
+    min-width: 700px;
+
+    > strong {
+      color: rgb(var(--spotlight-primary));
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    > p {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin: 16px 0;
+    }
+
+    > span {
+      font-size: 16px;
+      color: var(--text-body);
+      max-width: 400px;
+      line-height: 130%;
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 32px;
+      list-style: none;
+    }
+  }
+`;
+
+export { HomeContainer, Header, ExampleContainer };

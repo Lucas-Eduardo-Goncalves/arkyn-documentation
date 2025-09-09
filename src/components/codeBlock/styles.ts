@@ -15,6 +15,7 @@ const BlockContainer = styled.div`
   background-color: var(--card-foreground-primary);
   border: 1px solid var(--border);
   border-radius: 8px;
+  overflow: auto;
 `;
 
 const BlockHeader = styled.div`

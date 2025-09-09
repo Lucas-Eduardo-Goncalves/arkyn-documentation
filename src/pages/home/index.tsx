@@ -1,13 +1,23 @@
 import { Button } from "@arkyn/components";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import {
+  ArrowRight,
+  ExternalLink,
+  LayoutTemplate,
+  Rows3,
+  Server,
+  Waypoints,
+} from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 
 import arkynLogo from "~/assets/arkynLogo.png";
+
+import { ExampleItem } from "./components/exampleItem";
+import { ExampleList } from "./components/exampleList";
 import { Header, HomeContainer } from "./styles";
-import { useNavigate } from "react-router";
 
 function Home() {
   const navigate = useNavigate();
-
   function handleStart() {
     navigate("/docs/introduction");
   }
@@ -44,6 +54,33 @@ function Home() {
 
         <img src={arkynLogo} alt="arkyn" />
       </Header>
+
+      <ExampleList>
+        <ExampleItem
+          to="/docs/components/introduction"
+          icon={<LayoutTemplate />}
+          title="@arkyn/components"
+          description="Foundational components for shipping features faster."
+        />
+        <ExampleItem
+          to="/docs/server/introduction"
+          icon={<Server />}
+          title="@arkyn/server"
+          description="Server-side functions and services for building robust APIs."
+        />
+        <ExampleItem
+          to="/docs/shared/introduction"
+          icon={<Waypoints />}
+          title="@arkyn/shared"
+          description="Shared utilities, validations and formats for consistent design."
+        />
+        <ExampleItem
+          to="/docs/templates/introduction"
+          icon={<Rows3 />}
+          title="@arkyn/templates"
+          description="Pre-built templates for common application scenarios."
+        />
+      </ExampleList>
     </HomeContainer>
   );
 }

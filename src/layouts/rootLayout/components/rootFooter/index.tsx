@@ -30,8 +30,8 @@ function RootFooter() {
           <ColumnsContainer>
             <div>
               <strong>Products</strong>
-              <Link to="">Library</Link>
               <Link to="/docs/api/introduction">Api</Link>
+              <Link to="/">Library</Link>
               <Link to="">Design System</Link>
             </div>
 

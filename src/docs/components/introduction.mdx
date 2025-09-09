@@ -1,4 +1,4 @@
-# Introduction to Arkyn Components
+# Introduction to Arkyn components
 
 The `@arkyn/components` package is a modern and flexible React component library designed to accelerate the development of consistent and accessible user interfaces.
 
@@ -7,24 +7,14 @@ The `@arkyn/components` package is a modern and flexible React component library
 To start using Arkyn components in your project, you need to install two essential dependencies:
 
 ```bash
-yarn add @arkyn/components@3.0.1-beta.51 @arkyn/shared@3.0.1-beta.51
-```
-
-or with yarn:
-
-```bash
-yarn add @arkyn/components@3.0.1-beta.51 @arkyn/shared@3.0.1-beta.51
-```
-
-or with pnpm:
-
-```bash
-pnpm add @arkyn/components@3.0.1-beta.51 @arkyn/shared@3.0.1-beta.51
+bun add @arkyn/components @arkyn/shared
 ```
 
 ## Configuration
 
-### 1. Import the Styles
+After installing the dependencies, you need to configure your project to use the Arkyn component styles and CSS variables. Follow these steps:
+
+### 1. Import the styles
 
 In the root file of your application (usually `main.tsx`, `index.tsx`, `root.tsx` or `App.tsx`), import the component styles:
 
@@ -32,9 +22,9 @@ In the root file of your application (usually `main.tsx`, `index.tsx`, `root.tsx
 import "@arkyn/components/dist/style.css";
 ```
 
-### 2. Configure CSS Variables
+### 2. Configure CSS variables
 
-Create a CSS file (e.g., `globals.css` or `variables.css`) and add the following CSS variables that are used by the library:
+Create a CSS file (e.g., `globals.css`, `app.css` or `variables.css`) and add the following CSS variables that are used by the library:
 
 ```css
 :root {
@@ -80,8 +70,8 @@ Create a CSS file (e.g., `globals.css` or `variables.css`) and add the following
 }
 ```
 
-Make sure to import this CSS file into your application's root file as well.
+You can customize these variables to match your application's design system. Make sure to import this CSS file into your application's root file as well.
 
-## Next Steps
+## Next steps
 
 After completing the installation and configuration, you'll be ready to start using Arkyn components in your project. Explore the specific sections for each component category to learn about their functionality and usage examples.

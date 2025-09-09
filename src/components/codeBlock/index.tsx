@@ -12,9 +12,10 @@ import { theme } from "./theme";
 type CodeProps = {
   children: string;
   className?: string;
+  showHeader?: boolean;
 };
 
-function CodeBlock({ children, className }: CodeProps) {
+function CodeBlock({ children, className, showHeader = true }: CodeProps) {
   const language = className?.replace(/language-/, "");
 
   if (!language) {
@@ -27,12 +28,14 @@ function CodeBlock({ children, className }: CodeProps) {
 
   return (
     <BlockContainer>
-      <BlockHeader>
-        <p>{language}</p>
-        <button onClick={handleCopyToClipboard}>
-          <Copy />
-        </button>
-      </BlockHeader>
+      {showHeader && (
+        <BlockHeader>
+          <p>{language}</p>
+          <button onClick={handleCopyToClipboard}>
+            <Copy />
+          </button>
+        </BlockHeader>
+      )}
       <BlockContent>
         <Highlight theme={theme} code={children.trim()} language={language}>
           {({ className, style, tokens, getLineProps, getTokenProps }) => (

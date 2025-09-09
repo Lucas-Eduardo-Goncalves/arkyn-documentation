@@ -1,6 +1,7 @@
-import { useId, type HTMLAttributes } from "react";
 import { Divider } from "@arkyn/components";
-import { CodeBlock } from "./codeBlock";
+import { useId, type HTMLAttributes } from "react";
+
+import { CodeBlock } from "~/components/codeBlock";
 import "./styles.css";
 
 type HeadingType = HTMLAttributes<HTMLHeadingElement>;
