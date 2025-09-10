@@ -28,385 +28,266 @@ import {
   Unlock,
 } from "lucide-react";
 
-O componente `Switch` é um interruptor de alternância usado para estados ligado/desligado, ativo/inativo ou habilitado/desabilitado. Oferece uma interface intuitiva para alternar entre dois estados distintos com feedback visual claro.
-
-## Importação
+The `Switch` component is a toggle switch used for on/off, active/inactive, or enabled/disabled states. It provides an intuitive interface for toggling between two distinct states with clear visual feedback.
 
 ```tsx
 import { Switch } from "@arkyn/components";
 ```
 
-## Uso Básico
+## Basic usage
 
-O uso básico requer apenas a propriedade `name` obrigatória. O switch pode ter um rótulo opcional.
+Basic usage requires only the mandatory `name` property.
 
 <div className="noContent column">
-  <Switch name="basic-switch" label="Notificações" />
-  <Switch name="simple-switch" label="Modo escuro" />
-  <Switch name="toggle-switch" />
+  <Switch name="basic-switch" />
 </div>
 
 ```tsx
-<Switch name="basic-switch" label="Notificações" />
-<Switch name="simple-switch" label="Modo escuro" />
-<Switch name="toggle-switch" />
+<Switch name="basic-switch" />
 ```
 
-## Tamanhos
+## Sizes
 
-Os tamanhos disponíveis são `sm`, `md` e `lg`, sendo `lg` o padrão.
+Available sizes are `sm`, `md`, and `lg`, with `lg` being the default.
 
 <div className="noContent column">
-  <Switch name="switch-sm" label="Tamanho pequeno" size="sm" />
-  <Switch name="switch-md" label="Tamanho médio" size="md" />
-  <Switch name="switch-lg" label="Tamanho grande" size="lg" />
+  <Switch name="switch-sm" label="Small size" size="sm" />
+  <Switch name="switch-md" label="Medium size" size="md" />
+  <Switch name="switch-lg" label="Large size" size="lg" />
 </div>
 
 ```tsx
-<Switch name="switch-sm" label="Tamanho pequeno" size="sm" />
-<Switch name="switch-md" label="Tamanho médio" size="md" />
-<Switch name="switch-lg" label="Tamanho grande" size="lg" />
+<Switch name="switch-sm" label="Small size" size="sm" />
+<Switch name="switch-md" label="Medium size" size="md" />
+<Switch name="switch-lg" label="Large size" size="lg" />
 ```
 
-## Orientações
+## Switch with labels
 
-O componente suporta diferentes orientações para o layout do switch e rótulo.
+Labels help identify the purpose of the switch and make the clickable area larger.
+
+<div className="noContent column">
+  <Switch name="terms" label="I accept the terms and conditions" />
+</div>
+
+```tsx
+<Switch name="terms" label="I accept the terms and conditions" />
+```
+
+## Orientation
+
+Switch options can be arranged in a single line or in columns, depending on available space and design preference.
+
+### Horizontal
+
+<div className="noContent column">
+  <Switch name="option1" label="Option 1" orientation="horizontal" />
+  <Switch name="option2" label="Option 2" orientation="horizontal" />
+</div>
+
+```tsx
+<Switch name="option1" label="Option 1" orientation="horizontal" />
+<Switch name="option2" label="Option 2" orientation="horizontal" />
+```
+
+### Horizontal reverse
+
+The "reverse horizontal" orientation is default, it is not necessary to inform it.
+
+<div className="noContent column">
+  <Switch name="option1" label="Option 1" />
+  <Switch name="option2" label="Option 2" />
+</div>
+
+```tsx
+<Switch name="option1" label="Option 1"  />
+<Switch name="option2" label="Option 2"  />
+```
+
+### Vertical
+
+<div className="noContent column">
+  <Switch name="option1" label="Option 1" orientation="vertical" />
+  <Switch name="option2" label="Option 2" orientation="vertical" />
+</div>
+
+```tsx
+<Switch name="option1" label="Option 1" orientation="vertical" />
+<Switch name="option2" label="Option 2" orientation="vertical" />
+```
+
+## Switch states
+
+The component supports different states, such as disabled and with different default checked values.
+
+### Default checked state
+
+<div className="noContent column">
+  <Switch name="remember-me" label="Remember me" defaultChecked={true} />
+</div>
+
+```tsx
+<Switch name="remember-me" label="Remember me" defaultChecked={true} />
+```
+
+### Disabled switch
+
+The disabled state prevents any user interaction with the field and prevents data from being submitted through a form.
 
 <div className="noContent column">
   <Switch
-    name="switch-vertical"
-    label="Orientação vertical"
-    orientation="vertical"
+    name="disabled-unchecked"
+    label="Disabled option (unchecked)"
+    disabled
   />
   <Switch
-    name="switch-horizontal"
-    label="Orientação horizontal"
-    orientation="horizontal"
-  />
-  <Switch
-    name="switch-horizontal-reverse"
-    label="Horizontal reverso"
-    orientation="horizontalReverse"
+    name="disabled-checked"
+    label="Disabled option (checked)"
+    disabled
+    defaultChecked
   />
 </div>
 
 ```tsx
 <Switch
-  name="switch-vertical"
-  label="Orientação vertical"
-  orientation="vertical"
+  name="disabled-unchecked"
+  label="Disabled option (unchecked)"
+  disabled
 />
 <Switch
-  name="switch-horizontal"
-  label="Orientação horizontal"
-  orientation="horizontal"
-/>
-<Switch
-  name="switch-horizontal-reverse"
-  label="Horizontal reverso"
-  orientation="horizontalReverse"
+  name="disabled-checked"
+  label="Disabled option (checked)"
+  disabled
+  defaultChecked
 />
 ```
 
-## Estado Padrão
+## Form Integration
 
-Use `defaultChecked` para definir o estado inicial do switch em uso não controlado.
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Customizable Forms</AlertTitle>
+    <AlertDescription>
+      For more complex forms, it is recommended to use the [Form
+      Provider](/components/providers/form-provider) which offers native
+      integration with all form tools at once.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
 
-<div className="noContent column">
-  <Switch
-    name="default-checked"
-    label="Wi-Fi (ativado por padrão)"
-    defaultChecked={true}
-  />
-  <Switch
-    name="default-unchecked"
-    label="Bluetooth (desativado por padrão)"
-    defaultChecked={false}
-  />
-  <Switch
-    name="auto-save"
-    label="Salvamento automático"
-    defaultChecked={true}
-    size="md"
-  />
-</div>
+## Custom Values
 
-```tsx
-<Switch
-  name="default-checked"
-  label="Wi-Fi (ativado por padrão)"
-  defaultChecked={true}
-/>
-<Switch
-  name="default-unchecked"
-  label="Bluetooth (desativado por padrão)"
-  defaultChecked={false}
-/>
-<Switch
-  name="auto-save"
-  label="Salvamento automático"
-  defaultChecked={true}
-  size="md"
-/>
-```
-
-## Valores Customizados
-
-Configure valores específicos para os estados ativado e desativado usando `value` e `unCheckedValue`.
+Configure specific values for the enabled and disabled states using `value` and `unCheckedValue`.
 
 <div className="noContent column">
   <Switch
     name="theme-switch"
-    label="Tema da aplicação"
+    label="Application theme"
     value="dark"
     unCheckedValue="light"
     defaultChecked={false}
   />
   <Switch
     name="subscription-switch"
-    label="Assinatura premium"
+    label="Premium subscription"
     value="subscribed"
     unCheckedValue="unsubscribed"
     size="md"
-  />
-  <Switch
-    name="privacy-switch"
-    label="Perfil público"
-    value="public"
-    unCheckedValue="private"
-    defaultChecked={true}
   />
 </div>
 
 ```tsx
 <Switch
   name="theme-switch"
-  label="Tema da aplicação"
+  label="Application theme"
   value="dark"
   unCheckedValue="light"
   defaultChecked={false}
 />
 <Switch
   name="subscription-switch"
-  label="Assinatura premium"
+  label="Premium subscription"
   value="subscribed"
   unCheckedValue="unsubscribed"
   size="md"
 />
-<Switch
-  name="privacy-switch"
-  label="Perfil público"
-  value="public"
-  unCheckedValue="private"
-  defaultChecked={true}
-/>
 ```
 
-## Estados do Switch
+## onCheck Callback
 
-### Switch desabilitado
-
-<div className="noContent column">
-  <Switch
-    name="disabled-on"
-    label="Função premium (desabilitado)"
-    disabled
-    defaultChecked={true}
-  />
-  <Switch
-    name="disabled-off"
-    label="Recurso indisponível"
-    disabled
-    defaultChecked={false}
-    size="md"
-  />
-  <Switch name="maintenance" label="Em manutenção" disabled size="sm" />
-</div>
-
-```tsx
-<Switch
-  name="disabled-on"
-  label="Função premium (desabilitado)"
-  disabled
-  defaultChecked={true}
-/>
-<Switch
-  name="disabled-off"
-  label="Recurso indisponível"
-  disabled
-  defaultChecked={false}
-  size="md"
-/>
-<Switch
-  name="maintenance"
-  label="Em manutenção"
-  disabled
-  size="sm"
-/>
-```
-
-## Callback onCheck
-
-O callback `onCheck` é chamado sempre que o estado do switch muda, recebendo o valor atual.
+The `onCheck` callback is called whenever the switch state changes, receiving the current value.
 
 ```tsx
 const [themeMode, setThemeMode] = useState("light");
-const [notificationsEnabled, setNotificationsEnabled] = useState(false);
 
 const handleThemeChange = (value) => {
-  console.log("Tema alterado para:", value);
+  console.log("Theme changed to:", value);
   setThemeMode(value);
 
-  // Aplicar tema globalmente
-  document.documentElement.setAttribute('data-theme', value);
-};
-
-const handleNotificationToggle = (value) => {
-  const isEnabled = value === "enabled";
-  setNotificationsEnabled(isEnabled);
-
-  if (isEnabled) {
-    // Solicitar permissão para notificações
-    requestNotificationPermission();
-  }
+  // Apply theme globally
+  document.documentElement.setAttribute("data-theme", value);
 };
 
 <Switch
   name="app-theme"
-  label="Tema escuro"
+  label="Dark theme"
   value="dark"
   unCheckedValue="light"
   onCheck={handleThemeChange}
-/>
-
-<Switch
-  name="push-notifications"
-  label="Notificações push"
-  value="enabled"
-  unCheckedValue="disabled"
-  onCheck={handleNotificationToggle}
-/>
-```
-
-## Switch Controlado vs Não Controlado
-
-### Não controlado (defaultChecked)
-
-```tsx
-// O componente gerencia seu próprio estado
-<Switch
-  name="wifi"
-  label="Wi-Fi"
-  defaultChecked={true}
-  value="connected"
-  unCheckedValue="disconnected"
-/>
-```
-
-### Controlado (checked + onCheck)
-
-```tsx
-const [isWifiEnabled, setIsWifiEnabled] = useState(true);
-
-// O estado é gerenciado externamente
-<Switch
-  name="wifi"
-  label="Wi-Fi"
-  checked={isWifiEnabled}
-  value="connected"
-  unCheckedValue="disconnected"
-  onCheck={(value) => setIsWifiEnabled(value === "connected")}
 />;
 ```
 
-## Propriedades
+## Properties
 
-**`name`** - `string` (obrigatório)
-Nome do campo para manipulação de formulários e identificação
+**`name`** - `string` (required)
+Field name for form manipulation and identification
 
 **`label`** - `string`
-Texto do rótulo a ser exibido ao lado do switch
+Label text to be displayed next to the switch
 
-**`size`** - `"sm" | "md" | "lg"` (padrão: `"lg"`)
-Variante de tamanho do switch
+**`size`** - `"sm" | "md" | "lg"` (default: `"lg"`)
+Switch size variant
 
-**`defaultChecked`** - `boolean` (padrão: `false`)
-Estado padrão marcado para uso não controlado
+**`defaultChecked`** - `boolean` (default: `false`)
+Default checked state for uncontrolled use
 
 **`checked`** - `boolean`
-Estado controlado do switch (usado com onCheck)
+Controlled state of the switch (used with onCheck)
 
-**`value`** - `string` (padrão: `"checked"`)
-Valor a ser usado quando o switch está ativado
+**`value`** - `string` (default: `"checked"`)
+Value to be used when the switch is enabled
 
-**`unCheckedValue`** - `string` (padrão: `""`)
-Valor a ser usado quando o switch está desativado
+**`unCheckedValue`** - `string` (default: `""`)
+Value to be used when the switch is disabled
 
 **`onCheck`** - `(value: string) => void`
-Função callback chamada quando o estado muda, recebe o valor atual
+Callback function called when state changes, receives current value
 
-**`orientation`** - `"vertical" | "horizontal" | "horizontalReverse"` (padrão: `"vertical"`)
-Orientação do switch e rótulo
+**`orientation`** - `"vertical" | "horizontal" | "horizontalReverse"` (default: `"vertical"`)
+Switch and label orientation
 
-**`disabled`** - `boolean` (padrão: `false`)
-Se o switch está desabilitado
+**`disabled`** - `boolean` (default: `false`)
+Whether the switch is disabled
 
 **`className`** - `string`
-Classes CSS adicionais para estilização
+Additional CSS classes for styling
 
 **`id`** - `string`
-Identificador único opcional para o switch
+Optional unique identifier for the switch
 
 <AlertContainer schema="info">
   <AlertIcon />
   <AlertContent>
-    <AlertTitle>Demais propriedades</AlertTitle>
+    <AlertTitle>Other properties</AlertTitle>
     <AlertDescription>
-      Todas as outras propriedades HTML padrão de `<button>` também são suportadas, exceto `children`, `onChange`, `defaultValue`, `onCheck` e `value` que são controladas pelo componente.
+      All other standard HTML `<button>` properties are also supported, except `children`, `onChange`, `defaultValue`, `onCheck` and `value` which are controlled by the component.
     </AlertDescription>
   </AlertContent>
 </AlertContainer>
 
-## Acessibilidade
+## Important Notes
 
-O componente `Switch` foi desenvolvido com acessibilidade em mente:
-
-- Uso semântico adequado com `<button>` para interação
-- Estados visuais claros para focus, checked e disabled
-- Associação automática entre switch e label quando fornecido
-- Suporte completo a navegação por teclado (Space/Enter para alternar)
-- Feedback visual claro do estado atual
-- Valores apropriados para tecnologias assistivas
-
-## Integração com Formulários
-
-O componente se integra nativamente com sistemas de gerenciamento de formulário:
-
-- Campo hidden automático para envio do valor atual
-- Valores customizáveis para estados ativado/desativado
-- Gerenciamento de estado interno ou externo
-- Compatibilidade com bibliotecas de validação
-
-<AlertContainer schema="warning">
-  <AlertIcon />
-  <AlertContent>
-    <AlertTitle>Formulários customizáveis</AlertTitle>
-    <AlertDescription>
-      Para formulários mais complexos, é recomendado utilizar o [Form
-      Provider](/components/providers/form-provider) que oferece integração
-      nativa com todas as ferramentas de formulário de uma única só vez.
-    </AlertDescription>
-  </AlertContent>
-</AlertContainer>
-
-## Notas Importantes
-
-- A propriedade `name` é obrigatória para integração com formulários
-- O valor padrão para estado ativado é `"checked"` se não especificado
-- O valor padrão para estado desativado é `""` (string vazia) se não especificado
-- O componente usa um input hidden para garantir que o valor seja enviado com o formulário
-- O tamanho padrão é `lg` para melhor acessibilidade e usabilidade
-- A orientação padrão é `vertical` com o switch acima do rótulo
-- O callback `onCheck` recebe sempre o valor atual (value ou unCheckedValue)
-- Estados controlados têm precedência sobre estados não controlados
-- O componente gerencia automaticamente focus e estados visuais
+- The default value for enabled state is `"checked"` if not specified
+- The default value for disabled state is `""` (empty string) if not specified
+- The `onCheck` callback always receives the current value (value or unCheckedValue)
