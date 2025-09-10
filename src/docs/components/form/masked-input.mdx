@@ -33,14 +33,10 @@ import { MaskedInput } from "@arkyn/components";
 
 ## Basic usage
 
+Basic usage of an input requires a `name`, `mask` and `replacement` property.
+
 <div className="noContent column">
-  <MaskedInput
-    name="phone"
-    mask="(__) _____-____"
-    replacement={{ _: /\d/ }}
-    placeholder="(00) 00000-0000"
-    leftIcon={Phone}
-  />
+  <MaskedInput name="phone" mask="(__) _____-____" replacement={{ _: /\d/ }} />
 </div>
 
 ```tsx
@@ -48,8 +44,6 @@ import { MaskedInput } from "@arkyn/components";
   name="phone"
   mask="(__) _____-____"
   replacement={{ _: /\d/ }} // Only accepts numbers
-  placeholder="(00) 00000-0000"
-  leftIcon={Phone}
 />
 ```
 
