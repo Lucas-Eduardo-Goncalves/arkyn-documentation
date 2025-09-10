@@ -28,17 +28,15 @@ import {
   MapPin,
 } from "lucide-react";
 
-O componente `MultiSelect` permite aos usuários selecionar múltiplas opções de uma lista dropdown. Oferece funcionalidades avançadas como busca, carregamento, validação e diferentes variantes visuais. É ideal para casos onde múltiplas seleções são necessárias.
-
-## Importação
+The `MultiSelect` component allows users to select multiple options from a dropdown list. It offers advanced features like search, loading, validation, and different visual variants. It's ideal for cases where multiple selections are needed.
 
 ```tsx
 import { MultiSelect } from "@arkyn/components";
 ```
 
-## Uso Básico
+## Basic Usage
 
-O uso básico requer as propriedades `name` e `options`. As opções devem ser um array de objetos com `label` e `value`.
+Basic usage requires the `name` and `options` properties. Options must be an array of objects with `label` and `value`.
 
 <div className="noContent column">
   <MultiSelect
@@ -64,30 +62,30 @@ O uso básico requer as propriedades `name` e `options`. As opções devem ser u
 />
 ```
 
-## Tamanhos
+## Sizes
 
-Os tamanhos disponíveis são `md` e `lg`, sendo `md` o padrão.
+Available sizes are `md` and `lg`, with `md` being the default.
 
 <div className="noContent column">
   <MultiSelect
     name="multi-md"
-    label="Tamanho médio"
+    label="Medium size"
     size="md"
     options={[
-      { label: "Opção 1", value: "opt1" },
-      { label: "Opção 2", value: "opt2" },
-      { label: "Opção 3", value: "opt3" },
+      { label: "Option 1", value: "opt1" },
+      { label: "Option 2", value: "opt2" },
+      { label: "Option 3", value: "opt3" },
     ]}
   />
 
   <MultiSelect
     name="multi-lg"
-    label="Tamanho grande"
+    label="Large size"
     size="lg"
     options={[
-      { label: "Opção 1", value: "opt1" },
-      { label: "Opção 2", value: "opt2" },
-      { label: "Opção 3", value: "opt3" },
+      { label: "Option 1", value: "opt1" },
+      { label: "Option 2", value: "opt2" },
+      { label: "Option 3", value: "opt3" },
     ]}
   />
 </div>
@@ -95,35 +93,35 @@ Os tamanhos disponíveis são `md` e `lg`, sendo `md` o padrão.
 ```tsx
 <MultiSelect
   name="multi-md"
-  label="Tamanho médio"
+  label="Medium size"
   size="md"
   options={[
-    { label: "Opção 1", value: "opt1" },
-    { label: "Opção 2", value: "opt2" },
-    { label: "Opção 3", value: "opt3" }
+    { label: "Option 1", value: "opt1" },
+    { label: "Option 2", value: "opt2" },
+    { label: "Option 3", value: "opt3" }
   ]}
 />
 
 <MultiSelect
   name="multi-lg"
-  label="Tamanho grande"
+  label="Large size"
   size="lg"
   options={[
-    { label: "Opção 1", value: "opt1" },
-    { label: "Opção 2", value: "opt2" },
-    { label: "Opção 3", value: "opt3" }
+    { label: "Option 1", value: "opt1" },
+    { label: "Option 2", value: "opt2" },
+    { label: "Option 3", value: "opt3" }
   ]}
 />
 ```
 
-## Variantes
+## Variants
 
-As variantes disponíveis são `solid`, `outline` e `underline`, proporcionando diferentes estilos visuais.
+Available variants are `solid`, `outline` and `underline`, providing different visual styles.
 
 <div className="noContent column">
   <MultiSelect
     name="multi-solid"
-    label="Variante sólida"
+    label="Solid variant"
     variant="solid"
     options={[
       { label: "Design", value: "design" },
@@ -134,7 +132,7 @@ As variantes disponíveis são `solid`, `outline` e `underline`, proporcionando 
 
 <MultiSelect
   name="multi-outline"
-  label="Variante contorno"
+  label="Outline variant"
   variant="outline"
   options={[
     { label: "Design", value: "design" },
@@ -145,7 +143,7 @@ As variantes disponíveis são `solid`, `outline` e `underline`, proporcionando 
 
   <MultiSelect
     name="multi-underline"
-    label="Variante sublinhada"
+    label="Underline variant"
     variant="underline"
     options={[
       { label: "Design", value: "design" },
@@ -158,7 +156,7 @@ As variantes disponíveis são `solid`, `outline` e `underline`, proporcionando 
 ```tsx
 <MultiSelect
   name="multi-solid"
-  label="Variante sólida"
+  label="Solid variant"
   variant="solid"
   options={[
     { label: "Design", value: "design" },
@@ -169,7 +167,7 @@ As variantes disponíveis são `solid`, `outline` e `underline`, proporcionando 
 
 <MultiSelect
   name="multi-outline"
-  label="Variante contorno"
+  label="Outline variant"
   variant="outline"
   options={[
     { label: "Design", value: "design" },
@@ -180,7 +178,7 @@ As variantes disponíveis são `solid`, `outline` e `underline`, proporcionando 
 
 <MultiSelect
   name="multi-underline"
-  label="Variante sublinhada"
+  label="Underline variant"
   variant="underline"
   options={[
     { label: "Design", value: "design" },
@@ -190,14 +188,14 @@ As variantes disponíveis são `solid`, `outline` e `underline`, proporcionando 
 />
 ```
 
-## MultiSelect com Ícones
+## MultiSelect with Icon
 
-Adicione ícones para melhorar a experiência visual e contextual.
+Add icons to enhance visual and contextual experience.
 
 <div className="noContent column">
   <MultiSelect
     name="multi-with-icon"
-    label="Tecnologias"
+    label="Technologies"
     leftIcon={Code}
     options={[
       { label: "React", value: "react" },
@@ -206,73 +204,36 @@ Adicione ícones para melhorar a experiência visual e contextual.
       { label: "Svelte", value: "svelte" },
     ]}
   />
-
-  <MultiSelect
-    name="multi-countries"
-    label="Países"
-    leftIcon={Globe}
-    placeholder="Selecione os países..."
-    options={[
-      { label: "Brasil", value: "br" },
-      { label: "Estados Unidos", value: "us" },
-      { label: "Reino Unido", value: "uk" },
-      { label: "França", value: "fr" },
-    ]}
-  />
 </div>
 
 ```tsx
 <MultiSelect
   name="multi-with-icon"
-  label="Tecnologias"
+  label="Technologies"
   leftIcon={Code}
   options={[
     { label: "React", value: "react" },
     { label: "Vue", value: "vue" },
     { label: "Angular", value: "angular" },
-    { label: "Svelte", value: "svelte" }
-  ]}
-/>
-
-<MultiSelect
-  name="multi-countries"
-  label="Países"
-  leftIcon={Globe}
-  placeholder="Selecione os países..."
-  options={[
-    { label: "Brasil", value: "br" },
-    { label: "Estados Unidos", value: "us" },
-    { label: "Reino Unido", value: "uk" },
-    { label: "França", value: "fr" }
+    { label: "Svelte", value: "svelte" },
   ]}
 />
 ```
 
 ## Prefix
 
-Use prefix para adicionar texto ou ícone no início do campo.
+Use prefix to add text or icon at the beginning of the field.
 
 <div className="noContent column">
   <MultiSelect
     name="multi-prefix-text"
-    label="Departamentos"
+    label="Departments"
     prefix="Dept:"
     options={[
-      { label: "Recursos Humanos", value: "hr" },
-      { label: "Tecnologia", value: "tech" },
+      { label: "Human Resources", value: "hr" },
+      { label: "Technology", value: "tech" },
       { label: "Marketing", value: "marketing" },
-      { label: "Vendas", value: "sales" },
-    ]}
-  />
-
-  <MultiSelect
-    name="multi-prefix-icon"
-    label="Categorias"
-    prefix={Tag}
-    options={[
-      { label: "Urgente", value: "urgent" },
-      { label: "Normal", value: "normal" },
-      { label: "Baixa", value: "low" },
+      { label: "Sales", value: "sales" },
     ]}
   />
 </div>
@@ -280,49 +241,38 @@ Use prefix para adicionar texto ou ícone no início do campo.
 ```tsx
 <MultiSelect
   name="multi-prefix-text"
-  label="Departamentos"
+  label="Departments"
   prefix="Dept:"
   options={[
-    { label: "Recursos Humanos", value: "hr" },
-    { label: "Tecnologia", value: "tech" },
+    { label: "Human Resources", value: "hr" },
+    { label: "Technology", value: "tech" },
     { label: "Marketing", value: "marketing" },
-    { label: "Vendas", value: "sales" }
-  ]}
-/>
-
-<MultiSelect
-  name="multi-prefix-icon"
-  label="Categorias"
-  prefix={Tag}
-  options={[
-    { label: "Urgente", value: "urgent" },
-    { label: "Normal", value: "normal" },
-    { label: "Baixa", value: "low" }
+    { label: "Sales", value: "sales" },
   ]}
 />
 ```
 
-## MultiSelect Pesquisável
+## Searchable MultiSelect
 
-Ative a funcionalidade de busca com `isSearchable` para facilitar a seleção em listas grandes.
+Enable search functionality with `isSearchable` to facilitate selection in large lists.
 
 <div className="noContent column">
   <MultiSelect
     name="searchable-multi"
-    label="Cidades"
+    label="Cities"
     isSearchable
-    placeholder="Pesquise e selecione cidades..."
-    notFoundText="Nenhuma cidade encontrada"
+    placeholder="Search and select cities..."
+    notFoundText="No cities found"
     leftIcon={MapPin}
     options={[
-      { label: "São Paulo", value: "sp" },
-      { label: "Rio de Janeiro", value: "rj" },
-      { label: "Belo Horizonte", value: "bh" },
-      { label: "Porto Alegre", value: "poa" },
-      { label: "Salvador", value: "salvador" },
-      { label: "Fortaleza", value: "fortaleza" },
-      { label: "Brasília", value: "brasilia" },
-      { label: "Curitiba", value: "curitiba" },
+      { label: "New York", value: "ny" },
+      { label: "Los Angeles", value: "la" },
+      { label: "Chicago", value: "chicago" },
+      { label: "Houston", value: "houston" },
+      { label: "Phoenix", value: "phoenix" },
+      { label: "Philadelphia", value: "philadelphia" },
+      { label: "San Antonio", value: "sanantonio" },
+      { label: "San Diego", value: "sandiego" },
     ]}
   />
 </div>
@@ -330,32 +280,32 @@ Ative a funcionalidade de busca com `isSearchable` para facilitar a seleção em
 ```tsx
 <MultiSelect
   name="searchable-multi"
-  label="Cidades"
+  label="Cities"
   isSearchable
-  placeholder="Pesquise e selecione cidades..."
-  notFoundText="Nenhuma cidade encontrada"
+  placeholder="Search and select cities..."
+  notFoundText="No cities found"
   leftIcon={MapPin}
   options={[
-    { label: "São Paulo", value: "sp" },
-    { label: "Rio de Janeiro", value: "rj" },
-    { label: "Belo Horizonte", value: "bh" },
-    { label: "Porto Alegre", value: "poa" },
-    { label: "Salvador", value: "salvador" },
-    { label: "Fortaleza", value: "fortaleza" },
-    { label: "Brasília", value: "brasilia" },
-    { label: "Curitiba", value: "curitiba" },
+    { label: "New York", value: "ny" },
+    { label: "Los Angeles", value: "la" },
+    { label: "Chicago", value: "chicago" },
+    { label: "Houston", value: "houston" },
+    { label: "Phoenix", value: "phoenix" },
+    { label: "Philadelphia", value: "philadelphia" },
+    { label: "San Antonio", value: "sanantonio" },
+    { label: "San Diego", value: "sandiego" },
   ]}
 />
 ```
 
-## Valores Padrão
+## Default Values
 
-Use `defaultValue` para pré-selecionar opções específicas.
+Use `defaultValue` to pre-select specific options.
 
 <div className="noContent column">
   <MultiSelect
     name="default-values"
-    label="Habilidades"
+    label="Skills"
     defaultValue={["js", "react"]}
     leftIcon={Code}
     options={[
@@ -372,7 +322,7 @@ Use `defaultValue` para pré-selecionar opções específicas.
 ```tsx
 <MultiSelect
   name="default-values"
-  label="Habilidades"
+  label="Skills"
   defaultValue={["js", "react"]}
   leftIcon={Code}
   options={[
@@ -386,14 +336,14 @@ Use `defaultValue` para pré-selecionar opções específicas.
 />
 ```
 
-## Comportamento de Fechamento
+## Close Behavior
 
-Configure quando o dropdown deve fechar após uma seleção com `closeOnSelect`.
+Configure when the dropdown should close after a selection with `closeOnSelect`.
 
 <div className="noContent column">
   <MultiSelect
     name="close-on-select"
-    label="Tags (fecha ao selecionar)"
+    label="Tags (closes on select)"
     closeOnSelect={true}
     leftIcon={Tag}
     options={[
@@ -406,7 +356,7 @@ Configure quando o dropdown deve fechar após uma seleção com `closeOnSelect`.
 
   <MultiSelect
     name="keep-open"
-    label="Categorias (mantém aberto)"
+    label="Categories (keeps open)"
     closeOnSelect={false}
     leftIcon={Tag}
     options={[
@@ -421,7 +371,7 @@ Configure quando o dropdown deve fechar após uma seleção com `closeOnSelect`.
 ```tsx
 <MultiSelect
   name="close-on-select"
-  label="Tags (fecha ao selecionar)"
+  label="Tags (closes on select)"
   closeOnSelect={true}
   leftIcon={Tag}
   options={[
@@ -434,7 +384,7 @@ Configure quando o dropdown deve fechar após uma seleção com `closeOnSelect`.
 
 <MultiSelect
   name="keep-open"
-  label="Categorias (mantém aberto)"
+  label="Categories (keeps open)"
   closeOnSelect={false}
   leftIcon={Tag}
   options={[
@@ -446,14 +396,18 @@ Configure quando o dropdown deve fechar após uma seleção com `closeOnSelect`.
 />
 ```
 
-## Estados do MultiSelect
+## MultiSelect States
 
-### MultiSelect desabilitado
+The component supports different states, such as disabled, read-only, and loading.
+
+### Disabled MultiSelect
+
+The disabled state prevents any user interaction with the field and prevents data from being submitted through a form.
 
 <div className="noContent column">
   <MultiSelect
     name="disabled-multi"
-    label="Seleção desabilitada"
+    label="Disabled selection"
     disabled
     defaultValue={["opt1"]}
     options={[
@@ -467,23 +421,25 @@ Configure quando o dropdown deve fechar após uma seleção com `closeOnSelect`.
 ```tsx
 <MultiSelect
   name="disabled-multi"
-  label="Seleção desabilitada"
+  label="Disabled selection"
   disabled
   defaultValue={["opt1"]}
   options={[
-    { label: "Opção 1", value: "opt1" },
-    { label: "Opção 2", value: "opt2" },
-    { label: "Opção 3", value: "opt3" },
+    { label: "Option 1", value: "opt1" },
+    { label: "Option 2", value: "opt2" },
+    { label: "Option 3", value: "opt3" },
   ]}
 />
 ```
 
-### MultiSelect apenas leitura
+### Read-only MultiSelect
+
+The read-only state allows the user to view the field value but cannot edit it. Unlike the disabled state, the value can be selected and copied, and field data can be submitted via a form.
 
 <div className="noContent column">
   <MultiSelect
     name="readonly-multi"
-    label="Apenas leitura"
+    label="Read only"
     readOnly
     defaultValue={["frontend", "backend"]}
     options={[
@@ -498,7 +454,7 @@ Configure quando o dropdown deve fechar após uma seleção com `closeOnSelect`.
 ```tsx
 <MultiSelect
   name="readonly-multi"
-  label="Apenas leitura"
+  label="Read only"
   readOnly
   defaultValue={["frontend", "backend"]}
   options={[
@@ -510,56 +466,50 @@ Configure quando o dropdown deve fechar após uma seleção com `closeOnSelect`.
 />
 ```
 
-### Estado de carregamento
+### Loading state
+
+The loading state displays a spinner and automatically disables input. The spinner appears on the left by default, or on the right if there is a `rightIcon`.
 
 <div className="noContent column">
   <MultiSelect
     name="loading-multi"
-    label="Carregando opções..."
+    label="Loading options..."
     isLoading
     options={[]}
-  />
-
-  <MultiSelect
-    name="loading-with-data"
-    label="Processando seleção..."
-    isLoading
-    defaultValue={["opt1"]}
-    options={[
-      { label: "Opção 1", value: "opt1" },
-      { label: "Opção 2", value: "opt2" },
-    ]}
   />
 </div>
 
 ```tsx
 <MultiSelect
   name="loading-multi"
-  label="Carregando opções..."
+  label="Loading options..."
   isLoading
   options={[]}
 />
-
-<MultiSelect
-  name="loading-with-data"
-  label="Processando seleção..."
-  isLoading
-  defaultValue={["opt1"]}
-  options={[
-    { label: "Opção 1", value: "opt1" },
-    { label: "Opção 2", value: "opt2" }
-  ]}
-/>
 ```
 
-## Validação e Erros
+## Validation and Errors
+
+The component integrates with form validation systems and can display error messages. If an error message is provided via the `errorMessage` property, it will take precedence over messages from the form provider.
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Customizable Forms</AlertTitle>
+    <AlertDescription>
+      For forms, it is recommended to use the
+      [FormProvider](/components/providers/form-provider) which offers native
+      integration with all form tools.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
 
 <div className="noContent column">
   <MultiSelect
     name="required-multi"
-    label="Habilidades Obrigatórias"
+    label="Required Skills"
     showAsterisk
-    errorMessage="Selecione pelo menos uma habilidade"
+    errorMessage="Select at least one skill"
     leftIcon={Code}
     options={[
       { label: "JavaScript", value: "js" },
@@ -568,267 +518,123 @@ Configure quando o dropdown deve fechar após uma seleção com `closeOnSelect`.
       { label: "Vue", value: "vue" },
     ]}
   />
-
-  <MultiSelect
-    name="invalid-multi"
-    label="Categorias"
-    errorMessage="Seleção inválida. Máximo 3 categorias."
-    leftIcon={Tag}
-    options={[
-      { label: "Frontend", value: "frontend" },
-      { label: "Backend", value: "backend" },
-      { label: "Mobile", value: "mobile" },
-      { label: "DevOps", value: "devops" },
-    ]}
-  />
 </div>
 
 ```tsx
 <MultiSelect
   name="required-multi"
-  label="Habilidades Obrigatórias"
+  label="Required Skills"
   showAsterisk
-  errorMessage="Selecione pelo menos uma habilidade"
+  errorMessage="Select at least one skill"
   leftIcon={Code}
   options={[
     { label: "JavaScript", value: "js" },
     { label: "TypeScript", value: "ts" },
     { label: "React", value: "react" },
-    { label: "Vue", value: "vue" }
-  ]}
-/>
-
-<MultiSelect
-  name="invalid-multi"
-  label="Categorias"
-  errorMessage="Seleção inválida. Máximo 3 categorias."
-  leftIcon={Tag}
-  options={[
-    { label: "Frontend", value: "frontend" },
-    { label: "Backend", value: "backend" },
-    { label: "Mobile", value: "mobile" },
-    { label: "DevOps", value: "devops" }
+    { label: "Vue", value: "vue" },
   ]}
 />
 ```
 
-## Callbacks avançados
+## Properties
 
-O MultiSelect oferece vários callbacks para controle avançado do comportamento.
+**`name`** - `string` (required)
+Name of the field for form manipulation
 
-```tsx
-const [selectedSkills, setSelectedSkills] = useState([]);
-const [searchTerm, setSearchTerm] = useState("");
-const [skillOptions, setSkillOptions] = useState([]);
-
-const handleSkillChange = (values) => {
-  console.log("Habilidades selecionadas:", values);
-  setSelectedSkills(values);
-
-  // Validação customizada
-  if (values.length > 5) {
-    alert("Máximo 5 habilidades permitidas");
-  }
-};
-
-const handleSkillSearch = (term) => {
-  console.log("Pesquisando por:", term);
-  setSearchTerm(term);
-
-  // Busca assíncrona
-  fetchSkills(term).then(setSkillOptions);
-};
-
-const handleFocus = () => {
-  console.log("MultiSelect focado");
-  // Carregar opções quando focar
-  loadSkillOptions();
-};
-
-const handleBlur = () => {
-  console.log("MultiSelect perdeu o foco");
-  // Validar seleção ao perder o foco
-  validateSelection();
-};
-
-<MultiSelect
-  name="advanced-skills"
-  label="Habilidades Técnicas"
-  value={selectedSkills}
-  onChange={handleSkillChange}
-  onSearch={handleSkillSearch}
-  onFocus={handleFocus}
-  onBlur={handleBlur}
-  isSearchable
-  closeOnSelect={false}
-  options={skillOptions}
-  placeholder="Digite para buscar habilidades..."
-  notFoundText="Nenhuma habilidade encontrada"
-/>;
-```
-
-## MultiSelect Controlado vs Não Controlado
-
-### Não controlado (defaultValue)
-
-```tsx
-// O componente gerencia seu próprio estado
-<MultiSelect
-  name="uncontrolled"
-  defaultValue={["react", "js"]}
-  options={techOptions}
-/>
-```
-
-### Controlado (value + onChange)
-
-```tsx
-const [selectedValues, setSelectedValues] = useState(["react"]);
-
-// O estado é gerenciado externamente
-<MultiSelect
-  name="controlled"
-  value={selectedValues}
-  onChange={setSelectedValues}
-  options={techOptions}
-/>;
-```
-
-## Propriedades
-
-**`name`** - `string` (obrigatório)
-Nome do campo para manipulação de formulários
-
-**`options`** - `{ label: string; value: string }[]` (obrigatório)
-Array de opções com label e value
+**`options`** - `{ label: string; value: string }[]` (required)
+Array of options with label and value
 
 **`id`** - `string`
-Identificador único opcional para o componente
+Optional unique identifier for the component
 
 **`value`** - `string[]`
-Valor controlado - array dos valores selecionados
+Controlled value - array of selected values
 
-**`defaultValue`** - `string[]` (padrão: `[]`)
-Valores padrão selecionados para uso não controlado
+**`defaultValue`** - `string[]` (default: `[]`)
+Default values ​​selected for uncontrolled use
 
 **`showAsterisk`** - `boolean`
-Se deve mostrar asterisco no rótulo para campos obrigatórios
+Whether to show an asterisk in the label for required fields
 
 **`label`** - `string`
-Texto do rótulo a ser exibido acima do multiselect
+Label text to display above the multiselect
 
 **`errorMessage`** - `string`
-Mensagem de erro a ser exibida abaixo do multiselect
+Error message to display below the multiselect
 
-**`placeholder`** - `string` (padrão: `"Selecione..."`)
-Texto placeholder quando nenhuma opção está selecionada
+**`placeholder`** - `string` (default: `Select..."`)
+Placeholder text when no option is selected
 
-**`notFoundText`** - `string` (padrão: `"Sem opções disponíveis"`)
-Texto exibido quando nenhuma opção corresponde à busca
+**`notFoundText`** - `string` (default: `No options available"`)
+Text displayed when no options match the search
 
 **`className`** - `string`
-Classes CSS adicionais para estilização
+Additional CSS classes for styling
 
-**`disabled`** - `boolean` (padrão: `false`)
-Se o multiselect está desabilitado
+**`disabled`** - `boolean` (default: `false`)
+If the multiselect is disabled
 
-**`readOnly`** - `boolean` (padrão: `false`)
-Se o multiselect é apenas leitura
+**`readOnly`** - `boolean` (default: `false`)
+If the multiselect is read-only
 
-**`isLoading`** - `boolean` (padrão: `false`)
-Controla o estado de carregamento com spinner
+**`isLoading`** - `boolean` (default: `false`)
+Controls the loading state with the spinner
 
-**`isSearchable`** - `boolean` (padrão: `false`)
-Se suporta funcionalidade de busca
+**`isSearchable`** - `boolean` (default: `false`)
+Whether the search functionality is supported
 
-**`closeOnSelect`** - `boolean` (padrão: `false`)
-Se deve fechar o dropdown após selecionar uma opção
+**`closeOnSelect`** - `boolean` (default: `false`)
+Whether the dropdown should close after selecting an option
 
 **`onSearch`** - `(value: string) => void`
-Função callback chamada quando o valor de busca muda
+Callback function called when the search value changes
 
 **`onChange`** - `(value: string[]) => void`
-Função callback chamada quando os valores selecionados mudam
+Callback function called when the selected values ​​change
 
 **`onFocus`** - `() => void`
-Função callback chamada quando o multiselect ganha foco
+Callback function called when the multiselect gains focus
 
 **`onBlur`** - `(e: FocusEvent<HTMLDivElement>) => void`
-Função callback chamada quando o multiselect perde foco
+Callback function called when the multiselect loses focus
 
-**`size`** - `"md" | "lg"` (padrão: `"md"`)
-Tamanho do multiselect
+**`size`** - `"md" | "lg"` (default: `"md"`)
+Multiselect size
 
-**`variant`** - `"solid" | "outline" | "underline"` (padrão: `"solid"`)
-Variante visual do multiselect
+**`variant`** - `"solid" | "outline" | "underline"` (default: `"solid"`)
+Multiselect visual variant
 
 **`prefix`** - `string | LucideIcon`
-Texto ou ícone para exibir no início do multiselect
+Text or icon to display at the top of the multiselect
 
 **`leftIcon`** - `LucideIcon`
-Ícone opcional para exibir no lado esquerdo
+Optional icon to display on the left side
 
 **`optionMaxHeight`** - `number`
-Altura máxima para o dropdown de opções
+Maximum height for the options dropdown
 
 <AlertContainer schema="info">
   <AlertIcon />
   <AlertContent>
-    <AlertTitle>Formato das opções</AlertTitle>
+    <AlertTitle>Option Format</AlertTitle>
     <AlertDescription>
-      As opções devem sempre seguir o formato `{ label: string; value: string }[]` onde `label` é o texto exibido e `value` é o valor interno usado pelo formulário.
-    </AlertDescription>
-  </AlertContent>
-</AlertContainer>
-
-## Acessibilidade
-
-O componente `MultiSelect` foi desenvolvido com acessibilidade em mente:
-
-- Navegação por teclado completa (Enter/Space para selecionar, Escape para fechar)
-- Suporte a leitores de tela com ARIA labels apropriados
-- Estados visuais claros para focus, hover e seleção
-- Mensagens de erro são anunciadas por tecnologias assistivas
-- Associação automática entre label e campo
-- Indicação visual clara de opções selecionadas
-
-## Integração com Formulários
-
-O componente se integra nativamente com sistemas de gerenciamento de formulário:
-
-- Campo hidden automático com JSON das seleções
-- Validação automática com exibição de erros
-- Suporte ao hook `useForm` do Arkyn
-- Compatibilidade com bibliotecas de validação
-
-<AlertContainer schema="warning">
-  <AlertIcon />
-  <AlertContent>
-    <AlertTitle>Formulários customizáveis</AlertTitle>
-    <AlertDescription>
-      Para formulários mais complexos, é recomendado utilizar o [Form
-      Provider](/components/providers/form-provider) que oferece integração
-      nativa com todas as ferramentas de formulário de uma única só vez.
+    Options must always follow the format `{ label: string; value: string }[]` where `label` is the displayed text and `value` is the internal value used by the form. 
     </AlertDescription>
   </AlertContent>
 </AlertContainer>
 
 ## Performance
 
-Para listas muito grandes (>1000 itens), considere:
+For very large lists (>1000 items), consider:
 
-- Implementar busca no servidor com `onSearch`
-- Usar paginação ou carregamento sob demanda
-- Implementar debounce na busca
-- Usar virtualização para renderização eficiente
+- Implement server-side search with `onSearch`
+- Use pagination or on-demand loading
+- Use virtualization for efficient rendering
 
-## Notas Importantes
+## Important Notes
 
-- A propriedade `name` é obrigatória para integração com formulários
-- As `options` devem sempre ter `label` e `value` únicos
-- O valor é armazenado como JSON stringificado no campo hidden
-- `isSearchable` permite busca local por padrão, use `onSearch` para busca customizada
-- `closeOnSelect={true}` é útil para seleções únicas ocasionais
-- Estados de loading, disabled e readOnly desabilitam todas as interações
-- O componente suporta refs para controle programático
-- A busca local é case-insensitive e busca no texto do label
+- `Options` must always have a unique `label` and `value`
+- The value is stored and sent to the form as stringified JSON
+- `isSearchable` enables local search by default; use `onSearch` for custom search
+- `closeOnSelect` is useful for occasional single selections
+- Local search is case-insensitive and searches the label text
