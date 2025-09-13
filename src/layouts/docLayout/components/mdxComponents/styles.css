@@ -116,6 +116,10 @@
   width: max-content;
 }
 
+.noContent.maxContent {
+  width: unset;
+}
+
 .noContent.row {
   display: flex;
   flex-wrap: wrap;
