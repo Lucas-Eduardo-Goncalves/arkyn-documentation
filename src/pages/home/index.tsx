@@ -14,6 +14,8 @@ import arkynLogo from "~/assets/arkynLogo.png";
 import { ApiIntroduction } from "./components/apiIntroduction";
 import { ExampleItem } from "./components/exampleItem";
 import { ExampleList } from "./components/exampleList";
+import { Framework } from "./components/framework";
+import { Startups } from "./components/startups";
 import { Header, HomeContainer } from "./styles";
 
 function Home() {
@@ -55,6 +57,8 @@ function Home() {
         <img src={arkynLogo} alt="arkyn" />
       </Header>
 
+      <Startups />
+
       <ExampleList>
         <ExampleItem
           to="/docs/components/introduction"
@@ -81,6 +85,8 @@ function Home() {
           description="Pre-built templates for common application scenarios."
         />
       </ExampleList>
+
+      <Framework />
 
       <ApiIntroduction />
     </HomeContainer>
