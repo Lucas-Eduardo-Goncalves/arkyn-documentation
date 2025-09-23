@@ -1,4 +1,7 @@
 import { StartupsContainer } from "./styles";
+import agendaCatolicaLogo from "~/assets/agendaCatolicaLogo.svg";
+import oracaoLogo from "~/assets/oracaoPlayLogo.svg";
+import sanctonLogo from "~/assets/sanctonLogo.svg";
 
 function Startups() {
   return (
@@ -11,18 +14,14 @@ function Startups() {
 
       <div className="table">
         <div>
-          <img
-            src="https://i.ibb.co/TYVmNMS/agenda-logo.png"
-            alt="AgendaCatólica"
-          />
+          <img src={agendaCatolicaLogo} alt="AgendaCatólica" />
         </div>
         <div>
-          <img
-            src="https://sancton.s3.us-east-2.amazonaws.com/sancton_fundo_claro.png"
-            alt="Sancton"
-          />
+          <img src={sanctonLogo} alt="Sancton" />
         </div>
-        <div>oraçãoplay</div>
+        <div>
+          <img src={oracaoLogo} alt="OraçãoPlay" />
+        </div>
       </div>
     </StartupsContainer>
   );
