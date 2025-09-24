@@ -1,0 +1,156 @@
+# FieldWrapper
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Checkbox,
+  FieldLabel,
+  FieldWrapper,
+} from "@arkyn/components";
+
+The `FieldWrapper` is a fundamental container component for organizing form fields in Arkyn. It provides a consistent structure, accessibility, and different layout orientations for grouping elements related to a field (label, input, error message).
+
+The `FieldWrapper` should not be used with the native components in `@arkyn/components`, as these already have the `FieldWrapper` integrated internally.
+
+```tsx
+import { FieldWrapper } from "@arkyn/components";
+```
+
+## Basic usage
+
+<div className="noContent column">
+  <FieldWrapper>
+    <FieldLabel>Username</FieldLabel>
+    <div
+      style={{
+        padding: "8px 12px",
+        border: "1px solid #e2e8f0",
+        borderRadius: "6px",
+        backgroundColor: "#ffffff",
+        color: "#374151",
+      }}
+    >
+      Example Field
+    </div>
+  </FieldWrapper>
+</div>
+
+```tsx
+<FieldWrapper>
+  <FieldLabel htmlFor="username">Username</FieldLabel>
+  <input id="username" name="username" placeholder="Enter your name" />
+  <FieldError>This field is mandatory</FieldError>
+</FieldWrapper>
+```
+
+## Layout Orientations
+
+FieldWrapper offers three different orientations to accommodate various form layouts.
+
+### Vertical (Default)
+
+Traditional layout with a label above the input field.
+
+<div className="noContent column">
+  <FieldWrapper orientation="vertical">
+    <FieldLabel>Email</FieldLabel>
+    <div
+      style={{
+        padding: "8px 12px",
+        border: "1px solid #e2e8f0",
+        borderRadius: "6px",
+        backgroundColor: "#ffffff",
+        color: "#374151",
+      }}
+    >
+      example@email.com
+    </div>
+  </FieldWrapper>
+</div>
+
+```tsx
+<FieldWrapper orientation="vertical">
+  <FieldLabel>Email</FieldLabel>
+  <Input name="email" type="email" placeholder="Enter your email" />
+</FieldWrapper>
+```
+
+### Horizontal
+
+In-line layout with label on the left side of the field.
+
+<div className="noContent column">
+  <FieldWrapper orientation="horizontal">
+    <FieldLabel>Phone:</FieldLabel>
+    <div
+      style={{
+        padding: "8px 12px",
+        border: "1px solid #e2e8f0",
+        borderRadius: "6px",
+        backgroundColor: "#ffffff",
+        color: "#374151",
+        flex: 1,
+      }}
+    >
+      (11) 99999-9999
+    </div>
+  </FieldWrapper>
+</div>
+
+```tsx
+<FieldWrapper orientation="horizontal">
+  <FieldLabel>Phone:</FieldLabel>
+  <Input name="phone" placeholder="(11) 99999-9999" />
+</FieldWrapper>
+```
+
+### Horizontal Reverse
+
+Inline layout with field before the label - ideal for checkboxes and switches.
+
+<div className="noContent column">
+  <FieldWrapper orientation="horizontalReverse">
+    <FieldLabel>I accept the terms of use</FieldLabel>
+    <Checkbox />
+  </FieldWrapper>
+</div>
+
+```tsx
+<FieldWrapper orientation="horizontalReverse">
+  <FieldLabel>I accept the terms of use</FieldLabel>
+  <Checkbox name="terms" />
+</FieldWrapper>
+```
+
+## Properties
+
+**`children`** - `ReactNode` (required)
+Child elements that make up the field (label, input, error, etc.)
+
+**`orientation`** - `"vertical" | "horizontal" | "horizontalReverse"` (default: `"vertical"`)
+Defines the orientation of the elements inside the wrapper:
+
+**`className`** - `string`
+Additional CSS classes for custom styling
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>HTML Properties</AlertTitle>
+    <AlertDescription>
+      The FieldWrapper accepts all valid properties of the HTML element
+      `section`, including onClick, onFocus, style, data-*, aria-*, etc.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notes
+
+- **Semantic Container** - Uses the `<section>` element for appropriate grouping
+- **Layout Flexibility** - Three different orientations for various scenarios
+- **Component Integration** - Most components already include a FieldWrapper
+- **Consistent Styling** - Maintains design system visual standards
+- **Special Cases** - Designed for custom fields not covered by standard components

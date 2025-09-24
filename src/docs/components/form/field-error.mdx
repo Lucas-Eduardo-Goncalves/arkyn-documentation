@@ -1,0 +1,77 @@
+# FieldError
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  FieldError,
+} from "@arkyn/components";
+
+`FieldError` is an essential component for displaying error messages in forms in Arkyn. It provides clear and accessible visual feedback about validation issues, maintaining consistency in error presentation and intelligent conditional rendering.
+
+`FieldError` should not be used with the native components in `@arkyn/components`, as these already have `FieldError` built-in.
+
+```tsx
+import { FieldError } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent column">
+  <FieldError>This field is required</FieldError>
+</div>
+
+```tsx
+<FieldError>This field is required</FieldError>
+```
+
+## Conditional Rendering
+
+`FieldError` only renders when it has content, avoiding empty elements in the DOM.
+
+<div className="noContent column">
+  <FieldError>Visible error</FieldError>
+  <FieldError></FieldError>
+  <FieldError>{null}</FieldError>
+  <FieldError>{undefined}</FieldError>
+</div>
+
+```tsx
+/* ✅ Renders - has content */
+<FieldError>This field is required</FieldError>;
+
+/* ❌ Does not render - empty string */
+<FieldError></FieldError>;
+
+/* ❌ Does not render - null */
+<FieldError>{null}</FieldError>;
+
+/* ❌ Does not render - undefined */
+<FieldError>{undefined}</FieldError>;
+```
+
+## Properties
+
+**`children`** - `ReactNode`
+Error message content (text, elements, etc.)
+
+**`className`** - `string`
+Additional CSS classes for custom styling
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>HTML Properties</AlertTitle>
+    <AlertDescription>
+      FieldError accepts all valid HTML properties of the `strong` element,
+      including onClick, onFocus, style, data-*, aria-*, etc.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notes
+
+- **Semantic Element** - Uses `<strong>` to give semantic importance to the error
+- **Content Flexibility** - Accepts any valid React content

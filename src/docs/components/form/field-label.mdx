@@ -1,0 +1,73 @@
+# FieldLabel
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  FieldLabel,
+} from "@arkyn/components";
+
+The `FieldLabel` is a fundamental component for form field labels in Arkyn. It provides clear identification, supports indicating required fields with an asterisk, and maintains visual and semantic consistency throughout the application.
+
+The `FieldLabel` should not be used with native components in `@arkyn/components`, as these already have the `FieldLabel` integrated internally.
+
+```tsx
+import { FieldLabel } from "@arkyn/components";
+```
+
+## Basic usage
+
+<div className="noContent column">
+  <FieldLabel>Username</FieldLabel>
+</div>
+
+```tsx
+<FieldLabel htmlFor="username">Username</FieldLabel>
+```
+
+## Required field
+
+The asterisk is a universally recognized visual convention to indicate required fields.
+
+<div className="noContent column">
+  <FieldLabel showAsterisk>Email</FieldLabel>
+</div>
+
+```tsx
+<FieldLabel htmlFor="email" showAsterisk>
+  Email
+</FieldLabel>
+```
+
+## Properties
+
+**`showAsterisk`** - `boolean` (default: `false`)
+Defines whether to display the asterisk (\*) to indicate a required field.
+
+**`htmlFor`** - `string`
+ID of the input element associated with the label (important for accessibility).
+
+**`children`** - `ReactNode`
+Label content (text, icons, additional elements).
+
+**`className`** - `string`
+Additional CSS classes for custom styling.
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Properties HTML</AlertTitle>
+    <AlertDescription>
+      FieldLabel accepts all valid HTML `label` element properties, including
+      onClick, onFocus, style, data-*, aria-*, etc.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notes
+
+- **Semantic Element** - Uses the native HTML `<label>` element for maximum accessibility
+- **Required Association** - Always use `htmlFor` to connect to the corresponding input
+- **Native Integration** - Works seamlessly with FieldWrapper and other components
