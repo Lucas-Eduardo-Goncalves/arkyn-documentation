@@ -67,6 +67,10 @@ const COMPONENTS_MENU: MenuType[] = [
         to: "/components/form/switch",
       },
       {
+        label: "Select",
+        to: "/components/form/select",
+      },
+      {
         label: "MultiSelect",
         to: "/components/form/multiselect",
       },

@@ -1,0 +1,623 @@
+# Select
+
+import {
+  Select,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import { Code, MapPin, Tag } from "lucide-react";
+
+The `Select` component allows users to select a single option from a dropdown list. It offers advanced features like search, loading, validation, and different visual variants. It's ideal for cases where a single selection is needed.
+
+```tsx
+import { Select } from "@arkyn/components";
+```
+
+## Basic usage
+
+Basic usage requires the `name` and `options` properties. Options must be an array of objects with `label` and `value`.
+
+<div className="noContent column">
+  <Select
+    name="basic-select"
+    options={[
+      { label: "JavaScript", value: "js" },
+      { label: "TypeScript", value: "ts" },
+      { label: "Python", value: "python" },
+      { label: "Java", value: "java" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="basic-select"
+  options={[
+    { label: "JavaScript", value: "js" },
+    { label: "TypeScript", value: "ts" },
+    { label: "Python", value: "python" },
+    { label: "Java", value: "java" },
+  ]}
+/>
+```
+
+## Sizes
+
+Available sizes are `md` and `lg`, with `md` being the default.
+
+<div className="noContent column">
+  <Select
+    name="select-md"
+    label="Medium size"
+    size="md"
+    options={[
+      { label: "Option 1", value: "opt1" },
+      { label: "Option 2", value: "opt2" },
+      { label: "Option 3", value: "opt3" },
+    ]}
+  />
+
+  <Select
+    name="select-lg"
+    label="Large size"
+    size="lg"
+    options={[
+      { label: "Option 1", value: "opt1" },
+      { label: "Option 2", value: "opt2" },
+      { label: "Option 3", value: "opt3" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="select-md"
+  label="Medium size"
+  size="md"
+  options={[
+    { label: "Option 1", value: "opt1" },
+    { label: "Option 2", value: "opt2" },
+    { label: "Option 3", value: "opt3" }
+  ]}
+/>
+
+<Select
+  name="select-lg"
+  label="Large size"
+  size="lg"
+  options={[
+    { label: "Option 1", value: "opt1" },
+    { label: "Option 2", value: "opt2" },
+    { label: "Option 3", value: "opt3" }
+  ]}
+/>
+```
+
+## Variants
+
+Available variants are `solid`, `outline` and `underline`, providing different visual styles.
+
+<div className="noContent column">
+  <Select
+    name="select-solid"
+    label="Solid variant"
+    variant="solid"
+    options={[
+      { label: "Design", value: "design" },
+      { label: "Frontend", value: "frontend" },
+      { label: "Backend", value: "backend" },
+    ]}
+  />
+
+<Select
+  name="select-outline"
+  label="Outline variant"
+  variant="outline"
+  options={[
+    { label: "Design", value: "design" },
+    { label: "Frontend", value: "frontend" },
+    { label: "Backend", value: "backend" },
+  ]}
+/>
+
+  <Select
+    name="select-underline"
+    label="Underline variant"
+    variant="underline"
+    options={[
+      { label: "Design", value: "design" },
+      { label: "Frontend", value: "frontend" },
+      { label: "Backend", value: "backend" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="select-solid"
+  label="Solid variant"
+  variant="solid"
+  options={[
+    { label: "Design", value: "design" },
+    { label: "Frontend", value: "frontend" },
+    { label: "Backend", value: "backend" }
+  ]}
+/>
+
+<Select
+  name="select-outline"
+  label="Outline variant"
+  variant="outline"
+  options={[
+    { label: "Design", value: "design" },
+    { label: "Frontend", value: "frontend" },
+    { label: "Backend", value: "backend" }
+  ]}
+/>
+
+<Select
+  name="select-underline"
+  label="Underline variant"
+  variant="underline"
+  options={[
+    { label: "Design", value: "design" },
+    { label: "Frontend", value: "frontend" },
+    { label: "Backend", value: "backend" }
+  ]}
+/>
+```
+
+## Select with Icon
+
+Add icons to enhance visual and contextual experience.
+
+<div className="noContent column">
+  <Select
+    name="select-with-icon"
+    label="Technologies"
+    leftIcon={Code}
+    options={[
+      { label: "React", value: "react" },
+      { label: "Vue", value: "vue" },
+      { label: "Angular", value: "angular" },
+      { label: "Svelte", value: "svelte" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="select-with-icon"
+  label="Technologies"
+  leftIcon={Code}
+  options={[
+    { label: "React", value: "react" },
+    { label: "Vue", value: "vue" },
+    { label: "Angular", value: "angular" },
+    { label: "Svelte", value: "svelte" },
+  ]}
+/>
+```
+
+## Prefix
+
+Use prefix to add text or icon at the beginning of the field.
+
+<div className="noContent column">
+  <Select
+    name="select-prefix-text"
+    label="Departments"
+    prefix="Dept:"
+    options={[
+      { label: "Human Resources", value: "hr" },
+      { label: "Technology", value: "tech" },
+      { label: "Marketing", value: "marketing" },
+      { label: "Sales", value: "sales" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="select-prefix-text"
+  label="Departments"
+  prefix="Dept:"
+  options={[
+    { label: "Human Resources", value: "hr" },
+    { label: "Technology", value: "tech" },
+    { label: "Marketing", value: "marketing" },
+    { label: "Sales", value: "sales" },
+  ]}
+/>
+```
+
+## Searchable Select
+
+Enable search functionality with `isSearchable` to facilitate selection in large lists.
+
+<div className="noContent column">
+  <Select
+    name="searchable-select"
+    label="Cities"
+    isSearchable
+    placeholder="Search and select a city..."
+    notFoundText="No cities found"
+    leftIcon={MapPin}
+    options={[
+      { label: "New York", value: "ny" },
+      { label: "Los Angeles", value: "la" },
+      { label: "Chicago", value: "chicago" },
+      { label: "Houston", value: "houston" },
+      { label: "Phoenix", value: "phoenix" },
+      { label: "Philadelphia", value: "philadelphia" },
+      { label: "San Antonio", value: "sanantonio" },
+      { label: "San Diego", value: "sandiego" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="searchable-select"
+  label="Cities"
+  isSearchable
+  placeholder="Search and select a city..."
+  notFoundText="No cities found"
+  leftIcon={MapPin}
+  options={[
+    { label: "New York", value: "ny" },
+    { label: "Los Angeles", value: "la" },
+    { label: "Chicago", value: "chicago" },
+    { label: "Houston", value: "houston" },
+    { label: "Phoenix", value: "phoenix" },
+    { label: "Philadelphia", value: "philadelphia" },
+    { label: "San Antonio", value: "sanantonio" },
+    { label: "San Diego", value: "sandiego" },
+  ]}
+/>
+```
+
+## Default Value
+
+Use `defaultValue` to pre-select a specific option.
+
+<div className="noContent column">
+  <Select
+    name="default-value"
+    label="Programming Language"
+    defaultValue="js"
+    leftIcon={Code}
+    options={[
+      { label: "JavaScript", value: "js" },
+      { label: "TypeScript", value: "ts" },
+      { label: "React", value: "react" },
+      { label: "Vue", value: "vue" },
+      { label: "Node.js", value: "node" },
+      { label: "Python", value: "python" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="default-value"
+  label="Programming Language"
+  defaultValue="js"
+  leftIcon={Code}
+  options={[
+    { label: "JavaScript", value: "js" },
+    { label: "TypeScript", value: "ts" },
+    { label: "React", value: "react" },
+    { label: "Vue", value: "vue" },
+    { label: "Node.js", value: "node" },
+    { label: "Python", value: "python" },
+  ]}
+/>
+```
+
+## Close Behavior
+
+Configure when the dropdown should close after a selection with `closeOnSelect`.
+
+<div className="noContent column">
+  <Select
+    name="close-on-select"
+    label="Language (closes on select)"
+    closeOnSelect={true}
+    leftIcon={Code}
+    options={[
+      { label: "React", value: "react" },
+      { label: "JavaScript", value: "js" },
+      { label: "CSS", value: "css" },
+      { label: "HTML", value: "html" },
+    ]}
+  />
+
+  <Select
+    name="keep-open"
+    label="Category (keeps open)"
+    closeOnSelect={false}
+    leftIcon={Tag}
+    options={[
+      { label: "Frontend", value: "frontend" },
+      { label: "Backend", value: "backend" },
+      { label: "DevOps", value: "devops" },
+      { label: "Mobile", value: "mobile" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="close-on-select"
+  label="Language (closes on select)"
+  closeOnSelect={true}
+  leftIcon={Code}
+  options={[
+    { label: "React", value: "react" },
+    { label: "JavaScript", value: "js" },
+    { label: "CSS", value: "css" },
+    { label: "HTML", value: "html" }
+  ]}
+/>
+
+<Select
+  name="keep-open"
+  label="Category (keeps open)"
+  closeOnSelect={false}
+  leftIcon={Tag}
+  options={[
+    { label: "Frontend", value: "frontend" },
+    { label: "Backend", value: "backend" },
+    { label: "DevOps", value: "devops" },
+    { label: "Mobile", value: "mobile" }
+  ]}
+/>
+```
+
+## Select States
+
+The component supports different states, such as disabled, read-only, and loading.
+
+### Disabled Select
+
+The disabled state prevents any user interaction with the field and prevents data from being submitted through a form.
+
+<div className="noContent column">
+  <Select
+    name="disabled-select"
+    label="Disabled selection"
+    disabled
+    defaultValue="opt1"
+    options={[
+      { label: "Option 1", value: "opt1" },
+      { label: "Option 2", value: "opt2" },
+      { label: "Option 3", value: "opt3" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="disabled-select"
+  label="Disabled selection"
+  disabled
+  defaultValue="opt1"
+  options={[
+    { label: "Option 1", value: "opt1" },
+    { label: "Option 2", value: "opt2" },
+    { label: "Option 3", value: "opt3" },
+  ]}
+/>
+```
+
+### Read-only Select
+
+The read-only state allows the user to view the field value but cannot edit it. Unlike the disabled state, the value can be selected and copied, and field data can be submitted via a form.
+
+<div className="noContent column">
+  <Select
+    name="readonly-select"
+    label="Read only"
+    readOnly
+    defaultValue="frontend"
+    options={[
+      { label: "Frontend", value: "frontend" },
+      { label: "Backend", value: "backend" },
+      { label: "Mobile", value: "mobile" },
+      { label: "DevOps", value: "devops" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="readonly-select"
+  label="Read only"
+  readOnly
+  defaultValue="frontend"
+  options={[
+    { label: "Frontend", value: "frontend" },
+    { label: "Backend", value: "backend" },
+    { label: "Mobile", value: "mobile" },
+    { label: "DevOps", value: "devops" },
+  ]}
+/>
+```
+
+### Loading state
+
+The loading state displays a spinner and automatically disables input. The spinner appears on the left by default, or on the right if there is a `leftIcon`.
+
+<div className="noContent column">
+  <Select
+    name="loading-select"
+    label="Loading options..."
+    isLoading
+    options={[]}
+  />
+</div>
+
+```tsx
+<Select
+  name="loading-select"
+  label="Loading options..."
+  isLoading
+  options={[]}
+/>
+```
+
+## Validation and Errors
+
+The component integrates with form validation systems and can display error messages. If an error message is provided via the `errorMessage` property, it will take precedence over messages from the form provider.
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Customizable Forms</AlertTitle>
+    <AlertDescription>
+      For forms, it is recommended to use the
+      [FormProvider](/components/providers/form-provider) which offers native
+      integration with all form tools.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+<div className="noContent column">
+  <Select
+    name="required-select"
+    label="Required Skill"
+    showAsterisk
+    errorMessage="Please select a skill"
+    leftIcon={Code}
+    options={[
+      { label: "JavaScript", value: "js" },
+      { label: "TypeScript", value: "ts" },
+      { label: "React", value: "react" },
+      { label: "Vue", value: "vue" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="required-select"
+  label="Required Skill"
+  showAsterisk
+  errorMessage="Please select a skill"
+  leftIcon={Code}
+  options={[
+    { label: "JavaScript", value: "js" },
+    { label: "TypeScript", value: "ts" },
+    { label: "React", value: "react" },
+    { label: "Vue", value: "vue" },
+  ]}
+/>
+```
+
+## Properties
+
+**`name`** - `string` (required)
+Name of the field for form manipulation
+
+**`options`** - `{ label: string; value: string }[]` (required)
+Array of options with label and value
+
+**`id`** - `string`
+Optional unique identifier for the component
+
+**`value`** - `string`
+Controlled value - selected option value
+
+**`defaultValue`** - `string` (default: `""`)
+Default value selected for uncontrolled use
+
+**`showAsterisk`** - `boolean`
+Whether to show an asterisk in the label for required fields
+
+**`label`** - `string`
+Label text to display above the select
+
+**`errorMessage`** - `string`
+Error message to display below the select
+
+**`placeholder`** - `string` (default: `"Selecione..."`)
+Placeholder text when no option is selected
+
+**`notFoundText`** - `string` (default: `"Sem opções disponíveis"`)
+Text displayed when no options match the search
+
+**`className`** - `string`
+Additional CSS classes for styling
+
+**`disabled`** - `boolean` (default: `false`)
+If the select is disabled
+
+**`readOnly`** - `boolean` (default: `false`)
+If the select is read-only
+
+**`isLoading`** - `boolean` (default: `false`)
+Controls the loading state with the spinner
+
+**`isSearchable`** - `boolean` (default: `false`)
+Whether the search functionality is supported
+
+**`closeOnSelect`** - `boolean` (default: `true`)
+Whether the dropdown should close after selecting an option
+
+**`onSearch`** - `(value: string) => void`
+Callback function called when the search value changes
+
+**`onChange`** - `(value: string) => void`
+Callback function called when the selected value changes
+
+**`onFocus`** - `() => void`
+Callback function called when the select gains focus
+
+**`onBlur`** - `(e: FocusEvent<HTMLDivElement>) => void`
+Callback function called when the select loses focus
+
+**`size`** - `"md" | "lg"` (default: `"md"`)
+Select size
+
+**`variant`** - `"solid" | "outline" | "underline"` (default: `"solid"`)
+Select visual variant
+
+**`prefix`** - `string | LucideIcon`
+Text or icon to display at the beginning of the select
+
+**`leftIcon`** - `LucideIcon`
+Optional icon to display on the left side
+
+**`optionMaxHeight`** - `number`
+Maximum height for the options dropdown
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Option Format</AlertTitle>
+    <AlertDescription>
+    Options must always follow the format `{ label: string; value: string }[]` where `label` is the displayed text and `value` is the internal value used by the form. 
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Performance
+
+For very large lists (>1000 items), consider:
+
+- Implement server-side search with `onSearch`
+- Use pagination or on-demand loading
+- Use virtualization for efficient rendering
+
+## Important Notes
+
+- `Options` must always have a unique `label` and `value`
+- The value is stored and sent to the form as stringified JSON
+- `isSearchable` enables local search by default; use `onSearch` for custom search
+- `closeOnSelect` is `true` by default for single selection convenience
+- Local search is case-insensitive and searches the label text

@@ -116,14 +116,19 @@
   width: max-content;
 }
 
-.noContent.maxContent {
-  width: unset;
-}
-
 .noContent.row {
   display: flex;
-  flex-wrap: wrap;
+  width: 100%;
   gap: 8px;
+}
+
+.noContent.flex > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.noContent.maxContent {
+  width: unset;
 }
 
 .noContent.column {

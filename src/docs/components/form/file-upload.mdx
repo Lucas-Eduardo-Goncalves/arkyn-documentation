@@ -24,38 +24,50 @@ import {
   AlertCircle,
 } from "lucide-react";
 
-O `FileUpload` é um componente avançado para upload de arquivos com funcionalidades de drag and drop, validação automática e integração com APIs de upload. Oferece uma interface intuitiva para seleção e envio de arquivos com feedback visual completo.
-
-## Importação
+`FileUpload` is an advanced file upload component with drag-and-drop functionality, automatic validation, and integration with upload APIs. It offers an intuitive interface for selecting and uploading files with full visual feedback.
 
 ```tsx
 import { FileUpload } from "@arkyn/components";
 ```
 
-## Uso Básico
+## Basic usage
+
+Basic usage of FileUpload requires the `name` and `action` properties.
 
 <div className="noContent column">
-  <FileUpload name="basicFile" action="/api/upload" label="Upload de Arquivo" />
+  <FileUpload name="basicFile" action="/api/upload" label="File Upload" />
 </div>
 
 ```tsx
-<FileUpload name="document" action="/api/upload" label="Selecione um arquivo" />
+<FileUpload name="document" action="/api/upload" label="Select a file" />
 ```
 
-## Upload com Validação
+## Endpoint configuration
 
-Configure tipos de arquivo aceitos e validação automática.
+The endpoint provided in `action` must accept upload requests via `POST` and return a JSON file with the URL of the uploaded file or an error message.
+
+```tsx
+// Success response example
+{ "url": "https://yourdomain.com/uploads/filename.ext" }
+
+// Error response example
+{ "error": "File type not supported" }
+```
+
+## Upload with validation
+
+Configure accepted file types and automatic validation.
 
 <div className="noContent column">
   <FileUpload
     name="imageFile"
     action="/api/upload/image"
-    label="Upload de Imagem"
+    label="Image Upload"
     showAsterisk
     acceptFile="image/*"
-    selectFileButtonText="Escolher Imagem"
-    changeFileButtonText="Trocar Imagem"
-    dropFileText="Arraste sua imagem aqui"
+    selectFileButtonText="Choose Image"
+    changeFileButtonText="Change Image"
+    dropFileText="Drag your image here"
   />
 </div>
 
@@ -63,122 +75,88 @@ Configure tipos de arquivo aceitos e validação automática.
 <FileUpload
   name="avatar"
   action="/api/upload/avatar"
-  label="Foto de Perfil"
+  label="Profile Picture"
   showAsterisk
   acceptFile="image/*"
-  selectFileButtonText="Escolher Imagem"
-  changeFileButtonText="Trocar Imagem"
-  dropFileText="Arraste sua imagem aqui"
+  selectFileButtonText="Choose Image"
+  changeFileButtonText="Change Image"
+  dropFileText="Drag your image here"
   onChange={(url) => console.log("Avatar uploaded:", url)}
 />
 ```
 
-## Tipos de Arquivo Específicos
+## Specific file types
 
-<div className="noContent column">
+You can restrict uploads to specific file types using the `acceptFile` property.
+
+<div className="noContent row flex">
   <FileUpload
     name="pdfDocument"
     action="/api/upload/pdf"
-    label="Documento PDF"
+    label="PDF Document"
     acceptFile=".pdf"
-    selectFileButtonText="Selecionar PDF"
-    dropFileText="Arraste o arquivo PDF aqui"
+    selectFileButtonText="Select PDF"
+    dropFileText="Drag PDF file here"
   />
-
   <FileUpload
     name="videoFile"
     action="/api/upload/video"
-    label="Upload de Vídeo"
+    label="Upload Video"
     acceptFile="video/*"
-    selectFileButtonText="Escolher Vídeo"
-    dropFileText="Arraste o vídeo aqui"
+    selectFileButtonText="Choose Video"
+    dropFileText="Drag video here"
   />
-</div>
-
-```tsx
-{
-  /* Upload de PDF */
-}
-<FileUpload
-  name="contract"
-  action="/api/upload/document"
-  label="Contrato (PDF)"
-  acceptFile=".pdf"
-  selectFileButtonText="Selecionar PDF"
-  dropFileText="Arraste o arquivo PDF aqui"
-/>;
-
-{
-  /* Upload de vídeo */
-}
-<FileUpload
-  name="presentation"
-  action="/api/upload/video"
-  label="Vídeo de Apresentação"
-  acceptFile="video/mp4,video/webm"
-  selectFileButtonText="Escolher Vídeo"
-  dropFileText="Arraste o vídeo aqui (MP4 ou WebM)"
-/>;
-
-{
-  /* Múltiplos tipos */
-}
-<FileUpload
-  name="media"
-  action="/api/upload/media"
-  label="Imagem ou Vídeo"
-  acceptFile="image/*,video/*"
-  selectFileButtonText="Selecionar Mídia"
-/>;
-```
-
-## Upload com Configuração Customizada
-
-<div className="noContent column">
   <FileUpload
-    name="customUpload"
-    action="/api/files"
-    method="PUT"
-    fileName="uploadedFile"
-    fileResponseName="fileUrl"
-    label="Upload Customizado"
-    selectFileButtonText="Enviar Arquivo"
-    changeFileButtonText="Substituir"
-    dropFileText="Solte o arquivo aqui para envio"
+    name="media"
+    action="/api/upload/media"
+    label="Image or Video"
+    acceptFile="image/*,video/*"
+    selectFileButtonText="Select Media"
   />
 </div>
 
 ```tsx
+// Upload PDF
 <FileUpload
-  name="attachment"
-  action="/api/files/upload"
-  method="PUT"
-  fileName="attachment"
-  fileResponseName="downloadUrl"
-  label="Anexo do Email"
-  selectFileButtonText="Anexar Arquivo"
-  changeFileButtonText="Trocar Anexo"
-  dropFileText="Arraste o anexo aqui"
-  onChange={(url) => {
-    if (url) {
-      setAttachmentUrl(url);
-      console.log("Attachment uploaded:", url);
-    }
-  }}
+name="contract"
+action="/api/upload/document"
+label="Contract (PDF)"
+acceptFile=".pdf"
+selectFileButtonText="Select PDF"
+dropFileText="Drag PDF file here"
+/>
+
+// Video Upload
+<FileUpload
+name="presentation"
+action="/api/upload/video"
+label="Presentation Video"
+acceptFile="video/mp4,video/webm"
+selectFileButtonText="Choose Video"
+dropFileText="Drag video here (MP4 or WebM)"
+/>
+
+// Multiple Types
+<FileUpload
+name="media"
+action="/api/upload/media"
+label="Image or Video"
+acceptFile="image/*,video/*"
+selectFileButtonText="Select Media"
 />
 ```
 
-## Estados e Variações
+## Upload disabled
 
-### Upload Desabilitado
+The disabled state prevents any user interaction with the field and prevents data from being submitted through a form.
 
 <div className="noContent column">
   <FileUpload
     name="disabledUpload"
     action="/api/upload"
-    label="Upload Desabilitado"
+    label="Upload Disabled"
     disabled
-    selectFileButtonText="Não Disponível"
+    selectFileButtonText="Not Available"
   />
 </div>
 
@@ -186,193 +164,121 @@ Configure tipos de arquivo aceitos e validação automática.
 <FileUpload
   name="document"
   action="/api/upload"
-  label="Upload Temporariamente Indisponível"
+  label="Upload Temporarily Unavailable"
   disabled
 />
 ```
 
-### Upload com Callback Avançado
+## Validation and errors
 
-```tsx
-function DocumentUploadForm() {
-  const [uploadedFiles, setUploadedFiles] = useState<string[]>([]);
-  const [isUploading, setIsUploading] = useState(false);
-
-  const handleFileUpload = (url?: string) => {
-    if (url) {
-      setUploadedFiles((prev) => [...prev, url]);
-      // Processar arquivo uploaded
-      processUploadedFile(url);
-    }
-  };
-
-  return (
-    <FileUpload
-      name="documents"
-      action="/api/upload/documents"
-      label="Documentos do Projeto"
-      showAsterisk
-      acceptFile=".pdf,.doc,.docx,.txt"
-      onChange={handleFileUpload}
-      selectFileButtonText="Adicionar Documento"
-      changeFileButtonText="Substituir Documento"
-      dropFileText="Arraste documentos aqui (.pdf, .doc, .docx, .txt)"
-    />
-  );
-}
-```
-
-## Configuração de API
-
-### Estrutura da Resposta Esperada
-
-O componente espera que a API retorne um JSON com a seguinte estrutura:
-
-```json
-// Sucesso (configuração padrão)
-{
-  "url": "https://example.com/uploads/file123.pdf"
-}
-
-// Sucesso (configuração customizada)
-{
-  "fileUrl": "https://example.com/files/document.pdf",
-  "fileName": "document.pdf",
-  "size": 1024000
-}
-
-// Erro
-{
-  "error": "Arquivo muito grande. Máximo permitido: 5MB"
-}
-```
-
-### Exemplo de Endpoint Node.js
-
-```javascript
-// server.js
-app.post("/api/upload", upload.single("file"), (req, res) => {
-  try {
-    if (!req.file) {
-      return res.status(400).json({
-        error: "Nenhum arquivo foi enviado",
-      });
-    }
-
-    // Validações
-    const maxSize = 10 * 1024 * 1024; // 10MB
-    if (req.file.size > maxSize) {
-      return res.status(400).json({
-        error: "Arquivo muito grande. Máximo: 10MB",
-      });
-    }
-
-    // Processar upload (S3, local, etc.)
-    const fileUrl = processFileUpload(req.file);
-
-    res.json({
-      url: fileUrl,
-      fileName: req.file.originalname,
-      size: req.file.size,
-    });
-  } catch (error) {
-    res.status(500).json({
-      error: "Erro interno do servidor",
-    });
-  }
-});
-```
-
-## Propriedades
-
-**`name`** - `string` (obrigatório)
-Nome do campo para manipulação de formulário
-
-**`action`** - `string` (obrigatório)
-URL do endpoint onde o arquivo será enviado
-
-**`disabled`** - `boolean` (padrão: `false`)
-Se o upload de arquivo está desabilitado
-
-**`label`** - `string`
-Texto do label a ser exibido acima da área de upload
-
-**`showAsterisk`** - `boolean` (padrão: `false`)
-Se deve exibir asterisco no label para campos obrigatórios
-
-**`changeFileButtonText`** - `string` (padrão: `"Alterar arquivo"`)
-Texto do botão para trocar/substituir um arquivo já enviado
-
-**`selectFileButtonText`** - `string` (padrão: `"Selecionar arquivo"`)
-Texto do botão para selecionar um arquivo
-
-**`dropFileText`** - `string` (padrão: `"Ou arraste e solte o arquivo aqui"`)
-Texto exibido na área de drop zone
-
-**`method`** - `string` (padrão: `"POST"`)
-Método HTTP para a requisição de upload
-
-**`fileName`** - `string` (padrão: `"file"`)
-Nome do campo no FormData para o arquivo
-
-**`fileResponseName`** - `string` (padrão: `"url"`)
-Nome da propriedade no objeto de resposta que contém a URL do arquivo
-
-**`acceptFile`** - `string` (padrão: `"*"`)
-Tipos de arquivo aceitos pelo input (ex: "image/\*", ".pdf")
-
-**`onChange`** - `(url?: string) => void`
-Função callback chamada quando o upload é concluído com sucesso
-
-## Validação e Tratamento de Erros
-
-O componente oferece tratamento automático de erros:
-
-- **Erros de rede** - Capturados automaticamente
-- **Erros da API** - Exibidos via propriedade `error` na resposta
-- **Validação de formulário** - Integração com `useForm`
-- **Feedback visual** - Estados de loading e erro
-
-## Acessibilidade
-
-O FileUpload foi desenvolvido com foco em acessibilidade:
-
-- **Navegação por teclado** - Suporte completo para navegação via Tab
-- **Labels semânticos** - Associação correta entre labels e campos
-- **Estados visuais** - Feedback claro para diferentes estados
-- **Drag and drop acessível** - Funciona tanto com mouse quanto teclado
-- **Mensagens de erro** - Anunciadas por leitores de tela
-- **Tipos de arquivo** - Descrição clara dos formatos aceitos
-
-## Integração com Formulários
-
-O componente se integra nativamente com sistemas de gerenciamento de formulário:
-
-- Exibição de erros contextuais
-- Gerenciamento de estado do formulário
-- Suporte a valores separados ou com máscara
+The component integrates with form validation systems and can display error messages. If an error message is provided via the `errorMessage` property, it will take precedence over messages from the form provider.
 
 <AlertContainer schema="warning">
   <AlertIcon />
   <AlertContent>
-    <AlertTitle>Formulários customizáveis</AlertTitle>
+    <AlertTitle>Customizable Forms</AlertTitle>
     <AlertDescription>
-      Para formulários mais complexos, é recomendado utilizar o [Form
-      Provider](/components/providers/form-provider) que oferece integração
-      nativa com todas as ferramentas de formulário de uma única só vez.
+      For forms, it is recommended to use the
+      [FormProvider](/components/providers/form-provider) which offers native
+      integration with all form tools.
     </AlertDescription>
   </AlertContent>
 </AlertContainer>
 
-## Notas Importantes
+<div className="noContent column">
+  <FileUpload
+    name="imageFile"
+    action="/api/upload/image"
+    label="Image Upload"
+    showAsterisk
+    acceptFile="image/*"
+    errorMessage="Please upload a valid image"
+  />
+</div>
 
-- **Endpoint obrigatório** - Sempre configure uma URL válida em `action`
-- **Formato de resposta** - API deve retornar JSON com URL ou erro
-- **Validação de tipos** - Use `acceptFile` para restringir formatos
-- **Tratamento de erro** - Implemente callback `onChange` para feedback
-- **Tamanho de arquivo** - Validação deve ser feita no servidor
-- **Segurança** - Sempre valide arquivos no backend
-- **Performance** - Para arquivos grandes, considere upload progressivo
-- **FormData** - Arquivos são enviados via FormData automaticamente
-- **Estados visuais** - Componente fornece feedback visual automático
-- **Acessibilidade** - Suporte completo para navegação por teclado e leitores de tela
+```tsx
+<FileUpload
+  name="avatar"
+  action="/api/upload/avatar"
+  label="Profile Picture"
+  showAsterisk
+  acceptFile="image/*"
+  errorMessage="Please upload a valid image"
+  onChange={(url) => console.log("Avatar uploaded:", url)}
+/>
+```
+
+## Properties
+
+**`name`** - `string` (required)
+Field name for form manipulation
+
+**`action`** - `string` (required)
+URL of the endpoint where the file is located.
+The file will be uploaded.
+
+**`disabled`** - `boolean` (default: `false`)
+If file upload is disabled.
+
+**`label`** - `string`
+Label text to display above the upload area.
+
+**`showAsterisk`** - `boolean` (default: `false`)
+Whether to display an asterisk in the label for required fields.
+
+**`changeFileButtonText`** - `string` (default: `"Change file"`)
+Button text to change/replace an already uploaded file.
+
+**`selectFileButtonText`** - `string` (default: `"Select file"`)
+Button text to select a file.
+
+**`dropFileText`** - `string` (default: `"Or drag and drop the file here"`)
+Text displayed in the drop zone.
+
+**`method`** - `string` (default: `"POST"`)
+HTTP method for the upload request
+
+**`fileName`** - `string` (default: `"file"`)
+Name of the field in the FormData for the file
+
+**`fileResponseName`** - `string` (default: `"url"`)
+Name of the property in the response object that contains the file URL
+
+**`acceptFile`** - `string` (default: `"*"`)
+File types accepted by the input (e.g., "image/\*", ".pdf")
+
+**`onChange`** - `(url?: string) => void`
+Callback function called when the upload is successful
+
+## Form integration
+
+The component natively integrates with form management systems:
+
+- Display of contextual errors
+- Form state management
+- Support for separate or masked values
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Customizable Forms</AlertTitle>
+    <AlertDescription>
+      For more complex forms, we recommend using the [Form
+      Provider](/components/providers/form-provider) which offers native
+      integration with all form tools at once.{" "}
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Notes
+
+- **Required Endpoint** - Always set a valid URL in `action`
+- **Response Format** - API must return JSON with URL or error
+- **Type Validation** - Use `acceptFile` to restrict formats
+- **Error Handling** - Implement `onChange` callback for feedback
+- **File Size** - Validation must be done on the server-side
+- **Security** - Always validate files on the backend
+- **Performance** - For large files, consider progressive upload
+- **FormData** - Files are automatically uploaded via FormData
+- **Visual States** - Component provides automatic visual feedback
+- **Accessibility** - Full support for keyboard navigation and screen readers
