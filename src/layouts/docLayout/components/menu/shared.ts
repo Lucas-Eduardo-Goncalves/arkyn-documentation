@@ -37,16 +37,8 @@ const SHARED_MENU: MenuType[] = [
         to: "/shared/formats/format-to-cpf",
       },
       {
-        label: "formatToCpfCnpj",
-        to: "/shared/formats/format-to-cpf-cnpj",
-      },
-      {
         label: "formatToCurrency",
         to: "/shared/formats/format-to-currency",
-      },
-      {
-        label: "formatToDate",
-        to: "/shared/formats/format-to-date",
       },
       {
         label: "formatToEllipsis",
@@ -80,72 +72,57 @@ const SHARED_MENU: MenuType[] = [
     ],
   },
   {
-    label: "Services",
+    label: "Parsers",
     children: [
       {
-        label: "calculateCardInstallment",
-        to: "/shared/services/calculate-card-installment",
+        label: "parseLargeFields",
+        to: "/shared/parsers/parse-large-fields",
       },
       {
-        label: "ensureQuotes",
-        to: "/shared/services/ensure-quotes",
+        label: "parseSensitiveData",
+        to: "/shared/parsers/parse-sensitive-data",
       },
       {
-        label: "isHtml",
-        to: "/shared/services/is-html",
-      },
-      {
-        label: "maskSensitiveData",
-        to: "/shared/services/mask-sensitive-data",
-      },
-      {
-        label: "removeCurrencySymbols",
-        to: "/shared/services/remove-currency-symbols",
-      },
-      {
-        label: "removeNonNumeric",
-        to: "/shared/services/remove-non-numeric",
-      },
-      {
-        label: "stripHtmlTags",
-        to: "/shared/services/strip-html-tags",
-      },
-      {
-        label: "truncateLargeFields",
-        to: "/shared/services/truncate-large-fields",
+        label: "parseToDate",
+        to: "/shared/parsers/parse-to-date",
       },
     ],
   },
   {
-    label: "Validations",
+    label: "Services",
     children: [
       {
-        label: "validateCep",
-        to: "/shared/validations/validate-cep",
+        label: "validateDateService",
+        to: "/shared/services/validate-date-service",
+      },
+    ],
+  },
+  {
+    label: "Utilities",
+    children: [
+      {
+        label: "calculateCardInstallment",
+        to: "/shared/utilities/calculate-card-installment",
       },
       {
-        label: "validateCnpj",
-        to: "/shared/validations/validate-cnpj",
+        label: "ensureQuotes",
+        to: "/shared/utilities/ensure-quotes",
       },
       {
-        label: "validateCpf",
-        to: "/shared/validations/validate-cpf",
+        label: "isHtml",
+        to: "/shared/utilities/is-html",
       },
       {
-        label: "validateDate",
-        to: "/shared/validations/validate-date",
+        label: "removeCurrencySymbols",
+        to: "/shared/utilities/remove-currency-symbols",
       },
       {
-        label: "validatePassword",
-        to: "/shared/validations/validate-password",
+        label: "removeNonNumeric",
+        to: "/shared/utilities/remove-non-numeric",
       },
       {
-        label: "validatePhone",
-        to: "/shared/validations/validate-phone",
-      },
-      {
-        label: "validateRg",
-        to: "/shared/validations/validate-rg",
+        label: "stripHtmlTags",
+        to: "/shared/utilities/strip-html-tags",
       },
     ],
   },

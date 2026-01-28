@@ -1,6 +1,6 @@
 # formatDate
 
-The `formatDate` function is a versatile tool for converting and formatting date and time strings from various input formats to a customizable output format.
+The `formatDate` function is a utility for formatting date and time strings from various input formats to a custom output format, with support for timezone adjustments.
 
 ## Import
 
@@ -12,104 +12,169 @@ import { formatDate } from "@arkyn/shared";
 
 The function accepts the following parameters:
 
-**`dateTime`**
+### `dateTime` (required)
 
-- **Type**: `[string, string?]`
-- **Description**: An array containing the date and, optionally, the time. The first element is the date and the second is the time.
-- **Required**: Yes
-- **Default**: N/A
+A tuple containing the date string and an optional time string. The first element is the date (required), and the second element is the time (optional, defaults to "00:00:00" if not provided).
 
-**`inputFormat`**
+**Type:** `[string, string?]`
 
-- **Type**: `"brazilianDate" | "isoDate" | "timestamp"`
-- **Description**: The format of the input date.
-- **Required**: Yes
-- **Default**: N/A
+### `inputFormat` (required)
 
-**`outputFormat`**
+Specifies the format of the input date string. The function supports three different input formats:
 
-- **Type**: `string`
-- **Description**: The desired output format for the date.
-- **Required**: Yes
-- **Default**: N/A
+- `"brazilianDate"` expects dates in "DD/MM/YYYY" or "D/M/YYYY" format (e.g., "25/12/2023" or "5/3/2023"), commonly used in Brazil and other countries.
+- `"isoDate"` format expects dates in "MM-DD-YYYY" or "M-D-YYYY" format (e.g., "12-25-2023" or "3-5-2023"), following the American date convention.
+- `"timestamp"` expects dates in "YYYY-MM-DD" or "YYYY-M-D" format (e.g., "2023-12-25" or "2023-3-5"), which is the ISO 8601 standard format.
 
-**`timezone`**
+**Type:** `"brazilianDate" | "isoDate" | "timestamp"`
 
-- **Type**: `number`
-- **Description**: The time zone offset in hours to apply to the date.
-- **Required**: No
-- **Default**: `0` (UTC)
+### `outputFormat` (required)
 
-### Input Format Types (`inputFormat`)
+The desired output format for the formatted date. You can create custom formats using specific placeholders that will be replaced with the corresponding date and time values. The available placeholders are:
 
-- **`brazilianDate`**: Expects the date in `DD/MM/YYYY` format.
-- **`isoDate`**: Expects the date in `YYYY-MM-DD` format. - **`timestamp`**: Expects the date in `YYYY/MM/DD` format.
+- `YYYY` for four-digit year (e.g., 2023),
+- `YY` for two-digit year (e.g., 23),
+- `MM` for two-digit month (01-12),
+- `DD` for two-digit day (01-31),
+- `hh` for two-digit hour in 24-hour format (00-23),
+- `mm` for two-digit minute (00-59),
+- `ss` for two-digit second (00-59). You can combine these placeholders with any text or separators to create the exact format you need.
 
-### Output Format (`outputFormat`)
+**Type:** `string`
 
-You can construct the `outputFormat` string using the following markers:
+### `timezone` (optional)
 
-- `YYYY`: Year with 4 digits (e.g., 2023)
-- `YY`: Year with 2 digits (e.g., 23)
-- `MM`: Month with 2 digits (01-12)
-- `DD`: Day with 2 digits (01-31)
-- `hh`: Hour with 2 digits (00-23)
-- `mm`: Minute with 2 digits (00-59)
-- `ss`: Second with 2 digits (00-59)
+The timezone offset in hours to apply to the date. Positive values shift the time forward, while negative values shift it backward. For example, use `-3` for UTC-3 (Brasília Time in Brazil), `1` for UTC+1 (Central European Time), or `5` for UTC+5 (Pakistan Standard Time). If not specified, the function uses UTC+0 (Coordinated Universal Time) as the default.
+
+**Type:** `number`  
+**Default:** `0` (UTC)
 
 ## Return
 
-The function returns a `string` with the date formatted according to the `outputFormat` string.
+The function returns a formatted date string based on the specified output format.
 
 ## Errors
 
-The function can generate the following errors:
+The function performs strict validation and may throw errors in the following scenarios:
 
-- `Error("Invalid input format")`: If the provided `inputFormat` is not one of the expected values.
+**Invalid input format:** An error is thrown when the `inputFormat` parameter is not one of the three allowed values: "brazilianDate", "isoDate", or "timestamp". Make sure you're using the correct format identifier that matches your input date structure.
 
-- `Error("Invalid date")`: If the provided date string cannot be converted to a valid date.
+**Invalid date components:** The function validates that all date parts are within acceptable ranges. This includes ensuring the month is between 1 and 12, the day is valid for the given month (considering leap years), and the year is a valid number. For example, trying to use month 13 or day 32 will result in an error.
+
+**Invalid date construction:** An error with the message `"Invalid date"` is thrown when the combination of date parts creates an impossible date, such as February 30th or April 31st. The function uses JavaScript's Date object validation to ensure the final date is legitimate.
+
+## Notes
+
+This function works with UTC+0 (Coordinated Universal Time) by default, which means the returned formatted string is **not automatically converted** to your machine's local timezone. If you need to work with a specific timezone, you must explicitly provide the `timezone` parameter with the appropriate offset value.
+
+The time string is flexible and can include milliseconds (e.g., "15:30:00.123"), though only hours, minutes, and seconds will be used in the final formatting. The milliseconds portion is automatically ignored.
+
+The function supports flexible date separators: you can use `/` (slash) for Brazilian dates or `-` (hyphen) for ISO and timestamp formats. Additionally, both single-digit and double-digit days and months are accepted, so "5/3/2023" and "05/03/2023" are equally valid inputs.
 
 ## Usage Examples
 
-### Convert Brazilian Date to ISO Format
+### Format a Brazilian date to ISO format
 
-```javascript
-import { formatDate } from "./formatDate";
+```typescript
+import { formatDate } from "@arkyn/shared";
 
-const formatted = formatDate(
+const formattedDate = formatDate(
   ["25/12/2023", "15:30:00"],
+  "brazilianDate",
+  "YYYY-MM-DD hh:mm"
+);
+
+console.log(formattedDate);
+// Output: "2023-12-25 15:30"
+```
+
+### Format an ISO date with timezone adjustment
+
+```typescript
+import { formatDate } from "@arkyn/shared";
+
+const formattedDate = formatDate(
+  ["12-25-2023", "15:30:00"],
+  "isoDate",
+  "DD/MM/YYYY hh:mm",
+  -3 // Brazil timezone (UTC-3)
+);
+
+console.log(formattedDate);
+// Output: "25/12/2023 12:30"
+```
+
+### Format a timestamp date to a custom format
+
+```typescript
+import { formatDate } from "@arkyn/shared";
+
+const formattedDate = formatDate(
+  ["2023-12-25", "15:30:00"],
+  "timestamp",
+  "MM-DD-YYYY hh:mm:ss"
+);
+
+console.log(formattedDate);
+// Output: "12-25-2023 15:30:00"
+```
+
+### Format a date without specifying time
+
+```typescript
+import { formatDate } from "@arkyn/shared";
+
+const formattedDate = formatDate(
+  ["25/12/2023"], // Time defaults to "00:00:00"
+  "brazilianDate",
+  "YYYY-MM-DD"
+);
+
+console.log(formattedDate);
+// Output: "2023-12-25"
+```
+
+### Format with two-digit year
+
+```typescript
+import { formatDate } from "@arkyn/shared";
+
+const formattedDate = formatDate(
+  ["2023-12-25"],
+  "timestamp",
+  "DD/MM/YY hh:mm"
+);
+
+console.log(formattedDate);
+// Output: "25/12/23 00:00"
+```
+
+### Complete date and time formatting
+
+```typescript
+import { formatDate } from "@arkyn/shared";
+
+const formattedDate = formatDate(
+  ["15/06/2023", "08:45:30"],
   "brazilianDate",
   "YYYY-MM-DD hh:mm:ss"
 );
 
-console.log(formatted); // Output: "2023-12-25 15:30:00"
+console.log(formattedDate);
+// Output: "2023-06-15 08:45:30"
 ```
 
-### Convert ISO Date with Time Zone Adjustment
+### Custom format with text
 
-```javascript
-import { formatDate } from "./formatDate";
+```typescript
+import { formatDate } from "@arkyn/shared";
 
-const formatted = formatDate(
-  ["2023-12-25", "15:30:00"],
-  "isoDate",
-  "DD/MM/YYYY hh:mm:ss",
-  -3 // Adjustment to UTC-3
+const formattedDate = formatDate(
+  ["2023-12-25", "18:00:00"],
+  "timestamp",
+  "Day DD/MM/YYYY at hh:mm"
 );
 
-console.log(formatted);
-// Output: "2023-12-25 12:30:00"
-```
-
-### Using Only the Date
-
-If no time is provided, the default is "00:00:00".
-
-```javascript
-import { formatDate } from "./formatDate";
-
-const formatted = formatDate(["2024-01-05"], "isoDate", "DD/MM/YYYY");
-
-console.log(formatted);
-// Output: "05/01/2024"
+console.log(formattedDate);
+// Output: "Day 25/12/2023 at 18:00"
 ```
