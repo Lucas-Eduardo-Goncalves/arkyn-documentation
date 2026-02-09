@@ -6,7 +6,7 @@ const SERVER_MENU: MenuType[] = [
     to: "/server/introduction",
   },
   {
-    label: "Bad Responses",
+    label: "Bad responses",
     children: [
       {
         label: "BadGateway",
@@ -75,48 +75,90 @@ const SERVER_MENU: MenuType[] = [
     label: "Services",
     children: [
       {
-        label: "ApiServices",
+        label: "ApiService",
         to: "/server/services/api-service",
       },
       {
-        label: "ArkynLogService",
-        to: "/server/services/arkyn-log-service",
+        label: "DebugService",
+        to: "/server/services/debug-service",
       },
       {
-        label: "decodeErrorMessageFromRequest",
-        to: "/server/services/decode-error-message-from-request",
+        label: "LogService",
+        to: "/server/services/log-service",
       },
+    ],
+  },
+  {
+    label: "Utilities",
+    children: [
       {
         label: "decodeRequestBody",
-        to: "/server/services/decode-request-body",
+        to: "/server/utilities/decode-request-body",
+      },
+      {
+        label: "decodeRequestErrorMessage",
+        to: "/server/utilities/decode-request-error-message",
       },
       {
         label: "errorHandler",
-        to: "/server/services/error-handler",
+        to: "/server/utilities/error-handler",
+      },
+      {
+        label: "flushDebugLogs",
+        to: "/server/utilities/flush-debug-logs",
+      },
+      {
+        label: "formAsyncParse",
+        to: "/server/utilities/form-async-parse",
       },
       {
         label: "formParse",
-        to: "/server/services/form-parse",
-      },
-      {
-        label: "getCaller",
-        to: "/server/services/get-caller",
+        to: "/server/utilities/form-parse",
       },
       {
         label: "getScopedParams",
-        to: "/server/services/get-scoped-params",
-      },
-      {
-        label: "httpDebug",
-        to: "/server/services/http-debug",
-      },
-      {
-        label: "HttpDebugService",
-        to: "/server/services/http-debug-service",
+        to: "/server/utilities/get-scoped-params",
       },
       {
         label: "SchemaValidator",
-        to: "/server/services/schema-validator",
+        to: "/server/utilities/schema-validator",
+      },
+    ],
+  },
+  {
+    label: "Validations",
+    children: [
+      {
+        label: "validateCep",
+        to: "/server/validations/validate-cep",
+      },
+      {
+        label: "validateCnpj",
+        to: "/server/validations/validate-cnpj",
+      },
+      {
+        label: "validateCpf",
+        to: "/server/validations/validate-cpf",
+      },
+      {
+        label: "validateDate",
+        to: "/server/validations/validate-date",
+      },
+      {
+        label: "validateEmail",
+        to: "/server/validations/validate-email",
+      },
+      {
+        label: "validatePassword",
+        to: "/server/validations/validate-password",
+      },
+      {
+        label: "validatePhone",
+        to: "/server/validations/validate-phone",
+      },
+      {
+        label: "validateRg",
+        to: "/server/validations/validate-rg",
       },
     ],
   },

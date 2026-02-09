@@ -18,9 +18,23 @@ The sentence to be formatted. This can be any string containing one or more word
 
 **Type:** `string`
 
-## Return
+## Usage example
 
 The function returns a formatted string with the first letter of each word capitalized and the remaining letters in lowercase.
+
+**Type:** `string`
+
+```typescript
+import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared";
+
+const formatted1 = formatToCapitalizeFirstWordLetter("hello world");
+const formatted2 = formatToCapitalizeFirstWordLetter("HELLO WORLD");
+const formatted3 = formatToCapitalizeFirstWordLetter("hELLO WoRLd");
+
+console.log(formatted1); // Output: "Hello World"
+console.log(formatted2); // Output: "Hello World"
+console.log(formatted3); // Output: "Hello World"
+```
 
 ## Notes
 
@@ -31,101 +45,3 @@ Each word is processed independently, meaning that the first letter is capitaliz
 Empty strings are handled gracefully and will return an empty string without errors.
 
 The function works with any language that uses uppercase and lowercase letters, though results may vary depending on locale-specific capitalization rules.
-
-## Usage Examples
-
-### Format a simple sentence
-
-```typescript
-import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared";
-
-const sentence = "hello world";
-const formatted = formatToCapitalizeFirstWordLetter(sentence);
-
-console.log(formatted);
-// Output: "Hello World"
-```
-
-### Format uppercase text
-
-```typescript
-import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared";
-
-const sentence = "HELLO WORLD";
-const formatted = formatToCapitalizeFirstWordLetter(sentence);
-
-console.log(formatted);
-// Output: "Hello World"
-```
-
-### Format mixed case text
-
-```typescript
-import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared";
-
-const sentence = "hELLO WoRLd";
-const formatted = formatToCapitalizeFirstWordLetter(sentence);
-
-console.log(formatted);
-// Output: "Hello World"
-```
-
-### Format a longer sentence
-
-```typescript
-import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared";
-
-const sentence = "javascript is an amazing language";
-const formatted = formatToCapitalizeFirstWordLetter(sentence);
-
-console.log(formatted);
-// Output: "Javascript Is An Amazing Language"
-```
-
-### Format an empty string
-
-```typescript
-import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared";
-
-const sentence = "";
-const formatted = formatToCapitalizeFirstWordLetter(sentence);
-
-console.log(formatted);
-// Output: ""
-```
-
-### Format a single word
-
-```typescript
-import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared";
-
-const sentence = "typescript";
-const formatted = formatToCapitalizeFirstWordLetter(sentence);
-
-console.log(formatted);
-// Output: "Typescript"
-```
-
-### Format text with multiple spaces
-
-```typescript
-import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared";
-
-const sentence = "hello  world  example";
-const formatted = formatToCapitalizeFirstWordLetter(sentence);
-
-console.log(formatted);
-// Output: "Hello  World  Example"
-```
-
-### Format text with special characters
-
-```typescript
-import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared";
-
-const sentence = "hello-world test_case";
-const formatted = formatToCapitalizeFirstWordLetter(sentence);
-
-console.log(formatted);
-// Output: "Hello-world Test_case"
-```

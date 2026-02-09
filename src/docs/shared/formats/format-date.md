@@ -14,7 +14,7 @@ The function accepts the following parameters:
 
 ### `dateTime` (required)
 
-A tuple containing the date string and an optional time string. The first element is the date (required), and the second element is the time (optional, defaults to "00:00:00" if not provided).
+An array containing the date string and an optional time string. The first element is the date (required), and the second element is the time (optional, defaults to "00:00:00" if not provided).
 
 **Type:** `[string, string?]`
 
@@ -49,9 +49,23 @@ The timezone offset in hours to apply to the date. Positive values shift the tim
 **Type:** `number`  
 **Default:** `0` (UTC)
 
-## Return
+## Usage example
 
 The function returns a formatted date string based on the specified output format.
+
+**Type:** `string`
+
+```typescript
+import { formatDate } from "@arkyn/shared";
+
+const formattedDate = formatDate(
+  ["25/12/2023"],
+  "brazilianDate",
+  "YYYY-MM-DD hh:mm",
+);
+
+console.log(formattedDate); // "2023-12-25 00:00"
+```
 
 ## Errors
 
@@ -63,6 +77,17 @@ The function performs strict validation and may throw errors in the following sc
 
 **Invalid date construction:** An error with the message `"Invalid date"` is thrown when the combination of date parts creates an impossible date, such as February 30th or April 31st. The function uses JavaScript's Date object validation to ensure the final date is legitimate.
 
+```typescript
+import { formatDate } from "@arkyn/shared";
+try {
+  const invalidDate = formatDate(["31/02/2023"], "brazilianDate", "YYYY-MM-DD");
+  console.log(invalidDate);
+} catch (error) {
+  console.error(error);
+  // Output: Error: Day 31 is not valid for February
+}
+```
+
 ## Notes
 
 This function works with UTC+0 (Coordinated Universal Time) by default, which means the returned formatted string is **not automatically converted** to your machine's local timezone. If you need to work with a specific timezone, you must explicitly provide the `timezone` parameter with the appropriate offset value.
@@ -70,111 +95,3 @@ This function works with UTC+0 (Coordinated Universal Time) by default, which me
 The time string is flexible and can include milliseconds (e.g., "15:30:00.123"), though only hours, minutes, and seconds will be used in the final formatting. The milliseconds portion is automatically ignored.
 
 The function supports flexible date separators: you can use `/` (slash) for Brazilian dates or `-` (hyphen) for ISO and timestamp formats. Additionally, both single-digit and double-digit days and months are accepted, so "5/3/2023" and "05/03/2023" are equally valid inputs.
-
-## Usage Examples
-
-### Format a Brazilian date to ISO format
-
-```typescript
-import { formatDate } from "@arkyn/shared";
-
-const formattedDate = formatDate(
-  ["25/12/2023", "15:30:00"],
-  "brazilianDate",
-  "YYYY-MM-DD hh:mm"
-);
-
-console.log(formattedDate);
-// Output: "2023-12-25 15:30"
-```
-
-### Format an ISO date with timezone adjustment
-
-```typescript
-import { formatDate } from "@arkyn/shared";
-
-const formattedDate = formatDate(
-  ["12-25-2023", "15:30:00"],
-  "isoDate",
-  "DD/MM/YYYY hh:mm",
-  -3 // Brazil timezone (UTC-3)
-);
-
-console.log(formattedDate);
-// Output: "25/12/2023 12:30"
-```
-
-### Format a timestamp date to a custom format
-
-```typescript
-import { formatDate } from "@arkyn/shared";
-
-const formattedDate = formatDate(
-  ["2023-12-25", "15:30:00"],
-  "timestamp",
-  "MM-DD-YYYY hh:mm:ss"
-);
-
-console.log(formattedDate);
-// Output: "12-25-2023 15:30:00"
-```
-
-### Format a date without specifying time
-
-```typescript
-import { formatDate } from "@arkyn/shared";
-
-const formattedDate = formatDate(
-  ["25/12/2023"], // Time defaults to "00:00:00"
-  "brazilianDate",
-  "YYYY-MM-DD"
-);
-
-console.log(formattedDate);
-// Output: "2023-12-25"
-```
-
-### Format with two-digit year
-
-```typescript
-import { formatDate } from "@arkyn/shared";
-
-const formattedDate = formatDate(
-  ["2023-12-25"],
-  "timestamp",
-  "DD/MM/YY hh:mm"
-);
-
-console.log(formattedDate);
-// Output: "25/12/23 00:00"
-```
-
-### Complete date and time formatting
-
-```typescript
-import { formatDate } from "@arkyn/shared";
-
-const formattedDate = formatDate(
-  ["15/06/2023", "08:45:30"],
-  "brazilianDate",
-  "YYYY-MM-DD hh:mm:ss"
-);
-
-console.log(formattedDate);
-// Output: "2023-06-15 08:45:30"
-```
-
-### Custom format with text
-
-```typescript
-import { formatDate } from "@arkyn/shared";
-
-const formattedDate = formatDate(
-  ["2023-12-25", "18:00:00"],
-  "timestamp",
-  "Day DD/MM/YYYY at hh:mm"
-);
-
-console.log(formattedDate);
-// Output: "Day 25/12/2023 at 18:00"
-```

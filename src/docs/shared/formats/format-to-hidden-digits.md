@@ -42,23 +42,11 @@ The character used to replace the hidden digits. This can be any single characte
 **Type:** `string`  
 **Default:** `"*"`
 
-## Return
+## Usage example
 
 The function returns a formatted string with the specified digits replaced by the hider character, while preserving all non-digit characters in their original positions.
 
-## Notes
-
-The function only counts and masks actual digit characters (0-9), completely ignoring all other characters like spaces, hyphens, parentheses, or letters in the range calculation.
-
-Digit positions are counted from 1, not 0, making the range specification more intuitive (e.g., `[1, 3]` hides the first three digits).
-
-When using a positive single number for the range, digits are hidden from the beginning; when using a negative number, digits are hidden from the end.
-
-The structure and formatting of the original string are completely preserved - only the digit characters within the specified range are replaced.
-
-## Usage Examples
-
-### Hide first three digits (default)
+**Type:** `string`
 
 ```typescript
 import { formatToHiddenDigits } from "@arkyn/shared";
@@ -69,123 +57,12 @@ console.log(result);
 // Output: "***-456-7890"
 ```
 
-### Hide last four digits
+## Notes
 
-```typescript
-import { formatToHiddenDigits } from "@arkyn/shared";
+The function only counts and masks actual digit characters (0-9), completely ignoring all other characters like spaces, hyphens, parentheses, or letters in the range calculation.
 
-const result = formatToHiddenDigits("123-456-7890", { range: -4 });
+Digit positions are counted from 1, not 0, making the range specification more intuitive (e.g., `[1, 3]` hides the first three digits).
 
-console.log(result);
-// Output: "123-456-****"
-```
+When using a positive single number for the range, digits are hidden from the beginning; when using a negative number, digits are hidden from the end.
 
-### Hide specific range of digits
-
-```typescript
-import { formatToHiddenDigits } from "@arkyn/shared";
-
-const result = formatToHiddenDigits("123-456-7890", { range: [4, 6] });
-
-console.log(result);
-// Output: "123-***-7890"
-```
-
-### Use custom hider character
-
-```typescript
-import { formatToHiddenDigits } from "@arkyn/shared";
-
-const result = formatToHiddenDigits("123-456-7890", { range: 3, hider: "#" });
-
-console.log(result);
-// Output: "###-456-7890"
-```
-
-### Hide middle digits with custom character
-
-```typescript
-import { formatToHiddenDigits } from "@arkyn/shared";
-
-const result = formatToHiddenDigits("123-456-7890", { range: [4, 6], hider: "X" });
-
-console.log(result);
-// Output: "123-XXX-7890"
-```
-
-### Hide credit card number
-
-```typescript
-import { formatToHiddenDigits } from "@arkyn/shared";
-
-const result = formatToHiddenDigits("1234 5678 9012 3456", { range: [1, 12] });
-
-console.log(result);
-// Output: "**** **** **** 3456"
-```
-
-### Hide phone number area code
-
-```typescript
-import { formatToHiddenDigits } from "@arkyn/shared";
-
-const result = formatToHiddenDigits("(123) 456-7890", { range: [1, 3] });
-
-console.log(result);
-// Output: "(***) 456-7890"
-```
-
-### Hide CPF number
-
-```typescript
-import { formatToHiddenDigits } from "@arkyn/shared";
-
-const result = formatToHiddenDigits("123.456.789-09", { range: [4, 9] });
-
-console.log(result);
-// Output: "123.***.*89-09"
-```
-
-### Hide all digits
-
-```typescript
-import { formatToHiddenDigits } from "@arkyn/shared";
-
-const result = formatToHiddenDigits("123-456-7890", { range: [1, 10] });
-
-console.log(result);
-// Output: "***-***-****"
-```
-
-### Hide with no formatting
-
-```typescript
-import { formatToHiddenDigits } from "@arkyn/shared";
-
-const result = formatToHiddenDigits("1234567890", { range: 4 });
-
-console.log(result);
-// Output: "****567890"
-```
-
-### Hide single digit
-
-```typescript
-import { formatToHiddenDigits } from "@arkyn/shared";
-
-const result = formatToHiddenDigits("123-456-7890", { range: [5, 5] });
-
-console.log(result);
-// Output: "123-*56-7890"
-```
-
-### Handle string with no digits
-
-```typescript
-import { formatToHiddenDigits } from "@arkyn/shared";
-
-const result = formatToHiddenDigits("abc-def-ghij", { range: 3 });
-
-console.log(result);
-// Output: "abc-def-ghij"
-```
+The structure and formatting of the original string are completely preserved - only the digit characters within the specified range are replaced.

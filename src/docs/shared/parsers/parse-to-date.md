@@ -35,9 +35,20 @@ The timezone offset in hours to apply to the date. This parameter allows you to 
 **Type:** `number`  
 **Default:** `0` (UTC)
 
-## Return
+## Usage example
 
 The function returns a JavaScript `Date` object representing the parsed date and time, adjusted for the specified timezone. The returned Date object is in UTC but reflects the timezone adjustment applied.
+
+**Type:** `Date`
+
+```typescript
+import { parseToDate } from "@arkyn/shared";
+
+const date = parseToDate(["25/12/2023", "15:30:00"], "brazilianDate", -3);
+
+console.log(date);
+// Output: 2023-12-25T12:30:00.000Z (UTC, adjusted for -3 timezone)
+```
 
 ## Errors
 
@@ -58,49 +69,3 @@ The function internally uses the `ValidateDateService` to ensure the input forma
 Time values can include milliseconds (e.g., "15:30:00.500"), but milliseconds are automatically stripped before parsing to ensure consistent behavior.
 
 The function supports flexible date formats with single or double-digit day and month values, making it suitable for various input sources.
-
-## Usage Examples
-
-### Parse a Brazilian date with time
-
-```typescript
-import { parseToDate } from "@arkyn/shared";
-
-const date = parseToDate(["25/12/2023", "15:30:00"], "brazilianDate", -3);
-
-console.log(date);
-// Output: 2023-12-25T12:30:00.000Z (UTC, adjusted for -3 timezone)
-```
-
-### Parse a Brazilian date without time
-
-```typescript
-import { parseToDate } from "@arkyn/shared";
-
-const date = parseToDate(["25/12/2023"], "brazilianDate");
-
-console.log(date);
-// Output: 2023-12-25T00:00:00.000Z (UTC)
-```
-
-### Parse an ISO date with time
-
-```typescript
-import { parseToDate } from "@arkyn/shared";
-
-const date = parseToDate(["12-25-2023", "15:30:00"], "isoDate", 2);
-
-console.log(date);
-// Output: 2023-12-25T17:30:00.000Z (UTC, adjusted for +2 timezone)
-```
-
-### Parse a timestamp date with time
-
-```typescript
-import { parseToDate } from "@arkyn/shared";
-
-const date = parseToDate(["2023-12-25", "15:30:00"], "timestamp");
-
-console.log(date);
-// Output: 2023-12-25T15:30:00.000Z (
-```

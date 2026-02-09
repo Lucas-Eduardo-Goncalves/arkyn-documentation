@@ -10,10 +10,10 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
-    "@arkyn/components": "3.0.1-beta.117",
-    "@arkyn/server": "3.0.1-beta.117",
-    "@arkyn/shared": "3.0.1-beta.117",
-    "@arkyn/templates": "3.0.1-beta.117",
+    "@arkyn/components": "3.0.1-beta.118",
+    "@arkyn/server": "3.0.1-beta.118",
+    "@arkyn/shared": "3.0.1-beta.118",
+    "@arkyn/templates": "3.0.1-beta.118",
     "@linaria/core": "^6.3.0",
     "@linaria/react": "^6.3.0",
     "@mdx-js/react": "^3.1.1",
@@ -35,9 +35,9 @@
   },
   "devDependencies": {
     "@react-router/dev": "^7.13.0",
-    "@types/node": "^20.19.30",
+    "@types/node": "^20.19.32",
     "@types/nprogress": "^0.2.3",
-    "@types/react": "^19.2.10",
+    "@types/react": "^19.2.13",
     "@types/react-dom": "^19.2.3",
     "@types/react-scroll": "^1.8.10",
     "@wyw-in-js/vite": "^0.7.0",

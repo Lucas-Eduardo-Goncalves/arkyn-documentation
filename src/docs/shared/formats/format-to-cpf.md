@@ -18,27 +18,11 @@ The input string to be formatted as a CPF. The string must contain exactly 11 nu
 
 **Type:** `string`
 
-## Return
+## Usage example
 
 The function returns a formatted CPF string in the pattern `XXX.XXX.XXX-XX`, where X represents a numeric digit.
 
-## Errors
-
-The function performs validation and may throw an error in the following scenario:
-
-**Invalid CPF format:** An error is thrown when the input does not contain exactly 11 numeric digits after removing all non-numeric characters. The error message will include the original input value to help identify what went wrong. This includes cases where the input is too short, too long, or contains only non-numeric characters.
-
-## Notes
-
-The function internally uses the `removeNonNumeric` utility to clean the input string, which means you can pass CPF values with or without formatting (e.g., "12345678909", "123.456.789-09", or "123456789-09") and they will all be processed correctly.
-
-The Brazilian CPF format consists of 11 digits divided into four groups: the first 9 digits identify the individual taxpayer, and the last 2 digits are verification digits calculated using a specific algorithm.
-
-This function is strict about the number of digits and will throw an error if the input doesn't match the expected length, ensuring data integrity and preventing malformed CPF values.
-
-## Usage Examples
-
-### Format a simple numeric string
+**Type:** `string`
 
 ```typescript
 import { formatToCpf } from "@arkyn/shared";
@@ -49,44 +33,13 @@ console.log(cpf);
 // Output: "123.456.789-09"
 ```
 
-### Format a CPF with existing formatting
+## Errors
+
+The function performs validation and may throw an error in the following scenario:
+
+**Invalid CPF format:** An error is thrown when the input does not contain exactly 11 numeric digits after removing all non-numeric characters. The error message will include the original input value to help identify what went wrong. This includes cases where the input is too short, too long, or contains only non-numeric characters.
 
 ```typescript
-import { formatToCpf } from "@arkyn/shared";
-
-const cpf = formatToCpf("123.456.789-09");
-
-console.log(cpf);
-// Output: "123.456.789-09"
-```
-
-### Format a CPF with mixed characters
-
-```typescript
-import { formatToCpf } from "@arkyn/shared";
-
-const cpf = formatToCpf("123.456.789-09");
-
-console.log(cpf);
-// Output: "123.456.789-09"
-```
-
-### Format a CPF with spaces
-
-```typescript
-import { formatToCpf } from "@arkyn/shared";
-
-const cpf = formatToCpf("123 456 789 09");
-
-console.log(cpf);
-// Output: "123.456.789-09"
-```
-
-### Handle invalid CPF (too short)
-
-```typescript
-import { formatToCpf } from "@arkyn/shared";
-
 try {
   const cpf = formatToCpf("1234567890");
   console.log(cpf);
@@ -96,41 +49,10 @@ try {
 }
 ```
 
-### Handle invalid CPF (too long)
+## Notes
 
-```typescript
-import { formatToCpf } from "@arkyn/shared";
+The function internally uses the `removeNonNumeric` utility to clean the input string, which means you can pass CPF values with or without formatting (e.g., "12345678909", "123.456.789-09", or "123456789-09") and they will all be processed correctly.
 
-try {
-  const cpf = formatToCpf("123456789012");
-  console.log(cpf);
-} catch (error) {
-  console.error(error);
-  // Output: Error: CPF must be contain 11 numeric digits: 123456789012
-}
-```
+The Brazilian CPF format consists of 11 digits divided into four groups: the first 9 digits identify the individual taxpayer, and the last 2 digits are verification digits calculated using a specific algorithm.
 
-### Handle invalid CPF (no numeric digits)
-
-```typescript
-import { formatToCpf } from "@arkyn/shared";
-
-try {
-  const cpf = formatToCpf("abcdefghijk");
-  console.log(cpf);
-} catch (error) {
-  console.error(error);
-  // Output: Error: CPF must be contain 11 numeric digits: abcdefghijk
-}
-```
-
-### Format a real Brazilian CPF
-
-```typescript
-import { formatToCpf } from "@arkyn/shared";
-
-const cpf = formatToCpf("11144477735");
-
-console.log(cpf);
-// Output: "111.444.777-35"
-```
+This function is strict about the number of digits and will throw an error if the input doesn't match the expected length, ensuring data integrity and preventing malformed CPF values.

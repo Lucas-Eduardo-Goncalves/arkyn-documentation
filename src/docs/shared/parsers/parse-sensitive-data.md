@@ -25,9 +25,27 @@ An array of key names whose values should be masked. Any field matching one of t
 **Type:** `string[]`  
 **Default:** `["password", "confirmPassword", "creditCard"]`
 
-## Return
+## Usage Examples
 
 The function returns a JSON string with sensitive data masked. All values of fields matching the sensitive keys are replaced with "\*\*\*\*". If the input is not a valid JSON string, the function returns the original string unchanged.
+
+**Type:** `string`
+
+```typescript
+import { parseSensitiveData } from "@arkyn/shared";
+
+const jsonString = JSON.stringify({
+  username: "user123",
+  password: "secret",
+  apiKey: "abc123xyz",
+  email: "user@example.com",
+});
+
+const result = parseSensitiveData(jsonString, ["password", "apiKey"]);
+
+console.log(result);
+// Output: '{"username":"user123","password":"****","apiKey":"****","email":"user@example.com"}'
+```
 
 ## Notes
 
@@ -42,201 +60,3 @@ The masking is case-sensitive, so "Password" and "password" would be treated as 
 If the input string cannot be parsed as valid JSON, the function gracefully returns the original string instead of throwing an error, making it safe to use even with potentially invalid data.
 
 Arrays are processed recursively, so sensitive data within array elements is also masked.
-
-## Usage Examples
-
-### Mask default sensitive fields
-
-```typescript
-import { parseSensitiveData } from "@arkyn/shared";
-
-const jsonString = JSON.stringify({
-  username: "user123",
-  password: "secret123",
-  email: "user@example.com"
-});
-
-const result = parseSensitiveData(jsonString);
-
-console.log(result);
-// Output: '{"username":"user123","password":"****","email":"user@example.com"}'
-```
-
-### Mask custom sensitive fields
-
-```typescript
-import { parseSensitiveData } from "@arkyn/shared";
-
-const jsonString = JSON.stringify({
-  username: "user123",
-  password: "secret",
-  apiKey: "abc123xyz",
-  email: "user@example.com"
-});
-
-const result = parseSensitiveData(jsonString, ["password", "apiKey"]);
-
-console.log(result);
-// Output: '{"username":"user123","password":"****","apiKey":"****","email":"user@example.com"}'
-```
-
-### Mask nested sensitive data
-
-```typescript
-import { parseSensitiveData } from "@arkyn/shared";
-
-const jsonString = JSON.stringify({
-  username: "user123",
-  password: "secret",
-  profile: {
-    creditCard: "1234-5678-9012-3456",
-    address: "123 Main St"
-  }
-});
-
-const result = parseSensitiveData(jsonString, ["password", "creditCard"]);
-
-console.log(result);
-// Output: '{"username":"user123","password":"****","profile":{"creditCard":"****","address":"123 Main St"}}'
-```
-
-### Mask sensitive data in arrays
-
-```typescript
-import { parseSensitiveData } from "@arkyn/shared";
-
-const jsonString = JSON.stringify({
-  users: [
-    { username: "user1", password: "pass1" },
-    { username: "user2", password: "pass2" }
-  ]
-});
-
-const result = parseSensitiveData(jsonString);
-
-console.log(result);
-// Output: '{"users":[{"username":"user1","password":"****"},{"username":"user2","password":"****"}]}'
-```
-
-### Mask all default sensitive fields
-
-```typescript
-import { parseSensitiveData } from "@arkyn/shared";
-
-const jsonString = JSON.stringify({
-  username: "user123",
-  password: "secret123",
-  confirmPassword: "secret123",
-  creditCard: "1234-5678-9012-3456",
-  email: "user@example.com"
-});
-
-const result = parseSensitiveData(jsonString);
-
-console.log(result);
-// Output: '{"username":"user123","password":"****","confirmPassword":"****","creditCard":"****","email":"user@example.com"}'
-```
-
-### Handle nested JSON strings
-
-```typescript
-import { parseSensitiveData } from "@arkyn/shared";
-
-const jsonString = JSON.stringify({
-  data: JSON.stringify({
-    password: "nested-secret",
-    username: "user"
-  })
-});
-
-const result = parseSensitiveData(jsonString);
-
-console.log(result);
-// Output: '{"data":"{\\"password\\":\\"****\\",\\"username\\":\\"user\\"}"}'
-```
-
-### Handle invalid JSON gracefully
-
-```typescript
-import { parseSensitiveData } from "@arkyn/shared";
-
-const invalidJson = "{ invalid json }";
-const result = parseSensitiveData(invalidJson);
-
-console.log(result);
-// Output: "{ invalid json }"
-```
-
-### Mask deeply nested structures
-
-```typescript
-import { parseSensitiveData } from "@arkyn/shared";
-
-const jsonString = JSON.stringify({
-  level1: {
-    level2: {
-      level3: {
-        password: "deep-secret",
-        username: "user"
-      }
-    }
-  }
-});
-
-const result = parseSensitiveData(jsonString);
-
-console.log(result);
-// Output: '{"level1":{"level2":{"level3":{"password":"****","username":"user"}}}}'
-```
-
-### Use for logging API requests
-
-```typescript
-import { parseSensitiveData } from "@arkyn/shared";
-
-const requestBody = JSON.stringify({
-  username: "john_doe",
-  password: "secret123",
-  email: "john@example.com"
-});
-
-const safeLog = parseSensitiveData(requestBody);
-console.log("Request body:", safeLog);
-// Output: Request body: {"username":"john_doe","password":"****","email":"john@example.com"}
-```
-
-### Mask multiple sensitive field types
-
-```typescript
-import { parseSensitiveData } from "@arkyn/shared";
-
-const jsonString = JSON.stringify({
-  user: {
-    name: "John",
-    password: "pass123",
-    ssn: "123-45-6789",
-    token: "bearer-token-xyz"
-  }
-});
-
-const result = parseSensitiveData(jsonString, ["password", "ssn", "token"]);
-
-console.log(result);
-// Output: '{"user":{"name":"John","password":"****","ssn":"****","token":"****"}}'
-```
-
-### Handle empty sensitive keys array
-
-```typescript
-import { parseSensitiveData } from "@arkyn/shared";
-
-const jsonString = JSON.stringify({
-  username: "user123",
-  password: "secret123"
-});
-
-const result = parseSensitiveData(jsonString, []);
-
-console.log(result);
-// Output: '{"username":"user123","password":"secret123"}'
-```

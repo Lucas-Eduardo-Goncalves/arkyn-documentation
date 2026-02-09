@@ -31,7 +31,7 @@ The interest rate per installment, expressed as a decimal. For example, 0.0349 r
 **Type:** `number`  
 **Default:** `0.0349` (3.49%)
 
-## Return
+## Usage example
 
 The function returns an object containing two properties:
 
@@ -39,6 +39,18 @@ The function returns an object containing two properties:
 - `installmentPrice`: The price of each individual installment, rounded to two decimal places.
 
 **Type:** `{ totalPrice: number; installmentPrice: number }`
+
+```typescript
+import { calculateCardInstallment } from "@arkyn/shared";
+
+const result = calculateCardInstallment({
+  cashPrice: 1000,
+  numberInstallments: 12,
+});
+
+console.log(result);
+// Output: { totalPrice: 1202.64, installmentPrice: 100.22 }
+```
 
 ## Errors
 
@@ -57,165 +69,3 @@ The function uses the compound interest formula for installment calculations: `P
 All monetary values are rounded to two decimal places to match standard currency precision.
 
 The calculation method is commonly used by financial institutions for credit card payment plans and consumer financing.
-
-## Usage Examples
-
-### Calculate with default interest rate
-
-```typescript
-import { calculateCardInstallment } from "@arkyn/shared";
-
-const result = calculateCardInstallment({
-  cashPrice: 1000,
-  numberInstallments: 12,
-});
-
-console.log(result);
-// Output: { totalPrice: 1202.64, installmentPrice: 100.22 }
-```
-
-### Calculate with custom interest rate
-
-```typescript
-import { calculateCardInstallment } from "@arkyn/shared";
-
-const result = calculateCardInstallment({
-  cashPrice: 1000,
-  numberInstallments: 12,
-  fees: 0.02,
-});
-
-console.log(result);
-// Output: { totalPrice: 1124.62, installmentPrice: 93.72 }
-```
-
-### Calculate with no interest (fees = 0)
-
-```typescript
-import { calculateCardInstallment } from "@arkyn/shared";
-
-const result = calculateCardInstallment({
-  cashPrice: 1000,
-  numberInstallments: 10,
-  fees: 0,
-});
-
-console.log(result);
-// Output: { totalPrice: 1000, installmentPrice: 100 }
-```
-
-### Calculate with single installment
-
-```typescript
-import { calculateCardInstallment } from "@arkyn/shared";
-
-const result = calculateCardInstallment({
-  cashPrice: 1000,
-  numberInstallments: 1,
-  fees: 0.0349,
-});
-
-console.log(result);
-// Output: { totalPrice: 1000, installmentPrice: 1000 }
-```
-
-### Calculate for 3 installments
-
-```typescript
-import { calculateCardInstallment } from "@arkyn/shared";
-
-const result = calculateCardInstallment({
-  cashPrice: 500,
-  numberInstallments: 3,
-  fees: 0.015,
-});
-
-console.log(result);
-// Output: { totalPrice: 515.19, installmentPrice: 171.73 }
-```
-
-### Calculate for 24 installments
-
-```typescript
-import { calculateCardInstallment } from "@arkyn/shared";
-
-const result = calculateCardInstallment({
-  cashPrice: 5000,
-  numberInstallments: 24,
-  fees: 0.025,
-});
-
-console.log(result);
-// Output: { totalPrice: 6542.88, installmentPrice: 272.62 }
-```
-
-### Handle invalid number of installments
-
-```typescript
-import { calculateCardInstallment } from "@arkyn/shared";
-
-try {
-  const result = calculateCardInstallment({
-    cashPrice: 1000,
-    numberInstallments: 0,
-  });
-} catch (error) {
-  console.error(error);
-  // Output: Error: Number of installments must be greater than 0
-}
-```
-
-### Handle negative fees
-
-```typescript
-import { calculateCardInstallment } from "@arkyn/shared";
-
-try {
-  const result = calculateCardInstallment({
-    cashPrice: 1000,
-    numberInstallments: 12,
-    fees: -0.01,
-  });
-} catch (error) {
-  console.error(error);
-  // Output: Error: Fees must be greater than or equal to 0
-}
-```
-
-### Compare different installment plans
-
-```typescript
-import { calculateCardInstallment } from "@arkyn/shared";
-
-const cashPrice = 2000;
-const plans = [3, 6, 12, 24];
-
-plans.forEach(installments => {
-  const result = calculateCardInstallment({
-    cashPrice,
-    numberInstallments: installments,
-  });
-
-  console.log(`${installments}x: R$ ${result.installmentPrice} (Total: R$ ${result.totalPrice})`);
-});
-// Output:
-// 3x: R$ 690.41 (Total: R$ 2071.23)
-// 6x: R$ 357.77 (Total: R$ 2146.62)
-// 12x: R$ 189.11 (Total: R$ 2269.32)
-// 24x: R$ 103.67 (Total: R$ 2488.08)
-```
-
-### Calculate for large purchase
-
-```typescript
-import { calculateCardInstallment } from "@arkyn/shared";
-
-const result = calculateCardInstallment({
-  cashPrice: 15000,
-  numberInstallments: 18,
-  fees: 0.03,
-});
-
-console.log(result);
-// Output: { totalPrice: 19854.90, installmentPrice: 1103.05 }
-```
