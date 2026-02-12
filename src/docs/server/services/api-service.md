@@ -1,6 +1,6 @@
 # ApiService
 
-The `ApiService` class is used to create an instance that manages HTTP requests, allowing the configuration of a base URL, headers, and authorization token to be used in all calls.
+The `ApiService` is a class that provides a simple and consistent interface for making HTTP requests to REST APIs. It supports all common HTTP methods (GET, POST, PUT, PATCH, DELETE), automatic header management, token-based authentication, and optional debug logging.
 
 ## Import
 
@@ -10,113 +10,146 @@ import { ApiService } from "@arkyn/server";
 
 ## Constructor
 
-- **props** (`ApiServiceConstructorProps`): The configuration properties for the API instance.
-  - `baseUrl` (`string`): The base URL for the API.
-  - `baseHeaders` (`HeadersInit`, optional): Base headers to include in all requests.
-  - `baseToken` (`string | null`, optional): Base token for authorization.
+Creates a new ApiService instance with the provided configuration.
 
-## Request Methods
+- `baseUrl` (required): The base URL for all API requests. This will be prepended to all endpoint paths.
+- `baseHeaders` (optional): Default headers to include in every request. These can be overridden by request-specific headers.
+- `baseToken` (optional): A default Bearer token for authorization. This can be overridden by request-specific tokens.
+- `enableDebug` (optional): Enable debug logging for requests. When true, request details will be logged using `flushDebugLogs`. Default is false.
 
-The `ApiService` provides methods for the most common HTTP verbs. All methods return a `Promise` that resolves to an `ApiResponseDTO` object.
+```typescript
+const api = new ApiService({
+  baseUrl: "https://api.example.com",
+  baseHeaders: { "Content-Type": "application/json" },
+  baseToken: "your-api-token",
+  enableDebug: true,
+});
+```
 
-### `GET`
+## Methods
 
-Sends a GET request to the specified route.
+All methods return a Promise with the API response containing `status`, `message`, and `data`.
 
-- **Parameters**:
-  - `route` (`string`): The API route.
-  - `data` (`ApiRequestDataWithoutBodyProps`, optional): Request data, including `headers` and `token`.
+**`get(endpoint, data?)`** - Sends a GET request to the specified endpoint.
 
-### `POST`
+**`post(endpoint, data?)`** - Sends a POST request with an optional body.
 
-Sends a POST request to the specified route.
+**`put(endpoint, data?)`** - Sends a PUT request with an optional body.
 
-- **Parameters**:
-  - `route` (`string`): The API route.
-  - `data` (`ApiRequestDataWithBodyProps`, optional): Request data, including `body`, `headers`, and `token`.
+**`patch(endpoint, data?)`** - Sends a PATCH request with an optional body.
 
-### `PUT`
+**`delete(endpoint, data?)`** - Sends a DELETE request with an optional body.
 
-Sends a PUT request to the specified route.
+### Request data options
 
-- **Parameters**:
-  - `route` (`string`): The API route.
-  - `data` (`ApiRequestDataWithBodyProps`, optional): Request data, including `body`, `headers`, and `token`.
+For GET requests:
 
-### `PATCH`
+- `headers`: Additional headers for this request
+- `token`: Bearer token (overrides `baseToken`)
+- `urlParams`: Query parameters as key-value pairs
 
-Sends a PATCH request to the specified route.
+For POST, PUT, PATCH, DELETE requests:
 
-- **Parameters**:
-  - `route` (`string`): The API route.
-  - `data` (`ApiRequestDataWithBodyProps`, optional): Request data, including `body`, `headers`, and `token`.
+- `body`: Request body (any serializable data)
+- `headers`: Additional headers for this request
+- `token`: Bearer token (overrides `baseToken`)
+- `urlParams`: Query parameters as key-value pairs
 
-### `DELETE`
+## Usage example
 
-Sends a DELETE request to the specified route.
+```typescript
+import { ApiService } from "@arkyn/server";
 
-- **Parameters**:
-  - `route` (`string`): The API route.
-  - `data` (`ApiRequestDataWithBodyProps`, optional): Request data, including `body`, `headers`, and `token`.
+const api = new ApiService({
+  baseUrl: "https://api.example.com",
+  baseHeaders: { "Content-Type": "application/json" },
+  enableDebug: process.env.NODE_ENV === "development",
+});
 
-## Internal Operation and Return Pattern
+// GET request with query parameters
+const users = await api.get("/users", {
+  urlParams: { page: "1", limit: "10" },
+});
 
-Each request method (`GET`, `POST`, etc.) of the `ApiService` uses a corresponding helper function (`getRequest`, `postRequest`, etc.). These functions, in turn, are wrappers for the central `makeRequest` function, which is responsible for executing the `fetch` call and standardizing the response.
+// GET request with custom token
+const profile = await api.get("/me", {
+  token: "user-specific-token",
+});
 
-The `makeRequest` function performs the following actions:
+// POST request with body
+const newUser = await api.post("/users", {
+  body: { name: "John", email: "john@example.com" },
+});
 
-1.  Configures the `fetch` request with the correct method, URL, headers, and body.
-2.  Sets the `Content-Type` to `application/json` and serializes the request body.
-3.  Logs the request and response details for debugging purposes using `arkynLogRequest`.
-4.  Catches network errors or request failures.
-5.  Returns a standardized `ApiResponseDTO` object.
+// PUT request
+const updatedUser = await api.put("/users/:userId", {
+  body: { name: "John Doe" },
+  urlParams: { userId: "123" },
+});
 
-### Logging with `arkynLogRequest`
+// PATCH request
+const patchedUser = await api.patch("/users/:userId", {
+  body: { status: "active" },
+  urlParams: { userId: "123" },
+});
 
-The `makeRequest` function uses `arkynLogRequest` to send detailed data about each HTTP request to a centralized logging service. This is useful for monitoring and debugging in production environments.
+// DELETE request
+const deleted = await api.delete("/users/:userId", {
+  urlParams: { userId: "123" },
+});
 
-`arkynLogRequest` performs the following actions:
-
-1.  **Gets Configuration**: Retrieves the log API URL and user token from `ArkynLogService`. If the configuration is not available, the function does nothing.
-2.  **Ignores Development Environment**: The function does not run in the development environment (`process.env.NODE_ENV === "development"`) to avoid sending unnecessary logs.
-3.  **Collects and Sends Data**: Assembles an object with detailed request information and sends it via `POST` to the logging API. The collected data includes:
-    - URL, status, method, and protocol (HTTP/HTTPS).
-    - Response time (`elapsedTime`).
-    - Request and response headers and body.
-    - Query parameters (`queryParams`).
-
-This functionality allows for complete tracking of each request's lifecycle, making it easier to identify problems and analyze performance.
-
-### The `ApiResponseDTO` object
-
-All request methods return a `Promise` that resolves with an `ApiResponseDTO<T>` object, which has the following structure:
-
-- **`success`** (`boolean`): `true` if the request was successful (HTTP status 2xx), `false` otherwise.
-- **`status`** (`number`): The HTTP status code of the response.
-- **`message`** (`string`): A descriptive message about the result of the request.
-- **`response`** (`T | null`): The response data, usually in JSON format. It is `null` if the response has no body or if a parsing error occurs.
-- **`cause`** (`any | null`): Additional information about the error, if any.
-
-### Example flow
-
-1.  `api.PATCH("/users/1", { body: { name: "John" } })` is called.
-2.  The `PATCH` method of `ApiService` calls `patchRequest`.
-3.  `patchRequest` calls `makeRequest` with the "PATCH" method.
-4.  `makeRequest` executes the `fetch` request and returns the `ApiResponseDTO`.
-
-```js
-// Example of use
-const api = new ApiService({ baseUrl: "https://api.example.com" });
-
-async function updateUser() {
-  const result = await api.PATCH("/users/1", {
-    body: { name: "Jane Doe" },
-  });
-
-  if (result.success) {
-    console.log(result.message, result.response);
-  } else {
-    console.error(`Error ${result.status}: ${result.message}`);
-  }
+// Handling responses
+if (users.status === 200) {
+  console.log(users.data); // Response data
+} else {
+  console.log(users.message); // Error message
 }
 ```
+
+## Header priority
+
+Headers are merged in the following order (later values override earlier ones):
+
+1. `baseToken` (as `Authorization: Bearer {token}`)
+2. `baseHeaders` (from constructor)
+3. `headers` (from request data)
+4. `token` (from request data, as `Authorization: Bearer {token}`)
+
+## Debug output
+
+When `enableDebug` is enabled, each request logs the following information:
+
+- Base URL
+- Endpoint
+- HTTP method and response status
+- Response message
+- Headers (if present)
+- Request body (if present)
+
+Debug logs are output using `flushDebugLogs` with the "yellow" color scheme.
+
+## Route variables
+
+Replaces placeholders in the URL path (e.g., `/users/:userId` becomes `/users/123`)
+
+Using route variables with `:param` syntax is optional, but recommended when integrating with [LogService](/docs/server/services/log-service). The log system generates logs based on URLs, so having a consistent base URL with variables as route parameters makes logs more readable and aggregatable.
+
+```typescript
+// Without route variables - each userId creates a different log entry
+await api.get("/users/123");
+await api.get("/users/456");
+// Logs: GET /users/123, GET /users/456
+
+// With route variables - logs are grouped by the base pattern
+await api.get("/users/:userId", { urlParams: { userId: "123" } });
+await api.get("/users/:userId", { urlParams: { userId: "456" } });
+// Logs: GET /users/:userId (with userId as metadata)
+```
+
+## Notes
+
+The service automatically prepends the `baseUrl` to all endpoint paths, so endpoints should start with `/`.
+
+All methods are async and should be awaited. The response object always contains `status`, `message`, and `data` properties.
+
+For more control over individual requests, you can use the underlying functions directly: `getRequest`, `postRequest`, `putRequest`, `patchRequest`, `deleteRequest`.

@@ -1,6 +1,7 @@
 import { StartupsContainer } from "./styles";
 import agendaCatolicaLogo from "~/assets/agendaCatolicaLogo.svg";
 import oracaoLogo from "~/assets/oracaoPlayLogo.svg";
+import m2g2Logo from "~/assets/m2g2Logo.svg";
 import sanctonLogo from "~/assets/sanctonLogo.svg";
 
 function Startups() {
@@ -21,6 +22,9 @@ function Startups() {
         </div>
         <div>
           <img src={oracaoLogo} alt="OraçãoPlay" />
+        </div>
+        <div>
+          <img src={m2g2Logo} alt="M2G2Patrimonial" />
         </div>
       </div>
     </StartupsContainer>

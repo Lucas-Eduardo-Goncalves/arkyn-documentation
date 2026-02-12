@@ -1,6 +1,6 @@
 # BadRequest
 
-The `BadRequest` class is used to standardize the structure of a "Bad Request" error response, including the response body, headers, status, and status text.
+The `BadRequest` class represents an HTTP error response with status code 400. It is used to standardize "Bad Request" error responses, typically when the client sends malformed or invalid data.
 
 ## Import
 
@@ -10,19 +10,53 @@ import { BadRequest } from "@arkyn/server";
 
 ## Constructor
 
-- **message** (`string`): A descriptive message explaining the cause of the error.
-- **cause** (`any`, optional): Additional information about the cause of the error.
+- `message` (required): A descriptive message explaining the error cause.
+- `cause` (optional): Additional information about the error cause, which can be any serializable data.
 
 ## Methods
 
-### `toResponse()`
+**`toResponse()`** - Converts the instance into a `Response` object with JSON body and `Content-Type: application/json` header.
 
-Converts the `BadRequest` instance into a `Response` object with a JSON body. This method ensures that the response has the appropriate headers, status, and status text.
+**`toJson()`** - Alternative method using `Response.json()` for generating the JSON error response.
 
-- **Return**: `Response`
+## Usage example
 
-### `toJson()`
+```typescript
+import { BadRequest } from "@arkyn/server";
 
-Converts the `BadRequest` instance into a `Response` object using the `Response.json` method. This method is an alternative to `toResponse` for generating JSON error responses.
+// Basic usage - throw the error
+throw new BadRequest("Invalid request parameters");
 
-- **Return**: `Response`
+// With cause information
+throw new BadRequest("Validation failed", {
+  field: "email",
+  reason: "Invalid format",
+});
+
+// Convert to Response object
+const error = new BadRequest("Missing required field: name");
+return error.toResponse();
+
+// Using toJson alternative
+return error.toJson();
+```
+
+## Response structure
+
+The response body follows a standardized structure:
+
+```json
+{
+  "ok": false,
+  "status": 400,
+  "message": "Invalid request parameters"
+}
+```
+
+## Notes
+
+When thrown, this class automatically emits a debug log to the console showing the file and function where the error originated. See [DebugService](../services/debug-service.md) to configure ignored files for accurate caller detection.
+
+The `cause` parameter is serialized to JSON and stored for debugging purposes but is not included in the response body sent to clients.
+
+Common use cases include invalid input data, missing required fields, malformed JSON, and client-side validation errors.

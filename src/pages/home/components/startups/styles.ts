@@ -42,7 +42,7 @@ const StartupsContainer = styled.div`
 
   .table {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     border: 1px solid var(--border);
     border-radius: 8px;
 
@@ -60,11 +60,11 @@ const StartupsContainer = styled.div`
         max-width: 120px;
       }
 
-      &:nth-child(3n) {
+      &:nth-child(4n) {
         border-right: none;
       }
 
-      &:nth-last-child(-n + 3) {
+      &:nth-last-child(-n + 4) {
         border-bottom: none;
       }
     }

@@ -1,6 +1,6 @@
 # NotFound
 
-The `NotFound` class is used to standardize the structure of a "Not Found" error response.
+The `NotFound` class represents an HTTP error response with status code 404. It is used to standardize "Not Found" error responses, typically when the requested resource does not exist.
 
 ## Import
 
@@ -10,19 +10,53 @@ import { NotFound } from "@arkyn/server";
 
 ## Constructor
 
-- **message** (`string`): A descriptive message explaining why the resource was not found.
-- **cause** (`any`, optional): Additional information about the cause of the error.
+- `message` (required): A descriptive message explaining why the resource was not found.
+- `cause` (optional): Additional information about the error cause, which can be any serializable data.
 
 ## Methods
 
-### `toResponse()`
+**`toResponse()`** - Converts the instance into a `Response` object with JSON body and `Content-Type: application/json` header.
 
-Converts the `NotFound` instance into a `Response` object with a JSON body.
+**`toJson()`** - Alternative method using `Response.json()` for generating the JSON error response.
 
-- **Return**: `Response`
+## Usage example
 
-### `toJson()`
+```typescript
+import { NotFound } from "@arkyn/server";
 
-Converts the `NotFound` instance into a `Response` object using the `Response.json` method.
+// Basic usage - throw the error
+throw new NotFound("User not found");
 
-- **Return**: `Response`
+// With cause information
+throw new NotFound("Product not found", {
+  productId: "abc123",
+  searchedIn: "products_table",
+});
+
+// Convert to Response object
+const error = new NotFound("Order not found");
+return error.toResponse();
+
+// Using toJson alternative
+return error.toJson();
+```
+
+## Response structure
+
+The response body follows a standardized structure:
+
+```json
+{
+  "ok": false,
+  "status": 404,
+  "message": "User not found"
+}
+```
+
+## Notes
+
+When thrown, this class automatically emits a debug log to the console showing the file and function where the error originated. See [DebugService](../services/debug-service.md) to configure ignored files for accurate caller detection.
+
+The `cause` parameter is serialized to JSON and stored for debugging purposes but is not included in the response body sent to clients.
+
+Common use cases include missing database records, invalid resource IDs, deleted resources, and non-existent API endpoints.
