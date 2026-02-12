@@ -11,7 +11,7 @@ import { useNavigate } from "react-router";
 
 import arkynLogo from "~/assets/arkynLogo.png";
 
-import { ApiIntroduction } from "./components/apiIntroduction";
+// import { ApiIntroduction } from "./components/apiIntroduction";
 import { ExampleItem } from "./components/exampleItem";
 import { ExampleList } from "./components/exampleList";
 import { Framework } from "./components/framework";
@@ -88,7 +88,7 @@ function Home() {
 
       <Framework />
 
-      <ApiIntroduction />
+      {/* <ApiIntroduction /> */}
     </HomeContainer>
   );
 }
