@@ -7,7 +7,7 @@ import { SideGroup } from "../sideGroup";
 import { SideLink } from "../sideLink";
 import { SideBarContainer } from "./styles";
 import { TEMPLATES_MENU } from "../menu/templates";
-import { API_MENU } from "../menu/api";
+import { INTRODUCTION_MENU } from "../menu/introduction";
 
 function ItemSwitch({ label, children, to }: MenuType) {
   if (!children && to) {
@@ -31,11 +31,11 @@ function SideBar() {
   const { pathname } = useLocation();
 
   function rederMenus() {
+    if (pathname === "/docs/introduction") return INTRODUCTION_MENU;
     if (pathname.includes("components")) return COMPONENTS_MENU;
     if (pathname.includes("server")) return SERVER_MENU;
     if (pathname.includes("shared")) return SHARED_MENU;
     if (pathname.includes("templates")) return TEMPLATES_MENU;
-    if (pathname.includes("api")) return API_MENU;
     return [];
   }
 

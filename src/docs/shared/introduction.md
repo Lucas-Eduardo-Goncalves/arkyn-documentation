@@ -13,6 +13,7 @@ When building modern applications, developers often find themselves writing the 
 - **Well-documented:** Every function includes comprehensive documentation with usage examples
 - **Battle-tested:** Functions are designed to handle edge cases and provide meaningful error messages
 - **Zero dependencies:** Lightweight and self-contained, with no external runtime dependencies
+- **Framework agnostic:** Works with any framework that uses the Web API `Request` and `Response` objects
 
 ## Installation
 

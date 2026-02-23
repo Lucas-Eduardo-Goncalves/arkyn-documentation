@@ -109,6 +109,10 @@ const SHARED_MENU: MenuType[] = [
         to: "/shared/utilities/ensure-quotes",
       },
       {
+        label: "findCountryMask",
+        to: "/shared/utilities/find-country-mask",
+      },
+      {
         label: "isHtml",
         to: "/shared/utilities/is-html",
       },
