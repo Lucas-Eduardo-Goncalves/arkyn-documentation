@@ -8,7 +8,7 @@ type ExampleListProps = {
 function ExampleList(props: ExampleListProps) {
   const { children } = props;
   return (
-    <ExampleListContainer>
+    <ExampleListContainer id="start-here">
       <section>
         <strong>Products</strong>
         <p>Every component you need is ready for production</p>

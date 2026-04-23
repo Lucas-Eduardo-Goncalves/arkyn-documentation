@@ -7,7 +7,7 @@ import {
   Server,
   Waypoints,
 } from "lucide-react";
-import { useNavigate } from "react-router";
+import { animateScroll } from "react-scroll";
 
 import arkynLogo from "~/assets/arkynLogo.png";
 
@@ -19,9 +19,14 @@ import { Startups } from "./components/startups";
 import { Header, HomeContainer } from "./styles";
 
 function Home() {
-  const navigate = useNavigate();
   function handleStart() {
-    navigate("/docs/introduction");
+    const element = document.getElementById("start-here");
+    if (element) {
+      animateScroll.scrollTo(element.offsetTop - 75, {
+        duration: 500,
+        smooth: "easeInOutQuad",
+      });
+    }
   }
 
   function goToGithub() {

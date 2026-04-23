@@ -1,5 +1,5 @@
 import { Button, Divider, Input } from "@arkyn/components";
-import { Github, Linkedin } from "lucide-react";
+// import { Github } from "lucide-react";
 import { Link } from "react-router";
 
 import arkynFullLogo from "~/assets/arkynFullLogo.png";
@@ -62,15 +62,15 @@ function RootFooter() {
         <Divider />
 
         <CodeSection>
-          <code>Copyright © 2025 Arkyn</code>
-          <ul>
+          <code>Copyright © {new Date().getFullYear()} Arkyn</code>
+          {/* <ul>
             <a href="https://github.com/Lucas-Eduardo-Goncalves/arkyn">
               <Github />
             </a>
             <a href="https://www.linkedin.com/in/lucas-eduardo-goncalves">
               <Linkedin />
             </a>
-          </ul>
+          </ul> */}
         </CodeSection>
       </Content>
     </RootFooterContainer>
