@@ -99,13 +99,18 @@ Set `disabled` to block interactions while preserving layout and icon rendering.
 </div>
 
 ```tsx
-<IconButton icon={Plus} aria-label="Disabled add" disabled />
 <IconButton
-  icon={Trash2}
-  aria-label="Disabled delete"
-  disabled
-  variant="outline"
-  scheme="danger"
+    icon={Plus}
+    aria-label="Disabled add"
+    disabled
+/>
+
+<IconButton
+    icon={Trash2}
+    aria-label="Disabled delete"
+    disabled
+    variant="outline"
+    scheme="danger"
 />
 ```
 
@@ -125,13 +130,18 @@ When `isLoading` is true, the button shows a spinner and becomes disabled.
 </div>
 
 ```tsx
-<IconButton icon={Save} aria-label="Saving" isLoading />
 <IconButton
-  icon={Trash2}
-  aria-label="Deleting"
-  isLoading
-  scheme="danger"
-  variant="outline"
+    icon={Save}
+    aria-label="Saving"
+    isLoading
+/>
+
+<IconButton
+    icon={Trash2}
+    aria-label="Deleting"
+    isLoading
+    scheme="danger"
+    variant="outline"
 />
 ```
 

@@ -1,0 +1,116 @@
+# TableFooter
+
+import {
+  Button,
+  TableBody,
+  TableContainer,
+  TableFooter,
+  TableHeader,
+} from "@arkyn/components";
+
+TableFooter renders a footer row for summaries, actions, and pagination controls.
+
+```tsx
+import { TableFooter } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent column">
+  <TableContainer>
+    <TableHeader>
+      <th>Name</th>
+      <th>Email</th>
+    </TableHeader>
+
+    <TableBody>
+      <tr>
+        <td>John Doe</td>
+        <td>john@example.com</td>
+      </tr>
+    </TableBody>
+
+    <TableFooter>
+      <div>Showing 1-1 of 1 result</div>
+    </TableFooter>
+  </TableContainer>
+</div>
+
+```tsx
+<TableFooter>
+  <div>Showing 1-10 of 100 results</div>
+</TableFooter>
+```
+
+## Footer Actions
+
+Use TableFooter to place pagination or action buttons.
+
+<div className="noContent column">
+  <TableContainer>
+    <TableHeader>
+      <th>Product</th>
+      <th>Price</th>
+    </TableHeader>
+
+    <TableBody>
+      <tr>
+        <td>Keyboard</td>
+        <td>$99.00</td>
+      </tr>
+    </TableBody>
+
+    <TableFooter>
+      <Button size="sm">Load More</Button>
+    </TableFooter>
+  </TableContainer>
+</div>
+
+```tsx
+<TableFooter>
+  <Button size="sm">Load More</Button>
+</TableFooter>
+```
+
+## Custom Class Name
+
+Apply custom classes for spacing or border adjustments.
+
+<div className="noContent column">
+  <TableContainer>
+    <TableHeader>
+      <th>ID</th>
+      <th>User</th>
+      <th>Status</th>
+    </TableHeader>
+
+    <TableBody>
+      <tr>
+        <td>1</td>
+        <td>Maria</td>
+        <td>Active</td>
+      </tr>
+    </TableBody>
+
+    <TableFooter className="custom-footer">
+      <div>Total: 250 items</div>
+    </TableFooter>
+  </TableContainer>
+</div>
+
+```tsx
+<TableFooter className="custom-footer">
+  <div>Total: 250 items</div>
+</TableFooter>
+```
+
+## Properties
+
+**`children`** - `ReactNode`
+Footer content rendered inside the footer content container.
+
+**`className`** - `string`
+Additional CSS classes merged with the base footer class.
+
+**`...rest`** - `HTMLAttributes<HTMLTableSectionElement>`
+Any other valid HTML attributes for the root `tfoot` element.

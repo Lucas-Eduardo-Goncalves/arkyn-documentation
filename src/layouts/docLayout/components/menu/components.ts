@@ -25,9 +25,25 @@ const COMPONENTS_MENU: MenuType[] = [
       { label: "PhoneInput", to: "/components/components/phone-input" },
       { label: "RadioBox", to: "/components/components/radio-box" },
       { label: "RadioGroup", to: "/components/components/radio-group" },
+      { label: "RichText", to: "/components/components/rich-text" },
       { label: "Select", to: "/components/components/select" },
       { label: "Switch", to: "/components/components/switch" },
       { label: "Textarea", to: "/components/components/textarea" },
+    ],
+  },
+  {
+    label: "Fields & Data Display",
+    children: [
+      { label: "ClientOnly", to: "/components/components/client-only" },
+      { label: "Divider", to: "/components/components/divider" },
+      { label: "FieldError", to: "/components/components/field-error" },
+      { label: "FieldLabel", to: "/components/components/field-label" },
+      { label: "FieldWrapper", to: "/components/components/field-wrapper" },
+      { label: "TableBody", to: "/components/components/table-body" },
+      { label: "TableCaption", to: "/components/components/table-caption" },
+      { label: "TableContainer", to: "/components/components/table-container" },
+      { label: "TableFooter", to: "/components/components/table-footer" },
+      { label: "TableHeader", to: "/components/components/table-header" },
     ],
   },
   {
@@ -58,15 +74,20 @@ const COMPONENTS_MENU: MenuType[] = [
     ],
   },
   {
-    label: "Layout & Overlay",
+    label: "Overlay",
     children: [
-      { label: "ClientOnly", to: "/components/components/client-only" },
-      { label: "Divider", to: "/components/components/divider" },
       {
         label: "DrawerContainer",
         to: "/components/components/drawer-container",
       },
       { label: "DrawerHeader", to: "/components/components/drawer-header" },
+      {
+        label: "ModalContainer",
+        to: "/components/components/modal-container",
+      },
+      { label: "ModalHeader", to: "/components/components/modal-header" },
+      { label: "ModalFooter", to: "/components/components/modal-footer" },
+      { label: "Popover", to: "/components/components/popover" },
     ],
   },
   {

@@ -1,0 +1,155 @@
+# ModalFooter
+
+import {
+  ModalContainer,
+  ModalFooter,
+  ModalHeader,
+  Button,
+} from "@arkyn/components";
+import { ModalExample } from "../../_examples/modal.example";
+
+ModalFooter renders the action area of a modal with configurable content alignment.
+
+```tsx
+import { ModalFooter } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <ModalExample>
+    <div style={{ minWidth: 280, padding: 30 }}>Modal content</div>
+
+    <ModalFooter>
+      <Button type="button">Cancel</Button>
+      <Button type="button">Save</Button>
+    </ModalFooter>
+
+  </ModalExample>
+</div>
+
+```tsx
+<ModalFooter>
+  <Button type="button">Cancel</Button>
+  <Button type="button">Save</Button>
+</ModalFooter>
+```
+
+## Alignment
+
+Use `alignment` to define how actions are distributed in the footer.
+
+<div className="noContent column">
+  <ModalExample>
+    <div style={{ minWidth: 280, padding: 30 }}>Left</div>
+    <ModalFooter alignment="left">
+      <Button type="button">Delete</Button>
+    </ModalFooter>
+  </ModalExample>
+
+<ModalExample>
+  <div style={{ minWidth: 280 }}>Center</div>
+  <ModalFooter alignment="center">
+    <Button type="button">OK</Button>
+  </ModalFooter>
+</ModalExample>
+
+<ModalExample>
+  <div style={{ minWidth: 280 }}>between</div>
+  <ModalFooter alignment="between">
+    <Button type="button">Back</Button>
+    <Button type="button">Next</Button>
+  </ModalFooter>
+</ModalExample>
+
+<ModalExample>
+  <div style={{ minWidth: 280 }}>around</div>
+  <ModalFooter alignment="around">
+    <Button type="button">Previous</Button>
+    <Button type="button">Skip</Button>
+    <Button type="button">Finish</Button>
+  </ModalFooter>
+</ModalExample>
+</div>
+
+```tsx
+<ModalFooter alignment="left">
+  <Button type="button">Delete</Button>
+</ModalFooter>
+
+<ModalFooter alignment="center">
+  <Button type="button">OK</Button>
+</ModalFooter>
+
+<ModalFooter alignment="between">
+  <Button type="button">Back</Button>
+  <Button type="button">Next</Button>
+</ModalFooter>
+
+<ModalFooter alignment="around">
+  <Button type="button">Previous</Button>
+  <Button type="button">Skip</Button>
+  <Button type="button">Finish</Button>
+</ModalFooter>
+```
+
+## Inside ModalContainer
+
+Use ModalFooter together with ModalContainer and ModalHeader for complete dialogs.
+
+<div className="noContent">
+  <ModalExample>
+    <div>
+      <ModalHeader>
+        <h2>Confirm Delete</h2>
+      </ModalHeader>
+
+      <main>
+        <p>This action cannot be undone.</p>
+      </main>
+
+      <ModalFooter alignment="right">
+        <Button type="button">Cancel</Button>
+        <Button type="button">Delete</Button>
+      </ModalFooter>
+    </div>
+
+  </ModalExample>
+</div>
+
+```tsx
+<ModalContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
+  <div>
+    <ModalHeader>
+      <h2>Confirm Delete</h2>
+    </ModalHeader>
+
+    <main>
+      <p>This action cannot be undone.</p>
+    </main>
+
+    <ModalFooter alignment="right">
+      <Button type="button" onClick={() => setIsOpen(false)}>
+        Cancel
+      </Button>
+      <Button type="button" onClick={handleDelete}>
+        Delete
+      </Button>
+    </ModalFooter>
+  </div>
+</ModalContainer>
+```
+
+## Properties
+
+**`alignment`** - `"left" | "center" | "right" | "between" | "around"` (default: `"right"`)
+Defines how footer content is aligned.
+
+**`className`** - `string`
+Additional CSS classes merged with the base footer class.
+
+**`children`** - `ReactNode`
+Footer action elements such as Buttons.
+
+**`...rest`** - `HTMLAttributes<HTMLElement>`
+Any other valid HTML attributes for the root `footer` element.

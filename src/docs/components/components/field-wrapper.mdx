@@ -1,0 +1,131 @@
+# FieldWrapper
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  FieldError,
+  FieldLabel,
+  FieldWrapper,
+  Input,
+  Textarea,
+} from "@arkyn/components";
+
+FieldWrapper is a structural container for composing a single field block with label, control, and error content.
+
+```tsx
+import { FieldWrapper } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent column">
+  <FieldWrapper>
+    <FieldLabel htmlFor="username">Username</FieldLabel>
+    <Input name="username" placeholder="Type your username" />
+    <FieldError>This field is required</FieldError>
+  </FieldWrapper>
+</div>
+
+```tsx
+<FieldWrapper>
+  <FieldLabel htmlFor="username">Username</FieldLabel>
+  <Input name="username" />
+  <FieldError>This field is required</FieldError>
+</FieldWrapper>
+```
+
+## Orientation
+
+Use `orientation` to control how field elements are arranged.
+
+<div className="noContent column">
+  <FieldWrapper orientation="vertical">
+    <FieldLabel htmlFor="vertical-example">Vertical</FieldLabel>
+    <Input name="vertical-example" placeholder="Vertical field" />
+  </FieldWrapper>
+
+  <FieldWrapper orientation="horizontal">
+    <FieldLabel htmlFor="horizontal-example">Horizontal</FieldLabel>
+    <Input name="horizontal-example" placeholder="Horizontal field" />
+  </FieldWrapper>
+</div>
+
+```tsx
+<FieldWrapper orientation="vertical">
+  <FieldLabel htmlFor="vertical-example">Vertical</FieldLabel>
+  <Input name="vertical-example" />
+</FieldWrapper>
+
+<FieldWrapper orientation="horizontal">
+  <FieldLabel htmlFor="horizontal-example">Horizontal</FieldLabel>
+  <Input name="horizontal-example" />
+</FieldWrapper>
+```
+
+## Custom Class Name
+
+Use custom classes to apply spacing and layout overrides.
+
+<div className="noContent">
+  <FieldWrapper className="custom-spacing" orientation="horizontalReverse">
+    <FieldLabel htmlFor="email">Email</FieldLabel>
+    <Input name="email" type="email" placeholder="you@example.com" />
+  </FieldWrapper>
+</div>
+
+```tsx
+<FieldWrapper className="custom-spacing" orientation="horizontalReverse">
+  <FieldLabel htmlFor="email">Email</FieldLabel>
+  <Input name="email" type="email" />
+</FieldWrapper>
+```
+
+## Built-in Form Integration
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Already included in form components</AlertTitle>
+    <AlertDescription>
+      Form components such as <code>Textarea</code>, <code>Input</code>, and
+      other field-based controls already use <code>FieldWrapper</code>
+      internally. You usually only need <code>FieldWrapper</code> when building
+      custom field compositions.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+<div className="noContent">
+  <Textarea
+    name="description"
+    label="Description"
+    errorMessage="Description is required"
+    placeholder="Enter a description"
+  />
+</div>
+
+```tsx
+<Textarea
+  name="description"
+  label="Description"
+  errorMessage="Description is required"
+  placeholder="Enter a description"
+/>
+```
+
+## Properties
+
+**`children`** - `ReactNode`
+Elements that compose the field structure, usually label, control, and error message.
+
+**`orientation`** - `"vertical" | "horizontal" | "horizontalReverse"` (default: `"vertical"`)
+Layout orientation for elements rendered inside the wrapper.
+
+**`className`** - `string`
+Additional CSS classes merged into the base class.
+
+**`...rest`** - `HTMLAttributes<HTMLElement>`
+Any other valid HTML attributes for the root `section` element.

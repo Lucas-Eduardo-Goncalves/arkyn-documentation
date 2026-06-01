@@ -1,0 +1,200 @@
+import "../../_styles/richText.css";
+
+# RichText
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  RichText,
+} from "@arkyn/components";
+
+RichText provides a Slate-based editor with formatting tools, media insertion, character limits, and form integration.
+
+```tsx
+import { RichText } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <RichText name="content" />
+</div>
+
+```tsx
+<RichText name="content" />
+```
+
+## Formatting Toolbar
+
+The editor includes heading, quote, text style, and alignment controls.
+
+<div className="noContent">
+  <RichText name="articleContent" label="Article Content" />
+</div>
+
+```tsx
+<RichText name="articleContent" label="Article Content" />
+```
+
+## Hidden Toolbar Buttons
+
+Use `hiddenButtons` to remove specific controls from the toolbar.
+
+<div className="noContent">
+  <RichText
+    name="description"
+    hiddenButtons={["image", "code", "video"]}
+    label="Description"
+  />
+</div>
+
+```tsx
+<RichText
+  name="description"
+  hiddenButtons={["image", "code", "video"]}
+  label="Description"
+/>
+```
+
+## Character Limit
+
+Set `maxLimit` and optionally enforce it during editing.
+
+<div className="noContent">
+  <RichText
+    name="summary"
+    label="Summary"
+    maxLimit={500}
+    enforceCharacterLimit
+  />
+</div>
+
+```tsx
+<RichText
+  name="summary"
+  maxLimit={500}
+  enforceCharacterLimit
+  onChangeCharactersCount={(count) => console.log(count)}
+/>
+```
+
+## Media Insertion
+
+Provide media configs to enable image and video insertion actions.
+
+<div className="noContent">
+  <RichText
+    name="post"
+    label="Post"
+    imageConfig={{
+      action: "/api/upload/image",
+      modalTitle: "Insert Image",
+      modalInputUrlLabel: "Image URL",
+      modalInputImageLabel: "Upload image",
+    }}
+    videoConfig={{
+      modalTitle: "Insert Video",
+      modalInputLabel: "Video URL",
+    }}
+  />
+</div>
+
+```tsx
+<RichText
+  name="post"
+  imageConfig={{
+    action: "/api/upload/image",
+    modalTitle: "Insert Image",
+    modalInputUrlLabel: "Image URL",
+    modalInputImageLabel: "Upload image",
+  }}
+  videoConfig={{
+    modalTitle: "Insert Video",
+    modalInputLabel: "Video URL",
+  }}
+/>
+```
+
+## Validation and Form Behavior
+
+RichText integrates with form context and can display custom or provider-based field errors.
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Built-in field composition</AlertTitle>
+    <AlertDescription>
+      RichText already composes FieldWrapper, FieldLabel, and FieldError
+      internally. In normal usage, you only need to pass props such as
+      <code>label</code>, <code>showAsterisk</code>, and
+      <code>baseErrorMessage</code>.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+<div className="noContent">
+  <RichText
+    name="bio"
+    label="Biography"
+    showAsterisk
+    baseErrorMessage="Biography is required"
+    isError
+  />
+</div>
+
+```tsx
+<RichText
+  name="bio"
+  label="Biography"
+  showAsterisk
+  baseErrorMessage="Biography is required"
+  isError
+/>
+```
+
+## Properties
+
+**`name`** - `string`
+Form field name used for hidden input serialization.
+
+**`hiddenButtons`** - `RichTextHiddenButtonKey[]`
+Toolbar button keys to hide from the editor controls.
+
+**`imageConfig`** - `object`
+Configuration object for image insertion behavior and modal labels.
+
+**`videoConfig`** - `object`
+Configuration object for video insertion behavior and modal labels.
+
+**`defaultValue`** - `string` (default: `"[]"`)
+Initial editor value as a JSON string.
+
+**`enforceCharacterLimit`** - `boolean` (default: `false`)
+When true, prevents content updates after reaching the limit.
+
+**`onChangeCharactersCount`** - `(count: number) => void`
+Callback fired when the character count changes.
+
+**`baseErrorMessage`** - `string`
+Custom error message displayed below the editor.
+
+**`maxLimit`** - `number` (default: `10000`)
+Maximum allowed number of characters.
+
+**`onChange`** - `(value: Descendant[]) => void`
+Callback fired when editor content changes.
+
+**`isError`** - `boolean`
+Forces error state styling regardless of form context.
+
+**`label`** - `string`
+Optional label rendered above the editor.
+
+**`showAsterisk`** - `boolean`
+Whether to show required marker in the label.
+
+**`id`** - `string`
+Custom id for the editable element.

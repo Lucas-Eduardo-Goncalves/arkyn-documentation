@@ -1,0 +1,148 @@
+# TableContainer
+
+import {
+  TableBody,
+  TableCaption,
+  TableContainer,
+  TableFooter,
+  TableHeader,
+} from "@arkyn/components";
+
+TableContainer wraps table structure in a styled responsive container.
+
+```tsx
+import { TableContainer } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent column">
+  <TableContainer>
+    <TableHeader>
+      <th>Name</th>
+      <th>Email</th>
+    </TableHeader>
+
+    <TableBody>
+      <tr>
+        <td>John Doe</td>
+        <td>john@example.com</td>
+      </tr>
+    </TableBody>
+  </TableContainer>
+</div>
+
+```tsx
+<TableContainer>
+  <TableHeader>
+    <th>Name</th>
+    <th>Email</th>
+  </TableHeader>
+
+  <TableBody>
+    <tr>
+      <td>John Doe</td>
+      <td>john@example.com</td>
+    </tr>
+  </TableBody>
+</TableContainer>
+```
+
+## Caption and Footer Composition
+
+Use caption and footer sections to provide context and actions.
+
+<div className="noContent column">
+  <TableContainer>
+    <TableCaption>User Management</TableCaption>
+
+    <TableHeader>
+      <th>ID</th>
+      <th>User</th>
+      <th>Status</th>
+    </TableHeader>
+
+    <TableBody>
+      <tr>
+        <td>1</td>
+        <td>Jane Smith</td>
+        <td>Active</td>
+      </tr>
+    </TableBody>
+
+    <TableFooter>
+      <div>Showing 1 of 1 result</div>
+    </TableFooter>
+  </TableContainer>
+</div>
+
+```tsx
+<TableContainer>
+  <TableCaption>User Management</TableCaption>
+
+  <TableHeader>
+    <th>ID</th>
+    <th>User</th>
+    <th>Status</th>
+  </TableHeader>
+
+  <TableBody>
+    <tr>
+      <td>1</td>
+      <td>Jane Smith</td>
+      <td>Active</td>
+    </tr>
+  </TableBody>
+
+  <TableFooter>
+    <div>Showing 1 of 1 result</div>
+  </TableFooter>
+</TableContainer>
+```
+
+## Custom Class Name
+
+Apply custom classes to adjust spacing, border, and responsive behavior.
+
+<div className="noContent column">
+  <TableContainer className="custom-table">
+    <TableHeader>
+      <th>Product</th>
+      <th>Price</th>
+    </TableHeader>
+
+    <TableBody>
+      <tr>
+        <td>Keyboard</td>
+        <td>$99.00</td>
+      </tr>
+    </TableBody>
+  </TableContainer>
+</div>
+
+```tsx
+<TableContainer className="custom-table">
+  <TableHeader>
+    <th>Product</th>
+    <th>Price</th>
+  </TableHeader>
+
+  <TableBody>
+    <tr>
+      <td>Keyboard</td>
+      <td>$99.00</td>
+    </tr>
+  </TableBody>
+</TableContainer>
+```
+
+## Properties
+
+**`children`** - `ReactNode`
+Table sections such as `TableCaption`, `TableHeader`, `TableBody`, and `TableFooter`.
+
+**`className`** - `string`
+Additional CSS classes merged with the base table container class.
+
+**`...rest`** - `TableHTMLAttributes<HTMLTableElement>`
+Any other valid HTML attributes applied to the outer container element.

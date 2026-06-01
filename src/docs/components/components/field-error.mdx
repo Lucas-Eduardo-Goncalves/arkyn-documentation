@@ -1,0 +1,97 @@
+# FieldError
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  FieldError,
+  Textarea,
+} from "@arkyn/components";
+
+FieldError displays validation messages associated with a form field.
+
+```tsx
+import { FieldError } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <FieldError>This field is required</FieldError>
+</div>
+
+```tsx
+<FieldError>This field is required</FieldError>
+```
+
+## Conditional Rendering
+
+Use FieldError only when an error exists.
+
+<div className="noContent">
+  <FieldError>Invalid email format</FieldError>
+</div>
+
+```tsx
+{error && <FieldError>{error}</FieldError>}
+```
+
+## Custom Class Name
+
+You can add custom classes for spacing or style overrides.
+
+<div className="noContent">
+  <FieldError className="custom-error">Password must have at least 8 characters</FieldError>
+</div>
+
+```tsx
+<FieldError className="custom-error">
+  Password must have at least 8 characters
+</FieldError>
+```
+
+## Built-in Form Integration
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Already included in form components</AlertTitle>
+    <AlertDescription>
+      Form components such as <code>Textarea</code>, <code>Input</code>, and
+      other field-based controls already render <code>FieldError</code>
+      internally when an error message exists. You do not need to add
+      <code>FieldError</code> manually in common form usage.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+<div className="noContent">
+  <Textarea
+    name="bio"
+    label="Biography"
+    errorMessage="Biography is required"
+    placeholder="Tell us about yourself"
+  />
+</div>
+
+```tsx
+<Textarea
+  name="bio"
+  label="Biography"
+  errorMessage="Biography is required"
+  placeholder="Tell us about yourself"
+/>
+```
+
+## Properties
+
+**`children`** - `ReactNode`
+Error content rendered inside the component. If no children are provided, nothing is rendered.
+
+**`className`** - `string`
+Additional CSS classes merged into the base class.
+
+**`...rest`** - `HTMLAttributes<HTMLElement>`
+Any other valid HTML attributes for the root `strong` element.

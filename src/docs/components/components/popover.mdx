@@ -1,0 +1,179 @@
+# Popover
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Badge,
+  Button,
+  Divider,
+  Popover,
+} from "@arkyn/components";
+
+Popover displays contextual content in a floating container anchored to a trigger element.
+
+```tsx
+import { Popover } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <Popover button={<Button>Open popover</Button>}>
+    <div>Popover content here</div>
+  </Popover>
+</div>
+
+```tsx
+<Popover button={<Button>Open popover</Button>}>
+  <div>Popover content here</div>
+</Popover>
+```
+
+## Orientations
+
+Use `orientation` to control where the popover appears relative to the trigger.
+
+<div className="noContent row">
+  <Popover button={<Badge>Bottom Left</Badge>} orientation="bottomLeft">
+    <div>bottomLeft</div>
+  </Popover>
+
+<Popover button={<Badge>Top Right</Badge>} orientation="topRight">
+  <div>topRight</div>
+</Popover>
+
+<Popover button={<Badge>Left</Badge>} orientation="left">
+  <div>left</div>
+</Popover>
+
+  <Popover button={<Badge>Right</Badge>} orientation="right">
+    <div>right</div>
+  </Popover>
+</div>
+
+```tsx
+<Popover button={<Badge>Bottom Left</Badge>} orientation="bottomLeft">
+  <div>bottomLeft</div>
+</Popover>
+
+<Popover button={<Badge>Top Right</Badge>} orientation="topRight">
+  <div>topRight</div>
+</Popover>
+
+<Popover button={<Badge>Left</Badge>} orientation="left">
+  <div>left</div>
+</Popover>
+
+<Popover button={<Badge>Right</Badge>} orientation="right">
+  <div>right</div>
+</Popover>
+```
+
+## Close On Content Click
+
+Enable `closeOnClick` when popover content should close after selecting an action.
+
+<div className="noContent">
+  <Popover button={<Button variant="outline">Actions</Button>} closeOnClick>
+    <div style={{ display: "grid", gap: 8 }}>
+      <button type="button">Edit</button>
+      <button type="button">Duplicate</button>
+      <button type="button">Delete</button>
+    </div>
+  </Popover>
+</div>
+
+```tsx
+<Popover button={<Button variant="outline">Actions</Button>} closeOnClick>
+  <div className="context-menu">
+    <button type="button" onClick={editItem}>
+      Edit
+    </button>
+    <button type="button" onClick={duplicateItem}>
+      Duplicate
+    </button>
+    <button type="button" onClick={deleteItem}>
+      Delete
+    </button>
+  </div>
+</Popover>
+```
+
+## Complex Content
+
+Popover supports rich composition such as menus, filters, and account panels.
+
+<div className="noContent">
+  <Popover
+    button={<Button variant="ghost">Profile</Button>}
+    orientation="bottomRight"
+    closeOnClick
+  >
+    <div style={{ minWidth: 220 }}>
+      <div>
+        <strong>John Doe</strong>
+        <p style={{ margin: 0 }}>john@example.com</p>
+      </div>
+      <Divider />
+      <div style={{ display: "grid", gap: 8 }}>
+        <button type="button">Profile</button>
+        <button type="button">Settings</button>
+        <button type="button">Sign out</button>
+      </div>
+    </div>
+  </Popover>
+</div>
+
+```tsx
+<Popover
+  button={<Button variant="ghost">Profile</Button>}
+  orientation="bottomRight"
+  closeOnClick
+>
+  <div className="user-menu">
+    <div className="user-info">
+      <h4>John Doe</h4>
+      <p>john@example.com</p>
+    </div>
+
+    <Divider />
+
+    <button type="button">Profile</button>
+    <button type="button">Settings</button>
+    <button type="button">Sign out</button>
+  </div>
+</Popover>
+```
+
+## Behavior Notes
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Built-in interaction behavior</AlertTitle>
+    <AlertDescription>
+      Popover includes outside-click close behavior with an overlay layer,
+      opacity animation using Framer Motion, and body scroll lock while open.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`children`** - `ReactNode`
+Content rendered inside the popover panel.
+
+**`button`** - `ReactNode`
+Trigger element used to open the popover.
+
+**`closeOnClick`** - `boolean`
+When true, clicking the popover content closes it.
+
+**`orientation`** - `"bottomLeft" | "bottomRight" | "topLeft" | "topRight" | "top" | "left" | "bottom" | "right"` (default: `"bottomLeft"`)
+Popover placement relative to the trigger.
+
+**`className`** - `string` (default: `""`)
+Additional CSS classes merged with the base popover container class.
