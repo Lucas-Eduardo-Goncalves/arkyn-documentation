@@ -1,0 +1,153 @@
+# TabContainer
+
+import {
+  TabContainer,
+  TabButton,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+`TabContainer` provides shared tab state and context for `TabButton` items, enabling accessible tab-like navigation behavior.
+
+```tsx
+import { TabContainer, TabButton } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent column">
+  <TabContainer>
+    <TabButton value="home">Home</TabButton>
+    <TabButton value="about">About</TabButton>
+    <TabButton value="contact">Contact</TabButton>
+  </TabContainer>
+</div>
+
+```tsx
+<TabContainer>
+  <TabButton value="home">Home</TabButton>
+  <TabButton value="about">About</TabButton>
+  <TabButton value="contact">Contact</TabButton>
+</TabContainer>
+```
+
+## Default Value And Change Handler
+
+Use `defaultValue` to initialize the active tab and `onChange` to react to updates.
+
+<div className="noContent column">
+  <TabContainer defaultValue="dashboard">
+    <TabButton value="dashboard">Dashboard</TabButton>
+    <TabButton value="analytics">Analytics</TabButton>
+    <TabButton value="settings">Settings</TabButton>
+  </TabContainer>
+</div>
+
+```tsx
+<TabContainer
+  defaultValue="dashboard"
+  onChange={(value) => console.log("Active tab:", value)}
+>
+  <TabButton value="dashboard">Dashboard</TabButton>
+  <TabButton value="analytics">Analytics</TabButton>
+  <TabButton value="settings">Settings</TabButton>
+</TabContainer>
+```
+
+## Disabled
+
+Set `disabled` on the container to disable all child tab buttons.
+
+<div className="noContent column">
+  <TabContainer disabled>
+    <TabButton value="tab1">Tab 1</TabButton>
+    <TabButton value="tab2">Tab 2</TabButton>
+  </TabContainer>
+</div>
+
+```tsx
+<TabContainer disabled>
+  <TabButton value="tab1">Tab 1</TabButton>
+  <TabButton value="tab2">Tab 2</TabButton>
+</TabContainer>
+```
+
+## Integration With Page State
+
+Use external state when tab selection must drive conditional content rendering.
+
+<div className="noContent column">
+  <TabContainer defaultValue="profile" className="custom-tabs" role="tablist">
+    <TabButton value="profile">Profile</TabButton>
+    <TabButton value="account">Account</TabButton>
+    <TabButton value="notifications">Notifications</TabButton>
+  </TabContainer>
+</div>
+
+```tsx
+function MyTabs() {
+  const [activeTab, setActiveTab] = useState("profile");
+
+  return (
+    <div>
+      <TabContainer
+        defaultValue={activeTab}
+        onChange={setActiveTab}
+        className="custom-tabs"
+        role="tablist"
+      >
+        <TabButton value="profile">Profile</TabButton>
+        <TabButton value="account">Account</TabButton>
+        <TabButton value="notifications">Notifications</TabButton>
+      </TabContainer>
+
+      {activeTab === "profile" && <ProfileContent />}
+      {activeTab === "account" && <AccountContent />}
+      {activeTab === "notifications" && <NotificationsContent />}
+    </div>
+  );
+}
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Context provider behavior</AlertTitle>
+    <AlertDescription>
+      `TabContainer` provides tab state through context. Child `TabButton`
+      components consume this context to determine active/disabled behavior.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`children`** - `ReactNode`
+Tab buttons and related content rendered inside the navigation container.
+
+**`disabled`** - `boolean` (default: `false`)
+Disables all tabs within the container.
+
+**`defaultValue`** - `string`
+Initial active tab value.
+
+**`onChange`** - `(index: string) => void`
+Called when active tab changes.
+
+**`className`** - `string`
+Additional classes for the root `nav` element.
+
+**`role`** - `AriaRole`
+ARIA role applied to the root `nav` element.
+
+**`id`** - `string`
+Optional id for the root `nav` element.
+
+**`style`** - `CSSProperties`
+Inline styles applied to the root `nav` element.
+
+**`...rest`** - `Omit<HTMLAttributes<HTMLElement>, "onChange" | "children" | "ref" | "onClick">`
+Any other valid native `nav` attributes are forwarded except excluded ones.

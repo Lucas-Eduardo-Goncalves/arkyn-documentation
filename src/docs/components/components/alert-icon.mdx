@@ -1,0 +1,88 @@
+# AlertIcon
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+The `AlertIcon` component automatically renders an icon based on the `schema` provided by `AlertContainer`.
+
+```tsx
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent column">
+  <AlertContainer schema="info">
+    <AlertIcon />
+    <AlertContent>
+      <AlertDescription>General informational message.</AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+</div>
+
+```tsx
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertDescription>General informational message.</AlertDescription>
+  </AlertContent>
+</AlertContainer>
+```
+
+## Schema-based Icons
+
+The icon changes automatically according to the container schema.
+
+<div className="noContent column">
+  <AlertContainer schema="success">
+    <AlertIcon />
+    <AlertContent>
+      <AlertTitle>Success</AlertTitle>
+      <AlertDescription>CheckCircle2 icon is rendered.</AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+  <AlertContainer schema="danger">
+    <AlertIcon />
+    <AlertContent>
+      <AlertTitle>Error</AlertTitle>
+      <AlertDescription>XCircle icon is rendered.</AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+  <AlertContainer schema="warning">
+    <AlertIcon />
+    <AlertContent>
+      <AlertTitle>Warning</AlertTitle>
+      <AlertDescription>AlertTriangle icon is rendered.</AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+  <AlertContainer schema="info">
+    <AlertIcon />
+    <AlertContent>
+      <AlertTitle>Info</AlertTitle>
+      <AlertDescription>Info icon is rendered.</AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+</div>
+
+```tsx
+<AlertContainer schema="success"><AlertIcon /></AlertContainer>
+<AlertContainer schema="danger"><AlertIcon /></AlertContainer>
+<AlertContainer schema="warning"><AlertIcon /></AlertContainer>
+<AlertContainer schema="info"><AlertIcon /></AlertContainer>
+```
+
+## Properties
+
+**Icon props** - `LucideProps`
+Supports all Lucide icon properties such as `size`, `strokeWidth`, `color`, and `className`.

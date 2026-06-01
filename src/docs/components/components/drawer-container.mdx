@@ -1,0 +1,139 @@
+# DrawerContainer
+
+import {
+  DrawerContainer,
+  DrawerHeader,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import { DrawerExample } from "../../_examples/drawer.example";
+
+`DrawerContainer` is an animated side panel that opens over the page content with overlay click-to-close behavior.
+
+```tsx
+import { DrawerContainer } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <DrawerExample title="Drawer Example">
+    <p>Drawer content</p>
+  </DrawerExample>
+</div>
+
+```tsx
+<DrawerContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
+  <p>Drawer content</p>
+</DrawerContainer>
+```
+
+## Orientation
+
+Use `orientation` to control the side from which the drawer enters.
+
+<div className="noContent column" style={{ width: "100%", gap: 16 }}>
+  <DrawerExample title="Left Drawer" orientation="left">
+    <p>Left drawer</p>
+  </DrawerExample>
+
+  <DrawerExample title="Right Drawer" orientation="right">
+    <p>Right drawer</p>
+  </DrawerExample>
+</div>
+
+```tsx
+<DrawerContainer
+  isVisible={isOpen}
+  makeInvisible={() => setIsOpen(false)}
+  orientation="left"
+>
+  <p>Left drawer</p>
+</DrawerContainer>
+
+<DrawerContainer
+  isVisible={isOpen}
+  makeInvisible={() => setIsOpen(false)}
+  orientation="right"
+>
+  <p>Right drawer</p>
+</DrawerContainer>
+```
+
+## Composing With DrawerHeader
+
+Combine `DrawerContainer` with `DrawerHeader` to create a reusable panel layout with close action.
+
+<div className="noContent">
+  <DrawerExample title="Menu" orientation="right">
+    <div style={{ padding: 16 }}>
+      <p>Home</p>
+      <p>About</p>
+      <p>Contact</p>
+    </div>
+  </DrawerExample>
+</div>
+
+```tsx
+<DrawerContainer
+  isVisible={isDrawerOpen}
+  makeInvisible={() => setIsDrawerOpen(false)}
+  orientation="right"
+>
+  <DrawerHeader>
+    <h2>Menu</h2>
+  </DrawerHeader>
+
+  <div className="drawer-content">
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Contact</li>
+    </ul>
+  </div>
+</DrawerContainer>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Scroll lock behavior</AlertTitle>
+    <AlertDescription>
+      While `isVisible` is true, the component locks page scroll through
+      `useScrollLock`. This helps preserve focus on the drawer interaction.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`isVisible`** - `boolean`
+Controls whether the drawer is rendered and animated in view.
+
+**`makeInvisible`** - `() => void`
+Callback used to close the drawer, including overlay click behavior.
+
+**`orientation`** - `"left" | "right"` (default: `"left"`)
+Defines the side from which the drawer slides in.
+
+**`children`** - `ReactNode`
+Drawer content rendered inside the animated content panel.
+
+**`className`** - `string`
+Adds custom classes to the root aside wrapper.
+
+**`id`** - `string`
+Sets the id attribute on the root aside wrapper.
+
+**`style`** - `CSSProperties`
+Applies inline styles to the root aside wrapper.
+
+**`role`** - `AriaRole`
+Defines an ARIA role for the root aside wrapper when needed.
+
+**`...rest`** - `HTMLAttributes<HTMLElement>`
+Any other valid native attributes for the root element are forwarded.

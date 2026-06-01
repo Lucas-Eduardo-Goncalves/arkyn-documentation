@@ -1,0 +1,76 @@
+import "../../_styles/audioPlayer.css";
+
+# AudioPlayer
+
+import { AudioPlayer } from "@arkyn/components";
+
+The `AudioPlayer` component provides a customizable audio playback control with play and pause actions, a progress slider, and formatted time display.
+
+```tsx
+import { AudioPlayer } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <AudioPlayer src="https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3" />
+</div>
+
+```tsx
+<AudioPlayer src="https://example.com/audio.mp3" />
+```
+
+## Playback Callbacks
+
+Use `onPlayAudio` and `onPauseAudio` to react to playback state changes with the current and total duration information.
+
+<div className="noContent column">
+  <AudioPlayer
+    src="https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3"
+    onPlayAudio={(info) => info.formattedCurrentTime}
+    onPauseAudio={(info) => info.formattedCurrentTime}
+  />
+</div>
+
+```tsx
+<AudioPlayer
+  src="https://example.com/audio.mp3"
+  onPlayAudio={(info) => console.log("Playing at:", info.formattedCurrentTime)}
+  onPauseAudio={(info) => console.log("Paused at:", info.formattedCurrentTime)}
+/>
+```
+
+## Disabled
+
+Use `disabled` to prevent interaction with the play button and slider.
+
+<div className="noContent">
+  <AudioPlayer
+    src="https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3"
+    disabled
+  />
+</div>
+
+```tsx
+<AudioPlayer src="https://example.com/audio.mp3" disabled />
+```
+
+## Properties
+
+**`src`** - `string`
+Required audio source URL.
+
+**`disabled`** - `boolean`
+Disables the playback controls and the slider.
+
+**`onPlayAudio`** - `(props: AudioInformationProps) => void`
+Callback fired when playback starts. Receives `currentTime`, `totalTime`, `formattedCurrentTime`, and `formattedTotalTime`.
+
+**`onPauseAudio`** - `(props: AudioInformationProps) => void`
+Callback fired when playback is paused. Receives the same audio information payload as `onPlayAudio`.
+
+**`onEnded`** - `never`
+This native audio event is intentionally omitted from the component props.
+
+**Standard audio element attributes** - `AudioHTMLAttributes<HTMLAudioElement>` except `onEnded` and `src`
+All other native audio props are supported, including `autoPlay`, `loop`, `preload`, `controlsList`, and accessibility attributes.

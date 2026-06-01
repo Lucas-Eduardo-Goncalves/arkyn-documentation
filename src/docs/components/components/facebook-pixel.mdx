@@ -1,0 +1,167 @@
+# FacebookPixel
+
+import {
+  FacebookPixel,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+`FacebookPixel` initializes Meta Pixel and dispatches tracking events in the browser through a client-only rendering flow.
+
+```tsx
+import { FacebookPixel } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <FacebookPixel pixelId="123456789012345" pageView />
+</div>
+
+```tsx
+<FacebookPixel pixelId="123456789012345" pageView />
+```
+
+## Development And Production Behavior
+
+By default, the component does not render outside production. Use `showInDevMode` when you need local validation.
+
+<div className="noContent column">
+  <FacebookPixel pixelId="123456789012345" pageView />
+  <FacebookPixel
+    pixelId="123456789012345"
+    pageView
+    showInDevMode
+    options={{ debug: true }}
+  />
+</div>
+
+```tsx
+// Render only in production (default behavior)
+<FacebookPixel pixelId="123456789012345" pageView />
+
+// Force rendering in development
+<FacebookPixel
+  pixelId="123456789012345"
+  pageView
+  showInDevMode
+  options={{ debug: true }}
+/>
+```
+
+## Tracking Events
+
+Use predefined and custom event helpers to dispatch conversions and business events.
+
+<div className="noContent column">
+  <FacebookPixel
+    pixelId="123456789012345"
+    track={["Purchase", { value: 99.9, currency: "USD" }]}
+  />
+
+  <FacebookPixel
+    pixelId="123456789012345"
+    trackCustom={["PlanViewed", { plan: "Pro" }]}
+    trackSingle={["Lead", { source: "pricing" }]}
+    trackSingleCustom={["FeatureClicked", { id: "export-csv" }]}
+  />
+</div>
+
+```tsx
+<FacebookPixel
+  pixelId="123456789012345"
+  track={["Purchase", { value: 99.9, currency: "USD" }]}
+/>
+
+<FacebookPixel
+  pixelId="123456789012345"
+  trackCustom={["PlanViewed", { plan: "Pro" }]}
+  trackSingle={["Lead", { source: "pricing" }]}
+  trackSingleCustom={["FeatureClicked", { id: "export-csv" }]}
+/>
+```
+
+## Consent Controls
+
+Call consent commands directly from props when integrating privacy and cookie preferences.
+
+<div className="noContent row">
+  <FacebookPixel pixelId="123456789012345" grantConsent />
+  <FacebookPixel pixelId="123456789012345" revokeConsent />
+</div>
+
+```tsx
+<FacebookPixel pixelId="123456789012345" grantConsent />
+<FacebookPixel pixelId="123456789012345" revokeConsent />
+```
+
+## Client-Side Pixel Initialization
+
+The component delegates pixel setup to internal client utilities that initialize `fbq`, load `fbevents.js`, and execute tracking commands.
+
+<div className="noContent">
+  <FacebookPixel pixelId="123456789012345" pageView showInDevMode />
+</div>
+
+```tsx
+<FacebookPixel pixelId="123456789012345" pageView showInDevMode />
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Client-side rendering only</AlertTitle>
+    <AlertDescription>
+      This component renders through `ClientOnly`, so pixel initialization and
+      event dispatch happen only in the browser. No Meta Pixel script loading
+      runs during server rendering.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Pixel id requirement</AlertTitle>
+    <AlertDescription>
+      A valid Meta Pixel id is required (for example, `123456789012345`). If the
+      id is invalid or missing, tracking calls cannot be associated with the
+      expected pixel.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`pixelId`** - `string`
+Meta Pixel identifier used to initialize tracking.
+
+**`showInDevMode`** - `boolean`
+When true, allows rendering outside production environments.
+
+**`options`** - `{ autoConfig?: boolean; debug?: boolean }`
+Pixel initialization options passed to the internal pixel instance.
+
+**`pageView`** - `boolean`
+Sends a `PageView` event after initialization.
+
+**`grantConsent`** - `boolean`
+Calls the consent grant command.
+
+**`revokeConsent`** - `boolean`
+Calls the consent revoke command.
+
+**`track`** - `[string, any?]`
+Dispatches a standard pixel event with optional payload.
+
+**`trackCustom`** - `[string, any?]`
+Dispatches a custom pixel event with optional payload.
+
+**`trackSingle`** - `[string, any?]`
+Dispatches a standard event for a single pixel id.
+
+**`trackSingleCustom`** - `[string, any?]`
+Dispatches a custom event for a single pixel id.

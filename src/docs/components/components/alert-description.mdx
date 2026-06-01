@@ -1,0 +1,79 @@
+# AlertDescription
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+The `AlertDescription` component displays descriptive text inside an alert.
+
+```tsx
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent column">
+  <AlertContainer schema="success">
+    <AlertIcon />
+    <AlertContent>
+      <AlertDescription>
+        Your settings were saved successfully.
+      </AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+</div>
+
+```tsx
+<AlertContainer schema="success">
+  <AlertIcon />
+  <AlertContent>
+    <AlertDescription>Your settings were saved successfully.</AlertDescription>
+  </AlertContent>
+</AlertContainer>
+```
+
+## With Title
+
+Combine with `AlertTitle` to provide a stronger message hierarchy.
+
+<div className="noContent column">
+  <AlertContainer schema="warning">
+    <AlertIcon />
+    <AlertContent>
+      <AlertTitle>Attention required</AlertTitle>
+      <AlertDescription>
+        Review your payment method to avoid interruptions.
+      </AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+</div>
+
+```tsx
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Attention required</AlertTitle>
+    <AlertDescription>
+      Review your payment method to avoid interruptions.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+```
+
+## Properties
+
+**`children`** - `React.ReactNode`
+Description content rendered inside the alert.
+
+**Standard HTML div attributes** - `HTMLAttributes<HTMLDivElement>`
+All native `div` props are supported, including `className`, `id`, and accessibility attributes.

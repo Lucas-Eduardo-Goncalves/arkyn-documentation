@@ -1,0 +1,111 @@
+# ClientOnly
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  ClientOnly,
+} from "@arkyn/components";
+
+ClientOnly renders client-dependent content only after hydration, preventing server/client rendering mismatches.
+
+```tsx
+import { ClientOnly } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <ClientOnly fallback={<div>Loading...</div>}>
+    {() => <div>Interactive content loaded on client</div>}
+  </ClientOnly>
+</div>
+
+```tsx
+<ClientOnly fallback={<div>Loading...</div>}>
+  {() => <InteractiveWidget />}
+</ClientOnly>
+```
+
+## Fallback Rendering
+
+Use `fallback` to render SSR-safe or pre-hydration content while the client is not hydrated.
+
+<div className="noContent column">
+  <ClientOnly fallback={<div>Preparing location services...</div>}>
+    {() => <div>Location enabled content</div>}
+  </ClientOnly>
+
+  <ClientOnly fallback={<div className="skeleton-loader">Loading dashboard...</div>}>
+    {() => <div>Dashboard ready</div>}
+  </ClientOnly>
+</div>
+
+```tsx
+<ClientOnly fallback={<div>Preparing location services...</div>}>
+  {() => <GeolocationComponent />}
+</ClientOnly>
+
+<ClientOnly fallback={<div className="skeleton-loader" />}>
+  {() => <UserDashboard />}
+</ClientOnly>
+```
+
+## Browser-Only Features
+
+Wrap components that depend on browser APIs to avoid hydration warnings and runtime issues during SSR.
+
+<div className="noContent">
+  <ClientOnly fallback={<div>Loading editor...</div>}>
+    {() => <div>Code editor mounted on client</div>}
+  </ClientOnly>
+</div>
+
+```tsx
+<ClientOnly fallback={<div>Loading editor...</div>}>
+  {() => <LazyCodeEditor />}
+</ClientOnly>
+```
+
+## No Fallback
+
+When no fallback is provided, the component renders nothing until hydration is complete.
+
+<div className="noContent">
+  <ClientOnly>{() => <div>Visible only after hydration</div>}</ClientOnly>
+</div>
+
+```tsx
+<ClientOnly>
+  {() => (
+    <div>
+      <p>This content only appears on the client</p>
+      <p>Current time: {new Date().toLocaleString()}</p>
+    </div>
+  )}
+</ClientOnly>
+```
+
+## Notes
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Hydration-safe rendering</AlertTitle>
+    <AlertDescription>
+      The <code>children</code> prop is a function and is only executed after
+      hydration. Use this to isolate components that rely on <code>window</code>
+      ,<code>document</code>, timers, geolocation, or other browser-only APIs.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`children`** - `() => React.ReactNode`
+Function that returns the content to render after client hydration.
+
+**`fallback`** - `React.ReactNode` (default: `null`)
+Optional content rendered during SSR or before hydration completes.

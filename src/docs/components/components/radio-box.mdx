@@ -1,0 +1,188 @@
+# RadioBox
+
+import {
+  RadioGroup,
+  RadioBox,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+`RadioBox` is an individual option item that must be rendered inside `RadioGroup` to receive selection context.
+
+```tsx
+import { RadioGroup, RadioBox } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent column">
+  <RadioGroup name="gender">
+    <RadioBox value="male">Male</RadioBox>
+    <RadioBox value="female">Female</RadioBox>
+    <RadioBox value="other">Other</RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="gender">
+  <RadioBox value="male">Male</RadioBox>
+  <RadioBox value="female">Female</RadioBox>
+  <RadioBox value="other">Other</RadioBox>
+</RadioGroup>
+```
+
+## Sizes
+
+`RadioBox` inherits size from `RadioGroup`, but each option can override it.
+
+<div className="noContent column">
+  <RadioGroup name="priority" size="md">
+    <RadioBox value="low" size="sm">
+      Low Priority
+    </RadioBox>
+    <RadioBox value="medium">Medium Priority</RadioBox>
+    <RadioBox value="high" size="lg">
+      High Priority
+    </RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="priority" size="md">
+  <RadioBox value="low" size="sm">
+    Low Priority
+  </RadioBox>
+  <RadioBox value="medium">Medium Priority</RadioBox>
+  <RadioBox value="high" size="lg">
+    High Priority
+  </RadioBox>
+</RadioGroup>
+```
+
+## Rich Content
+
+Use custom children content to build descriptive plan selectors and preference cards.
+
+<div className="noContent column">
+  <RadioGroup name="plan" label="Choose your plan">
+    <RadioBox value="basic">
+      <div>
+        <h4>Basic Plan</h4>
+        <p>$9.99/month - Perfect for individuals</p>
+      </div>
+    </RadioBox>
+
+    <RadioBox value="premium">
+      <div>
+        <h4>Premium Plan</h4>
+        <p>$19.99/month - Great for small teams</p>
+      </div>
+    </RadioBox>
+
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="plan" label="Choose your plan">
+  <RadioBox value="basic">
+    <div>
+      <h4>Basic Plan</h4>
+      <p>$9.99/month - Perfect for individuals</p>
+    </div>
+  </RadioBox>
+
+  <RadioBox value="premium">
+    <div>
+      <h4>Premium Plan</h4>
+      <p>$19.99/month - Great for small teams</p>
+    </div>
+  </RadioBox>
+</RadioGroup>
+```
+
+## Disabled
+
+Disable a single option with `disabled`, or disable all through the parent group.
+
+<div className="noContent column">
+  <RadioGroup name="options">
+    <RadioBox value="option1">Available Option</RadioBox>
+    <RadioBox value="option2" disabled>
+      Disabled Option
+    </RadioBox>
+    <RadioBox value="option3">Another Available Option</RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="options">
+  <RadioBox value="option1">Available Option</RadioBox>
+  <RadioBox value="option2" disabled>
+    Disabled Option
+  </RadioBox>
+  <RadioBox value="option3">Another Available Option</RadioBox>
+</RadioGroup>
+```
+
+## Error State
+
+Error styling is inherited from `RadioGroup` validation state.
+
+<div className="noContent column">
+  <RadioGroup name="theme" errorMessage="Select one theme">
+    <RadioBox value="light">Light Theme</RadioBox>
+    <RadioBox value="dark">Dark Theme</RadioBox>
+    <RadioBox value="auto">Auto Theme</RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="theme" errorMessage="Select one theme">
+  <RadioBox value="light">Light Theme</RadioBox>
+  <RadioBox value="dark">Dark Theme</RadioBox>
+  <RadioBox value="auto">Auto Theme</RadioBox>
+</RadioGroup>
+```
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Context requirement</AlertTitle>
+    <AlertDescription>
+      `RadioBox` depends on `useRadioGroup()` context and must be used inside
+      `RadioGroup`. Rendering it standalone will break state handling.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`value`** - `string`
+Unique option value used for selection matching.
+
+**`isError`** - `boolean`
+Optional error style override for the option.
+
+**`size`** - `"sm" | "md" | "lg"`
+Size override for this option.
+
+**`children`** - `ReactNode`
+Content rendered beside the radio indicator.
+
+**`disabled`** - `boolean`
+Disables this option.
+
+**`className`** - `string`
+Additional classes applied to the option wrapper.
+
+**`onClick`** - `(event: MouseEvent<HTMLButtonElement>) => void`
+Click handler called before internal selection update.
+
+**`onFocus`** - `(event: FocusEvent<HTMLButtonElement>) => void`
+Focus handler called before internal selection update.
+
+**`...rest`** - `ButtonHTMLAttributes<HTMLButtonElement>`
+Any other valid native button attributes are forwarded.

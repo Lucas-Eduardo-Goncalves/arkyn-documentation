@@ -1,0 +1,391 @@
+import "../../_styles/arkynFieldWrapper.css";
+
+# MaskedInput
+
+import {
+  MaskedInput,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import { CreditCard, Shield } from "lucide-react";
+
+`MaskedInput` is a text field with declarative input masks, supporting labels, validation feedback, decorators, and loading behavior.
+
+```tsx
+import { MaskedInput } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <MaskedInput
+    name="phone"
+    mask="(__) _____-____"
+    replacement={{ _: /\d/ }}
+    placeholder="(00) 00000-0000"
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="phone"
+  mask="(__) _____-____"
+  replacement={{ _: /\d/ }}
+  placeholder="(00) 00000-0000"
+/>
+```
+
+## Mask Configuration
+
+Use `mask` and `replacement` to define accepted character positions and formatting.
+
+<div className="noContent column">
+  <MaskedInput
+    name="cpf"
+    label="CPF"
+    mask="___.___.___-__"
+    replacement="_"
+    showMask
+    placeholder="000.000.000-00"
+  />
+
+  <MaskedInput
+    name="zipCode"
+    label="ZIP Code"
+    mask="_____-___"
+    replacement={{ _: /\d/ }}
+    placeholder="00000-000"
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="cpf"
+  label="CPF"
+  mask="___.___.___-__"
+  replacement="_"
+  showMask
+  placeholder="000.000.000-00"
+/>
+
+<MaskedInput
+  name="zipCode"
+  label="ZIP Code"
+  mask="_____-___"
+  replacement={{ _: /\d/ }}
+  placeholder="00000-000"
+/>
+```
+
+## Sizes
+
+Use `size` to control spacing and icon proportions.
+
+<div className="noContent column">
+  <MaskedInput
+    name="dateMd"
+    label="Date (md)"
+    mask="__/__/____"
+    replacement="_"
+    size="md"
+  />
+  <MaskedInput
+    name="dateLg"
+    label="Date (lg)"
+    mask="__/__/____"
+    replacement="_"
+    size="lg"
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="dateMd"
+  label="Date (md)"
+  mask="__/__/____"
+  replacement="_"
+  size="md"
+/>
+<MaskedInput
+  name="dateLg"
+  label="Date (lg)"
+  mask="__/__/____"
+  replacement="_"
+  size="lg"
+/>
+```
+
+## Variants
+
+Use `variant` to define the visual container style.
+
+<div className="noContent column">
+  <MaskedInput
+    name="solidCard"
+    label="Solid"
+    mask="____ ____ ____ ____"
+    replacement={{ _: /\d/ }}
+    variant="solid"
+  />
+  <MaskedInput
+    name="outlineCard"
+    label="Outline"
+    mask="____ ____ ____ ____"
+    replacement={{ _: /\d/ }}
+    variant="outline"
+  />
+  <MaskedInput
+    name="underlineCard"
+    label="Underline"
+    mask="____ ____ ____ ____"
+    replacement={{ _: /\d/ }}
+    variant="underline"
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="solidCard"
+  label="Solid"
+  mask="____ ____ ____ ____"
+  replacement={{ _: /\d/ }}
+  variant="solid"
+/>
+<MaskedInput
+  name="outlineCard"
+  label="Outline"
+  mask="____ ____ ____ ____"
+  replacement={{ _: /\d/ }}
+  variant="outline"
+/>
+<MaskedInput
+  name="underlineCard"
+  label="Underline"
+  mask="____ ____ ____ ____"
+  replacement={{ _: /\d/ }}
+  variant="underline"
+/>
+```
+
+## Prefix, Suffix, And Icons
+
+Combine decorators and icons to give context for masked values.
+
+<div className="noContent column">
+  <MaskedInput
+    name="birthDate"
+    label="Birth Date"
+    mask="__/__/____"
+    replacement="_"
+    prefix="📅"
+    separate
+  />
+
+  <MaskedInput
+    name="creditCard"
+    label="Credit Card"
+    mask="____ ____ ____ ____"
+    replacement={{ _: /\d/ }}
+    leftIcon={CreditCard}
+    rightIcon={Shield}
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="birthDate"
+  label="Birth Date"
+  mask="__/__/____"
+  replacement="_"
+  prefix="📅"
+  separate
+/>
+
+<MaskedInput
+  name="creditCard"
+  label="Credit Card"
+  mask="____ ____ ____ ____"
+  replacement={{ _: /\d/ }}
+  leftIcon={CreditCard}
+  rightIcon={Shield}
+/>
+```
+
+## Disabled
+
+When disabled, the field blocks interaction while preserving masked display context.
+
+<div className="noContent">
+  <MaskedInput
+    name="disabledCpf"
+    label="CPF"
+    mask="___.___.___-__"
+    replacement="_"
+    value="123.456.789-00"
+    disabled
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="disabledCpf"
+  label="CPF"
+  mask="___.___.___-__"
+  replacement="_"
+  value="123.456.789-00"
+  disabled
+/>
+```
+
+## Loading
+
+Set `isLoading` to show spinner feedback and disable editing temporarily.
+
+<div className="noContent">
+  <MaskedInput
+    name="loadingCard"
+    label="Credit Card"
+    mask="____ ____ ____ ____"
+    replacement={{ _: /\d/ }}
+    leftIcon={CreditCard}
+    isLoading
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="loadingCard"
+  label="Credit Card"
+  mask="____ ____ ____ ____"
+  replacement={{ _: /\d/ }}
+  leftIcon={CreditCard}
+  isLoading
+/>
+```
+
+## Error State
+
+Use `errorMessage` directly or rely on field errors from `useForm`.
+
+<div className="noContent">
+  <MaskedInput
+    name="cpfError"
+    label="CPF"
+    mask="___.___.___-__"
+    replacement="_"
+    showAsterisk
+    errorMessage="Please enter a valid CPF"
+    showMask
+  />
+</div>
+
+```tsx
+<MaskedInput
+  name="cpfError"
+  label="CPF"
+  mask="___.___.___-__"
+  replacement="_"
+  showAsterisk
+  errorMessage="Please enter a valid CPF"
+  showMask
+/>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Mask rendering controls</AlertTitle>
+    <AlertDescription>
+      `showMask` controls placeholder visibility of mask characters, while
+      `separate` changes how mask literals are handled by the underlying input
+      mask engine.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`name`** - `string`
+Field name used in form submissions.
+
+**`mask`** - `string`
+Mask pattern string that defines the input format.
+
+**`replacement`** - `string | Replacement`
+Replacement rule used to map editable mask positions.
+
+**`separate`** - `boolean`
+Controls separation behavior for mask literals.
+
+**`showMask`** - `boolean`
+Controls whether mask placeholders are shown.
+
+**`label`** - `string`
+Optional label shown above the field.
+
+**`errorMessage`** - `string`
+Custom error text rendered below the field.
+
+**`isLoading`** - `boolean` (default: `false`)
+Shows spinner feedback and disables interaction.
+
+**`size`** - `"md" | "lg"` (default: `"md"`)
+Controls field sizing and icon proportions.
+
+**`variant`** - `"solid" | "outline" | "underline"` (default: `"solid"`)
+Defines the visual container style.
+
+**`prefix`** - `string | LucideIcon`
+Text or icon rendered before masked content.
+
+**`suffix`** - `string | LucideIcon`
+Text or icon rendered after masked content.
+
+**`showAsterisk`** - `boolean`
+Displays required indicator on the label.
+
+**`leftIcon`** - `LucideIcon`
+Icon rendered on the left side of the input.
+
+**`rightIcon`** - `LucideIcon`
+Icon rendered on the right side of the input.
+
+**`value`** - `string`
+Controlled masked value.
+
+**`defaultValue`** - `string`
+Initial value for uncontrolled usage.
+
+**`disabled`** - `boolean`
+Disables user interaction.
+
+**`readOnly`** - `boolean`
+Prevents editing while keeping focus behavior.
+
+**`onFocus`** - `(event: FocusEvent<HTMLInputElement>) => void`
+Called when the input receives focus.
+
+**`onBlur`** - `(event: FocusEvent<HTMLInputElement>) => void`
+Called when the input loses focus.
+
+**`id`** - `string`
+Custom id used to connect label and input.
+
+**`placeholder`** - `string`
+Placeholder text displayed when there is no value.
+
+**`title`** - `string`
+Native title attribute on the clickable section wrapper.
+
+**`style`** - `CSSProperties`
+Inline styles applied to the clickable section wrapper.
+
+**`className`** - `string`
+Additional class names for the outer field wrapper.
+
+**`...rest`** - `InputHTMLAttributes<HTMLInputElement>`
+Other valid native input attributes are forwarded except `size`, `prefix`, `name`, and `type` typing overrides from this component.

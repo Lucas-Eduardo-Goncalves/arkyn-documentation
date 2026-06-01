@@ -1,0 +1,92 @@
+# ToastProvider
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  ToastProvider,
+  useToast,
+} from "@arkyn/components";
+
+ToastProvider exposes toast notification actions and renders the global toaster container.
+
+```tsx
+import { ToastProvider } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <ToastProvider>
+    <div>Application with toast support</div>
+  </ToastProvider>
+</div>
+
+```tsx
+<ToastProvider>
+  <App />
+</ToastProvider>
+```
+
+## Triggering Toast Notifications
+
+Use `useToast()` inside provider scope to show success and danger notifications.
+
+<div className="noContent">
+  <ToastProvider>
+    <div>Toast actions available via context</div>
+  </ToastProvider>
+</div>
+
+```tsx
+function SaveAction() {
+  const { showToast } = useToast();
+
+  return (
+    <button
+      onClick={() =>
+        showToast({
+          message: "Saved successfully",
+          type: "success",
+        })
+      }
+    >
+      Save
+    </button>
+  );
+}
+```
+
+## Toast Types
+
+The provider supports two schemas with predefined visual styles.
+
+<div className="noContent row">
+  <div>success</div>
+  <div>danger</div>
+</div>
+
+```tsx
+showToast({ message: "Operation completed", type: "success" });
+showToast({ message: "Something went wrong", type: "danger" });
+```
+
+## Notes
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Hook dependency</AlertTitle>
+    <AlertDescription>
+      The <code>useToast</code> hook must be called inside{" "}
+      <code>ToastProvider</code>. Outside provider scope, it throws an error.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`children`** - `ReactNode`
+React subtree that can access toast context and toaster rendering.

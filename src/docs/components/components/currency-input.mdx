@@ -1,0 +1,304 @@
+# CurrencyInput
+
+import {
+  CurrencyInput,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import { Calculator, DollarSign } from "lucide-react";
+
+`CurrencyInput` is a formatted currency field that masks user input based on a selected locale while still submitting a normalized numeric value.
+
+```tsx
+import { CurrencyInput } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <CurrencyInput name="price" locale="USD" placeholder="Enter price" />
+</div>
+
+```tsx
+<CurrencyInput name="price" locale="USD" placeholder="Enter price" />
+```
+
+## Locales And Formatting
+
+Choose the `locale` prop to control separators, decimal format, and currency symbol behavior.
+
+<div className="noContent column">
+  <CurrencyInput name="usdAmount" locale="USD" label="Amount (USD)" />
+  <CurrencyInput name="eurAmount" locale="EUR" label="Amount (EUR)" />
+  <CurrencyInput name="brlAmount" locale="BRL" label="Amount (BRL)" />
+</div>
+
+```tsx
+<CurrencyInput name="usdAmount" locale="USD" label="Amount (USD)" />
+<CurrencyInput name="eurAmount" locale="EUR" label="Amount (EUR)" />
+<CurrencyInput name="brlAmount" locale="BRL" label="Amount (BRL)" />
+```
+
+## Sizes
+
+Use `size` to adjust field height and icon sizing.
+
+<div className="noContent column">
+  <CurrencyInput
+    name="investmentMd"
+    locale="GBP"
+    label="Investment"
+    size="md"
+  />
+  <CurrencyInput
+    name="investmentLg"
+    locale="GBP"
+    label="Investment"
+    size="lg"
+  />
+</div>
+
+```tsx
+<CurrencyInput name="investmentMd" locale="GBP" label="Investment" size="md" />
+<CurrencyInput name="investmentLg" locale="GBP" label="Investment" size="lg" />
+```
+
+## Variants
+
+Use `variant` to change the input visual treatment.
+
+<div className="noContent column">
+  <CurrencyInput name="solidPrice" locale="USD" label="Solid" variant="solid" />
+  <CurrencyInput
+    name="outlinePrice"
+    locale="USD"
+    label="Outline"
+    variant="outline"
+  />
+  <CurrencyInput
+    name="underlinePrice"
+    locale="USD"
+    label="Underline"
+    variant="underline"
+  />
+</div>
+
+```tsx
+<CurrencyInput name="solidPrice" locale="USD" label="Solid" variant="solid" />
+<CurrencyInput name="outlinePrice" locale="USD" label="Outline" variant="outline" />
+<CurrencyInput
+  name="underlinePrice"
+  locale="USD"
+  label="Underline"
+  variant="underline"
+/>
+```
+
+## Prefix, Suffix, And Icons
+
+You can render text or icon decorators before and after the input content.
+
+<div className="noContent column">
+  <CurrencyInput
+    name="budget"
+    locale="EUR"
+    label="Budget"
+    leftIcon={DollarSign}
+    rightIcon={Calculator}
+  />
+  <CurrencyInput
+    name="investment"
+    locale="GBP"
+    label="Investment Amount"
+    prefix="£"
+    suffix="GBP"
+  />
+</div>
+
+```tsx
+<CurrencyInput
+  name="budget"
+  locale="EUR"
+  label="Budget"
+  leftIcon={DollarSign}
+  rightIcon={Calculator}
+/>
+
+<CurrencyInput
+  name="investment"
+  locale="GBP"
+  label="Investment Amount"
+  prefix="£"
+  suffix="GBP"
+/>
+```
+
+## Disabled
+
+In disabled state, the component blocks interactions and keeps the masked value visible through placeholder behavior.
+
+<div className="noContent">
+  <CurrencyInput
+    name="creditLimit"
+    locale="USD"
+    label="Credit Limit"
+    defaultValue={5000}
+    disabled
+  />
+</div>
+
+```tsx
+<CurrencyInput
+  name="creditLimit"
+  locale="USD"
+  label="Credit Limit"
+  defaultValue={5000}
+  disabled
+/>
+```
+
+## Loading
+
+Set `isLoading` to show a spinner and temporarily disable editing.
+
+<div className="noContent">
+  <CurrencyInput
+    name="processingAmount"
+    locale="USD"
+    label="Processing Amount"
+    isLoading
+    rightIcon={Calculator}
+  />
+</div>
+
+```tsx
+<CurrencyInput
+  name="processingAmount"
+  locale="USD"
+  label="Processing Amount"
+  isLoading
+  rightIcon={Calculator}
+/>
+```
+
+## Error State
+
+Provide an `errorMessage` to render field feedback under the input.
+
+<div className="noContent">
+  <CurrencyInput
+    name="salary"
+    locale="BRL"
+    label="Monthly Salary"
+    showAsterisk
+    errorMessage="Please enter a valid amount"
+  />
+</div>
+
+```tsx
+<CurrencyInput
+  name="salary"
+  locale="BRL"
+  label="Monthly Salary"
+  showAsterisk
+  errorMessage="Please enter a valid amount"
+/>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Hidden submitted value</AlertTitle>
+    <AlertDescription>
+      The component renders an internal hidden input with the provided `name`.
+      This hidden field submits the normalized numeric value, while the visible
+      input only handles masked presentation.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`name`** - `string`
+Field name used by the hidden submitted input.
+
+**`locale`** - `"USD" | "EUR" | "JPY" | "GBP" | "AUD" | "CAD" | "CHF" | "CNY"`,
+`"SEK" | "NZD" | "BRL" | "INR" | "RUB" | "ZAR" | "MXN" | "SGD"`,
+`"HKD" | "NOK" | "KRW" | "TRY" | "IDR" | "THB"`
+Currency locale used to mask and normalize values.
+
+**`label`** - `string`
+Label shown above the input.
+
+**`errorMessage`** - `string`
+Validation message rendered below the field.
+
+**`isLoading`** - `boolean` (default: `false`)
+Shows a spinner and disables interaction.
+
+**`size`** - `"md" | "lg"` (default: `"md"`)
+Controls component sizing.
+
+**`variant`** - `"solid" | "outline" | "underline"` (default: `"solid"`)
+Controls the visual style.
+
+**`prefix`** - `string | LucideIcon`
+Text or icon displayed before the value.
+
+**`suffix`** - `string | LucideIcon`
+Text or icon displayed after the value.
+
+**`showAsterisk`** - `boolean`
+Displays a required indicator on the label.
+
+**`leftIcon`** - `LucideIcon`
+Icon rendered on the left side of the visible input.
+
+**`rightIcon`** - `LucideIcon`
+Icon rendered on the right side of the visible input.
+
+**`max`** - `number` (default: `1000000000`)
+Maximum allowed numeric value for mask updates.
+
+**`value`** - `number`
+Controlled numeric value.
+
+**`defaultValue`** - `number`
+Initial numeric value for uncontrolled usage.
+
+**`onChange`** - `(event: ChangeEvent<HTMLInputElement>, originalValue: string, maskedValue: string) => void`
+Called on value changes with the DOM event, normalized value, and masked value.
+
+**`disabled`** - `boolean`
+Disables input interactions.
+
+**`readOnly`** - `boolean`
+Keeps focus and styling behavior while preventing edits.
+
+**`onFocus`** - `(event: FocusEvent<HTMLInputElement>) => void`
+Triggered when the visible input receives focus.
+
+**`onBlur`** - `(event: FocusEvent<HTMLInputElement>) => void`
+Triggered when the visible input loses focus.
+
+**`id`** - `string`
+Custom input id used to connect label and input.
+
+**`title`** - `string`
+Native title attribute applied to the clickable wrapper section.
+
+**`style`** - `CSSProperties`
+Inline styles applied to the clickable wrapper section.
+
+**`className`** - `string`
+Custom class for the outer field wrapper.
+
+**`placeholder`** - `string`
+Visible input placeholder when not disabled.
+
+**`...rest`** - `InputHTMLAttributes<HTMLInputElement>`
+Other native input attributes are forwarded except: `size`, `prefix`, `name`, `type`, `max`, `defaultValue`, `value`, `onChange`, and `placeholder` typing override rules from this component.

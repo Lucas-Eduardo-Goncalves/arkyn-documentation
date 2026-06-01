@@ -1,0 +1,416 @@
+# Select
+
+import {
+  Select,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import { Globe } from "lucide-react";
+
+`Select` is a single-choice dropdown with optional search, custom decorators, validation feedback, and controlled or uncontrolled state support.
+
+```tsx
+import { Select } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <Select
+    name="category"
+    options={[
+      { label: "Technology", value: "tech" },
+      { label: "Design", value: "design" },
+      { label: "Marketing", value: "marketing" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="category"
+  options={[
+    { label: "Technology", value: "tech" },
+    { label: "Design", value: "design" },
+    { label: "Marketing", value: "marketing" },
+  ]}
+/>
+```
+
+## Sizes
+
+Use `size` to control field spacing and icon proportions.
+
+<div className="noContent column">
+  <Select
+    name="sizeMd"
+    label="Size md"
+    size="md"
+    options={[
+      { label: "Option A", value: "a" },
+      { label: "Option B", value: "b" },
+    ]}
+  />
+
+  <Select
+    name="sizeLg"
+    label="Size lg"
+    size="lg"
+    options={[
+      { label: "Option A", value: "a" },
+      { label: "Option B", value: "b" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="sizeMd"
+  label="Size md"
+  size="md"
+  options={[
+    { label: "Option A", value: "a" },
+    { label: "Option B", value: "b" },
+  ]}
+/>
+
+<Select
+  name="sizeLg"
+  label="Size lg"
+  size="lg"
+  options={[
+    { label: "Option A", value: "a" },
+    { label: "Option B", value: "b" },
+  ]}
+/>
+```
+
+## Variants
+
+Use `variant` to define the visual style of the select field.
+
+<div className="noContent column">
+  <Select
+    name="solidSelect"
+    label="Solid"
+    variant="solid"
+    options={[
+      { label: "HR", value: "hr" },
+      { label: "IT", value: "it" },
+    ]}
+  />
+
+<Select
+  name="outlineSelect"
+  label="Outline"
+  variant="outline"
+  options={[
+    { label: "HR", value: "hr" },
+    { label: "IT", value: "it" },
+  ]}
+/>
+
+  <Select
+    name="underlineSelect"
+    label="Underline"
+    variant="underline"
+    options={[
+      { label: "HR", value: "hr" },
+      { label: "IT", value: "it" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="solidSelect"
+  label="Solid"
+  variant="solid"
+  options={[
+    { label: "HR", value: "hr" },
+    { label: "IT", value: "it" },
+  ]}
+/>
+
+<Select
+  name="outlineSelect"
+  label="Outline"
+  variant="outline"
+  options={[
+    { label: "HR", value: "hr" },
+    { label: "IT", value: "it" },
+  ]}
+/>
+
+<Select
+  name="underlineSelect"
+  label="Underline"
+  variant="underline"
+  options={[
+    { label: "HR", value: "hr" },
+    { label: "IT", value: "it" },
+  ]}
+/>
+```
+
+## Search And Empty State
+
+Enable `isSearchable` to filter options and customize no-result text with `notFoundText`.
+
+<div className="noContent">
+  <Select
+    name="country"
+    label="Country"
+    isSearchable
+    leftIcon={Globe}
+    notFoundText="No countries found"
+    options={[
+      { label: "Brazil", value: "br" },
+      { label: "Canada", value: "ca" },
+      { label: "Germany", value: "de" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="country"
+  label="Country"
+  isSearchable
+  leftIcon={Globe}
+  notFoundText="No countries found"
+  options={countryOptions}
+/>
+```
+
+## Controlled Value And Close Behavior
+
+Use `value` with `onChange` for controlled mode and configure dropdown behavior with `closeOnSelect`.
+
+<div className="noContent column">
+  <Select
+    name="tag"
+    label="Tag"
+    value="frontend"
+    closeOnSelect={false}
+    options={[
+      { label: "Frontend", value: "frontend" },
+      { label: "Backend", value: "backend" },
+      { label: "Docs", value: "docs" },
+    ]}
+  />
+
+  <Select
+    name="department"
+    label="Department"
+    prefix="Dept:"
+    closeOnSelect
+    variant="underline"
+    defaultValue="hr"
+    options={[
+      { label: "HR", value: "hr" },
+      { label: "IT", value: "it" },
+      { label: "Operations", value: "ops" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="tag"
+  label="Tag"
+  value={selectedTag}
+  onChange={setSelectedTag}
+  onSearch={handleSearch}
+  closeOnSelect={false}
+  options={tagOptions}
+/>
+
+<Select
+  name="department"
+  label="Department"
+  prefix="Dept:"
+  closeOnSelect
+  variant="underline"
+  defaultValue="hr"
+  options={departmentOptions}
+/>
+```
+
+## Disabled
+
+Set `disabled` to block opening, searching, and value changes.
+
+<div className="noContent">
+  <Select
+    name="disabledSelect"
+    label="Status"
+    disabled
+    defaultValue="active"
+    options={[
+      { label: "Active", value: "active" },
+      { label: "Inactive", value: "inactive" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="disabledSelect"
+  label="Status"
+  disabled
+  defaultValue="active"
+  options={[
+    { label: "Active", value: "active" },
+    { label: "Inactive", value: "inactive" },
+  ]}
+/>
+```
+
+## Loading
+
+Set `isLoading` to indicate async loading and lock interactions.
+
+<div className="noContent">
+  <Select
+    name="loadingTags"
+    label="Tag"
+    isLoading
+    options={[
+      { label: "A", value: "a" },
+      { label: "B", value: "b" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="loadingTags"
+  label="Tag"
+  isLoading
+  options={[
+    { label: "A", value: "a" },
+    { label: "B", value: "b" },
+  ]}
+/>
+```
+
+## Error State
+
+Provide `errorMessage` directly or rely on field errors from form context.
+
+<div className="noContent">
+  <Select
+    name="skill"
+    label="Select your skill"
+    showAsterisk
+    errorMessage="Please select at least one skill"
+    options={[
+      { label: "JavaScript", value: "js" },
+      { label: "TypeScript", value: "ts" },
+      { label: "React", value: "react" },
+    ]}
+  />
+</div>
+
+```tsx
+<Select
+  name="skill"
+  label="Select your skill"
+  showAsterisk
+  errorMessage="Please select at least one skill"
+  options={skillOptions}
+/>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Hidden submitted value</AlertTitle>
+    <AlertDescription>
+      The component writes the current selection into a hidden input using the
+      provided `name`, so form submissions include the selected option value.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`name`** - `string`
+Field name used for hidden input submission.
+
+**`options`** - `{ label: string; value: string }[]`
+List of selectable options.
+
+**`id`** - `string`
+Custom identifier for accessibility and container mapping.
+
+**`value`** - `string`
+Controlled selected value.
+
+**`defaultValue`** - `string` (default: `""`)
+Initial selected value for uncontrolled usage.
+
+**`showAsterisk`** - `boolean`
+Displays required indicator in the label.
+
+**`label`** - `string`
+Optional label shown above the field.
+
+**`errorMessage`** - `string`
+Custom error message shown below the field.
+
+**`placeholder`** - `string` (default: `"Selecione..."`)
+Text shown when no option is selected.
+
+**`notFoundText`** - `string` (default: `"Sem opções disponíveis"`)
+Text displayed when search returns no matches.
+
+**`className`** - `string`
+Additional classes for the outer wrapper.
+
+**`disabled`** - `boolean` (default: `false`)
+Disables interactions.
+
+**`readOnly`** - `boolean` (default: `false`)
+Prevents value changes while keeping visual state.
+
+**`isLoading`** - `boolean` (default: `false`)
+Shows loading state and disables interactions.
+
+**`isSearchable`** - `boolean` (default: `false`)
+Enables search input inside options container.
+
+**`closeOnSelect`** - `boolean` (default: `true`)
+Controls whether options close after selecting an item.
+
+**`onSearch`** - `(value: string) => void`
+Called when search text changes.
+
+**`onChange`** - `(value: string) => void`
+Called when selected value changes.
+
+**`onFocus`** - `() => void`
+Called when component receives focus.
+
+**`onBlur`** - `(e: FocusEvent<HTMLDivElement>) => void`
+Called when component loses focus.
+
+**`size`** - `"md" | "lg"` (default: `"md"`)
+Controls component dimensions.
+
+**`variant`** - `"solid" | "outline" | "underline"` (default: `"solid"`)
+Defines visual style.
+
+**`prefix`** - `string | LucideIcon`
+Text or icon shown before selected content.
+
+**`leftIcon`** - `LucideIcon`
+Optional left-side icon.
+
+**`optionMaxHeight`** - `number`
+Maximum dropdown options height.

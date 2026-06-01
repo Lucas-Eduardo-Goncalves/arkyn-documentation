@@ -1,0 +1,292 @@
+# Textarea
+
+import {
+  Textarea,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+Textarea is a multi-line input field with label support, validation feedback, and configurable visual styles.
+
+```tsx
+import { Textarea } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <Textarea name="description" placeholder="Enter description..." />
+</div>
+
+```tsx
+<Textarea name="description" placeholder="Enter description..." />
+```
+
+## Sizes
+
+Use size to control spacing and overall field density.
+
+<div className="noContent column">
+  <Textarea
+    name="summaryMd"
+    label="Summary (md)"
+    size="md"
+    placeholder="Medium textarea"
+    rows={4}
+  />
+
+  <Textarea
+    name="summaryLg"
+    label="Summary (lg)"
+    size="lg"
+    placeholder="Large textarea"
+    rows={6}
+  />
+</div>
+
+```tsx
+<Textarea
+  name="summaryMd"
+  label="Summary (md)"
+  size="md"
+  placeholder="Medium textarea"
+  rows={4}
+/>
+
+<Textarea
+  name="summaryLg"
+  label="Summary (lg)"
+  size="lg"
+  placeholder="Large textarea"
+  rows={6}
+/>
+```
+
+## Variants
+
+Use variant to switch between container styles.
+
+<div className="noContent column">
+  <Textarea
+    name="solidNotes"
+    label="Solid"
+    variant="solid"
+    placeholder="Solid variant"
+  />
+
+  <Textarea
+    name="outlineNotes"
+    label="Outline"
+    variant="outline"
+    placeholder="Outline variant"
+  />
+</div>
+
+```tsx
+<Textarea
+  name="solidNotes"
+  label="Solid"
+  variant="solid"
+  placeholder="Solid variant"
+/>
+
+<Textarea
+  name="outlineNotes"
+  label="Outline"
+  variant="outline"
+  placeholder="Outline variant"
+/>
+```
+
+## Labels And Validation
+
+Combine label, required indicator, and error message to improve form clarity.
+
+<div className="noContent">
+  <Textarea
+    name="bio"
+    label="Biography"
+    showAsterisk
+    placeholder="Tell us about yourself"
+    errorMessage="Biography is required"
+    rows={5}
+  />
+</div>
+
+```tsx
+<Textarea
+  name="bio"
+  label="Biography"
+  showAsterisk
+  placeholder="Tell us about yourself"
+  errorMessage="Biography is required"
+  rows={5}
+/>
+```
+
+## Controlled And Read-Only Usage
+
+Use value with onChange for controlled fields, and readOnly for display-only content.
+
+<div className="noContent column">
+  <Textarea
+    name="message"
+    label="Message"
+    value="This is a controlled value"
+    rows={4}
+  />
+
+  <Textarea
+    name="terms"
+    label="Terms and Conditions"
+    value="Read-only content example"
+    readOnly
+    rows={6}
+    variant="outline"
+  />
+</div>
+
+```tsx
+<Textarea
+  name="message"
+  label="Message"
+  value={message}
+  onChange={(e) => setMessage(e.target.value)}
+  placeholder="Type your message..."
+  rows={5}
+  showAsterisk
+/>
+
+<Textarea
+  name="terms"
+  label="Terms and Conditions"
+  value={termsContent}
+  readOnly
+  rows={10}
+  variant="outline"
+/>
+```
+
+## Disabled
+
+Set disabled to block interaction while preserving displayed content.
+
+<div className="noContent">
+  <Textarea
+    name="disabledField"
+    label="Disabled Field"
+    value="This field is disabled"
+    disabled
+    placeholder="Cannot edit this field"
+  />
+</div>
+
+```tsx
+<Textarea
+  name="disabledField"
+  label="Disabled Field"
+  value="This field is disabled"
+  disabled
+  placeholder="Cannot edit this field"
+/>
+```
+
+## Error State
+
+Error feedback can come from errorMessage prop or form context.
+
+<div className="noContent">
+  <Textarea
+    name="feedback"
+    label="Feedback"
+    errorMessage="Please provide feedback"
+    placeholder="Share your feedback"
+    rows={4}
+  />
+</div>
+
+```tsx
+<Textarea
+  name="feedback"
+  label="Feedback"
+  errorMessage="Please provide feedback"
+  placeholder="Share your feedback"
+  rows={4}
+/>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Click-to-focus container</AlertTitle>
+    <AlertDescription>
+      The component wraps the textarea in a clickable section. Clicking the
+      container focuses the textarea when interaction is allowed.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`name`** - `string`
+Required field name used for form handling and textarea identification.
+
+**`label`** - `string`
+Optional label displayed above the textarea.
+
+**`showAsterisk`** - `boolean`
+Displays required indicator in the label.
+
+**`errorMessage`** - `string`
+Custom error text rendered below the textarea.
+
+**`size`** - `"md" | "lg"` (default: `"md"`)
+Controls textarea sizing.
+
+**`variant`** - `"solid" | "outline"` (default: `"solid"`)
+Defines textarea container style.
+
+**`value`** - `string`
+Controlled textarea value.
+
+**`defaultValue`** - `string`
+Initial value for uncontrolled usage.
+
+**`disabled`** - `boolean`
+Disables input interaction.
+
+**`readOnly`** - `boolean`
+Prevents editing while keeping focus behavior.
+
+**`onFocus`** - `(event: FocusEvent<HTMLTextAreaElement>) => void`
+Called when textarea receives focus.
+
+**`onBlur`** - `(event: FocusEvent<HTMLTextAreaElement>) => void`
+Called when textarea loses focus.
+
+**`id`** - `string`
+Custom id for label association.
+
+**`placeholder`** - `string`
+Placeholder text shown when there is no value.
+
+**`rows`** - `number`
+Visible number of text lines.
+
+**`cols`** - `number`
+Visible character width.
+
+**`className`** - `string`
+Additional class names for the wrapper.
+
+**`style`** - `CSSProperties`
+Inline styles applied to the clickable section.
+
+**`title`** - `string`
+Native title attribute on the clickable section.
+
+**`...rest`** - `Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "name" | "value" | "defaultValue">`
+Other valid native textarea attributes are forwarded except the overridden ones.

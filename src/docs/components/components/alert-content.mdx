@@ -1,0 +1,73 @@
+# AlertContent
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+The `AlertContent` component wraps the textual region of an alert and groups title and description content.
+
+```tsx
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent column">
+  <AlertContainer schema="success">
+    <AlertIcon />
+    <AlertContent>
+      <AlertDescription>Operation completed.</AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+</div>
+
+```tsx
+<AlertContainer schema="success">
+  <AlertIcon />
+  <AlertContent>
+    <AlertDescription>Operation completed.</AlertDescription>
+  </AlertContent>
+</AlertContainer>
+```
+
+## With Title and Description
+
+Use `AlertContent` as the parent for `AlertTitle` and `AlertDescription`.
+
+<div className="noContent column">
+  <AlertContainer schema="info">
+    <AlertIcon />
+    <AlertContent>
+      <AlertTitle>Heads up</AlertTitle>
+      <AlertDescription>A new version is available.</AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+</div>
+
+```tsx
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Heads up</AlertTitle>
+    <AlertDescription>A new version is available.</AlertDescription>
+  </AlertContent>
+</AlertContainer>
+```
+
+## Properties
+
+**`children`** - `React.ReactNode`
+Content rendered inside the alert content area.
+
+**Standard HTML div attributes** - `HTMLAttributes<HTMLDivElement>`
+All native `div` props are supported, including `className`, `id`, and accessibility attributes.

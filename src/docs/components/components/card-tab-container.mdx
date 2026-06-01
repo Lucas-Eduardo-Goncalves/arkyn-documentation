@@ -1,0 +1,129 @@
+# CardTabContainer
+
+import { CardTabButton, CardTabContainer } from "@arkyn/components";
+
+The `CardTabContainer` component provides the state and context used to group `CardTabButton` components into tabbed navigation.
+
+```tsx
+import { CardTabButton, CardTabContainer } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent column">
+  <CardTabContainer defaultValue="home">
+    <CardTabButton value="home">Home</CardTabButton>
+    <CardTabButton value="about">About</CardTabButton>
+    <CardTabButton value="contact">Contact</CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+<CardTabContainer defaultValue="home">
+  <CardTabButton value="home">Home</CardTabButton>
+  <CardTabButton value="about">About</CardTabButton>
+  <CardTabButton value="contact">Contact</CardTabButton>
+</CardTabContainer>
+```
+
+## Controlled Behavior
+
+Use `defaultValue` to set the initial active tab and `onChange` to react when the selection changes.
+
+<div className="noContent column">
+  <CardTabContainer defaultValue="dashboard" onChange={(value) => value}>
+    <CardTabButton value="dashboard">Dashboard</CardTabButton>
+    <CardTabButton value="analytics">Analytics</CardTabButton>
+    <CardTabButton value="settings">Settings</CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+<CardTabContainer
+  defaultValue="dashboard"
+  onChange={(value) => console.log("Active tab:", value)}
+>
+  <CardTabButton value="dashboard">Dashboard</CardTabButton>
+  <CardTabButton value="analytics">Analytics</CardTabButton>
+  <CardTabButton value="settings">Settings</CardTabButton>
+</CardTabContainer>
+```
+
+## Disabled
+
+Use `disabled` on the container when all tab buttons should be unavailable.
+
+<div className="noContent column">
+  <CardTabContainer disabled>
+    <CardTabButton value="tab-1">Tab 1</CardTabButton>
+    <CardTabButton value="tab-2">Tab 2</CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+<CardTabContainer disabled>
+  <CardTabButton value="tab-1">Tab 1</CardTabButton>
+  <CardTabButton value="tab-2">Tab 2</CardTabButton>
+</CardTabContainer>
+```
+
+## Usage Notes
+
+The container stores the active tab internally and exposes it to child buttons through context. You can still compose it with local React state for rendering the associated tab panels.
+
+<div className="noContent column">
+  <CardTabContainer
+    defaultValue="profile"
+    className="custom-tabs"
+    role="tablist"
+  >
+    <CardTabButton value="profile">Profile</CardTabButton>
+    <CardTabButton value="account">Account</CardTabButton>
+    <CardTabButton value="notifications">Notifications</CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+import { useState } from "react";
+import { CardTabButton, CardTabContainer } from "@arkyn/components";
+
+function MyTabs() {
+  const [activeTab, setActiveTab] = useState("profile");
+
+  return (
+    <div>
+      <CardTabContainer
+        defaultValue={activeTab}
+        onChange={setActiveTab}
+        className="custom-tabs"
+        role="tablist"
+      >
+        <CardTabButton value="profile">Profile</CardTabButton>
+        <CardTabButton value="account">Account</CardTabButton>
+        <CardTabButton value="notifications">Notifications</CardTabButton>
+      </CardTabContainer>
+
+      {activeTab === "profile" && <ProfileContent />}
+      {activeTab === "account" && <AccountContent />}
+      {activeTab === "notifications" && <NotificationsContent />}
+    </div>
+  );
+}
+```
+
+## Properties
+
+**`children`** - `React.ReactNode`
+CardTabButton components and other content rendered inside the navigation container.
+
+**`disabled`** - `boolean` (default: `false`)
+Disables all tab buttons provided through the container context.
+
+**`defaultValue`** - `string`
+Initial tab value selected when the container mounts.
+
+**`onChange`** - `(index: string) => void`
+Callback fired when the active tab changes.
+
+**Standard HTML nav attributes** - `HTMLAttributes<HTMLElement>` except `onClick`, `children`, `ref`, and `onChange`
+All other native navigation container props are supported, including `className`, `role`, and accessibility attributes.

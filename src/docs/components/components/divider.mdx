@@ -1,0 +1,121 @@
+# Divider
+
+import {
+  Divider,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+`Divider` is a lightweight separator used to visually split related content blocks in horizontal or vertical layouts.
+
+```tsx
+import { Divider } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <Divider />
+</div>
+
+```tsx
+<Divider />
+```
+
+## Orientation
+
+Use `orientation` to switch between horizontal section breaks and vertical separators.
+
+<div className="noContent column" style={{ width: "100%", gap: 16 }}>
+  <div style={{ width: "100%" }}>
+    <p>Horizontal separator</p>
+    <Divider orientation="horizontal" />
+  </div>
+
+  <div
+    style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 12,
+      height: 48,
+    }}
+  >
+    <span>Left</span>
+    <Divider orientation="vertical" style={{ height: "100%" }} />
+    <span>Right</span>
+  </div>
+</div>
+
+```tsx
+<Divider orientation="horizontal" />
+
+<div style={{ display: "flex", alignItems: "center", gap: 12, height: 48 }}>
+  <span>Left</span>
+  <Divider orientation="vertical" style={{ height: "100%" }} />
+  <span>Right</span>
+</div>
+```
+
+## Custom Styling
+
+Pass `className` and native `div` attributes to adapt spacing, color, and layout behavior.
+
+<div className="noContent column" style={{ width: "100%", gap: 16 }}>
+  <Divider className="my-custom-divider" />
+
+  <div style={{ width: "100%" }}>
+    <h4 style={{ marginBottom: 8 }}>Section 1</h4>
+    <p style={{ marginBottom: 8 }}>Content for section 1</p>
+    <Divider />
+    <h4 style={{ marginTop: 8, marginBottom: 8 }}>Section 2</h4>
+    <p>Content for section 2</p>
+  </div>
+</div>
+
+```tsx
+<Divider className="my-custom-divider" />
+
+<div>
+  <h2>Section 1</h2>
+  <p>Content for section 1</p>
+  <Divider />
+  <h2>Section 2</h2>
+  <p>Content for section 2</p>
+</div>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Semantic usage note</AlertTitle>
+    <AlertDescription>
+      `Divider` renders a `div` element. For semantic section breaks in rich
+      documents, you may prefer `hr` depending on accessibility and content
+      structure requirements.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`orientation`** - `"horizontal" | "vertical"` (default: `"horizontal"`)
+Defines whether the divider is rendered as a horizontal or vertical separator.
+
+**`className`** - `string`
+Adds custom classes to the root element.
+
+**`id`** - `string`
+Sets the id attribute on the root element.
+
+**`style`** - `CSSProperties`
+Applies inline styles to the root element.
+
+**`role`** - `AriaRole`
+Defines the ARIA role for accessibility scenarios.
+
+**`...rest`** - `HTMLAttributes<HTMLDivElement>`
+Any other valid native `div` attributes are forwarded to the root element.

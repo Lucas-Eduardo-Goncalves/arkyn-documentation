@@ -1,0 +1,95 @@
+# FormProvider
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  FormProvider,
+  useForm,
+} from "@arkyn/components";
+
+FormProvider exposes form metadata such as field errors to descendants through form context.
+
+```tsx
+import { FormProvider } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <FormProvider fieldErrors={{ email: "Invalid email" }}>
+    <div>Form fields</div>
+  </FormProvider>
+</div>
+
+```tsx
+<FormProvider fieldErrors={{ email: "Invalid email" }}>
+  <MyFormFields />
+</FormProvider>
+```
+
+## Field Errors Distribution
+
+Use a single error object and consume errors from any child component with `useForm()`.
+
+<div className="noContent">
+  <FormProvider fieldErrors={{ username: "Required" }}>
+    <div>Children can read fieldErrors</div>
+  </FormProvider>
+</div>
+
+```tsx
+function UsernameField() {
+  const { fieldErrors } = useForm();
+
+  return (
+    <div>
+      <input name="username" />
+      {fieldErrors?.username && <span>{fieldErrors.username}</span>}
+    </div>
+  );
+}
+```
+
+## Optional Form Wrapper
+
+Provide the `form` prop when you need Provider to clone and wrap children with a custom `<form>` element.
+
+<div className="noContent">
+  <FormProvider form={<form />}>
+    <div>Wrapped by provided form element</div>
+  </FormProvider>
+</div>
+
+```tsx
+<FormProvider fieldErrors={errors} form={<form onSubmit={handleSubmit} />}>
+  <Input name="email" />
+  <button type="submit">Submit</button>
+</FormProvider>
+```
+
+## Notes
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Hook dependency</AlertTitle>
+    <AlertDescription>
+      The <code>useForm</code> hook reads values from <code>FormProvider</code>{" "}
+      context. Wrap all form-aware components with this provider.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`children`** - `ReactNode`
+React subtree that can consume form context.
+
+**`fieldErrors`** - `any`
+Validation errors object indexed by field name.
+
+**`form`** - `React.ReactElement`
+Optional form element used to wrap children via `cloneElement`.

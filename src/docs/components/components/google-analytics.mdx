@@ -1,0 +1,86 @@
+# GoogleAnalytics
+
+import {
+  GoogleAnalytics,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+`GoogleAnalytics` injects Google Analytics 4 scripts into the document head and initializes `gtag` with the provided measurement id.
+
+```tsx
+import { GoogleAnalytics } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <GoogleAnalytics measurementId="G-XXXXXXXXXX" />
+</div>
+
+```tsx
+<GoogleAnalytics measurementId="G-XXXXXXXXXX" />
+```
+
+## Environment Behavior
+
+By default, the component renders only in production. Use `showInDevMode` when you need local validation.
+
+<div className="noContent column">
+  <GoogleAnalytics measurementId="G-XXXXXXXXXX" />
+  <GoogleAnalytics measurementId="G-XXXXXXXXXX" showInDevMode />
+</div>
+
+```tsx
+// Production only (default)
+<GoogleAnalytics measurementId="G-XXXXXXXXXX" />
+
+// Force rendering in development
+<GoogleAnalytics measurementId="G-XXXXXXXXXX" showInDevMode />
+```
+
+## Client-Side Script Injection
+
+The component delegates script creation to internal utilities that build the async `gtag.js` URL and inline bootstrap script.
+
+<div className="noContent">
+  <GoogleAnalytics measurementId="G-TEST123456" showInDevMode />
+</div>
+
+```tsx
+<GoogleAnalytics measurementId="G-TEST123456" showInDevMode />
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Client-side only rendering</AlertTitle>
+    <AlertDescription>
+      This component renders through `ClientOnly`, so script injection happens
+      only in the browser. No Google Analytics script tags are appended during
+      server rendering.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Measurement id requirement</AlertTitle>
+    <AlertDescription>
+      A valid GA4 measurement id is required (for example, `G-XXXXXXXXXX`). If
+      it is missing, the internal snippet generator emits a console warning.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`measurementId`** - `string`
+Google Analytics 4 Measurement ID used to configure `gtag`.
+
+**`showInDevMode`** - `boolean` (default: `false`)
+If true, renders and initializes analytics outside production.

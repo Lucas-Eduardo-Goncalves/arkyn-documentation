@@ -1,0 +1,226 @@
+# Switch
+
+import {
+  Switch,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+`Switch` is a toggle control for on/off states with support for controlled and uncontrolled usage, custom values, and label orientation.
+
+```tsx
+import { Switch } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <Switch name="notifications" label="Enable notifications" />
+</div>
+
+```tsx
+<Switch name="notifications" label="Enable notifications" />
+```
+
+## Sizes
+
+Use `size` to adjust switch dimensions.
+
+<div className="noContent column">
+  <Switch name="marketingSm" label="Marketing emails" size="sm" />
+  <Switch name="marketingMd" label="Marketing emails" size="md" />
+  <Switch name="marketingLg" label="Marketing emails" size="lg" />
+</div>
+
+```tsx
+<Switch name="marketingSm" label="Marketing emails" size="sm" />
+<Switch name="marketingMd" label="Marketing emails" size="md" />
+<Switch name="marketingLg" label="Marketing emails" size="lg" />
+```
+
+## Orientation
+
+Control how label and switch are laid out using `orientation`.
+
+<div className="noContent column">
+  <Switch
+    name="orientationHorizontal"
+    label="Horizontal"
+    orientation="horizontal"
+  />
+  <Switch
+    name="orientationHorizontalReverse"
+    label="Horizontal reverse"
+    orientation="horizontalReverse"
+  />
+  <Switch name="orientationVertical" label="Vertical" orientation="vertical" />
+</div>
+
+```tsx
+<Switch name="orientationHorizontal" label="Horizontal" orientation="horizontal" />
+<Switch
+  name="orientationHorizontalReverse"
+  label="Horizontal reverse"
+  orientation="horizontalReverse"
+/>
+<Switch name="orientationVertical" label="Vertical" orientation="vertical" />
+```
+
+## Custom Values
+
+Use `value` and `unCheckedValue` to control submitted and callback values.
+
+<div className="noContent column">
+  <Switch
+    name="theme"
+    label="Dark mode"
+    value="dark"
+    unCheckedValue="light"
+  />
+
+  <Switch
+    name="accessibility"
+    label="High contrast mode"
+    value="enabled"
+    unCheckedValue="disabled"
+    size="lg"
+  />
+</div>
+
+```tsx
+<Switch
+  name="theme"
+  label="Dark mode"
+  value="dark"
+  unCheckedValue="light"
+  onCheck={(value) => console.log("Theme:", value)}
+/>
+
+<Switch
+  name="accessibility"
+  label="High contrast mode"
+  value="enabled"
+  unCheckedValue="disabled"
+  size="lg"
+/>
+```
+
+## Controlled And Default Checked
+
+Use `defaultChecked` for uncontrolled initialization or `checked` + `onCheck` for controlled behavior.
+
+<div className="noContent column">
+  <Switch
+    name="newsletter"
+    label="Newsletter"
+    defaultChecked
+    value="subscribed"
+    unCheckedValue="unsubscribed"
+  />
+
+  <Switch
+    name="autoSave"
+    label="Auto-save documents"
+    checked
+    value="enabled"
+    unCheckedValue="disabled"
+    size="md"
+  />
+</div>
+
+```tsx
+<Switch
+  name="newsletter"
+  label="Newsletter"
+  defaultChecked
+  value="subscribed"
+  unCheckedValue="unsubscribed"
+/>
+
+<Switch
+  name="autoSave"
+  label="Auto-save documents"
+  checked={isAutoSaveEnabled}
+  onCheck={(value) => setIsAutoSaveEnabled(value === "enabled")}
+  value="enabled"
+  unCheckedValue="disabled"
+  size="md"
+/>
+```
+
+## Disabled
+
+Set `disabled` to block interactions.
+
+<div className="noContent">
+  <Switch
+    name="premium"
+    label="Premium features"
+    className="premium-switch"
+    disabled
+  />
+</div>
+
+```tsx
+<Switch
+  name="premium"
+  label="Premium features"
+  className="premium-switch"
+  disabled
+/>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Hidden submitted value</AlertTitle>
+    <AlertDescription>
+      The component stores its state in a hidden input using `name` and submits
+      `value` when checked or `unCheckedValue` when unchecked.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`name`** - `string`
+Field name used for hidden input submission.
+
+**`label`** - `string`
+Optional label displayed next to the switch.
+
+**`size`** - `"sm" | "md" | "lg"` (default: `"lg"`)
+Controls switch size.
+
+**`defaultChecked`** - `boolean` (default: `false`)
+Initial checked state for uncontrolled usage.
+
+**`checked`** - `boolean`
+Controlled checked state.
+
+**`value`** - `string` (default: `"checked"`)
+Value returned and submitted when checked.
+
+**`unCheckedValue`** - `string` (default: `""`)
+Value returned and submitted when unchecked.
+
+**`onCheck`** - `(value: string) => void`
+Called when toggle state changes.
+
+**`orientation`** - `"vertical" | "horizontal" | "horizontalReverse"` (default: `"horizontalReverse"`)
+Defines label and switch layout orientation.
+
+**`disabled`** - `boolean`
+Disables interactions.
+
+**`id`** - `string`
+Custom id for the hidden input.
+
+**`className`** - `string`
+Additional classes for the root button.
+
+**`...rest`** - `ButtonHTMLAttributes<HTMLButtonElement>`
+Any other valid native button attributes are forwarded except `children`, `onChange`, `defaultValue`, `onCheck`, and `value` typing overrides.

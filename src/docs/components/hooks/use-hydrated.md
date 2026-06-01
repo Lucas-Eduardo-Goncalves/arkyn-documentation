@@ -1,0 +1,44 @@
+# useHydrated
+
+The `useHydrated` hook detects whether rendering is happening after client hydration.
+
+## Import
+
+```ts
+import { useHydrated } from "@arkyn/components";
+```
+
+## Parameters
+
+This hook does not receive parameters.
+
+## Return value
+
+The hook returns whether hydration has completed on the client.
+
+**Type:** `boolean`
+
+| Property     | Type      | Description                                               |
+| ------------ | --------- | --------------------------------------------------------- |
+| `isHydrated` | `boolean` | `false` during SSR/pre-hydration, `true` after hydration. |
+
+## Usage example
+
+```tsx
+import { useHydrated } from "@arkyn/components";
+
+function ClientAwareClock() {
+  const isHydrated = useHydrated();
+
+  if (!isHydrated) {
+    return <div>Loading...</div>;
+  }
+
+  return <div>{new Date().toLocaleString()}</div>;
+}
+```
+
+## Notes
+
+- Useful to prevent hydration mismatch warnings.
+- Commonly used with browser-only APIs like `window`, `document`, and `navigator`.

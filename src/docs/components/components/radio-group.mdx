@@ -1,0 +1,218 @@
+# RadioGroup
+
+import {
+  RadioGroup,
+  RadioBox,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+`RadioGroup` manages shared selection state for a set of `RadioBox` options and integrates with form validation.
+
+```tsx
+import { RadioGroup, RadioBox } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent column">
+  <RadioGroup name="gender">
+    <RadioBox value="male">Male</RadioBox>
+    <RadioBox value="female">Female</RadioBox>
+    <RadioBox value="other">Other</RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="gender">
+  <RadioBox value="male">Male</RadioBox>
+  <RadioBox value="female">Female</RadioBox>
+  <RadioBox value="other">Other</RadioBox>
+</RadioGroup>
+```
+
+## Sizes
+
+Use `size` to define the default option size for children.
+
+<div className="noContent column">
+  <RadioGroup name="prioritySm" size="sm" label="Priority (sm)">
+    <RadioBox value="low">Low</RadioBox>
+    <RadioBox value="medium">Medium</RadioBox>
+    <RadioBox value="high">High</RadioBox>
+  </RadioGroup>
+
+<RadioGroup name="priorityMd" size="md" label="Priority (md)">
+  <RadioBox value="low">Low</RadioBox>
+  <RadioBox value="medium">Medium</RadioBox>
+  <RadioBox value="high">High</RadioBox>
+</RadioGroup>
+
+  <RadioGroup name="priorityLg" size="lg" label="Priority (lg)">
+    <RadioBox value="low">Low</RadioBox>
+    <RadioBox value="medium">Medium</RadioBox>
+    <RadioBox value="high">High</RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="prioritySm" size="sm" label="Priority (sm)">
+  <RadioBox value="low">Low</RadioBox>
+  <RadioBox value="medium">Medium</RadioBox>
+  <RadioBox value="high">High</RadioBox>
+</RadioGroup>
+
+<RadioGroup name="priorityMd" size="md" label="Priority (md)">
+  <RadioBox value="low">Low</RadioBox>
+  <RadioBox value="medium">Medium</RadioBox>
+  <RadioBox value="high">High</RadioBox>
+</RadioGroup>
+
+<RadioGroup name="priorityLg" size="lg" label="Priority (lg)">
+  <RadioBox value="low">Low</RadioBox>
+  <RadioBox value="medium">Medium</RadioBox>
+  <RadioBox value="high">High</RadioBox>
+</RadioGroup>
+```
+
+## Controlled And Default Values
+
+Use `defaultValue` for uncontrolled flows or `value` with `onChange` for controlled state.
+
+<div className="noContent column">
+  <RadioGroup name="language" label="Language" defaultValue="en">
+    <RadioBox value="en">English</RadioBox>
+    <RadioBox value="es">Spanish</RadioBox>
+    <RadioBox value="pt">Portuguese</RadioBox>
+  </RadioGroup>
+
+  <RadioGroup name="theme" label="Theme" value="dark">
+    <RadioBox value="light">Light</RadioBox>
+    <RadioBox value="dark">Dark</RadioBox>
+    <RadioBox value="auto">Auto</RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="language" label="Language" defaultValue="en">
+  <RadioBox value="en">English</RadioBox>
+  <RadioBox value="es">Spanish</RadioBox>
+  <RadioBox value="pt">Portuguese</RadioBox>
+</RadioGroup>
+
+<RadioGroup
+  name="theme"
+  label="Theme"
+  value={selectedTheme}
+  onChange={(value) => setSelectedTheme(value)}
+>
+  <RadioBox value="light">Light</RadioBox>
+  <RadioBox value="dark">Dark</RadioBox>
+  <RadioBox value="auto">Auto</RadioBox>
+</RadioGroup>
+```
+
+## Disabled
+
+Set `disabled` on the group to disable all options.
+
+<div className="noContent column">
+  <RadioGroup name="optionsEnabled" label="Enabled options">
+    <RadioBox value="option1">Option 1</RadioBox>
+    <RadioBox value="option2">Option 2</RadioBox>
+  </RadioGroup>
+
+  <RadioGroup name="optionsDisabled" label="Disabled options" disabled>
+    <RadioBox value="option1">Option 1</RadioBox>
+    <RadioBox value="option2">Option 2</RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="optionsEnabled" label="Enabled options">
+  <RadioBox value="option1">Option 1</RadioBox>
+  <RadioBox value="option2">Option 2</RadioBox>
+</RadioGroup>
+
+<RadioGroup name="optionsDisabled" label="Disabled options" disabled>
+  <RadioBox value="option1">Option 1</RadioBox>
+  <RadioBox value="option2">Option 2</RadioBox>
+</RadioGroup>
+```
+
+## Error State
+
+Provide `errorMessage` directly or rely on form context errors.
+
+<div className="noContent column">
+  <RadioGroup
+    name="subscription"
+    label="Choose your plan"
+    showAsterisk
+    errorMessage="Please select a subscription plan"
+  >
+    <RadioBox value="basic">Basic Plan</RadioBox>
+    <RadioBox value="premium">Premium Plan</RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup
+  name="subscription"
+  label="Choose your plan"
+  showAsterisk
+  errorMessage="Please select a subscription plan"
+>
+  <RadioBox value="basic">Basic Plan</RadioBox>
+  <RadioBox value="premium">Premium Plan</RadioBox>
+</RadioGroup>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Hidden submitted value</AlertTitle>
+    <AlertDescription>
+      `RadioGroup` renders a hidden input with the provided `name`, storing the
+      current selected value for native form submission.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`name`** - `string`
+Field name used for hidden form submission.
+
+**`label`** - `string`
+Optional label shown above the group.
+
+**`showAsterisk`** - `boolean`
+Displays required indicator in the label.
+
+**`errorMessage`** - `string`
+Custom error message shown below the group.
+
+**`value`** - `string`
+Controlled selected value.
+
+**`defaultValue`** - `string` (default: `""`)
+Initial selected value for uncontrolled usage.
+
+**`onChange`** - `(value: string) => void`
+Called when selection changes.
+
+**`size`** - `"sm" | "md" | "lg"` (default: `"md"`)
+Default size applied to child radio boxes.
+
+**`disabled`** - `boolean`
+Disables selection for all options in the group.
+
+**`className`** - `string`
+Additional class names for the wrapper.
+
+**`...rest`** - `Omit<HTMLAttributes<HTMLDivElement>, "onChange">`
+Any other valid native `div` attributes are forwarded except native `onChange`.

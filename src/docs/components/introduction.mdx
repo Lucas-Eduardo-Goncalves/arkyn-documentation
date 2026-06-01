@@ -1,13 +1,25 @@
 # Introduction to components
 
-The `@arkyn/components` package is a modern and flexible React component library designed to accelerate the development of consistent and accessible user interfaces.
+`@arkyn/components` is the React UI layer of Arkyn. It provides ready-to-use components, client-side hooks, context providers, and a few utility helpers that work together to build consistent interfaces with less boilerplate.
+
+## Why `@arkyn/components`?
+
+The library is designed for application teams that want a shared UI foundation without giving up flexibility. It covers common interface patterns such as forms, overlays, feedback, media controls, navigation, and client-only rendering, while keeping the API small and predictable.
+
+**Main benefits:**
+
+- **Consistent UI primitives:** Buttons, inputs, layout helpers, alerts, tooltips, tabs, uploaders, and more.
+- **Stateful composition:** Hooks like `useModal`, `useDrawer`, `useToast`, and `useForm` connect UI with shared application state.
+- **Context-driven workflows:** Providers make modal, drawer, form, and toast behavior available across the tree.
+- **SSR-safe patterns:** `ClientOnly` and `useHydrated` help avoid hydration mismatches in mixed server/client rendering.
+- **Reusable rich text helpers:** `toHtml` and `toRichTextValue` convert between editor models and HTML.
 
 ## Installation
 
-To start using Arkyn components in your project, you need to install two essential dependencies:
+To start using Arkyn components in your project, install both the component package and its shared dependency:
 
 ```bash
-bun add @arkyn/components @arkyn/shared
+bun add @arkyn/components
 ```
 
 ## Configuration
@@ -19,7 +31,7 @@ After installing the dependencies, you need to configure your project to use the
 In the root file of your application (usually `main.tsx`, `index.tsx`, `root.tsx` or `App.tsx`), import the component styles:
 
 ```tsx
-import "@arkyn/components/dist/style.css";
+import "@arkyn/components/dist/bundle.css";
 ```
 
 ### 2. Configure CSS variables
@@ -28,13 +40,15 @@ Create a CSS file (e.g., `globals.css`, `app.css` or `variables.css`) and add th
 
 ```css
 :root {
+  --white: #ffffff;
+
   /* background */
-  --background: #f1f5f9;
+  --background: #f4f4f5;
   --background-foreground: #ffffff;
 
   /* modal, drawer, popover... */
   --card: #ffffff;
-  --card-foreground-primary: #f8fafc;
+  --card-foreground-primary: #fafafa;
   --card-foreground-secondary: #f1f5f9;
   --card-foreground-third: #e2e8f0;
 
@@ -43,23 +57,25 @@ Create a CSS file (e.g., `globals.css`, `app.css` or `variables.css`) and add th
   --skeleton-foreground: #f1f5f9;
 
   /* text */
-  --text-heading: #0f172a;
-  --text-body: #475569;
-  --text-muted: #94a3b8;
+  --text-heading: #18181b;
+  --text-body: #52525b;
+  --text-muted: #a1a1aa;
 
   /* border */
   --border: #e2e8f0;
+  --default-border: #e4e4e7;
 
   /* tooltip */
   --tooltip-text: #f1f5f9;
   --tooltip-background: #0f172a;
 
   /* spotlight */
-  --spotlight-primary: 17, 109, 220; /* #116ddc */
+  --spotlight-primary: 2, 167, 105; /* #02A769 */
   --spotlight-secondary: 248, 250, 252; /* #f8fafc */
   --spotlight-success: 16, 185, 129; /* #10b981 */
   --spotlight-danger: 244, 63, 94; /* #f43f5e */
   --spotlight-info: 14, 165, 233; /* #0ea5e9 */
+  --spotlight-accent: 234, 179, 8; /* #EAB308 */
   --spotlight-warning: 249, 115, 22; /* #f97316 */
 
   /* toast */
@@ -72,6 +88,34 @@ Create a CSS file (e.g., `globals.css`, `app.css` or `variables.css`) and add th
 
 You can customize these variables to match your application's design system. Make sure to import this CSS file into your application's root file as well.
 
+## Library Overview
+
+The documentation is grouped to match how the package is actually used in application code:
+
+### Components
+
+Reusable UI building blocks for everyday interfaces, such as [Button](/components/components/button), [Input](/components/components/input), [Select](/components/components/select), [Tooltip](/components/components/tooltip), [Checkbox](/components/components/checkbox), [DrawerContainer](/components/components/drawer-container), and [ClientOnly](/components/components/client-only).
+
+### Hooks
+
+State and behavior hooks that coordinate with the rest of the library, including [useModal](/components/hooks/use-modal), [useDrawer](/components/hooks/use-drawer), [useToast](/components/hooks/use-toast), [useForm](/components/hooks/use-form), [useHydrated](/components/hooks/use-hydrated), and [useSearchAutomation](/components/hooks/use-search-automation).
+
+### Providers
+
+Context providers that power the hooks and keep state available throughout the tree, such as [ModalProvider](/components/providers/modal-provider), [DrawerProvider](/components/providers/drawer-provider), [FormProvider](/components/providers/form-provider), and [ToastProvider](/components/providers/toast-provider).
+
+### Rich Text Helpers
+
+Utility functions for editor content conversion, including [toHtml](./services/to-html.md) and [toRichTextValue](./services/to-rich-text-value.md).
+
+## Recommended Setup Order
+
+1. Install `@arkyn/components` and `@arkyn/shared`.
+2. Import the library stylesheet in your app entry file.
+3. Define the CSS variables in a global stylesheet.
+4. Wrap the parts of your app that need shared state with the matching providers.
+5. Use the hooks and components together to build the UI.
+
 ## Next steps
 
-After completing the installation and configuration, you'll be ready to start using Arkyn components in your project. Explore the specific sections for each component category to learn about their functionality and usage examples.
+After completing the installation and configuration, explore the component, hook, and provider sections to see how the pieces fit together in real application flows.

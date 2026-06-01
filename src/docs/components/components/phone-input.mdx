@@ -1,0 +1,231 @@
+# PhoneInput
+
+import {
+  PhoneInput,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+`PhoneInput` is an international phone field with country selector, dynamic mask handling, and hidden normalized value submission.
+
+```tsx
+import { PhoneInput } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <PhoneInput name="phone" label="Phone" />
+</div>
+
+```tsx
+<PhoneInput name="phone" label="Phone" />
+```
+
+## Sizes
+
+Use `size` to adjust selector and input dimensions.
+
+<div className="noContent column">
+  <PhoneInput name="phoneMd" label="Phone (md)" size="md" />
+  <PhoneInput name="phoneLg" label="Phone (lg)" size="lg" />
+</div>
+
+```tsx
+<PhoneInput name="phoneMd" label="Phone (md)" size="md" />
+<PhoneInput name="phoneLg" label="Phone (lg)" size="lg" />
+```
+
+## Variants
+
+Use `variant` to define the visual style of the input container.
+
+<div className="noContent column">
+  <PhoneInput name="solidPhone" label="Solid" variant="solid" />
+  <PhoneInput name="outlinePhone" label="Outline" variant="outline" />
+</div>
+
+```tsx
+<PhoneInput name="solidPhone" label="Solid" variant="solid" />
+<PhoneInput name="outlinePhone" label="Outline" variant="outline" />
+```
+
+## Country Selection And Search
+
+The component supports searchable country options with customizable placeholder and empty-state text.
+
+<div className="noContent">
+  <PhoneInput
+    name="countryPhone"
+    label="Country phone"
+    searchCountryPlaceholder="Search country"
+    notFoundCountryText="No countries found"
+  />
+</div>
+
+```tsx
+<PhoneInput
+  name="countryPhone"
+  label="Country phone"
+  searchCountryPlaceholder="Search country"
+  notFoundCountryText="No countries found"
+/>
+```
+
+## Default Values And Controlled Usage
+
+Use `defaultValue` for uncontrolled initialization or pass `value` with `onChange` for controlled behavior.
+
+<div className="noContent column">
+  <PhoneInput
+    name="defaultPhone"
+    label="Default phone"
+    defaultValue="+55 11 99999-9999"
+    defaultCountryIso="BR"
+  />
+
+  <PhoneInput
+    name="controlledPhone"
+    label="Controlled phone"
+    value="(11) 98888-7777"
+  />
+</div>
+
+```tsx
+<PhoneInput
+  name="defaultPhone"
+  label="Default phone"
+  defaultValue="+55 11 99999-9999"
+  defaultCountryIso="BR"
+/>
+
+<PhoneInput
+  name="controlledPhone"
+  label="Controlled phone"
+  value={phoneValue}
+  onChange={(normalizedPhone) => setPhoneValue(normalizedPhone)}
+/>
+```
+
+## Disabled
+
+Set `disabled` to block country selection and phone editing.
+
+<div className="noContent">
+  <PhoneInput
+    name="disabledPhone"
+    label="Phone"
+    defaultValue="+1 212 555 0100"
+    disabled
+  />
+</div>
+
+```tsx
+<PhoneInput
+  name="disabledPhone"
+  label="Phone"
+  defaultValue="+1 212 555 0100"
+  disabled
+/>
+```
+
+## Loading
+
+Set `isLoading` to prevent interactions while async flows complete.
+
+<div className="noContent">
+  <PhoneInput name="loadingPhone" label="Phone" isLoading />
+</div>
+
+```tsx
+<PhoneInput name="loadingPhone" label="Phone" isLoading />
+```
+
+## Error State
+
+Display inline validation feedback using `errorMessage` or form context errors.
+
+<div className="noContent">
+  <PhoneInput
+    name="contactPhone"
+    label="Contact phone"
+    showAsterisk
+    errorMessage="Please enter a valid phone number"
+  />
+</div>
+
+```tsx
+<PhoneInput
+  name="contactPhone"
+  label="Contact phone"
+  showAsterisk
+  errorMessage="Please enter a valid phone number"
+/>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Hidden submitted value</AlertTitle>
+    <AlertDescription>
+      The component stores a hidden input with `name` and submits a normalized
+      numeric value composed of country code plus phone digits.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`name`** - `string`
+Field name used for hidden form submission.
+
+**`id`** - `string`
+Custom unique id used for label/input association.
+
+**`disabled`** - `boolean` (default: `false`)
+Disables country selection and phone editing.
+
+**`readOnly`** - `boolean` (default: `false`)
+Keeps display active while preventing changes.
+
+**`errorMessage`** - `string`
+Custom error message shown below the field.
+
+**`label`** - `string`
+Optional label displayed above the field.
+
+**`showAsterisk`** - `boolean`
+Displays required indicator in the label.
+
+**`isLoading`** - `boolean` (default: `false`)
+Blocks interactions while loading.
+
+**`size`** - `"md" | "lg"` (default: `"md"`)
+Controls component dimensions.
+
+**`variant`** - `"solid" | "outline"` (default: `"solid"`)
+Defines visual style of the container.
+
+**`className`** - `string`
+Additional class names for the outer wrapper.
+
+**`defaultValue`** - `string`
+Initial phone value used for uncontrolled behavior.
+
+**`notFoundCountryText`** - `string` (default: `"Nenhum país encontrado"`)
+Text shown when no country matches search.
+
+**`searchCountryPlaceholder`** - `string` (default: `"Pesquisar país"`)
+Placeholder text for country search input.
+
+**`defaultCountryIso`** - `(typeof countries)[number]["iso"]`
+Default country ISO used for initial country selection.
+
+**`onChange`** - `(e: string) => void`
+Called with normalized phone value when input changes.
+
+**`value`** - `string`
+Controlled phone value.

@@ -1,0 +1,112 @@
+# DrawerProvider
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  DrawerProvider,
+  useDrawer,
+} from "@arkyn/components";
+
+DrawerProvider supplies drawer context so multiple keyed drawers can be opened, updated, and closed from anywhere in the tree.
+
+```tsx
+import { DrawerProvider } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <DrawerProvider>
+    <div>Application content with drawer context</div>
+  </DrawerProvider>
+</div>
+
+```tsx
+<DrawerProvider>
+  <App />
+</DrawerProvider>
+```
+
+## Multiple Drawer Keys
+
+Use independent keys to manage different drawers without state collisions.
+
+<div className="noContent column">
+  <DrawerProvider>
+    <div>navigation drawer</div>
+    <div>filters drawer</div>
+    <div>cart drawer</div>
+  </DrawerProvider>
+</div>
+
+```tsx
+function DrawerActions() {
+  const { openDrawer } = useDrawer();
+
+  return (
+    <>
+      <button onClick={() => openDrawer("navigation", { section: "main" })}>
+        Open navigation
+      </button>
+      <button onClick={() => openDrawer("filters", { category: "tech" })}>
+        Open filters
+      </button>
+    </>
+  );
+}
+
+<DrawerProvider>
+  <DrawerActions />
+</DrawerProvider>;
+```
+
+## Scoped Drawer API
+
+When `useDrawer(key)` is used, open/close actions are automatically scoped to that key.
+
+<div className="noContent">
+  <DrawerProvider>
+    <div>Scoped drawer control with useDrawer("filters")</div>
+  </DrawerProvider>
+</div>
+
+```tsx
+function FiltersDrawer() {
+  const { drawerIsOpen, drawerData, closeDrawer } = useDrawer<{
+    category: string;
+  }>("filters");
+
+  if (!drawerIsOpen) return null;
+
+  return (
+    <aside>
+      <p>Category: {drawerData?.category}</p>
+      <button onClick={closeDrawer}>Close</button>
+    </aside>
+  );
+}
+```
+
+## Notes
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Hook dependency</AlertTitle>
+    <AlertDescription>
+      The <code>useDrawer</code> hook must be called inside{" "}
+      <code>DrawerProvider</code>. Outside provider scope, it throws an error.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`children`** - `ReactNode`
+React subtree that will receive drawer context.
+
+**`enableDrawerAutomation`** - `boolean`
+Optional flag reserved for drawer automation behavior.

@@ -1,243 +1,132 @@
 import type { MenuType } from "./_type";
 
 const COMPONENTS_MENU: MenuType[] = [
+  { label: "Introduction", to: "/components/introduction" },
+
+  // Components
   {
-    label: "Introduction",
-    to: "/components/introduction",
-  },
-  {
-    label: "Concepts",
-    children: [],
-  },
-  {
-    label: "Layout",
+    label: "Buttons & Actions",
     children: [
-      {
-        label: "Divider",
-        to: "/components/layout/divider",
-      },
-    ],
-  },
-  {
-    label: "Buttons",
-    children: [
-      {
-        label: "Button",
-        to: "/components/buttons/button",
-      },
-      {
-        label: "IconButton",
-        to: "/components/buttons/icon-button",
-      },
+      { label: "Badge", to: "/components/components/badge" },
+      { label: "Button", to: "/components/components/button" },
+      { label: "IconButton", to: "/components/components/icon-button" },
     ],
   },
   {
     label: "Form",
     children: [
-      {
-        label: "Input",
-        to: "/components/form/input",
-      },
-      {
-        label: "MaskedInput",
-        to: "/components/form/masked-input",
-      },
-      {
-        label: "CurrencyInput",
-        to: "/components/form/currency-input",
-      },
-      {
-        label: "PhoneInput",
-        to: "/components/form/phone-input",
-      },
-      {
-        label: "Textarea",
-        to: "/components/form/textarea",
-      },
-      {
-        label: "Checkbox",
-        to: "/components/form/checkbox",
-      },
-      {
-        label: "Radio",
-        to: "/components/form/radio",
-      },
-      {
-        label: "Switch",
-        to: "/components/form/switch",
-      },
-      {
-        label: "Select",
-        to: "/components/form/select",
-      },
-      {
-        label: "MultiSelect",
-        to: "/components/form/multiselect",
-      },
-      {
-        label: "Slider",
-        to: "/components/form/slider",
-      },
-      {
-        label: "FieldWrapper",
-        to: "/components/form/field-wrapper",
-      },
-      {
-        label: "FieldLabel",
-        to: "/components/form/field-label",
-      },
-      {
-        label: "FieldError",
-        to: "/components/form/field-error",
-      },
-      {
-        label: "FileUpload",
-        to: "/components/form/file-upload",
-      },
-      {
-        label: "ImageUpload",
-        to: "/components/form/image-upload",
-      },
-      {
-        label: "AudioUpload",
-        to: "/components/form/audio-upload",
-      },
-    ],
-  },
-  {
-    label: "Collections",
-    children: [
-      {
-        label: "Tab",
-        to: "/components/collections/tab",
-      },
-      {
-        label: "CardTab",
-        to: "/components/collections/card-tab",
-      },
-    ],
-  },
-  {
-    label: "Overlays",
-    children: [
-      {
-        label: "Modal",
-        to: "/components/overlays/modal",
-      },
-      {
-        label: "Drawer",
-        to: "/components/overlays/drawer",
-      },
-      {
-        label: "Popover",
-        to: "/components/overlays/popover",
-      },
-      {
-        label: "Tooltip",
-        to: "/components/overlays/tooltip",
-      },
+      { label: "Checkbox", to: "/components/components/checkbox" },
+      { label: "CurrencyInput", to: "/components/components/currency-input" },
+      { label: "FileUpload", to: "/components/components/file-upload" },
+      { label: "ImageUpload", to: "/components/components/image-upload" },
+      { label: "Input", to: "/components/components/input" },
+      { label: "MaskedInput", to: "/components/components/masked-input" },
+      { label: "MultiSelect", to: "/components/components/multi-select" },
+      { label: "PhoneInput", to: "/components/components/phone-input" },
+      { label: "RadioBox", to: "/components/components/radio-box" },
+      { label: "RadioGroup", to: "/components/components/radio-group" },
+      { label: "Select", to: "/components/components/select" },
+      { label: "Switch", to: "/components/components/switch" },
+      { label: "Textarea", to: "/components/components/textarea" },
     ],
   },
   {
     label: "Feedback",
     children: [
+      { label: "AlertContainer", to: "/components/components/alert-container" },
+      { label: "AlertContent", to: "/components/components/alert-content" },
       {
-        label: "Alert",
-        to: "/components/feedback/alert",
+        label: "AlertDescription",
+        to: "/components/components/alert-description",
       },
-      {
-        label: "Badge",
-        to: "/components/feedback/badge",
-      },
+      { label: "AlertIcon", to: "/components/components/alert-icon" },
+      { label: "AlertTitle", to: "/components/components/alert-title" },
+      { label: "Tooltip", to: "/components/components/tooltip" },
     ],
   },
   {
-    label: "Data display",
+    label: "Navigation & Tabs",
     children: [
+      { label: "CardTabButton", to: "/components/components/card-tab-button" },
       {
-        label: "Table",
-        to: "/components/data-display/table",
+        label: "CardTabContainer",
+        to: "/components/components/card-tab-container",
       },
+      { label: "Pagination", to: "/components/components/pagination" },
+      { label: "TabButton", to: "/components/components/tab-button" },
+      { label: "TabContainer", to: "/components/components/tab-container" },
     ],
   },
   {
-    label: "Disclosure",
-    children: [],
-  },
-  {
-    label: "Utilities",
+    label: "Layout & Overlay",
     children: [
+      { label: "ClientOnly", to: "/components/components/client-only" },
+      { label: "Divider", to: "/components/components/divider" },
       {
-        label: "AudioPlayer",
-        to: "/components/utilities/audio-player",
+        label: "DrawerContainer",
+        to: "/components/components/drawer-container",
+      },
+      { label: "DrawerHeader", to: "/components/components/drawer-header" },
+    ],
+  },
+  {
+    label: "Media",
+    children: [
+      { label: "AudioPlayer", to: "/components/components/audio-player" },
+      { label: "AudioUpload", to: "/components/components/audio-upload" },
+    ],
+  },
+  {
+    label: "Analytics",
+    children: [
+      { label: "FacebookPixel", to: "/components/components/facebook-pixel" },
+      {
+        label: "GoogleAnalytics",
+        to: "/components/components/google-analytics",
       },
       {
-        label: "ClientOnly",
-        to: "/components/concepts/client-only",
+        label: "GoogleTagManager",
+        to: "/components/components/google-tag-manager",
       },
     ],
   },
+
+  // Hooks
   {
     label: "Hooks",
     children: [
+      { label: "useAutomation", to: "/components/hooks/use-automation" },
+      { label: "useDrawer", to: "/components/hooks/use-drawer" },
+      { label: "useForm", to: "/components/hooks/use-form" },
+      { label: "useHydrated", to: "/components/hooks/use-hydrated" },
+      { label: "useModal", to: "/components/hooks/use-modal" },
+      { label: "useScopedParams", to: "/components/hooks/use-scoped-params" },
+      { label: "useScrollLock", to: "/components/hooks/use-scroll-lock" },
       {
-        label: "useDrawer",
-        to: "/components/hooks/use-drawer",
+        label: "useSearchAutomation",
+        to: "/components/hooks/use-search-automation",
       },
-      {
-        label: "useForm",
-        to: "/components/hooks/use-form",
-      },
-      {
-        label: "useHydrated",
-        to: "/components/hooks/use-hydrated",
-      },
-      {
-        label: "useModal",
-        to: "/components/hooks/use-modal",
-      },
-      {
-        label: "useScopedParams",
-        to: "/components/hooks/use-scoped-params",
-      },
-      {
-        label: "useScrollLock",
-        to: "/components/hooks/use-scroll-lock",
-      },
-      {
-        label: "useSlider",
-        to: "/components/hooks/use-slider",
-      },
+      { label: "useSlider", to: "/components/hooks/use-slider" },
+      { label: "useToast", to: "/components/hooks/use-toast" },
     ],
   },
+
+  // Providers
   {
     label: "Providers",
     children: [
-      {
-        label: "DrawerProvider",
-        to: "/components/providers/drawer-provider",
-      },
-      {
-        label: "FormProvider",
-        to: "/components/providers/form-provider",
-      },
-      {
-        label: "ModalProvider",
-        to: "/components/providers/modal-provider",
-      },
-      {
-        label: "ToastProvider",
-        to: "/components/providers/toast-provider",
-      },
+      { label: "FormProvider", to: "/components/providers/form-provider" },
+      { label: "ModalProvider", to: "/components/providers/modal-provider" },
+      { label: "ToastProvider", to: "/components/providers/toast-provider" },
+      { label: "DrawerProvider", to: "/components/providers/drawer-provider" },
     ],
   },
+
+  // Services
   {
     label: "Services",
     children: [
-      {
-        label: "toHtml",
-        to: "/components/services/to-html",
-      },
+      { label: "toHtml", to: "/components/services/to-html" },
       {
         label: "toRichTextValue",
         to: "/components/services/to-rich-text-value",

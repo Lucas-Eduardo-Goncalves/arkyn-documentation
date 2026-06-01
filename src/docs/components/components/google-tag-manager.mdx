@@ -1,0 +1,164 @@
+# GoogleTagManager
+
+import {
+  GoogleTagManager,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+`GoogleTagManager` injects GTM script and noscript snippets, initializes a configurable data layer, and dispatches startup events.
+
+```tsx
+import { GoogleTagManager } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <GoogleTagManager gtmId="GTM-XXXXXXX" />
+</div>
+
+```tsx
+<GoogleTagManager gtmId="GTM-XXXXXXX" />
+```
+
+## Development And Production Behavior
+
+By default, the component does not render outside production. Use `showInDevMode` for local or staging validation.
+
+<div className="noContent column">
+  <GoogleTagManager gtmId="GTM-XXXXXXX" />
+  <GoogleTagManager gtmId="GTM-XXXXXXX" showInDevMode />
+</div>
+
+```tsx
+// Render only in production (default behavior)
+<GoogleTagManager gtmId="GTM-XXXXXXX" />
+
+// Force rendering in development
+<GoogleTagManager gtmId="GTM-XXXXXXX" showInDevMode />
+```
+
+## Data Layer And Events
+
+Provide initial data and startup event payload to enrich GTM context before your tags fire.
+
+<div className="noContent column">
+  <GoogleTagManager
+    gtmId="GTM-XXXXXXX"
+    dataLayer={{ pageType: "home", userType: "anonymous" }}
+    events={{ event: "page_loaded", locale: "en-US" }}
+    showInDevMode
+  />
+
+  <GoogleTagManager
+    gtmId="GTM-XXXXXXX"
+    dataLayerName="customLayer"
+    dataLayer={{ workspace: "docs" }}
+    showInDevMode
+  />
+</div>
+
+```tsx
+<GoogleTagManager
+  gtmId="GTM-XXXXXXX"
+  dataLayer={{
+    pageType: "home",
+    userType: "anonymous",
+  }}
+  events={{
+    event: "page_loaded",
+    locale: "en-US",
+  }}
+/>
+
+<GoogleTagManager
+  gtmId="GTM-XXXXXXX"
+  dataLayerName="customLayer"
+  dataLayer={{ workspace: "docs" }}
+/>
+```
+
+## GTM Environments
+
+Use `auth` and `preview` to connect a specific GTM environment (for example, staging).
+
+<div className="noContent">
+  <GoogleTagManager
+    gtmId="GTM-XXXXXXX"
+    auth="your-auth-token"
+    preview="env-3"
+    showInDevMode
+  />
+</div>
+
+```tsx
+<GoogleTagManager
+  gtmId="GTM-XXXXXXX"
+  auth="your-auth-token"
+  preview="env-3"
+  showInDevMode
+/>
+```
+
+## Client-Side Script Injection
+
+The component delegates GTM snippet generation to internal utilities that build the script, noscript iframe, and data layer bootstrap content.
+
+<div className="noContent">
+  <GoogleTagManager gtmId="GTM-TEST123" showInDevMode />
+</div>
+
+```tsx
+<GoogleTagManager gtmId="GTM-TEST123" showInDevMode />
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Client-side only rendering</AlertTitle>
+    <AlertDescription>
+      This component renders through `ClientOnly`, so GTM initialization and DOM
+      injection happen only in the browser. No GTM script or noscript tags are
+      appended during server rendering.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Container id requirement</AlertTitle>
+    <AlertDescription>
+      A valid GTM container id is required (for example, `GTM-XXXXXXX`). If it
+      is missing, the internal generator emits a console warning and GTM cannot
+      be initialized correctly.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`gtmId`** - `string`
+Google Tag Manager container id used to initialize GTM.
+
+**`events`** - `Record<string, string>`
+Additional event payload merged into the startup GTM event.
+
+**`dataLayer`** - `Record<string, string>`
+Initial key-value data pushed to the configured data layer.
+
+**`dataLayerName`** - `string` (default: `"dataLayer"`)
+Global variable name used for the GTM data layer.
+
+**`auth`** - `string` (default: `""`)
+GTM environment auth token.
+
+**`preview`** - `string` (default: `""`)
+GTM environment preview token.
+
+**`showInDevMode`** - `boolean` (default: `false`)
+If true, renders and initializes GTM outside production.

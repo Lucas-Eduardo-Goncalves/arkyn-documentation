@@ -9,7 +9,7 @@ Instead of recreating these structures in each project, `@arkyn/templates` offer
 To start using the package in your project, install it using your preferred package manager:
 
 ```bash
-bun add @arkyn/templates@3.0.1-beta.33
+bun add @arkyn/templates
 ```
 
 ## Overview

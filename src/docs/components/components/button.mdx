@@ -1,0 +1,191 @@
+# Button
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Button,
+} from "@arkyn/components";
+
+import { ArrowRight, Info, Save, Trash2 } from "lucide-react";
+
+The `Button` component is used for user actions, form submissions, and contextual actions that need variants, color schemes, loading feedback, and optional icons.
+
+```tsx
+import { Button } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <Button>Click me</Button>
+</div>
+
+```tsx
+<Button>Click me</Button>
+```
+
+## Sizes
+
+Use `size` to adjust the button density and icon scale.
+
+<div className="noContent row">
+  <Button size="xs">Extra small</Button>
+  <Button size="sm">Small</Button>
+  <Button size="md">Medium</Button>
+  <Button size="lg">Large</Button>
+</div>
+
+```tsx
+<Button size="xs">Extra small</Button>
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+```
+
+## Variants
+
+Choose a variant based on the visual emphasis you need. `solid` is the default, `outline` is best for secondary actions, `ghost` gives a lighter background treatment, and `invisible` keeps the action minimal.
+
+<div className="noContent row">
+  <Button variant="solid">Solid</Button>
+  <Button variant="outline">Outline</Button>
+  <Button variant="ghost">Ghost</Button>
+  <Button variant="invisible">Invisible</Button>
+</div>
+
+```tsx
+<Button variant="solid">Solid</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="invisible">Invisible</Button>
+```
+
+## Color Schemes
+
+Use `scheme` to switch the semantic color of the button without changing its behavior.
+
+<div className="noContent row">
+  <Button scheme="primary">Primary</Button>
+  <Button scheme="success">Success</Button>
+  <Button scheme="warning">Warning</Button>
+  <Button scheme="danger">Danger</Button>
+  <Button scheme="info">Info</Button>
+</div>
+
+```tsx
+<Button scheme="primary">Primary</Button>
+<Button scheme="success">Success</Button>
+<Button scheme="warning">Warning</Button>
+<Button scheme="danger">Danger</Button>
+<Button scheme="info">Info</Button>
+```
+
+## Loading
+
+Use `isLoading` to show the spinner and prevent interaction while an action is running. When `loadingText` is provided, it appears alongside the spinner.
+
+<div className="noContent row">
+  <Button isLoading>Saving</Button>
+  <Button isLoading loadingText="Saving...">
+    Save changes
+  </Button>
+</div>
+
+<AlertContainer>
+  <AlertIcon>
+    <Info size={16} />
+  </AlertIcon>
+  <AlertContent>
+    <AlertTitle>Loading behavior</AlertTitle>
+    <AlertDescription>
+      When `isLoading` is enabled, the button hides its content and becomes
+      disabled automatically, even if `disabled` is not passed.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+```tsx
+<Button isLoading>Saving</Button>
+<Button isLoading loadingText="Saving...">
+  Save changes
+</Button>
+```
+
+## Icons
+
+Use `leftIcon` and `rightIcon` to add optional Lucide icons around the label.
+
+<div className="noContent row">
+  <Button leftIcon={Save}>Save</Button>
+  <Button rightIcon={ArrowRight}>Next</Button>
+  <Button leftIcon={Save} rightIcon={ArrowRight} scheme="success">
+    Continue
+  </Button>
+  <Button leftIcon={Trash2} scheme="danger" variant="ghost">
+    Delete
+  </Button>
+</div>
+
+```tsx
+<Button leftIcon={Save}>Save</Button>
+<Button rightIcon={ArrowRight}>Next</Button>
+<Button leftIcon={Save} rightIcon={ArrowRight} scheme="success">
+  Continue
+</Button>
+<Button leftIcon={Trash2} scheme="danger" variant="ghost">
+  Delete
+</Button>
+```
+
+## Disabled
+
+Use the native `disabled` prop when the action should be unavailable.
+
+<div className="noContent row">
+  <Button disabled>Disabled</Button>
+  <Button disabled variant="outline" scheme="danger">
+    Disabled action
+  </Button>
+</div>
+
+```tsx
+<Button disabled>Disabled</Button>
+<Button disabled variant="outline" scheme="danger">
+  Disabled action
+</Button>
+```
+
+## Properties
+
+**`children`** - `React.ReactNode`
+Content rendered inside the button.
+
+**`isLoading`** - `boolean` (default: `false`)
+Shows the spinner, hides the content, and disables the button while the action is in progress.
+
+**`loadingText`** - `string`
+Text displayed next to the loading spinner while `isLoading` is active.
+
+**`size`** - `"xs" | "sm" | "md" | "lg"` (default: `"md"`)
+Controls the button height, padding, radius, font size, and icon size.
+
+**`variant`** - `"solid" | "outline" | "ghost" | "invisible"` (default: `"solid"`)
+Controls the visual style of the button.
+
+**`scheme`** - `"primary" | "success" | "warning" | "danger" | "info"` (default: `"primary"`)
+Controls the color palette used by the selected variant.
+
+**`leftIcon`** - `LucideIcon`
+Icon rendered before the label.
+
+**`rightIcon`** - `LucideIcon`
+Icon rendered after the label.
+
+**`disabled`** - `boolean`
+Disables the button. When `isLoading` is true, the button is also disabled automatically.
+
+**Standard HTML button attributes** - `ButtonHTMLAttributes<HTMLButtonElement>`
+All other native button props are supported, including `type`, `name`, `value`, `onClick`, and accessibility attributes.

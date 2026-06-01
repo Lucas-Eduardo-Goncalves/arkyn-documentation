@@ -1,0 +1,139 @@
+# AlertContainer
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+The `AlertContainer` component is the root wrapper for alert messages and controls schema styling plus content alignment behavior.
+
+```tsx
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent column">
+  <AlertContainer schema="info">
+    <AlertIcon />
+    <AlertContent>
+      <AlertDescription>System information message.</AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+</div>
+
+```tsx
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertDescription>System information message.</AlertDescription>
+  </AlertContent>
+</AlertContainer>
+```
+
+## Schemas
+
+Use `schema` to define semantic meaning and visual style.
+
+<div className="noContent column">
+  <AlertContainer schema="success">
+    <AlertIcon />
+    <AlertContent>
+      <AlertTitle>Success</AlertTitle>
+      <AlertDescription>Your operation completed successfully.</AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+
+<AlertContainer schema="danger">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Error</AlertTitle>
+    <AlertDescription>
+      Something failed while processing your request.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Warning</AlertTitle>
+    <AlertDescription>
+      Please review this action before continuing.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+  <AlertContainer schema="info">
+    <AlertIcon />
+    <AlertContent>
+      <AlertTitle>Information</AlertTitle>
+      <AlertDescription>Updates are available for this feature.</AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+</div>
+
+```tsx
+<AlertContainer schema="success">...</AlertContainer>
+<AlertContainer schema="danger">...</AlertContainer>
+<AlertContainer schema="warning">...</AlertContainer>
+<AlertContainer schema="info">...</AlertContainer>
+```
+
+## Title-aware Layout
+
+When `AlertTitle` exists in the alert tree, content is left-aligned. Without `AlertTitle`, the layout becomes centered automatically.
+
+<div className="noContent column">
+  <AlertContainer schema="success">
+    <AlertIcon />
+    <AlertContent>
+      <AlertTitle>Success</AlertTitle>
+      <AlertDescription>You are now a premium user.</AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+
+  <AlertContainer schema="info">
+    <AlertIcon />
+    <AlertContent>
+      <AlertDescription>Short single-line informational message.</AlertDescription>
+    </AlertContent>
+  </AlertContainer>
+</div>
+
+```tsx
+<AlertContainer schema="success">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Success</AlertTitle>
+    <AlertDescription>You are now a premium user.</AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertDescription>Short single-line informational message.</AlertDescription>
+  </AlertContent>
+</AlertContainer>
+```
+
+## Properties
+
+**`schema`** - `"success" | "danger" | "warning" | "info"`
+Required visual and semantic style of the alert.
+
+**`children`** - `React.ReactNode`
+Alert content, typically composed with `AlertIcon`, `AlertContent`, `AlertTitle`, and `AlertDescription`.
+
+**Standard HTML div attributes** - `HTMLAttributes<HTMLDivElement>`
+All native `div` props are supported, including `className`, `id`, and accessibility attributes.

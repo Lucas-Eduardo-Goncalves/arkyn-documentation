@@ -1,0 +1,150 @@
+# Tooltip
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Badge,
+  Tooltip,
+} from "@arkyn/components";
+
+Tooltip displays contextual information when users hover over an element, with automatic position adjustment when space is limited.
+
+```tsx
+import { Tooltip } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <Tooltip text="This is a helpful tip">
+    <Badge>Hover me</Badge>
+  </Tooltip>
+</div>
+
+```tsx
+<Tooltip text="This is a helpful tip">
+  <Badge>Hover me</Badge>
+</Tooltip>
+```
+
+## Orientations
+
+Use the `orientation` prop to define the preferred tooltip direction.
+
+<div className="noContent row">
+  <Tooltip text="Top tooltip" orientation="top">
+    <Badge>Top</Badge>
+  </Tooltip>
+
+<Tooltip text="Right tooltip" orientation="right">
+  <Badge>Right</Badge>
+</Tooltip>
+
+<Tooltip text="Bottom tooltip" orientation="bottom">
+  <Badge>Bottom</Badge>
+</Tooltip>
+
+  <Tooltip text="Left tooltip" orientation="left">
+    <Badge>Left</Badge>
+  </Tooltip>
+</div>
+
+```tsx
+<Tooltip text="Top tooltip" orientation="top">
+  <Badge>Top</Badge>
+</Tooltip>
+
+<Tooltip text="Right tooltip" orientation="right">
+  <Badge>Right</Badge>
+</Tooltip>
+
+<Tooltip text="Bottom tooltip" orientation="bottom">
+  <Badge>Bottom</Badge>
+</Tooltip>
+
+<Tooltip text="Left tooltip" orientation="left">
+  <Badge>Left</Badge>
+</Tooltip>
+```
+
+## Sizes
+
+Tooltip provides two size variants for different interface densities.
+
+<div className="noContent row">
+  <Tooltip text="Medium tooltip" size="md">
+    <Badge>Medium</Badge>
+  </Tooltip>
+
+  <Tooltip text="Large tooltip" size="lg">
+    <Badge>Large</Badge>
+  </Tooltip>
+</div>
+
+```tsx
+<Tooltip text="Medium tooltip" size="md">
+  <Badge>Medium</Badge>
+</Tooltip>
+
+<Tooltip text="Large tooltip" size="lg">
+  <Badge>Large</Badge>
+</Tooltip>
+```
+
+## Smart Positioning
+
+When the preferred orientation does not fit in the viewport, the component automatically flips to a better side.
+
+<div className="noContent">
+  <Tooltip
+    text="This tooltip automatically adjusts its orientation when needed"
+    orientation="left"
+  >
+    <Badge>Near edge trigger</Badge>
+  </Tooltip>
+</div>
+
+```tsx
+<Tooltip
+  text="This tooltip automatically adjusts its orientation when needed"
+  orientation="left"
+>
+  <Badge>Near edge trigger</Badge>
+</Tooltip>
+```
+
+## Content Notes
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>HTML content rendering</AlertTitle>
+    <AlertDescription>
+      The tooltip content is rendered with <code>dangerouslySetInnerHTML</code>.
+      Only pass trusted or sanitized HTML to the <code>text</code> prop.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`text`** - `string`
+Text or HTML string displayed inside the tooltip.
+
+**`children`** - `ReactNode`
+Element that triggers tooltip visibility on hover.
+
+**`orientation`** - `"top" | "right" | "bottom" | "left"` (default: `"top"`)
+Preferred tooltip position relative to the trigger element.
+
+**`size`** - `"md" | "lg"` (default: `"lg"`)
+Controls tooltip visual size.
+
+**`className`** - `string` (default: `""`)
+Additional CSS classes merged with the component base classes.
+
+**`...rest`** - `Omit<HTMLAttributes<HTMLDivElement>, "children">`
+Any other valid HTML attributes for the root `div`, such as `id`, `style`, `aria-*`, and event handlers.

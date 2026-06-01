@@ -17,13 +17,13 @@ Building APIs requires consistent error handling, response formatting, and input
 ## Installation
 
 ```bash
-npm install @arkyn/server zod
+npm install @arkyn/server
 ```
 
 or with bun:
 
 ```bash
-bun add @arkyn/server zod
+bun add @arkyn/server
 ```
 
 ## Module Overview

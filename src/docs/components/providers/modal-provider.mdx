@@ -1,0 +1,105 @@
+# ModalProvider
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  ModalProvider,
+  useModal,
+} from "@arkyn/components";
+
+ModalProvider supplies modal context so keyed modals can be opened, closed, and globally reset.
+
+```tsx
+import { ModalProvider } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <ModalProvider>
+    <div>Application content with modal context</div>
+  </ModalProvider>
+</div>
+
+```tsx
+<ModalProvider>
+  <App />
+</ModalProvider>
+```
+
+## Open and Close Keyed Modals
+
+Use modal keys to coordinate independent modal instances.
+
+<div className="noContent column">
+  <ModalProvider>
+    <div>user-profile modal</div>
+    <div>confirm-delete modal</div>
+  </ModalProvider>
+</div>
+
+```tsx
+function Actions() {
+  const { openModal, closeAll } = useModal();
+
+  return (
+    <>
+      <button onClick={() => openModal("user-profile", { id: 42 })}>
+        Open profile
+      </button>
+      <button onClick={closeAll}>Close all modals</button>
+    </>
+  );
+}
+```
+
+## Scoped Modal API
+
+When `useModal(key)` is used, the returned methods are scoped to a single modal key.
+
+<div className="noContent">
+  <ModalProvider>
+    <div>Scoped modal control with useModal("user-profile")</div>
+  </ModalProvider>
+</div>
+
+```tsx
+function UserProfileModal() {
+  const { modalIsOpen, modalData, closeModal } = useModal<{ id: number }>(
+    "user-profile",
+  );
+
+  if (!modalIsOpen) return null;
+
+  return (
+    <section>
+      <p>User id: {modalData?.id}</p>
+      <button onClick={closeModal}>Close</button>
+    </section>
+  );
+}
+```
+
+## Notes
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Hook dependency</AlertTitle>
+    <AlertDescription>
+      The <code>useModal</code> hook must be called inside{" "}
+      <code>ModalProvider</code>. Outside provider scope, it throws an error.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`children`** - `ReactNode`
+React subtree that will receive modal context.
+
+**`enableModalAutomation`** - `boolean`
+Optional flag reserved for modal automation behavior.

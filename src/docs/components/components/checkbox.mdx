@@ -1,0 +1,165 @@
+# Checkbox
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Checkbox,
+} from "@arkyn/components";
+
+import { CheckCircle2, Info } from "lucide-react";
+
+The `Checkbox` component is used for interactive boolean inputs with labels, validation feedback, size control, and optional controlled state.
+
+```tsx
+import { Checkbox } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <Checkbox name="terms" label="I agree to the terms and conditions" />
+</div>
+
+```tsx
+<Checkbox name="terms" label="I agree to the terms and conditions" />
+```
+
+## Sizes
+
+Use `size` to control the checkbox dimensions.
+
+<div className="noContent row">
+  <Checkbox name="size-md" label="Medium" size="md" />
+  <Checkbox name="size-lg" label="Large" size="lg" />
+  <Checkbox name="size-sm" label="Small" size="sm" />
+</div>
+
+```tsx
+<Checkbox name="size-md" label="Medium" size="md" />
+<Checkbox name="size-lg" label="Large" size="lg" />
+<Checkbox name="size-sm" label="Small" size="sm" />
+```
+
+## Orientation
+
+Use `orientation` to control how the field label is positioned relative to the checkbox.
+
+<div className="noContent column">
+  <Checkbox
+    name="orientation-default"
+    label="Horizontal reverse"
+    orientation="horizontalReverse"
+  />
+  <Checkbox
+    name="orientation-horizontal"
+    label="Horizontal"
+    orientation="horizontal"
+  />
+  <Checkbox
+    name="orientation-vertical"
+    label="Vertical"
+    orientation="vertical"
+  />
+</div>
+
+```tsx
+<Checkbox
+  name="orientation-default"
+  label="Horizontal reverse"
+  orientation="horizontalReverse"
+/>
+<Checkbox
+  name="orientation-horizontal"
+  label="Horizontal"
+  orientation="horizontal"
+/>
+<Checkbox
+  name="orientation-vertical"
+  label="Vertical"
+  orientation="vertical"
+/>
+```
+
+## Checked State
+
+Use `defaultChecked` for uncontrolled usage or `checked` for controlled usage.
+
+<div className="noContent row">
+  <Checkbox name="remember" label="Remember me" defaultChecked />
+  <Checkbox name="premium" label="Enable premium features" checked />
+</div>
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Hidden input value</AlertTitle>
+    <AlertDescription>
+      The checkbox stores its submitted value in a hidden input. When checked,
+      it submits `value` or `"checked"`; when unchecked, it submits an empty
+      string.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+```tsx
+<Checkbox name="remember" label="Remember me" defaultChecked />
+<Checkbox name="premium" label="Enable premium features" checked />
+```
+
+## Error State
+
+Use `errorMessage` to display validation feedback. If no explicit error message is provided, the component also reads the field error from `useForm` using the `name` prop.
+
+<div className="noContent column">
+  <Checkbox
+    name="newsletter"
+    label="Subscribe to newsletter"
+    errorMessage="Please confirm this option"
+  />
+</div>
+
+```tsx
+<Checkbox
+  name="newsletter"
+  label="Subscribe to newsletter"
+  errorMessage="Please confirm this option"
+/>
+```
+
+## Properties
+
+**`name`** - `string`
+Required field name used for form submission and hidden input identification.
+
+**`label`** - `string`
+Optional label rendered next to the checkbox.
+
+**`errorMessage`** - `string`
+Optional validation message shown below the field. When omitted, the component can use the form error for the same field name.
+
+**`size`** - `"md" | "lg" | "sm"` (default: `"md"`)
+Controls the checkbox size.
+
+**`value`** - `string` (default: `"checked"`)
+Value submitted when the checkbox is checked.
+
+**`checked`** - `boolean`
+Controlled checked state.
+
+**`defaultChecked`** - `boolean` (default: `false`)
+Initial checked state for uncontrolled usage.
+
+**`onCheck`** - `(value: string) => void`
+Callback fired when the checkbox toggles. It receives the current value when checked and an empty string when unchecked.
+
+**`orientation`** - `"horizontal" | "vertical" | "horizontalReverse"` (default: `"horizontalReverse"`)
+Controls how the label and checkbox are arranged.
+
+**`disabled`** - `boolean`
+Disables interaction with the checkbox.
+
+**Standard HTML button attributes** - `ButtonHTMLAttributes<HTMLButtonElement>` except `size`, `prefix`, `type`, `name`, `defaultValue`, `value`, `onChange`, `onSelect`, and `onClick`
+All other native button props are supported, including `className`, `aria-*` attributes, and `data-*` attributes.

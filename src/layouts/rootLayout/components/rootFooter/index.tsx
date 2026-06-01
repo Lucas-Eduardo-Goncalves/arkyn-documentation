@@ -45,7 +45,7 @@ function RootFooter() {
 
             <div>
               <strong>Explore</strong>
-              <Link to="/docs/introduction">Documentation</Link>
+              <Link to="/">Documentation</Link>
               <Link to="/guides/introduction">Guides</Link>
             </div>
 

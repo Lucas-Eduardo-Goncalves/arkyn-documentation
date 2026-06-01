@@ -1,0 +1,131 @@
+# Badge
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  Badge,
+} from "@arkyn/components";
+
+import { AlertTriangle, Check, Info } from "lucide-react";
+
+The `Badge` component is used to display labels, statuses, and categorizations with consistent sizing, variants, and color schemes.
+
+```tsx
+import { Badge } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <Badge>New</Badge>
+</div>
+
+```tsx
+<Badge>New</Badge>
+```
+
+## Sizes
+
+Use `size` to adjust the badge density and typography.
+
+<div className="noContent row">
+  <Badge size="md">Medium</Badge>
+  <Badge size="lg">Large</Badge>
+</div>
+
+```tsx
+<Badge size="md">Medium</Badge>
+<Badge size="lg">Large</Badge>
+```
+
+## Variants
+
+Use `variant` to control the visual treatment of the badge.
+
+<div className="noContent row">
+  <Badge variant="solid">Solid</Badge>
+  <Badge variant="outline">Outline</Badge>
+  <Badge variant="ghost">Ghost</Badge>
+</div>
+
+```tsx
+<Badge variant="solid">Solid</Badge>
+<Badge variant="outline">Outline</Badge>
+<Badge variant="ghost">Ghost</Badge>
+```
+
+## Color Schemes
+
+Use `scheme` to match the badge to the semantic meaning of the content.
+
+<div className="noContent row">
+  <Badge scheme="primary">Primary</Badge>
+  <Badge scheme="secondary">Secondary</Badge>
+  <Badge scheme="success">Success</Badge>
+  <Badge scheme="warning">Warning</Badge>
+  <Badge scheme="danger">Danger</Badge>
+  <Badge scheme="info">Info</Badge>
+</div>
+
+```tsx
+<Badge scheme="primary">Primary</Badge>
+<Badge scheme="secondary">Secondary</Badge>
+<Badge scheme="success">Success</Badge>
+<Badge scheme="warning">Warning</Badge>
+<Badge scheme="danger">Danger</Badge>
+<Badge scheme="info">Info</Badge>
+```
+
+## Icons
+
+Use `leftIcon` and `rightIcon` to add optional Lucide icons around the label.
+
+<div className="noContent row">
+  <Badge leftIcon={Check} scheme="success">
+    Completed
+  </Badge>
+  <Badge leftIcon={Info} scheme="info">
+    Details
+  </Badge>
+  <Badge rightIcon={AlertTriangle} scheme="warning">
+    Attention
+  </Badge>
+</div>
+
+```tsx
+<Badge leftIcon={Check} scheme="success">
+  Completed
+</Badge>
+<Badge leftIcon={Info} scheme="info">
+  Details
+</Badge>
+<Badge rightIcon={AlertTriangle} scheme="warning">
+  Attention
+</Badge>
+```
+
+## Properties
+
+**`children`** - `React.ReactNode`
+Content rendered inside the badge.
+
+**`size`** - `"md" | "lg"` (default: `"lg"`)
+Controls the badge height, padding, radius, and font size.
+
+**`variant`** - `"solid" | "outline" | "ghost"` (default: `"ghost"`)
+Controls the visual style of the badge.
+
+**`scheme`** - `"primary" | "secondary" | "success" | "warning" | "danger" | "info"` (default: `"primary"`)
+Controls the color palette used by the selected variant.
+
+**`leftIcon`** - `LucideIcon`
+Icon rendered before the label.
+
+**`rightIcon`** - `LucideIcon`
+Icon rendered after the label.
+
+**Standard HTML div attributes** - `HTMLAttributes<HTMLDivElement>`
+All other native `div` props are supported, including `id`, `title`, `className`, and accessibility attributes.

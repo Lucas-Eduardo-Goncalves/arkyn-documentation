@@ -1,0 +1,236 @@
+import "../../_styles/arkynFieldWrapper.css";
+
+# ImageUpload
+
+import {
+  ImageUpload,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+`ImageUpload` is an image-focused upload field with preview support, drag-and-drop selection, and hidden form value integration.
+
+```tsx
+import { ImageUpload } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <ImageUpload name="avatar" action="/api/upload/image" />
+</div>
+
+```tsx
+<ImageUpload name="avatar" action="/api/upload/image" />
+```
+
+## Labels And Text Customization
+
+Customize visible text for the picker button, replace button, and drop area.
+
+<div className="noContent column">
+  <ImageUpload
+    name="profilePicture"
+    action="/api/upload/avatar"
+    label="Profile Picture"
+    showAsterisk
+    selectImageButtonText="Choose Photo"
+    changeImageButtonText="Change Photo"
+    dropImageText="Drop your photo here"
+  />
+</div>
+
+```tsx
+<ImageUpload
+  name="profilePicture"
+  action="/api/upload/avatar"
+  label="Profile Picture"
+  showAsterisk
+  selectImageButtonText="Choose Photo"
+  changeImageButtonText="Change Photo"
+  dropImageText="Drop your photo here"
+/>
+```
+
+## Default Preview Value
+
+Use `defaultValue` to preload an existing image URL in edit forms.
+
+<div className="noContent column">
+  <ImageUpload
+    name="productImage"
+    action="/api/upload/product"
+    label="Product Image"
+    defaultValue="https://images.unsplash.com/photo-1773332611514-238856b76198"
+    acceptImage=".jpg,.jpeg,.png,.webp"
+    fileName="productImage"
+    fileResponseName="imageUrl"
+  />
+</div>
+
+```tsx
+<ImageUpload
+  name="productImage"
+  action="/api/upload/product"
+  label="Product Image"
+  defaultValue="https://images.unsplash.com/photo-1773332611514-238856b76198"
+  acceptImage=".jpg,.jpeg,.png,.webp"
+  fileName="productImage"
+  fileResponseName="imageUrl"
+/>
+```
+
+## Upload Request Configuration
+
+Configure request method, payload field name, and response key to match backend contracts.
+
+<div className="noContent column">
+  <ImageUpload
+    name="gallery"
+    action="/api/images"
+    method="PUT"
+    fileName="galleryImage"
+    fileResponseName="imageUrl"
+    label="Gallery Image"
+    acceptImage="image/jpeg,image/png"
+  />
+</div>
+
+```tsx
+<ImageUpload
+  name="gallery"
+  action="/api/images"
+  method="PUT"
+  fileName="galleryImage"
+  fileResponseName="imageUrl"
+  label="Gallery Image"
+  acceptImage="image/jpeg,image/png"
+/>
+```
+
+## Disabled
+
+When `disabled` is true, selection and upload actions are blocked.
+
+<div className="noContent">
+  <ImageUpload
+    name="banner"
+    action="/api/upload/banner"
+    label="Banner Image"
+    defaultValue="https://images.unsplash.com/photo-1773332611514-238856b76198"
+    disabled
+  />
+</div>
+
+```tsx
+<ImageUpload
+  name="banner"
+  action="/api/upload/banner"
+  label="Banner Image"
+  defaultValue="https://images.unsplash.com/photo-1773332611514-238856b76198"
+  disabled
+/>
+```
+
+## Loading
+
+The component automatically shows loading feedback while an upload request is in progress.
+
+<div className="noContent">
+  <ImageUpload
+    name="avatarLoading"
+    action="/api/upload/avatar"
+    label="Avatar"
+  />
+</div>
+
+```tsx
+<ImageUpload name="avatarLoading" action="/api/upload/avatar" label="Avatar" />
+```
+
+## Error State
+
+The field displays error feedback from both form validation and upload response failures.
+
+<div className="noContent">
+  <ImageUpload
+    name="userAvatar"
+    action="/api/users/avatar"
+    label="User Avatar"
+    showAsterisk
+    acceptImage="image/*"
+  />
+</div>
+
+```tsx
+<ImageUpload
+  name="userAvatar"
+  action="/api/users/avatar"
+  label="User Avatar"
+  showAsterisk
+  acceptImage="image/*"
+/>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Preview and submitted value behavior</AlertTitle>
+    <AlertDescription>
+      The component keeps a visual preview (`filePath`) and a hidden input value
+      (`name`). After successful upload, the hidden value is updated from
+      `response[fileResponseName]`, while preview can come from `defaultValue`
+      or a local object URL.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`name`** - `string`
+Field name used by the hidden form input.
+
+**`action`** - `string`
+Endpoint URL where the image file is uploaded.
+
+**`defaultValue`** - `string | null` (default: `""`)
+Initial image URL shown as preview.
+
+**`className`** - `string`
+Additional class names for the outer wrapper.
+
+**`disabled`** - `boolean` (default: `false`)
+Disables selection and upload interactions.
+
+**`label`** - `string`
+Optional label shown above the upload area.
+
+**`showAsterisk`** - `boolean` (default: `false`)
+Controls required indicator visibility in the label.
+
+**`changeImageButtonText`** - `string` (default: `"Alterar imagem"`)
+Text for replacing an already selected image.
+
+**`selectImageButtonText`** - `string` (default: `"Selecionar imagem"`)
+Text for the initial image selection button.
+
+**`dropImageText`** - `string` (default: `"Ou arraste e solte a imagem aqui"`)
+Message shown in the drag-and-drop area.
+
+**`method`** - `string` (default: `"POST"`)
+HTTP method used for upload requests.
+
+**`fileName`** - `string` (default: `"file"`)
+FormData key used for the image file.
+
+**`fileResponseName`** - `string` (default: `"url"`)
+Response property used to extract the uploaded image URL.
+
+**`acceptImage`** - `string` (default: `"image/*"`)
+Accepted image MIME types or file extensions.
+
+**`onChange`** - `(url: string) => void`
+Callback fired after successful upload with the returned image URL.

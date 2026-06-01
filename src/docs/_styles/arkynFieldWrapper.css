@@ -1,0 +1,7 @@
+.arkynFieldWrapper {
+  min-width: 300px;
+}
+
+.arkynFieldWrapper .arkynMultiSelectContainer {
+  width: 100%;
+}

@@ -1,0 +1,89 @@
+# CardTabButton
+
+import { CardTabButton, CardTabContainer } from "@arkyn/components";
+
+The `CardTabButton` component is used as an interactive tab trigger inside a `CardTabContainer`.
+
+```tsx
+import { CardTabButton, CardTabContainer } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent row">
+  <CardTabContainer defaultValue="home">
+    <CardTabButton value="home">Home</CardTabButton>
+    <CardTabButton value="about">About</CardTabButton>
+    <CardTabButton value="contact">Contact</CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+<CardTabContainer defaultValue="home">
+  <CardTabButton value="home">Home</CardTabButton>
+  <CardTabButton value="about">About</CardTabButton>
+  <CardTabButton value="contact">Contact</CardTabButton>
+</CardTabContainer>
+```
+
+## States
+
+Use `disabled` to prevent selection. The active state is controlled by the surrounding container and the current tab value.
+
+<div className="noContent row">
+  <CardTabContainer defaultValue="available">
+    <CardTabButton value="available">Available</CardTabButton>
+    <CardTabButton value="coming-soon" disabled>
+      Coming Soon
+    </CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+<CardTabContainer defaultValue="available">
+  <CardTabButton value="available">Available</CardTabButton>
+  <CardTabButton value="coming-soon" disabled>
+    Coming Soon
+  </CardTabButton>
+</CardTabContainer>
+```
+
+## Interaction
+
+The button always uses `type="button"` and notifies the surrounding container when clicked. Any passed `onClick` handler still runs after the active tab changes.
+
+<div className="noContent row">
+  <CardTabContainer onChange={(value) => value} defaultValue="profile">
+    <CardTabButton value="profile">Profile</CardTabButton>
+    <CardTabButton value="settings">Settings</CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+<CardTabContainer
+  onChange={(value) => console.log(value)}
+  defaultValue="profile"
+>
+  <CardTabButton value="profile" onClick={() => console.log("Profile clicked")}>
+    Profile
+  </CardTabButton>
+  <CardTabButton value="settings">Settings</CardTabButton>
+</CardTabContainer>
+```
+
+## Properties
+
+**`children`** - `React.ReactNode`
+Content rendered inside the tab button.
+
+**`value`** - `string`
+Unique identifier for the tab button and the value sent to the container when the button is activated.
+
+**`disabled`** - `boolean`
+Disables the button. When the parent `CardTabContainer` is disabled, the button is also disabled automatically.
+
+**`onClick`** - `(event: MouseEvent<HTMLButtonElement>) => void`
+Optional click handler that runs after the tab change is triggered.
+
+**Standard HTML button attributes** - `ButtonHTMLAttributes<HTMLButtonElement>` except `children`, `value`, and `type`
+All other native button props are supported, including `className`, `aria-*` attributes, and `data-*` attributes.

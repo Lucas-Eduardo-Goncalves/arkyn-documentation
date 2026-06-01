@@ -1,0 +1,172 @@
+# Pagination
+
+import {
+  Pagination,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+`Pagination` renders page navigation controls with previous/next chevrons, sibling pages, and automatic spread indicators for long ranges.
+
+```tsx
+import { Pagination } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <Pagination totalCountRegisters={100} currentPage={1} />
+</div>
+
+```tsx
+<Pagination totalCountRegisters={100} currentPage={1} />
+```
+
+## Sibling Pages
+
+Use `siblingsCount` to control how many page numbers appear around the current page.
+
+<div className="noContent column">
+  <Pagination
+    totalCountRegisters={240}
+    currentPage={8}
+    registerPerPage={10}
+    siblingsCount={1}
+  />
+
+  <Pagination
+    totalCountRegisters={240}
+    currentPage={8}
+    registerPerPage={10}
+    siblingsCount={2}
+  />
+</div>
+
+```tsx
+<Pagination
+  totalCountRegisters={240}
+  currentPage={8}
+  registerPerPage={10}
+  siblingsCount={1}
+/>
+
+<Pagination
+  totalCountRegisters={240}
+  currentPage={8}
+  registerPerPage={10}
+  siblingsCount={2}
+/>
+```
+
+## Records Per Page
+
+Use `registerPerPage` to define total page count based on your data size.
+
+<div className="noContent column">
+  <Pagination totalCountRegisters={120} currentPage={3} registerPerPage={10} />
+  <Pagination totalCountRegisters={120} currentPage={3} registerPerPage={20} />
+</div>
+
+```tsx
+<Pagination totalCountRegisters={120} currentPage={3} registerPerPage={10} />
+<Pagination totalCountRegisters={120} currentPage={3} registerPerPage={20} />
+```
+
+## Page Change Handling
+
+Provide `onChange` to react to page navigation and update your external state.
+
+<div className="noContent">
+  <Pagination
+    totalCountRegisters={100}
+    currentPage={4}
+    registerPerPage={10}
+    siblingsCount={1}
+  />
+</div>
+
+```tsx
+<Pagination
+  totalCountRegisters={100}
+  currentPage={currentPage}
+  registerPerPage={10}
+  siblingsCount={1}
+  onChange={(page) => {
+    setCurrentPage(page);
+    console.log("Page changed to:", page);
+  }}
+/>
+```
+
+## Container Customization
+
+Because the component extends native `div` attributes, you can pass classes, styles, titles, and ARIA metadata.
+
+<div className="noContent">
+  <Pagination
+    totalCountRegisters={80}
+    currentPage={2}
+    className="custom-pagination"
+    title="Results navigation"
+    aria-label="Results pages"
+  />
+</div>
+
+```tsx
+<Pagination
+  totalCountRegisters={80}
+  currentPage={2}
+  className="custom-pagination"
+  title="Results navigation"
+  aria-label="Results pages"
+/>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Navigation boundaries</AlertTitle>
+    <AlertDescription>
+      Previous and next chevrons are automatically disabled at the edges: page
+      `1` disables previous, and the last calculated page disables next.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`totalCountRegisters`** - `number`
+Total number of records to paginate.
+
+**`currentPage`** - `number`
+Current active page (1-indexed).
+
+**`siblingsCount`** - `number` (default: `1`)
+Number of sibling pages shown on each side of the current page.
+
+**`registerPerPage`** - `number` (default: `10`)
+Number of records displayed per page.
+
+**`onChange`** - `(page: number) => void`
+Called whenever the active page changes.
+
+**`className`** - `string`
+Additional classes applied to the root pagination container.
+
+**`style`** - `CSSProperties`
+Inline styles applied to the root pagination container.
+
+**`title`** - `string`
+Native title attribute for the root container.
+
+**`id`** - `string`
+Custom id for the root container.
+
+**`aria-label`** - `string`
+Accessible label for screen readers.
+
+**`...rest`** - `Omit<HTMLAttributes<HTMLDivElement>, "onChange">`
+Any other valid native `div` attributes are forwarded, except native `onChange`.

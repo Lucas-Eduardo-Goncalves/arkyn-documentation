@@ -1,0 +1,433 @@
+import "../../_styles/arkynFieldWrapper.css";
+
+# MultiSelect
+
+import {
+  MultiSelect,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import { Globe } from "lucide-react";
+
+`MultiSelect` allows selecting multiple options from a dropdown with optional search, inline selected chips, and form-ready serialization.
+
+```tsx
+import { MultiSelect } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <MultiSelect
+    name="categories"
+    options={[
+      { label: "Technology", value: "tech" },
+      { label: "Design", value: "design" },
+      { label: "Marketing", value: "marketing" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="categories"
+  options={[
+    { label: "Technology", value: "tech" },
+    { label: "Design", value: "design" },
+    { label: "Marketing", value: "marketing" },
+  ]}
+/>
+```
+
+## Sizes
+
+Use `size` to adjust spacing and control dimensions.
+
+<div className="noContent column">
+  <MultiSelect
+    name="skillsMd"
+    label="Skills (md)"
+    size="md"
+    options={[
+      { label: "TypeScript", value: "ts" },
+      { label: "React", value: "react" },
+      { label: "Node.js", value: "node" },
+    ]}
+  />
+
+  <MultiSelect
+    name="skillsLg"
+    label="Skills (lg)"
+    size="lg"
+    options={[
+      { label: "TypeScript", value: "ts" },
+      { label: "React", value: "react" },
+      { label: "Node.js", value: "node" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="skillsMd"
+  label="Skills (md)"
+  size="md"
+  options={[
+    { label: "TypeScript", value: "ts" },
+    { label: "React", value: "react" },
+    { label: "Node.js", value: "node" },
+  ]}
+/>
+
+<MultiSelect
+  name="skillsLg"
+  label="Skills (lg)"
+  size="lg"
+  options={[
+    { label: "TypeScript", value: "ts" },
+    { label: "React", value: "react" },
+    { label: "Node.js", value: "node" },
+  ]}
+/>
+```
+
+## Variants
+
+Use `variant` to define the field style.
+
+<div className="noContent column">
+  <MultiSelect
+    name="solidVariant"
+    label="Solid"
+    variant="solid"
+    options={[
+      { label: "HR", value: "hr" },
+      { label: "IT", value: "it" },
+      { label: "Finance", value: "finance" },
+    ]}
+  />
+
+<MultiSelect
+  name="outlineVariant"
+  label="Outline"
+  variant="outline"
+  options={[
+    { label: "HR", value: "hr" },
+    { label: "IT", value: "it" },
+    { label: "Finance", value: "finance" },
+  ]}
+/>
+
+  <MultiSelect
+    name="underlineVariant"
+    label="Underline"
+    variant="underline"
+    options={[
+      { label: "HR", value: "hr" },
+      { label: "IT", value: "it" },
+      { label: "Finance", value: "finance" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="solidVariant"
+  label="Solid"
+  variant="solid"
+  options={[
+    { label: "HR", value: "hr" },
+    { label: "IT", value: "it" },
+    { label: "Finance", value: "finance" },
+  ]}
+/>
+
+<MultiSelect
+  name="outlineVariant"
+  label="Outline"
+  variant="outline"
+  options={[
+    { label: "HR", value: "hr" },
+    { label: "IT", value: "it" },
+    { label: "Finance", value: "finance" },
+  ]}
+/>
+
+<MultiSelect
+  name="underlineVariant"
+  label="Underline"
+  variant="underline"
+  options={[
+    { label: "HR", value: "hr" },
+    { label: "IT", value: "it" },
+    { label: "Finance", value: "finance" },
+  ]}
+/>
+```
+
+## Search And Empty State
+
+Enable `isSearchable` to filter options and customize empty-result text with `notFoundText`.
+
+<div className="noContent">
+  <MultiSelect
+    name="countries"
+    label="Countries"
+    isSearchable
+    notFoundText="No countries found"
+    leftIcon={Globe}
+    options={[
+      { label: "Brazil", value: "br" },
+      { label: "Canada", value: "ca" },
+      { label: "Germany", value: "de" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="countries"
+  label="Countries"
+  isSearchable
+  notFoundText="No countries found"
+  leftIcon={Globe}
+  options={[
+    { label: "Brazil", value: "br" },
+    { label: "Canada", value: "ca" },
+    { label: "Germany", value: "de" },
+  ]}
+/>
+```
+
+## Controlled And Close-On-Select Behavior
+
+Use controlled values with `onChange`, and set `closeOnSelect` to close the menu after each selection.
+
+<div className="noContent column">
+  <MultiSelect
+    name="tags"
+    label="Tags"
+    value={["frontend", "docs"]}
+    closeOnSelect={false}
+    options={[
+      { label: "Frontend", value: "frontend" },
+      { label: "Backend", value: "backend" },
+      { label: "Docs", value: "docs" },
+    ]}
+  />
+
+  <MultiSelect
+    name="departments"
+    label="Departments"
+    prefix="Dept:"
+    closeOnSelect
+    defaultValue={["hr", "it"]}
+    variant="underline"
+    options={[
+      { label: "HR", value: "hr" },
+      { label: "IT", value: "it" },
+      { label: "Operations", value: "ops" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="tags"
+  label="Tags"
+  value={selectedTags}
+  onChange={setSelectedTags}
+  onSearch={handleSearch}
+  closeOnSelect={false}
+  options={tagOptions}
+/>
+
+<MultiSelect
+  name="departments"
+  label="Departments"
+  prefix="Dept:"
+  closeOnSelect
+  defaultValue={["hr", "it"]}
+  variant="underline"
+  options={departmentOptions}
+/>
+```
+
+## Disabled
+
+Set `disabled` to block opening and selection interactions.
+
+<div className="noContent">
+  <MultiSelect
+    name="disabledTeams"
+    label="Teams"
+    disabled
+    defaultValue={["product"]}
+    options={[
+      { label: "Product", value: "product" },
+      { label: "Engineering", value: "engineering" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="disabledTeams"
+  label="Teams"
+  disabled
+  defaultValue={["product"]}
+  options={[
+    { label: "Product", value: "product" },
+    { label: "Engineering", value: "engineering" },
+  ]}
+/>
+```
+
+## Loading
+
+Set `isLoading` to indicate asynchronous option loading.
+
+<div className="noContent">
+  <MultiSelect
+    name="loadingTags"
+    label="Tags"
+    isLoading
+    options={[
+      { label: "A", value: "a" },
+      { label: "B", value: "b" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="loadingTags"
+  label="Tags"
+  isLoading
+  options={[
+    { label: "A", value: "a" },
+    { label: "B", value: "b" },
+  ]}
+/>
+```
+
+## Error State
+
+Provide `errorMessage` directly or rely on form context errors.
+
+<div className="noContent">
+  <MultiSelect
+    name="skills"
+    label="Select Skills"
+    showAsterisk
+    errorMessage="Please select at least one skill"
+    options={[
+      { label: "JavaScript", value: "js" },
+      { label: "TypeScript", value: "ts" },
+      { label: "React", value: "react" },
+    ]}
+  />
+</div>
+
+```tsx
+<MultiSelect
+  name="skills"
+  label="Select Skills"
+  showAsterisk
+  errorMessage="Please select at least one skill"
+  options={skillOptions}
+/>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Submitted value format</AlertTitle>
+    <AlertDescription>
+      The component stores selected values in a hidden input using
+      `JSON.stringify(selectedValues)`, so submitted form payloads include a
+      JSON array string.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`name`** - `string`
+Field name used in form submission.
+
+**`options`** - `{ label: string; value: string }[]`
+Selectable options list.
+
+**`id`** - `string`
+Custom unique id for the component.
+
+**`value`** - `string[]`
+Controlled array of selected option values.
+
+**`defaultValue`** - `string[]` (default: `[]`)
+Initial selected values for uncontrolled usage.
+
+**`showAsterisk`** - `boolean`
+Displays required indicator on the label.
+
+**`label`** - `string`
+Optional label shown above the field.
+
+**`errorMessage`** - `string`
+Custom error message displayed below the component.
+
+**`placeholder`** - `string` (default: `"Selecione..."`)
+Text shown when no option is selected.
+
+**`notFoundText`** - `string` (default: `"Sem opções disponíveis"`)
+Text shown when no options match the search.
+
+**`className`** - `string`
+Additional class names for the outer wrapper.
+
+**`disabled`** - `boolean` (default: `false`)
+Disables interaction.
+
+**`readOnly`** - `boolean` (default: `false`)
+Prevents changes while preserving display.
+
+**`isLoading`** - `boolean` (default: `false`)
+Shows loading state and disables interaction.
+
+**`isSearchable`** - `boolean` (default: `false`)
+Enables search field within options panel.
+
+**`closeOnSelect`** - `boolean` (default: `false`)
+Closes dropdown after selecting an option.
+
+**`onSearch`** - `(value: string) => void`
+Called when search input changes.
+
+**`onChange`** - `(value: string[]) => void`
+Called when selected values change.
+
+**`onFocus`** - `() => void`
+Called when the component gains focus.
+
+**`onBlur`** - `(e: FocusEvent<HTMLDivElement>) => void`
+Called when the component loses focus.
+
+**`size`** - `"md" | "lg"` (default: `"md"`)
+Controls component size.
+
+**`variant`** - `"solid" | "outline" | "underline"` (default: `"solid"`)
+Defines visual style.
+
+**`prefix`** - `string | LucideIcon`
+Text or icon shown before selected marks.
+
+**`leftIcon`** - `LucideIcon`
+Optional icon shown on the left side.
+
+**`optionMaxHeight`** - `number`
+Maximum height for options dropdown.

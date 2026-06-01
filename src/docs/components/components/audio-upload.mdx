@@ -1,0 +1,223 @@
+import "../../_styles/audioPlayer.css";
+
+# AudioUpload
+
+import {
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+  AudioUpload,
+} from "@arkyn/components";
+
+import { Info } from "lucide-react";
+
+The `AudioUpload` component uploads audio files with drag and drop support, server integration, validation feedback, and optional preview state.
+
+```tsx
+import { AudioUpload } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <AudioUpload name="audio" action="/api/upload" />
+</div>
+
+```tsx
+<AudioUpload name="audio" action="/api/upload" />
+```
+
+## Label
+
+Use `label` and `showAsterisk` to provide field context and required indicators.
+
+<div className="noContent">
+  <AudioUpload
+    name="podcast"
+    action="/api/upload/podcast"
+    label="Upload Podcast"
+    showAsterisk
+  />
+</div>
+
+```tsx
+<AudioUpload
+  name="podcast"
+  action="/api/upload/podcast"
+  label="Upload Podcast"
+  showAsterisk
+/>
+```
+
+## Upload Request
+
+Use `action`, `method`, `fileName`, and `fileResponseName` to match your backend upload contract.
+
+<div className="noContent">
+  <AudioUpload
+    name="recording"
+    action="/api/upload"
+    method="PUT"
+    fileName="recording"
+    fileResponseName="audioUrl"
+  />
+</div>
+
+```tsx
+<AudioUpload
+  name="recording"
+  action="/api/upload"
+  method="PUT"
+  fileName="recording"
+  fileResponseName="audioUrl"
+/>
+```
+
+## Custom Texts
+
+Use text props to customize the uploader interface copy.
+
+<div className="noContent">
+  <AudioUpload
+    name="voice"
+    action="/api/upload"
+    selectAudioButtonText="Choose Audio File"
+    dropAudioText="Drop your audio file here"
+    changeAudioButtonText="Change Audio"
+  />
+</div>
+
+```tsx
+<AudioUpload
+  name="voice"
+  action="/api/upload"
+  selectAudioButtonText="Choose Audio File"
+  dropAudioText="Drop your audio file here"
+  changeAudioButtonText="Change Audio"
+/>
+```
+
+## Accepted Audio Types
+
+Use `acceptAudio` to restrict selectable file types.
+
+<div className="noContent">
+  <AudioUpload
+    name="episode"
+    action="/api/upload"
+    acceptAudio="audio/mp3,audio/wav"
+  />
+</div>
+
+```tsx
+<AudioUpload
+  name="episode"
+  action="/api/upload"
+  acceptAudio="audio/mp3,audio/wav"
+/>
+```
+
+## Default Value
+
+Use `defaultValue` when the field already has an uploaded audio URL.
+
+<div className="noContent">
+  <AudioUpload
+    name="preview"
+    action="/api/upload"
+    defaultValue="https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3"
+    label="Audio Preview"
+  />
+</div>
+
+```tsx
+<AudioUpload
+  name="preview"
+  action="/api/upload"
+  defaultValue="/path/to/audio.mp3"
+  label="Audio Preview"
+/>
+```
+
+## Disabled
+
+Use `disabled` to block file selection and upload actions.
+
+<div className="noContent">
+  <AudioUpload name="archive" action="/api/upload" disabled />
+</div>
+
+```tsx
+<AudioUpload name="archive" action="/api/upload" disabled />
+```
+
+## Error state
+
+The component can show errors from `useForm` by field name or upload/runtime errors returned by the upload process.
+
+<AlertContainer schema="info">
+  <AlertIcon>
+    <Info size={16} />
+  </AlertIcon>
+  <AlertContent>
+    <AlertTitle>Error behavior</AlertTitle>
+    <AlertDescription>
+      Validation errors from form context and upload errors are merged into a
+      single message area rendered through `FieldError`.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+```tsx
+<AudioUpload
+  name="audio"
+  action="/api/upload"
+  onChange={(url) => console.log("Uploaded:", url)}
+/>
+```
+
+## Properties
+
+**`name`** - `string`
+Required field name used by form handling and hidden input submission.
+
+**`action`** - `string`
+Required upload endpoint URL.
+
+**`fileName`** - `string` (default: `"file"`)
+FormData field name used when sending the selected file.
+
+**`method`** - `string` (default: `"POST"`)
+HTTP method used for the upload request.
+
+**`acceptAudio`** - `string` (default: `"audio/*"`)
+Accepted MIME types or file filters for audio selection.
+
+**`dropAudioText`** - `string` (default: `"Ou arraste e solte um arquivo de áudio aqui"`)
+Text displayed in the drag and drop area.
+
+**`selectAudioButtonText`** - `string` (default: `"Selecionar arquivo de áudio"`)
+Text for the select file button.
+
+**`changeAudioButtonText`** - `string` (default: `"Trocar arquivo de áudio"`)
+Text for the change file action after a file has been selected.
+
+**`onChange`** - `(url?: string) => void`
+Callback fired after upload completion with the URL from the server response.
+
+**`fileResponseName`** - `string` (default: `"url"`)
+Response property name that contains the uploaded audio URL.
+
+**`label`** - `string`
+Optional label displayed above the uploader.
+
+**`showAsterisk`** - `boolean` (default: `false`)
+Shows the required indicator in the label.
+
+**`disabled`** - `boolean` (default: `false`)
+Disables audio selection and upload actions.
+
+**`defaultValue`** - `string` (default: `""`)
+Initial audio URL used to render the component with existing content.

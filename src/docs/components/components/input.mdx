@@ -1,0 +1,296 @@
+import "../../_styles/arkynFieldWrapper.css";
+
+# Input
+
+import {
+  Input,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import { Filter, Globe, Search } from "lucide-react";
+
+`Input` is a flexible text field with label, validation feedback, decorators, and loading support for form-driven interfaces.
+
+```tsx
+import { Input } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <Input name="username" placeholder="Enter username" />
+</div>
+
+```tsx
+<Input name="username" placeholder="Enter username" />
+```
+
+## Sizes
+
+Use `size` to adjust field spacing and icon proportions.
+
+<div className="noContent column">
+  <Input
+    name="titleMd"
+    label="Title (md)"
+    size="md"
+    placeholder="Medium input"
+  />
+  <Input
+    name="titleLg"
+    label="Title (lg)"
+    size="lg"
+    placeholder="Large input"
+  />
+</div>
+
+```tsx
+<Input name="titleMd" label="Title (md)" size="md" placeholder="Medium input" />
+<Input name="titleLg" label="Title (lg)" size="lg" placeholder="Large input" />
+```
+
+## Variants
+
+Use `variant` to control the visual style of the input container.
+
+<div className="noContent column">
+  <Input
+    name="solidField"
+    label="Solid"
+    variant="solid"
+    placeholder="Solid variant"
+  />
+  <Input
+    name="outlineField"
+    label="Outline"
+    variant="outline"
+    placeholder="Outline variant"
+  />
+  <Input
+    name="underlineField"
+    label="Underline"
+    variant="underline"
+    placeholder="Underline variant"
+  />
+</div>
+
+```tsx
+<Input name="solidField" label="Solid" variant="solid" placeholder="Solid variant" />
+<Input
+  name="outlineField"
+  label="Outline"
+  variant="outline"
+  placeholder="Outline variant"
+/>
+<Input
+  name="underlineField"
+  label="Underline"
+  variant="underline"
+  placeholder="Underline variant"
+/>
+```
+
+## Prefix, Suffix, And Icons
+
+Combine text decorators and icons to build contextual inputs.
+
+<div className="noContent column">
+  <Input
+    name="website"
+    label="Website"
+    prefix="https://"
+    suffix=".com"
+    variant="outline"
+  />
+
+<Input
+  name="search"
+  label="Search"
+  leftIcon={Search}
+  rightIcon={Filter}
+  placeholder="Type to search"
+/>
+
+  <Input
+    name="domain"
+    label="Domain"
+    leftIcon={Globe}
+    suffix=".io"
+    placeholder="project-name"
+  />
+</div>
+
+```tsx
+<Input
+  name="website"
+  label="Website"
+  prefix="https://"
+  suffix=".com"
+  variant="outline"
+/>
+
+<Input
+  name="search"
+  label="Search"
+  leftIcon={Search}
+  rightIcon={Filter}
+  placeholder="Type to search"
+/>
+
+<Input
+  name="domain"
+  label="Domain"
+  leftIcon={Globe}
+  suffix=".io"
+  placeholder="project-name"
+/>
+```
+
+## Disabled
+
+When disabled, the field blocks editing and keeps the current text visible through placeholder fallback.
+
+<div className="noContent">
+  <Input name="disabledEmail" label="Email" value="user@example.com" disabled />
+</div>
+
+```tsx
+<Input name="disabledEmail" label="Email" value="user@example.com" disabled />
+```
+
+## Loading
+
+Set `isLoading` to show spinner feedback and temporarily disable user interaction.
+
+<div className="noContent">
+  <Input
+    name="searching"
+    label="Search"
+    leftIcon={Search}
+    isLoading
+    placeholder="Searching..."
+  />
+</div>
+
+```tsx
+<Input
+  name="searching"
+  label="Search"
+  leftIcon={Search}
+  isLoading
+  placeholder="Searching..."
+/>
+```
+
+## Error State
+
+Provide `errorMessage` directly or rely on form context errors from `useForm`.
+
+<div className="noContent">
+  <Input
+    name="email"
+    label="Email Address"
+    type="email"
+    showAsterisk
+    errorMessage="Please enter a valid email"
+  />
+</div>
+
+```tsx
+<Input
+  name="email"
+  label="Email Address"
+  type="email"
+  showAsterisk
+  errorMessage="Please enter a valid email"
+/>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Hidden input type behavior</AlertTitle>
+    <AlertDescription>
+      When `type="hidden"` is passed, the component returns a simplified hidden
+      input render path and skips label, wrapper, decorators, and error layout.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`name`** - `string`
+Field name used in form submissions.
+
+**`label`** - `string`
+Optional label displayed above the input.
+
+**`errorMessage`** - `string`
+Custom error message rendered below the field.
+
+**`isLoading`** - `boolean` (default: `false`)
+Shows spinner feedback and disables interaction.
+
+**`size`** - `"md" | "lg"` (default: `"md"`)
+Controls input size and icon sizing.
+
+**`variant`** - `"solid" | "outline" | "underline"` (default: `"solid"`)
+Defines the visual style of the input container.
+
+**`prefix`** - `string | LucideIcon`
+Text or icon rendered before the typed value.
+
+**`suffix`** - `string | LucideIcon`
+Text or icon rendered after the typed value.
+
+**`showAsterisk`** - `boolean`
+Displays required indicator in the label.
+
+**`leftIcon`** - `LucideIcon`
+Icon rendered on the left side of the input.
+
+**`rightIcon`** - `LucideIcon`
+Icon rendered on the right side of the input.
+
+**`value`** - `string`
+Controlled input value.
+
+**`defaultValue`** - `string`
+Initial value for uncontrolled usage.
+
+**`type`** - `string` (default: `"text"`)
+Native input type.
+
+**`disabled`** - `boolean`
+Disables input interaction.
+
+**`readOnly`** - `boolean`
+Prevents edits while allowing focus behavior.
+
+**`onFocus`** - `(event: FocusEvent<HTMLInputElement>) => void`
+Called when the input receives focus.
+
+**`onBlur`** - `(event: FocusEvent<HTMLInputElement>) => void`
+Called when the input loses focus.
+
+**`id`** - `string`
+Custom input id used for label association.
+
+**`placeholder`** - `string`
+Placeholder text shown when the field has no value.
+
+**`title`** - `string`
+Native title attribute applied to the clickable section wrapper.
+
+**`style`** - `CSSProperties`
+Inline styles applied to the clickable section wrapper.
+
+**`className`** - `string`
+Additional class names for the outer field wrapper.
+
+**`...rest`** - `InputHTMLAttributes<HTMLInputElement>`
+Other valid native input attributes are forwarded except `size`, `prefix`, `name`, `value`, and `defaultValue` typing overrides from this component.

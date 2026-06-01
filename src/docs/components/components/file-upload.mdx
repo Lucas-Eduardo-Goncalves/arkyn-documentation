@@ -1,0 +1,215 @@
+# FileUpload
+
+import {
+  FileUpload,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+`FileUpload` provides drag-and-drop and file picker upload flow with hidden form value integration and inline error feedback.
+
+```tsx
+import { FileUpload } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <FileUpload name="document" action="/api/upload" />
+</div>
+
+```tsx
+<FileUpload name="document" action="/api/upload" />
+```
+
+## Labels And Text Customization
+
+Customize labels and helper texts to match your domain language and upload intent.
+
+<div className="noContent column">
+  <FileUpload
+    name="avatar"
+    action="/api/upload/avatar"
+    label="Profile Picture"
+    showAsterisk
+    selectFileButtonText="Choose image"
+    changeFileButtonText="Change image"
+    dropFileText="Drop your image here"
+  />
+</div>
+
+```tsx
+<FileUpload
+  name="avatar"
+  action="/api/upload/avatar"
+  label="Profile Picture"
+  showAsterisk
+  selectFileButtonText="Choose image"
+  changeFileButtonText="Change image"
+  dropFileText="Drop your image here"
+/>
+```
+
+## Upload Request Configuration
+
+Use `method`, `fileName`, and `fileResponseName` to adapt integration with different backend contracts.
+
+<div className="noContent column">
+  <FileUpload
+    name="file"
+    action="/api/files"
+    method="PUT"
+    fileName="uploadedFile"
+    fileResponseName="fileUrl"
+    label="Custom Upload"
+  />
+</div>
+
+```tsx
+<FileUpload
+  name="file"
+  action="/api/files"
+  method="PUT"
+  fileName="uploadedFile"
+  fileResponseName="fileUrl"
+  label="Custom Upload"
+/>
+```
+
+## File Type Restrictions
+
+Use `acceptFile` to limit the selectable file types.
+
+<div className="noContent column">
+  <FileUpload
+    name="pdf"
+    action="/api/upload/document"
+    label="Upload PDF Document"
+    acceptFile=".pdf"
+    fileName="document"
+    fileResponseName="documentUrl"
+  />
+</div>
+
+```tsx
+<FileUpload
+  name="pdf"
+  action="/api/upload/document"
+  label="Upload PDF Document"
+  acceptFile=".pdf"
+  fileName="document"
+  fileResponseName="documentUrl"
+/>
+```
+
+## Disabled
+
+When `disabled` is true, file selection and upload actions are blocked.
+
+<div className="noContent">
+  <FileUpload
+    name="attachment"
+    action="/api/upload"
+    label="Attachment"
+    disabled
+  />
+</div>
+
+```tsx
+<FileUpload
+  name="attachment"
+  action="/api/upload"
+  label="Attachment"
+  disabled
+/>
+```
+
+## Loading
+
+The component automatically enters loading state while the upload request is in progress.
+
+<div className="noContent">
+  <FileUpload name="slowUpload" action="/api/upload/slow" label="Large File" />
+</div>
+
+```tsx
+<FileUpload name="slowUpload" action="/api/upload/slow" label="Large File" />
+```
+
+## Error State
+
+Error feedback is shown when form validation fails or when the upload response returns an error.
+
+<div className="noContent">
+  <FileUpload
+    name="resume"
+    action="/api/upload/resume"
+    label="Resume"
+    acceptFile=".pdf"
+  />
+</div>
+
+```tsx
+<FileUpload
+  name="resume"
+  action="/api/upload/resume"
+  label="Resume"
+  acceptFile=".pdf"
+/>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Submitted value behavior</AlertTitle>
+    <AlertDescription>
+      The component keeps a hidden input with the provided `name`. After a
+      successful upload, this hidden value stores the URL from
+      `response[fileResponseName]`, allowing native form submission flows.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`name`** - `string`
+Field name used by the hidden form input.
+
+**`action`** - `string`
+Endpoint URL that receives the uploaded file.
+
+**`disabled`** - `boolean` (default: `false`)
+Disables file selection and upload actions.
+
+**`label`** - `string`
+Optional label rendered above the upload area.
+
+**`showAsterisk`** - `boolean` (default: `false`)
+Controls required indicator visibility in the label.
+
+**`changeFileButtonText`** - `string` (default: `"Alterar arquivo"`)
+Text used for the replace file button when a file is already selected.
+
+**`selectFileButtonText`** - `string` (default: `"Selecionar arquivo"`)
+Text used for the initial file picker button.
+
+**`dropFileText`** - `string` (default: `"Ou arraste e solte o arquivo aqui"`)
+Message displayed in the drop zone.
+
+**`method`** - `string` (default: `"POST"`)
+HTTP method used for the upload request.
+
+**`fileName`** - `string` (default: `"file"`)
+FormData key used to append the selected file.
+
+**`fileResponseName`** - `string` (default: `"url"`)
+Response property read to extract the uploaded file URL.
+
+**`acceptFile`** - `string` (default: `"*"`)
+Accepted file pattern passed to the file input.
+
+**`onChange`** - `(url?: string) => void`
+Callback fired after upload completion with the extracted URL.

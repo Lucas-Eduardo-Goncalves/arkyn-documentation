@@ -1,0 +1,183 @@
+# IconButton
+
+import {
+  IconButton,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+import { MoreVertical, Plus, Save, Trash2 } from "lucide-react";
+
+`IconButton` is a compact action button that renders a single icon with accessible labeling and built-in loading state.
+
+```tsx
+import { IconButton } from "@arkyn/components";
+```
+
+## Basic Usage
+
+<div className="noContent">
+  <IconButton icon={Plus} aria-label="Add" />
+</div>
+
+```tsx
+<IconButton icon={Plus} aria-label="Add" />
+```
+
+## Sizes
+
+Use `size` to control button and icon dimensions.
+
+<div className="noContent row">
+  <IconButton icon={MoreVertical} aria-label="Extra small" size="xs" />
+  <IconButton icon={MoreVertical} aria-label="Small" size="sm" />
+  <IconButton icon={MoreVertical} aria-label="Medium" size="md" />
+  <IconButton icon={MoreVertical} aria-label="Large" size="lg" />
+</div>
+
+```tsx
+<IconButton icon={MoreVertical} aria-label="Extra small" size="xs" />
+<IconButton icon={MoreVertical} aria-label="Small" size="sm" />
+<IconButton icon={MoreVertical} aria-label="Medium" size="md" />
+<IconButton icon={MoreVertical} aria-label="Large" size="lg" />
+```
+
+## Variants
+
+Use `variant` to choose the button visual style.
+
+<div className="noContent row">
+  <IconButton icon={Plus} aria-label="Solid" variant="solid" />
+  <IconButton icon={Plus} aria-label="Outline" variant="outline" />
+  <IconButton icon={Plus} aria-label="Ghost" variant="ghost" />
+  <IconButton icon={Plus} aria-label="Invisible" variant="invisible" />
+</div>
+
+```tsx
+<IconButton icon={Plus} aria-label="Solid" variant="solid" />
+<IconButton icon={Plus} aria-label="Outline" variant="outline" />
+<IconButton icon={Plus} aria-label="Ghost" variant="ghost" />
+<IconButton icon={Plus} aria-label="Invisible" variant="invisible" />
+```
+
+## Color Schemes
+
+Use `scheme` to communicate action intent and priority.
+
+<div className="noContent row">
+  <IconButton icon={Save} aria-label="Primary" scheme="primary" />
+  <IconButton icon={Save} aria-label="Success" scheme="success" />
+  <IconButton icon={Save} aria-label="Warning" scheme="warning" />
+  <IconButton icon={Trash2} aria-label="Danger" scheme="danger" />
+  <IconButton icon={Save} aria-label="Info" scheme="info" />
+</div>
+
+```tsx
+<IconButton icon={Save} aria-label="Primary" scheme="primary" />
+<IconButton icon={Save} aria-label="Success" scheme="success" />
+<IconButton icon={Save} aria-label="Warning" scheme="warning" />
+<IconButton icon={Trash2} aria-label="Danger" scheme="danger" />
+<IconButton icon={Save} aria-label="Info" scheme="info" />
+```
+
+## Disabled
+
+Set `disabled` to block interactions while preserving layout and icon rendering.
+
+<div className="noContent row">
+  <IconButton icon={Plus} aria-label="Disabled add" disabled />
+  <IconButton
+    icon={Trash2}
+    aria-label="Disabled delete"
+    disabled
+    variant="outline"
+    scheme="danger"
+  />
+</div>
+
+```tsx
+<IconButton icon={Plus} aria-label="Disabled add" disabled />
+<IconButton
+  icon={Trash2}
+  aria-label="Disabled delete"
+  disabled
+  variant="outline"
+  scheme="danger"
+/>
+```
+
+## Loading
+
+When `isLoading` is true, the button shows a spinner and becomes disabled.
+
+<div className="noContent row">
+  <IconButton icon={Save} aria-label="Saving" isLoading />
+  <IconButton
+    icon={Trash2}
+    aria-label="Deleting"
+    isLoading
+    scheme="danger"
+    variant="outline"
+  />
+</div>
+
+```tsx
+<IconButton icon={Save} aria-label="Saving" isLoading />
+<IconButton
+  icon={Trash2}
+  aria-label="Deleting"
+  isLoading
+  scheme="danger"
+  variant="outline"
+/>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Accessibility requirement</AlertTitle>
+    <AlertDescription>
+      `aria-label` is required because this component does not render visible
+      text content. Always provide a descriptive action label for screen reader
+      users.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`icon`** - `LucideIcon`
+Icon component rendered inside the button.
+
+**`aria-label`** - `string`
+Accessible action name announced by assistive technologies.
+
+**`isLoading`** - `boolean` (default: `false`)
+Shows spinner state and disables button interaction.
+
+**`size`** - `"xs" | "sm" | "md" | "lg"` (default: `"md"`)
+Controls button and icon size.
+
+**`variant`** - `"solid" | "outline" | "ghost" | "invisible"` (default: `"solid"`)
+Defines the visual style variant.
+
+**`scheme`** - `"primary" | "success" | "warning" | "danger" | "info"` (default: `"primary"`)
+Defines the color scheme semantic.
+
+**`disabled`** - `boolean`
+Disables interactions when true.
+
+**`type`** - `"button" | "submit" | "reset"`
+Native button type behavior.
+
+**`onClick`** - `(event: MouseEvent<HTMLButtonElement>) => void`
+Click event handler for action execution.
+
+**`className`** - `string`
+Adds custom classes to the root button.
+
+**`...rest`** - `ButtonHTMLAttributes<HTMLButtonElement>`
+Any other valid native button attributes are forwarded, except `children`.
