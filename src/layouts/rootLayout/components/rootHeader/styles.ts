@@ -20,13 +20,24 @@ const HeaderContainer = styled.header`
     margin: 0 auto;
     max-width: 1440px;
     width: 100%;
+    gap: 24px;
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
 
     .logoImage {
       height: 40px;
+    }
+
+    .arkynBadge {
+      margin-left: auto;
+    }
+
+    > a {
+      text-decoration: none;
+      color: var(--text-body);
+      font-weight: 600;
+      font-size: 14px;
     }
   }
 `;

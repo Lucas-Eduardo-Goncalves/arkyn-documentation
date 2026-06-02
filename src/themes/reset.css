@@ -56,3 +56,11 @@ button {
   --toast-info: 14, 165, 233; /* #0EA5E9 */
   --toast-warning: 251, 146, 60; /* #FB923C */
 }
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body[style*="overflow: hidden"] {
+  padding-right: 0 !important;
+}

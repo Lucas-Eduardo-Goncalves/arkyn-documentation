@@ -30,9 +30,10 @@ function RootFooter() {
           <ColumnsContainer>
             <div>
               <strong>Products</strong>
-              {/* <Link to="/docs/api/introduction">Api</Link> */}
               <Link to="">Library</Link>
-              <Link to="">Design System</Link>
+              <Link to="https://www.figma.com/design/5KBfor0XOuCoB9uf4hzyRf/Arkyn---Design-System?node-id=0-1&p=f&t=DQLTbvtl5wCjwKRl-0">
+                Design System
+              </Link>
             </div>
 
             <div>

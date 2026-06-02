@@ -1,10 +1,10 @@
-import { Link, useLocation } from "react-router";
 import { Badge } from "@arkyn/components";
+import { Link, useLocation } from "react-router";
+import { animateScroll } from "react-scroll";
 
 import arkynLogoPng from "~/assets/arkynFullLogo.png";
-import { dependencies } from "../../../../../package.json";
+import { ProductsMenu } from "../productsMenu";
 import { HeaderContainer } from "./styles";
-import { animateScroll } from "react-scroll";
 
 function RootHeader() {
   const location = useLocation();
@@ -34,7 +34,12 @@ function RootHeader() {
           </Link>
         )}
 
-        <Badge variant="outline">v{dependencies["@arkyn/components"]}</Badge>
+        <ProductsMenu />
+
+        <Link to="/docs/changelog">Changelog</Link>
+        <Link to="/guides/introduction">Guides</Link>
+
+        {/* <Badge variant="outline">v3.2.0</Badge> */}
       </div>
     </HeaderContainer>
   );
