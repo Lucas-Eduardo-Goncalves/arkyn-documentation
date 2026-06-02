@@ -33,6 +33,10 @@ const HeaderContainer = styled.header`
       margin-left: auto;
     }
 
+    .searchContainer {
+      margin-left: auto;
+    }
+
     > a {
       text-decoration: none;
       color: var(--text-body);

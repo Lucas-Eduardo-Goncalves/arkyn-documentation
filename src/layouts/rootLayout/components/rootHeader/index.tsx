@@ -1,8 +1,8 @@
-import { Badge } from "@arkyn/components";
 import { Link, useLocation } from "react-router";
 import { animateScroll } from "react-scroll";
 
 import arkynLogoPng from "~/assets/arkynFullLogo.png";
+import { AlgoliaSearch } from "../algoliaSearch";
 import { ProductsMenu } from "../productsMenu";
 import { HeaderContainer } from "./styles";
 
@@ -39,7 +39,7 @@ function RootHeader() {
         <Link to="/docs/changelog">Changelog</Link>
         <Link to="/guides/introduction">Guides</Link>
 
-        {/* <Badge variant="outline">v3.2.0</Badge> */}
+        <AlgoliaSearch />
       </div>
     </HeaderContainer>
   );

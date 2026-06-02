@@ -1,0 +1,109 @@
+import { styled } from "@linaria/react";
+
+const Container = styled.div`
+  margin-left: auto;
+
+  width: 100%;
+  max-width: 240px;
+
+  .searchButton,
+  .DocSearch-Button {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    min-height: 38px;
+    max-height: 38px;
+
+    padding: 0 16px;
+    gap: 8px;
+    border-radius: 8px;
+
+    border: 1px solid var(--border);
+    outline: 1px solid transparent;
+
+    background: transparent;
+    color: var(--text-heading);
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+
+    transition:
+      border-color 0.16s ease,
+      outline-color 0.16s ease,
+      color 0.16s ease,
+      background-color 0.16s ease;
+  }
+
+  .searchButton:hover,
+  .DocSearch-Button:hover {
+    cursor: text;
+    border-color: rgba(var(--spotlight-primary), 1);
+    outline-color: rgba(var(--spotlight-primary), 1);
+  }
+
+  .searchButton:focus-visible,
+  .DocSearch-Button:focus-visible {
+    border-color: rgba(var(--spotlight-primary), 1);
+    outline-color: rgba(var(--spotlight-primary), 1);
+  }
+
+  .searchButton:disabled {
+    user-select: none;
+    opacity: 0.5;
+  }
+
+  .searchButton svg,
+  .DocSearch-Search-Icon,
+  .DocSearch-Button-Container svg {
+    color: var(--text-muted);
+    stroke: currentColor;
+  }
+
+  .searchButton span,
+  .DocSearch-Button-Placeholder {
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    margin: 0;
+  }
+
+  .searchButton kbd,
+  .DocSearch-Button-Keys {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .searchButton kbd,
+  .DocSearch-Button-Key {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: rgba(var(--spotlight-secondary), 1);
+    color: var(--text-body);
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    box-shadow: none;
+  }
+
+  .searchButton kbd + kbd {
+    margin-left: 0;
+  }
+
+  .DocSearch-Button-Key:first-child {
+    margin-right: 0;
+  }
+`;
+
+export { Container };
