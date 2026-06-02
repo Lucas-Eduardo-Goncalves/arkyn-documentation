@@ -47,6 +47,7 @@ function RootFooter() {
             <div>
               <strong>Explore</strong>
               <Link to="/">Documentation</Link>
+              <Link to="/docs/changelog">Changelog</Link>
               <Link to="/guides/introduction">Guides</Link>
             </div>
 
@@ -55,7 +56,7 @@ function RootFooter() {
               <Link to="/docs/about">About</Link>
               <Link to="/docs/support">Support</Link>
               <Link to="/docs/privacy">Privacy policy</Link>
-              <a href="mailto:lucasgoncalvesgithub@gmail.com">Contact us</a>
+              <a href="mailto:lucasgoncalves@arkyn.dev">Contact us</a>
             </div>
           </ColumnsContainer>
         </NavSection>
