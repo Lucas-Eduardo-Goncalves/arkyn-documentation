@@ -1,6 +1,6 @@
 # useDrawer
 
-The `useDrawer` hook provides access to drawer state and drawer actions from drawer context.
+The `useDrawer` hook provides access to drawer state and drawer actions from drawer context, and it can be used in two different modes: global mode (without `key`) and scoped mode (with `key`).
 
 ## Import
 
@@ -12,24 +12,85 @@ import { useDrawer } from "@arkyn/components";
 
 ### `key` (optional)
 
-Drawer identifier. When provided, the hook returns drawer-specific helpers for this key.
+Drawer identifier. When provided, the hook returns helpers already scoped to that drawer key.
 
 **Type:** `string`
 
+When omitted, the hook returns global helpers that work with any drawer key.
+
 ## Return value
 
-The hook returns either the full drawer context or key-scoped drawer helpers.
+The hook returns different signatures depending on whether `key` is provided.
 
 **Type:** `DrawerContextProps<T> | { drawerIsOpen: boolean; drawerData: T; openDrawer: (data?: T) => void; closeDrawer: () => void }`
 
-| Property       | Type                                                      | Description                                                          |
-| -------------- | --------------------------------------------------------- | -------------------------------------------------------------------- |
-| `drawerIsOpen` | `(key: string) => boolean` or `boolean`                   | In full mode, checks a key; in keyed mode, current key open state.   |
-| `drawerData`   | `(key: string) => T` or `T`                               | In full mode, reads data by key; in keyed mode, data of current key. |
-| `openDrawer`   | `(key: string, data?: T) => void` or `(data?: T) => void` | Opens drawer globally or scoped to current key.                      |
-| `closeDrawer`  | `(key: string) => void` or `() => void`                   | Closes drawer globally by key or closes current key.                 |
+### Without `key` (global mode)
+
+Use this mode when you want to control multiple drawers from the same component.
+
+- `drawerIsOpen(key: string): boolean`
+  Checks whether a specific drawer is open.
+- `drawerData(key: string): T`
+  Reads the data associated with a specific drawer key.
+- `openDrawer(key: string, data?: T): void`
+  Opens the drawer for the provided key and optionally stores data.
+- `closeDrawer(key: string): void`
+  Closes the drawer for the provided key.
+
+### With `key` (scoped mode)
+
+Use this mode when a component is responsible for only one drawer.
+
+- `drawerIsOpen: boolean`
+  Boolean state for the current scoped drawer.
+- `drawerData: T`
+  Data stored for the current scoped drawer.
+- `openDrawer(data?: T): void`
+  Opens only the scoped drawer and optionally stores data.
+- `closeDrawer(): void`
+  Closes only the scoped drawer.
 
 ## Usage example
+
+### Global mode (without `key`)
+
+```tsx
+import { DrawerProvider, useDrawer } from "@arkyn/components";
+
+function DrawerActions() {
+  const { drawerIsOpen, drawerData, openDrawer, closeDrawer } = useDrawer<{
+    category: string;
+  }>();
+
+  const filtersOpen = drawerIsOpen("filters");
+  const filtersData = drawerData("filters");
+
+  return (
+    <div>
+      <p>Is filters drawer open? {String(filtersOpen)}</p>
+      <p>Current category: {filtersData?.category ?? "none"}</p>
+
+      <button
+        onClick={() => openDrawer("filters", { category: "electronics" })}
+      >
+        Open filters
+      </button>
+
+      <button onClick={() => closeDrawer("filters")}>Close filters</button>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <DrawerProvider>
+      <DrawerActions />
+    </DrawerProvider>
+  );
+}
+```
+
+### Scoped mode (with `key`)
 
 ```tsx
 import { DrawerProvider, useDrawer } from "@arkyn/components";
@@ -50,10 +111,10 @@ function FiltersDrawer() {
 }
 
 function DrawerActions() {
-  const { openDrawer } = useDrawer();
+  const { openDrawer } = useDrawer<{ category: string }>("filters");
 
   return (
-    <button onClick={() => openDrawer("filters", { category: "electronics" })}>
+    <button onClick={() => openDrawer({ category: "electronics" })}>
       Open filters
     </button>
   );
@@ -72,5 +133,7 @@ function App() {
 ## Notes
 
 - Calling `useDrawer` outside provider scope throws an error.
+- Global mode is useful for centralized drawer orchestration (multiple keys in one place).
 - Keyed mode is useful to avoid repeating the same key in open/close calls.
+- If your component only interacts with one drawer, prefer scoped mode for cleaner code.
 - Provider dependency: [drawer-provider.mdx](drawer-provider.mdx).

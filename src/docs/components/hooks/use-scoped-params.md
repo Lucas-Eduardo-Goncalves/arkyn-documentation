@@ -29,10 +29,10 @@ The hook returns helpers to read scoped params and generate updated search strin
 
 **Type:** `{ getParam: (key: string) => string | null; getScopedSearch: (params: Record<string, string | number | boolean | undefined>) => string }`
 
-| Property          | Type                                                                           | Description                                                                                  |
-| ----------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------- |
-| `getParam`        | `(key: string) => string \| null`                                              | Reads a parameter by key, applying scope prefix when configured.                             |
-| `getScopedSearch` | `(params: Record<string, string \| number \| boolean \| undefined>) => string` | Merges updates, removes `undefined` keys, and returns query string with optional `?` prefix. |
+- `getParam(key: string): string | null`
+  Reads a parameter by key, applying scope prefix when configured.
+- `getScopedSearch(params: Record<string, string | number | boolean | undefined>): string`
+  Merges updates, removes keys with `undefined`, and returns a query string with optional `?` prefix.
 
 ## Usage example
 

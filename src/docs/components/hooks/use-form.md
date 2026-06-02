@@ -18,9 +18,8 @@ The hook returns the current form context object.
 
 **Type:** `{ fieldErrors: { [x: string]: any } }`
 
-| Property      | Type                   | Description                              |
-| ------------- | ---------------------- | ---------------------------------------- |
-| `fieldErrors` | `{ [x: string]: any }` | Validation errors indexed by field name. |
+- `fieldErrors: { [x: string]: any }`
+  Validation errors indexed by field name.
 
 ## Usage example
 

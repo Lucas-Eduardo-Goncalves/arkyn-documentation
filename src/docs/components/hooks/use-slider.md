@@ -23,10 +23,10 @@ The hook returns the current slider value and a setter with boundary validation.
 
 **Type:** `[number, (value: number) => void]`
 
-| Property | Type                      | Description                                         |
-| -------- | ------------------------- | --------------------------------------------------- |
-| `0`      | `number`                  | Current slider value in range `0-100`.              |
-| `1`      | `(value: number) => void` | Updates slider value and clamps out-of-range input. |
+- `0: number`
+  Current slider value in range `0-100`.
+- `1: (value: number) => void`
+  Updates slider value and clamps out-of-range input.
 
 ## Usage example
 

@@ -18,9 +18,8 @@ The hook returns toast context methods.
 
 **Type:** `{ showToast: (toast: { message: string; type: "success" | "danger" }) => void }`
 
-| Property    | Type                                                                | Description                                                        |
-| ----------- | ------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| `showToast` | `(toast: { message: string; type: "success" \| "danger" }) => void` | Displays a toast notification using the configured provider style. |
+- `showToast(toast: { message: string; type: "success" | "danger" }): void`
+  Displays a toast notification using the configured provider style.
 
 ## Usage example
 

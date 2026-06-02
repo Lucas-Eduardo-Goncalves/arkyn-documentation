@@ -18,9 +18,8 @@ The hook returns whether hydration has completed on the client.
 
 **Type:** `boolean`
 
-| Property     | Type      | Description                                               |
-| ------------ | --------- | --------------------------------------------------------- |
-| `isHydrated` | `boolean` | `false` during SSR/pre-hydration, `true` after hydration. |
+- `isHydrated` (value returned by the hook): `boolean`
+  `false` during SSR/pre-hydration and `true` after hydration on the client.
 
 ## Usage example
 
