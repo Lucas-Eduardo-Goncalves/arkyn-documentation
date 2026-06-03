@@ -1,0 +1,232 @@
+# Configure file upload
+
+import {
+	FileUpload,
+	AlertContainer,
+	AlertContent,
+	AlertDescription,
+	AlertIcon,
+	AlertTitle,
+} from "@arkyn/components";
+
+`FileUpload` is designed for a two-step flow: the component first sends the selected file to a dedicated upload endpoint, then stores the returned file URL inside a hidden input so the final form can submit only the URL.
+
+```tsx
+import { FileUpload } from "@arkyn/components";
+```
+
+## How it works
+
+The component does not talk directly to S3, Cloudinary, or any other storage provider. Instead, it sends the file to the `action` you provide, and that endpoint is responsible for processing the file, saving it somewhere, and returning the final URL.
+
+The upload flow happens like this:
+
+1. The user selects a file or drops one into the upload area.
+2. `FileUpload` creates a `FormData` payload.
+3. The selected file is appended to that payload using the `fileName` key.
+4. The component sends the payload to the `action` URL using the configured HTTP `method`.
+5. The endpoint uploads the file to its final destination, such as Amazon S3.
+6. The endpoint returns a JSON response containing the public file URL.
+7. `FileUpload` reads that URL from `response[fileResponseName]`.
+8. The component stores that URL in a hidden input named with the `name` prop.
+9. When the main form is submitted, only the URL is sent, not the raw file.
+
+<AlertContainer schema="info">
+	<AlertIcon />
+	<AlertContent>
+		<AlertTitle>The final form value is the file URL</AlertTitle>
+		<AlertDescription>
+			The component keeps the uploaded file reference in a hidden input. This
+			means the parent form receives a normal string value, which makes it easy
+			to save the uploaded file URL together with the rest of the form data.
+		</AlertDescription>
+	</AlertContent>
+</AlertContainer>
+
+## What the component sends
+
+`FileUpload` sends a `multipart/form-data` request to the route defined in `action`.
+
+By default, the request contains one field:
+
+- `file` - the selected file, unless you change the field name with `fileName`.
+
+You can customize the request shape with these props:
+
+- `action` - the endpoint that receives the upload request.
+- `method` - the HTTP verb used for the request. Default is `POST`.
+- `fileName` - the form-data key used for the file. Default is `file`.
+- `acceptFile` - the file picker filter. This helps the user choose the right file type, but it is not a server-side validation rule.
+
+## What the component expects back
+
+After the upload completes, the component expects a JSON response.
+
+The important part is the property that contains the final URL:
+
+- `fileResponseName` - the property name read from the JSON response. Default is `url`.
+
+If the response returns an `error` property, the component shows that message as the upload error.
+
+<AlertContainer schema="warning">
+	<AlertIcon />
+	<AlertContent>
+		<AlertTitle>Keep the response contract consistent</AlertTitle>
+		<AlertDescription>
+			If the endpoint returns a different property name, the component will not
+			know where to find the uploaded file URL. For example, if your backend
+			returns <code>{"{ documentUrl: '...' }"}</code>, you must set
+			<code>fileResponseName="documentUrl"</code>.
+		</AlertDescription>
+	</AlertContent>
+</AlertContainer>
+
+## Basic Usage
+
+<div className="noContent">
+	<FileUpload name="document" action="/api/file-upload" label="Document" />
+</div>
+
+```tsx
+<FileUpload name="document" action="/api/file-upload" label="Document" />
+```
+
+## Recommended Backend Flow
+
+The most reliable setup is to create a dedicated upload route in your app. That route receives the file, validates it, stores it in your provider, and returns the final public URL.
+
+In a React Router application, the action can follow this pattern:
+
+```tsx
+import type { Route } from "+/api.fileUpload";
+import { type FileUpload, parseFormData } from "@mjackson/form-data-parser";
+
+import { FileAdapter } from "~/infra/adapters/fileAdapter";
+import { HttpAdapter } from "~/infra/adapters/httpAdapter";
+import { environmentVariables } from "../config/environmentVariables";
+
+export async function action({ request }: Route.ActionArgs) {
+	const uploadHandler = async (fileUpload: FileUpload): Promise<string> => {
+		if (fileUpload.fieldName !== "file") {
+			throw HttpAdapter.badRequest("Invalid field name");
+		}
+
+		const fileAdapter = new FileAdapter({
+			awsAccessKeyId: environmentVariables.AWS_ACCESS_KEY_ID,
+			awsSecretAccessKey: environmentVariables.AWS_SECRET_ACCESS_KEY,
+			awsRegion: environmentVariables.AWS_REGION,
+			awsS3Bucket: environmentVariables.AWS_S3_BUCKET,
+			awsDomain: environmentVariables.AWS_DOMAIN,
+		});
+
+		return await fileAdapter.uploadFile(fileUpload);
+	};
+
+	const formData = await parseFormData(request, uploadHandler);
+	return { url: formData.get("file") };
+}
+```
+
+That action does three important things:
+
+1. It validates the incoming field name.
+2. It uploads the file to the real storage provider.
+3. It returns the final URL in the shape expected by `FileUpload`.
+
+## File Adapter Example
+
+The adapter below shows how the uploaded file can be sent to Amazon S3 and converted into a public URL.
+
+```tsx
+import { generateId } from "@arkyn/shared";
+import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import type { FileUpload } from "@mjackson/form-data-parser";
+import { Readable } from "stream";
+
+type ConstructorProps = {
+	awsRegion: string;
+	awsAccessKeyId: string;
+	awsSecretAccessKey: string;
+	awsS3Bucket: string;
+	awsDomain: string;
+};
+
+class FileAdapter {
+	readonly awsRegion: string;
+	readonly awsAccessKeyId: string;
+	readonly awsSecretAccessKey: string;
+	readonly awsS3Bucket: string;
+	readonly awsDomain: string;
+
+	constructor(props: ConstructorProps) {
+		this.awsRegion = props.awsRegion;
+		this.awsAccessKeyId = props.awsAccessKeyId;
+		this.awsSecretAccessKey = props.awsSecretAccessKey;
+		this.awsS3Bucket = props.awsS3Bucket;
+		this.awsDomain = props.awsDomain;
+	}
+
+	async uploadFile(file: FileUpload): Promise<string> {
+		const fileSize = file.size;
+		const contentType = file.type;
+		const webStream = file.stream();
+		const fileStream = Readable.fromWeb(webStream as any);
+
+		const uploadParams = {
+			Bucket: this.awsS3Bucket,
+			Key: `uploads/${generateId("text", "v4")}`,
+			Body: fileStream,
+			ContentType: contentType,
+			ContentLength: fileSize,
+		};
+
+		const s3Client = new S3Client({
+			region: this.awsRegion,
+			requestStreamBufferSize: 65_536,
+			credentials: {
+				accessKeyId: this.awsAccessKeyId,
+				secretAccessKey: this.awsSecretAccessKey,
+			},
+		});
+
+		const command = new PutObjectCommand(uploadParams);
+		await s3Client.send(command);
+
+		return `${this.awsDomain}/${uploadParams.Key}`;
+	}
+}
+
+export { FileAdapter };
+```
+
+## Practical Usage In A Form
+
+In the final form, `FileUpload` behaves like a normal field. The difference is that the hidden field receives the uploaded file URL after the upload finishes.
+
+```tsx
+<FileUpload
+	name="avatarUrl"
+	action="/api/file-upload"
+	label="Profile picture"
+	selectFileButtonText="Choose image"
+	changeFileButtonText="Replace image"
+	dropFileText="Drop your image here"
+	acceptFile="image/*"
+	onChange={(url) => {
+		if (url) {
+			console.log("Uploaded file URL:", url);
+		}
+	}}
+/>
+```
+
+When the upload succeeds, the hidden input named `avatarUrl` receives the returned URL value.
+
+## Notes
+
+- `acceptFile` only helps the browser file picker filter options. It does not replace server-side validation.
+- `onChange` receives the uploaded URL after a successful response.
+- `disabled` prevents both file selection and re-upload actions.
+- `method` exists for backend compatibility, but most upload endpoints use `POST`.
+- The component can show a retry action when the upload fails and the selected file is still available.
+- Keep the upload endpoint separate from the final form submit route so the upload can finish before the form is saved.

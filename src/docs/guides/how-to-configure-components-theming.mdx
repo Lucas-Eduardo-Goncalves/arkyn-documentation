@@ -1,0 +1,119 @@
+
+# Configure the theme
+
+import { 
+  AlertContainer, 
+  AlertContent, 
+  AlertDescription, 
+  AlertIcon, 
+  AlertTitle 
+} from "@arkyn/components";
+
+Arkyn styles are shipped inside a CSS layer. This means the library can define its own style priority without depending only on selector specificity or the physical order of declarations.
+
+In practice, CSS layers let you group styles and control which group wins when two rules target the same element. A rule declared in a later layer has higher priority than a rule declared in an earlier layer, even if both selectors have the same specificity. That is why Arkyn's stylesheet should stay in its own layer, while your global styles should live in an earlier layer.
+
+## Global Styles Must Be Wrapped in a Layer
+
+Any raw global CSS that is not inside a layer can override Arkyn styles in unexpected ways. To avoid that, place your reset and base styles inside a dedicated layer, and keep Arkyn in a later layer.
+
+```css
+@layer reset, arkyn;
+
+@layer reset {
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	*,
+	input,
+	textarea,
+	button {
+		font-family: "Open Sans", sans-serif;
+		font-optical-sizing: auto;
+	}
+}
+```
+
+<AlertContainer schema="warning">
+	<AlertIcon />
+	<AlertContent>
+		<AlertTitle>Avoid global line-height overrides</AlertTitle>
+		<AlertDescription>
+			Do not place `line-height: 130%` or any other line-height
+			value in unlayered global CSS. Keep this rule inside the reset layer so
+			it does not interfere with Arkyn component styles. In some cases,
+			developers may think text is not vertically centered, when the real cause
+			is the global line-height affecting the component's internal layout.
+		</AlertDescription>
+	</AlertContent>
+</AlertContainer>
+
+## Arkyn CSS Variables
+
+You also need a CSS file that defines the Arkyn theme variables. These values act as the design tokens used by the components, overlays, feedback states, and text hierarchy.
+
+```css
+:root {
+	--white: #ffffff;
+
+	/* background */
+	--background: #f4f4f5;
+	--background-foreground: #ffffff;
+
+	/* modal, drawer, popover... */
+	--card: #ffffff;
+	--card-foreground-primary: #fafafa;
+	--card-foreground-secondary: #f1f5f9;
+	--card-foreground-third: #e2e8f0;
+
+	/* skeleton */
+	--skeleton: #f8fafc;
+	--skeleton-foreground: #f1f5f9;
+
+	/* text */
+	--text-heading: #18181b;
+	--text-body: #52525b;
+	--text-muted: #a1a1aa;
+
+	/* border */
+	--border: #e2e8f0;
+
+	/* tooltip */
+	--tooltip-text: #f1f5f9;
+	--tooltip-background: #0f172a;
+
+	/* spotlight */
+	--spotlight-primary: 2, 167, 105; /* #02A769 */
+	--spotlight-secondary: 248, 250, 252; /* #f8fafc */
+	--spotlight-success: 16, 185, 129; /* #10b981 */
+	--spotlight-danger: 244, 63, 94; /* #f43f5e */
+	--spotlight-info: 14, 165, 233; /* #0ea5e9 */
+	--spotlight-warning: 249, 115, 22; /* #f97316 */
+
+	/* toast */
+	--toast-success: 16, 185, 129; /* #10B981 */
+	--toast-danger: 225, 29, 72; /* #E11D48 */
+	--toast-info: 14, 165, 233; /* #0EA5E9 */
+	--toast-warning: 251, 146, 60; /* #FB923C */
+}
+```
+
+## Import Order
+
+The import order must always place the global CSS before Arkyn's bundled stylesheet. This gives your layer structure a chance to define the priority correctly.
+
+```ts
+import "<yourPath>/reset.css";
+import "@arkyn/components/dist/bundle.css";
+```
+
+If you also keep the Arkyn CSS variables in a separate file, import that file before the bundled stylesheet as well, so the tokens are available when Arkyn's components are evaluated.
+
+## Notes
+
+- Keep your base resets inside a layer such as `reset`, and reserve the `arkyn` layer for the library stylesheet.
+- When you need to override a token, prefer changing the CSS variable value instead of writing stronger selectors.
+- If a component looks incorrect, first verify that the global stylesheet is imported before `@arkyn/components/dist/bundle.css`.

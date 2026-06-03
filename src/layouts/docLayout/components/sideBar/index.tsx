@@ -8,6 +8,7 @@ import { SideLink } from "../sideLink";
 import { SideBarContainer } from "./styles";
 import { TEMPLATES_MENU } from "../menu/templates";
 import { INTRODUCTION_MENU } from "../menu/introduction";
+import { GUIDES_MENU } from "../menu/guides";
 
 function ItemSwitch({ label, children, to }: MenuType) {
   if (!children && to) {
@@ -29,13 +30,15 @@ function ItemSwitch({ label, children, to }: MenuType) {
 
 function SideBar() {
   const { pathname } = useLocation();
+  const basePath = pathname.split("/")[2];
 
   function rederMenus() {
     if (pathname === "/docs/introduction") return INTRODUCTION_MENU;
-    if (pathname.includes("components")) return COMPONENTS_MENU;
-    if (pathname.includes("server")) return SERVER_MENU;
-    if (pathname.includes("shared")) return SHARED_MENU;
-    if (pathname.includes("templates")) return TEMPLATES_MENU;
+    if (basePath.includes("components")) return COMPONENTS_MENU;
+    if (basePath.includes("server")) return SERVER_MENU;
+    if (basePath.includes("shared")) return SHARED_MENU;
+    if (basePath.includes("templates")) return TEMPLATES_MENU;
+    if (basePath.includes("guides")) return GUIDES_MENU;
     return [];
   }
 

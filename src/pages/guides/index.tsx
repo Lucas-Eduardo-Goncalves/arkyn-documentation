@@ -15,20 +15,16 @@ export default function GuidesRoute() {
         icon={Layout}
         description="Theming, configuration, styling and more"
       >
-        <GuideLink to="/docs/guides/how-to-configure-discord-webhook">
+        <GuideLink to="/docs/guides/how-to-configure-components-theming">
           Configure theme
         </GuideLink>
 
-        <GuideLink to="/docs/guides/how-to-configure-discord-webhook">
-          Dark and light mode
-        </GuideLink>
-
-        <GuideLink to="/docs/guides/how-to-configure-discord-webhook">
-          Styling components
+        <GuideLink to="/docs/guides/how-to-configure-file-upload">
+          Configure file upload
         </GuideLink>
       </Card>
 
-      <Card
+      {/* <Card
         title="@arkyn/api"
         icon={Server}
         description="How to use, configure webhooks, manage logs"
@@ -64,7 +60,7 @@ export default function GuidesRoute() {
         <GuideLink to="/docs/guides/how-to-configure-discord-webhook">
           Explain httpTrafficRecord
         </GuideLink>
-      </Card>
+      </Card> */}
     </GuidesContainer>
   );
 }
