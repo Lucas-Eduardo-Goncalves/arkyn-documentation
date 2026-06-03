@@ -1,4 +1,5 @@
 import { algoliasearch } from "algoliasearch";
+import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared";
 import { readFileSync } from "fs";
 import { glob } from "glob";
 import { dirname, resolve } from "path";
@@ -43,19 +44,34 @@ function buildHierarchy(
   segments: string[],
   title: string,
 ): Record<string, string | null> {
-  const levels = ["lvl0", "lvl1", "lvl2", "lvl3", "lvl4", "lvl5", "lvl6"];
-  const hierarchy: Record<string, string | null> = Object.fromEntries(
-    levels.map((l) => [l, null]),
-  );
+  // const levels = ["lvl0", "lvl1", "lvl2", "lvl3", "lvl4", "lvl5", "lvl6"];
+  // const hierarchy: Record<string, string | null> = Object.fromEntries(
+  //   levels.map((l) => [l, null]),
+  // );
 
-  segments.forEach((segment, i) => {
-    if (i < levels.length) {
-      hierarchy[levels[i]] =
-        i === segments.length - 1 ? title || segment : segment;
-    }
-  });
+  // segments.forEach((segment, i) => {
+  //   if (i < levels.length) {
+  //     hierarchy[levels[i]] =
+  //       i === segments.length - 1 ? title || segment : segment;
+  //   }
+  // });
 
-  return hierarchy;
+  // return hierarchy;
+
+  function format(string?: string): string | null {
+    if (typeof string !== "string") return null;
+    return formatToCapitalizeFirstWordLetter(string);
+  }
+
+  return {
+    lvl0: format(segments[1]),
+    lvl1: title,
+    lvl2: format(segments[2]),
+    lvl3: null,
+    lvl4: null,
+    lvl5: null,
+    lvl6: null,
+  };
 }
 
 async function generateAlgoliaRecords() {
@@ -77,12 +93,12 @@ async function generateAlgoliaRecords() {
     const hierarchy = buildHierarchy(segments, title);
 
     records.push({
-      objectID: route,
-      url: route,
-      hierarchy,
       type: "lvl1",
       title,
       content,
+      url: route,
+      objectID: route,
+      hierarchy,
     });
   }
 
@@ -92,6 +108,12 @@ async function generateAlgoliaRecords() {
 async function uploadAlgoliaIndex() {
   const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_WRITE_API_KEY);
   const objects = await generateAlgoliaRecords();
+
+  await client.deleteObjects({
+    indexName: ALGOLIA_INDEX_NAME,
+    objectIDs: objects.map((obj) => obj.objectID),
+    waitForTasks: true,
+  });
 
   await client.saveObjects({
     indexName: ALGOLIA_INDEX_NAME,
