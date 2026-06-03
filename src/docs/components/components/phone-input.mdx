@@ -68,10 +68,10 @@ The component supports searchable country options with customizable placeholder 
 
 ```tsx
 <PhoneInput
-  name="countryPhone"
-  label="Country phone"
-  searchCountryPlaceholder="Search country"
-  notFoundCountryText="No countries found"
+    name="countryPhone"
+    label="Country phone"
+    searchCountryPlaceholder="Search country"
+    notFoundCountryText="No countries found"
 />
 ```
 
@@ -96,17 +96,17 @@ Use `defaultValue` for uncontrolled initialization or pass `value` with `onChang
 
 ```tsx
 <PhoneInput
-  name="defaultPhone"
-  label="Default phone"
-  defaultValue="+55 11 99999-9999"
-  defaultCountryIso="BR"
+    name="defaultPhone"
+    label="Default phone"
+    defaultValue="+55 11 99999-9999"
+    defaultCountryIso="BR"
 />
 
 <PhoneInput
-  name="controlledPhone"
-  label="Controlled phone"
-  value={phoneValue}
-  onChange={(normalizedPhone) => setPhoneValue(normalizedPhone)}
+    name="controlledPhone"
+    label="Controlled phone"
+    value={phoneValue}
+    onChange={(normalizedPhone) => setPhoneValue(normalizedPhone)}
 />
 ```
 
@@ -125,10 +125,10 @@ Set `disabled` to block country selection and phone editing.
 
 ```tsx
 <PhoneInput
-  name="disabledPhone"
-  label="Phone"
-  defaultValue="+1 212 555 0100"
-  disabled
+    name="disabledPhone"
+    label="Phone"
+    defaultValue="+1 212 555 0100"
+    disabled
 />
 ```
 
@@ -159,10 +159,10 @@ Display inline validation feedback using `errorMessage` or form context errors.
 
 ```tsx
 <PhoneInput
-  name="contactPhone"
-  label="Contact phone"
-  showAsterisk
-  errorMessage="Please enter a valid phone number"
+    name="contactPhone"
+    label="Contact phone"
+    showAsterisk
+    errorMessage="Please enter a valid phone number"
 />
 ```
 

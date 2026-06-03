@@ -30,8 +30,8 @@ import { ModalFooter } from "@arkyn/components";
 
 ```tsx
 <ModalFooter>
-  <Button type="button">Cancel</Button>
-  <Button type="button">Save</Button>
+    <Button type="button">Cancel</Button>
+    <Button type="button">Save</Button>
 </ModalFooter>
 ```
 
@@ -74,22 +74,22 @@ Use `alignment` to define how actions are distributed in the footer.
 
 ```tsx
 <ModalFooter alignment="left">
-  <Button type="button">Delete</Button>
+    <Button type="button">Delete</Button>
 </ModalFooter>
 
 <ModalFooter alignment="center">
-  <Button type="button">OK</Button>
+    <Button type="button">OK</Button>
 </ModalFooter>
 
 <ModalFooter alignment="between">
-  <Button type="button">Back</Button>
-  <Button type="button">Next</Button>
+    <Button type="button">Back</Button>
+    <Button type="button">Next</Button>
 </ModalFooter>
 
 <ModalFooter alignment="around">
-  <Button type="button">Previous</Button>
-  <Button type="button">Skip</Button>
-  <Button type="button">Finish</Button>
+    <Button type="button">Previous</Button>
+    <Button type="button">Skip</Button>
+    <Button type="button">Finish</Button>
 </ModalFooter>
 ```
 
@@ -119,24 +119,24 @@ Use ModalFooter together with ModalContainer and ModalHeader for complete dialog
 
 ```tsx
 <ModalContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
-  <div>
-    <ModalHeader>
-      <h2>Confirm Delete</h2>
-    </ModalHeader>
+    <div>
+        <ModalHeader>
+            <h2>Confirm Delete</h2>
+        </ModalHeader>
 
-    <main>
-      <p>This action cannot be undone.</p>
-    </main>
+        <main>
+            <p>This action cannot be undone.</p>
+        </main>
 
-    <ModalFooter alignment="right">
-      <Button type="button" onClick={() => setIsOpen(false)}>
-        Cancel
-      </Button>
-      <Button type="button" onClick={handleDelete}>
-        Delete
-      </Button>
-    </ModalFooter>
-  </div>
+        <ModalFooter alignment="right">
+            <Button type="button" onClick={() => setIsOpen(false)}>
+                Cancel
+            </Button>
+            <Button type="button" onClick={handleDelete}>
+                Delete
+            </Button>
+        </ModalFooter>
+    </div>
 </ModalContainer>
 ```
 

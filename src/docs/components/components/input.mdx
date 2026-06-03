@@ -81,16 +81,16 @@ Use `variant` to control the visual style of the input container.
 ```tsx
 <Input name="solidField" label="Solid" variant="solid" placeholder="Solid variant" />
 <Input
-  name="outlineField"
-  label="Outline"
-  variant="outline"
-  placeholder="Outline variant"
+    name="outlineField"
+    label="Outline"
+    variant="outline"
+    placeholder="Outline variant"
 />
 <Input
-  name="underlineField"
-  label="Underline"
-  variant="underline"
-  placeholder="Underline variant"
+    name="underlineField"
+    label="Underline"
+    variant="underline"
+    placeholder="Underline variant"
 />
 ```
 
@@ -126,27 +126,27 @@ Combine text decorators and icons to build contextual inputs.
 
 ```tsx
 <Input
-  name="website"
-  label="Website"
-  prefix="https://"
-  suffix=".com"
-  variant="outline"
+    name="website"
+    label="Website"
+    prefix="https://"
+    suffix=".com"
+    variant="outline"
 />
 
 <Input
-  name="search"
-  label="Search"
-  leftIcon={Search}
-  rightIcon={Filter}
-  placeholder="Type to search"
+    name="search"
+    label="Search"
+    leftIcon={Search}
+    rightIcon={Filter}
+    placeholder="Type to search"
 />
 
 <Input
-  name="domain"
-  label="Domain"
-  leftIcon={Globe}
-  suffix=".io"
-  placeholder="project-name"
+    name="domain"
+    label="Domain"
+    leftIcon={Globe}
+    suffix=".io"
+    placeholder="project-name"
 />
 ```
 
@@ -178,11 +178,11 @@ Set `isLoading` to show spinner feedback and temporarily disable user interactio
 
 ```tsx
 <Input
-  name="searching"
-  label="Search"
-  leftIcon={Search}
-  isLoading
-  placeholder="Searching..."
+    name="searching"
+    label="Search"
+    leftIcon={Search}
+    isLoading
+    placeholder="Searching..."
 />
 ```
 
@@ -202,11 +202,11 @@ Provide `errorMessage` directly or rely on form context errors from `useForm`.
 
 ```tsx
 <Input
-  name="email"
-  label="Email Address"
-  type="email"
-  showAsterisk
-  errorMessage="Please enter a valid email"
+    name="email"
+    label="Email Address"
+    type="email"
+    showAsterisk
+    errorMessage="Please enter a valid email"
 />
 ```
 

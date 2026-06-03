@@ -26,7 +26,7 @@ import { DrawerProvider } from "@arkyn/components";
 
 ```tsx
 <DrawerProvider>
-  <App />
+    <App />
 </DrawerProvider>
 ```
 
@@ -44,22 +44,22 @@ Use independent keys to manage different drawers without state collisions.
 
 ```tsx
 function DrawerActions() {
-  const { openDrawer } = useDrawer();
+    const { openDrawer } = useDrawer();
 
-  return (
-    <>
-      <button onClick={() => openDrawer("navigation", { section: "main" })}>
-        Open navigation
-      </button>
-      <button onClick={() => openDrawer("filters", { category: "tech" })}>
-        Open filters
-      </button>
-    </>
-  );
+    return (
+        <>
+            <button onClick={() => openDrawer("navigation", { section: "main" })}>
+                Open navigation
+            </button>
+            <button onClick={() => openDrawer("filters", { category: "tech" })}>
+                Open filters
+            </button>
+        </>
+    );
 }
 
 <DrawerProvider>
-  <DrawerActions />
+    <DrawerActions />
 </DrawerProvider>;
 ```
 
@@ -75,18 +75,18 @@ When `useDrawer(key)` is used, open/close actions are automatically scoped to th
 
 ```tsx
 function FiltersDrawer() {
-  const { drawerIsOpen, drawerData, closeDrawer } = useDrawer<{
-    category: string;
-  }>("filters");
+    const { drawerIsOpen, drawerData, closeDrawer } = useDrawer<{
+        category: string;
+    }>("filters");
 
-  if (!drawerIsOpen) return null;
+    if (!drawerIsOpen) return null;
 
-  return (
-    <aside>
-      <p>Category: {drawerData?.category}</p>
-      <button onClick={closeDrawer}>Close</button>
-    </aside>
-  );
+    return (
+        <aside>
+            <p>Category: {drawerData?.category}</p>
+            <button onClick={closeDrawer}>Close</button>
+        </aside>
+    );
 }
 ```
 

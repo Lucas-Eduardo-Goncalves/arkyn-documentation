@@ -49,19 +49,19 @@ Use size to control spacing and overall field density.
 
 ```tsx
 <Textarea
-  name="summaryMd"
-  label="Summary (md)"
-  size="md"
-  placeholder="Medium textarea"
-  rows={4}
+    name="summaryMd"
+    label="Summary (md)"
+    size="md"
+    placeholder="Medium textarea"
+    rows={4}
 />
 
 <Textarea
-  name="summaryLg"
-  label="Summary (lg)"
-  size="lg"
-  placeholder="Large textarea"
-  rows={6}
+    name="summaryLg"
+    label="Summary (lg)"
+    size="lg"
+    placeholder="Large textarea"
+    rows={6}
 />
 ```
 
@@ -87,17 +87,17 @@ Use variant to switch between container styles.
 
 ```tsx
 <Textarea
-  name="solidNotes"
-  label="Solid"
-  variant="solid"
-  placeholder="Solid variant"
+    name="solidNotes"
+    label="Solid"
+    variant="solid"
+    placeholder="Solid variant"
 />
 
 <Textarea
-  name="outlineNotes"
-  label="Outline"
-  variant="outline"
-  placeholder="Outline variant"
+    name="outlineNotes"
+    label="Outline"
+    variant="outline"
+    placeholder="Outline variant"
 />
 ```
 
@@ -118,12 +118,12 @@ Combine label, required indicator, and error message to improve form clarity.
 
 ```tsx
 <Textarea
-  name="bio"
-  label="Biography"
-  showAsterisk
-  placeholder="Tell us about yourself"
-  errorMessage="Biography is required"
-  rows={5}
+    name="bio"
+    label="Biography"
+    showAsterisk
+    placeholder="Tell us about yourself"
+    errorMessage="Biography is required"
+    rows={5}
 />
 ```
 
@@ -151,22 +151,22 @@ Use value with onChange for controlled fields, and readOnly for display-only con
 
 ```tsx
 <Textarea
-  name="message"
-  label="Message"
-  value={message}
-  onChange={(e) => setMessage(e.target.value)}
-  placeholder="Type your message..."
-  rows={5}
-  showAsterisk
+    name="message"
+    label="Message"
+    value={message}
+    onChange={(e) => setMessage(e.target.value)}
+    placeholder="Type your message..."
+    rows={5}
+    showAsterisk
 />
 
 <Textarea
-  name="terms"
-  label="Terms and Conditions"
-  value={termsContent}
-  readOnly
-  rows={10}
-  variant="outline"
+    name="terms"
+    label="Terms and Conditions"
+    value={termsContent}
+    readOnly
+    rows={10}
+    variant="outline"
 />
 ```
 
@@ -186,11 +186,11 @@ Set disabled to block interaction while preserving displayed content.
 
 ```tsx
 <Textarea
-  name="disabledField"
-  label="Disabled Field"
-  value="This field is disabled"
-  disabled
-  placeholder="Cannot edit this field"
+    name="disabledField"
+    label="Disabled Field"
+    value="This field is disabled"
+    disabled
+    placeholder="Cannot edit this field"
 />
 ```
 
@@ -210,11 +210,11 @@ Error feedback can come from errorMessage prop or form context.
 
 ```tsx
 <Textarea
-  name="feedback"
-  label="Feedback"
-  errorMessage="Please provide feedback"
-  placeholder="Share your feedback"
-  rows={4}
+    name="feedback"
+    label="Feedback"
+    errorMessage="Please provide feedback"
+    placeholder="Share your feedback"
+    rows={4}
 />
 ```
 

@@ -32,10 +32,10 @@ import { MaskedInput } from "@arkyn/components";
 
 ```tsx
 <MaskedInput
-  name="phone"
-  mask="(__) _____-____"
-  replacement={{ _: /\d/ }}
-  placeholder="(00) 00000-0000"
+    name="phone"
+    mask="(__) _____-____"
+    replacement={{ _: /\d/ }}
+    placeholder="(00) 00000-0000"
 />
 ```
 
@@ -64,20 +64,20 @@ Use `mask` and `replacement` to define accepted character positions and formatti
 
 ```tsx
 <MaskedInput
-  name="cpf"
-  label="CPF"
-  mask="___.___.___-__"
-  replacement="_"
-  showMask
-  placeholder="000.000.000-00"
+    name="cpf"
+    label="CPF"
+    mask="___.___.___-__"
+    replacement="_"
+    showMask
+    placeholder="000.000.000-00"
 />
 
 <MaskedInput
-  name="zipCode"
-  label="ZIP Code"
-  mask="_____-___"
-  replacement={{ _: /\d/ }}
-  placeholder="00000-000"
+    name="zipCode"
+    label="ZIP Code"
+    mask="_____-___"
+    replacement={{ _: /\d/ }}
+    placeholder="00000-000"
 />
 ```
 
@@ -104,18 +104,18 @@ Use `size` to control spacing and icon proportions.
 
 ```tsx
 <MaskedInput
-  name="dateMd"
-  label="Date (md)"
-  mask="__/__/____"
-  replacement="_"
-  size="md"
+    name="dateMd"
+    label="Date (md)"
+    mask="__/__/____"
+    replacement="_"
+    size="md"
 />
 <MaskedInput
-  name="dateLg"
-  label="Date (lg)"
-  mask="__/__/____"
-  replacement="_"
-  size="lg"
+    name="dateLg"
+    label="Date (lg)"
+    mask="__/__/____"
+    replacement="_"
+    size="lg"
 />
 ```
 
@@ -149,25 +149,25 @@ Use `variant` to define the visual container style.
 
 ```tsx
 <MaskedInput
-  name="solidCard"
-  label="Solid"
-  mask="____ ____ ____ ____"
-  replacement={{ _: /\d/ }}
-  variant="solid"
+    name="solidCard"
+    label="Solid"
+    mask="____ ____ ____ ____"
+    replacement={{ _: /\d/ }}
+    variant="solid"
 />
 <MaskedInput
-  name="outlineCard"
-  label="Outline"
-  mask="____ ____ ____ ____"
-  replacement={{ _: /\d/ }}
-  variant="outline"
+    name="outlineCard"
+    label="Outline"
+    mask="____ ____ ____ ____"
+    replacement={{ _: /\d/ }}
+    variant="outline"
 />
 <MaskedInput
-  name="underlineCard"
-  label="Underline"
-  mask="____ ____ ____ ____"
-  replacement={{ _: /\d/ }}
-  variant="underline"
+    name="underlineCard"
+    label="Underline"
+    mask="____ ____ ____ ____"
+    replacement={{ _: /\d/ }}
+    variant="underline"
 />
 ```
 
@@ -197,21 +197,21 @@ Combine decorators and icons to give context for masked values.
 
 ```tsx
 <MaskedInput
-  name="birthDate"
-  label="Birth Date"
-  mask="__/__/____"
-  replacement="_"
-  prefix="📅"
-  separate
+    name="birthDate"
+    label="Birth Date"
+    mask="__/__/____"
+    replacement="_"
+    prefix="📅"
+    separate
 />
 
 <MaskedInput
-  name="creditCard"
-  label="Credit Card"
-  mask="____ ____ ____ ____"
-  replacement={{ _: /\d/ }}
-  leftIcon={CreditCard}
-  rightIcon={Shield}
+    name="creditCard"
+    label="Credit Card"
+    mask="____ ____ ____ ____"
+    replacement={{ _: /\d/ }}
+    leftIcon={CreditCard}
+    rightIcon={Shield}
 />
 ```
 
@@ -232,12 +232,12 @@ When disabled, the field blocks interaction while preserving masked display cont
 
 ```tsx
 <MaskedInput
-  name="disabledCpf"
-  label="CPF"
-  mask="___.___.___-__"
-  replacement="_"
-  value="123.456.789-00"
-  disabled
+    name="disabledCpf"
+    label="CPF"
+    mask="___.___.___-__"
+    replacement="_"
+    value="123.456.789-00"
+    disabled
 />
 ```
 
@@ -258,12 +258,12 @@ Set `isLoading` to show spinner feedback and disable editing temporarily.
 
 ```tsx
 <MaskedInput
-  name="loadingCard"
-  label="Credit Card"
-  mask="____ ____ ____ ____"
-  replacement={{ _: /\d/ }}
-  leftIcon={CreditCard}
-  isLoading
+    name="loadingCard"
+    label="Credit Card"
+    mask="____ ____ ____ ____"
+    replacement={{ _: /\d/ }}
+    leftIcon={CreditCard}
+    isLoading
 />
 ```
 
@@ -285,13 +285,13 @@ Use `errorMessage` directly or rely on field errors from `useForm`.
 
 ```tsx
 <MaskedInput
-  name="cpfError"
-  label="CPF"
-  mask="___.___.___-__"
-  replacement="_"
-  showAsterisk
-  errorMessage="Please enter a valid CPF"
-  showMask
+    name="cpfError"
+    label="CPF"
+    mask="___.___.___-__"
+    replacement="_"
+    showAsterisk
+    errorMessage="Please enter a valid CPF"
+    showMask
 />
 ```
 

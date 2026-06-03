@@ -20,9 +20,9 @@ import { CardTabButton, CardTabContainer } from "@arkyn/components";
 
 ```tsx
 <CardTabContainer defaultValue="home">
-  <CardTabButton value="home">Home</CardTabButton>
-  <CardTabButton value="about">About</CardTabButton>
-  <CardTabButton value="contact">Contact</CardTabButton>
+    <CardTabButton value="home">Home</CardTabButton>
+    <CardTabButton value="about">About</CardTabButton>
+    <CardTabButton value="contact">Contact</CardTabButton>
 </CardTabContainer>
 ```
 
@@ -40,12 +40,12 @@ Use `defaultValue` to set the initial active tab and `onChange` to react when th
 
 ```tsx
 <CardTabContainer
-  defaultValue="dashboard"
-  onChange={(value) => console.log("Active tab:", value)}
+    defaultValue="dashboard"
+    onChange={(value) => console.log("Active tab:", value)}
 >
-  <CardTabButton value="dashboard">Dashboard</CardTabButton>
-  <CardTabButton value="analytics">Analytics</CardTabButton>
-  <CardTabButton value="settings">Settings</CardTabButton>
+    <CardTabButton value="dashboard">Dashboard</CardTabButton>
+    <CardTabButton value="analytics">Analytics</CardTabButton>
+    <CardTabButton value="settings">Settings</CardTabButton>
 </CardTabContainer>
 ```
 
@@ -62,8 +62,8 @@ Use `disabled` on the container when all tab buttons should be unavailable.
 
 ```tsx
 <CardTabContainer disabled>
-  <CardTabButton value="tab-1">Tab 1</CardTabButton>
-  <CardTabButton value="tab-2">Tab 2</CardTabButton>
+    <CardTabButton value="tab-1">Tab 1</CardTabButton>
+    <CardTabButton value="tab-2">Tab 2</CardTabButton>
 </CardTabContainer>
 ```
 
@@ -88,26 +88,26 @@ import { useState } from "react";
 import { CardTabButton, CardTabContainer } from "@arkyn/components";
 
 function MyTabs() {
-  const [activeTab, setActiveTab] = useState("profile");
+    const [activeTab, setActiveTab] = useState("profile");
 
-  return (
-    <div>
-      <CardTabContainer
-        defaultValue={activeTab}
-        onChange={setActiveTab}
-        className="custom-tabs"
-        role="tablist"
-      >
-        <CardTabButton value="profile">Profile</CardTabButton>
-        <CardTabButton value="account">Account</CardTabButton>
-        <CardTabButton value="notifications">Notifications</CardTabButton>
-      </CardTabContainer>
+    return (
+        <div>
+            <CardTabContainer
+                defaultValue={activeTab}
+                onChange={setActiveTab}
+                className="custom-tabs"
+                role="tablist"
+            >
+                <CardTabButton value="profile">Profile</CardTabButton>
+                <CardTabButton value="account">Account</CardTabButton>
+                <CardTabButton value="notifications">Notifications</CardTabButton>
+            </CardTabContainer>
 
-      {activeTab === "profile" && <ProfileContent />}
-      {activeTab === "account" && <AccountContent />}
-      {activeTab === "notifications" && <NotificationsContent />}
-    </div>
-  );
+            {activeTab === "profile" && <ProfileContent />}
+            {activeTab === "account" && <AccountContent />}
+            {activeTab === "notifications" && <NotificationsContent />}
+        </div>
+    );
 }
 ```
 

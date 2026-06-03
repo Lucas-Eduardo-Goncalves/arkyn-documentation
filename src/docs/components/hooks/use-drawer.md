@@ -58,35 +58,35 @@ Use this mode when a component is responsible for only one drawer.
 import { DrawerProvider, useDrawer } from "@arkyn/components";
 
 function DrawerActions() {
-  const { drawerIsOpen, drawerData, openDrawer, closeDrawer } = useDrawer<{
-    category: string;
-  }>();
+    const { drawerIsOpen, drawerData, openDrawer, closeDrawer } = useDrawer<{
+        category: string;
+    }>();
 
-  const filtersOpen = drawerIsOpen("filters");
-  const filtersData = drawerData("filters");
+    const filtersOpen = drawerIsOpen("filters");
+    const filtersData = drawerData("filters");
 
-  return (
-    <div>
-      <p>Is filters drawer open? {String(filtersOpen)}</p>
-      <p>Current category: {filtersData?.category ?? "none"}</p>
+    return (
+        <div>
+            <p>Is filters drawer open? {String(filtersOpen)}</p>
+            <p>Current category: {filtersData?.category ?? "none"}</p>
 
-      <button
-        onClick={() => openDrawer("filters", { category: "electronics" })}
-      >
-        Open filters
-      </button>
+            <button
+                onClick={() => openDrawer("filters", { category: "electronics" })}
+            >
+                Open filters
+            </button>
 
-      <button onClick={() => closeDrawer("filters")}>Close filters</button>
-    </div>
-  );
+            <button onClick={() => closeDrawer("filters")}>Close filters</button>
+        </div>
+    );
 }
 
 function App() {
-  return (
-    <DrawerProvider>
-      <DrawerActions />
-    </DrawerProvider>
-  );
+    return (
+        <DrawerProvider>
+            <DrawerActions />
+        </DrawerProvider>
+    );
 }
 ```
 
@@ -96,37 +96,37 @@ function App() {
 import { DrawerProvider, useDrawer } from "@arkyn/components";
 
 function FiltersDrawer() {
-  const { drawerIsOpen, drawerData, closeDrawer } = useDrawer<{
-    category: string;
-  }>("filters");
+    const { drawerIsOpen, drawerData, closeDrawer } = useDrawer<{
+        category: string;
+    }>("filters");
 
-  if (!drawerIsOpen) return null;
+    if (!drawerIsOpen) return null;
 
-  return (
-    <aside>
-      <p>Category: {drawerData?.category}</p>
-      <button onClick={closeDrawer}>Close</button>
-    </aside>
-  );
+    return (
+        <aside>
+            <p>Category: {drawerData?.category}</p>
+            <button onClick={closeDrawer}>Close</button>
+        </aside>
+    );
 }
 
 function DrawerActions() {
-  const { openDrawer } = useDrawer<{ category: string }>("filters");
+    const { openDrawer } = useDrawer<{ category: string }>("filters");
 
-  return (
-    <button onClick={() => openDrawer({ category: "electronics" })}>
-      Open filters
-    </button>
-  );
+    return (
+        <button onClick={() => openDrawer({ category: "electronics" })}>
+            Open filters
+        </button>
+    );
 }
 
 function App() {
-  return (
-    <DrawerProvider>
-      <DrawerActions />
-      <FiltersDrawer />
-    </DrawerProvider>
-  );
+    return (
+        <DrawerProvider>
+            <DrawerActions />
+            <FiltersDrawer />
+        </DrawerProvider>
+    );
 }
 ```
 

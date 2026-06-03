@@ -28,13 +28,13 @@ The function returns a standard HTTP Response object with appropriate status cod
 import { errorHandler, Success, NotFound, Created } from "@arkyn/server";
 
 async function getUser(id: string) {
-  try {
-    const user = await findUser(id);
-    if (!user) throw new NotFound("User not found");
-    throw new Success("User found", user);
-  } catch (error) {
-    return errorHandler(error);
-  }
+    try {
+        const user = await findUser(id);
+        if (!user) throw new NotFound("User not found");
+        throw new Success("User found", user);
+    } catch (error) {
+        return errorHandler(error);
+    }
 }
 ```
 

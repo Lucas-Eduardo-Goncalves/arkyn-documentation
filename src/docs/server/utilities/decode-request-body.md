@@ -29,10 +29,10 @@ import { decodeRequestBody } from "@arkyn/server";
 
 // In a request handler
 async function handleRequest(request: Request) {
-  const body = await decodeRequestBody(request);
+    const body = await decodeRequestBody(request);
 
-  console.log(body);
-  // Output: { name: "John", email: "john@example.com" }
+    console.log(body);
+    // Output: { name: "John", email: "john@example.com" }
 }
 ```
 
@@ -60,9 +60,9 @@ Thrown when both JSON and URL-encoded parsing fail.
 
 ```typescript
 try {
-  const data = await decodeRequestBody(request);
+    const data = await decodeRequestBody(request);
 } catch (error) {
-  // BadRequest: Invalid URLSearchParams format
+    // BadRequest: Invalid URLSearchParams format
 }
 ```
 

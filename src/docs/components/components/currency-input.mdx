@@ -91,10 +91,10 @@ Use `variant` to change the input visual treatment.
 <CurrencyInput name="solidPrice" locale="USD" label="Solid" variant="solid" />
 <CurrencyInput name="outlinePrice" locale="USD" label="Outline" variant="outline" />
 <CurrencyInput
-  name="underlinePrice"
-  locale="USD"
-  label="Underline"
-  variant="underline"
+    name="underlinePrice"
+    locale="USD"
+    label="Underline"
+    variant="underline"
 />
 ```
 
@@ -121,19 +121,19 @@ You can render text or icon decorators before and after the input content.
 
 ```tsx
 <CurrencyInput
-  name="budget"
-  locale="EUR"
-  label="Budget"
-  leftIcon={DollarSign}
-  rightIcon={Calculator}
+    name="budget"
+    locale="EUR"
+    label="Budget"
+    leftIcon={DollarSign}
+    rightIcon={Calculator}
 />
 
 <CurrencyInput
-  name="investment"
-  locale="GBP"
-  label="Investment Amount"
-  prefix="£"
-  suffix="GBP"
+    name="investment"
+    locale="GBP"
+    label="Investment Amount"
+    prefix="£"
+    suffix="GBP"
 />
 ```
 
@@ -153,11 +153,11 @@ In disabled state, the component blocks interactions and keeps the masked value 
 
 ```tsx
 <CurrencyInput
-  name="creditLimit"
-  locale="USD"
-  label="Credit Limit"
-  defaultValue={5000}
-  disabled
+    name="creditLimit"
+    locale="USD"
+    label="Credit Limit"
+    defaultValue={5000}
+    disabled
 />
 ```
 
@@ -177,11 +177,11 @@ Set `isLoading` to show a spinner and temporarily disable editing.
 
 ```tsx
 <CurrencyInput
-  name="processingAmount"
-  locale="USD"
-  label="Processing Amount"
-  isLoading
-  rightIcon={Calculator}
+    name="processingAmount"
+    locale="USD"
+    label="Processing Amount"
+    isLoading
+    rightIcon={Calculator}
 />
 ```
 
@@ -201,11 +201,11 @@ Provide an `errorMessage` to render field feedback under the input.
 
 ```tsx
 <CurrencyInput
-  name="salary"
-  locale="BRL"
-  label="Monthly Salary"
-  showAsterisk
-  errorMessage="Please enter a valid amount"
+    name="salary"
+    locale="BRL"
+    label="Monthly Salary"
+    showAsterisk
+    errorMessage="Please enter a valid amount"
 />
 ```
 

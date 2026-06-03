@@ -62,11 +62,11 @@ The function performs validation and may throw an error in the following scenari
 import { formatToCurrency } from "@arkyn/shared";
 
 try {
-  const formatted = formatToCurrency(1234.56, "ABC");
-  console.log(formatted);
+    const formatted = formatToCurrency(1234.56, "ABC");
+    console.log(formatted);
 } catch (error) {
-  console.error(error);
-  // Output: Error: Unsupported currency code
+    console.error(error);
+    // Output: Error: Unsupported currency code
 }
 ```
 

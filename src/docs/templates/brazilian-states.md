@@ -10,8 +10,8 @@ Each object in the `brazilianStates` array follows the following structure:
 
 ```typescript
 interface BrazilianState {
-  label: string;
-  value: string;
+    label: string;
+    value: string;
 }
 ```
 
@@ -26,15 +26,15 @@ To use the list of Brazilian states in your component, simply import the array f
 import { brazilianStates } from "./brazilianStates";
 
 function StateSelector() {
-  return (
-    <ul>
-      {brazilianStates.map((state) => (
-        <li key={state.value} value={state.value}>
-          {state.label}
-        </li>
-      ))}
-    </ul>
-  );
+    return (
+        <ul>
+            {brazilianStates.map((state) => (
+                <li key={state.value} value={state.value}>
+                    {state.label}
+                </li>
+            ))}
+        </ul>
+    );
 }
 ```
 
@@ -42,8 +42,8 @@ function StateSelector() {
 
 ```json
 {
-  "label": "São Paulo",
-  "value": "SP"
+    "label": "São Paulo",
+    "value": "SP"
 }
 ```
 

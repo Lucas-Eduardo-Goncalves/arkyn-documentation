@@ -29,8 +29,8 @@ throw new Unauthorized("Authentication required");
 
 // With cause information
 throw new Unauthorized("Invalid token", {
-  tokenType: "JWT",
-  reason: "Token expired",
+    tokenType: "JWT",
+    reason: "Token expired",
 });
 
 // Convert to Response object
@@ -47,9 +47,9 @@ The response body follows a standardized structure:
 
 ```json
 {
-  "ok": false,
-  "status": 401,
-  "message": "Authentication required"
+    "ok": false,
+    "status": 401,
+    "message": "Authentication required"
 }
 ```
 

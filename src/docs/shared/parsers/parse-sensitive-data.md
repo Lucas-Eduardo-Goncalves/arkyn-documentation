@@ -35,10 +35,10 @@ The function returns a JSON string with sensitive data masked. All values of fie
 import { parseSensitiveData } from "@arkyn/shared";
 
 const jsonString = JSON.stringify({
-  username: "user123",
-  password: "secret",
-  apiKey: "abc123xyz",
-  email: "user@example.com",
+    username: "user123",
+    password: "secret",
+    apiKey: "abc123xyz",
+    email: "user@example.com",
 });
 
 const result = parseSensitiveData(jsonString, ["password", "apiKey"]);

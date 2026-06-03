@@ -30,15 +30,15 @@ return response.toResponse();
 
 // With response body
 const users = [
-  { id: "1", name: "John" },
-  { id: "2", name: "Jane" },
+    { id: "1", name: "John" },
+    { id: "2", name: "Jane" },
 ];
 return new Success("Users retrieved successfully", users).toResponse();
 
 // With additional data (e.g., closeModal flag for frontend)
 return new Success("Settings saved", {
-  closeModal: true,
-  settings: { theme: "dark", language: "en" },
+    closeModal: true,
+    settings: { theme: "dark", language: "en" },
 }).toJson();
 ```
 
@@ -48,11 +48,11 @@ The response body contains the data passed to the constructor:
 
 ```json
 {
-  "closeModal": true,
-  "settings": {
-    "theme": "dark",
-    "language": "en"
-  }
+    "closeModal": true,
+    "settings": {
+        "theme": "dark",
+        "language": "en"
+    }
 }
 ```
 

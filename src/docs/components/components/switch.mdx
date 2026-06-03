@@ -62,9 +62,9 @@ Control how label and switch are laid out using `orientation`.
 ```tsx
 <Switch name="orientationHorizontal" label="Horizontal" orientation="horizontal" />
 <Switch
-  name="orientationHorizontalReverse"
-  label="Horizontal reverse"
-  orientation="horizontalReverse"
+    name="orientationHorizontalReverse"
+    label="Horizontal reverse"
+    orientation="horizontalReverse"
 />
 <Switch name="orientationVertical" label="Vertical" orientation="vertical" />
 ```
@@ -92,19 +92,19 @@ Use `value` and `unCheckedValue` to control submitted and callback values.
 
 ```tsx
 <Switch
-  name="theme"
-  label="Dark mode"
-  value="dark"
-  unCheckedValue="light"
-  onCheck={(value) => console.log("Theme:", value)}
+    name="theme"
+    label="Dark mode"
+    value="dark"
+    unCheckedValue="light"
+    onCheck={(value) => console.log("Theme:", value)}
 />
 
 <Switch
-  name="accessibility"
-  label="High contrast mode"
-  value="enabled"
-  unCheckedValue="disabled"
-  size="lg"
+    name="accessibility"
+    label="High contrast mode"
+    value="enabled"
+    unCheckedValue="disabled"
+    size="lg"
 />
 ```
 
@@ -133,21 +133,21 @@ Use `defaultChecked` for uncontrolled initialization or `checked` + `onCheck` fo
 
 ```tsx
 <Switch
-  name="newsletter"
-  label="Newsletter"
-  defaultChecked
-  value="subscribed"
-  unCheckedValue="unsubscribed"
+    name="newsletter"
+    label="Newsletter"
+    defaultChecked
+    value="subscribed"
+    unCheckedValue="unsubscribed"
 />
 
 <Switch
-  name="autoSave"
-  label="Auto-save documents"
-  checked={isAutoSaveEnabled}
-  onCheck={(value) => setIsAutoSaveEnabled(value === "enabled")}
-  value="enabled"
-  unCheckedValue="disabled"
-  size="md"
+    name="autoSave"
+    label="Auto-save documents"
+    checked={isAutoSaveEnabled}
+    onCheck={(value) => setIsAutoSaveEnabled(value === "enabled")}
+    value="enabled"
+    unCheckedValue="disabled"
+    size="md"
 />
 ```
 
@@ -166,10 +166,10 @@ Set `disabled` to block interactions.
 
 ```tsx
 <Switch
-  name="premium"
-  label="Premium features"
-  className="premium-switch"
-  disabled
+    name="premium"
+    label="Premium features"
+    className="premium-switch"
+    disabled
 />
 ```
 

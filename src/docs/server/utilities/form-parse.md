@@ -33,9 +33,9 @@ import { z } from "zod";
 import { formParse } from "@arkyn/server";
 
 const schema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Invalid email"),
-  age: z.number().min(18, "Must be at least 18"),
+    name: z.string().min(1, "Name is required"),
+    email: z.string().email("Invalid email"),
+    age: z.number().min(18, "Must be at least 18"),
 });
 
 // Validation failure
@@ -43,10 +43,10 @@ const invalidData = { name: "", email: "invalid", age: 17 };
 const errorResult = formParse([invalidData, schema]);
 
 if (!errorResult.success) {
-  console.log(errorResult.fieldErrors);
-  // { name: "Name is required", email: "Invalid email", age: "Must be at least 18" }
-  console.log(errorResult.fields);
-  // { name: "", email: "invalid", age: 17 }
+    console.log(errorResult.fieldErrors);
+    // { name: "Name is required", email: "Invalid email", age: "Must be at least 18" }
+    console.log(errorResult.fields);
+    // { name: "", email: "invalid", age: 17 }
 }
 
 // Validation success
@@ -54,8 +54,8 @@ const validData = { name: "John", email: "john@example.com", age: 25 };
 const successResult = formParse([validData, schema]);
 
 if (successResult.success) {
-  console.log(successResult.data);
-  // { name: "John", email: "john@example.com", age: 25 }
+    console.log(successResult.data);
+    // { name: "John", email: "john@example.com", age: 25 }
 }
 ```
 

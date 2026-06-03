@@ -44,10 +44,10 @@ Use `label` and `showAsterisk` to provide field context and required indicators.
 
 ```tsx
 <AudioUpload
-  name="podcast"
-  action="/api/upload/podcast"
-  label="Upload Podcast"
-  showAsterisk
+    name="podcast"
+    action="/api/upload/podcast"
+    label="Upload Podcast"
+    showAsterisk
 />
 ```
 
@@ -67,11 +67,11 @@ Use `action`, `method`, `fileName`, and `fileResponseName` to match your backend
 
 ```tsx
 <AudioUpload
-  name="recording"
-  action="/api/upload"
-  method="PUT"
-  fileName="recording"
-  fileResponseName="audioUrl"
+    name="recording"
+    action="/api/upload"
+    method="PUT"
+    fileName="recording"
+    fileResponseName="audioUrl"
 />
 ```
 
@@ -91,11 +91,11 @@ Use text props to customize the uploader interface copy.
 
 ```tsx
 <AudioUpload
-  name="voice"
-  action="/api/upload"
-  selectAudioButtonText="Choose Audio File"
-  dropAudioText="Drop your audio file here"
-  changeAudioButtonText="Change Audio"
+    name="voice"
+    action="/api/upload"
+    selectAudioButtonText="Choose Audio File"
+    dropAudioText="Drop your audio file here"
+    changeAudioButtonText="Change Audio"
 />
 ```
 
@@ -113,9 +113,9 @@ Use `acceptAudio` to restrict selectable file types.
 
 ```tsx
 <AudioUpload
-  name="episode"
-  action="/api/upload"
-  acceptAudio="audio/mp3,audio/wav"
+    name="episode"
+    action="/api/upload"
+    acceptAudio="audio/mp3,audio/wav"
 />
 ```
 
@@ -134,10 +134,10 @@ Use `defaultValue` when the field already has an uploaded audio URL.
 
 ```tsx
 <AudioUpload
-  name="preview"
-  action="/api/upload"
-  defaultValue="/path/to/audio.mp3"
-  label="Audio Preview"
+    name="preview"
+    action="/api/upload"
+    defaultValue="/path/to/audio.mp3"
+    label="Audio Preview"
 />
 ```
 
@@ -170,9 +170,9 @@ The component can show errors from `useForm` by field name or upload/runtime err
 
 ```tsx
 <AudioUpload
-  name="audio"
-  action="/api/upload"
-  onChange={(url) => console.log("Uploaded:", url)}
+    name="audio"
+    action="/api/upload"
+    onChange={(url) => console.log("Uploaded:", url)}
 />
 ```
 

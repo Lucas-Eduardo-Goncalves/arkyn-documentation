@@ -41,11 +41,11 @@ The function performs validation and may throw an error in the following scenari
 
 ```typescript
 try {
-  const cpf = formatToCpf("1234567890");
-  console.log(cpf);
+    const cpf = formatToCpf("1234567890");
+    console.log(cpf);
 } catch (error) {
-  console.error(error);
-  // Output: Error: CPF must be contain 11 numeric digits: 1234567890
+    console.error(error);
+    // Output: Error: CPF must be contain 11 numeric digits: 1234567890
 }
 ```
 

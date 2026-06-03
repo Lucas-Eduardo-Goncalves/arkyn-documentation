@@ -42,9 +42,9 @@ throw new NotFound("User not found");
 
 // Form validation errors with field-specific messages
 throw new UnprocessableEntity({
-  message: "Validation failed",
-  fieldErrors: { email: "Invalid email format" },
-  fields: { email: "invalid-email" },
+    message: "Validation failed",
+    fieldErrors: { email: "Invalid email format" },
+    fields: { email: "invalid-email" },
 });
 ```
 
@@ -57,8 +57,8 @@ import { Created, Success, NoContent } from "@arkyn/server";
 
 // Return created resource
 return new Created("User created successfully", {
-  id: "123",
-  name: "John",
+    id: "123",
+    name: "John",
 }).toResponse();
 
 // Return data
@@ -77,9 +77,9 @@ import { ApiService, DebugService, LogService } from "@arkyn/server";
 
 // Configure API client
 const api = new ApiService({
-  baseUrl: "https://api.example.com",
-  baseHeaders: { "Content-Type": "application/json" },
-  enableDebug: true,
+    baseUrl: "https://api.example.com",
+    baseHeaders: { "Content-Type": "application/json" },
+    enableDebug: true,
 });
 
 const users = await api.get("/users", { urlParams: { page: "1" } });
@@ -89,8 +89,8 @@ DebugService.setIgnoreFile("httpAdapter.ts");
 
 // Configure log service for centralized logging
 LogService.setConfig({
-  trafficSourceId: "my-app",
-  userToken: "auth-token",
+    trafficSourceId: "my-app",
+    userToken: "auth-token",
 });
 ```
 

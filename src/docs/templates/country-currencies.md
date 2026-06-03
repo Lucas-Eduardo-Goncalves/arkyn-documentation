@@ -10,8 +10,8 @@ The `countryCurrencies` object has the currency code as its key (e.g., `"BRL"`) 
 
 ```typescript
 interface CurrencyInfo {
-  countryLanguage: string;
-  countryCurrency: string;
+    countryLanguage: string;
+    countryCurrency: string;
 }
 ```
 
@@ -26,12 +26,12 @@ To format a number as Brazilian currency, you can use the object as follows:
 import { countryCurrencies } from "./countryCurrencies";
 
 function formatToBRL(value: number) {
-  const { countryLanguage, countryCurrency } = countryCurrencies.BRL;
+    const { countryLanguage, countryCurrency } = countryCurrencies.BRL;
 
-  return new Intl.NumberFormat(countryLanguage, {
-    style: "currency",
-    currency: countryCurrency,
-  }).format(value);
+    return new Intl.NumberFormat(countryLanguage, {
+        style: "currency",
+        currency: countryCurrency,
+    }).format(value);
 }
 
 // Example output: R$ 1,234.56
@@ -42,9 +42,9 @@ console.log(formatToBRL(1234.56));
 
 ```json
 {
-  "BRL": {
-    "countryLanguage": "pt-BR",
-    "countryCurrency": "BRL"
-  }
+    "BRL": {
+        "countryLanguage": "pt-BR",
+        "countryCurrency": "BRL"
+    }
 }
 ```

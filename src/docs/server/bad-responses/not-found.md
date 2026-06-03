@@ -29,8 +29,8 @@ throw new NotFound("User not found");
 
 // With cause information
 throw new NotFound("Product not found", {
-  productId: "abc123",
-  searchedIn: "products_table",
+    productId: "abc123",
+    searchedIn: "products_table",
 });
 
 // Convert to Response object
@@ -47,9 +47,9 @@ The response body follows a standardized structure:
 
 ```json
 {
-  "ok": false,
-  "status": 404,
-  "message": "User not found"
+    "ok": false,
+    "status": 404,
+    "message": "User not found"
 }
 ```
 

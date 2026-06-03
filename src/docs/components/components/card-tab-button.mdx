@@ -20,9 +20,9 @@ import { CardTabButton, CardTabContainer } from "@arkyn/components";
 
 ```tsx
 <CardTabContainer defaultValue="home">
-  <CardTabButton value="home">Home</CardTabButton>
-  <CardTabButton value="about">About</CardTabButton>
-  <CardTabButton value="contact">Contact</CardTabButton>
+    <CardTabButton value="home">Home</CardTabButton>
+    <CardTabButton value="about">About</CardTabButton>
+    <CardTabButton value="contact">Contact</CardTabButton>
 </CardTabContainer>
 ```
 
@@ -41,10 +41,10 @@ Use `disabled` to prevent selection. The active state is controlled by the surro
 
 ```tsx
 <CardTabContainer defaultValue="available">
-  <CardTabButton value="available">Available</CardTabButton>
-  <CardTabButton value="coming-soon" disabled>
-    Coming Soon
-  </CardTabButton>
+    <CardTabButton value="available">Available</CardTabButton>
+    <CardTabButton value="coming-soon" disabled>
+        Coming Soon
+    </CardTabButton>
 </CardTabContainer>
 ```
 
@@ -61,13 +61,13 @@ The button always uses `type="button"` and notifies the surrounding container wh
 
 ```tsx
 <CardTabContainer
-  onChange={(value) => console.log(value)}
-  defaultValue="profile"
+    onChange={(value) => console.log(value)}
+    defaultValue="profile"
 >
-  <CardTabButton value="profile" onClick={() => console.log("Profile clicked")}>
-    Profile
-  </CardTabButton>
-  <CardTabButton value="settings">Settings</CardTabButton>
+    <CardTabButton value="profile" onClick={() => console.log("Profile clicked")}>
+        Profile
+    </CardTabButton>
+    <CardTabButton value="settings">Settings</CardTabButton>
 </CardTabContainer>
 ```
 

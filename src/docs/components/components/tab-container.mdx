@@ -28,9 +28,9 @@ import { TabContainer, TabButton } from "@arkyn/components";
 
 ```tsx
 <TabContainer>
-  <TabButton value="home">Home</TabButton>
-  <TabButton value="about">About</TabButton>
-  <TabButton value="contact">Contact</TabButton>
+    <TabButton value="home">Home</TabButton>
+    <TabButton value="about">About</TabButton>
+    <TabButton value="contact">Contact</TabButton>
 </TabContainer>
 ```
 
@@ -48,12 +48,12 @@ Use `defaultValue` to initialize the active tab and `onChange` to react to updat
 
 ```tsx
 <TabContainer
-  defaultValue="dashboard"
-  onChange={(value) => console.log("Active tab:", value)}
+    defaultValue="dashboard"
+    onChange={(value) => console.log("Active tab:", value)}
 >
-  <TabButton value="dashboard">Dashboard</TabButton>
-  <TabButton value="analytics">Analytics</TabButton>
-  <TabButton value="settings">Settings</TabButton>
+    <TabButton value="dashboard">Dashboard</TabButton>
+    <TabButton value="analytics">Analytics</TabButton>
+    <TabButton value="settings">Settings</TabButton>
 </TabContainer>
 ```
 
@@ -70,8 +70,8 @@ Set `disabled` on the container to disable all child tab buttons.
 
 ```tsx
 <TabContainer disabled>
-  <TabButton value="tab1">Tab 1</TabButton>
-  <TabButton value="tab2">Tab 2</TabButton>
+    <TabButton value="tab1">Tab 1</TabButton>
+    <TabButton value="tab2">Tab 2</TabButton>
 </TabContainer>
 ```
 
@@ -89,26 +89,26 @@ Use external state when tab selection must drive conditional content rendering.
 
 ```tsx
 function MyTabs() {
-  const [activeTab, setActiveTab] = useState("profile");
+    const [activeTab, setActiveTab] = useState("profile");
 
-  return (
-    <div>
-      <TabContainer
-        defaultValue={activeTab}
-        onChange={setActiveTab}
-        className="custom-tabs"
-        role="tablist"
-      >
-        <TabButton value="profile">Profile</TabButton>
-        <TabButton value="account">Account</TabButton>
-        <TabButton value="notifications">Notifications</TabButton>
-      </TabContainer>
+    return (
+        <div>
+            <TabContainer
+                defaultValue={activeTab}
+                onChange={setActiveTab}
+                className="custom-tabs"
+                role="tablist"
+            >
+                <TabButton value="profile">Profile</TabButton>
+                <TabButton value="account">Account</TabButton>
+                <TabButton value="notifications">Notifications</TabButton>
+            </TabContainer>
 
-      {activeTab === "profile" && <ProfileContent />}
-      {activeTab === "account" && <AccountContent />}
-      {activeTab === "notifications" && <NotificationsContent />}
-    </div>
-  );
+            {activeTab === "profile" && <ProfileContent />}
+            {activeTab === "account" && <AccountContent />}
+            {activeTab === "notifications" && <NotificationsContent />}
+        </div>
+    );
 }
 ```
 

@@ -47,17 +47,17 @@ Use `siblingsCount` to control how many page numbers appear around the current p
 
 ```tsx
 <Pagination
-  totalCountRegisters={240}
-  currentPage={8}
-  registerPerPage={10}
-  siblingsCount={1}
+    totalCountRegisters={240}
+    currentPage={8}
+    registerPerPage={10}
+    siblingsCount={1}
 />
 
 <Pagination
-  totalCountRegisters={240}
-  currentPage={8}
-  registerPerPage={10}
-  siblingsCount={2}
+    totalCountRegisters={240}
+    currentPage={8}
+    registerPerPage={10}
+    siblingsCount={2}
 />
 ```
 
@@ -90,14 +90,14 @@ Provide `onChange` to react to page navigation and update your external state.
 
 ```tsx
 <Pagination
-  totalCountRegisters={100}
-  currentPage={currentPage}
-  registerPerPage={10}
-  siblingsCount={1}
-  onChange={(page) => {
-    setCurrentPage(page);
-    console.log("Page changed to:", page);
-  }}
+    totalCountRegisters={100}
+    currentPage={currentPage}
+    registerPerPage={10}
+    siblingsCount={1}
+    onChange={(page) => {
+        setCurrentPage(page);
+        console.log("Page changed to:", page);
+    }}
 />
 ```
 
@@ -117,11 +117,11 @@ Because the component extends native `div` attributes, you can pass classes, sty
 
 ```tsx
 <Pagination
-  totalCountRegisters={80}
-  currentPage={2}
-  className="custom-pagination"
-  title="Results navigation"
-  aria-label="Results pages"
+    totalCountRegisters={80}
+    currentPage={2}
+    className="custom-pagination"
+    title="Results navigation"
+    aria-label="Results pages"
 />
 ```
 

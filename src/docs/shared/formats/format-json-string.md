@@ -48,13 +48,13 @@ The function performs validation and may throw an error in the following scenari
 import { formatJsonString } from "@arkyn/shared";
 
 try {
-  const invalidJsonString = '{"name":"John", "age":30,';
-  const formatted = formatJsonString(invalidJsonString);
-  console.log(formatted);
+    const invalidJsonString = '{"name":"John", "age":30,';
+    const formatted = formatJsonString(invalidJsonString);
+    console.log(formatted);
 } catch (error) {
-  console.error(error);
-  // Output: Error: Invalid JSON string
-  // (with additional error details)
+    console.error(error);
+    // Output: Error: Invalid JSON string
+    // (with additional error details)
 }
 ```
 

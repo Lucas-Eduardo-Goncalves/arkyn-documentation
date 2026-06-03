@@ -34,8 +34,8 @@ return new Updated("Profile updated", updatedUser).toResponse();
 
 // With additional data (e.g., closeModal flag for frontend)
 return new Updated("Settings saved successfully", {
-  closeModal: true,
-  user: { id: "123", preferences: { theme: "dark" } },
+    closeModal: true,
+    user: { id: "123", preferences: { theme: "dark" } },
 }).toJson();
 ```
 
@@ -45,13 +45,13 @@ The response body contains the data passed to the constructor:
 
 ```json
 {
-  "closeModal": true,
-  "user": {
-    "id": "123",
-    "preferences": {
-      "theme": "dark"
+    "closeModal": true,
+    "user": {
+        "id": "123",
+        "preferences": {
+            "theme": "dark"
+        }
     }
-  }
 }
 ```
 

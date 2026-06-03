@@ -29,43 +29,43 @@ import { z } from "zod";
 import { SchemaValidator } from "@arkyn/server";
 
 const userSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Invalid email"),
-  age: z.number().min(18, "Must be at least 18"),
+    name: z.string().min(1, "Name is required"),
+    email: z.string().email("Invalid email"),
+    age: z.number().min(18, "Must be at least 18"),
 });
 
 const validator = new SchemaValidator(userSchema);
 
 // Boolean check (no errors thrown)
 const isValid = validator.isValid({
-  name: "John",
-  email: "john@example.com",
-  age: 25,
+    name: "John",
+    email: "john@example.com",
+    age: 25,
 });
 
 // Safe validation with result object
 const result = validator.safeValidate(data);
 if (result.success) {
-  console.log(result.data);
+    console.log(result.data);
 } else {
-  console.log(result.error.issues);
+    console.log(result.error.issues);
 }
 
 // Validate with ServerError on failure
 try {
-  const validData = validator.validate(data);
+    const validData = validator.validate(data);
 } catch (error) {
-  console.error(error.message);
-  // "Error validating:
-  // -> name: Name is required"
+    console.error(error.message);
+    // "Error validating:
+    // -> name: Name is required"
 }
 
 // Form validation with UnprocessableEntity
 try {
-  const formData = validator.formValidate(requestBody, "Invalid form data");
+    const formData = validator.formValidate(requestBody, "Invalid form data");
 } catch (error) {
-  console.log(error.fieldErrors); // { name: "Name is required" }
-  console.log(error.data.scrollTo); // "name" (first error field)
+    console.log(error.fieldErrors); // { name: "Name is required" }
+    console.log(error.data.scrollTo); // "name" (first error field)
 }
 
 // Async form validation

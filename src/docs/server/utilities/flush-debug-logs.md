@@ -39,9 +39,9 @@ import { flushDebugLogs } from "@arkyn/server";
 
 // Log API request information
 flushDebugLogs({
-  name: "API",
-  scheme: "cyan",
-  debugs: ["POST /api/users", "Status: 201", "Response time: 45ms"],
+    name: "API",
+    scheme: "cyan",
+    debugs: ["POST /api/users", "Status: 201", "Response time: 45ms"],
 });
 // Output:
 // [API] POST /api/users

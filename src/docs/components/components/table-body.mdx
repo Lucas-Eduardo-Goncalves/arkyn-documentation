@@ -36,14 +36,14 @@ import { TableBody } from "@arkyn/components";
 
 ```tsx
 <TableBody>
-  <tr>
-    <td>John Doe</td>
-    <td>john@example.com</td>
-  </tr>
-  <tr>
-    <td>Jane Smith</td>
-    <td>jane@example.com</td>
-  </tr>
+    <tr>
+        <td>John Doe</td>
+        <td>john@example.com</td>
+    </tr>
+    <tr>
+        <td>Jane Smith</td>
+        <td>jane@example.com</td>
+    </tr>
 </TableBody>
 ```
 
@@ -95,13 +95,13 @@ Use mapped data rows while keeping the same fallback behavior.
 
 ```tsx
 <TableBody className="striped-rows" emptyMessage="No products available">
-  {products.map((product) => (
-    <tr key={product.id}>
-      <td>{product.name}</td>
-      <td>{product.price}</td>
-      <td>{product.stock}</td>
-    </tr>
-  ))}
+    {products.map((product) => (
+        <tr key={product.id}>
+            <td>{product.name}</td>
+            <td>{product.price}</td>
+            <td>{product.stock}</td>
+        </tr>
+    ))}
 </TableBody>
 ```
 

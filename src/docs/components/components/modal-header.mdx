@@ -27,10 +27,10 @@ import { ModalHeader } from "@arkyn/components";
 
 ```tsx
 <ModalContainer>
-  <ModalHeader>Modal Title</ModalHeader>
-  <main style={{ padding: 30 }}>
-    <p>Are you sure you want to continue?</p>
-  </main>
+    <ModalHeader>Modal Title</ModalHeader>
+    <main style={{ padding: 30 }}>
+        <p>Are you sure you want to continue?</p>
+    </main>
 </ModalContainer>
 ```
 
@@ -55,20 +55,20 @@ Set `showCloseButton` to control whether the header renders the close action.
 
 ```tsx
 <ModalContainer>
-  <ModalHeader>
-    With Close Button
-  </ModalHeader>
-  <main style={{ padding: 30 }}>
-    <p>Are you sure you want to continue?</p>
-  </main>
+    <ModalHeader>
+        With Close Button
+    </ModalHeader>
+    <main style={{ padding: 30 }}>
+        <p>Are you sure you want to continue?</p>
+    </main>
 </ModalContainer>
 <ModalContainer>
-  <ModalHeader showCloseButton={false}>
-    Without Close Button
-  </ModalHeader>
-  <main style={{ padding: 30 }}>
-    <p>Are you sure you want to continue?</p>
-  </main>
+    <ModalHeader showCloseButton={false}>
+        Without Close Button
+    </ModalHeader>
+    <main style={{ padding: 30 }}>
+        <p>Are you sure you want to continue?</p>
+    </main>
 </ModalContainer>
 ```
 
@@ -92,15 +92,15 @@ The header accepts custom content such as title/subtitle combinations.
 
 ```tsx
 <ModalContainer>
-  <ModalHeader>
-    <div>
-      <h2>Settings</h2>
-      <p>Manage your preferences</p>
-    </div>
-  </ModalHeader>
-  <main style={{ padding: 30 }}>
-    <p>Are you sure you want to continue?</p>
-  </main>
+    <ModalHeader>
+        <div>
+            <h2>Settings</h2>
+            <p>Manage your preferences</p>
+        </div>
+    </ModalHeader>
+    <main style={{ padding: 30 }}>
+        <p>Are you sure you want to continue?</p>
+    </main>
 </ModalContainer>
 ```
 
@@ -130,18 +130,18 @@ Use ModalHeader inside ModalContainer so the close button can call modal context
 
 ```tsx
 <ModalContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
-  <div>
-    <ModalHeader>Confirm Action</ModalHeader>
+    <div>
+        <ModalHeader>Confirm Action</ModalHeader>
 
-    <main style={{ padding: 30 }}>
-      <p>Review this action before continuing.</p>
-    </main>
+        <main style={{ padding: 30 }}>
+            <p>Review this action before continuing.</p>
+        </main>
 
-    <ModalFooter>
-      <Button onClick={() => setIsOpen(false)}>Cancel</Button>
-      <Button onClick={handleConfirm}>Continue</Button>
-    </ModalFooter>
-  </div>
+        <ModalFooter>
+            <Button onClick={() => setIsOpen(false)}>Cancel</Button>
+            <Button onClick={handleConfirm}>Continue</Button>
+        </ModalFooter>
+    </div>
 </ModalContainer>
 ```
 

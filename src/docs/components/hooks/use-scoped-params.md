@@ -40,22 +40,22 @@ The hook returns helpers to read scoped params and generate updated search strin
 import { useScopedParams } from "@arkyn/components";
 
 function ProductFilters({ search }: { search: string }) {
-  const { getParam, getScopedSearch } = useScopedParams(search, "filters");
+    const { getParam, getScopedSearch } = useScopedParams(search, "filters");
 
-  const category = getParam("category");
+    const category = getParam("category");
 
-  function applyElectronics() {
-    const nextSearch = getScopedSearch({ category: "electronics", page: 1 });
-    // navigate({ search: nextSearch })
-    console.log(nextSearch);
-  }
+    function applyElectronics() {
+        const nextSearch = getScopedSearch({ category: "electronics", page: 1 });
+        // navigate({ search: nextSearch })
+        console.log(nextSearch);
+    }
 
-  return (
-    <div>
-      <p>Category: {category || "all"}</p>
-      <button onClick={applyElectronics}>Electronics</button>
-    </div>
-  );
+    return (
+        <div>
+            <p>Category: {category || "all"}</p>
+            <button onClick={applyElectronics}>Electronics</button>
+        </div>
+    );
 }
 ```
 

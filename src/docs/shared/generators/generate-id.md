@@ -58,10 +58,10 @@ The function performs validation and may throw an error in the following scenari
 import { generateId } from "@arkyn/shared";
 
 try {
-  const id = generateId("invalid_type" as any, "v4");
+    const id = generateId("invalid_type" as any, "v4");
 } catch (error) {
-  console.error(error);
-  // Output: Error: Invalid type or format
+    console.error(error);
+    // Output: Error: Invalid type or format
 }
 ```
 

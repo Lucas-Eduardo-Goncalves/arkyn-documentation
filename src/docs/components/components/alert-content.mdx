@@ -12,11 +12,11 @@ The `AlertContent` component wraps the textual region of an alert and groups tit
 
 ```tsx
 import {
-  AlertContainer,
-  AlertContent,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
+    AlertContainer,
+    AlertContent,
+    AlertDescription,
+    AlertIcon,
+    AlertTitle,
 } from "@arkyn/components";
 ```
 
@@ -33,10 +33,10 @@ import {
 
 ```tsx
 <AlertContainer schema="success">
-  <AlertIcon />
-  <AlertContent>
-    <AlertDescription>Operation completed.</AlertDescription>
-  </AlertContent>
+    <AlertIcon />
+    <AlertContent>
+        <AlertDescription>Operation completed.</AlertDescription>
+    </AlertContent>
 </AlertContainer>
 ```
 
@@ -56,11 +56,11 @@ Use `AlertContent` as the parent for `AlertTitle` and `AlertDescription`.
 
 ```tsx
 <AlertContainer schema="info">
-  <AlertIcon />
-  <AlertContent>
-    <AlertTitle>Heads up</AlertTitle>
-    <AlertDescription>A new version is available.</AlertDescription>
-  </AlertContent>
+    <AlertIcon />
+    <AlertContent>
+        <AlertTitle>Heads up</AlertTitle>
+        <AlertDescription>A new version is available.</AlertDescription>
+    </AlertContent>
 </AlertContainer>
 ```
 

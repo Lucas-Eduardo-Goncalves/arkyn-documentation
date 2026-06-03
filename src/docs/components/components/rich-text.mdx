@@ -53,9 +53,9 @@ Use `hiddenButtons` to remove specific controls from the toolbar.
 
 ```tsx
 <RichText
-  name="description"
-  hiddenButtons={["image", "code", "video"]}
-  label="Description"
+    name="description"
+    hiddenButtons={["image", "code", "video"]}
+    label="Description"
 />
 ```
 
@@ -74,10 +74,10 @@ Set `maxLimit` and optionally enforce it during editing.
 
 ```tsx
 <RichText
-  name="summary"
-  maxLimit={500}
-  enforceCharacterLimit
-  onChangeCharactersCount={(count) => console.log(count)}
+    name="summary"
+    maxLimit={500}
+    enforceCharacterLimit
+    onChangeCharactersCount={(count) => console.log(count)}
 />
 ```
 
@@ -104,17 +104,17 @@ Provide media configs to enable image and video insertion actions.
 
 ```tsx
 <RichText
-  name="post"
-  imageConfig={{
-    action: "/api/upload/image",
-    modalTitle: "Insert Image",
-    modalInputUrlLabel: "Image URL",
-    modalInputImageLabel: "Upload image",
-  }}
-  videoConfig={{
-    modalTitle: "Insert Video",
-    modalInputLabel: "Video URL",
-  }}
+    name="post"
+    imageConfig={{
+        action: "/api/upload/image",
+        modalTitle: "Insert Image",
+        modalInputUrlLabel: "Image URL",
+        modalInputImageLabel: "Upload image",
+    }}
+    videoConfig={{
+        modalTitle: "Insert Video",
+        modalInputLabel: "Video URL",
+    }}
 />
 ```
 
@@ -147,11 +147,11 @@ RichText integrates with form context and can display custom or provider-based f
 
 ```tsx
 <RichText
-  name="bio"
-  label="Biography"
-  showAsterisk
-  baseErrorMessage="Biography is required"
-  isError
+    name="bio"
+    label="Biography"
+    showAsterisk
+    baseErrorMessage="Biography is required"
+    isError
 />
 ```
 

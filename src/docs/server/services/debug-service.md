@@ -59,42 +59,42 @@ If you create an adapter that wraps these classes, the logs will always point to
 ```typescript
 // httpAdapter.ts
 import {
-  BadRequest,
-  NotFound,
-  ServerError,
-  Created,
-  Updated,
-  Success,
-  DebugService,
+    BadRequest,
+    NotFound,
+    ServerError,
+    Created,
+    Updated,
+    Success,
+    DebugService,
 } from "@arkyn/server";
 
 // Ignore this file in stack traces so logs show the actual caller
 DebugService.setIgnoreFile("httpAdapter.ts");
 
 class HttpAdapter {
-  static badRequest(message: string, cause?: any) {
-    throw new BadRequest(message, cause);
-  }
+    static badRequest(message: string, cause?: any) {
+        throw new BadRequest(message, cause);
+    }
 
-  static notFound(message: string, cause?: any) {
-    throw new NotFound(message, cause);
-  }
+    static notFound(message: string, cause?: any) {
+        throw new NotFound(message, cause);
+    }
 
-  static serverError(message: string, cause?: any) {
-    throw new ServerError(message, cause);
-  }
+    static serverError(message: string, cause?: any) {
+        throw new ServerError(message, cause);
+    }
 
-  static created(message: string, body?: any) {
-    return new Created({ closeModal: true, ...body }, { message }).toResponse();
-  }
+    static created(message: string, body?: any) {
+        return new Created({ closeModal: true, ...body }, { message }).toResponse();
+    }
 
-  static updated(message: string, body?: any) {
-    return new Updated({ closeModal: true, ...body }, { message }).toResponse();
-  }
+    static updated(message: string, body?: any) {
+        return new Updated({ closeModal: true, ...body }, { message }).toResponse();
+    }
 
-  static success(message: string, body?: any) {
-    return new Success({ closeModal: true, ...body }, { message }).toResponse();
-  }
+    static success(message: string, body?: any) {
+        return new Success({ closeModal: true, ...body }, { message }).toResponse();
+    }
 }
 
 export { HttpAdapter };
@@ -105,12 +105,12 @@ export { HttpAdapter };
 import { HttpAdapter } from "~/infra/adapters/httpAdapter";
 
 class CreateCustomerUseCase {
-  constructor(private customerGateway: CustomerGatewayDTO) {}
+    constructor(private customerGateway: CustomerGatewayDTO) {}
 
-  async execute(input: InputProps, token: string) {
-    await this.customerGateway.createCustomer(input, token);
-    return HttpAdapter.created("Customer created successfully!");
-  }
+    async execute(input: InputProps, token: string) {
+        await this.customerGateway.createCustomer(input, token);
+        return HttpAdapter.created("Customer created successfully!");
+    }
 }
 ```
 

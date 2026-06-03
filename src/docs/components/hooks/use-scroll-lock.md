@@ -29,21 +29,21 @@ import { useState } from "react";
 import { useScrollLock } from "@arkyn/components";
 
 function ModalExample() {
-  const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-  useScrollLock(isOpen);
+    useScrollLock(isOpen);
 
-  return (
-    <>
-      <button onClick={() => setIsOpen(true)}>Open modal</button>
-      {isOpen && (
-        <div>
-          <button onClick={() => setIsOpen(false)}>Close</button>
-          <p>Modal content</p>
-        </div>
-      )}
-    </>
-  );
+    return (
+        <>
+            <button onClick={() => setIsOpen(true)}>Open modal</button>
+            {isOpen && (
+                <div>
+                    <button onClick={() => setIsOpen(false)}>Close</button>
+                    <p>Modal content</p>
+                </div>
+            )}
+        </>
+    );
 }
 ```
 

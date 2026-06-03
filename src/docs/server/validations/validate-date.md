@@ -72,9 +72,9 @@ validateDate("2023-12-31", { inputFormat: "timestamp" });
 
 // With year range restrictions
 validateDate("2023-12-31", {
-  inputFormat: "timestamp",
-  minYear: 2000,
-  maxYear: 2100,
+    inputFormat: "timestamp",
+    minYear: 2000,
+    maxYear: 2100,
 });
 // Output: true
 

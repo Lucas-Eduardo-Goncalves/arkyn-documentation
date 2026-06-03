@@ -29,9 +29,9 @@ throw new ServerError("An unexpected error occurred");
 
 // With cause information
 throw new ServerError("Database operation failed", {
-  operation: "insert",
-  table: "users",
-  originalError: "Connection lost",
+    operation: "insert",
+    table: "users",
+    originalError: "Connection lost",
 });
 
 // Convert to Response object
@@ -48,9 +48,9 @@ The response body follows a standardized structure:
 
 ```json
 {
-  "ok": false,
-  "status": 500,
-  "message": "An unexpected error occurred"
+    "ok": false,
+    "status": 500,
+    "message": "An unexpected error occurred"
 }
 ```
 

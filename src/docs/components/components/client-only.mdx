@@ -25,7 +25,7 @@ import { ClientOnly } from "@arkyn/components";
 
 ```tsx
 <ClientOnly fallback={<div>Loading...</div>}>
-  {() => <InteractiveWidget />}
+    {() => <InteractiveWidget />}
 </ClientOnly>
 ```
 
@@ -45,11 +45,11 @@ Use `fallback` to render SSR-safe or pre-hydration content while the client is n
 
 ```tsx
 <ClientOnly fallback={<div>Preparing location services...</div>}>
-  {() => <GeolocationComponent />}
+    {() => <GeolocationComponent />}
 </ClientOnly>
 
 <ClientOnly fallback={<div className="skeleton-loader" />}>
-  {() => <UserDashboard />}
+    {() => <UserDashboard />}
 </ClientOnly>
 ```
 
@@ -65,7 +65,7 @@ Wrap components that depend on browser APIs to avoid hydration warnings and runt
 
 ```tsx
 <ClientOnly fallback={<div>Loading editor...</div>}>
-  {() => <LazyCodeEditor />}
+    {() => <LazyCodeEditor />}
 </ClientOnly>
 ```
 
@@ -79,12 +79,12 @@ When no fallback is provided, the component renders nothing until hydration is c
 
 ```tsx
 <ClientOnly>
-  {() => (
-    <div>
-      <p>This content only appears on the client</p>
-      <p>Current time: {new Date().toLocaleString()}</p>
-    </div>
-  )}
+    {() => (
+        <div>
+            <p>This content only appears on the client</p>
+            <p>Current time: {new Date().toLocaleString()}</p>
+        </div>
+    )}
 </ClientOnly>
 ```
 

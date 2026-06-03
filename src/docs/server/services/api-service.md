@@ -19,10 +19,10 @@ Creates a new ApiService instance with the provided configuration.
 
 ```typescript
 const api = new ApiService({
-  baseUrl: "https://api.example.com",
-  baseHeaders: { "Content-Type": "application/json" },
-  baseToken: "your-api-token",
-  enableDebug: true,
+    baseUrl: "https://api.example.com",
+    baseHeaders: { "Content-Type": "application/json" },
+    baseToken: "your-api-token",
+    enableDebug: true,
 });
 ```
 
@@ -61,48 +61,48 @@ For POST, PUT, PATCH, DELETE requests:
 import { ApiService } from "@arkyn/server";
 
 const api = new ApiService({
-  baseUrl: "https://api.example.com",
-  baseHeaders: { "Content-Type": "application/json" },
-  enableDebug: process.env.NODE_ENV === "development",
+    baseUrl: "https://api.example.com",
+    baseHeaders: { "Content-Type": "application/json" },
+    enableDebug: process.env.NODE_ENV === "development",
 });
 
 // GET request with query parameters
 const users = await api.get("/users", {
-  urlParams: { page: "1", limit: "10" },
+    urlParams: { page: "1", limit: "10" },
 });
 
 // GET request with custom token
 const profile = await api.get("/me", {
-  token: "user-specific-token",
+    token: "user-specific-token",
 });
 
 // POST request with body
 const newUser = await api.post("/users", {
-  body: { name: "John", email: "john@example.com" },
+    body: { name: "John", email: "john@example.com" },
 });
 
 // PUT request
 const updatedUser = await api.put("/users/:userId", {
-  body: { name: "John Doe" },
-  urlParams: { userId: "123" },
+    body: { name: "John Doe" },
+    urlParams: { userId: "123" },
 });
 
 // PATCH request
 const patchedUser = await api.patch("/users/:userId", {
-  body: { status: "active" },
-  urlParams: { userId: "123" },
+    body: { status: "active" },
+    urlParams: { userId: "123" },
 });
 
 // DELETE request
 const deleted = await api.delete("/users/:userId", {
-  urlParams: { userId: "123" },
+    urlParams: { userId: "123" },
 });
 
 // Handling responses
 if (users.status === 200) {
-  console.log(users.data); // Response data
+    console.log(users.data); // Response data
 } else {
-  console.log(users.message); // Error message
+    console.log(users.message); // Error message
 }
 ```
 

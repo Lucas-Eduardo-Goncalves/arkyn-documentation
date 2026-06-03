@@ -34,35 +34,35 @@ import { formAsyncParse, validateEmail } from "@arkyn/server";
 
 // Schema with async email validation (DNS verification)
 const schema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z
-    .string()
-    .refine(
-      async (email) => await validateEmail(email),
-      "Invalid email or domain doesn't exist",
-    ),
-  username: z.string().refine(async (username) => {
-    const exists = await checkUsernameExists(username);
-    return !exists;
-  }, "Username already taken"),
+    name: z.string().min(1, "Name is required"),
+    email: z
+        .string()
+        .refine(
+            async (email) => await validateEmail(email),
+            "Invalid email or domain doesn't exist",
+        ),
+    username: z.string().refine(async (username) => {
+        const exists = await checkUsernameExists(username);
+        return !exists;
+    }, "Username already taken"),
 });
 
 const formData = {
-  name: "John",
-  email: "user@invalid-domain.xyz",
-  username: "john",
+    name: "John",
+    email: "user@invalid-domain.xyz",
+    username: "john",
 };
 
 const result = await formAsyncParse([formData, schema]);
 
 if (!result.success) {
-  console.log(result.fieldErrors);
-  // { email: "Invalid email or domain doesn't exist" }
-  console.log(result.fields);
-  // { name: "John", email: "user@invalid-domain.xyz", username: "john" }
+    console.log(result.fieldErrors);
+    // { email: "Invalid email or domain doesn't exist" }
+    console.log(result.fields);
+    // { name: "John", email: "user@invalid-domain.xyz", username: "john" }
 } else {
-  console.log(result.data);
-  // Validated data with proper types
+    console.log(result.data);
+    // Validated data with proper types
 }
 ```
 

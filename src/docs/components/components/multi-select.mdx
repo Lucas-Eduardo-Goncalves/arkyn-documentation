@@ -34,12 +34,12 @@ import { MultiSelect } from "@arkyn/components";
 
 ```tsx
 <MultiSelect
-  name="categories"
-  options={[
-    { label: "Technology", value: "tech" },
-    { label: "Design", value: "design" },
-    { label: "Marketing", value: "marketing" },
-  ]}
+    name="categories"
+    options={[
+        { label: "Technology", value: "tech" },
+        { label: "Design", value: "design" },
+        { label: "Marketing", value: "marketing" },
+    ]}
 />
 ```
 
@@ -73,25 +73,25 @@ Use `size` to adjust spacing and control dimensions.
 
 ```tsx
 <MultiSelect
-  name="skillsMd"
-  label="Skills (md)"
-  size="md"
-  options={[
-    { label: "TypeScript", value: "ts" },
-    { label: "React", value: "react" },
-    { label: "Node.js", value: "node" },
-  ]}
+    name="skillsMd"
+    label="Skills (md)"
+    size="md"
+    options={[
+        { label: "TypeScript", value: "ts" },
+        { label: "React", value: "react" },
+        { label: "Node.js", value: "node" },
+    ]}
 />
 
 <MultiSelect
-  name="skillsLg"
-  label="Skills (lg)"
-  size="lg"
-  options={[
-    { label: "TypeScript", value: "ts" },
-    { label: "React", value: "react" },
-    { label: "Node.js", value: "node" },
-  ]}
+    name="skillsLg"
+    label="Skills (lg)"
+    size="lg"
+    options={[
+        { label: "TypeScript", value: "ts" },
+        { label: "React", value: "react" },
+        { label: "Node.js", value: "node" },
+    ]}
 />
 ```
 
@@ -136,36 +136,36 @@ Use `variant` to define the field style.
 
 ```tsx
 <MultiSelect
-  name="solidVariant"
-  label="Solid"
-  variant="solid"
-  options={[
-    { label: "HR", value: "hr" },
-    { label: "IT", value: "it" },
-    { label: "Finance", value: "finance" },
-  ]}
+    name="solidVariant"
+    label="Solid"
+    variant="solid"
+    options={[
+        { label: "HR", value: "hr" },
+        { label: "IT", value: "it" },
+        { label: "Finance", value: "finance" },
+    ]}
 />
 
 <MultiSelect
-  name="outlineVariant"
-  label="Outline"
-  variant="outline"
-  options={[
-    { label: "HR", value: "hr" },
-    { label: "IT", value: "it" },
-    { label: "Finance", value: "finance" },
-  ]}
+    name="outlineVariant"
+    label="Outline"
+    variant="outline"
+    options={[
+        { label: "HR", value: "hr" },
+        { label: "IT", value: "it" },
+        { label: "Finance", value: "finance" },
+    ]}
 />
 
 <MultiSelect
-  name="underlineVariant"
-  label="Underline"
-  variant="underline"
-  options={[
-    { label: "HR", value: "hr" },
-    { label: "IT", value: "it" },
-    { label: "Finance", value: "finance" },
-  ]}
+    name="underlineVariant"
+    label="Underline"
+    variant="underline"
+    options={[
+        { label: "HR", value: "hr" },
+        { label: "IT", value: "it" },
+        { label: "Finance", value: "finance" },
+    ]}
 />
 ```
 
@@ -190,16 +190,16 @@ Enable `isSearchable` to filter options and customize empty-result text with `no
 
 ```tsx
 <MultiSelect
-  name="countries"
-  label="Countries"
-  isSearchable
-  notFoundText="No countries found"
-  leftIcon={Globe}
-  options={[
-    { label: "Brazil", value: "br" },
-    { label: "Canada", value: "ca" },
-    { label: "Germany", value: "de" },
-  ]}
+    name="countries"
+    label="Countries"
+    isSearchable
+    notFoundText="No countries found"
+    leftIcon={Globe}
+    options={[
+        { label: "Brazil", value: "br" },
+        { label: "Canada", value: "ca" },
+        { label: "Germany", value: "de" },
+    ]}
 />
 ```
 
@@ -237,23 +237,23 @@ Use controlled values with `onChange`, and set `closeOnSelect` to close the menu
 
 ```tsx
 <MultiSelect
-  name="tags"
-  label="Tags"
-  value={selectedTags}
-  onChange={setSelectedTags}
-  onSearch={handleSearch}
-  closeOnSelect={false}
-  options={tagOptions}
+    name="tags"
+    label="Tags"
+    value={selectedTags}
+    onChange={setSelectedTags}
+    onSearch={handleSearch}
+    closeOnSelect={false}
+    options={tagOptions}
 />
 
 <MultiSelect
-  name="departments"
-  label="Departments"
-  prefix="Dept:"
-  closeOnSelect
-  defaultValue={["hr", "it"]}
-  variant="underline"
-  options={departmentOptions}
+    name="departments"
+    label="Departments"
+    prefix="Dept:"
+    closeOnSelect
+    defaultValue={["hr", "it"]}
+    variant="underline"
+    options={departmentOptions}
 />
 ```
 
@@ -276,14 +276,14 @@ Set `disabled` to block opening and selection interactions.
 
 ```tsx
 <MultiSelect
-  name="disabledTeams"
-  label="Teams"
-  disabled
-  defaultValue={["product"]}
-  options={[
-    { label: "Product", value: "product" },
-    { label: "Engineering", value: "engineering" },
-  ]}
+    name="disabledTeams"
+    label="Teams"
+    disabled
+    defaultValue={["product"]}
+    options={[
+        { label: "Product", value: "product" },
+        { label: "Engineering", value: "engineering" },
+    ]}
 />
 ```
 
@@ -305,13 +305,13 @@ Set `isLoading` to indicate asynchronous option loading.
 
 ```tsx
 <MultiSelect
-  name="loadingTags"
-  label="Tags"
-  isLoading
-  options={[
-    { label: "A", value: "a" },
-    { label: "B", value: "b" },
-  ]}
+    name="loadingTags"
+    label="Tags"
+    isLoading
+    options={[
+        { label: "A", value: "a" },
+        { label: "B", value: "b" },
+    ]}
 />
 ```
 
@@ -335,11 +335,11 @@ Provide `errorMessage` directly or rely on form context errors.
 
 ```tsx
 <MultiSelect
-  name="skills"
-  label="Select Skills"
-  showAsterisk
-  errorMessage="Please select at least one skill"
-  options={skillOptions}
+    name="skills"
+    label="Select Skills"
+    showAsterisk
+    errorMessage="Please select at least one skill"
+    options={skillOptions}
 />
 ```
 

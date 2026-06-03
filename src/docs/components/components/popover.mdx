@@ -28,7 +28,7 @@ import { Popover } from "@arkyn/components";
 
 ```tsx
 <Popover button={<Button>Open popover</Button>}>
-  <div>Popover content here</div>
+    <div>Popover content here</div>
 </Popover>
 ```
 
@@ -56,19 +56,19 @@ Use `orientation` to control where the popover appears relative to the trigger.
 
 ```tsx
 <Popover button={<Badge>Bottom Left</Badge>} orientation="bottomLeft">
-  <div>bottomLeft</div>
+    <div>bottomLeft</div>
 </Popover>
 
 <Popover button={<Badge>Top Right</Badge>} orientation="topRight">
-  <div>topRight</div>
+    <div>topRight</div>
 </Popover>
 
 <Popover button={<Badge>Left</Badge>} orientation="left">
-  <div>left</div>
+    <div>left</div>
 </Popover>
 
 <Popover button={<Badge>Right</Badge>} orientation="right">
-  <div>right</div>
+    <div>right</div>
 </Popover>
 ```
 
@@ -88,17 +88,17 @@ Enable `closeOnClick` when popover content should close after selecting an actio
 
 ```tsx
 <Popover button={<Button variant="outline">Actions</Button>} closeOnClick>
-  <div className="context-menu">
-    <button type="button" onClick={editItem}>
-      Edit
-    </button>
-    <button type="button" onClick={duplicateItem}>
-      Duplicate
-    </button>
-    <button type="button" onClick={deleteItem}>
-      Delete
-    </button>
-  </div>
+    <div className="context-menu">
+        <button type="button" onClick={editItem}>
+            Edit
+        </button>
+        <button type="button" onClick={duplicateItem}>
+            Duplicate
+        </button>
+        <button type="button" onClick={deleteItem}>
+            Delete
+        </button>
+    </div>
 </Popover>
 ```
 
@@ -129,22 +129,22 @@ Popover supports rich composition such as menus, filters, and account panels.
 
 ```tsx
 <Popover
-  button={<Button variant="ghost">Profile</Button>}
-  orientation="bottomRight"
-  closeOnClick
+    button={<Button variant="ghost">Profile</Button>}
+    orientation="bottomRight"
+    closeOnClick
 >
-  <div className="user-menu">
-    <div className="user-info">
-      <h4>John Doe</h4>
-      <p>john@example.com</p>
+    <div className="user-menu">
+        <div className="user-info">
+            <h4>John Doe</h4>
+            <p>john@example.com</p>
+        </div>
+
+        <Divider />
+
+        <button type="button">Profile</button>
+        <button type="button">Settings</button>
+        <button type="button">Sign out</button>
     </div>
-
-    <Divider />
-
-    <button type="button">Profile</button>
-    <button type="button">Settings</button>
-    <button type="button">Sign out</button>
-  </div>
 </Popover>
 ```
 

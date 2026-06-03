@@ -29,8 +29,8 @@ throw new BadGateway("Payment gateway unavailable");
 
 // With cause information
 throw new BadGateway("External API failed", {
-  service: "payment-provider",
-  originalError: "Connection timeout",
+    service: "payment-provider",
+    originalError: "Connection timeout",
 });
 
 // Convert to Response object
@@ -47,9 +47,9 @@ The response body follows a standardized structure:
 
 ```json
 {
-  "ok": false,
-  "status": 502,
-  "message": "Payment gateway unavailable"
+    "ok": false,
+    "status": 502,
+    "message": "Payment gateway unavailable"
 }
 ```
 

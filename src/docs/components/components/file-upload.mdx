@@ -43,13 +43,13 @@ Customize labels and helper texts to match your domain language and upload inten
 
 ```tsx
 <FileUpload
-  name="avatar"
-  action="/api/upload/avatar"
-  label="Profile Picture"
-  showAsterisk
-  selectFileButtonText="Choose image"
-  changeFileButtonText="Change image"
-  dropFileText="Drop your image here"
+    name="avatar"
+    action="/api/upload/avatar"
+    label="Profile Picture"
+    showAsterisk
+    selectFileButtonText="Choose image"
+    changeFileButtonText="Change image"
+    dropFileText="Drop your image here"
 />
 ```
 
@@ -70,12 +70,12 @@ Use `method`, `fileName`, and `fileResponseName` to adapt integration with diffe
 
 ```tsx
 <FileUpload
-  name="file"
-  action="/api/files"
-  method="PUT"
-  fileName="uploadedFile"
-  fileResponseName="fileUrl"
-  label="Custom Upload"
+    name="file"
+    action="/api/files"
+    method="PUT"
+    fileName="uploadedFile"
+    fileResponseName="fileUrl"
+    label="Custom Upload"
 />
 ```
 
@@ -96,12 +96,12 @@ Use `acceptFile` to limit the selectable file types.
 
 ```tsx
 <FileUpload
-  name="pdf"
-  action="/api/upload/document"
-  label="Upload PDF Document"
-  acceptFile=".pdf"
-  fileName="document"
-  fileResponseName="documentUrl"
+    name="pdf"
+    action="/api/upload/document"
+    label="Upload PDF Document"
+    acceptFile=".pdf"
+    fileName="document"
+    fileResponseName="documentUrl"
 />
 ```
 
@@ -120,10 +120,10 @@ When `disabled` is true, file selection and upload actions are blocked.
 
 ```tsx
 <FileUpload
-  name="attachment"
-  action="/api/upload"
-  label="Attachment"
-  disabled
+    name="attachment"
+    action="/api/upload"
+    label="Attachment"
+    disabled
 />
 ```
 
@@ -154,10 +154,10 @@ Error feedback is shown when form validation fails or when the upload response r
 
 ```tsx
 <FileUpload
-  name="resume"
-  action="/api/upload/resume"
-  label="Resume"
-  acceptFile=".pdf"
+    name="resume"
+    action="/api/upload/resume"
+    label="Resume"
+    acceptFile=".pdf"
 />
 ```
 

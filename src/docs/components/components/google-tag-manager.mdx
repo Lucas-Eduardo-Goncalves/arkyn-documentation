@@ -64,21 +64,21 @@ Provide initial data and startup event payload to enrich GTM context before your
 
 ```tsx
 <GoogleTagManager
-  gtmId="GTM-XXXXXXX"
-  dataLayer={{
-    pageType: "home",
-    userType: "anonymous",
-  }}
-  events={{
-    event: "page_loaded",
-    locale: "en-US",
-  }}
+    gtmId="GTM-XXXXXXX"
+    dataLayer={{
+        pageType: "home",
+        userType: "anonymous",
+    }}
+    events={{
+        event: "page_loaded",
+        locale: "en-US",
+    }}
 />
 
 <GoogleTagManager
-  gtmId="GTM-XXXXXXX"
-  dataLayerName="customLayer"
-  dataLayer={{ workspace: "docs" }}
+    gtmId="GTM-XXXXXXX"
+    dataLayerName="customLayer"
+    dataLayer={{ workspace: "docs" }}
 />
 ```
 
@@ -97,10 +97,10 @@ Use `auth` and `preview` to connect a specific GTM environment (for example, sta
 
 ```tsx
 <GoogleTagManager
-  gtmId="GTM-XXXXXXX"
-  auth="your-auth-token"
-  preview="env-3"
-  showInDevMode
+    gtmId="GTM-XXXXXXX"
+    auth="your-auth-token"
+    preview="env-3"
+    showInDevMode
 />
 ```
 

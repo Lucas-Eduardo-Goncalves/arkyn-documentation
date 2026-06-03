@@ -27,13 +27,13 @@ The hook returns whether hydration has completed on the client.
 import { useHydrated } from "@arkyn/components";
 
 function ClientAwareClock() {
-  const isHydrated = useHydrated();
+    const isHydrated = useHydrated();
 
-  if (!isHydrated) {
-    return <div>Loading...</div>;
-  }
+    if (!isHydrated) {
+        return <div>Loading...</div>;
+    }
 
-  return <div>{new Date().toLocaleString()}</div>;
+    return <div>{new Date().toLocaleString()}</div>;
 }
 ```
 

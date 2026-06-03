@@ -45,13 +45,13 @@ Customize visible text for the picker button, replace button, and drop area.
 
 ```tsx
 <ImageUpload
-  name="profilePicture"
-  action="/api/upload/avatar"
-  label="Profile Picture"
-  showAsterisk
-  selectImageButtonText="Choose Photo"
-  changeImageButtonText="Change Photo"
-  dropImageText="Drop your photo here"
+    name="profilePicture"
+    action="/api/upload/avatar"
+    label="Profile Picture"
+    showAsterisk
+    selectImageButtonText="Choose Photo"
+    changeImageButtonText="Change Photo"
+    dropImageText="Drop your photo here"
 />
 ```
 
@@ -73,13 +73,13 @@ Use `defaultValue` to preload an existing image URL in edit forms.
 
 ```tsx
 <ImageUpload
-  name="productImage"
-  action="/api/upload/product"
-  label="Product Image"
-  defaultValue="https://images.unsplash.com/photo-1773332611514-238856b76198"
-  acceptImage=".jpg,.jpeg,.png,.webp"
-  fileName="productImage"
-  fileResponseName="imageUrl"
+    name="productImage"
+    action="/api/upload/product"
+    label="Product Image"
+    defaultValue="https://images.unsplash.com/photo-1773332611514-238856b76198"
+    acceptImage=".jpg,.jpeg,.png,.webp"
+    fileName="productImage"
+    fileResponseName="imageUrl"
 />
 ```
 
@@ -101,13 +101,13 @@ Configure request method, payload field name, and response key to match backend 
 
 ```tsx
 <ImageUpload
-  name="gallery"
-  action="/api/images"
-  method="PUT"
-  fileName="galleryImage"
-  fileResponseName="imageUrl"
-  label="Gallery Image"
-  acceptImage="image/jpeg,image/png"
+    name="gallery"
+    action="/api/images"
+    method="PUT"
+    fileName="galleryImage"
+    fileResponseName="imageUrl"
+    label="Gallery Image"
+    acceptImage="image/jpeg,image/png"
 />
 ```
 
@@ -127,11 +127,11 @@ When `disabled` is true, selection and upload actions are blocked.
 
 ```tsx
 <ImageUpload
-  name="banner"
-  action="/api/upload/banner"
-  label="Banner Image"
-  defaultValue="https://images.unsplash.com/photo-1773332611514-238856b76198"
-  disabled
+    name="banner"
+    action="/api/upload/banner"
+    label="Banner Image"
+    defaultValue="https://images.unsplash.com/photo-1773332611514-238856b76198"
+    disabled
 />
 ```
 
@@ -167,11 +167,11 @@ The field displays error feedback from both form validation and upload response 
 
 ```tsx
 <ImageUpload
-  name="userAvatar"
-  action="/api/users/avatar"
-  label="User Avatar"
-  showAsterisk
-  acceptImage="image/*"
+    name="userAvatar"
+    action="/api/users/avatar"
+    label="User Avatar"
+    showAsterisk
+    acceptImage="image/*"
 />
 ```
 

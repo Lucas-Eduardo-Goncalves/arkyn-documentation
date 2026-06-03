@@ -29,23 +29,23 @@ import { LogService } from "@arkyn/server";
 
 // Configure the log service (typically in your app's entry point)
 LogService.setConfig({
-  trafficSourceId: "your-traffic-source-id",
-  userToken: "your-user-token",
+    trafficSourceId: "your-traffic-source-id",
+    userToken: "your-user-token",
 });
 
 // With custom API URL
 LogService.setConfig({
-  trafficSourceId: "your-traffic-source-id",
-  userToken: "your-user-token",
-  logBaseApiUrl: "https://custom-log-server.com",
+    trafficSourceId: "your-traffic-source-id",
+    userToken: "your-user-token",
+    logBaseApiUrl: "https://custom-log-server.com",
 });
 
 // Check current configuration
 const config = LogService.getConfig();
 if (config) {
-  console.log(config.apiUrl); // Full API URL for log ingestion
-  console.log(config.trafficSourceId);
-  console.log(config.userToken);
+    console.log(config.apiUrl); // Full API URL for log ingestion
+    console.log(config.trafficSourceId);
+    console.log(config.userToken);
 }
 
 // Reset configuration (useful for testing)
@@ -61,13 +61,13 @@ import { ApiService, LogService } from "@arkyn/server";
 
 // Configure logging
 LogService.setConfig({
-  trafficSourceId: "my-app-traffic-source",
-  userToken: "auth-token",
+    trafficSourceId: "my-app-traffic-source",
+    userToken: "auth-token",
 });
 
 const api = new ApiService({
-  baseUrl: "https://api.example.com",
-  enableDebug: true,
+    baseUrl: "https://api.example.com",
+    enableDebug: true,
 });
 
 // Using route variables helps the log system group requests

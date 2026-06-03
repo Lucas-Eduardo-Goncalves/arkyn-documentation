@@ -59,9 +59,9 @@ The function returns a formatted date string based on the specified output forma
 import { formatDate } from "@arkyn/shared";
 
 const formattedDate = formatDate(
-  ["25/12/2023"],
-  "brazilianDate",
-  "YYYY-MM-DD hh:mm",
+    ["25/12/2023"],
+    "brazilianDate",
+    "YYYY-MM-DD hh:mm",
 );
 
 console.log(formattedDate); // "2023-12-25 00:00"
@@ -80,11 +80,11 @@ The function performs strict validation and may throw errors in the following sc
 ```typescript
 import { formatDate } from "@arkyn/shared";
 try {
-  const invalidDate = formatDate(["31/02/2023"], "brazilianDate", "YYYY-MM-DD");
-  console.log(invalidDate);
+    const invalidDate = formatDate(["31/02/2023"], "brazilianDate", "YYYY-MM-DD");
+    console.log(invalidDate);
 } catch (error) {
-  console.error(error);
-  // Output: Error: Day 31 is not valid for February
+    console.error(error);
+    // Output: Error: Day 31 is not valid for February
 }
 ```
 

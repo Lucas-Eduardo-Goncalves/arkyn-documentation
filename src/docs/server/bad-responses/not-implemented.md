@@ -29,8 +29,8 @@ throw new NotImplemented("This feature is coming soon");
 
 // With cause information
 throw new NotImplemented("Payment method not supported yet", {
-  requestedMethod: "crypto",
-  availableMethods: ["credit_card", "pix"],
+    requestedMethod: "crypto",
+    availableMethods: ["credit_card", "pix"],
 });
 
 // Convert to Response object
@@ -47,9 +47,9 @@ The response body follows a standardized structure:
 
 ```json
 {
-  "ok": false,
-  "status": 501,
-  "message": "This feature is coming soon"
+    "ok": false,
+    "status": 501,
+    "message": "This feature is coming soon"
 }
 ```
 

@@ -40,7 +40,7 @@ console.log(params1.toString());
 
 // With scope - returns only scoped parameters (prefix removed)
 const request2 = new Request(
-  "https://example.com?filter:status=active&filter:type=user&page=1",
+    "https://example.com?filter:status=active&filter:type=user&page=1",
 );
 const params2 = getScopedParams(request2, "filter");
 console.log(params2.toString());

@@ -35,19 +35,19 @@ import { TableCaption } from "@arkyn/components";
 
 ```tsx
 <TableContainer>
-  <TableCaption>User Management</TableCaption>
+    <TableCaption>User Management</TableCaption>
 
-  <TableHeader>
-    <th>Name</th>
-    <th>Email</th>
-  </TableHeader>
+    <TableHeader>
+        <th>Name</th>
+        <th>Email</th>
+    </TableHeader>
 
-  <TableBody>
-    <tr>
-      <td>John Doe</td>
-      <td>john@example.com</td>
-    </tr>
-  </TableBody>
+    <TableBody>
+        <tr>
+            <td>John Doe</td>
+            <td>john@example.com</td>
+        </tr>
+    </TableBody>
 </TableContainer>
 ```
 
@@ -80,24 +80,24 @@ Caption can render structured content such as heading and metadata.
 
 ```tsx
 <TableContainer>
-  <TableCaption>
-    <h3>Employee Directory</h3>
-    <p>Updated: {new Date().toLocaleDateString()}</p>
-  </TableCaption>
+    <TableCaption>
+        <h3>Employee Directory</h3>
+        <p>Updated: {new Date().toLocaleDateString()}</p>
+    </TableCaption>
 
-  <TableHeader>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Department</th>
-  </TableHeader>
+    <TableHeader>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Department</th>
+    </TableHeader>
 
-  <TableBody>
-    <tr>
-      <td>EMP-01</td>
-      <td>Maria</td>
-      <td>Design</td>
-    </tr>
-  </TableBody>
+    <TableBody>
+        <tr>
+            <td>EMP-01</td>
+            <td>Maria</td>
+            <td>Design</td>
+        </tr>
+    </TableBody>
 </TableContainer>
 ```
 
@@ -127,7 +127,7 @@ Use custom classes to emphasize caption style.
 
 ```tsx
 <TableCaption className="highlighted-caption">
-  Sales Report - Q4 2024
+    Sales Report - Q4 2024
 </TableCaption>
 ```
 

@@ -30,12 +30,12 @@ return response.toResponse();
 
 // With redirect location in body
 return new Found("Redirecting to new location", {
-  redirectUrl: "/new-location",
+    redirectUrl: "/new-location",
 }).toResponse();
 
 // Using toJson alternative
 return new Found("Temporary redirect", {
-  location: "https://example.com/temporary",
+    location: "https://example.com/temporary",
 }).toJson();
 ```
 
@@ -45,7 +45,7 @@ The response body contains the data passed to the constructor:
 
 ```json
 {
-  "redirectUrl": "/new-location"
+    "redirectUrl": "/new-location"
 }
 ```
 

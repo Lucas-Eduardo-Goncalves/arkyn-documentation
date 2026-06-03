@@ -27,22 +27,22 @@ The hook returns the current form context object.
 import { FormProvider, useForm } from "@arkyn/components";
 
 function EmailField() {
-  const { fieldErrors } = useForm();
+    const { fieldErrors } = useForm();
 
-  return (
-    <div>
-      <input name="email" />
-      {fieldErrors?.email && <span>{fieldErrors.email}</span>}
-    </div>
-  );
+    return (
+        <div>
+            <input name="email" />
+            {fieldErrors?.email && <span>{fieldErrors.email}</span>}
+        </div>
+    );
 }
 
 function App() {
-  return (
-    <FormProvider fieldErrors={{ email: "Invalid email format" }}>
-      <EmailField />
-    </FormProvider>
-  );
+    return (
+        <FormProvider fieldErrors={{ email: "Invalid email format" }}>
+            <EmailField />
+        </FormProvider>
+    );
 }
 ```
 

@@ -43,11 +43,11 @@ The function performs validation and may throw an error in the following scenari
 import { formatToCep } from "@arkyn/shared";
 
 try {
-  const cep = formatToCep("1234567");
-  console.log(cep);
+    const cep = formatToCep("1234567");
+    console.log(cep);
 } catch (error) {
-  console.error(error);
-  // Output: Error: CEP must be contain 8 numeric digits: 1234567
+    console.error(error);
+    // Output: Error: CEP must be contain 8 numeric digits: 1234567
 }
 ```
 

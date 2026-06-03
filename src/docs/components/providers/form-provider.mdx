@@ -26,7 +26,7 @@ import { FormProvider } from "@arkyn/components";
 
 ```tsx
 <FormProvider fieldErrors={{ email: "Invalid email" }}>
-  <MyFormFields />
+    <MyFormFields />
 </FormProvider>
 ```
 
@@ -42,14 +42,14 @@ Use a single error object and consume errors from any child component with `useF
 
 ```tsx
 function UsernameField() {
-  const { fieldErrors } = useForm();
+    const { fieldErrors } = useForm();
 
-  return (
-    <div>
-      <input name="username" />
-      {fieldErrors?.username && <span>{fieldErrors.username}</span>}
-    </div>
-  );
+    return (
+        <div>
+            <input name="username" />
+            {fieldErrors?.username && <span>{fieldErrors.username}</span>}
+        </div>
+    );
 }
 ```
 
@@ -65,8 +65,8 @@ Provide the `form` prop when you need Provider to clone and wrap children with a
 
 ```tsx
 <FormProvider fieldErrors={errors} form={<form onSubmit={handleSubmit} />}>
-  <Input name="email" />
-  <button type="submit">Submit</button>
+    <Input name="email" />
+    <button type="submit">Submit</button>
 </FormProvider>
 ```
 

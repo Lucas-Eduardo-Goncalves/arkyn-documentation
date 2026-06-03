@@ -28,9 +28,9 @@ import { RadioGroup, RadioBox } from "@arkyn/components";
 
 ```tsx
 <RadioGroup name="gender">
-  <RadioBox value="male">Male</RadioBox>
-  <RadioBox value="female">Female</RadioBox>
-  <RadioBox value="other">Other</RadioBox>
+    <RadioBox value="male">Male</RadioBox>
+    <RadioBox value="female">Female</RadioBox>
+    <RadioBox value="other">Other</RadioBox>
 </RadioGroup>
 ```
 
@@ -52,13 +52,13 @@ import { RadioGroup, RadioBox } from "@arkyn/components";
 
 ```tsx
 <RadioGroup name="priority" size="md">
-  <RadioBox value="low" size="sm">
-    Low Priority
-  </RadioBox>
-  <RadioBox value="medium">Medium Priority</RadioBox>
-  <RadioBox value="high" size="lg">
-    High Priority
-  </RadioBox>
+    <RadioBox value="low" size="sm">
+        Low Priority
+    </RadioBox>
+    <RadioBox value="medium">Medium Priority</RadioBox>
+    <RadioBox value="high" size="lg">
+        High Priority
+    </RadioBox>
 </RadioGroup>
 ```
 
@@ -87,19 +87,19 @@ Use custom children content to build descriptive plan selectors and preference c
 
 ```tsx
 <RadioGroup name="plan" label="Choose your plan">
-  <RadioBox value="basic">
-    <div>
-      <h4>Basic Plan</h4>
-      <p>$9.99/month - Perfect for individuals</p>
-    </div>
-  </RadioBox>
+    <RadioBox value="basic">
+        <div>
+            <h4>Basic Plan</h4>
+            <p>$9.99/month - Perfect for individuals</p>
+        </div>
+    </RadioBox>
 
-  <RadioBox value="premium">
-    <div>
-      <h4>Premium Plan</h4>
-      <p>$19.99/month - Great for small teams</p>
-    </div>
-  </RadioBox>
+    <RadioBox value="premium">
+        <div>
+            <h4>Premium Plan</h4>
+            <p>$19.99/month - Great for small teams</p>
+        </div>
+    </RadioBox>
 </RadioGroup>
 ```
 
@@ -119,11 +119,11 @@ Disable a single option with `disabled`, or disable all through the parent group
 
 ```tsx
 <RadioGroup name="options">
-  <RadioBox value="option1">Available Option</RadioBox>
-  <RadioBox value="option2" disabled>
-    Disabled Option
-  </RadioBox>
-  <RadioBox value="option3">Another Available Option</RadioBox>
+    <RadioBox value="option1">Available Option</RadioBox>
+    <RadioBox value="option2" disabled>
+        Disabled Option
+    </RadioBox>
+    <RadioBox value="option3">Another Available Option</RadioBox>
 </RadioGroup>
 ```
 
@@ -141,9 +141,9 @@ Error styling is inherited from `RadioGroup` validation state.
 
 ```tsx
 <RadioGroup name="theme" errorMessage="Select one theme">
-  <RadioBox value="light">Light Theme</RadioBox>
-  <RadioBox value="dark">Dark Theme</RadioBox>
-  <RadioBox value="auto">Auto Theme</RadioBox>
+    <RadioBox value="light">Light Theme</RadioBox>
+    <RadioBox value="dark">Dark Theme</RadioBox>
+    <RadioBox value="auto">Auto Theme</RadioBox>
 </RadioGroup>
 ```
 

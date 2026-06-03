@@ -30,28 +30,28 @@ import { UnprocessableEntity } from "@arkyn/server";
 
 // Basic form validation error
 throw new UnprocessableEntity({
-  message: "Validation failed",
-  fieldErrors: {
-    email: "Invalid email format",
-    password: "Password must be at least 8 characters",
-  },
-  fields: {
-    email: "invalid-email",
-    password: "123",
-  },
+    message: "Validation failed",
+    fieldErrors: {
+        email: "Invalid email format",
+        password: "Password must be at least 8 characters",
+    },
+    fields: {
+        email: "invalid-email",
+        password: "123",
+    },
 });
 
 // With additional data (e.g., scrollTo for auto-scroll to first error)
 throw new UnprocessableEntity({
-  message: "Please fix the form errors",
-  fieldErrors: { name: "Name is required" },
-  fields: { name: "" },
-  data: { scrollTo: "name" },
+    message: "Please fix the form errors",
+    fieldErrors: { name: "Name is required" },
+    fields: { name: "" },
+    data: { scrollTo: "name" },
 });
 
 // Convert to Response object
 const error = new UnprocessableEntity({
-  fieldErrors: { username: "Username already taken" },
+    fieldErrors: { username: "Username already taken" },
 });
 return error.toResponse();
 ```
@@ -62,18 +62,18 @@ The response body includes the validation details:
 
 ```json
 {
-  "ok": false,
-  "status": 422,
-  "message": "Validation failed",
-  "data": { "scrollTo": "name" },
-  "fieldErrors": {
-    "email": "Invalid email format",
-    "password": "Password must be at least 8 characters"
-  },
-  "fields": {
-    "email": "invalid-email",
-    "password": "123"
-  }
+    "ok": false,
+    "status": 422,
+    "message": "Validation failed",
+    "data": { "scrollTo": "name" },
+    "fieldErrors": {
+        "email": "Invalid email format",
+        "password": "Password must be at least 8 characters"
+    },
+    "fields": {
+        "email": "invalid-email",
+        "password": "123"
+    }
 }
 ```
 
@@ -86,8 +86,8 @@ import { SchemaValidator } from "@arkyn/server";
 import { z } from "zod";
 
 const schema = z.object({
-  email: z.string().email("Invalid email"),
-  name: z.string().min(1, "Name is required"),
+    email: z.string().email("Invalid email"),
+    name: z.string().min(1, "Name is required"),
 });
 
 const validator = new SchemaValidator(schema);

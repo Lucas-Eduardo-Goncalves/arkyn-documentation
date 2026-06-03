@@ -32,7 +32,7 @@ import { ModalContainer } from "@arkyn/components";
 const [isOpen, setIsOpen] = useState(false);
 
 <ModalContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
-  <p style={{ padding: 30 }}>Modal content</p>
+    <p style={{ padding: 30 }}>Modal content</p>
 </ModalContainer>;
 ```
 
@@ -60,22 +60,22 @@ Use `ModalHeader` and `ModalFooter` to build consistent modal structure.
 
 ```tsx
 <ModalContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
-  <div className="modal-content">
-    <ModalHeader>Confirm Action</ModalHeader>
+    <div className="modal-content">
+        <ModalHeader>Confirm Action</ModalHeader>
 
-    <main style={{ padding: 30 }}>
-      <p>Are you sure you want to continue?</p>
-    </main>
+        <main style={{ padding: 30 }}>
+            <p>Are you sure you want to continue?</p>
+        </main>
 
-    <ModalFooter>
-      <button type="button" onClick={() => setIsOpen(false)}>
-        Cancel
-      </button>
-      <button type="button" onClick={handleConfirm}>
-        Confirm
-      </button>
-    </ModalFooter>
-  </div>
+        <ModalFooter>
+            <button type="button" onClick={() => setIsOpen(false)}>
+                Cancel
+            </button>
+            <button type="button" onClick={handleConfirm}>
+                Confirm
+            </button>
+        </ModalFooter>
+    </div>
 </ModalContainer>
 ```
 
@@ -93,11 +93,11 @@ Modal visibility is controlled by the `isVisible` prop and closed via `makeInvis
 const [isOpen, setIsOpen] = useState(false);
 
 <button type="button" onClick={() => setIsOpen(true)}>
-  Open modal
+    Open modal
 </button>
 
 <ModalContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
-  <div  style={{ padding: 30 }}>Modal body</div>
+    <div  style={{ padding: 30 }}>Modal body</div>
 </ModalContainer>
 ```
 

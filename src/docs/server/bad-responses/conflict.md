@@ -29,8 +29,8 @@ throw new Conflict("Email already registered");
 
 // With cause information
 throw new Conflict("Resource version mismatch", {
-  currentVersion: 5,
-  requestedVersion: 3,
+    currentVersion: 5,
+    requestedVersion: 3,
 });
 
 // Convert to Response object
@@ -47,9 +47,9 @@ The response body follows a standardized structure:
 
 ```json
 {
-  "ok": false,
-  "status": 409,
-  "message": "Email already registered"
+    "ok": false,
+    "status": 409,
+    "message": "Email already registered"
 }
 ```
 

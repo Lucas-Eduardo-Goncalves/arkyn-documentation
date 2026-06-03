@@ -27,26 +27,26 @@ The hook returns toast context methods.
 import { ToastProvider, useToast } from "@arkyn/components";
 
 function SaveButton() {
-  const { showToast } = useToast();
+    const { showToast } = useToast();
 
-  async function handleSave() {
-    try {
-      // await saveData();
-      showToast({ message: "Saved successfully", type: "success" });
-    } catch {
-      showToast({ message: "Failed to save", type: "danger" });
+    async function handleSave() {
+        try {
+            // await saveData();
+            showToast({ message: "Saved successfully", type: "success" });
+        } catch {
+            showToast({ message: "Failed to save", type: "danger" });
+        }
     }
-  }
 
-  return <button onClick={handleSave}>Save</button>;
+    return <button onClick={handleSave}>Save</button>;
 }
 
 function App() {
-  return (
-    <ToastProvider>
-      <SaveButton />
-    </ToastProvider>
-  );
+    return (
+        <ToastProvider>
+            <SaveButton />
+        </ToastProvider>
+    );
 }
 ```
 

@@ -26,7 +26,7 @@ import { ToastProvider } from "@arkyn/components";
 
 ```tsx
 <ToastProvider>
-  <App />
+    <App />
 </ToastProvider>
 ```
 
@@ -42,20 +42,20 @@ Use `useToast()` inside provider scope to show success and danger notifications.
 
 ```tsx
 function SaveAction() {
-  const { showToast } = useToast();
+    const { showToast } = useToast();
 
-  return (
-    <button
-      onClick={() =>
-        showToast({
-          message: "Saved successfully",
-          type: "success",
-        })
-      }
-    >
-      Save
-    </button>
-  );
+    return (
+        <button
+            onClick={() =>
+                showToast({
+                    message: "Saved successfully",
+                    type: "success",
+                })
+            }
+        >
+            Save
+        </button>
+    );
 }
 ```
 

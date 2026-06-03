@@ -28,16 +28,16 @@ The hook performs side effects and does not return a value.
 import { useAutomation } from "@arkyn/components";
 
 function SubmitFeedback({ responseData }: { responseData: any }) {
-  useAutomation(responseData);
+    useAutomation(responseData);
 
-  return null;
+    return null;
 }
 
 // Example response data
 const responseData = {
-  closeModal: true,
-  message: "Operation completed successfully!",
-  type: "success",
+    closeModal: true,
+    message: "Operation completed successfully!",
+    type: "success",
 };
 ```
 

@@ -35,8 +35,8 @@ The hook performs side effects and does not return a value.
 import { useSearchAutomation } from "@arkyn/components";
 
 function SearchAutomationHandler({ search }: { search: string }) {
-  useSearchAutomation(search, "filters");
-  return null;
+    useSearchAutomation(search, "filters");
+    return null;
 }
 
 // Example search string:

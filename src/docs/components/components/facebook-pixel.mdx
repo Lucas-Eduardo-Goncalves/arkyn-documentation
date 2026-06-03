@@ -45,10 +45,10 @@ By default, the component does not render outside production. Use `showInDevMode
 
 // Force rendering in development
 <FacebookPixel
-  pixelId="123456789012345"
-  pageView
-  showInDevMode
-  options={{ debug: true }}
+    pixelId="123456789012345"
+    pageView
+    showInDevMode
+    options={{ debug: true }}
 />
 ```
 
@@ -72,15 +72,15 @@ Use predefined and custom event helpers to dispatch conversions and business eve
 
 ```tsx
 <FacebookPixel
-  pixelId="123456789012345"
-  track={["Purchase", { value: 99.9, currency: "USD" }]}
+    pixelId="123456789012345"
+    track={["Purchase", { value: 99.9, currency: "USD" }]}
 />
 
 <FacebookPixel
-  pixelId="123456789012345"
-  trackCustom={["PlanViewed", { plan: "Pro" }]}
-  trackSingle={["Lead", { source: "pricing" }]}
-  trackSingleCustom={["FeatureClicked", { id: "export-csv" }]}
+    pixelId="123456789012345"
+    trackCustom={["PlanViewed", { plan: "Pro" }]}
+    trackSingle={["Lead", { source: "pricing" }]}
+    trackSingleCustom={["FeatureClicked", { id: "export-csv" }]}
 />
 ```
 

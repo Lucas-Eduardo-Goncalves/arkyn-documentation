@@ -44,8 +44,8 @@ The function returns an object containing two properties:
 import { calculateCardInstallment } from "@arkyn/shared";
 
 const result = calculateCardInstallment({
-  cashPrice: 1000,
-  numberInstallments: 12,
+    cashPrice: 1000,
+    numberInstallments: 12,
 });
 
 console.log(result);

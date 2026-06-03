@@ -34,20 +34,20 @@ The hook returns the current slider value and a setter with boundary validation.
 import { useSlider } from "@arkyn/components";
 
 function SliderField() {
-  const [value, setValue] = useSlider(25);
+    const [value, setValue] = useSlider(25);
 
-  return (
-    <div>
-      <input
-        type="range"
-        min={0}
-        max={100}
-        value={value}
-        onChange={(event) => setValue(Number(event.target.value))}
-      />
-      <p>Value: {value}</p>
-    </div>
-  );
+    return (
+        <div>
+            <input
+                type="range"
+                min={0}
+                max={100}
+                value={value}
+                onChange={(event) => setValue(Number(event.target.value))}
+            />
+            <p>Value: {value}</p>
+        </div>
+    );
 }
 ```
 

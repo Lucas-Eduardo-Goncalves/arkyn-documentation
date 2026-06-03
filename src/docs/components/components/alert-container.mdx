@@ -12,11 +12,11 @@ The `AlertContainer` component is the root wrapper for alert messages and contro
 
 ```tsx
 import {
-  AlertContainer,
-  AlertContent,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
+    AlertContainer,
+    AlertContent,
+    AlertDescription,
+    AlertIcon,
+    AlertTitle,
 } from "@arkyn/components";
 ```
 
@@ -33,10 +33,10 @@ import {
 
 ```tsx
 <AlertContainer schema="info">
-  <AlertIcon />
-  <AlertContent>
-    <AlertDescription>System information message.</AlertDescription>
-  </AlertContent>
+    <AlertIcon />
+    <AlertContent>
+        <AlertDescription>System information message.</AlertDescription>
+    </AlertContent>
 </AlertContainer>
 ```
 
@@ -112,18 +112,18 @@ When `AlertTitle` exists in the alert tree, content is left-aligned. Without `Al
 
 ```tsx
 <AlertContainer schema="success">
-  <AlertIcon />
-  <AlertContent>
-    <AlertTitle>Success</AlertTitle>
-    <AlertDescription>You are now a premium user.</AlertDescription>
-  </AlertContent>
+    <AlertIcon />
+    <AlertContent>
+        <AlertTitle>Success</AlertTitle>
+        <AlertDescription>You are now a premium user.</AlertDescription>
+    </AlertContent>
 </AlertContainer>
 
 <AlertContainer schema="info">
-  <AlertIcon />
-  <AlertContent>
-    <AlertDescription>Short single-line informational message.</AlertDescription>
-  </AlertContent>
+    <AlertIcon />
+    <AlertContent>
+        <AlertDescription>Short single-line informational message.</AlertDescription>
+    </AlertContent>
 </AlertContainer>
 ```
 

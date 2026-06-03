@@ -28,9 +28,9 @@ import { RadioGroup, RadioBox } from "@arkyn/components";
 
 ```tsx
 <RadioGroup name="gender">
-  <RadioBox value="male">Male</RadioBox>
-  <RadioBox value="female">Female</RadioBox>
-  <RadioBox value="other">Other</RadioBox>
+    <RadioBox value="male">Male</RadioBox>
+    <RadioBox value="female">Female</RadioBox>
+    <RadioBox value="other">Other</RadioBox>
 </RadioGroup>
 ```
 
@@ -60,21 +60,21 @@ Use `size` to define the default option size for children.
 
 ```tsx
 <RadioGroup name="prioritySm" size="sm" label="Priority (sm)">
-  <RadioBox value="low">Low</RadioBox>
-  <RadioBox value="medium">Medium</RadioBox>
-  <RadioBox value="high">High</RadioBox>
+    <RadioBox value="low">Low</RadioBox>
+    <RadioBox value="medium">Medium</RadioBox>
+    <RadioBox value="high">High</RadioBox>
 </RadioGroup>
 
 <RadioGroup name="priorityMd" size="md" label="Priority (md)">
-  <RadioBox value="low">Low</RadioBox>
-  <RadioBox value="medium">Medium</RadioBox>
-  <RadioBox value="high">High</RadioBox>
+    <RadioBox value="low">Low</RadioBox>
+    <RadioBox value="medium">Medium</RadioBox>
+    <RadioBox value="high">High</RadioBox>
 </RadioGroup>
 
 <RadioGroup name="priorityLg" size="lg" label="Priority (lg)">
-  <RadioBox value="low">Low</RadioBox>
-  <RadioBox value="medium">Medium</RadioBox>
-  <RadioBox value="high">High</RadioBox>
+    <RadioBox value="low">Low</RadioBox>
+    <RadioBox value="medium">Medium</RadioBox>
+    <RadioBox value="high">High</RadioBox>
 </RadioGroup>
 ```
 
@@ -98,20 +98,20 @@ Use `defaultValue` for uncontrolled flows or `value` with `onChange` for control
 
 ```tsx
 <RadioGroup name="language" label="Language" defaultValue="en">
-  <RadioBox value="en">English</RadioBox>
-  <RadioBox value="es">Spanish</RadioBox>
-  <RadioBox value="pt">Portuguese</RadioBox>
+    <RadioBox value="en">English</RadioBox>
+    <RadioBox value="es">Spanish</RadioBox>
+    <RadioBox value="pt">Portuguese</RadioBox>
 </RadioGroup>
 
 <RadioGroup
-  name="theme"
-  label="Theme"
-  value={selectedTheme}
-  onChange={(value) => setSelectedTheme(value)}
+    name="theme"
+    label="Theme"
+    value={selectedTheme}
+    onChange={(value) => setSelectedTheme(value)}
 >
-  <RadioBox value="light">Light</RadioBox>
-  <RadioBox value="dark">Dark</RadioBox>
-  <RadioBox value="auto">Auto</RadioBox>
+    <RadioBox value="light">Light</RadioBox>
+    <RadioBox value="dark">Dark</RadioBox>
+    <RadioBox value="auto">Auto</RadioBox>
 </RadioGroup>
 ```
 
@@ -133,13 +133,13 @@ Set `disabled` on the group to disable all options.
 
 ```tsx
 <RadioGroup name="optionsEnabled" label="Enabled options">
-  <RadioBox value="option1">Option 1</RadioBox>
-  <RadioBox value="option2">Option 2</RadioBox>
+    <RadioBox value="option1">Option 1</RadioBox>
+    <RadioBox value="option2">Option 2</RadioBox>
 </RadioGroup>
 
 <RadioGroup name="optionsDisabled" label="Disabled options" disabled>
-  <RadioBox value="option1">Option 1</RadioBox>
-  <RadioBox value="option2">Option 2</RadioBox>
+    <RadioBox value="option1">Option 1</RadioBox>
+    <RadioBox value="option2">Option 2</RadioBox>
 </RadioGroup>
 ```
 
@@ -161,13 +161,13 @@ Provide `errorMessage` directly or rely on form context errors.
 
 ```tsx
 <RadioGroup
-  name="subscription"
-  label="Choose your plan"
-  showAsterisk
-  errorMessage="Please select a subscription plan"
+    name="subscription"
+    label="Choose your plan"
+    showAsterisk
+    errorMessage="Please select a subscription plan"
 >
-  <RadioBox value="basic">Basic Plan</RadioBox>
-  <RadioBox value="premium">Premium Plan</RadioBox>
+    <RadioBox value="basic">Basic Plan</RadioBox>
+    <RadioBox value="premium">Premium Plan</RadioBox>
 </RadioGroup>
 ```
 

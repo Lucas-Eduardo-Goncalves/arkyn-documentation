@@ -32,12 +32,12 @@ import { Select } from "@arkyn/components";
 
 ```tsx
 <Select
-  name="category"
-  options={[
-    { label: "Technology", value: "tech" },
-    { label: "Design", value: "design" },
-    { label: "Marketing", value: "marketing" },
-  ]}
+    name="category"
+    options={[
+        { label: "Technology", value: "tech" },
+        { label: "Design", value: "design" },
+        { label: "Marketing", value: "marketing" },
+    ]}
 />
 ```
 
@@ -69,23 +69,23 @@ Use `size` to control field spacing and icon proportions.
 
 ```tsx
 <Select
-  name="sizeMd"
-  label="Size md"
-  size="md"
-  options={[
-    { label: "Option A", value: "a" },
-    { label: "Option B", value: "b" },
-  ]}
+    name="sizeMd"
+    label="Size md"
+    size="md"
+    options={[
+        { label: "Option A", value: "a" },
+        { label: "Option B", value: "b" },
+    ]}
 />
 
 <Select
-  name="sizeLg"
-  label="Size lg"
-  size="lg"
-  options={[
-    { label: "Option A", value: "a" },
-    { label: "Option B", value: "b" },
-  ]}
+    name="sizeLg"
+    label="Size lg"
+    size="lg"
+    options={[
+        { label: "Option A", value: "a" },
+        { label: "Option B", value: "b" },
+    ]}
 />
 ```
 
@@ -127,33 +127,33 @@ Use `variant` to define the visual style of the select field.
 
 ```tsx
 <Select
-  name="solidSelect"
-  label="Solid"
-  variant="solid"
-  options={[
-    { label: "HR", value: "hr" },
-    { label: "IT", value: "it" },
-  ]}
+    name="solidSelect"
+    label="Solid"
+    variant="solid"
+    options={[
+        { label: "HR", value: "hr" },
+        { label: "IT", value: "it" },
+    ]}
 />
 
 <Select
-  name="outlineSelect"
-  label="Outline"
-  variant="outline"
-  options={[
-    { label: "HR", value: "hr" },
-    { label: "IT", value: "it" },
-  ]}
+    name="outlineSelect"
+    label="Outline"
+    variant="outline"
+    options={[
+        { label: "HR", value: "hr" },
+        { label: "IT", value: "it" },
+    ]}
 />
 
 <Select
-  name="underlineSelect"
-  label="Underline"
-  variant="underline"
-  options={[
-    { label: "HR", value: "hr" },
-    { label: "IT", value: "it" },
-  ]}
+    name="underlineSelect"
+    label="Underline"
+    variant="underline"
+    options={[
+        { label: "HR", value: "hr" },
+        { label: "IT", value: "it" },
+    ]}
 />
 ```
 
@@ -178,12 +178,12 @@ Enable `isSearchable` to filter options and customize no-result text with `notFo
 
 ```tsx
 <Select
-  name="country"
-  label="Country"
-  isSearchable
-  leftIcon={Globe}
-  notFoundText="No countries found"
-  options={countryOptions}
+    name="country"
+    label="Country"
+    isSearchable
+    leftIcon={Globe}
+    notFoundText="No countries found"
+    options={countryOptions}
 />
 ```
 
@@ -221,23 +221,23 @@ Use `value` with `onChange` for controlled mode and configure dropdown behavior 
 
 ```tsx
 <Select
-  name="tag"
-  label="Tag"
-  value={selectedTag}
-  onChange={setSelectedTag}
-  onSearch={handleSearch}
-  closeOnSelect={false}
-  options={tagOptions}
+    name="tag"
+    label="Tag"
+    value={selectedTag}
+    onChange={setSelectedTag}
+    onSearch={handleSearch}
+    closeOnSelect={false}
+    options={tagOptions}
 />
 
 <Select
-  name="department"
-  label="Department"
-  prefix="Dept:"
-  closeOnSelect
-  variant="underline"
-  defaultValue="hr"
-  options={departmentOptions}
+    name="department"
+    label="Department"
+    prefix="Dept:"
+    closeOnSelect
+    variant="underline"
+    defaultValue="hr"
+    options={departmentOptions}
 />
 ```
 
@@ -260,14 +260,14 @@ Set `disabled` to block opening, searching, and value changes.
 
 ```tsx
 <Select
-  name="disabledSelect"
-  label="Status"
-  disabled
-  defaultValue="active"
-  options={[
-    { label: "Active", value: "active" },
-    { label: "Inactive", value: "inactive" },
-  ]}
+    name="disabledSelect"
+    label="Status"
+    disabled
+    defaultValue="active"
+    options={[
+        { label: "Active", value: "active" },
+        { label: "Inactive", value: "inactive" },
+    ]}
 />
 ```
 
@@ -289,13 +289,13 @@ Set `isLoading` to indicate async loading and lock interactions.
 
 ```tsx
 <Select
-  name="loadingTags"
-  label="Tag"
-  isLoading
-  options={[
-    { label: "A", value: "a" },
-    { label: "B", value: "b" },
-  ]}
+    name="loadingTags"
+    label="Tag"
+    isLoading
+    options={[
+        { label: "A", value: "a" },
+        { label: "B", value: "b" },
+    ]}
 />
 ```
 
@@ -319,11 +319,11 @@ Provide `errorMessage` directly or rely on field errors from form context.
 
 ```tsx
 <Select
-  name="skill"
-  label="Select your skill"
-  showAsterisk
-  errorMessage="Please select at least one skill"
-  options={skillOptions}
+    name="skill"
+    label="Select your skill"
+    showAsterisk
+    errorMessage="Please select at least one skill"
+    options={skillOptions}
 />
 ```
 

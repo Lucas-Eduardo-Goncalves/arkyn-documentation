@@ -34,8 +34,8 @@ return new Created("User created successfully", newUser).toResponse();
 
 // With additional data (e.g., closeModal flag for frontend)
 return new Created("Product added to catalog", {
-  closeModal: true,
-  product: { id: "456", name: "New Product" },
+    closeModal: true,
+    product: { id: "456", name: "New Product" },
 }).toJson();
 ```
 
@@ -45,11 +45,11 @@ The response body contains the data passed to the constructor:
 
 ```json
 {
-  "closeModal": true,
-  "product": {
-    "id": "456",
-    "name": "New Product"
-  }
+    "closeModal": true,
+    "product": {
+        "id": "456",
+        "name": "New Product"
+    }
 }
 ```
 

@@ -26,7 +26,7 @@ import { ModalProvider } from "@arkyn/components";
 
 ```tsx
 <ModalProvider>
-  <App />
+    <App />
 </ModalProvider>
 ```
 
@@ -43,16 +43,16 @@ Use modal keys to coordinate independent modal instances.
 
 ```tsx
 function Actions() {
-  const { openModal, closeAll } = useModal();
+    const { openModal, closeAll } = useModal();
 
-  return (
-    <>
-      <button onClick={() => openModal("user-profile", { id: 42 })}>
-        Open profile
-      </button>
-      <button onClick={closeAll}>Close all modals</button>
-    </>
-  );
+    return (
+        <>
+            <button onClick={() => openModal("user-profile", { id: 42 })}>
+                Open profile
+            </button>
+            <button onClick={closeAll}>Close all modals</button>
+        </>
+    );
 }
 ```
 
@@ -68,18 +68,18 @@ When `useModal(key)` is used, the returned methods are scoped to a single modal 
 
 ```tsx
 function UserProfileModal() {
-  const { modalIsOpen, modalData, closeModal } = useModal<{ id: number }>(
-    "user-profile",
-  );
+    const { modalIsOpen, modalData, closeModal } = useModal<{ id: number }>(
+        "user-profile",
+    );
 
-  if (!modalIsOpen) return null;
+    if (!modalIsOpen) return null;
 
-  return (
-    <section>
-      <p>User id: {modalData?.id}</p>
-      <button onClick={closeModal}>Close</button>
-    </section>
-  );
+    return (
+        <section>
+            <p>User id: {modalData?.id}</p>
+            <button onClick={closeModal}>Close</button>
+        </section>
+    );
 }
 ```
 

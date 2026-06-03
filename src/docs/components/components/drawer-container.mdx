@@ -28,7 +28,7 @@ import { DrawerContainer } from "@arkyn/components";
 
 ```tsx
 <DrawerContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
-  <p>Drawer content</p>
+    <p>Drawer content</p>
 </DrawerContainer>
 ```
 
@@ -48,19 +48,19 @@ Use `orientation` to control the side from which the drawer enters.
 
 ```tsx
 <DrawerContainer
-  isVisible={isOpen}
-  makeInvisible={() => setIsOpen(false)}
-  orientation="left"
+    isVisible={isOpen}
+    makeInvisible={() => setIsOpen(false)}
+    orientation="left"
 >
-  <p>Left drawer</p>
+    <p>Left drawer</p>
 </DrawerContainer>
 
 <DrawerContainer
-  isVisible={isOpen}
-  makeInvisible={() => setIsOpen(false)}
-  orientation="right"
+    isVisible={isOpen}
+    makeInvisible={() => setIsOpen(false)}
+    orientation="right"
 >
-  <p>Right drawer</p>
+    <p>Right drawer</p>
 </DrawerContainer>
 ```
 
@@ -80,21 +80,21 @@ Combine `DrawerContainer` with `DrawerHeader` to create a reusable panel layout 
 
 ```tsx
 <DrawerContainer
-  isVisible={isDrawerOpen}
-  makeInvisible={() => setIsDrawerOpen(false)}
-  orientation="right"
+    isVisible={isDrawerOpen}
+    makeInvisible={() => setIsDrawerOpen(false)}
+    orientation="right"
 >
-  <DrawerHeader>
-    <h2>Menu</h2>
-  </DrawerHeader>
+    <DrawerHeader>
+        <h2>Menu</h2>
+    </DrawerHeader>
 
-  <div className="drawer-content">
-    <ul>
-      <li>Home</li>
-      <li>About</li>
-      <li>Contact</li>
-    </ul>
-  </div>
+    <div className="drawer-content">
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+    </div>
 </DrawerContainer>
 ```
 

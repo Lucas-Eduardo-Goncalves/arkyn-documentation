@@ -29,8 +29,8 @@ throw new Forbidden("You don't have permission to access this resource");
 
 // With cause information
 throw new Forbidden("Admin access required", {
-  requiredRole: "admin",
-  userRole: "member",
+    requiredRole: "admin",
+    userRole: "member",
 });
 
 // Convert to Response object
@@ -47,9 +47,9 @@ The response body follows a standardized structure:
 
 ```json
 {
-  "ok": false,
-  "status": 403,
-  "message": "You don't have permission to access this resource"
+    "ok": false,
+    "status": 403,
+    "message": "You don't have permission to access this resource"
 }
 ```
 

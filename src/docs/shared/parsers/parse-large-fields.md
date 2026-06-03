@@ -35,9 +35,9 @@ The function returns a JSON string with large string fields truncated. Truncated
 import { parseLargeFields } from "@arkyn/shared";
 
 const json = JSON.stringify({
-  name: "John",
-  description:
-    "A very long description that exceeds the maximum length and needs to be truncated for display purposes",
+    name: "John",
+    description:
+        "A very long description that exceeds the maximum length and needs to be truncated for display purposes",
 });
 
 const result = parseLargeFields(json, 50);

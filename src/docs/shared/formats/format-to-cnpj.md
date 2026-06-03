@@ -43,11 +43,11 @@ The function performs validation and may throw an error in the following scenari
 import { formatToCnpj } from "@arkyn/shared";
 
 try {
-  const cnpj = formatToCnpj("1234567800019");
-  console.log(cnpj);
+    const cnpj = formatToCnpj("1234567800019");
+    console.log(cnpj);
 } catch (error) {
-  console.error(error);
-  // Output: Error: CNPJ must be contain 14 numeric digits: 1234567800019
+    console.error(error);
+    // Output: Error: CNPJ must be contain 14 numeric digits: 1234567800019
 }
 ```
 

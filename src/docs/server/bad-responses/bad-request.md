@@ -29,8 +29,8 @@ throw new BadRequest("Invalid request parameters");
 
 // With cause information
 throw new BadRequest("Validation failed", {
-  field: "email",
-  reason: "Invalid format",
+    field: "email",
+    reason: "Invalid format",
 });
 
 // Convert to Response object
@@ -47,9 +47,9 @@ The response body follows a standardized structure:
 
 ```json
 {
-  "ok": false,
-  "status": 400,
-  "message": "Invalid request parameters"
+    "ok": false,
+    "status": 400,
+    "message": "Invalid request parameters"
 }
 ```
 

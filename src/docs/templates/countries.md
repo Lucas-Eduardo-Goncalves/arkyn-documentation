@@ -10,12 +10,12 @@ Each object in the `countries` array follows the following structure:
 
 ```typescript
 interface Country {
-  name: string;
-  code: string;
-  prefix: string | null;
-  iso: string;
-  flag: string;
-  mask: string;
+    name: string;
+    code: string;
+    prefix: string | null;
+    iso: string;
+    flag: string;
+    mask: string;
 }
 ```
 
@@ -34,16 +34,16 @@ To use the list of countries in your component, simply import the array from the
 import { countries } from "./countries";
 
 function CountrySelector() {
-  return (
-    <select>
-      {countries.map((country) => (
-        <option key={country.iso} value={country.code}>
-          <img src={country.flag} alt={country.name} />
-          {country.name} ({country.code})
-        </option>
-      ))}
-    </select>
-  );
+    return (
+        <select>
+            {countries.map((country) => (
+                <option key={country.iso} value={country.code}>
+                    <img src={country.flag} alt={country.name} />
+                    {country.name} ({country.code})
+                </option>
+            ))}
+        </select>
+    );
 }
 ```
 
@@ -51,11 +51,11 @@ function CountrySelector() {
 
 ```json
 {
-  "name": "Brazil",
-  "code": "+55",
-  "prefix": null,
-  "iso": "BR",
-  "flag": "https://cdn.kcak11.com/CountryFlags/countries/br.svg",
-  "mask": "(__) _____-____"
+    "name": "Brazil",
+    "code": "+55",
+    "prefix": null,
+    "iso": "BR",
+    "flag": "https://cdn.kcak11.com/CountryFlags/countries/br.svg",
+    "mask": "(__) _____-____"
 }
 ```
