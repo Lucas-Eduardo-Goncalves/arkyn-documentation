@@ -53,4 +53,4 @@ function App() {
 ## Notes
 
 - Calling `useToast` outside provider scope throws an error.
-- Provider dependency: [toast-provider.mdx](toast-provider.mdx).
+- Provider dependency: [toast-provider](toast-provider).

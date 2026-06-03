@@ -49,4 +49,4 @@ function App() {
 ## Notes
 
 - `fieldErrors` can be undefined or empty depending on provider input.
-- Provider dependency: [form-provider.mdx](form-provider.mdx).
+- Provider dependency: [form-provider](form-provider).

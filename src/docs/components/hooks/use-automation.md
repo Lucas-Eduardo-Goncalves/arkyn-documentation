@@ -45,5 +45,5 @@ const responseData = {
 
 - If `closeModal` is truthy, the hook calls `closeAll()` from `useModal()`.
 - If `message` is present, it decides toast style using `type`, `badResponses`, and `successResponses`.
-- Requires context providers used by internal hooks: [modal-provider.mdx](modal-provider.mdx) and [toast-provider.mdx](toast-provider.mdx).
+- Requires context providers used by internal hooks: [modal-provider](modal-provider) and [toast-provider](toast-provider).
 - Related hooks: `useModal` and `useToast`.

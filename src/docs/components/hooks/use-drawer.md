@@ -136,4 +136,4 @@ function App() {
 - Global mode is useful for centralized drawer orchestration (multiple keys in one place).
 - Keyed mode is useful to avoid repeating the same key in open/close calls.
 - If your component only interacts with one drawer, prefer scoped mode for cleaner code.
-- Provider dependency: [drawer-provider.mdx](drawer-provider.mdx).
+- Provider dependency: [drawer-provider](drawer-provider).

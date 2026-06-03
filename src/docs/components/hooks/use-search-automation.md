@@ -47,5 +47,5 @@ function SearchAutomationHandler({ search }: { search: string }) {
 
 - Reads `closeModal`, `message`, `name`, and `type` through `useScopedParams`.
 - Uses `badResponses` and `successResponses` templates to refine toast type decisions.
-- Requires context providers used by internal hooks: [modal-provider.mdx](modal-provider.mdx) and [toast-provider.mdx](toast-provider.mdx).
+- Requires context providers used by internal hooks: [modal-provider](modal-provider ) and [toast-provider](toast-provider).
 - Related hooks: `useScopedParams`, `useModal`, and `useToast`.
