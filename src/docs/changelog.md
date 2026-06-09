@@ -2,7 +2,22 @@
 
 This file centralizes release notes for the documentation and package set of the Arkyn ecosystem.
 
-## v3.2.0
+## v3.0.1-beta.140
+
+Date: 2026-06-09
+
+Status: Incremental documentation update.
+
+### Changes By Package
+
+- `@arkyn/components`
+  - Added documentation for the new [`Calendar`](/docs/components/components/calendar) component.
+
+### Notes
+
+- This release includes only the `Calendar` component addition.
+
+## v3.0.1-beta.139
 
 Date: 2026-06-02
 

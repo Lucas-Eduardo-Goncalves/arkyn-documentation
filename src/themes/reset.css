@@ -1,28 +1,31 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@layer reset, arkyn;
 
-*,
-input,
-textarea,
-button {
-  line-height: 100%;
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: weight;
-  font-style: normal;
+@layer reset {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  *,
+  input,
+  textarea,
+  button {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+  }
 }
 
 :root {
+  --white: #ffffff;
+
   /* background */
-  --background: #f1f5f9;
+  --background: #f4f4f5;
   --background-foreground: #ffffff;
 
   /* modal, drawer, popover... */
   --card: #ffffff;
-  --card-foreground-primary: #f8fafc;
+  --card-foreground-primary: #fafafa;
   --card-foreground-secondary: #f1f5f9;
   --card-foreground-third: #e2e8f0;
 
@@ -31,9 +34,9 @@ button {
   --skeleton-foreground: #f1f5f9;
 
   /* text */
-  --text-heading: #0f172a;
-  --text-body: #475569;
-  --text-muted: #94a3b8;
+  --text-heading: #18181b;
+  --text-body: #52525b;
+  --text-muted: #a1a1aa;
 
   /* border */
   --border: #e2e8f0;

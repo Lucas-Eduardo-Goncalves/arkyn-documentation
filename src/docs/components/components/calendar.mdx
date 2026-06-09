@@ -1,0 +1,146 @@
+# Calendar
+
+import {
+	AlertContainer,
+	AlertContent,
+	AlertDescription,
+	AlertIcon,
+	AlertTitle,
+	Calendar,
+} from "@arkyn/components";
+
+The `Calendar` component provides single-date and date-range selection with built-in month navigation for scheduling, filtering, and booking flows.
+
+```tsx
+import { Calendar } from "@arkyn/components";
+```
+
+## Basic Usage
+
+Use `type="single"` to select one date.
+
+<div className="noContent">
+	<Calendar type="single" />
+</div>
+
+```tsx
+<Calendar type="single" />
+```
+
+## Selection Modes
+
+`Calendar` supports two selection modes: `single` for one date and `range` for a start/end interval.
+
+<div className="noContent column">
+	<Calendar type="single" defaultValue={new Date(2026, 5, 10)} />
+	<Calendar
+		type="range"
+		defaultValue={[new Date(2026, 5, 1), new Date(2026, 5, 15)]}
+	/>
+</div>
+
+```tsx
+<Calendar type="single" defaultValue={new Date(2026, 5, 10)} />
+
+<Calendar
+	type="range"
+	defaultValue={[new Date(2026, 5, 1), new Date(2026, 5, 15)]}
+/>
+```
+
+## Variants
+
+Use `variant` to switch between simplified and full header navigation.
+
+<div className="noContent column">
+	<Calendar type="single" variant="basic" />
+	<Calendar type="single" variant="complete" />
+</div>
+
+```tsx
+<Calendar type="single" variant="basic" />
+<Calendar type="single" variant="complete" />
+```
+
+## Change Callbacks
+
+Use `onChange` to react to date selection changes and `onChangeView` to react when the visible month/year changes.
+
+<div className="noContent column">
+	<Calendar
+		type="single"
+		onChange={(date) => {
+			console.log("Selected date:", date);
+		}}
+		onChangeView={(viewDate) => {
+			console.log("Current view:", viewDate);
+		}}
+	/>
+
+	<Calendar
+		type="range"
+		onChange={([start, end]) => {
+			console.log("Selected range:", start, end);
+		}}
+		onChangeView={(viewDate) => {
+			console.log("Focused month:", viewDate);
+		}}
+	/>
+</div>
+
+```tsx
+<Calendar
+	type="single"
+	onChange={(date) => {
+		console.log("Selected date:", date);
+	}}
+	onChangeView={(viewDate) => {
+		console.log("Current view:", viewDate);
+	}}
+/>
+
+<Calendar
+	type="range"
+	onChange={([start, end]) => {
+		console.log("Selected range:", start, end);
+	}}
+	onChangeView={(viewDate) => {
+		console.log("Focused month:", viewDate);
+	}}
+/>
+```
+
+<AlertContainer schema="info">
+	<AlertIcon />
+	<AlertContent>
+		<AlertTitle>Default variant</AlertTitle>
+		<AlertDescription>
+			If `variant` is not provided, `Calendar` uses `"complete"` mode.
+			Selection callbacks are also mode-specific: `Date` for `single` and
+			`[Date, Date]` for `range`.
+		</AlertDescription>
+	</AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`type`** - `"single" | "range"`
+Defines the calendar selection mode.
+
+**`variant`** - `"basic" | "complete"` (default: `"complete"`)
+Controls header behavior and navigation complexity.
+
+**`defaultValue`** - `Date` (when `type="single"`)
+Initial selected date in single mode.
+
+**`defaultValue`** - `[Date, Date]` (when `type="range"`)
+Initial selected range in range mode, using `[start, end]` format.
+
+**`onChange`** - `(date: Date) => void` (when `type="single"`)
+Called when the selected single date changes.
+
+**`onChange`** - `(date: [Date, Date]) => void` (when `type="range"`)
+Called when the selected date range changes.
+
+**`onChangeView`** - `(date: Date) => void`
+Called when the current calendar view changes (month/year navigation).
