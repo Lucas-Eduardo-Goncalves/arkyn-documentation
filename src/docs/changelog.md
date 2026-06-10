@@ -2,6 +2,41 @@
 
 This file centralizes release notes for the documentation and package set of the Arkyn ecosystem.
 
+## v3.0.1-beta.141
+Date: 2026-06-10
+
+Status: Form field template standardization, component API expansion, and automation behavior update.
+
+### Changes By Package
+- `@arkyn/components`
+  - Added a new shared FieldTemplate service to centralize FieldWrapper, FieldLabel, and FieldError rendering.
+  - Refactored these components to use FieldTemplate:
+    - Checkbox
+    - CurrencyInput
+    - ImageUpload
+    - Input
+    - MultiSelect
+    - PhoneInput
+    - RadioGroup
+    - RichText
+    - Select
+    - Switch
+  - Expanded component APIs with support for unShowFieldTemplate and orientation across the refactored form components.
+  - Added or propagated showAsterisk, className, and errorMessage handling where needed to keep field template behavior consistent.
+  - Updated RichText types to include className, unShowFieldTemplate, and orientation.
+  - Added full JSDoc coverage for PhoneInput and updated JSDoc in the refactored components to describe the new field-template-related props.
+  - Updated useAutomation behavior:
+    - Added scroll support via cause.data.scrollTo using react-scroll.
+    - Added first field error extraction from cause.fieldErrors for danger toast priority.
+    - Reworked toast decision logic to use successResponses and badResponses.
+    - Ignored the Unprocessable entity message in toast output.
+    - Kept modal auto-close flow and centralized toast execution in a dedicated internal function.
+
+### Notes
+    - This release consolidates form field rendering patterns and reduces duplicated wrapper/label/error logic across components.
+    - The update also improves response automation UX by aligning scroll and toast behavior with structured backend error payloads.
+Scope reflects only what is currently staged in `@arkyn/components`.
+
 ## v3.0.1-beta.140
 
 Date: 2026-06-09
