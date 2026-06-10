@@ -8,7 +8,7 @@ This file centralizes release notes for the documentation and package set of the
 - All scope published in the documentation is included in this version baseline delivery.
 - The documented capabilities are under continuous implementation, with incremental refinements compatible with this stable baseline.
 
-### Documentation Scope Included In v3.2.0
+## Documentation Scope Included In v3.2.0
 
 - Package introduction and general navigation sections.
 - Catalog of `@arkyn/components` components, hooks, providers, and services.
