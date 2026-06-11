@@ -18,6 +18,24 @@ This file centralizes release notes for the documentation and package set of the
 - Full `templates/` content.
 - Supporting examples and styles published in `_examples/` and `_styles/`.
 
+## v3.0.1-beta.143
+Date: 2026-06-11
+
+Status: Visual style corrections for Button, IconButton, and CardTab components.
+
+### Changes By Package
+- `@arkyn/components`
+  - Fixed outline variant background color for Button and IconButton, replacing --card-foreground-primary with --card for correct surface contrast.
+  - Redesigned CardTab visual style:
+    - CardTabContainer now uses a filled background (--card-foreground-primary) with internal padding and gap instead of a bordered frame, giving the tab strip a pill-container appearance.
+    - CardTabButton default state updated to transparent background with a fixed height of 40px, rounded corners (6px), and heading-level text color (--text-heading).
+    - Removed the border-right separator rule between tab buttons.
+    - Hover and active states now apply a white background (--white) with a visible border (--border) instead of the previous primary-colored highlight.
+### Notes
+- All changes in this release are purely visual and do not affect component APIs or behavior.
+- The CardTab redesign aligns its appearance with the rest of the component library's surface and border token conventions.
+- Version bumped across all packages (@arkyn/components, @arkyn/server, @arkyn/shared, @arkyn/templates).
+
 ## v3.0.1-beta.142
 
 Date: 2026-06-10
