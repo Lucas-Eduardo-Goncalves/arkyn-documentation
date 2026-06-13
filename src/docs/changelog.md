@@ -2,6 +2,21 @@
 
 This file centralizes release notes for the documentation and package set of the Arkyn ecosystem.
 
+## v3.0.1-beta.145
+Date: 2026-06-13
+
+Status: Default orientation correction for PhoneInput.
+
+### Changes By Package
+- `@arkyn/components`
+  - Corrected the default value of the `orientation` prop on `PhoneInput` from `"horizontal"` to `"vertical"`, aligning runtime behavior with the field template layout convention used by all other form components.
+  - Updated JSDoc and inline type documentation to reflect the corrected default.
+
+### Notes
+- This is a behavioral correction: any `PhoneInput` rendered without an explicit `orientation` prop will now default to the vertical layout instead of horizontal.
+- No other component APIs or styles were changed.
+- Version bumped across all packages (`@arkyn/components`, `@arkyn/server`, `@arkyn/shared`, `@arkyn/templates`).
+
 ## v3.0.1-beta.144
 Date: 2026-06-13
 
