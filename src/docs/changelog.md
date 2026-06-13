@@ -18,6 +18,35 @@ This file centralizes release notes for the documentation and package set of the
 - Full `templates/` content.
 - Supporting examples and styles published in `_examples/` and `_styles/`.
 
+## v3.0.1-beta.144
+Date: 2026-06-13
+
+Status: Full JSDoc coverage across all packages and design token refinements in `@arkyn/components`.
+
+### Changes By Package
+- `@arkyn/components`
+  - Added full JSDoc documentation to all components: Alert, AudioPlayer, AudioUpload, Badge, Button, CardTab, Checkbox, ClientOnly, CurrencyInput, Divider, Drawer, FacebookPixel, FieldError, FieldLabel, FieldWrapper, FileUpload, GoogleAnalytics, GoogleTagManager, IconButton, ImageUpload, Input, MapView, MaskedInput, Modal, MultiSelect, Pagination, PhoneInput, Popover, Radio, RichText, SearchPlaces, Select, Slider, Switch, Tab, Table, Textarea, and Tooltip.
+  - Added full JSDoc documentation to all hooks: `useAutomation`, `useDrawer`, `useForm`, `useHydrated`, `useModal`, `useScopedParams`, `useScrollLock`, `useSearchAutomation`, `useSlider`, and `useToast`.
+  - Added full JSDoc documentation to all providers: `DrawerProvider`, `FormProvider`, `ModalProvider`, `PlacesProvider`, and `ToastProvider`.
+  - Added full JSDoc documentation to all services: `toHtml` and `toRichTextValue`.
+  - Refined design tokens in `variables.css`:
+    - Added `--white` as a first-class token.
+    - Updated background tokens to the zinc scale (`--background`, `--card-foreground-primary`).
+    - Updated text tokens to the zinc scale (`--text-heading`, `--text-body`, `--text-muted`).
+    - Added `--spotlight-*-light` variants for all six color roles (primary, secondary, success, danger, info, warning).
+
+- `@arkyn/server`
+  - Added full JSDoc documentation to all bad responses, success responses, services (`ApiService`, `DebugService`, `LogService`), utilities, and validations.
+
+- `@arkyn/shared`
+  - Added full JSDoc documentation to all formats, generators, parsers, services, and utilities.
+
+### Notes
+- This release contains no behavioral or API changes. All modifications are documentation and design token updates.
+- JSDoc coverage was applied uniformly across all three packages, aligning inline documentation style with the patterns established in prior releases.
+- The zinc-scale token update in `variables.css` is a visual-only refinement; no component class names or CSS custom property names were changed.
+- Version bumped across all packages (`@arkyn/components`, `@arkyn/server`, `@arkyn/shared`, `@arkyn/templates`).
+
 ## v3.0.1-beta.143
 Date: 2026-06-11
 
