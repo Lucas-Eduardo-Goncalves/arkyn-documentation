@@ -32,9 +32,15 @@ const COMPONENTS_MENU: MenuType[] = [
     ],
   },
   {
-    label: "Fields & Data Display",
+    label: "Calendar",
     children: [
       { label: "Calendar", to: "/components/components/calendar" },
+      { label: "FullCalendar", to: "/components/components/full-calendar" },
+    ],
+  },
+  {
+    label: "Fields & Data Display",
+    children: [
       { label: "ClientOnly", to: "/components/components/client-only" },
       { label: "Divider", to: "/components/components/divider" },
       { label: "FieldError", to: "/components/components/field-error" },

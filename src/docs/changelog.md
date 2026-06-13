@@ -2,6 +2,40 @@
 
 This file centralizes release notes for the documentation and package set of the Arkyn ecosystem.
 
+## v3.0.1-beta.146
+
+Date: 2026-06-13
+
+Status: New `FullCalendar` component with day, week, and month views.
+
+### Changes By Package
+
+- `@arkyn/components`
+  - Added new `FullCalendar` component — an interactive calendar supporting three built-in views: **day**, **week**, and **month**.
+  - The component is composed of the following internal sub-modules:
+    - `FullCalendarProvider` — React context that manages navigation state (`viewDate`), event list, and navigation actions (`nextDay`, `previousWeek`, `nextMonth`, etc.).
+    - `ViewService` — pure service class responsible for computing time grids (hours list, 30-min slots from 08:00 to 18:00), weekly matrix, and monthly matrix with overflow cells from adjacent months.
+    - `FullCalendarHeader` — header bar with a `CardTab` switcher (Dia / Semana / Mês) and `IconButton` chevron navigation, displaying the current date in `pt-BR` long format.
+    - `DayCalendar` — day view composed of `DayCalendarContainer`, `DayCalendarRow`, and `DayCalendarEvent`.
+    - `WeekCalendar` — week view composed of `WeekCalendarTableContainer`, `WeekCalendarTableHeader`, `WeekCalendarTableBody`, `WeekCalendarTableTd`, and `WeekCalendarEvent`.
+    - `MonthlyCalendar` — month view composed of `MonthlyCalendarTableContainer`, `MonthlyCalendarTableHeader`, `MonthlyCalendarTableBody`, `MonthlyCalendarTableTd`, and `MonthlyCalendarEvent`.
+  - `FullCalendar` accepts the following props:
+    - `defaultView` — initial view (`"day"` | `"week"` | `"month"`). Default: `"month"`.
+    - `defaultValue` — initial selected date. Defaults to today.
+    - `events` — array of `FullCalendarEvent` objects (`title`, `date`, `endDate?`, `data?`, `scheme?`, `onClick?`).
+    - `onChange` — callback fired when the selected date changes.
+    - `onChangeView` — callback fired when the user navigates to a different period.
+  - Event chips support five color schemes: `primary`, `success`, `warning`, `danger`, and `info`.
+  - Exported `FullCalendar` from the package root (`packages/components/src/index.ts`).
+  - Full JSDoc coverage added to the public component API.
+
+### Notes
+
+- This is a purely additive release; no existing component APIs or styles were modified.
+- `FullCalendarProvider` exposes an internal `language` prop (defaults to `"pt-BR"`) for future localization support, but it is not yet part of the public `FullCalendar` API.
+- The day view hour range is currently fixed at 08:00–18:00 in 30-minute increments.
+- Version bumped across all packages (`@arkyn/components`, `@arkyn/server`, `@arkyn/shared`, `@arkyn/templates`).s
+
 ## v3.0.1-beta.145
 Date: 2026-06-13
 

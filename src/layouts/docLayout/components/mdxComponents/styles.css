@@ -114,6 +114,7 @@
 .noContent {
   display: block;
   width: max-content;
+  max-width: 790px;
 }
 
 .noContent.row {

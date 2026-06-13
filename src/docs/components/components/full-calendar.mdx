@@ -1,0 +1,270 @@
+# FullCalendar
+
+import {
+  FullCalendar,
+  AlertContainer,
+  AlertContent,
+  AlertDescription,
+  AlertIcon,
+  AlertTitle,
+} from "@arkyn/components";
+
+Interactive calendar component with day, week, and month views, supporting event display and navigation.
+
+```tsx
+import { FullCalendar } from "@arkyn/components";
+```
+
+## Views
+
+The calendar supports three views: `"month"` (default), `"week"`, and `"day"`. The user can switch between them using the built-in header controls, or you can set the initial view via `defaultView`.
+
+```tsx
+<FullCalendar defaultView="month" />
+<FullCalendar defaultView="week" />
+<FullCalendar defaultView="day" />
+```
+
+## Default Date
+
+Use `defaultValue` to pre-select a date when the calendar first renders. Defaults to today.
+
+```tsx
+<FullCalendar defaultValue={new Date("2025-06-01")} />
+```
+
+## Events
+
+Pass an array of event objects to the `events` prop. Each event requires a `title` and a `date`. Events are rendered as chips on the corresponding day.
+
+Each event chip can be styled with one of five color schemes via the `scheme` property: `"primary"`, `"success"`, `"warning"`, `"danger"`, and `"info"`.
+
+## Event Click Handler
+
+Attach an `onClick` to individual events to respond to user interaction. The callback receives the `data` payload defined on that event.
+
+```tsx
+{
+  title: "Team meeting",
+  date: new Date("2025-06-13T10:00:00"),
+  scheme: "primary",
+  data: { meetingId: 42 },
+  onClick: ({ meetingId }) => openMeeting(meetingId),
+}
+```
+
+## Navigation Callback
+
+Use `onChangeView` to react when the user navigates to a different period (e.g., next month). Receives the current `Date` of the displayed period — useful for fetching events on demand.
+
+```tsx
+<FullCalendar
+  onChangeView={(date) => fetchEventsForMonth(date)}
+/>
+```
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Lazy event loading</AlertTitle>
+    <AlertDescription>
+      Combine `onChangeView` with `onChange` to fetch only the events relevant
+      to the visible period, avoiding loading the full event list upfront.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+## Properties
+
+**`defaultView`** - `"day" | "week" | "month"` (default: `"month"`)
+Initial view rendered when the calendar mounts. The user can switch views at any time using the header controls.
+
+**`defaultValue`** - `Date`
+Initial selected date. Defaults to today's date when not provided.
+
+**`events`** - `FullCalendarEvent[]`
+Array of events to display on the calendar. See the event shape properties below.
+
+**`onChange`** - `(date: Date) => void`
+Callback fired when the selected date changes. Receives the newly selected `Date`.
+
+**`onChangeView`** - `(date: Date) => void`
+Callback fired when the user navigates to a different period. Receives the `Date` representing the current period in view.
+
+---
+
+### Event Properties (`FullCalendarEvent`)
+
+**`title`** - `string`
+Label shown on the event chip in the calendar. Required.
+
+**`date`** - `Date`
+Event start date and time. Required.
+
+**`endDate`** - `Date`
+Event end date and time. When omitted, the event is treated as a point in time.
+
+**`data`** - `any`
+Arbitrary payload forwarded to the `onClick` callback.
+
+**`scheme`** - `"primary" | "success" | "warning" | "danger" | "info"` (default: `"primary"`)
+Color scheme applied to the event chip.
+
+**`onClick`** - `(data: any) => void`
+Callback fired when the user clicks the event chip. Receives the value of `data`.
+
+---
+
+## Example
+
+<div className="noContent">
+  {(() => {
+    const today = new Date();
+    today.setHours(8, 30, 0, 0);
+
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(8, 15, 0, 0);
+
+    const dayAfterTomorrow = new Date();
+    dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
+    dayAfterTomorrow.setHours(14, 0, 0, 0);
+
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    yesterday.setHours(8, 0, 0, 0);
+
+    const nextWeek = new Date();
+    nextWeek.setDate(nextWeek.getDate() + 7);
+    nextWeek.setHours(14, 0, 0, 0);
+
+    return (
+      <FullCalendar
+        events={[
+          {
+            date: today,
+            endDate: new Date(today.getTime() + 85 * 60 * 1000),
+            title: "Consulta com o Dr. João",
+            data: { id: "1", title: "João da Silva" },
+            scheme: "success",
+            onClick: (data) => console.log("click", data),
+          },
+          {
+            date: today,
+            endDate: new Date(today.getTime() + 85 * 60 * 1000),
+            title: "Consulta com o Dr. João",
+            data: { id: "12", title: "João da Silva 2" },
+            scheme: "success",
+            onClick: (data) => console.log("click", data),
+          },
+          {
+            date: new Date(today.getTime() + 15 * 60 * 1000),
+            endDate: new Date(today.getTime() + 45 * 60 * 1000),
+            title: "Reunião com a equipe de marketing",
+            data: { id: "2", title: "Pedro Oliveira" },
+            scheme: "warning",
+            onClick: (data) => console.log("click", data),
+          },
+          {
+            date: dayAfterTomorrow,
+            endDate: new Date(dayAfterTomorrow.getTime() + 60 * 60 * 1000),
+            title: "Almoço com a Maria",
+            data: { id: "3", title: "Maria Silva" },
+            scheme: "info",
+            onClick: (data) => console.log("click", data),
+          },
+          {
+            date: yesterday,
+            endDate: new Date(yesterday.getTime() + 60 * 60 * 1000),
+            title: "Dentista",
+            data: { id: "4", title: "Dentista" },
+            scheme: "danger",
+            onClick: (data) => console.log("click", data),
+          },
+          {
+            date: nextWeek,
+            endDate: new Date(nextWeek.getTime() + 60 * 60 * 1000),
+            title: "Reunião com o time de desenvolvimento",
+            data: { id: "5", title: "Time de Desenvolvimento" },
+            scheme: "primary",
+            onClick: (data) => console.log("click", data),
+          },
+        ]}
+      />
+    );
+  })()}
+</div>
+
+```tsx
+const today = new Date();
+today.setHours(8, 30, 0, 0);
+
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+tomorrow.setHours(8, 15, 0, 0);
+
+const dayAfterTomorrow = new Date();
+dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
+dayAfterTomorrow.setHours(14, 0, 0, 0);
+
+const yesterday = new Date();
+yesterday.setDate(yesterday.getDate() - 1);
+yesterday.setHours(8, 0, 0, 0);
+
+const nextWeek = new Date();
+nextWeek.setDate(nextWeek.getDate() + 7);
+nextWeek.setHours(14, 0, 0, 0);
+
+<FullCalendar
+  events={[
+    {
+      date: today,
+      endDate: new Date(today.getTime() + 85 * 60 * 1000),
+      title: "Consulta com o Dr. João",
+      data: { id: "1", title: "João da Silva" },
+      scheme: "success",
+      onClick: (data) => console.log("click", data),
+    },
+    {
+      date: today,
+      endDate: new Date(today.getTime() + 85 * 60 * 1000),
+      title: "Consulta com o Dr. João",
+      data: { id: "12", title: "João da Silva 2" },
+      scheme: "success",
+      onClick: (data) => console.log("click", data),
+    },
+    {
+      date: new Date(today.getTime() + 15 * 60 * 1000),
+      endDate: new Date(today.getTime() + 45 * 60 * 1000),
+      title: "Reunião com a equipe de marketing",
+      data: { id: "2", title: "Pedro Oliveira" },
+      scheme: "warning",
+      onClick: (data) => console.log("click", data),
+    },
+    {
+      date: dayAfterTomorrow,
+      endDate: new Date(dayAfterTomorrow.getTime() + 60 * 60 * 1000),
+      title: "Almoço com a Maria",
+      data: { id: "3", title: "Maria Silva" },
+      scheme: "info",
+      onClick: (data) => console.log("click", data),
+    },
+    {
+      date: yesterday,
+      endDate: new Date(yesterday.getTime() + 60 * 60 * 1000),
+      title: "Dentista",
+      data: { id: "4", title: "Dentista" },
+      scheme: "danger",
+      onClick: (data) => console.log("click", data),
+    },
+    {
+      date: nextWeek,
+      endDate: new Date(nextWeek.getTime() + 60 * 60 * 1000),
+      title: "Reunião com o time de desenvolvimento",
+      data: { id: "5", title: "Time de Desenvolvimento" },
+      scheme: "primary",
+      onClick: (data) => console.log("click", data),
+    },
+  ]}
+/>
+```
