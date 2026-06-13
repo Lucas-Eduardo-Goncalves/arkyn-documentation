@@ -2,22 +2,6 @@
 
 This file centralizes release notes for the documentation and package set of the Arkyn ecosystem.
 
-## Stable Baseline
-
-- Version `3.2.0` establishes the first stable milestone for everything currently documented.
-- All scope published in the documentation is included in this version baseline delivery.
-- The documented capabilities are under continuous implementation, with incremental refinements compatible with this stable baseline.
-
-## Documentation Scope Included In v3.2.0
-
-- Package introduction and general navigation sections.
-- Catalog of `@arkyn/components` components, hooks, providers, and services.
-- Published guides in `guides/`.
-- Full `server/` content (responses, services, utilities, and validations).
-- Full `shared/` content (formats, generators, parsers, services, and utilities).
-- Full `templates/` content.
-- Supporting examples and styles published in `_examples/` and `_styles/`.
-
 ## v3.0.1-beta.144
 Date: 2026-06-13
 
