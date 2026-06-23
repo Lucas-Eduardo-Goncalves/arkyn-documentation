@@ -1,13 +1,14 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "@arkyn/documentation",
       "dependencies": {
-        "@arkyn/components": "3.0.1-beta.146",
-        "@arkyn/server": "3.0.1-beta.146",
-        "@arkyn/shared": "3.0.1-beta.146",
-        "@arkyn/templates": "3.0.1-beta.146",
+        "@arkyn/components": "3.0.1-beta.147",
+        "@arkyn/server": "3.0.1-beta.147",
+        "@arkyn/shared": "3.0.1-beta.147",
+        "@arkyn/templates": "3.0.1-beta.147",
         "@docsearch/css": "^4.6.3",
         "@docsearch/react": "^4.6.3",
         "@linaria/core": "^7.0.0",
@@ -82,13 +83,13 @@
 
     "@algolia/requester-node-http": ["@algolia/requester-node-http@5.53.0", "", { "dependencies": { "@algolia/client-common": "5.53.0" } }, "sha512-6mF9LZMUk0QqWvrnxkxBqhswwz6Xfiwy6/gmTzL5HrlhdVG3ITAqGV2k3XmVThP1h0Ulc3VQwiNCD7/Nr4JNlQ=="],
 
-    "@arkyn/components": ["@arkyn/components@3.0.1-beta.146", "", { "dependencies": { "@arkyn/shared": "^3.0.1-beta.136", "@arkyn/templates": "^3.0.1-beta.136", "@react-google-maps/api": "^2.20.8", "@react-input/mask": "^2.0.4", "@types/react-scroll": "^1.8.10", "@vitejs/plugin-react": "^6.0.1", "framer-motion": "^12.38.0", "html-react-parser": "^6.1.0", "mapbox-gl": "^3.23.1", "react-hot-toast": "^2.6.0", "react-scroll": "^1.9.3", "slate": "^0.124.1", "slate-history": "^0.113.1", "slate-react": "^0.124.0" }, "peerDependencies": { "lucide-react": "^1.14.0", "react": "^19.2.6", "react-dom": "^19.2.6" } }, "sha512-6JvJdBjbLjiAfjWXf2W/kCfCd71r1aFs02K4qcLWOjy3dOC04twNAxKopPS1OA/Kedm5IImCzwVBde9xA+VB7Q=="],
+    "@arkyn/components": ["@arkyn/components@3.0.1-beta.147", "", { "dependencies": { "@react-google-maps/api": "^2.20.8", "@react-input/mask": "^2.0.4", "@types/react-scroll": "^1.8.10", "framer-motion": "^12.38.0", "html-react-parser": "^6.1.0", "mapbox-gl": "^3.23.1", "react-hot-toast": "^2.6.0", "react-scroll": "^1.9.3", "slate": "^0.124.1", "slate-history": "^0.113.1", "slate-react": "^0.124.0" }, "peerDependencies": { "@arkyn/shared": ">=3.0.1-beta.145", "@arkyn/templates": ">=3.0.1-beta.145", "lucide-react": ">=1.14.0", "react": ">=19.2.6", "react-dom": ">=19.2.6" } }, "sha512-TzeN26JdSv0kqTnsIwhzzweefYz6HSfOpAJZzvHq8cW+ssAdgcN6Jub4YfKmGxDNQq1bvpm+37HgImJt0IQheQ=="],
 
-    "@arkyn/server": ["@arkyn/server@3.0.1-beta.146", "", { "peerDependencies": { "@arkyn/shared": ">=3.0.1-beta.132", "@arkyn/templates": ">=3.0.1-beta.132", "zod": ">=4.0.0" } }, "sha512-Zmw9e3Mp3XbVsVJDl7W3ULerrO5hzPH0VdE2lcsRE/M9QYp4/eHTKfgig4iLrzKI/3zMVtThm3VrDAGV0wK92A=="],
+    "@arkyn/server": ["@arkyn/server@3.0.1-beta.147", "", { "peerDependencies": { "@arkyn/shared": ">=3.0.1-beta.145", "@arkyn/templates": ">=3.0.1-beta.145", "zod": ">=4.0.0" } }, "sha512-ONmSHhggmhGEfMAZnM7bYea7N9VgGMRcei+e6vw3RXTYpx/ZJC2cbzU2WfJD/iiPck4kf+5qExrdcOdRCGmrVQ=="],
 
-    "@arkyn/shared": ["@arkyn/shared@3.0.1-beta.146", "", { "dependencies": { "@arkyn/templates": ">=3.0.1-beta.132", "libphonenumber-js": "^1.12.41", "uuid": "^10.0.0" } }, "sha512-+2VY217ogjkXWrgIRtkhVpuayYb5pePZOYXxIecKPubEqPhVu4LQFoA0PZ2rMD29PhYrf0IU9lSFKobDk9DPcQ=="],
+    "@arkyn/shared": ["@arkyn/shared@3.0.1-beta.147", "", { "dependencies": { "libphonenumber-js": "^1.12.41", "uuid": "^10.0.0" }, "peerDependencies": { "@arkyn/templates": ">=3.0.1-beta.145" } }, "sha512-aww4TzNbqyJgrwzqUnj8fjTccXIJ4U684EdriUTHHkv/DnFR0n06X9RZJqOoDwxwy2N35PXwUm1pgh1+3YdhIw=="],
 
-    "@arkyn/templates": ["@arkyn/templates@3.0.1-beta.146", "", {}, "sha512-OGZBsaJrWVpi4vqXansW4+9kabIikdOzLbXztJSjdqD26YQyx1SXCSOLmyDrFh9wZ6NDZnSRqb+SxBKpEfH8DA=="],
+    "@arkyn/templates": ["@arkyn/templates@3.0.1-beta.147", "", {}, "sha512-h+S6GzYu3eR85UHfkFvx9I3WSw+xQup6wqNukmdBzJ6lPR2/9XDtC4VGuXovhDBJBuzmmW79riWuUvk4lIw37A=="],
 
     "@babel/code-frame": ["@babel/code-frame@7.28.6", "", { "dependencies": { "@babel/helper-validator-identifier": "^7.28.5", "js-tokens": "^4.0.0", "picocolors": "^1.1.1" } }, "sha512-JYgintcMjRiCvS8mMECzaEn+m3PfoQiyqukOMCCVQtoJGYJw8j/8LBJEiqkHLkfwCcs74E3pbAUFNg7d9VNJ+Q=="],
 
@@ -415,8 +416,6 @@
     "@uiw/react-prismjs": ["@uiw/react-prismjs@1.3.6", "", { "dependencies": { "@types/prismjs": "~1.26.0", "prismjs": "~1.29.0" }, "peerDependencies": { "react": ">=16.8.0", "react-dom": ">=16.8.0" } }, "sha512-WTj30QDK8OLFZ8HmPT7MevamhdTpOvDMEovMPCk7PaQGo+FDR0lawQU19NALDl3wTpjm5UHXV2RD9ZcGCdM+Tg=="],
 
     "@ungap/structured-clone": ["@ungap/structured-clone@1.3.0", "", {}, "sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g=="],
-
-    "@vitejs/plugin-react": ["@vitejs/plugin-react@6.0.2", "", { "dependencies": { "@rolldown/pluginutils": "^1.0.0" }, "peerDependencies": { "@rolldown/plugin-babel": "^0.1.7 || ^0.2.0", "babel-plugin-react-compiler": "^1.0.0", "vite": "^8.0.0" }, "optionalPeers": ["@rolldown/plugin-babel", "babel-plugin-react-compiler"] }, "sha512-DlSMqo4WhThw4vB8Mpn0Woe9J+Jfq1geJ61AKW0QEgLzGMNwtIMdxbDUzLxcun8W7NbJO0e2Jg/Nxm3cCSVzzg=="],
 
     "@wyw-in-js/processor-utils": ["@wyw-in-js/processor-utils@1.1.0", "", { "dependencies": { "@babel/generator": "^7.23.5", "@wyw-in-js/shared": "1.1.0" } }, "sha512-fFRhT9bvQBfPCnMKXwf8INohf/o7cRvMBxLuc2wt+x/q3FZqy7dxPCgDPqvy+oaGiVKWEDXnHpnBB/7zQItDgg=="],
 

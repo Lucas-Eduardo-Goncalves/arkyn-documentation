@@ -4,7 +4,12 @@ const Container = styled.div`
   margin-left: auto;
 
   width: 100%;
+  min-width: 240px;
   max-width: 240px;
+
+  .searchButton {
+    width: 218.75px;
+  }
 
   .searchButton,
   .DocSearch-Button {
@@ -12,7 +17,8 @@ const Container = styled.div`
     display: flex;
     align-items: center;
 
-    width: 100%;
+    /* width: 100%; */
+    max-width: 240px;
     min-height: 38px;
     max-height: 38px;
 

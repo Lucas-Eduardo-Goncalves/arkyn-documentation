@@ -9,57 +9,197 @@ import {
   AlertTitle,
 } from "@arkyn/components";
 
-Interactive calendar component with day, week, and month views, supporting event display and navigation.
+Full-featured calendar component with switchable day, week, and month views, supporting event display, blocked time ranges, and date navigation.
 
 ```tsx
 import { FullCalendar } from "@arkyn/components";
 ```
 
-## Views
+## Basic Usage
 
-The calendar supports three views: `"month"` (default), `"week"`, and `"day"`. The user can switch between them using the built-in header controls, or you can set the initial view via `defaultView`.
-
-```tsx
-<FullCalendar defaultView="month" />
-<FullCalendar defaultView="week" />
-<FullCalendar defaultView="day" />
-```
-
-## Default Date
-
-Use `defaultValue` to pre-select a date when the calendar first renders. Defaults to today.
+<div className="noContent" style={{ minWidth: "790px" }}>
+  <FullCalendar defaultValue={new Date()} />
+</div>
 
 ```tsx
-<FullCalendar defaultValue={new Date("2025-06-01")} />
+<FullCalendar defaultValue={new Date()} />
 ```
 
 ## Events
 
-Pass an array of event objects to the `events` prop. Each event requires a `title` and a `date`. Events are rendered as chips on the corresponding day.
+Pass an array of event objects to the `events` prop. Each event requires a `title` and an `initialDate`. Events are rendered as colored chips on the corresponding day or time slot across all three views.
 
-Each event chip can be styled with one of five color schemes via the `scheme` property: `"primary"`, `"success"`, `"warning"`, `"danger"`, and `"info"`.
+<div className="noContent" style={{ minWidth: "790px" }}>
+  {(() => {
+    const today = new Date();
+    today.setHours(9, 0, 0, 0);
+
+    const dayAfterTomorrow = new Date();
+    dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
+    dayAfterTomorrow.setHours(14, 0, 0, 0);
+
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    yesterday.setHours(8, 0, 0, 0);
+
+    const nextWeek = new Date();
+    nextWeek.setDate(nextWeek.getDate() + 7);
+    nextWeek.setHours(10, 0, 0, 0);
+
+    return (
+      <FullCalendar
+        defaultValue={new Date()}
+        events={[
+          {
+            title: "Team standup",
+            initialDate: today,
+            endDate: new Date(today.getTime() + 30 * 60 * 1000),
+            scheme: "primary",
+          },
+          {
+            title: "Doctor appointment",
+            initialDate: new Date(today.getTime() + 90 * 60 * 1000),
+            endDate: new Date(today.getTime() + 150 * 60 * 1000),
+            scheme: "success",
+          },
+          {
+            title: "Lunch with Maria",
+            initialDate: dayAfterTomorrow,
+            endDate: new Date(dayAfterTomorrow.getTime() + 60 * 60 * 1000),
+            scheme: "info",
+          },
+          {
+            title: "Dentist",
+            initialDate: yesterday,
+            endDate: new Date(yesterday.getTime() + 60 * 60 * 1000),
+            scheme: "danger",
+          },
+          {
+            title: "Sprint planning",
+            initialDate: nextWeek,
+            endDate: new Date(nextWeek.getTime() + 90 * 60 * 1000),
+            scheme: "warning",
+          },
+        ]}
+      />
+    );
+  })()}
+</div>
+
+```tsx
+const today = new Date();
+today.setHours(9, 0, 0, 0);
+
+const dayAfterTomorrow = new Date();
+dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
+dayAfterTomorrow.setHours(14, 0, 0, 0);
+
+const yesterday = new Date();
+yesterday.setDate(yesterday.getDate() - 1);
+yesterday.setHours(8, 0, 0, 0);
+
+const nextWeek = new Date();
+nextWeek.setDate(nextWeek.getDate() + 7);
+nextWeek.setHours(10, 0, 0, 0);
+
+<FullCalendar
+  defaultValue={new Date()}
+  events={[
+    {
+      title: "Team standup",
+      initialDate: today,
+      endDate: new Date(today.getTime() + 30 * 60 * 1000),
+      scheme: "primary",
+    },
+    {
+      title: "Doctor appointment",
+      initialDate: new Date(today.getTime() + 90 * 60 * 1000),
+      endDate: new Date(today.getTime() + 150 * 60 * 1000),
+      scheme: "success",
+    },
+    {
+      title: "Lunch with Maria",
+      initialDate: dayAfterTomorrow,
+      endDate: new Date(dayAfterTomorrow.getTime() + 60 * 60 * 1000),
+      scheme: "info",
+    },
+    {
+      title: "Dentist",
+      initialDate: yesterday,
+      endDate: new Date(yesterday.getTime() + 60 * 60 * 1000),
+      scheme: "danger",
+    },
+    {
+      title: "Sprint planning",
+      initialDate: nextWeek,
+      endDate: new Date(nextWeek.getTime() + 90 * 60 * 1000),
+      scheme: "warning",
+    },
+  ]}
+/>
+```
+
+## Event Color Schemes
+
+Use the `scheme` property on each event to apply a color: `"primary"` (blue), `"success"` (green), `"warning"` (yellow), `"danger"` (red), and `"info"` (light blue). Defaults to `"primary"` when omitted.
+
+```tsx
+{ title: "Meeting",     initialDate: date, scheme: "primary" }
+{ title: "Confirmed",   initialDate: date, scheme: "success" }
+{ title: "Pending",     initialDate: date, scheme: "warning" }
+{ title: "Cancelled",   initialDate: date, scheme: "danger"  }
+{ title: "Note",        initialDate: date, scheme: "info"    }
+```
 
 ## Event Click Handler
 
-Attach an `onClick` to individual events to respond to user interaction. The callback receives the `data` payload defined on that event.
-
-```tsx
-{
-  title: "Team meeting",
-  date: new Date("2025-06-13T10:00:00"),
-  scheme: "primary",
-  data: { meetingId: 42 },
-  onClick: ({ meetingId }) => openMeeting(meetingId),
-}
-```
-
-## Navigation Callback
-
-Use `onChangeView` to react when the user navigates to a different period (e.g., next month). Receives the current `Date` of the displayed period — useful for fetching events on demand.
+Attach an `onClick` callback to individual events to respond to user interaction. The callback receives the `data` payload defined on that event.
 
 ```tsx
 <FullCalendar
-  onChangeView={(date) => fetchEventsForMonth(date)}
+  events={[
+    {
+      title: "Team meeting",
+      initialDate: new Date(2026, 5, 22, 10, 0),
+      endDate: new Date(2026, 5, 22, 11, 0),
+      scheme: "primary",
+      data: { meetingId: 42 },
+      onClick: ({ meetingId }) => openMeeting(meetingId),
+    },
+  ]}
+/>
+```
+
+## Blocked Timestamps
+
+Use `blockedTimestamps` to visually mark time ranges as unavailable. Each entry requires an `initialDate` and an `endDate`. Blocked ranges are rendered differently from events and are not interactive.
+
+```tsx
+<FullCalendar
+  defaultValue={new Date()}
+  blockedTimestamps={[
+    {
+      initialDate: new Date(2026, 5, 22, 12, 0),
+      endDate: new Date(2026, 5, 22, 13, 0),
+    },
+    {
+      initialDate: new Date(2026, 5, 23, 8, 0),
+      endDate: new Date(2026, 5, 23, 9, 0),
+    },
+  ]}
+/>
+```
+
+## Navigation
+
+Use `onChangeView` to react when the user navigates to a different period (e.g., next month or previous week). The callback receives the `Date` representing the newly visible period — useful for fetching events on demand.
+
+Use `onClickDate` to respond when the user clicks a date cell.
+
+```tsx
+<FullCalendar
+  onChangeView={(date) => fetchEventsForPeriod(date)}
+  onClickDate={(date) => openCreateEventModal(date)}
 />
 ```
 
@@ -68,41 +208,42 @@ Use `onChangeView` to react when the user navigates to a different period (e.g.,
   <AlertContent>
     <AlertTitle>Lazy event loading</AlertTitle>
     <AlertDescription>
-      Combine `onChangeView` with `onChange` to fetch only the events relevant
-      to the visible period, avoiding loading the full event list upfront.
+      Combine `onChangeView` with a state update to fetch only the events
+      relevant to the visible period, avoiding loading the full event list
+      upfront.
     </AlertDescription>
   </AlertContent>
 </AlertContainer>
 
 ## Properties
 
-**`defaultView`** - `"day" | "week" | "month"` (default: `"month"`)
-Initial view rendered when the calendar mounts. The user can switch views at any time using the header controls.
-
 **`defaultValue`** - `Date`
-Initial selected date. Defaults to today's date when not provided.
+Initial focused date when the calendar mounts. Defaults to today when not provided.
 
 **`events`** - `FullCalendarEvent[]`
-Array of events to display on the calendar. See the event shape properties below.
+Array of events to display across day, week, and month views.
 
-**`onChange`** - `(date: Date) => void`
-Callback fired when the selected date changes. Receives the newly selected `Date`.
+**`blockedTimestamps`** - `BlockTimestamp[]`
+Time ranges that should be visually marked as unavailable on the calendar.
 
 **`onChangeView`** - `(date: Date) => void`
-Callback fired when the user navigates to a different period. Receives the `Date` representing the current period in view.
+Callback fired when the user navigates to a different period. Receives the `Date` of the newly visible period.
+
+**`onClickDate`** - `(date: Date) => void`
+Callback fired when the user clicks a date cell. Receives the clicked `Date`.
 
 ---
 
 ### Event Properties (`FullCalendarEvent`)
 
 **`title`** - `string`
-Label shown on the event chip in the calendar. Required.
+Display label shown on the event chip. Required.
 
-**`date`** - `Date`
-Event start date and time. Required.
+**`initialDate`** - `Date`
+Start date and time of the event. Required.
 
 **`endDate`** - `Date`
-Event end date and time. When omitted, the event is treated as a point in time.
+End date and time of the event. When omitted, the event is treated as a point in time.
 
 **`data`** - `any`
 Arbitrary payload forwarded to the `onClick` callback.
@@ -115,156 +256,10 @@ Callback fired when the user clicks the event chip. Receives the value of `data`
 
 ---
 
-## Example
+### Blocked Timestamp Properties (`BlockTimestamp`)
 
-<div className="noContent" style={{ minWidth: "790px" }}>
-  {(() => {
-    const today = new Date();
-    today.setHours(8, 30, 0, 0);
+**`initialDate`** - `Date`
+Start of the blocked time range. Required.
 
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    tomorrow.setHours(8, 15, 0, 0);
-
-    const dayAfterTomorrow = new Date();
-    dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
-    dayAfterTomorrow.setHours(14, 0, 0, 0);
-
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    yesterday.setHours(8, 0, 0, 0);
-
-    const nextWeek = new Date();
-    nextWeek.setDate(nextWeek.getDate() + 7);
-    nextWeek.setHours(14, 0, 0, 0);
-
-    return (
-      <FullCalendar
-        events={[
-          {
-            date: today,
-            endDate: new Date(today.getTime() + 85 * 60 * 1000),
-            title: "Consulta com o Dr. João",
-            data: { id: "1", title: "João da Silva" },
-            scheme: "success",
-            onClick: (data) => console.log("click", data),
-          },
-          {
-            date: today,
-            endDate: new Date(today.getTime() + 85 * 60 * 1000),
-            title: "Consulta com o Dr. João",
-            data: { id: "12", title: "João da Silva 2" },
-            scheme: "success",
-            onClick: (data) => console.log("click", data),
-          },
-          {
-            date: new Date(today.getTime() + 15 * 60 * 1000),
-            endDate: new Date(today.getTime() + 45 * 60 * 1000),
-            title: "Reunião com a equipe de marketing",
-            data: { id: "2", title: "Pedro Oliveira" },
-            scheme: "warning",
-            onClick: (data) => console.log("click", data),
-          },
-          {
-            date: dayAfterTomorrow,
-            endDate: new Date(dayAfterTomorrow.getTime() + 60 * 60 * 1000),
-            title: "Almoço com a Maria",
-            data: { id: "3", title: "Maria Silva" },
-            scheme: "info",
-            onClick: (data) => console.log("click", data),
-          },
-          {
-            date: yesterday,
-            endDate: new Date(yesterday.getTime() + 60 * 60 * 1000),
-            title: "Dentista",
-            data: { id: "4", title: "Dentista" },
-            scheme: "danger",
-            onClick: (data) => console.log("click", data),
-          },
-          {
-            date: nextWeek,
-            endDate: new Date(nextWeek.getTime() + 60 * 60 * 1000),
-            title: "Reunião com o time de desenvolvimento",
-            data: { id: "5", title: "Time de Desenvolvimento" },
-            scheme: "primary",
-            onClick: (data) => console.log("click", data),
-          },
-        ]}
-      />
-    );
-  })()}
-</div>
-
-```tsx
-const today = new Date();
-today.setHours(8, 30, 0, 0);
-
-const tomorrow = new Date();
-tomorrow.setDate(tomorrow.getDate() + 1);
-tomorrow.setHours(8, 15, 0, 0);
-
-const dayAfterTomorrow = new Date();
-dayAfterTomorrow.setDate(dayAfterTomorrow.getDate() + 2);
-dayAfterTomorrow.setHours(14, 0, 0, 0);
-
-const yesterday = new Date();
-yesterday.setDate(yesterday.getDate() - 1);
-yesterday.setHours(8, 0, 0, 0);
-
-const nextWeek = new Date();
-nextWeek.setDate(nextWeek.getDate() + 7);
-nextWeek.setHours(14, 0, 0, 0);
-
-<FullCalendar
-  events={[
-    {
-      date: today,
-      endDate: new Date(today.getTime() + 85 * 60 * 1000),
-      title: "Consulta com o Dr. João",
-      data: { id: "1", title: "João da Silva" },
-      scheme: "success",
-      onClick: (data) => console.log("click", data),
-    },
-    {
-      date: today,
-      endDate: new Date(today.getTime() + 85 * 60 * 1000),
-      title: "Consulta com o Dr. João",
-      data: { id: "12", title: "João da Silva 2" },
-      scheme: "success",
-      onClick: (data) => console.log("click", data),
-    },
-    {
-      date: new Date(today.getTime() + 15 * 60 * 1000),
-      endDate: new Date(today.getTime() + 45 * 60 * 1000),
-      title: "Reunião com a equipe de marketing",
-      data: { id: "2", title: "Pedro Oliveira" },
-      scheme: "warning",
-      onClick: (data) => console.log("click", data),
-    },
-    {
-      date: dayAfterTomorrow,
-      endDate: new Date(dayAfterTomorrow.getTime() + 60 * 60 * 1000),
-      title: "Almoço com a Maria",
-      data: { id: "3", title: "Maria Silva" },
-      scheme: "info",
-      onClick: (data) => console.log("click", data),
-    },
-    {
-      date: yesterday,
-      endDate: new Date(yesterday.getTime() + 60 * 60 * 1000),
-      title: "Dentista",
-      data: { id: "4", title: "Dentista" },
-      scheme: "danger",
-      onClick: (data) => console.log("click", data),
-    },
-    {
-      date: nextWeek,
-      endDate: new Date(nextWeek.getTime() + 60 * 60 * 1000),
-      title: "Reunião com o time de desenvolvimento",
-      data: { id: "5", title: "Time de Desenvolvimento" },
-      scheme: "primary",
-      onClick: (data) => console.log("click", data),
-    },
-  ]}
-/>
-```
+**`endDate`** - `Date`
+End of the blocked time range. Required.

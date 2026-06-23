@@ -11,10 +11,10 @@
     "algolia:build": "bun src/services/algoliaUploadService.ts"
   },
   "dependencies": {
-    "@arkyn/components": "3.0.1-beta.146",
-    "@arkyn/server": "3.0.1-beta.146",
-    "@arkyn/shared": "3.0.1-beta.146",
-    "@arkyn/templates": "3.0.1-beta.146",
+    "@arkyn/components": "3.0.1-beta.147",
+    "@arkyn/server": "3.0.1-beta.147",
+    "@arkyn/shared": "3.0.1-beta.147",
+    "@arkyn/templates": "3.0.1-beta.147",
     "@docsearch/css": "^4.6.3",
     "@docsearch/react": "^4.6.3",
     "@linaria/core": "^7.0.0",

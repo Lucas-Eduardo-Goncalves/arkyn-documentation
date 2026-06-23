@@ -1,9 +1,10 @@
 import { DocSearch } from "@docsearch/react";
 import { Search } from "lucide-react";
+import { useEffect, useState } from "react";
 import {
-  ALGOLIA_READ_API_KEY,
   ALGOLIA_APP_ID,
   ALGOLIA_INDEX_NAME,
+  ALGOLIA_READ_API_KEY,
 } from "~/templates/algolia";
 import { Container } from "./styles";
 
@@ -12,13 +13,24 @@ function AlgoliaSearch() {
     ALGOLIA_APP_ID && ALGOLIA_READ_API_KEY && ALGOLIA_INDEX_NAME,
   );
 
-  if (!isConfigured) {
+  const [show, setShow] = useState(false);
+  const isMacOs = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShow(true);
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!isConfigured || show === false) {
     return (
       <Container>
         <button className="searchButton" type="button" disabled>
-          <Search size={16} />
+          <Search size={20} />
           <span>Search docs</span>
-          <kbd>Ctrl</kbd>
+          <kbd>{isMacOs ? "⌘" : "Ctrl"}</kbd>
           <kbd>K</kbd>
         </button>
       </Container>

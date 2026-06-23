@@ -2,6 +2,47 @@
 
 This file centralizes release notes for the documentation and package set of the Arkyn ecosystem.
 
+## v3.0.1-beta.147
+
+Date: 2026-06-23
+
+Status: `FullCalendar` API refinements with blocked timestamps support, date cell interaction, and default orientation correction extended to remaining form components.
+
+### Changes By Package
+
+- `@arkyn/components`
+  - **Extended default `orientation` correction to additional form components** — the default value of the `orientation` prop was changed from `"horizontal"` to `"vertical"` in the following components: `ImageUpload`, `MultiSelect`, `RadioGroup`, `RichText`, and `Select`. This continues the correction applied to `PhoneInput` in v3.0.1-beta.145, completing the alignment across all form components that support the field-template layout.
+  - **Added `blockedTimestamps` prop to `FullCalendar`** — accepts an array of `BlockTimestamp` objects (`{ initialDate: Date; endDate: Date }`). Time slots and date cells falling within a blocked range are visually marked as unavailable and made non-interactive, preventing the user from clicking them.
+  - **Added `onClickDate` prop to `FullCalendar`** — a new optional callback `(date: Date) => void` fired when the user clicks an available (non-blocked) cell in any view (day, week, or month). Provides a uniform way to respond to date selection across all three calendar views.
+  - **Fixed event click propagation** — clicking an event chip no longer bubbles up to the parent cell, preventing unintended `onClickDate` triggers when the user intends to interact with an event rather than the underlying date slot.
+  - **Introduced `BlockTimestamp` type** — a new exported type (`{ initialDate: Date; endDate: Date }`) used to describe unavailable time ranges passed to `blockedTimestamps`.
+  - **Updated JSDoc** for `FullCalendarEvent` and `BlockTimestamp`, including updated usage examples reflecting the new prop names and callback signatures.
+
+### Breaking Changes
+
+- **`FullCalendarEvent.date` renamed to `FullCalendarEvent.initialDate`** — the property used to define an event's start date/time was renamed for naming consistency with `BlockTimestamp`. Any consumer passing events to `FullCalendar` must rename `date` to `initialDate` in every event object.
+
+  ```tsx
+  // Before (v3.0.1-beta.146)
+  events={[{ title: "Reunião", date: new Date(2026, 5, 23, 10, 0) }]}
+
+  // After (v3.0.1-beta.147)
+  events={[{ title: "Reunião", initialDate: new Date(2026, 5, 23, 10, 0) }]}
+  ```
+
+- **`FullCalendarProps.defaultView` removed** — the prop that set the initial calendar view (`"day"` | `"week"` | `"month"`) has been removed. The component now always initializes in month view. If your integration relied on `defaultView="day"` or `defaultView="week"`, the calendar will now open in month view by default.
+
+- **`FullCalendarProps.onChange` removed** — the callback that fired on selected date changes has been removed. Use `onClickDate` (for user-initiated date cell clicks) or `onChangeView` (for navigation between periods) as replacements depending on the intended behavior.
+
+- **Default `orientation` is now `"vertical"` in `ImageUpload`, `MultiSelect`, `RadioGroup`, `RichText`, and `Select`** — any of these components rendered without an explicit `orientation` prop will now display in vertical layout instead of horizontal. Pass `orientation="horizontal"` explicitly to preserve the previous behavior.
+
+### Notes
+
+- The `FullCalendar` breaking changes affect only consumers who integrated the component after its introduction in v3.0.1-beta.146.
+- The orientation correction completes the standardization begun in v3.0.1-beta.145 (`PhoneInput`), ensuring all form components that expose the `orientation` prop default to `"vertical"` — consistent with the field-template layout convention used across the library.
+- Version bumped across all packages (`@arkyn/components`, `@arkyn/server`, `@arkyn/shared`, `@arkyn/templates`).
+
+
 ## v3.0.1-beta.146
 
 Date: 2026-06-13
