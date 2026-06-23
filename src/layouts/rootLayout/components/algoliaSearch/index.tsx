@@ -7,7 +7,6 @@ import {
   ALGOLIA_READ_API_KEY,
 } from "~/templates/algolia";
 import { Container } from "./styles";
-import { useHydrated } from "@arkyn/components";
 
 function AlgoliaSearch() {
   const isConfigured = Boolean(
@@ -15,11 +14,6 @@ function AlgoliaSearch() {
   );
 
   const [show, setShow] = useState(false);
-
-  function isMacOs(): boolean {
-    if (useHydrated() === false) return false;
-    return navigator.platform.toUpperCase().indexOf("MAC") >= 0;
-  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -35,7 +29,7 @@ function AlgoliaSearch() {
         <button className="searchButton" type="button" disabled>
           <Search size={20} />
           <span>Search docs</span>
-          <kbd>{isMacOs() ? "⌘" : "Ctrl"}</kbd>
+          <kbd>Ctrl</kbd>
           <kbd>K</kbd>
         </button>
       </Container>
