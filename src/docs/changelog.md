@@ -2,6 +2,38 @@
 
 This file centralizes release notes for the documentation and package set of the Arkyn ecosystem.
 
+## v3.0.1-beta.148
+
+Date: 2026-06-23
+
+Status: Controlled value support for `FullCalendar` and `Calendar` components, with aligned view-date prop naming.
+
+### Changes By Package
+
+- `@arkyn/components`
+  - **Added `viewValue` and `defaultViewValue` props to `FullCalendar`** — replaces the previous `value` / `defaultValue` naming for the focused date. `viewValue` enables external controlled navigation (e.g. programmatically jumping to a specific month), while `defaultViewValue` sets the initial view date on mount. These props are forwarded directly to `FullCalendarProvider`.
+  - **Added `value`, `viewValue`, and `defaultViewValue` props to `Calendar` (single and range modes)** — `value` enables full controlled selection of the active date (single: `Date`, range: `[Date, Date]`), while `viewValue` and `defaultViewValue` control which month/year is currently displayed in the calendar header. All three props are available on both `SingleCalendarProps` and `RangeCalendarProps` and are forwarded to `CalendarProvider`.
+  - **Adjusted border-radius on `FullCalendar` view containers** — `DayCalendarContainer`, `WeekCalendarTableContainer`, and `MonthlyCalendarTableContainer` now consistently apply `border-radius: 8px`, improving visual alignment across views.
+
+### Breaking Changes
+
+- **`FullCalendarProps.defaultValue` renamed to `defaultViewValue`** — any consumer passing `defaultValue` to `FullCalendar` to set the initial focused date must rename it to `defaultViewValue`. The previous prop is silently ignored in this version.
+
+  ```tsx
+  // Before (v3.0.1-beta.147)
+  <FullCalendar defaultValue={new Date(2026, 5, 1)} />
+
+  // After (v3.0.1-beta.148)
+  <FullCalendar defaultViewValue={new Date(2026, 5, 1)} />
+  ```
+
+### Notes
+
+- The `value` / `viewValue` / `defaultViewValue` naming convention is now consistent between `FullCalendar` and `Calendar`: `value` controls the selected date(s), `viewValue` controls the currently displayed period, and `defaultViewValue` sets the initial displayed period.
+- No behavioral changes were made to event rendering, blocked timestamps, or click callbacks introduced in v3.0.1-beta.147.
+- Version bumped across all packages (`@arkyn/components`, `@arkyn/server`, `@arkyn/shared`, `@arkyn/templates`).
+
+
 ## v3.0.1-beta.147
 
 Date: 2026-06-23

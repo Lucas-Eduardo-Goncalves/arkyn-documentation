@@ -64,6 +64,46 @@ Use `variant` to switch between simplified and full header navigation.
 <Calendar type="single" variant="complete" />
 ```
 
+## Controlled Mode
+
+Use `value` to control the selected date externally (controlled component pattern). Pair with `onChange` to keep state in sync.
+
+```tsx
+const [date, setDate] = useState<Date | undefined>(undefined);
+
+<Calendar
+	type="single"
+	value={date}
+	onChange={(d) => setDate(d)}
+/>
+```
+
+For range mode:
+
+```tsx
+const [range, setRange] = useState<[Date, Date] | undefined>(undefined);
+
+<Calendar
+	type="range"
+	value={range}
+	onChange={(r) => setRange(r)}
+/>
+```
+
+## Controlled View
+
+Use `viewValue` to control the currently visible month/year, and `defaultViewValue` to set the initial view without making it fully controlled.
+
+```tsx
+<Calendar
+	type="single"
+	defaultViewValue={new Date(2026, 0, 1)}
+	onChangeView={(viewDate) => {
+		console.log("Navigated to:", viewDate);
+	}}
+/>
+```
+
 ## Change Callbacks
 
 Use `onChange` to react to date selection changes and `onChangeView` to react when the visible month/year changes.
@@ -132,17 +172,29 @@ Defines the calendar selection mode.
 **`variant`** - `"basic" | "complete"` (default: `"complete"`)
 Controls header behavior and navigation complexity.
 
+**`value`** - `Date` (when `type="single"`)
+Controlled selected date in single mode.
+
+**`value`** - `[Date, Date]` (when `type="range"`)
+Controlled selected range in range mode, using `[start, end]` format.
+
 **`defaultValue`** - `Date` (when `type="single"`)
-Initial selected date in single mode.
+Initial selected date in single mode (uncontrolled).
 
 **`defaultValue`** - `[Date, Date]` (when `type="range"`)
-Initial selected range in range mode, using `[start, end]` format.
+Initial selected range in range mode (uncontrolled), using `[start, end]` format.
 
 **`onChange`** - `(date: Date) => void` (when `type="single"`)
 Called when the selected single date changes.
 
 **`onChange`** - `(date: [Date, Date]) => void` (when `type="range"`)
 Called when the selected date range changes.
+
+**`viewValue`** - `Date`
+Controlled currently visible month/year.
+
+**`defaultViewValue`** - `Date`
+Initial visible month/year (uncontrolled).
 
 **`onChangeView`** - `(date: Date) => void`
 Called when the current calendar view changes (month/year navigation).

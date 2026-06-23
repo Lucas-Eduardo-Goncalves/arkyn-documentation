@@ -18,11 +18,11 @@ import { FullCalendar } from "@arkyn/components";
 ## Basic Usage
 
 <div className="noContent" style={{ minWidth: "790px" }}>
-  <FullCalendar defaultValue={new Date()} />
+  <FullCalendar defaultViewValue={new Date()} />
 </div>
 
 ```tsx
-<FullCalendar defaultValue={new Date()} />
+<FullCalendar defaultViewValue={new Date()} />
 ```
 
 ## Events
@@ -48,7 +48,7 @@ Pass an array of event objects to the `events` prop. Each event requires a `titl
 
     return (
       <FullCalendar
-        defaultValue={new Date()}
+        defaultViewValue={new Date()}
         events={[
           {
             title: "Team standup",
@@ -103,7 +103,7 @@ nextWeek.setDate(nextWeek.getDate() + 7);
 nextWeek.setHours(10, 0, 0, 0);
 
 <FullCalendar
-  defaultValue={new Date()}
+  defaultViewValue={new Date()}
   events={[
     {
       title: "Team standup",
@@ -176,7 +176,7 @@ Use `blockedTimestamps` to visually mark time ranges as unavailable. Each entry 
 
 ```tsx
 <FullCalendar
-  defaultValue={new Date()}
+  defaultViewValue={new Date()}
   blockedTimestamps={[
     {
       initialDate: new Date(2026, 5, 22, 12, 0),
@@ -217,8 +217,11 @@ Use `onClickDate` to respond when the user clicks a date cell.
 
 ## Properties
 
-**`defaultValue`** - `Date`
-Initial focused date when the calendar mounts. Defaults to today when not provided.
+**`viewValue`** - `Date`
+Controlled currently focused date. Use with `onChangeView` to manage navigation state externally.
+
+**`defaultViewValue`** - `Date`
+Initial focused date when the calendar mounts (uncontrolled). Defaults to today when not provided.
 
 **`events`** - `FullCalendarEvent[]`
 Array of events to display across day, week, and month views.
