@@ -4,11 +4,11 @@ const Container = styled.div`
   margin-left: auto;
 
   width: 100%;
-  min-width: 240px;
-  max-width: 240px;
+  min-width: 274px;
+  max-width: 274px;
 
   .searchButton {
-    width: 218.75px;
+    min-width: 274px;
   }
 
   .searchButton,
@@ -17,7 +17,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
 
-    /* width: 100%; */
+    width: 100%;
     max-width: 240px;
     min-height: 38px;
     max-height: 38px;
