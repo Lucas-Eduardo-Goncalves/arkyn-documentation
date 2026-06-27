@@ -8,6 +8,13 @@ The `useAutomation` hook automates modal closing and toast notifications based o
 import { useAutomation } from "@arkyn/components";
 ```
 
+
+For the hook to work, you need to install the following dependencies:
+
+```bash
+npm install react-scroll
+```
+
 ## Parameters
 
 ### `formResponseData` (required)
