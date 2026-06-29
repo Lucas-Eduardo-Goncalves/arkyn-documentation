@@ -2,6 +2,100 @@
 
 This file centralizes release notes for the documentation and package set of the Arkyn ecosystem.
 
+## v3.0.1-beta.170
+
+Date: 2026-06-28
+
+Status: Infrastructure modernization — CI/CD pipeline, package exports, dependency management, automated versioning, and Biome integration across all packages.
+
+### Changes By Package
+
+- `@arkyn/components`
+  - Moved all external UI dependencies (`framer-motion`, `mapbox-gl`, `slate`, `slate-history`, `slate-react`, `@react-google-maps/api`, `react-hot-toast`, `react-scroll`, `html-react-parser`, `@react-input/mask`) from `dependencies` to `peerDependencies`.
+  - Added `exports` field to `package.json` with granular module-level entry points under `dist/modules/`.
+  - Added `generate-exports.ts` script to automatically generate the exports map from `src/index.ts`.
+  - Enabled `module preservation` output mode in Vite for modular distribution.
+  - Added `"sideEffects": ["*.css"]` to preserve CSS imports during tree-shaking.
+  - Renamed CSS output to `style.css`; added `styles.d.ts` for stylesheet typing.
+  - Added `publish:beta` and `publish:latest` scripts to `package.json`.
+  - Added `engines` field specifying minimum Node.js and Bun versions.
+  - Removed `.npmignore` in favor of the `files` field in `package.json`.
+  - Removed obsolete documentation files: `documentation/css/reset.css`, `documentation/css/variables.css`, `documentation/index.html`, `documentation/src/app.tsx`, `documentation/src/main.tsx`, `documentation/tsconfig.json`, and `documentation/vite.config.ts`.
+  - Enabled `strict: true` and `noUnusedLocals: true` in `tsconfig.json`.
+  - Refactored `fireToast` in `useAutomation.ts` to use `useCallback`, preventing function recreation on every render.
+  - Added `test:watch` script.
+
+- `@arkyn/server`
+  - Added `exports` field to `package.json`; entry point migrated from `bundle.js` to `index.js`.
+  - Added `generate-exports.ts` script.
+  - Added `"sideEffects": false` for full tree-shaking support.
+  - Added `publish:beta` and `publish:latest` scripts.
+  - Added `engines` field.
+  - Removed `.npmignore` in favor of `files`.
+  - Enabled `strict: true` and `noUnusedLocals: true` in `tsconfig.json`.
+  - Corrected test endpoint URL in `logService.spec.ts` to reflect the new endpoint.
+  - Improved debug log output in `BadResponse` and `SuccessResponse` tests with a consistent color scheme.
+  - Added `test:watch` script.
+  - Adjusted Vitest timeout configuration.
+
+- `@arkyn/shared`
+  - Added `exports` field to `package.json`; entry point migrated from `bundle.js` to `index.js`.
+  - Added `generate-exports.ts` script.
+  - Added `"sideEffects": false` for full tree-shaking support.
+  - Added `publish:beta` and `publish:latest` scripts.
+  - Added `engines` field.
+  - Removed `.npmignore` in favor of `files`.
+  - Enabled `strict: true` and `noUnusedLocals: true` in `tsconfig.json`.
+  - Rewrote `forEach` in `logMapperService.ts` with an explicit block for improved readability.
+  - Added `test:watch` script.
+  - Adjusted Vitest timeout configuration.
+
+- `@arkyn/templates`
+  - Added `exports` field to `package.json`; entry point migrated from `bundle.js` to `index.js`.
+  - Added `generate-exports.ts` script.
+  - Added `"sideEffects": false` for full tree-shaking support.
+  - Added `publish:beta` and `publish:latest` scripts.
+  - Added `engines` field.
+  - Removed `.npmignore` in favor of `files`.
+  - Enabled `strict: true` and `noUnusedLocals: true` in `tsconfig.json`.
+
+### Monorepo / CI/CD
+
+- Added `.github/workflows/beta.yml` — automated publish workflow triggered on push to `develop`, executing the following steps in order:
+  1. Checkout (`actions/checkout@v5`)
+  2. Dependency installation with Bun
+  3. `@types/*` in `dependencies` integrity check
+  4. Security audit (`bun audit` across all packages)
+  5. Type check (`bun run all:typecheck`)
+  6. Tests (`bun run all:test`)
+  7. Build (`bun run all:build`) — `templates` and `shared` first, then `components` and `server`
+  8. Publish (`bun run all:publish:beta`) via NPM using a token from GitHub Secrets
+- Configured NPM authentication via `setup-node` with `registry-url` and `NODE_AUTH_TOKEN`; job permissions set to `id-token` and `contents`.
+- Added CI step that scans all `packages/*/package.json` files and fails the build if any `@types/*` package is listed under `dependencies` instead of `devDependencies`.
+- Added `all:publish:beta` and `all:publish:latest` scripts at the monorepo root to publish all packages in a single command.
+- Added `generate-version.ts` in each package with automatic version increment logic. The following scripts are available at the monorepo root:
+  - `release:beta` — increments the beta suffix (`beta.169` → `beta.170`)
+  - `release:patch` — patch bump (`3.0.1` → `3.0.2`)
+  - `release:minor` — minor bump (`3.0.x` → `3.1.0`)
+  - `release:major` — major bump (`3.x.x` → `4.0.0`)
+- Added `biome.json` at the project root with `complexity`, `security`, and `a11y` rule sets; `--ci` flag added to the lint command in the workflow.
+- Added `.github/dependabot.yml` for automated dependency update PRs across all packages in the monorepo.
+- Updated repository URLs in all `package.json` files to the new `arkyn-library` repository.
+- Removed `.DS_Store` files from git history (root, `packages/`, `packages/server/`, `packages/shared/`).
+- Translated and restructured `CHANGELOG.GUIDE.md` from Portuguese to English.
+
+### Breaking Changes
+
+- **`@arkyn/components` peer dependencies** — the following packages were moved from `dependencies` to `peerDependencies` and must now be installed in the consumer project: `framer-motion`, `mapbox-gl`, `slate`, `slate-history`, `slate-react`, `@react-google-maps/api`, `react-hot-toast`, `react-scroll`, `html-react-parser`, and `@react-input/mask`. Projects that relied on transitive installation of these packages must add them explicitly.
+- **Minimum React version corrected** — the `peerDependencies` requirement for `react` and `react-dom` was corrected from `>=19.2.6` to `>=18.0.0`, restoring compatibility with React 18 projects.
+
+### Notes
+
+- No user-facing features were added in this version range (`beta.149`–`beta.170`). All changes are tooling, packaging, and CI/CD infrastructure.
+- The addition of the `exports` field means consumers using deep import paths outside the documented API surface may need to update their import statements.
+- Version bumped across all packages (`@arkyn/components`, `@arkyn/server`, `@arkyn/shared`, `@arkyn/templates`).
+
+
 ## v3.0.1-beta.148
 
 Date: 2026-06-23
