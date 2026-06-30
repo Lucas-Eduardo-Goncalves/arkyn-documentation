@@ -2,6 +2,78 @@
 
 This file centralizes release notes for the documentation and package set of the Arkyn ecosystem.
 
+## v3.0.1-beta.172
+
+Date: 2026-06-29
+
+Status: VSCode workspace settings, Biome rule tuning, and CSS rule ordering fixes across `Badge`, `Button`, `Popover`, and `Table` components.
+
+### Changes By Package
+
+- `@arkyn/components`
+  - **`Table / TableBody`: added missing empty-state styles** — `.arkynTableBodyEmptyLine > td > div` now has explicit layout rules: `display: flex`, `align-items: center`, `justify-content: center`, `text-align: center`, `white-space: nowrap`, `font-size: 14px`, `font-weight: 400`, and `color: var(--text-body)`. Previously the empty-line div had no layout, causing its content to render unaligned when a table had no rows.
+  - **CSS rule ordering fixes in `Badge`, `Button`, `Popover`, and `Table`** — rules were reordered within their respective stylesheets to follow a consistent pattern (base/structural rules first, then variants/states). No selectors, properties, or values were changed; this is a cosmetic reorganization aligned with the Biome formatter output.
+  - **`Slider`: import statement reformatted to multiline** — the single-line `import { ..., useCallback, useEffect, useRef, useState }` introduced in beta.171 was split into a multiline block by the Biome formatter. No logic change.
+
+- Repository / Tooling
+  - **Added `.vscode/settings.json`** — workspace-level VSCode configuration committed for consistent developer experience:
+    - Prettier disabled (`"prettier.enable": false`)
+    - Biome set as the default formatter for JS, JSX, TS, TSX, and JSON
+    - Format on save enabled (`"editor.formatOnSave": true`)
+    - Biome organize-imports and fix-all code actions set to `"explicit"` (runs on save)
+  - **`biome.json`: two additional rules set to `off`**
+    - `a11y/useKeyWithClickEvents`: disabled — components use click-only interactions intentionally (e.g. overlay dismissal), and adding keyboard handlers for all of them is out of scope for this release.
+    - `complexity/noStaticOnlyClass`: disabled — some service classes use only static methods by design (e.g. `SchemaValidator`-style patterns in server). Enforcing this rule would require a structural refactor unrelated to current goals.
+
+### Breaking Changes
+
+None.
+
+### Notes
+
+- The `.vscode/settings.json` file only affects local VSCode installations. It has no effect on the published packages or CI behavior.
+- The CSS reorderings in `Badge`, `Button`, and `Popover` are purely cosmetic and do not affect rendered output.
+- The `TableBody` empty-state fix corrects a visual regression — the empty-line text was rendering but without centering or the correct color token applied.
+- Version bumped across all packages (`@arkyn/components`, `@arkyn/server`, `@arkyn/shared`, `@arkyn/templates`).
+
+
+## v3.0.1-beta.171
+
+Date: 2026-06-29
+
+Status: Type safety sweep across components, server, and shared — replaces implicit `any` casts with intentional annotations, fixes React key warnings in `Pagination`, and improves handler stability in `Slider`.
+
+### Changes By Package
+
+- `@arkyn/components`
+  - **Fixed React key warning in `Pagination`** — `previousPages.map()` and `nextPages.map()` were using the array index as `key`. Changed to use the page number value itself (`key={page}`), which prevents incorrect DOM reconciliation when the page list changes.
+  - **Wrapped `Slider` event handlers with `useCallback`** — `handleMouseUp` and `handleMouseMove` are now memoized. `handleMouseMove` declares its dependency array `[disabled, isDragging, onChange]`, preventing stale closure bugs when those values change mid-drag.
+  - **`FacebookPixel`: replaced `return <></>` with `return null` in dev guard** — returning an empty fragment for a no-op render is semantically incorrect; `null` is the idiomatic React signal for "render nothing".
+  - **`GoogleAnalytics`: return type corrected to `JSX.Element | null`** — the previous return type `JSX.Element` was wrong because the component returns `null` in non-production environments. The signature now accurately reflects runtime behavior.
+  - **`MapView`: renamed `Map` import alias from mapbox-gl to `MapboxMap`** — avoids shadowing the global `Map` built-in. Non-null assertions (`!`) on `mapRef.current` and `mapContainerRef.current` replaced with explicit casts (`as MapboxMap`, `as HTMLDivElement`) for stricter type safety.
+  - **`useDrawer` and `useModal`: added `biome-ignore` annotations for intentional generic `any`** — the `T = any` default in overloaded signatures is intentional for backwards-compatible generics. Annotations document this intent and suppress Biome lint warnings without changing behavior.
+  - **Broad `biome-ignore lint/suspicious/noExplicitAny` annotations added** — applied across `FullCalendar`, `Calendar`, `MultiSelect`, `Select`, `RichText`, `Checkbox`, `Input`, `Textarea`, `PhoneInput`, `MaskedInput`, `CurrencyInput`, `Switch`, `SearchPlaces`, `MapView`, `Providers` (form, drawer, modal), and `iconRenderer`. All usages were pre-existing and intentional; annotations suppress false-positive Biome errors without any logic change.
+
+- `@arkyn/server`
+  - **`schemaValidator.ts`: `catch (error: any)` replaced with typed catch** — `catch (error)` now uses an explicit cast `error as z.ZodError` when passing to `formatErrorMessage`, which is more correct and avoids suppressing the error type entirely.
+  - **`_makeRequest.ts`: `biome-ignore` annotations added to API type declarations** — `body`, `response`, and the generic `T = any` in `ApiSuccessResponse`, `ApiFailedResponse`, and `ApiResponseDTO` are intentionally typed as `any` because the API layer must handle arbitrary payloads. Annotations document this intent.
+  - **HTTP response classes and API methods annotated** — `badResponses`, `successResponses`, `deleteRequest`, `getRequest`, `patchRequest`, `postRequest`, `putRequest`, `_logRequest`, `logMapperService`, `decodeRequestBody`, `decodeRequestErrorMessage`, `errorHandler`, `formAsyncParse`, `formParse`: explicit annotations added where Biome flagged implicit `any`, all intentional.
+
+- `@arkyn/shared`
+  - **`parseSensitiveData.ts`: accumulator type narrowed from `{} as any` to `{} as Record<string, unknown>`** — the reducer in `recursiveMask` now uses a more accurate type for the accumulator object, improving type inference for callers while preserving the same runtime behavior.
+  - **`generate-exports.ts`: type inference improvements** — minor type annotation adjustments to align with Biome's stricter inference rules.
+
+### Breaking Changes
+
+None.
+
+### Notes
+
+- No behavioral changes were introduced. This commit is a type-safety pass enforcing the rules added to `biome.json` in beta.170.
+- The `biome-ignore` annotations with `// intentional` are the agreed-upon pattern for cases where `any` is a deliberate design decision (e.g. generic API responses, plugin-style event data).
+- Version bumped across all packages (`@arkyn/components`, `@arkyn/server`, `@arkyn/shared`, `@arkyn/templates`).
+
+
 ## v3.0.1-beta.170
 
 Date: 2026-06-28
