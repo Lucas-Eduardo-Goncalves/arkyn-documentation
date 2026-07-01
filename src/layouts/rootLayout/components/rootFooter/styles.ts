@@ -1,7 +1,7 @@
 import { styled } from "@linaria/react";
 
 const RootFooterContainer = styled.footer`
-  background-color: #fff;
+  background-color: var(--background);
   border-top: 1px solid var(--border);
 `;
 

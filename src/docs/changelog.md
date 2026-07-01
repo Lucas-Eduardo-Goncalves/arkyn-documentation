@@ -6,6 +6,39 @@ Versions marked with Breaking Changes have a dedicated section with a step-by-st
 
 ---
 
+## v3.0.1-beta.198
+
+Date: 2026-07-01
+
+Comprehensive test suite added to `@arkyn/components`, covering hooks, rich text services, utilities, and templates.
+
+### New
+
+- Adds a dedicated Vitest configuration (`vitest.config.ts`) for `@arkyn/components`: the `@vitejs/plugin-react` plugin with `jsxRuntime: "automatic"`, `resolve.mainFields: ["module"]` for correct ESM export resolution, a `jsdom` environment to simulate the DOM, and configured timeouts (`testTimeout`, `hookTimeout`, `teardownTimeout`).
+- Introduces 27 spec files across four domains in `@arkyn/components`:
+  - **Hooks** (`src/hooks/__test__/`): `useAutomation`, `useDrawer`, `useForm`, `useHydrated`, `useModal`, `useScopedParams`, `useScrollLock`, `useSearchAutomation`, `useSlider`, and `useToast`.
+  - **Rich Text services** (`src/services/__test__/`): `extractTextFromNode`, `isBlockActive`, `isMarkActive`, `maskCurrencyValues`, `toHtml`, `toRichTextValue`, `toggleBlock`, and `toggleMark`.
+  - **Templates** (`src/templates/__test__/`): `badResponses`, `richTextTemplates`, and `successResponses`.
+  - **Utilities** (`src/utils/__test__/`): `phoneInputUtilities` and `richTextUtilities`.
+
+### Internal changes
+
+- Adds `@testing-library/react`, `jsdom`, `vitest` (via the workspace `catalog:`), and `@types/is-hotkey` as devDependencies of `@arkyn/components`.
+- Updates `actions/setup-node` from `v4` to `v5` in the beta CI workflow.
+
+### Breaking Changes
+
+None.
+
+### Notes
+
+- This version introduces no changes to the components' public API. All added files are for testing (`*.spec.ts/tsx`) and configuration (`vitest.config.ts`).
+- Rich text tests cover internal services (`isBlockActive`, `toggleBlock`, `toHtml`, etc.) that previously lacked automated coverage, reducing the risk of regression during future editor changes.
+- `@types/is-hotkey` has been added to `devDependencies` and will not be included in published packages (see the CI check added in beta.170).
+- Version bumped across all packages (`@arkyn/components`, `@arkyn/server`, `@arkyn/shared`, `@arkyn/templates`).
+
+---
+
 ## v3.0.1-beta.196
 
 Date: 2026-06-30

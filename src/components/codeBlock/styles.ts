@@ -1,7 +1,7 @@
 import { styled } from "@linaria/react";
 
 const InlineBlockContainer = styled.code`
-  background-color: var(--background);
+  background-color: var(--background-underground);
   border: 1px solid var(--border);
   border-radius: 3px;
   padding: 2px 4px;
@@ -12,7 +12,7 @@ const InlineBlockContainer = styled.code`
 `;
 
 const BlockContainer = styled.div`
-  background-color: var(--card-foreground-primary);
+  background-color: var(--background-underground);
   border: 1px solid var(--border);
   border-radius: 8px;
   overflow: auto;

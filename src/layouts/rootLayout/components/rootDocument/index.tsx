@@ -6,14 +6,17 @@ import "@arkyn/components/styles";
 import "@docsearch/css/dist/style.css";
 
 import { RootDocumentContainer } from "./styles";
+import { useTheme } from "~/hooks/useTheme";
 
 type RootDocument = {
   children: ReactNode;
 };
 
 function RootDocument({ children }: RootDocument) {
+  const { theme } = useTheme();
+
   return (
-    <html lang="pt-br" className="lightBlue">
+    <html lang="pt-br" className={theme}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

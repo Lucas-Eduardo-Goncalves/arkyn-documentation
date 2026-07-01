@@ -6,7 +6,7 @@ const Popover = styled(RawPopover)`
     border: none;
     background: none;
 
-    color: var(--text-body);
+    color: var(--text-heading);
     font-weight: 600;
     font-size: 14px;
 

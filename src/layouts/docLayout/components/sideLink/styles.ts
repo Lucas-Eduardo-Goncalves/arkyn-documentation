@@ -11,14 +11,18 @@ const SideLinkContainer = styled(Link)`
   text-decoration: none;
   color: var(--text-body);
 
-  background-color: var(--card);
+  background-color: var(--background);
 
   &:hover {
-    background-color: var(--card-foreground-primary);
+    filter: brightness(0.97);
+  }
+
+  html.dark &:not(.active):hover {
+    filter: brightness(1.5);
   }
 
   &.active {
-    background: rgba(var(--spotlight-primary), 0.1);
+    background: rgb(var(--spotlight-primary-foreground));
     color: rgb(var(--spotlight-primary));
   }
 `;

@@ -1,13 +1,18 @@
+import { IconButton } from "@arkyn/components/iconButton";
+import { Moon, Sun } from "lucide-react";
 import { Link, useLocation } from "react-router";
 import { animateScroll } from "react-scroll";
 
-import arkynLogoPng from "~/assets/arkynFullLogo.png";
+import arkynLogoLightPng from "~/assets/arkynFullLogo.png";
+import arkynLogoDarkPng from "~/assets/arkynFullLogoDark.png";
+import { useTheme } from "~/hooks/useTheme";
 import { AlgoliaSearch } from "../algoliaSearch";
 import { ProductsMenu } from "../productsMenu";
 import { HeaderContainer } from "./styles";
 
 function RootHeader() {
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
 
   function toTop() {
     animateScroll.scrollToTop({
@@ -22,15 +27,19 @@ function RootHeader() {
         {location.pathname === "/" && (
           <img
             className="logoImage"
-            src={arkynLogoPng}
+            src={theme === "light" ? arkynLogoLightPng : arkynLogoDarkPng}
             alt="arkyn"
             onClick={toTop}
           />
         )}
 
         {location.pathname !== "/" && (
-          <Link to="/">
-            <img className="logoImage" src={arkynLogoPng} alt="arkyn" />
+          <Link to="/" className="logoLink">
+            <img
+              className="logoImage"
+              src={theme === "light" ? arkynLogoLightPng : arkynLogoDarkPng}
+              alt="arkyn"
+            />
           </Link>
         )}
 
@@ -40,6 +49,14 @@ function RootHeader() {
         <Link to="/guides/introduction">Guides</Link>
 
         <AlgoliaSearch />
+
+        <IconButton
+          variant="ghost"
+          scheme="secondary"
+          aria-label="Toggle dark mode"
+          icon={theme === "light" ? Moon : Sun}
+          onClick={toggleTheme}
+        />
       </div>
     </HeaderContainer>
   );

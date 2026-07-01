@@ -1,5 +1,6 @@
 import { Button, Divider, Input } from "@arkyn/components";
-// import { Github } from "lucide-react";
+import arkynLogoLightPng from "~/assets/arkynFullLogo.png";
+import arkynLogoDarkPng from "~/assets/arkynFullLogoDark.png";
 import { Link } from "react-router";
 
 import arkynFullLogo from "~/assets/arkynFullLogo.png";
@@ -11,14 +12,20 @@ import {
   NavSection,
   RootFooterContainer,
 } from "./styles";
+import { useTheme } from "~/hooks/useTheme";
 
 function RootFooter() {
+  const { theme } = useTheme();
+
   return (
     <RootFooterContainer>
       <Content>
         <NavSection>
           <ImageContainer>
-            <img src={arkynFullLogo} alt="logo" />
+            <img
+              src={theme === "light" ? arkynLogoLightPng : arkynLogoDarkPng}
+              alt="logo"
+            />
             <strong>Keep up to date</strong>
             <p>Join our newsletter for regular updates. No spam ever.</p>
             <div>

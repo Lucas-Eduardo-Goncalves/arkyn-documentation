@@ -3,21 +3,21 @@ import type { PrismTheme } from "prism-react-renderer";
 const theme: PrismTheme = {
   plain: {
     backgroundColor: "var(--card-foreground-primary)",
-    color: "#475569",
+    color: "var(--text-body)",
     fontWeight: "500",
   },
   styles: [
     {
       types: ["comment", "prolog", "doctype", "cdata"],
       style: {
-        color: "#94a3b8",
+        color: "var(--text-muted)",
         fontStyle: "italic",
       },
     },
     {
       types: ["punctuation"],
       style: {
-        color: "#475569",
+        color: "var(--text-muted)",
       },
     },
     {
@@ -27,37 +27,37 @@ const theme: PrismTheme = {
     {
       types: ["tag", "operator"],
       style: {
-        color: "#116ddc",
+        color: "rgb(var(--spotlight-primary))",
       },
     },
     {
       types: ["number"],
       style: {
-        color: "#f97316",
+        color: "rgb(var(--spotlight-warning))",
       },
     },
     {
       types: ["property", "function"],
       style: {
-        color: "#10b981",
+        color: "rgb(var(--spotlight-success))",
       },
     },
     {
       types: ["tag-id", "selector", "atrule-id"],
       style: {
-        color: "#f43f5e",
+        color: "rgb(var(--spotlight-danger))",
       },
     },
     {
       types: ["attr-name"],
       style: {
-        color: "#0ea5e9",
+        color: "rgb(var(--spotlight-info))",
       },
     },
     {
       types: ["boolean", "string", "entity", "url", "attr-value"],
       style: {
-        color: "#10b981",
+        color: "rgb(var(--spotlight-success))",
       },
     },
     {

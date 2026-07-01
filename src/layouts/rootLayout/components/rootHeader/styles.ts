@@ -9,7 +9,7 @@ const HeaderContainer = styled.header`
   left: 0;
   right: 0;
 
-  background: var(--background-foreground);
+  background: var(--background);
   border-bottom: 1px solid var(--border);
 
   height: 60px;
@@ -26,7 +26,13 @@ const HeaderContainer = styled.header`
     align-items: center;
 
     .logoImage {
-      height: 40px;
+      min-height: 40px;
+      max-height: 40px;
+    }
+
+    .logoLink {
+      min-height: 40px;
+      max-height: 40px;
     }
 
     .arkynBadge {
@@ -39,9 +45,13 @@ const HeaderContainer = styled.header`
 
     > a {
       text-decoration: none;
-      color: var(--text-body);
+      color: var(--text-heading);
       font-weight: 600;
       font-size: 14px;
+    }
+
+    .arkynIconButton {
+      margin-left: -12px;
     }
   }
 `;
