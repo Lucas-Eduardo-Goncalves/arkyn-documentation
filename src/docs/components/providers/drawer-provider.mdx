@@ -8,6 +8,8 @@ import { AlertTitle } from "@arkyn/components/alertTitle";
 import { DrawerProvider } from "@arkyn/components/drawerProvider";
 import { useDrawer } from "@arkyn/components/useDrawer";
 
+import { TextExample } from "../../_examples/text.example";
+
 DrawerProvider supplies drawer context so multiple keyed drawers can be opened, updated, and closed from anywhere in the tree.
 
 ```tsx
@@ -20,7 +22,7 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 
 <div className="noContent">
   <DrawerProvider>
-    <div>Application content with drawer context</div>
+    <TextExample content="Application content with drawer context" />
   </DrawerProvider>
 </div>
 
@@ -69,7 +71,7 @@ When `useDrawer(key)` is used, open/close actions are automatically scoped to th
 
 <div className="noContent">
   <DrawerProvider>
-    <div>Scoped drawer control with useDrawer("filters")</div>
+    <TextExample content='Scoped drawer control with useDrawer("filters")' />
   </DrawerProvider>
 </div>
 

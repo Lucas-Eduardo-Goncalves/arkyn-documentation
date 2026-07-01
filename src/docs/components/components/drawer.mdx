@@ -9,6 +9,7 @@ import { AlertIcon } from "@arkyn/components/alertIcon";
 import { AlertTitle } from "@arkyn/components/alertTitle";
 
 import { DrawerExample } from "../../_examples/drawer.example";
+import { TextExample } from "../../_examples/text.example";
 
 The Drawer family renders an animated side panel. `DrawerContainer` is the animated panel that opens over the page content with overlay click-to-close behavior, and `DrawerHeader` renders its top section with an optional built-in close action.
 
@@ -23,13 +24,15 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 
 <div className="noContent">
   <DrawerExample title="Drawer Example">
-    <p>Drawer content</p>
+    <TextExample content="Drawer content" />
   </DrawerExample>
 </div>
 
 ```tsx
 <DrawerContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
-    <p>Drawer content</p>
+    <p style={{ padding: "1rem" }}>
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eius quisquam, assumenda ratione ipsa quibusdam maxime deleniti quaerat totam incidunt placeat repellat atque tenetur quas nulla nostrum ad aperiam accusamus!
+    </p>
 </DrawerContainer>
 ```
 
@@ -138,7 +141,7 @@ You can pass any header content to `DrawerHeader`, including logos, title groups
       </div>
     }
   >
-    <p>Drawer content</p>
+    <TextExample content="Drawer content" />
   </DrawerExample>
 </div>
 

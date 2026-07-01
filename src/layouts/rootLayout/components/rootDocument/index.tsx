@@ -2,10 +2,10 @@ import type { ReactNode } from "react";
 import logo from "../../../../assets/arkynLogo.png";
 
 import { Links, Meta, Scripts, ScrollRestoration } from "react-router";
+import "~/themes/reset.css";
 
 import "@arkyn/components/styles";
 import "@docsearch/css/dist/style.css";
-import "~/themes/reset.css";
 
 import { useTheme } from "~/hooks/useTheme";
 import { RootDocumentContainer } from "./styles";

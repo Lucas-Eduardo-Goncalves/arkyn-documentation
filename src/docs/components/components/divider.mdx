@@ -7,6 +7,8 @@ import { AlertDescription } from "@arkyn/components/alertDescription";
 import { AlertIcon } from "@arkyn/components/alertIcon";
 import { AlertTitle } from "@arkyn/components/alertTitle";
 
+import { TextExample } from "../../_examples/text.example";
+
 `Divider` is a lightweight separator used to visually split related content blocks in horizontal or vertical layouts.
 
 ```tsx
@@ -69,10 +71,10 @@ Pass `className` and native `div` attributes to adapt spacing, color, and layout
 
   <div style={{ width: "100%" }}>
     <h4 style={{ marginBottom: 8 }}>Section 1</h4>
-    <p style={{ marginBottom: 8 }}>Content for section 1</p>
+    <TextExample content="Content for section 1" />
     <Divider />
     <h4 style={{ marginTop: 8, marginBottom: 8 }}>Section 2</h4>
-    <p>Content for section 2</p>
+    <TextExample content="Content for section 2" />
   </div>
 </div>
 
@@ -81,10 +83,14 @@ Pass `className` and native `div` attributes to adapt spacing, color, and layout
 
 <div>
     <h2>Section 1</h2>
-    <p>Content for section 1</p>
+    <p style={{ padding: "1rem" }}>
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eius quisquam, assumenda ratione ipsa quibusdam maxime deleniti quaerat totam incidunt placeat repellat atque tenetur quas nulla nostrum ad aperiam accusamus!
+    </p>
     <Divider />
     <h2>Section 2</h2>
-    <p>Content for section 2</p>
+    <p style={{ padding: "1rem" }}>
+       Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eius quisquam, assumenda ratione ipsa quibusdam maxime deleniti quaerat totam incidunt placeat repellat atque tenetur quas nulla nostrum ad aperiam accusamus!
+    </p>
 </div>
 ```
 

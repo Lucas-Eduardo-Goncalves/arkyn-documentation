@@ -20,12 +20,6 @@ When building modern applications, developers often find themselves writing the 
 **Important:** `@arkyn/templates` is a mandatory peer dependency for `@arkyn/shared`. This dependency is required because several formatting and parsing utilities rely on predefined templates and patterns provided by `@arkyn/templates` to ensure consistent behavior across the package.
 
 ```bash
-npm install @arkyn/shared
-```
-
-or with bun:
-
-```bash
 bun add @arkyn/shared
 ```
 

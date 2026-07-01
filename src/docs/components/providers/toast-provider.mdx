@@ -8,6 +8,8 @@ import { AlertTitle } from "@arkyn/components/alertTitle";
 import { ToastProvider } from "@arkyn/components/toastProvider";
 import { useToast } from "@arkyn/components/useToast";
 
+import { TextExample } from "../../_examples/text.example";
+
 ToastProvider exposes toast notification actions and renders the global toaster container.
 
 ```tsx
@@ -20,7 +22,7 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 
 <div className="noContent">
   <ToastProvider>
-    <div>Application with toast support</div>
+    <TextExample content="Application with toast support" />
   </ToastProvider>
 </div>
 
@@ -36,7 +38,7 @@ Use `useToast()` inside provider scope to show success and danger notifications.
 
 <div className="noContent">
   <ToastProvider>
-    <div>Toast actions available via context</div>
+    <TextExample content="Toast actions available via context" />
   </ToastProvider>
 </div>
 

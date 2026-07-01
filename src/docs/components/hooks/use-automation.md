@@ -13,7 +13,7 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 For the hook to work, you need to install the following dependencies:
 
 ```bash
-npm install react-scroll
+bun add react-scroll
 ```
 
 ## Parameters

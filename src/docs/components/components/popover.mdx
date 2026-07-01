@@ -10,6 +10,8 @@ import { Button } from "@arkyn/components/button";
 import { Divider } from "@arkyn/components/divider";
 import { Popover } from "@arkyn/components/popover";
 
+import { TextExample } from "../../_examples/text.example";
+
 Popover displays contextual content in a floating container anchored to a trigger element.
 
 ```tsx
@@ -22,13 +24,15 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 
 <div className="noContent">
   <Popover button={<Button>Open popover</Button>}>
-    <div>Popover content here</div>
+    <TextExample content="Popover content here" />
   </Popover>
 </div>
 
 ```tsx
 <Popover button={<Button>Open popover</Button>}>
-    <div>Popover content here</div>
+    <p style={{ padding: "1rem" }}>
+       Popover content here
+    </p>
 </Popover>
 ```
 

@@ -47,7 +47,7 @@ UI dependencies used internally by `@arkyn/components` — `framer-motion`, `map
 Explicitly install, in your project, the dependencies related to the components you use:
 
 ```bash
-npm install framer-motion mapbox-gl slate slate-history slate-react \
+bun add framer-motion mapbox-gl slate slate-history slate-react \
   @react-google-maps/api react-hot-toast react-scroll html-react-parser \
   @react-input/mask
 ```

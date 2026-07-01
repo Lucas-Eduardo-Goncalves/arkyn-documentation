@@ -8,6 +8,8 @@ import { AlertTitle } from "@arkyn/components/alertTitle";
 import { ModalProvider } from "@arkyn/components/modalProvider";
 import { useModal } from "@arkyn/components/useModal";
 
+import { TextExample } from "../../_examples/text.example";
+
 ModalProvider supplies modal context so keyed modals can be opened, closed, and globally reset.
 
 ```tsx
@@ -20,7 +22,7 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 
 <div className="noContent">
   <ModalProvider>
-    <div>Application content with modal context</div>
+    <TextExample content="Application content with modal context" />
   </ModalProvider>
 </div>
 
@@ -62,7 +64,7 @@ When `useModal(key)` is used, the returned methods are scoped to a single modal 
 
 <div className="noContent">
   <ModalProvider>
-    <div>Scoped modal control with useModal("user-profile")</div>
+    <TextExample content='Scoped modal control with useModal("user-profile")' />
   </ModalProvider>
 </div>
 

@@ -27,9 +27,7 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 
 <div className="noContent">
   <ModalExample>
-    <div style={{ minWidth: 280, padding: 30 }}>
-      Modal content
-    </div>
+    <TextExample content="Modal content" />
   </ModalExample>
 </div>
 
@@ -37,7 +35,9 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 const [isOpen, setIsOpen] = useState(false);
 
 <ModalContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
-    <p style={{ padding: 30 }}>Modal content</p>
+    <p style={{ padding: "1rem" }}>
+       Modal content
+    </p>
 </ModalContainer>;
 ```
 
@@ -51,7 +51,7 @@ Use `ModalHeader` and `ModalFooter` together with `ModalContainer` to build cons
       Confirm Action
     </ModalHeader>
 
-     <TextExample />
+     <TextExample content="Are you sure you want to continue?" />
 
     <ModalFooter>
       <Button type="button">Cancel</Button>
@@ -66,9 +66,9 @@ Use `ModalHeader` and `ModalFooter` together with `ModalContainer` to build cons
     <div className="modal-content">
         <ModalHeader>Confirm Action</ModalHeader>
 
-        <main style={{ padding: 30 }}>
-            <p>Are you sure you want to continue?</p>
-        </main>
+        <p style={{ padding: "1rem" }}>
+           Are you sure you want to continue?
+        </p>
 
         <ModalFooter>
             <button type="button" onClick={() => setIsOpen(false)}>
@@ -88,7 +88,7 @@ Modal visibility is controlled by the `isVisible` prop and closed via `makeInvis
 
 <div className="noContent">
   <ModalExample>
-    <div style={{ padding: 30 }}>Click the overlay to close</div>
+    <TextExample content="Click the overlay to close" />
   </ModalExample>
 </div>
 
@@ -100,7 +100,9 @@ const [isOpen, setIsOpen] = useState(false);
 </button>
 
 <ModalContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
-    <div  style={{ padding: 30 }}>Modal body</div>
+    <p style={{ padding: "1rem" }}>
+       Click the overlay to close
+    </p>
 </ModalContainer>
 ```
 
@@ -122,15 +124,11 @@ Set `showCloseButton` on `ModalHeader` to control whether it renders the close a
 <div className="noContent column">
   <ModalExample>
     <ModalHeader>With Close Button</ModalHeader>
-    <main style={{ padding: 30 }}>
-      <p>Are you sure you want to continue?</p>
-    </main>
+    <TextExample content="Are you sure you want to continue?" />
   </ModalExample>
   <ModalExample>
     <ModalHeader showCloseButton={false}>Without Close Button</ModalHeader>
-    <main style={{ padding: 30 }}>
-      <p>Are you sure you want to continue?</p>
-    </main>
+    <TextExample content="Are you sure you want to continue?" />
   </ModalExample>
 </div>
 
@@ -139,17 +137,17 @@ Set `showCloseButton` on `ModalHeader` to control whether it renders the close a
     <ModalHeader>
         With Close Button
     </ModalHeader>
-    <main style={{ padding: 30 }}>
-        <p>Are you sure you want to continue?</p>
-    </main>
+    <p style={{ padding: "1rem" }}>
+       Are you sure you want to continue?
+    </p>
 </ModalContainer>
 <ModalContainer>
     <ModalHeader showCloseButton={false}>
         Without Close Button
     </ModalHeader>
-    <main style={{ padding: 30 }}>
-        <p>Are you sure you want to continue?</p>
-    </main>
+    <p style={{ padding: "1rem" }}>
+       Are you sure you want to continue?
+    </p>
 </ModalContainer>
 ```
 
@@ -165,9 +163,7 @@ Set `showCloseButton` on `ModalHeader` to control whether it renders the close a
         <p>Manage your preferences</p>
       </div>
     </ModalHeader>
-    <main style={{ padding: 30 }}>
-      <p>Are you sure you want to continue?</p>
-    </main>
+    <TextExample content="Are you sure you want to continue?" />
   </ModalExample>
 </div>
 
@@ -179,9 +175,9 @@ Set `showCloseButton` on `ModalHeader` to control whether it renders the close a
             <p>Manage your preferences</p>
         </div>
     </ModalHeader>
-    <main style={{ padding: 30 }}>
-        <p>Are you sure you want to continue?</p>
-    </main>
+    <p style={{ padding: "1rem" }}>
+       Are you sure you want to continue?
+    </p>
 </ModalContainer>
 ```
 
