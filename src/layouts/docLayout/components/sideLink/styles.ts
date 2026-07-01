@@ -17,13 +17,16 @@ const SideLinkContainer = styled(Link)`
     filter: brightness(0.97);
   }
 
-  html.dark &:not(.active):hover {
+  html.dark &:hover {
     filter: brightness(1.5);
   }
 
   &.active {
-    background: rgb(var(--spotlight-primary-foreground));
-    color: rgb(var(--spotlight-primary));
+    filter: brightness(0.97);
+  }
+
+  html.dark &.active {
+    filter: brightness(1.5);
   }
 `;
 
