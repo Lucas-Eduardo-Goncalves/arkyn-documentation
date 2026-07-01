@@ -5,8 +5,10 @@ The `useScrollLock` hook locks body scrolling while preserving layout width comp
 ## Import
 
 ```ts
-import { useScrollLock } from "@arkyn/components";
+import { useScrollLock } from "@arkyn/components/useScrollLock";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -26,7 +28,7 @@ The hook applies side effects to `document.body` and does not return a value.
 
 ```tsx
 import { useState } from "react";
-import { useScrollLock } from "@arkyn/components";
+import { useScrollLock } from "@arkyn/components/useScrollLock";
 
 function ModalExample() {
     const [isOpen, setIsOpen] = useState(false);

@@ -5,8 +5,10 @@ The `ensureQuotes` function is a utility for ensuring that a string is properly 
 ## Import
 
 ```ts
-import { ensureQuotes } from "@arkyn/shared";
+import { ensureQuotes } from "@arkyn/shared/ensureQuotes";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns the input string, either unchanged if it is already quoted 
 **Type:** `string`
 
 ```typescript
-import { ensureQuotes } from "@arkyn/shared";
+import { ensureQuotes } from "@arkyn/shared/ensureQuotes";
 
 const result1 = ensureQuotes("example");
 const result2 = ensureQuotes('"already quoted"');

@@ -5,8 +5,10 @@ The `removeCurrencySymbols` function is a utility for removing currency symbols 
 ## Import
 
 ```ts
-import { removeCurrencySymbols } from "@arkyn/shared";
+import { removeCurrencySymbols } from "@arkyn/shared/removeCurrencySymbols";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a string with all currency symbols removed and trimmed of a
 **Type:** `string`
 
 ```typescript
-import { removeCurrencySymbols } from "@arkyn/shared";
+import { removeCurrencySymbols } from "@arkyn/shared/removeCurrencySymbols";
 
 const result = removeCurrencySymbols("R$13,45");
 

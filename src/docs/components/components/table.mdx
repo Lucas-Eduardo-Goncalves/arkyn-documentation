@@ -1,0 +1,397 @@
+# Table
+
+import { Button } from "@arkyn/components/button";
+import { TableBody } from "@arkyn/components/tableBody";
+import { TableCaption } from "@arkyn/components/tableCaption";
+import { TableContainer } from "@arkyn/components/tableContainer";
+import { TableFooter } from "@arkyn/components/tableFooter";
+import { TableHeader } from "@arkyn/components/tableHeader";
+
+The Table family renders tabular data. `TableContainer` wraps the structure in a styled responsive container, `TableCaption` displays a title or descriptive heading, `TableHeader` renders column headers, `TableBody` renders rows with an automatic empty state, and `TableFooter` renders summaries, actions, or pagination controls.
+
+```tsx
+import { TableBody } from "@arkyn/components/tableBody";
+import { TableCaption } from "@arkyn/components/tableCaption";
+import { TableContainer } from "@arkyn/components/tableContainer";
+import { TableFooter } from "@arkyn/components/tableFooter";
+import { TableHeader } from "@arkyn/components/tableHeader";
+```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
+
+## Basic Usage
+
+<div className="noContent column">
+  <TableContainer>
+    <TableHeader>
+      <th>Name</th>
+      <th>Email</th>
+    </TableHeader>
+
+    <TableBody>
+      <tr>
+        <td>John Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Jane Smith</td>
+        <td>jane@example.com</td>
+      </tr>
+    </TableBody>
+  </TableContainer>
+</div>
+
+```tsx
+<TableContainer>
+    <TableHeader>
+        <th>Name</th>
+        <th>Email</th>
+    </TableHeader>
+
+    <TableBody>
+        <tr>
+            <td>John Doe</td>
+            <td>john@example.com</td>
+        </tr>
+        <tr>
+            <td>Jane Smith</td>
+            <td>jane@example.com</td>
+        </tr>
+    </TableBody>
+</TableContainer>
+```
+
+## Caption and Footer Composition
+
+Use `TableCaption` and `TableFooter` to provide context and actions around the table body.
+
+<div className="noContent column">
+  <TableContainer>
+    <TableCaption>User Management</TableCaption>
+
+    <TableHeader>
+      <th>ID</th>
+      <th>User</th>
+      <th>Status</th>
+    </TableHeader>
+
+    <TableBody>
+      <tr>
+        <td>1</td>
+        <td>Jane Smith</td>
+        <td>Active</td>
+      </tr>
+    </TableBody>
+
+    <TableFooter>
+      <div>Showing 1 of 1 result</div>
+    </TableFooter>
+  </TableContainer>
+</div>
+
+```tsx
+<TableContainer>
+    <TableCaption>User Management</TableCaption>
+
+    <TableHeader>
+        <th>ID</th>
+        <th>User</th>
+        <th>Status</th>
+    </TableHeader>
+
+    <TableBody>
+        <tr>
+            <td>1</td>
+            <td>Jane Smith</td>
+            <td>Active</td>
+        </tr>
+    </TableBody>
+
+    <TableFooter>
+        <div>Showing 1 of 1 result</div>
+    </TableFooter>
+</TableContainer>
+```
+
+## Rich Caption Content
+
+`TableCaption` can render structured content such as a heading and metadata.
+
+<div className="noContent column">
+  <TableContainer>
+    <TableCaption>
+      <h3>Employee Directory</h3>
+      <p>Updated today</p>
+    </TableCaption>
+
+    <TableHeader>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Department</th>
+    </TableHeader>
+
+    <TableBody>
+      <tr>
+        <td>EMP-01</td>
+        <td>Maria</td>
+        <td>Design</td>
+      </tr>
+    </TableBody>
+  </TableContainer>
+</div>
+
+```tsx
+<TableContainer>
+    <TableCaption>
+        <h3>Employee Directory</h3>
+        <p>Updated: {new Date().toLocaleDateString()}</p>
+    </TableCaption>
+
+    <TableHeader>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Department</th>
+    </TableHeader>
+
+    <TableBody>
+        <tr>
+            <td>EMP-01</td>
+            <td>Maria</td>
+            <td>Design</td>
+        </tr>
+    </TableBody>
+</TableContainer>
+```
+
+## Header with Custom Columns
+
+`TableHeader` renders any header structure needed for your dataset.
+
+<div className="noContent column">
+  <TableContainer>
+    <TableHeader>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Stock</th>
+      <th>Status</th>
+    </TableHeader>
+
+    <TableBody>
+      <tr>
+        <td>Mouse</td>
+        <td>$49.00</td>
+        <td>34</td>
+        <td>Available</td>
+      </tr>
+    </TableBody>
+  </TableContainer>
+</div>
+
+```tsx
+<TableHeader>
+    <th>Product</th>
+    <th>Price</th>
+    <th>Stock</th>
+    <th>Status</th>
+</TableHeader>
+```
+
+## Empty State
+
+When `TableBody` has no children, it renders a full-width empty message row.
+
+<div className="noContent column">
+  <TableContainer>
+    <TableHeader>
+      <th>User</th>
+      <th>Status</th>
+    </TableHeader>
+
+    <TableBody emptyMessage="No users found. Please add one to continue." />
+  </TableContainer>
+</div>
+
+```tsx
+<TableBody emptyMessage="No users found. Please add one to continue." />
+```
+
+## Dynamic Rows
+
+Use mapped data rows in `TableBody` while keeping the same fallback behavior.
+
+<div className="noContent column">
+  <TableContainer>
+    <TableHeader>
+      <th>Product</th>
+      <th>Price</th>
+      <th>Stock</th>
+    </TableHeader>
+
+    <TableBody className="striped-rows">
+      <tr>
+        <td>Keyboard</td>
+        <td>$99.00</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>Monitor</td>
+        <td>$299.00</td>
+        <td>7</td>
+      </tr>
+    </TableBody>
+  </TableContainer>
+</div>
+
+```tsx
+<TableBody className="striped-rows" emptyMessage="No products available">
+    {products.map((product) => (
+        <tr key={product.id}>
+            <td>{product.name}</td>
+            <td>{product.price}</td>
+            <td>{product.stock}</td>
+        </tr>
+    ))}
+</TableBody>
+```
+
+## Footer Actions
+
+Use `TableFooter` to place pagination or action buttons.
+
+<div className="noContent column">
+  <TableContainer>
+    <TableHeader>
+      <th>Product</th>
+      <th>Price</th>
+    </TableHeader>
+
+    <TableBody>
+      <tr>
+        <td>Keyboard</td>
+        <td>$99.00</td>
+      </tr>
+    </TableBody>
+
+    <TableFooter>
+      <Button size="sm">Load More</Button>
+    </TableFooter>
+  </TableContainer>
+</div>
+
+```tsx
+<TableFooter>
+    <Button size="sm">Load More</Button>
+</TableFooter>
+```
+
+## Custom Class Names
+
+Every section accepts `className` to adjust spacing, borders, and responsive behavior.
+
+<div className="noContent column">
+  <TableContainer className="custom-table">
+    <TableCaption className="highlighted-caption">
+      Sales Report - Q4 2024
+    </TableCaption>
+
+    <TableHeader className="custom-header">
+      <th>Product</th>
+      <th>Price</th>
+    </TableHeader>
+
+    <TableBody>
+      <tr>
+        <td>Keyboard</td>
+        <td>$99.00</td>
+      </tr>
+    </TableBody>
+
+    <TableFooter className="custom-footer">
+      <div>Total: 250 items</div>
+    </TableFooter>
+  </TableContainer>
+</div>
+
+```tsx
+<TableContainer className="custom-table">
+    <TableCaption className="highlighted-caption">
+        Sales Report - Q4 2024
+    </TableCaption>
+
+    <TableHeader className="custom-header">
+        <th>Product</th>
+        <th>Price</th>
+    </TableHeader>
+
+    <TableBody>
+        <tr>
+            <td>Keyboard</td>
+            <td>$99.00</td>
+        </tr>
+    </TableBody>
+
+    <TableFooter className="custom-footer">
+        <div>Total: 250 items</div>
+    </TableFooter>
+</TableContainer>
+```
+
+## Properties
+
+### TableContainer
+
+**`children`** - `ReactNode`
+Table sections such as `TableCaption`, `TableHeader`, `TableBody`, and `TableFooter`.
+
+**`className`** - `string`
+Additional CSS classes merged with the base table container class.
+
+**`...rest`** - `TableHTMLAttributes<HTMLTableElement>`
+Any other valid HTML attributes applied to the outer container element.
+
+### TableCaption
+
+**`children`** - `ReactNode`
+Caption content rendered inside the caption container.
+
+**`className`** - `string`
+Additional CSS classes merged with the base caption class.
+
+**`...rest`** - `HTMLAttributes<HTMLElement>`
+Any other valid HTML attributes for the root `caption` element.
+
+### TableHeader
+
+**`children`** - `ReactNode`
+Header cells, typically one or more `th` elements.
+
+**`className`** - `string`
+Additional CSS classes merged with the base header class.
+
+**`...rest`** - `HTMLAttributes<HTMLTableSectionElement>`
+Any other valid HTML attributes for the root `thead` element.
+
+### TableBody
+
+**`emptyMessage`** - `string` (default: `"Nenhum dado adicionado."`)
+Message displayed when there are no row children.
+
+**`children`** - `ReactNode`
+Table rows rendered inside the body section.
+
+**`className`** - `string`
+Additional CSS classes merged with the base body class.
+
+**`...rest`** - `HTMLAttributes<HTMLTableSectionElement>`
+Any other valid HTML attributes for the root `tbody` element.
+
+### TableFooter
+
+**`children`** - `ReactNode`
+Footer content rendered inside the footer content container.
+
+**`className`** - `string`
+Additional CSS classes merged with the base footer class.
+
+**`...rest`** - `HTMLAttributes<HTMLTableSectionElement>`
+Any other valid HTML attributes for the root `tfoot` element.

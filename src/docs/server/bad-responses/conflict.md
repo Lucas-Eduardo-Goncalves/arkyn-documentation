@@ -5,8 +5,10 @@ The `Conflict` class represents an HTTP error response with status code 409. It 
 ## Import
 
 ```ts
-import { Conflict } from "@arkyn/server";
+import { Conflict } from "@arkyn/server/conflict";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -22,7 +24,7 @@ import { Conflict } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { Conflict } from "@arkyn/server";
+import { Conflict } from "@arkyn/server/conflict";
 
 // Basic usage - throw the error
 throw new Conflict("Email already registered");

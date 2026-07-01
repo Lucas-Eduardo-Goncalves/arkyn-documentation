@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { Links, Meta, Scripts, ScrollRestoration } from "react-router";
 
 import "~/themes/reset.css";
-import "@arkyn/components/dist/bundle.css";
+import "@arkyn/components/styles";
 import "@docsearch/css/dist/style.css";
 
 import { RootDocumentContainer } from "./styles";

@@ -5,8 +5,10 @@ The `useSearchAutomation` hook automates modal closing and toast notifications f
 ## Import
 
 ```ts
-import { useSearchAutomation } from "@arkyn/components";
+import { useSearchAutomation } from "@arkyn/components/useSearchAutomation";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -32,7 +34,7 @@ The hook performs side effects and does not return a value.
 ## Usage example
 
 ```tsx
-import { useSearchAutomation } from "@arkyn/components";
+import { useSearchAutomation } from "@arkyn/components/useSearchAutomation";
 
 function SearchAutomationHandler({ search }: { search: string }) {
     useSearchAutomation(search, "filters");

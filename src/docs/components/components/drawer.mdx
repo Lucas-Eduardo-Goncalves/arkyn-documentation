@@ -1,22 +1,23 @@
-# DrawerContainer
+# Drawer
 
-import {
-  DrawerContainer,
-  DrawerHeader,
-  AlertContainer,
-  AlertContent,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-} from "@arkyn/components";
+import { DrawerContainer } from "@arkyn/components/drawerContainer";
+import { DrawerHeader } from "@arkyn/components/drawerHeader";
+import { AlertContainer } from "@arkyn/components/alertContainer";
+import { AlertContent } from "@arkyn/components/alertContent";
+import { AlertDescription } from "@arkyn/components/alertDescription";
+import { AlertIcon } from "@arkyn/components/alertIcon";
+import { AlertTitle } from "@arkyn/components/alertTitle";
 
 import { DrawerExample } from "../../_examples/drawer.example";
 
-`DrawerContainer` is an animated side panel that opens over the page content with overlay click-to-close behavior.
+The Drawer family renders an animated side panel. `DrawerContainer` is the animated panel that opens over the page content with overlay click-to-close behavior, and `DrawerHeader` renders its top section with an optional built-in close action.
 
 ```tsx
-import { DrawerContainer } from "@arkyn/components";
+import { DrawerContainer } from "@arkyn/components/drawerContainer";
+import { DrawerHeader } from "@arkyn/components/drawerHeader";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Basic Usage
 
@@ -34,7 +35,7 @@ import { DrawerContainer } from "@arkyn/components";
 
 ## Orientation
 
-Use `orientation` to control the side from which the drawer enters.
+Use `orientation` on `DrawerContainer` to control the side from which the drawer enters.
 
 <div className="noContent column" style={{ width: "100%", gap: 16 }}>
   <DrawerExample title="Left Drawer" orientation="left">
@@ -109,7 +110,52 @@ Combine `DrawerContainer` with `DrawerHeader` to create a reusable panel layout 
   </AlertContent>
 </AlertContainer>
 
+## Close Button
+
+By default, `DrawerHeader` renders a close button that calls the drawer context action. Use `showCloseButton={false}` to hide it.
+
+<div className="noContent column" style={{ width: "100%", gap: 16 }}>
+  <DrawerExample title="Navigation" />
+  <DrawerExample title="Settings" />
+</div>
+
+```tsx
+<DrawerHeader>Navigation</DrawerHeader>
+<DrawerHeader showCloseButton={false}>Settings</DrawerHeader>
+```
+
+## Custom Header Content
+
+You can pass any header content to `DrawerHeader`, including logos, title groups, and helper text.
+
+<div className="noContent">
+  <DrawerExample
+    className="custom-header"
+    headerChildren={
+      <div>
+        <h3 style={{ margin: 0 }}>My App</h3>
+        <p style={{ margin: 0 }}>Welcome to your workspace</p>
+      </div>
+    }
+  >
+    <p>Drawer content</p>
+  </DrawerExample>
+</div>
+
+```tsx
+<DrawerContainer isVisible={isOpen} makeInvisible={() => setIsOpen(false)}>
+    <DrawerHeader className="custom-header">
+        <div className="header-content">
+            <h3 style={{ margin: 0 }}>My App</h3>
+            <p style={{ margin: 0 }}>Welcome to your workspace</p>
+        </div>
+    </DrawerHeader>
+</DrawerContainer>
+```
+
 ## Properties
+
+### DrawerContainer
 
 **`isVisible`** - `boolean`
 Controls whether the drawer is rendered and animated in view.
@@ -137,3 +183,26 @@ Defines an ARIA role for the root aside wrapper when needed.
 
 **`...rest`** - `HTMLAttributes<HTMLElement>`
 Any other valid native attributes for the root element are forwarded.
+
+### DrawerHeader
+
+**`showCloseButton`** - `boolean` (default: `true`)
+Controls visibility of the built-in close button.
+
+**`children`** - `ReactNode`
+Content displayed in the header area.
+
+**`className`** - `string`
+Adds custom classes to the root header element.
+
+**`id`** - `string`
+Sets the id attribute on the root header element.
+
+**`style`** - `CSSProperties`
+Applies inline styles to the root header element.
+
+**`role`** - `AriaRole`
+Defines an ARIA role for accessibility scenarios.
+
+**`...rest`** - `HTMLAttributes<HTMLElement>`
+Any other valid native attributes for a header element are forwarded.

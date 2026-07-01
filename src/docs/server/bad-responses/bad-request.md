@@ -5,8 +5,10 @@ The `BadRequest` class represents an HTTP error response with status code 400. I
 ## Import
 
 ```ts
-import { BadRequest } from "@arkyn/server";
+import { BadRequest } from "@arkyn/server/badRequest";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -22,7 +24,7 @@ import { BadRequest } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { BadRequest } from "@arkyn/server";
+import { BadRequest } from "@arkyn/server/badRequest";
 
 // Basic usage - throw the error
 throw new BadRequest("Invalid request parameters");

@@ -1,20 +1,21 @@
-# RadioGroup
+# Radio
 
-import {
-  RadioGroup,
-  RadioBox,
-  AlertContainer,
-  AlertContent,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-} from "@arkyn/components";
+import { RadioGroup } from "@arkyn/components/radioGroup";
+import { RadioBox } from "@arkyn/components/radioBox";
+import { AlertContainer } from "@arkyn/components/alertContainer";
+import { AlertContent } from "@arkyn/components/alertContent";
+import { AlertDescription } from "@arkyn/components/alertDescription";
+import { AlertIcon } from "@arkyn/components/alertIcon";
+import { AlertTitle } from "@arkyn/components/alertTitle";
 
-`RadioGroup` manages shared selection state for a set of `RadioBox` options and integrates with form validation.
+The Radio family renders single-choice option sets. `RadioGroup` manages shared selection state for a set of options and integrates with form validation, while `RadioBox` is an individual option item that must be rendered inside `RadioGroup` to receive selection context.
 
 ```tsx
-import { RadioGroup, RadioBox } from "@arkyn/components";
+import { RadioGroup } from "@arkyn/components/radioGroup";
+import { RadioBox } from "@arkyn/components/radioBox";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Basic Usage
 
@@ -36,7 +37,7 @@ import { RadioGroup, RadioBox } from "@arkyn/components";
 
 ## Sizes
 
-Use `size` to define the default option size for children.
+Use `size` on `RadioGroup` to define the default option size for children.
 
 <div className="noContent column">
   <RadioGroup name="prioritySm" size="sm" label="Priority (sm)">
@@ -78,6 +79,32 @@ Use `size` to define the default option size for children.
 </RadioGroup>
 ```
 
+`RadioBox` inherits its size from `RadioGroup`, but each option can override it individually.
+
+<div className="noContent column">
+  <RadioGroup name="priority" size="md">
+    <RadioBox value="low" size="sm">
+      Low Priority
+    </RadioBox>
+    <RadioBox value="medium">Medium Priority</RadioBox>
+    <RadioBox value="high" size="lg">
+      High Priority
+    </RadioBox>
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="priority" size="md">
+    <RadioBox value="low" size="sm">
+        Low Priority
+    </RadioBox>
+    <RadioBox value="medium">Medium Priority</RadioBox>
+    <RadioBox value="high" size="lg">
+        High Priority
+    </RadioBox>
+</RadioGroup>
+```
+
 ## Controlled And Default Values
 
 Use `defaultValue` for uncontrolled flows or `value` with `onChange` for controlled state.
@@ -115,9 +142,50 @@ Use `defaultValue` for uncontrolled flows or `value` with `onChange` for control
 </RadioGroup>
 ```
 
+## Rich Content
+
+Use custom children content on `RadioBox` to build descriptive plan selectors and preference cards.
+
+<div className="noContent column">
+  <RadioGroup name="plan" label="Choose your plan">
+    <RadioBox value="basic">
+      <div>
+        <h4>Basic Plan</h4>
+        <p>$9.99/month - Perfect for individuals</p>
+      </div>
+    </RadioBox>
+
+    <RadioBox value="premium">
+      <div>
+        <h4>Premium Plan</h4>
+        <p>$19.99/month - Great for small teams</p>
+      </div>
+    </RadioBox>
+
+  </RadioGroup>
+</div>
+
+```tsx
+<RadioGroup name="plan" label="Choose your plan">
+    <RadioBox value="basic">
+        <div>
+            <h4>Basic Plan</h4>
+            <p>$9.99/month - Perfect for individuals</p>
+        </div>
+    </RadioBox>
+
+    <RadioBox value="premium">
+        <div>
+            <h4>Premium Plan</h4>
+            <p>$19.99/month - Great for small teams</p>
+        </div>
+    </RadioBox>
+</RadioGroup>
+```
+
 ## Disabled
 
-Set `disabled` on the group to disable all options.
+Set `disabled` on `RadioGroup` to disable all options, or on an individual `RadioBox` to disable just that option.
 
 <div className="noContent column">
   <RadioGroup name="optionsEnabled" label="Enabled options">
@@ -128,6 +196,14 @@ Set `disabled` on the group to disable all options.
   <RadioGroup name="optionsDisabled" label="Disabled options" disabled>
     <RadioBox value="option1">Option 1</RadioBox>
     <RadioBox value="option2">Option 2</RadioBox>
+  </RadioGroup>
+
+  <RadioGroup name="options">
+    <RadioBox value="option1">Available Option</RadioBox>
+    <RadioBox value="option2" disabled>
+      Disabled Option
+    </RadioBox>
+    <RadioBox value="option3">Another Available Option</RadioBox>
   </RadioGroup>
 </div>
 
@@ -141,11 +217,19 @@ Set `disabled` on the group to disable all options.
     <RadioBox value="option1">Option 1</RadioBox>
     <RadioBox value="option2">Option 2</RadioBox>
 </RadioGroup>
+
+<RadioGroup name="options">
+    <RadioBox value="option1">Available Option</RadioBox>
+    <RadioBox value="option2" disabled>
+        Disabled Option
+    </RadioBox>
+    <RadioBox value="option3">Another Available Option</RadioBox>
+</RadioGroup>
 ```
 
 ## Error State
 
-Provide `errorMessage` directly or rely on form context errors.
+Provide `errorMessage` directly on `RadioGroup` or rely on form context errors. Error styling is inherited by every child `RadioBox`.
 
 <div className="noContent column">
   <RadioGroup
@@ -182,7 +266,20 @@ Provide `errorMessage` directly or rely on form context errors.
   </AlertContent>
 </AlertContainer>
 
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Context requirement</AlertTitle>
+    <AlertDescription>
+      `RadioBox` depends on `useRadioGroup()` context and must be used inside
+      `RadioGroup`. Rendering it standalone will break state handling.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
 ## Properties
+
+### RadioGroup
 
 **`name`** - `string`
 Field name used for hidden form submission.
@@ -216,3 +313,32 @@ Additional class names for the wrapper.
 
 **`...rest`** - `Omit<HTMLAttributes<HTMLDivElement>, "onChange">`
 Any other valid native `div` attributes are forwarded except native `onChange`.
+
+### RadioBox
+
+**`value`** - `string`
+Unique option value used for selection matching.
+
+**`isError`** - `boolean`
+Optional error style override for the option.
+
+**`size`** - `"sm" | "md" | "lg"`
+Size override for this option.
+
+**`children`** - `ReactNode`
+Content rendered beside the radio indicator.
+
+**`disabled`** - `boolean`
+Disables this option.
+
+**`className`** - `string`
+Additional classes applied to the option wrapper.
+
+**`onClick`** - `(event: MouseEvent<HTMLButtonElement>) => void`
+Click handler called before internal selection update.
+
+**`onFocus`** - `(event: FocusEvent<HTMLButtonElement>) => void`
+Focus handler called before internal selection update.
+
+**`...rest`** - `ButtonHTMLAttributes<HTMLButtonElement>`
+Any other valid native button attributes are forwarded.

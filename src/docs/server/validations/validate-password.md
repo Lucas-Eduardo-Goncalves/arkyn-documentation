@@ -5,8 +5,10 @@ The `validatePassword` function is a utility for validating password strength ba
 ## Import
 
 ```ts
-import { validatePassword } from "@arkyn/server";
+import { validatePassword } from "@arkyn/server/validatePassword";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a boolean indicating whether the password meets all require
 **Type:** `boolean`
 
 ```typescript
-import { validatePassword } from "@arkyn/server";
+import { validatePassword } from "@arkyn/server/validatePassword";
 
 // Valid password (meets all requirements)
 const isValid1 = validatePassword("Senha@123");

@@ -6,8 +6,10 @@ The `formatToPhone` utility formats a phone number string according to the count
 ## Import
 
 ```ts
-import { formatToPhone } from "@arkyn/shared";
+import { formatToPhone } from "@arkyn/shared/formatToPhone";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Description
 
@@ -42,7 +44,7 @@ The function will throw an `Error` in cases such as:
 ## Usage example
 
 ```ts
-import { formatToPhone } from "@arkyn/shared";
+import { formatToPhone } from "@arkyn/shared/formatToPhone";
 
 console.log(formatToPhone("+5534920524282")); // => "(34) 92052-4282"
 console.log(formatToPhone("+553420524282")); // => "(34) 2052-4282"

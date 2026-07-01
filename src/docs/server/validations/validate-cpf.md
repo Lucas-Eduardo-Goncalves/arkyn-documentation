@@ -5,8 +5,10 @@ The `validateCpf` function is a utility for validating Brazilian CPF (Cadastro d
 ## Import
 
 ```ts
-import { validateCpf } from "@arkyn/server";
+import { validateCpf } from "@arkyn/server/validateCpf";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a boolean indicating whether the provided CPF is valid.
 **Type:** `boolean`
 
 ```typescript
-import { validateCpf } from "@arkyn/server";
+import { validateCpf } from "@arkyn/server/validateCpf";
 
 // Valid formatted CPF
 const isValid1 = validateCpf("111.444.777-35");

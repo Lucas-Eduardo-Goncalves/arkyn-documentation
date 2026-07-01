@@ -5,8 +5,10 @@ The `Updated` class represents a successful HTTP response with status code 200. 
 ## Import
 
 ```ts
-import { Updated } from "@arkyn/server";
+import { Updated } from "@arkyn/server/updated";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -22,7 +24,7 @@ import { Updated } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { Updated } from "@arkyn/server";
+import { Updated } from "@arkyn/server/updated";
 
 // Basic usage - return the response
 const response = new Updated("User updated successfully");

@@ -5,8 +5,10 @@ The `formatToCapitalizeFirstWordLetter` function is a utility for formatting sen
 ## Import
 
 ```ts
-import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared";
+import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared/formatToCapitalizeFirstWordLetter";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a formatted string with the first letter of each word capit
 **Type:** `string`
 
 ```typescript
-import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared";
+import { formatToCapitalizeFirstWordLetter } from "@arkyn/shared/formatToCapitalizeFirstWordLetter";
 
 const formatted1 = formatToCapitalizeFirstWordLetter("hello world");
 const formatted2 = formatToCapitalizeFirstWordLetter("HELLO WORLD");

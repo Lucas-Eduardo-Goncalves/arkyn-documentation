@@ -5,8 +5,10 @@ The `useModal` hook provides access to modal state and modal actions from modal 
 ## Import
 
 ```ts
-import { useModal } from "@arkyn/components";
+import { useModal } from "@arkyn/components/useModal";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -63,7 +65,8 @@ Modal context is required to use this hook. See [ModalProvider](/docs/components
 If you have a component that needs to orchestrate multiple modals, global mode allows you to manage them all in one place.
 
 ```tsx
-import { ModalProvider, useModal } from "@arkyn/components";
+import { ModalProvider } from "@arkyn/components/modalProvider";
+import { useModal } from "@arkyn/components/useModal";
 
 function ModalActions() {
     const { 
@@ -106,12 +109,10 @@ function App() {
 If your component only needs to interact with one modal, you can provide a `key` to the `useModal` hook. This simplifies the returned values and avoids repeating the modal key in every call.
 
 ```tsx
-import {
-    ModalProvider,
-    useModal,
-    ModalContainer,
-    ModalHeader,
-} from "@arkyn/components";
+import { ModalProvider } from "@arkyn/components/modalProvider";
+import { useModal } from "@arkyn/components/useModal";
+import { ModalContainer } from "@arkyn/components/modalContainer";
+import { ModalHeader } from "@arkyn/components/modalHeader";
 
 function UserModal() {
     const {

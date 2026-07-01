@@ -5,9 +5,10 @@ The `useAutomation` hook automates modal closing and toast notifications based o
 ## Import
 
 ```ts
-import { useAutomation } from "@arkyn/components";
+import { useAutomation } from "@arkyn/components/useAutomation";
 ```
 
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 For the hook to work, you need to install the following dependencies:
 
@@ -32,7 +33,7 @@ The hook performs side effects and does not return a value.
 ## Usage example
 
 ```tsx
-import { useAutomation } from "@arkyn/components";
+import { useAutomation } from "@arkyn/components/useAutomation";
 
 function SubmitFeedback({ responseData }: { responseData: any }) {
     useAutomation(responseData);

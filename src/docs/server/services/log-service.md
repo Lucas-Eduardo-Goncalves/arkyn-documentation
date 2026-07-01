@@ -5,8 +5,10 @@ The `LogService` is a static singleton service for configuring log ingestion end
 ## Import
 
 ```ts
-import { LogService } from "@arkyn/server";
+import { LogService } from "@arkyn/server/logService";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Methods
 
@@ -25,7 +27,7 @@ import { LogService } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { LogService } from "@arkyn/server";
+import { LogService } from "@arkyn/server/logService";
 
 // Configure the log service (typically in your app's entry point)
 LogService.setConfig({
@@ -57,7 +59,8 @@ LogService.resetConfig();
 When using `ApiService` with route variables (`:param` syntax), the logging system can better aggregate and categorize your API calls:
 
 ```typescript
-import { ApiService, LogService } from "@arkyn/server";
+import { ApiService } from "@arkyn/server/apiService";
+import { LogService } from "@arkyn/server/logService";
 
 // Configure logging
 LogService.setConfig({

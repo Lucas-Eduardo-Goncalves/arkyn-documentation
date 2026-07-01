@@ -5,8 +5,10 @@ The `generateSlug` function is a utility for converting strings into URL-friendl
 ## Import
 
 ```ts
-import { generateSlug } from "@arkyn/shared";
+import { generateSlug } from "@arkyn/shared/generateSlug";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a URL-friendly slug string with all transformations applied
 **Type:** `string`
 
 ```typescript
-import { generateSlug } from "@arkyn/shared";
+import { generateSlug } from "@arkyn/shared/generateSlug";
 
 const slug = generateSlug("Hello, World! This is a Test.");
 

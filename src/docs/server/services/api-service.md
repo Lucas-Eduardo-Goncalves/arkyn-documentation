@@ -5,8 +5,10 @@ The `ApiService` is a class that provides a simple and consistent interface for 
 ## Import
 
 ```ts
-import { ApiService } from "@arkyn/server";
+import { ApiService } from "@arkyn/server/apiService";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -58,7 +60,7 @@ For POST, PUT, PATCH, DELETE requests:
 ## Usage example
 
 ```typescript
-import { ApiService } from "@arkyn/server";
+import { ApiService } from "@arkyn/server/apiService";
 
 const api = new ApiService({
     baseUrl: "https://api.example.com",

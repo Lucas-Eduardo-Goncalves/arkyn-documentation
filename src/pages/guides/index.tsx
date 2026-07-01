@@ -15,6 +15,10 @@ export default function GuidesRoute() {
         icon={Layout}
         description="Theming, configuration, styling and more"
       >
+        <GuideLink to="/docs/guides/how-do-i-use-imports">
+          How do I use imports
+        </GuideLink>
+
         <GuideLink to="/docs/guides/how-to-configure-components-theming">
           Configure theme
         </GuideLink>

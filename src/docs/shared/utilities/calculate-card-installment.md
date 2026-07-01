@@ -5,8 +5,10 @@ The `calculateCardInstallment` function is a utility for calculating installment
 ## Import
 
 ```ts
-import { calculateCardInstallment } from "@arkyn/shared";
+import { calculateCardInstallment } from "@arkyn/shared/calculateCardInstallment";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -41,7 +43,7 @@ The function returns an object containing two properties:
 **Type:** `{ totalPrice: number; installmentPrice: number }`
 
 ```typescript
-import { calculateCardInstallment } from "@arkyn/shared";
+import { calculateCardInstallment } from "@arkyn/shared/calculateCardInstallment";
 
 const result = calculateCardInstallment({
     cashPrice: 1000,

@@ -5,8 +5,10 @@ The `formatToHiddenDigits` function is a utility for masking or hiding specific 
 ## Import
 
 ```ts
-import { formatToHiddenDigits } from "@arkyn/shared";
+import { formatToHiddenDigits } from "@arkyn/shared/formatToHiddenDigits";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -49,7 +51,7 @@ The function returns a formatted string with the specified digits replaced by th
 **Type:** `string`
 
 ```typescript
-import { formatToHiddenDigits } from "@arkyn/shared";
+import { formatToHiddenDigits } from "@arkyn/shared/formatToHiddenDigits";
 
 const result = formatToHiddenDigits("123-456-7890");
 

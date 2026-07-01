@@ -5,8 +5,10 @@ The `NoContent` class represents a successful HTTP response with status code 204
 ## Import
 
 ```ts
-import { NoContent } from "@arkyn/server";
+import { NoContent } from "@arkyn/server/noContent";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -19,7 +21,7 @@ import { NoContent } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { NoContent } from "@arkyn/server";
+import { NoContent } from "@arkyn/server/noContent";
 
 // Delete operation with no response body
 const response = new NoContent("Resource deleted successfully");

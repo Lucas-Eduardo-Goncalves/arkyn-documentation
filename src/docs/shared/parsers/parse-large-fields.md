@@ -5,8 +5,10 @@ The `parseLargeFields` function is a utility for truncating large string fields 
 ## Import
 
 ```ts
-import { parseLargeFields } from "@arkyn/shared";
+import { parseLargeFields } from "@arkyn/shared/parseLargeFields";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -32,7 +34,7 @@ The function returns a JSON string with large string fields truncated. Truncated
 **Type:** `string`
 
 ```typescript
-import { parseLargeFields } from "@arkyn/shared";
+import { parseLargeFields } from "@arkyn/shared/parseLargeFields";
 
 const json = JSON.stringify({
     name: "John",

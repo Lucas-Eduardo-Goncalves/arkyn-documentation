@@ -1,0 +1,75 @@
+# How do I use imports
+
+import { AlertContainer } from "@arkyn/components/alertContainer";
+import { AlertContent } from "@arkyn/components/alertContent";
+import { AlertDescription } from "@arkyn/components/alertDescription";
+import { AlertIcon } from "@arkyn/components/alertIcon";
+import { AlertTitle } from "@arkyn/components/alertTitle";
+
+Every Arkyn package — `@arkyn/components`, `@arkyn/server`, `@arkyn/shared`, and `@arkyn/templates` — publishes a dedicated subpath for each component, hook, provider, or function it exports. Instead of pulling everything from the package root, you should import each piece from its own path, such as `@arkyn/components/button` or `@arkyn/server/validateEmail`.
+
+## Two Ways to Import, Two Different Results
+
+There are two ways to write these imports, and they are **not** equivalent — one loads only the code you asked for, the other loads the entire package.
+
+### Subpath imports
+
+Each symbol gets its own `import` statement, pointing at its own subpath:
+
+```tsx
+import { AlertContainer } from "@arkyn/components/alertContainer";
+import { AlertContent } from "@arkyn/components/alertContent";
+import { AlertDescription } from "@arkyn/components/alertDescription";
+import { AlertIcon } from "@arkyn/components/alertIcon";
+import { AlertTitle } from "@arkyn/components/alertTitle";
+```
+
+Each subpath resolves to a small, self-contained file that only imports what that specific piece needs. Importing `@arkyn/components/alertContainer` never touches the code — or the dependencies — that other components like `Calendar` or `RichText` rely on.
+
+### Root import
+
+Destructuring the same names from the package root instead of from their subpaths:
+
+```tsx
+import {
+	AlertContainer,
+	AlertContent,
+	AlertDescription,
+	AlertIcon,
+	AlertTitle,
+} from "@arkyn/components";
+```
+
+This looks similar, but it resolves to a single bundled entry file that contains every component, hook, and provider the package exports — not just the five names destructured above. That entry file also statically imports every peer dependency used by any component in the library (for example `mapbox-gl`, `slate`, `framer-motion`, `react-hot-toast`, `html-react-parser`, `react-scroll`, `@react-input/mask`), whether or not the components you actually use need them.
+
+### Advantages and trade-offs
+
+**Subpath imports:**
+
+- Every import line maps to exactly one file, so it is easy to audit what a module actually depends on.
+- Only the code and dependencies of the symbols you import are ever compiled into your bundle.
+- Adding or removing a single symbol never touches the other import lines.
+- Plays well with editor auto-import, since each name resolves to exactly one path.
+- Gets more verbose when you need several related symbols at once.
+
+**Root import:**
+
+- Shorter to write for a handful of symbols.
+- Compiles the whole package into your bundle, including components you never use.
+- Requires every peer dependency of the package to be installed, even ones used only by components you don't import — the root entry file imports all of them unconditionally.
+
+## Tree Shaking
+
+Tree shaking is the process a bundler (Vite, Webpack, esbuild, Rollup, etc.) uses to statically analyze `import`/`export` statements and remove code that isn't reachable from your entry points before shipping the final bundle.
+
+Subpath imports are tree-shakeable by construction: each subpath is its own file containing only the code and dependencies for that one symbol, so there's nothing left for a bundler to strip.
+
+Root imports don't get the same guarantee. Everything lives in one shared entry file, so the bundler has to open that file and figure out which of its exports are actually reachable from your code. In practice this is unreliable — many of the underlying libraries it imports (`mapbox-gl`, `slate`, `react-hot-toast`, and others) have side effects or aren't cleanly tree-shakeable themselves, so bundlers often can't safely drop them even when none of the components you use need them. The result is a larger bundle than the subpath form, and unused code shipped to your users.
+
+Prefer subpath imports whenever bundle size matters.
+
+## Peer Dependencies
+
+Some components, hooks, and functions rely on external peer dependencies to power a specific piece of functionality. Those requirements are documented on that symbol's own page, next to its usage examples — they are not repeated here, since they vary per component or function. Check the page for the specific symbol you are importing before wiring it into your app.
+
+If you import from the package root instead of subpaths, you need **all** of the package's peer dependencies installed, not just the ones used by the components you actually import — the root entry file imports every one of them unconditionally.

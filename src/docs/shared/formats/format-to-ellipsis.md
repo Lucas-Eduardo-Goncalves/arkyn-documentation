@@ -5,8 +5,10 @@ The `formatToEllipsis` function is a utility for truncating text strings to a sp
 ## Import
 
 ```ts
-import { formatToEllipsis } from "@arkyn/shared";
+import { formatToEllipsis } from "@arkyn/shared/formatToEllipsis";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -31,7 +33,7 @@ The function returns the original string if it does not exceed the maximum lengt
 **Type:** `string`
 
 ```typescript
-import { formatToEllipsis } from "@arkyn/shared";
+import { formatToEllipsis } from "@arkyn/shared/formatToEllipsis";
 
 const result = formatToEllipsis("Hello, world!", 5);
 

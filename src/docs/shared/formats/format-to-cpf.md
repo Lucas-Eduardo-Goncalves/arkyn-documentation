@@ -5,8 +5,10 @@ The `formatToCpf` function is a utility for formatting strings into the Brazilia
 ## Import
 
 ```ts
-import { formatToCpf } from "@arkyn/shared";
+import { formatToCpf } from "@arkyn/shared/formatToCpf";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a formatted CPF string in the pattern `XXX.XXX.XXX-XX`, whe
 **Type:** `string`
 
 ```typescript
-import { formatToCpf } from "@arkyn/shared";
+import { formatToCpf } from "@arkyn/shared/formatToCpf";
 
 const cpf = formatToCpf("12345678909");
 

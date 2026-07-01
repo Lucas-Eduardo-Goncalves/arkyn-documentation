@@ -5,8 +5,10 @@ The `parseSensitiveData` function is a utility for masking sensitive information
 ## Import
 
 ```ts
-import { parseSensitiveData } from "@arkyn/shared";
+import { parseSensitiveData } from "@arkyn/shared/parseSensitiveData";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -32,7 +34,7 @@ The function returns a JSON string with sensitive data masked. All values of fie
 **Type:** `string`
 
 ```typescript
-import { parseSensitiveData } from "@arkyn/shared";
+import { parseSensitiveData } from "@arkyn/shared/parseSensitiveData";
 
 const jsonString = JSON.stringify({
     username: "user123",

@@ -5,8 +5,10 @@ The `validateEmail` function is a comprehensive utility for validating email add
 ## Import
 
 ```ts
-import { validateEmail } from "@arkyn/server";
+import { validateEmail } from "@arkyn/server/validateEmail";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a Promise that resolves to a boolean indicating whether the
 **Type:** `Promise<boolean>`
 
 ```typescript
-import { validateEmail } from "@arkyn/server";
+import { validateEmail } from "@arkyn/server/validateEmail";
 
 // Valid email with existing domain
 const isValid1 = await validateEmail("user@gmail.com");

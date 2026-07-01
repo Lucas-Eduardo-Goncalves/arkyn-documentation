@@ -5,8 +5,10 @@ The `BadGateway` class represents an HTTP error response with status code 502. I
 ## Import
 
 ```ts
-import { BadGateway } from "@arkyn/server";
+import { BadGateway } from "@arkyn/server/badGateway";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -22,7 +24,7 @@ import { BadGateway } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { BadGateway } from "@arkyn/server";
+import { BadGateway } from "@arkyn/server/badGateway";
 
 // Basic usage - throw the error
 throw new BadGateway("Payment gateway unavailable");

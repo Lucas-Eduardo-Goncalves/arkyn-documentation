@@ -47,6 +47,8 @@ function CountrySelector() {
 }
 ```
 
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
+
 ## Object Example (Brazil)
 
 ```json

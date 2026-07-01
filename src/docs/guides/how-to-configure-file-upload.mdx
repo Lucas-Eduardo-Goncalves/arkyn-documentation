@@ -1,18 +1,16 @@
 # Configure file upload
 
-import {
-	FileUpload,
-	AlertContainer,
-	AlertContent,
-	AlertDescription,
-	AlertIcon,
-	AlertTitle,
-} from "@arkyn/components";
+import { FileUpload } from "@arkyn/components/fileUpload";
+import { AlertContainer } from "@arkyn/components/alertContainer";
+import { AlertContent } from "@arkyn/components/alertContent";
+import { AlertDescription } from "@arkyn/components/alertDescription";
+import { AlertIcon } from "@arkyn/components/alertIcon";
+import { AlertTitle } from "@arkyn/components/alertTitle";
 
 `FileUpload` is designed for a two-step flow: the component first sends the selected file to a dedicated upload endpoint, then stores the returned file URL inside a hidden input so the final form can submit only the URL.
 
 ```tsx
-import { FileUpload } from "@arkyn/components";
+import { FileUpload } from "@arkyn/components/fileUpload";
 ```
 
 ## How it works
@@ -138,7 +136,7 @@ That action does three important things:
 The adapter below shows how the uploaded file can be sent to Amazon S3 and converted into a public URL.
 
 ```tsx
-import { generateId } from "@arkyn/shared";
+import { generateId } from "@arkyn/shared/generateId";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import type { FileUpload } from "@mjackson/form-data-parser";
 import { Readable } from "stream";

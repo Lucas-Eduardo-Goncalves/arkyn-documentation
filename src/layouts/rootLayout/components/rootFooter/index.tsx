@@ -48,13 +48,12 @@ function RootFooter() {
               <strong>Explore</strong>
               <Link to="/">Documentation</Link>
               <Link to="/docs/changelog">Changelog</Link>
+              <Link to="/docs/breaking-changes">Breaking Changes</Link>
               <Link to="/guides/introduction">Guides</Link>
             </div>
 
             <div>
               <strong>Company</strong>
-              <Link to="/docs/about">About</Link>
-              <Link to="/docs/support">Support</Link>
               <Link to="/docs/privacy">Privacy policy</Link>
               <a href="mailto:lucasgoncalves@arkyn.dev">Contact us</a>
             </div>

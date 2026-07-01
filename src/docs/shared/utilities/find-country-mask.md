@@ -6,8 +6,10 @@ country templates (masks use `_` as digit placeholders).
 ## Import
 
 ```ts
-import { findCountryMask } from "@arkyn/shared";
+import { findCountryMask } from "@arkyn/shared/findCountryMask";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Description
 
@@ -43,7 +45,7 @@ The function throws an `Error` with one of the following messages when it cannot
 ## Usage example
 
 ```ts
-import { findCountryMask } from "@arkyn/shared";
+import { findCountryMask } from "@arkyn/shared/findCountryMask";
 
 console.log(findCountryMask("+5511999999999"));
 // Possible output:

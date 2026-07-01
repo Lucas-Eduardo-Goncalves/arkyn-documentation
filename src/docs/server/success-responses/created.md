@@ -5,8 +5,10 @@ The `Created` class represents a successful HTTP response with status code 201. 
 ## Import
 
 ```ts
-import { Created } from "@arkyn/server";
+import { Created } from "@arkyn/server/created";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -22,7 +24,7 @@ import { Created } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { Created } from "@arkyn/server";
+import { Created } from "@arkyn/server/created";
 
 // Basic usage - return the response
 const response = new Created("User created successfully");

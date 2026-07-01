@@ -5,8 +5,10 @@ The `formatJsonString` function is a utility for parsing and formatting JSON str
 ## Import
 
 ```ts
-import { formatJsonString } from "@arkyn/shared";
+import { formatJsonString } from "@arkyn/shared/formatJsonString";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a formatted string representation of the JSON data with pro
 **Type:** `string`
 
 ```typescript
-import { formatJsonString } from "@arkyn/shared";
+import { formatJsonString } from "@arkyn/shared/formatJsonString";
 
 const jsonString = '{"name":"John","age":30}';
 const formatted = formatJsonString(jsonString);
@@ -45,7 +47,7 @@ The function performs validation and may throw an error in the following scenari
 **Invalid JSON string:** An error is thrown when the input string cannot be parsed as valid JSON. This includes malformed JSON such as missing quotes, trailing commas, unclosed brackets, or invalid syntax. The error message will include details about what went wrong during parsing.
 
 ```typescript
-import { formatJsonString } from "@arkyn/shared";
+import { formatJsonString } from "@arkyn/shared/formatJsonString";
 
 try {
     const invalidJsonString = '{"name":"John", "age":30,';

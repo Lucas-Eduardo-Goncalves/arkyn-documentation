@@ -5,8 +5,10 @@ The `useHydrated` hook detects whether rendering is happening after client hydra
 ## Import
 
 ```ts
-import { useHydrated } from "@arkyn/components";
+import { useHydrated } from "@arkyn/components/useHydrated";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -24,7 +26,7 @@ The hook returns whether hydration has completed on the client.
 ## Usage example
 
 ```tsx
-import { useHydrated } from "@arkyn/components";
+import { useHydrated } from "@arkyn/components/useHydrated";
 
 function ClientAwareClock() {
     const isHydrated = useHydrated();

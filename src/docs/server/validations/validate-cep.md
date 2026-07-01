@@ -5,8 +5,10 @@ The `validateCep` function is a utility for validating Brazilian CEP (Código de
 ## Import
 
 ```ts
-import { validateCep } from "@arkyn/server";
+import { validateCep } from "@arkyn/server/validateCep";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a boolean indicating whether the provided CEP is valid.
 **Type:** `boolean`
 
 ```typescript
-import { validateCep } from "@arkyn/server";
+import { validateCep } from "@arkyn/server/validateCep";
 
 // Formatted CEP
 const isValid1 = validateCep("12345-678");

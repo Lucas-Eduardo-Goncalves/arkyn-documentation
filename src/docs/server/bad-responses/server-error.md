@@ -5,8 +5,10 @@ The `ServerError` class represents an HTTP error response with status code 500. 
 ## Import
 
 ```ts
-import { ServerError } from "@arkyn/server";
+import { ServerError } from "@arkyn/server/serverError";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -22,7 +24,7 @@ import { ServerError } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { ServerError } from "@arkyn/server";
+import { ServerError } from "@arkyn/server/serverError";
 
 // Basic usage - throw the error
 throw new ServerError("An unexpected error occurred");

@@ -38,6 +38,8 @@ function formatToBRL(value: number) {
 console.log(formatToBRL(1234.56));
 ```
 
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
+
 ## Example Object (BRL)
 
 ```json

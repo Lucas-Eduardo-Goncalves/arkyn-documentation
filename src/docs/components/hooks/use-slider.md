@@ -5,8 +5,10 @@ The `useSlider` hook manages slider state with automatic clamping between `0` an
 ## Import
 
 ```ts
-import { useSlider } from "@arkyn/components";
+import { useSlider } from "@arkyn/components/useSlider";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -31,7 +33,7 @@ The hook returns the current slider value and a setter with boundary validation.
 ## Usage example
 
 ```tsx
-import { useSlider } from "@arkyn/components";
+import { useSlider } from "@arkyn/components/useSlider";
 
 function SliderField() {
     const [value, setValue] = useSlider(25);

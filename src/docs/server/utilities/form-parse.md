@@ -5,8 +5,10 @@ The `formParse` function is a utility for validating form data against a Zod sch
 ## Import
 
 ```ts
-import { formParse } from "@arkyn/server";
+import { formParse } from "@arkyn/server/formParse";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -30,7 +32,7 @@ The function returns an object with a `success` boolean indicating the validatio
 
 ```typescript
 import { z } from "zod";
-import { formParse } from "@arkyn/server";
+import { formParse } from "@arkyn/server/formParse";
 
 const schema = z.object({
     name: z.string().min(1, "Name is required"),

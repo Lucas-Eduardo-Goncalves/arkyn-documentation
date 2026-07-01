@@ -5,8 +5,10 @@ The `validateDate` function is a utility for validating date strings based on va
 ## Import
 
 ```ts
-import { validateDate } from "@arkyn/server";
+import { validateDate } from "@arkyn/server/validateDate";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -56,7 +58,7 @@ The function returns a boolean indicating whether the provided date is valid.
 **Type:** `boolean`
 
 ```typescript
-import { validateDate } from "@arkyn/server";
+import { validateDate } from "@arkyn/server/validateDate";
 
 // Brazilian date format (default)
 validateDate("31/12/2023");

@@ -5,8 +5,10 @@ The `useForm` hook exposes form context data such as field-level validation erro
 ## Import
 
 ```ts
-import { useForm } from "@arkyn/components";
+import { useForm } from "@arkyn/components/useForm";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -24,7 +26,8 @@ The hook returns the current form context object.
 ## Usage example
 
 ```tsx
-import { FormProvider, useForm } from "@arkyn/components";
+import { FormProvider } from "@arkyn/components/formProvider";
+import { useForm } from "@arkyn/components/useForm";
 
 function EmailField() {
     const { fieldErrors } = useForm();

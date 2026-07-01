@@ -1,19 +1,19 @@
 # ClientOnly
 
-import {
-  AlertContainer,
-  AlertContent,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-  ClientOnly,
-} from "@arkyn/components";
+import { AlertContainer } from "@arkyn/components/alertContainer";
+import { AlertContent } from "@arkyn/components/alertContent";
+import { AlertDescription } from "@arkyn/components/alertDescription";
+import { AlertIcon } from "@arkyn/components/alertIcon";
+import { AlertTitle } from "@arkyn/components/alertTitle";
+import { ClientOnly } from "@arkyn/components/clientOnly";
 
 ClientOnly renders client-dependent content only after hydration, preventing server/client rendering mismatches.
 
 ```tsx
-import { ClientOnly } from "@arkyn/components";
+import { ClientOnly } from "@arkyn/components/clientOnly";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Basic Usage
 

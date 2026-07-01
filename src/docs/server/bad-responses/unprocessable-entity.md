@@ -5,8 +5,10 @@ The `UnprocessableEntity` class represents an HTTP error response with status co
 ## Import
 
 ```ts
-import { UnprocessableEntity } from "@arkyn/server";
+import { UnprocessableEntity } from "@arkyn/server/unprocessableEntity";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -26,7 +28,7 @@ Unlike other BadResponse classes, `UnprocessableEntity` takes an object with str
 ## Usage example
 
 ```typescript
-import { UnprocessableEntity } from "@arkyn/server";
+import { UnprocessableEntity } from "@arkyn/server/unprocessableEntity";
 
 // Basic form validation error
 throw new UnprocessableEntity({
@@ -82,7 +84,7 @@ The response body includes the validation details:
 This class is commonly thrown by `SchemaValidator.formValidate()` and `SchemaValidator.formAsyncValidate()`:
 
 ```typescript
-import { SchemaValidator } from "@arkyn/server";
+import { SchemaValidator } from "@arkyn/server/schemaValidator";
 import { z } from "zod";
 
 const schema = z.object({

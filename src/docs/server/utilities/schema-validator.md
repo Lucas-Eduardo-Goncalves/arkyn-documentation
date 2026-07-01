@@ -5,8 +5,10 @@ The `SchemaValidator` is a utility class that provides multiple validation metho
 ## Import
 
 ```ts
-import { SchemaValidator } from "@arkyn/server";
+import { SchemaValidator } from "@arkyn/server/schemaValidator";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Methods
 
@@ -26,7 +28,7 @@ The class is instantiated with a Zod schema: `new SchemaValidator(schema)`.
 
 ```typescript
 import { z } from "zod";
-import { SchemaValidator } from "@arkyn/server";
+import { SchemaValidator } from "@arkyn/server/schemaValidator";
 
 const userSchema = z.object({
     name: z.string().min(1, "Name is required"),

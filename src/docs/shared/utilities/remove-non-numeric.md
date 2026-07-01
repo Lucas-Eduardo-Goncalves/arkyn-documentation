@@ -5,8 +5,10 @@ The `removeNonNumeric` function is a utility for removing all non-numeric charac
 ## Import
 
 ```ts
-import { removeNonNumeric } from "@arkyn/shared";
+import { removeNonNumeric } from "@arkyn/shared/removeNonNumeric";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a new string containing only the numeric characters (0-9) f
 **Type:** `string`
 
 ```typescript
-import { removeNonNumeric } from "@arkyn/shared";
+import { removeNonNumeric } from "@arkyn/shared/removeNonNumeric";
 
 const result = removeNonNumeric("abc123def456");
 

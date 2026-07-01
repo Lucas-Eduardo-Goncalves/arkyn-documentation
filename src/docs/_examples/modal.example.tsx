@@ -1,4 +1,5 @@
-import { Button, ModalContainer } from "@arkyn/components";
+import { Button } from "@arkyn/components/button";
+import { ModalContainer } from "@arkyn/components/modalContainer";
 import { useState, type ReactNode } from "react";
 
 type ModalExampleProps = {

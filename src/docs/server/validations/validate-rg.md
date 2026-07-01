@@ -5,8 +5,10 @@ The `validateRg` function is a utility for performing generic validation of Braz
 ## Import
 
 ```ts
-import { validateRg } from "@arkyn/server";
+import { validateRg } from "@arkyn/server/validateRg";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a boolean indicating whether the RG has a valid structure.
 **Type:** `boolean`
 
 ```typescript
-import { validateRg } from "@arkyn/server";
+import { validateRg } from "@arkyn/server/validateRg";
 
 // Valid RG with formatting
 const isValid1 = validateRg("12.345.678-9");

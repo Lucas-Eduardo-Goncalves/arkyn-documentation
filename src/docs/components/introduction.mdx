@@ -40,49 +40,42 @@ Create a CSS file (e.g., `globals.css`, `app.css` or `variables.css`) and add th
 
 ```css
 :root {
-    --white: #ffffff;
+  --white: #ffffff;
 
-    /* background */
-    --background: #f4f4f5;
-    --background-foreground: #ffffff;
+	/* background */
+	--background: #f4f4f5;
+	--background-underground: #fafafa;
+	--background-foreground: #ffffff;
 
-    /* modal, drawer, popover... */
-    --card: #ffffff;
-    --card-foreground-primary: #fafafa;
-    --card-foreground-secondary: #f1f5f9;
-    --card-foreground-third: #e2e8f0;
+	/* text */
+	--text-heading: #18181b;
+	--text-body: #52525b;
+	--text-muted: #a1a1aa;
 
-    /* skeleton */
-    --skeleton: #f8fafc;
-    --skeleton-foreground: #f1f5f9;
+	/* border */
+	--border: #e2e8f0;
 
-    /* text */
-    --text-heading: #18181b;
-    --text-body: #52525b;
-    --text-muted: #a1a1aa;
+	/* inputs, textarea, select, checkbox, etc. */
+	--input-background: #fafafa;
 
-    /* border */
-    --border: #e2e8f0;
-    --default-border: #e4e4e7;
+	/* tooltip */
+	--tooltip-text: #fafafa;
+	--tooltip-background: #27272a;
 
-    /* tooltip */
-    --tooltip-text: #f1f5f9;
-    --tooltip-background: #0f172a;
+	/* spotlight */
+	--spotlight-primary: 17, 109, 220; /* #116ddc */
+	--spotlight-secondary: 100, 116, 139; /* #64748B */
+	--spotlight-success: 16, 185, 129; /* #10b981 */
+	--spotlight-danger: 244, 63, 94; /* #f43f5e */
+	--spotlight-info: 14, 165, 233; /* #0ea5e9 */
+	--spotlight-warning: 249, 115, 22; /* #f97316 */
 
-    /* spotlight */
-    --spotlight-primary: 2, 167, 105; /* #02A769 */
-    --spotlight-secondary: 248, 250, 252; /* #f8fafc */
-    --spotlight-success: 16, 185, 129; /* #10b981 */
-    --spotlight-danger: 244, 63, 94; /* #f43f5e */
-    --spotlight-info: 14, 165, 233; /* #0ea5e9 */
-    --spotlight-accent: 234, 179, 8; /* #EAB308 */
-    --spotlight-warning: 249, 115, 22; /* #f97316 */
-
-    /* toast */
-    --toast-success: 16, 185, 129; /* #10B981 */
-    --toast-danger: 225, 29, 72; /* #E11D48 */
-    --toast-info: 14, 165, 233; /* #0EA5E9 */
-    --toast-warning: 251, 146, 60; /* #FB923C */
+	--spotlight-primary-foreground: 231, 240, 252; /* #E7F0FC */
+	--spotlight-secondary-foreground: 226, 232, 240; /* #E2E8F0 */
+	--spotlight-success-foreground: 231, 248, 242; /* #E7F8F2 */
+	--spotlight-danger-foreground: 254, 236, 239; /* #FEECEF */
+	--spotlight-info-foreground: 231, 246, 253; /* #E7F6FD */
+	--spotlight-warning-foreground: 254, 241, 232; /* #FEF1E8 */
 }
 ```
 
@@ -94,7 +87,7 @@ The documentation is grouped to match how the package is actually used in applic
 
 ### Components
 
-Reusable UI building blocks for everyday interfaces, such as [Button](/components/components/button), [Input](/components/components/input), [Select](/components/components/select), [Tooltip](/components/components/tooltip), [Checkbox](/components/components/checkbox), [DrawerContainer](/components/components/drawer-container), and [ClientOnly](/components/components/client-only).
+Reusable UI building blocks for everyday interfaces, such as [Button](/components/components/button), [Input](/components/components/input), [Select](/components/components/select), [Tooltip](/components/components/tooltip), [Checkbox](/components/components/checkbox), [Drawer](/components/components/drawer), and [ClientOnly](/components/components/client-only).
 
 ### Hooks
 

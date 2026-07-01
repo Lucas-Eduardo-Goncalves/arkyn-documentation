@@ -5,8 +5,10 @@ The `ValidateDateService` is a service class for validating date components and 
 ## Import
 
 ```ts
-import { ValidateDateService } from "@arkyn/shared";
+import { ValidateDateService } from "@arkyn/shared/validateDateService";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Method `validateDateParts(year, month, day)`
 
@@ -33,7 +35,7 @@ The day to validate (must be valid for the given month)
 ### Usage example
 
 ```typescript
-import { ValidateDateService } from "@arkyn/shared";
+import { ValidateDateService } from "@arkyn/shared/validateDateService";
 
 const service = new ValidateDateService();
 
@@ -56,7 +58,7 @@ The format string to validate
 ### Usage example
 
 ```typescript
-import { ValidateDateService } from "@arkyn/shared";
+import { ValidateDateService } from "@arkyn/shared/validateDateService";
 
 const service = new ValidateDateService();
 

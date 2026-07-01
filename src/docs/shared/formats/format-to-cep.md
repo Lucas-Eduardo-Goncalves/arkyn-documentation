@@ -5,8 +5,10 @@ The `formatToCep` function is a utility for formatting strings into the Brazilia
 ## Import
 
 ```ts
-import { formatToCep } from "@arkyn/shared";
+import { formatToCep } from "@arkyn/shared/formatToCep";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a formatted CEP string in the pattern `XXXXX-XXX`, where X 
 **Type:** `string`
 
 ```typescript
-import { formatToCep } from "@arkyn/shared";
+import { formatToCep } from "@arkyn/shared/formatToCep";
 
 const cep = formatToCep("12345678");
 
@@ -40,7 +42,7 @@ The function performs validation and may throw an error in the following scenari
 **Invalid CEP format:** An error is thrown when the input does not contain exactly 8 numeric digits after removing all non-numeric characters. The error message will include the original input value to help identify what went wrong. This includes cases where the input is too short, too long, or contains only non-numeric characters.
 
 ```typescript
-import { formatToCep } from "@arkyn/shared";
+import { formatToCep } from "@arkyn/shared/formatToCep";
 
 try {
     const cep = formatToCep("1234567");

@@ -1,4 +1,6 @@
-import { Button, DrawerContainer, DrawerHeader } from "@arkyn/components";
+import { Button } from "@arkyn/components/button";
+import { DrawerContainer } from "@arkyn/components/drawerContainer";
+import { DrawerHeader } from "@arkyn/components/drawerHeader";
 import { useState, type ReactNode } from "react";
 
 type DrawerExampleProps = {

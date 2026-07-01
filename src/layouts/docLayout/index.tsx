@@ -28,7 +28,9 @@ function DocLayout() {
           </DocContentContainer>
         </StickyBox>
 
-        <PageToc />
+        <StickyBox offsetTop={60}>
+          <PageToc />
+        </StickyBox>
       </DocLayoutWrapper>
     </DocLayoutContainer>
   );

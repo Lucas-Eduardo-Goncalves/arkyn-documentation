@@ -5,8 +5,10 @@ The `NotFound` class represents an HTTP error response with status code 404. It 
 ## Import
 
 ```ts
-import { NotFound } from "@arkyn/server";
+import { NotFound } from "@arkyn/server/notFound";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -22,7 +24,7 @@ import { NotFound } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { NotFound } from "@arkyn/server";
+import { NotFound } from "@arkyn/server/notFound";
 
 // Basic usage - throw the error
 throw new NotFound("User not found");

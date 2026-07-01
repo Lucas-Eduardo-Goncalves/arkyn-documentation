@@ -1,12 +1,16 @@
-# CardTabContainer
+# CardTab
 
-import { CardTabButton, CardTabContainer } from "@arkyn/components";
+import { CardTabButton } from "@arkyn/components/cardTabButton";
+import { CardTabContainer } from "@arkyn/components/cardTabContainer";
 
-The `CardTabContainer` component provides the state and context used to group `CardTabButton` components into tabbed navigation.
+The CardTab family provides tabbed navigation. `CardTabContainer` holds the state and context, while `CardTabButton` renders the interactive tab triggers inside it.
 
 ```tsx
-import { CardTabButton, CardTabContainer } from "@arkyn/components";
+import { CardTabButton } from "@arkyn/components/cardTabButton";
+import { CardTabContainer } from "@arkyn/components/cardTabContainer";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Basic Usage
 
@@ -49,21 +53,58 @@ Use `defaultValue` to set the initial active tab and `onChange` to react when th
 </CardTabContainer>
 ```
 
-## Disabled
+## States
 
-Use `disabled` on the container when all tab buttons should be unavailable.
+Use `disabled` on `CardTabContainer` to disable all tab buttons at once, or on an individual `CardTabButton` to prevent selection of just that tab. When the parent container is disabled, every button is disabled automatically.
 
 <div className="noContent column">
-  <CardTabContainer disabled>
+  <CardTabContainer defaultValue="available">
+    <CardTabButton value="available">Available</CardTabButton>
+    <CardTabButton value="coming-soon" disabled>
+      Coming Soon
+    </CardTabButton>
+  </CardTabContainer>
+
+  <CardTabContainer disabled defaultValue="tab-1">
     <CardTabButton value="tab-1">Tab 1</CardTabButton>
     <CardTabButton value="tab-2">Tab 2</CardTabButton>
   </CardTabContainer>
 </div>
 
 ```tsx
-<CardTabContainer disabled>
+<CardTabContainer defaultValue="available">
+    <CardTabButton value="available">Available</CardTabButton>
+    <CardTabButton value="coming-soon" disabled>
+        Coming Soon
+    </CardTabButton>
+</CardTabContainer>
+
+<CardTabContainer disabled defaultValue="tab-1">
     <CardTabButton value="tab-1">Tab 1</CardTabButton>
     <CardTabButton value="tab-2">Tab 2</CardTabButton>
+</CardTabContainer>
+```
+
+## Interaction
+
+`CardTabButton` always uses `type="button"` and notifies the surrounding container when clicked. Any passed `onClick` handler still runs after the active tab changes.
+
+<div className="noContent row">
+  <CardTabContainer onChange={(value) => value} defaultValue="profile">
+    <CardTabButton value="profile">Profile</CardTabButton>
+    <CardTabButton value="settings">Settings</CardTabButton>
+  </CardTabContainer>
+</div>
+
+```tsx
+<CardTabContainer
+    onChange={(value) => console.log(value)}
+    defaultValue="profile"
+>
+    <CardTabButton value="profile" onClick={() => console.log("Profile clicked")}>
+        Profile
+    </CardTabButton>
+    <CardTabButton value="settings">Settings</CardTabButton>
 </CardTabContainer>
 ```
 
@@ -85,7 +126,8 @@ The container stores the active tab internally and exposes it to child buttons t
 
 ```tsx
 import { useState } from "react";
-import { CardTabButton, CardTabContainer } from "@arkyn/components";
+import { CardTabButton } from "@arkyn/components/cardTabButton";
+import { CardTabContainer } from "@arkyn/components/cardTabContainer";
 
 function MyTabs() {
     const [activeTab, setActiveTab] = useState("profile");
@@ -113,6 +155,8 @@ function MyTabs() {
 
 ## Properties
 
+### CardTabContainer
+
 **`children`** - `React.ReactNode`
 CardTabButton components and other content rendered inside the navigation container.
 
@@ -127,3 +171,20 @@ Callback fired when the active tab changes.
 
 **Standard HTML nav attributes** - `HTMLAttributes<HTMLElement>` except `onClick`, `children`, `ref`, and `onChange`
 All other native navigation container props are supported, including `className`, `role`, and accessibility attributes.
+
+### CardTabButton
+
+**`children`** - `React.ReactNode`
+Content rendered inside the tab button.
+
+**`value`** - `string`
+Unique identifier for the tab button and the value sent to the container when the button is activated.
+
+**`disabled`** - `boolean`
+Disables the button. When the parent `CardTabContainer` is disabled, the button is also disabled automatically.
+
+**`onClick`** - `(event: MouseEvent<HTMLButtonElement>) => void`
+Optional click handler that runs after the tab change is triggered.
+
+**Standard HTML button attributes** - `ButtonHTMLAttributes<HTMLButtonElement>` except `children`, `value`, and `type`
+All other native button props are supported, including `className`, `aria-*` attributes, and `data-*` attributes.

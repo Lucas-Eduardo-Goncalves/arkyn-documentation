@@ -5,8 +5,10 @@ The `errorHandler` function is a centralized utility for handling both success a
 ## Import
 
 ```ts
-import { errorHandler } from "@arkyn/server";
+import { errorHandler } from "@arkyn/server/errorHandler";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,10 @@ The function returns a standard HTTP Response object with appropriate status cod
 **Type:** `Response`
 
 ```typescript
-import { errorHandler, Success, NotFound, Created } from "@arkyn/server";
+import { errorHandler } from "@arkyn/server/errorHandler";
+import { Success } from "@arkyn/server/success";
+import { NotFound } from "@arkyn/server/notFound";
+import { Created } from "@arkyn/server/created";
 
 async function getUser(id: string) {
     try {

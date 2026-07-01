@@ -5,8 +5,10 @@ The `formatToCurrency` function is a utility for formatting numeric values into 
 ## Import
 
 ```ts
-import { formatToCurrency } from "@arkyn/shared";
+import { formatToCurrency } from "@arkyn/shared/formatToCurrency";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -44,7 +46,7 @@ The function returns a formatted currency string based on the specified locale a
 **Type:** `string`
 
 ```typescript
-import { formatToCurrency } from "@arkyn/shared";
+import { formatToCurrency } from "@arkyn/shared/formatToCurrency";
 
 const formatted = formatToCurrency(1234.56, "USD", { showPrefix: true });
 
@@ -59,7 +61,7 @@ The function performs validation and may throw an error in the following scenari
 **Unsupported currency code:** An error is thrown when the provided currency code is not supported by the function. Only the predefined currency codes listed in the parameters section are valid.
 
 ```typescript
-import { formatToCurrency } from "@arkyn/shared";
+import { formatToCurrency } from "@arkyn/shared/formatToCurrency";
 
 try {
     const formatted = formatToCurrency(1234.56, "ABC");

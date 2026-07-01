@@ -38,6 +38,8 @@ function StateSelector() {
 }
 ```
 
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
+
 ## Example object (São Paulo)
 
 ```json

@@ -5,8 +5,10 @@ The `flushDebugLogs` function is a utility for outputting debug logs to the cons
 ## Import
 
 ```ts
-import { flushDebugLogs } from "@arkyn/server";
+import { flushDebugLogs } from "@arkyn/server/flushDebugLogs";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -35,7 +37,7 @@ An array of debug messages to be logged. Each message will be output on a separa
 The function outputs each debug message on a new line with a colored prefix. Logs are only displayed in development mode or when `DEBUG_MODE` is enabled.
 
 ```typescript
-import { flushDebugLogs } from "@arkyn/server";
+import { flushDebugLogs } from "@arkyn/server/flushDebugLogs";
 
 // Log API request information
 flushDebugLogs({

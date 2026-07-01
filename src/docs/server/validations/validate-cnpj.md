@@ -5,8 +5,10 @@ The `validateCnpj` function is a utility for validating Brazilian CNPJ (Cadastro
 ## Import
 
 ```ts
-import { validateCnpj } from "@arkyn/server";
+import { validateCnpj } from "@arkyn/server/validateCnpj";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a boolean indicating whether the provided CNPJ is valid.
 **Type:** `boolean`
 
 ```typescript
-import { validateCnpj } from "@arkyn/server";
+import { validateCnpj } from "@arkyn/server/validateCnpj";
 
 // Valid formatted CNPJ
 const isValid1 = validateCnpj("11.444.777/0001-61");

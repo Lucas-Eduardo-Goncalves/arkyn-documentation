@@ -5,8 +5,10 @@ Validates a phone number against country-specific formats defined in the project
 ## Import
 
 ```ts
-import { validatePhone } from "@arkyn/shared";
+import { validatePhone } from "@arkyn/shared/validatePhone";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Description
 
@@ -39,7 +41,7 @@ when the country is not supported. Any error not handled by `libphonenumber-js` 
 ## Examples
 
 ```ts
-import { validatePhone } from "@arkyn/shared";
+import { validatePhone } from "@arkyn/shared/validatePhone";
 
 validatePhone("+5532912345678"); // true (e.g., valid Brazilian number)
 validatePhone("+553212345678"); // true (variation without 9th digit where applicable)

@@ -5,8 +5,10 @@ The `NotImplemented` class represents an HTTP error response with status code 50
 ## Import
 
 ```ts
-import { NotImplemented } from "@arkyn/server";
+import { NotImplemented } from "@arkyn/server/notImplemented";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -22,7 +24,7 @@ import { NotImplemented } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { NotImplemented } from "@arkyn/server";
+import { NotImplemented } from "@arkyn/server/notImplemented";
 
 // Basic usage - throw the error
 throw new NotImplemented("This feature is coming soon");

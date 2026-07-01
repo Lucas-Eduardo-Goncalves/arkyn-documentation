@@ -5,8 +5,10 @@ The `useToast` hook exposes toast notification actions from toast context.
 ## Import
 
 ```ts
-import { useToast } from "@arkyn/components";
+import { useToast } from "@arkyn/components/useToast";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -24,7 +26,8 @@ The hook returns toast context methods.
 ## Usage example
 
 ```tsx
-import { ToastProvider, useToast } from "@arkyn/components";
+import { ToastProvider } from "@arkyn/components/toastProvider";
+import { useToast } from "@arkyn/components/useToast";
 
 function SaveButton() {
     const { showToast } = useToast();

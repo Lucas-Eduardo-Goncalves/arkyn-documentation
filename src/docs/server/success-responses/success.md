@@ -5,8 +5,10 @@ The `Success` class represents a successful HTTP response with status code 200. 
 ## Import
 
 ```ts
-import { Success } from "@arkyn/server";
+import { Success } from "@arkyn/server/success";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -22,7 +24,7 @@ import { Success } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { Success } from "@arkyn/server";
+import { Success } from "@arkyn/server/success";
 
 // Basic usage - return the response
 const response = new Success("Operation completed");

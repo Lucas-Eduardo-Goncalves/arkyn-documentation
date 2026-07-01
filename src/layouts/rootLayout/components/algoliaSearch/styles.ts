@@ -46,14 +46,14 @@ const Container = styled.div`
   .searchButton:hover,
   .DocSearch-Button:hover {
     cursor: text;
-    border-color: rgba(var(--spotlight-primary), 1);
-    outline-color: rgba(var(--spotlight-primary), 1);
+    border-color: rgb(var(--spotlight-primary));
+    outline-color: rgb(var(--spotlight-primary));
   }
 
   .searchButton:focus-visible,
   .DocSearch-Button:focus-visible {
-    border-color: rgba(var(--spotlight-primary), 1);
-    outline-color: rgba(var(--spotlight-primary), 1);
+    border-color: rgb(var(--spotlight-primary));
+    outline-color: rgb(var(--spotlight-primary));
   }
 
   .searchButton:disabled {
@@ -95,7 +95,7 @@ const Container = styled.div`
     padding: 0 6px;
     border-radius: 6px;
     border: 1px solid var(--border);
-    background: rgba(var(--spotlight-secondary), 1);
+    background: var(--input-background);
     color: var(--text-body);
     font-size: 12px;
     line-height: 12px;

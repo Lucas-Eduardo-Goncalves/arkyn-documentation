@@ -1,20 +1,21 @@
-# TabContainer
+# Tab
 
-import {
-  TabContainer,
-  TabButton,
-  AlertContainer,
-  AlertContent,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
-} from "@arkyn/components";
+import { TabContainer } from "@arkyn/components/tabContainer";
+import { TabButton } from "@arkyn/components/tabButton";
+import { AlertContainer } from "@arkyn/components/alertContainer";
+import { AlertContent } from "@arkyn/components/alertContent";
+import { AlertDescription } from "@arkyn/components/alertDescription";
+import { AlertIcon } from "@arkyn/components/alertIcon";
+import { AlertTitle } from "@arkyn/components/alertTitle";
 
-`TabContainer` provides shared tab state and context for `TabButton` items, enabling accessible tab-like navigation behavior.
+The Tab family provides accessible tab-like navigation. `TabContainer` holds shared tab state and context, while `TabButton` is the interactive trigger consumed inside it.
 
 ```tsx
-import { TabContainer, TabButton } from "@arkyn/components";
+import { TabContainer } from "@arkyn/components/tabContainer";
+import { TabButton } from "@arkyn/components/tabButton";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Basic Usage
 
@@ -57,14 +58,75 @@ Use `defaultValue` to initialize the active tab and `onChange` to react to updat
 </TabContainer>
 ```
 
+## Rich Content
+
+You can pass custom content as `children` to `TabButton` for complex labels.
+
+<div className="noContent column">
+  <TabContainer defaultValue="dashboard">
+    <TabButton value="dashboard">
+      <div>
+        <strong>Dashboard</strong>
+      </div>
+    </TabButton>
+    <TabButton value="analytics">
+      <div>
+        <strong>Analytics</strong>
+      </div>
+    </TabButton>
+  </TabContainer>
+</div>
+
+```tsx
+<TabContainer defaultValue="dashboard">
+    <TabButton value="dashboard">
+        <div>
+            <strong>Dashboard</strong>
+        </div>
+    </TabButton>
+    <TabButton value="analytics">
+        <div>
+            <strong>Analytics</strong>
+        </div>
+    </TabButton>
+</TabContainer>
+```
+
+## Click Handling
+
+`TabButton` supports custom click handlers while still updating tab context.
+
+<div className="noContent column">
+  <TabContainer>
+    <TabButton value="profile">Profile</TabButton>
+    <TabButton value="settings">Settings</TabButton>
+  </TabContainer>
+</div>
+
+```tsx
+<TabContainer onChange={(value) => console.log("Tab changed:", value)}>
+    <TabButton value="profile" onClick={() => console.log("Profile tab clicked")}>
+        Profile
+    </TabButton>
+    <TabButton value="settings">Settings</TabButton>
+</TabContainer>
+```
+
 ## Disabled
 
-Set `disabled` on the container to disable all child tab buttons.
+Set `disabled` on `TabContainer` to disable all child tab buttons, or on an individual `TabButton` to disable just that tab.
 
 <div className="noContent column">
   <TabContainer disabled>
     <TabButton value="tab1">Tab 1</TabButton>
     <TabButton value="tab2">Tab 2</TabButton>
+  </TabContainer>
+
+  <TabContainer>
+    <TabButton value="available">Available</TabButton>
+    <TabButton value="coming-soon" disabled>
+      Coming Soon
+    </TabButton>
   </TabContainer>
 </div>
 
@@ -73,7 +135,25 @@ Set `disabled` on the container to disable all child tab buttons.
     <TabButton value="tab1">Tab 1</TabButton>
     <TabButton value="tab2">Tab 2</TabButton>
 </TabContainer>
+
+<TabContainer>
+    <TabButton value="available">Available</TabButton>
+    <TabButton value="coming-soon" disabled>
+        Coming Soon
+    </TabButton>
+</TabContainer>
 ```
+
+<AlertContainer schema="warning">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Context requirement</AlertTitle>
+    <AlertDescription>
+      `TabButton` depends on `useTab()` context and must be rendered inside
+      `TabContainer`.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
 
 ## Integration With Page State
 
@@ -125,6 +205,8 @@ function MyTabs() {
 
 ## Properties
 
+### TabContainer
+
 **`children`** - `ReactNode`
 Tab buttons and related content rendered inside the navigation container.
 
@@ -151,3 +233,32 @@ Inline styles applied to the root `nav` element.
 
 **`...rest`** - `Omit<HTMLAttributes<HTMLElement>, "onChange" | "children" | "ref" | "onClick">`
 Any other valid native `nav` attributes are forwarded except excluded ones.
+
+### TabButton
+
+**`children`** - `ReactNode`
+Content displayed inside the tab button.
+
+**`value`** - `string`
+Unique identifier used to activate and track the current tab.
+
+**`disabled`** - `boolean`
+Disables this specific tab button.
+
+**`className`** - `string`
+Additional classes for the button element.
+
+**`onClick`** - `(event: MouseEvent<HTMLButtonElement>) => void`
+Custom click handler called alongside internal tab selection.
+
+**`aria-label`** - `string`
+Optional accessibility label.
+
+**`title`** - `string`
+Native title attribute.
+
+**`id`** - `string`
+Optional id for the button element.
+
+**`...rest`** - `Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children" | "value" | "type">`
+Any other valid button attributes are forwarded except excluded ones.

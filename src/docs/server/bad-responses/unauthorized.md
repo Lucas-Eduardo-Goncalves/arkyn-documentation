@@ -5,8 +5,10 @@ The `Unauthorized` class represents an HTTP error response with status code 401.
 ## Import
 
 ```ts
-import { Unauthorized } from "@arkyn/server";
+import { Unauthorized } from "@arkyn/server/unauthorized";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -22,7 +24,7 @@ import { Unauthorized } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { Unauthorized } from "@arkyn/server";
+import { Unauthorized } from "@arkyn/server/unauthorized";
 
 // Basic usage - throw the error
 throw new Unauthorized("Authentication required");

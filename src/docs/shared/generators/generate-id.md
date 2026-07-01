@@ -5,8 +5,10 @@ The `generateId` function is a utility for generating unique identifiers (UUIDs)
 ## Import
 
 ```ts
-import { generateId } from "@arkyn/shared";
+import { generateId } from "@arkyn/shared/generateId";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -40,7 +42,7 @@ The function returns a UUID in the specified format:
 **Type:** `string | Uint8Array`
 
 ```typescript
-import { generateId } from "@arkyn/shared";
+import { generateId } from "@arkyn/shared/generateId";
 
 const id = generateId("text", "v4");
 
@@ -55,7 +57,7 @@ The function performs validation and may throw an error in the following scenari
 **Invalid type or format:** An error is thrown when an invalid combination of `type` or `format` parameters is provided. This should not occur in TypeScript due to type checking, but can happen if invalid values are passed at runtime.
 
 ```typescript
-import { generateId } from "@arkyn/shared";
+import { generateId } from "@arkyn/shared/generateId";
 
 try {
     const id = generateId("invalid_type" as any, "v4");

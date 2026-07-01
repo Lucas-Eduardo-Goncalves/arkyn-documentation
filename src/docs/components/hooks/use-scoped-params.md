@@ -5,8 +5,10 @@ The `useScopedParams` hook reads and updates URL search parameters with optional
 ## Import
 
 ```ts
-import { useScopedParams } from "@arkyn/components";
+import { useScopedParams } from "@arkyn/components/useScopedParams";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -37,7 +39,7 @@ The hook returns helpers to read scoped params and generate updated search strin
 ## Usage example
 
 ```tsx
-import { useScopedParams } from "@arkyn/components";
+import { useScopedParams } from "@arkyn/components/useScopedParams";
 
 function ProductFilters({ search }: { search: string }) {
     const { getParam, getScopedSearch } = useScopedParams(search, "filters");

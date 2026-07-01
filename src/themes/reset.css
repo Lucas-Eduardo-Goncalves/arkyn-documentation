@@ -16,22 +16,13 @@
   }
 }
 
-:root {
+html:not(.dark):root {
   --white: #ffffff;
 
   /* background */
   --background: #f4f4f5;
+  --background-underground: #fafafa;
   --background-foreground: #ffffff;
-
-  /* modal, drawer, popover... */
-  --card: #ffffff;
-  --card-foreground-primary: #fafafa;
-  --card-foreground-secondary: #f1f5f9;
-  --card-foreground-third: #e2e8f0;
-
-  /* skeleton */
-  --skeleton: #f8fafc;
-  --skeleton-foreground: #f1f5f9;
 
   /* text */
   --text-heading: #18181b;
@@ -41,31 +32,66 @@
   /* border */
   --border: #e2e8f0;
 
+  /* inputs, textarea, select, checkbox, etc. */
+  --input-background: #fafafa;
+
   /* tooltip */
-  --tooltip-text: #f1f5f9;
-  --tooltip-background: #0f172a;
+  --tooltip-text: #fafafa;
+  --tooltip-background: #27272a;
 
   /* spotlight */
   --spotlight-primary: 17, 109, 220; /* #116ddc */
-  --spotlight-secondary: 248, 250, 252; /* #f8fafc */
+  --spotlight-secondary: 100, 116, 139; /* #64748B */
   --spotlight-success: 16, 185, 129; /* #10b981 */
   --spotlight-danger: 244, 63, 94; /* #f43f5e */
   --spotlight-info: 14, 165, 233; /* #0ea5e9 */
   --spotlight-warning: 249, 115, 22; /* #f97316 */
 
-  /* spotlight light (10% about white) */
-  --spotlight-primary-light: 231, 240, 252; /* #E7F0FC */
-  --spotlight-secondary-light: 254, 255, 255; /* #FEFFFF */
-  --spotlight-success-light: 231, 248, 242; /* #E7F8F2 */
-  --spotlight-danger-light: 254, 236, 239; /* #FEECEF */
-  --spotlight-info-light: 231, 246, 253; /* #E7F6FD */
-  --spotlight-warning-light: 254, 241, 232; /* #FEF1E8 */
+  --spotlight-primary-foreground: 231, 240, 252; /* #E7F0FC */
+  --spotlight-secondary-foreground: 226, 232, 240; /* #E2E8F0 */
+  --spotlight-success-foreground: 231, 248, 242; /* #E7F8F2 */
+  --spotlight-danger-foreground: 254, 236, 239; /* #FEECEF */
+  --spotlight-info-foreground: 231, 246, 253; /* #E7F6FD */
+  --spotlight-warning-foreground: 254, 241, 232; /* #FEF1E8 */
+}
 
-  /* toast */
-  --toast-success: 16, 185, 129; /* #10B981 */
-  --toast-danger: 225, 29, 72; /* #E11D48 */
-  --toast-info: 14, 165, 233; /* #0EA5E9 */
-  --toast-warning: 251, 146, 60; /* #FB923C */
+html.dark:root {
+  --white: #ffffff;
+
+  /* background */
+  --background: #18181b;
+  --background-underground: #202024;
+  --background-foreground: #27272a;
+
+  /* text */
+  --text-heading: #f1f5f9;
+  --text-body: #d1d5db;
+  --text-muted: #9ca3af;
+
+  /* border */
+  --border: #3f3f46;
+
+  /* inputs, textarea, select, checkbox, etc. */
+  --input-background: #1f1f22;
+
+  /* tooltip */
+  --tooltip-text: #fafafa;
+  --tooltip-background: #3f3f46;
+
+  /* spotlight */
+  --spotlight-primary: 15, 98, 204; /* #0F62CC */
+  --spotlight-secondary: 100, 116, 139; /* #64748B */
+  --spotlight-success: 14, 165, 115; /* #0EA573 */
+  --spotlight-danger: 225, 55, 85; /* #E13755 */
+  --spotlight-info: 12, 148, 210; /* #0C94D2 */
+  --spotlight-warning: 234, 102, 18; /* #EA6612 */
+
+  --spotlight-primary-foreground: 3, 28, 61; /* #475569 */
+  --spotlight-secondary-foreground: 32, 42, 58; /* #202A3A */
+  --spotlight-success-foreground: 2, 44, 34; /* #022C22 */
+  --spotlight-danger-foreground: 76, 5, 25; /* #4C0519 */
+  --spotlight-info-foreground: 8, 47, 73; /* #082F49 */
+  --spotlight-warning-foreground: 69, 26, 3; /* #451A03 */
 }
 
 html {

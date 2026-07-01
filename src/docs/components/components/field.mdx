@@ -1,0 +1,199 @@
+# Field
+
+import { AlertContainer } from "@arkyn/components/alertContainer";
+import { AlertContent } from "@arkyn/components/alertContent";
+import { AlertDescription } from "@arkyn/components/alertDescription";
+import { AlertIcon } from "@arkyn/components/alertIcon";
+import { AlertTitle } from "@arkyn/components/alertTitle";
+import { FieldError } from "@arkyn/components/fieldError";
+import { FieldLabel } from "@arkyn/components/fieldLabel";
+import { FieldWrapper } from "@arkyn/components/fieldWrapper";
+import { Input } from "@arkyn/components/input";
+import { Textarea } from "@arkyn/components/textarea";
+
+The Field family composes custom form field blocks. `FieldWrapper` is the structural container that arranges label, control, and error content, `FieldLabel` renders the form label with an optional required-field indicator, and `FieldError` displays validation messages.
+
+```tsx
+import { FieldWrapper } from "@arkyn/components/fieldWrapper";
+import { FieldLabel } from "@arkyn/components/fieldLabel";
+import { FieldError } from "@arkyn/components/fieldError";
+```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
+
+## Basic Usage
+
+<div className="noContent column">
+  <FieldWrapper>
+    <FieldLabel htmlFor="username">Username</FieldLabel>
+    <Input name="username" placeholder="Type your username" />
+    <FieldError>This field is required</FieldError>
+  </FieldWrapper>
+</div>
+
+```tsx
+<FieldWrapper>
+    <FieldLabel htmlFor="username">Username</FieldLabel>
+    <Input name="username" />
+    <FieldError>This field is required</FieldError>
+</FieldWrapper>
+```
+
+## Orientation
+
+Use `orientation` on `FieldWrapper` to control how field elements are arranged.
+
+<div className="noContent column">
+  <FieldWrapper orientation="vertical">
+    <FieldLabel htmlFor="vertical-example">Vertical</FieldLabel>
+    <Input name="vertical-example" placeholder="Vertical field" />
+  </FieldWrapper>
+
+  <FieldWrapper orientation="horizontal">
+    <FieldLabel htmlFor="horizontal-example">Horizontal</FieldLabel>
+    <Input name="horizontal-example" placeholder="Horizontal field" />
+  </FieldWrapper>
+</div>
+
+```tsx
+<FieldWrapper orientation="vertical">
+    <FieldLabel htmlFor="vertical-example">Vertical</FieldLabel>
+    <Input name="vertical-example" />
+</FieldWrapper>
+
+<FieldWrapper orientation="horizontal">
+    <FieldLabel htmlFor="horizontal-example">Horizontal</FieldLabel>
+    <Input name="horizontal-example" />
+</FieldWrapper>
+```
+
+## Required Indicator
+
+Enable `showAsterisk` on `FieldLabel` to display a required-field marker.
+
+<div className="noContent">
+  <FieldLabel htmlFor="email" showAsterisk>
+    Email Address
+  </FieldLabel>
+</div>
+
+```tsx
+<FieldLabel htmlFor="email" showAsterisk>
+    Email Address
+</FieldLabel>
+```
+
+## Conditional Rendering
+
+Render `FieldError` only when an error exists.
+
+<div className="noContent">
+  <FieldError>Invalid email format</FieldError>
+</div>
+
+```tsx
+{error && <FieldError>{error}</FieldError>}
+```
+
+## Custom Class Names
+
+Every part of the family accepts `className` for spacing and style overrides.
+
+<div className="noContent column">
+  <FieldWrapper className="custom-spacing" orientation="horizontalReverse">
+    <FieldLabel htmlFor="password" className="custom-label" showAsterisk>
+      Password
+    </FieldLabel>
+    <Input name="password" type="password" placeholder="you@example.com" />
+    <FieldError className="custom-error">
+      Password must have at least 8 characters
+    </FieldError>
+  </FieldWrapper>
+</div>
+
+```tsx
+<FieldWrapper className="custom-spacing" orientation="horizontalReverse">
+    <FieldLabel htmlFor="password" className="custom-label" showAsterisk>
+        Password
+    </FieldLabel>
+    <Input name="password" type="password" />
+    <FieldError className="custom-error">
+        Password must have at least 8 characters
+    </FieldError>
+</FieldWrapper>
+```
+
+## Built-in Form Integration
+
+<AlertContainer schema="info">
+  <AlertIcon />
+  <AlertContent>
+    <AlertTitle>Already included in form components</AlertTitle>
+    <AlertDescription>
+      Form components such as <code>Textarea</code>, <code>Input</code>, and
+      other field-based controls already use <code>FieldWrapper</code>,{" "}
+      <code>FieldLabel</code>, and <code>FieldError</code> internally when the{" "}
+      <code>label</code> and <code>errorMessage</code> props are provided. You
+      usually only need to compose them manually when building custom field
+      layouts.
+    </AlertDescription>
+  </AlertContent>
+</AlertContainer>
+
+<div className="noContent">
+  <Textarea
+    name="bio"
+    label="Biography"
+    showAsterisk
+    errorMessage="Biography is required"
+    placeholder="Tell us about yourself"
+  />
+</div>
+
+```tsx
+<Textarea
+    name="bio"
+    label="Biography"
+    showAsterisk
+    errorMessage="Biography is required"
+    placeholder="Tell us about yourself"
+/>
+```
+
+## Properties
+
+### FieldWrapper
+
+**`children`** - `ReactNode`
+Elements that compose the field structure, usually label, control, and error message.
+
+**`orientation`** - `"vertical" | "horizontal" | "horizontalReverse"` (default: `"vertical"`)
+Layout orientation for elements rendered inside the wrapper.
+
+**`className`** - `string`
+Additional CSS classes merged into the base class.
+
+**`...rest`** - `HTMLAttributes<HTMLElement>`
+Any other valid HTML attributes for the root `section` element.
+
+### FieldLabel
+
+**`showAsterisk`** - `boolean` (default: `false`)
+Whether to display an asterisk (`*`) to indicate a required field.
+
+**`className`** - `string` (default: `""`)
+Additional CSS classes merged into the base class.
+
+**`...rest`** - `LabelHTMLAttributes<HTMLLabelElement>`
+Any other valid HTML attributes for the root `label` element.
+
+### FieldError
+
+**`children`** - `ReactNode`
+Error content rendered inside the component. If no children are provided, nothing is rendered.
+
+**`className`** - `string`
+Additional CSS classes merged into the base class.
+
+**`...rest`** - `HTMLAttributes<HTMLElement>`
+Any other valid HTML attributes for the root `strong` element.

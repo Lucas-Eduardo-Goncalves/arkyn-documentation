@@ -5,8 +5,10 @@ The `DebugService` is a utility class for managing debug configuration and stack
 ## Import
 
 ```ts
-import { DebugService } from "@arkyn/server";
+import { DebugService } from "@arkyn/server/debugService";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Methods
 
@@ -19,7 +21,7 @@ import { DebugService } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { DebugService } from "@arkyn/server";
+import { DebugService } from "@arkyn/server/debugService";
 
 // Configure files to ignore in stack traces
 // Useful when you have adapter/wrapper functions that should be transparent
@@ -58,15 +60,13 @@ If you create an adapter that wraps these classes, the logs will always point to
 
 ```typescript
 // httpAdapter.ts
-import {
-    BadRequest,
-    NotFound,
-    ServerError,
-    Created,
-    Updated,
-    Success,
-    DebugService,
-} from "@arkyn/server";
+import { BadRequest } from "@arkyn/server/badRequest";
+import { NotFound } from "@arkyn/server/notFound";
+import { ServerError } from "@arkyn/server/serverError";
+import { Created } from "@arkyn/server/created";
+import { Updated } from "@arkyn/server/updated";
+import { Success } from "@arkyn/server/success";
+import { DebugService } from "@arkyn/server/debugService";
 
 // Ignore this file in stack traces so logs show the actual caller
 DebugService.setIgnoreFile("httpAdapter.ts");

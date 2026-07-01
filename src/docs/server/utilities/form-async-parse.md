@@ -5,8 +5,10 @@ The `formAsyncParse` function is the async version of `formParse`, designed for 
 ## Import
 
 ```ts
-import { formAsyncParse } from "@arkyn/server";
+import { formAsyncParse } from "@arkyn/server/formAsyncParse";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -30,7 +32,8 @@ The function returns a Promise that resolves to an object with a `success` boole
 
 ```typescript
 import { z } from "zod";
-import { formAsyncParse, validateEmail } from "@arkyn/server";
+import { formAsyncParse } from "@arkyn/server/formAsyncParse";
+import { validateEmail } from "@arkyn/server/validateEmail";
 
 // Schema with async email validation (DNS verification)
 const schema = z.object({

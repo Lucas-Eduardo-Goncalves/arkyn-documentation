@@ -5,8 +5,10 @@ The `formatDate` function is a utility for formatting date and time strings from
 ## Import
 
 ```ts
-import { formatDate } from "@arkyn/shared";
+import { formatDate } from "@arkyn/shared/formatDate";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -56,7 +58,7 @@ The function returns a formatted date string based on the specified output forma
 **Type:** `string`
 
 ```typescript
-import { formatDate } from "@arkyn/shared";
+import { formatDate } from "@arkyn/shared/formatDate";
 
 const formattedDate = formatDate(
     ["25/12/2023"],
@@ -78,7 +80,7 @@ The function performs strict validation and may throw errors in the following sc
 **Invalid date construction:** An error with the message `"Invalid date"` is thrown when the combination of date parts creates an impossible date, such as February 30th or April 31st. The function uses JavaScript's Date object validation to ensure the final date is legitimate.
 
 ```typescript
-import { formatDate } from "@arkyn/shared";
+import { formatDate } from "@arkyn/shared/formatDate";
 try {
     const invalidDate = formatDate(["31/02/2023"], "brazilianDate", "YYYY-MM-DD");
     console.log(invalidDate);

@@ -5,8 +5,10 @@ The `formatJsonObject` function is a utility for formatting JSON objects into hu
 ## Import
 
 ```ts
-import { formatJsonObject } from "@arkyn/shared";
+import { formatJsonObject } from "@arkyn/shared/formatJsonObject";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -31,7 +33,7 @@ The function returns a formatted string representation of the JSON object with p
 **Type:** `string`
 
 ```typescript
-import { formatJsonObject } from "@arkyn/shared";
+import { formatJsonObject } from "@arkyn/shared/formatJsonObject";
 
 const obj = { name: "John", age: 30 };
 const formatted = formatJsonObject(obj, 0);

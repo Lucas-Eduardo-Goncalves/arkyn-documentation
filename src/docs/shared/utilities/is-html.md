@@ -5,8 +5,10 @@ The `isHtml` function is a utility for detecting whether a string contains HTML 
 ## Import
 
 ```ts
-import { isHtml } from "@arkyn/shared";
+import { isHtml } from "@arkyn/shared/isHtml";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns `true` if the string contains HTML markup (opening or closi
 **Type:** `boolean`
 
 ```typescript
-import { isHtml } from "@arkyn/shared";
+import { isHtml } from "@arkyn/shared/isHtml";
 
 const result = isHtml("<p>Hello world</p>");
 

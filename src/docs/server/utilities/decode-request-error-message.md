@@ -5,8 +5,10 @@ The `decodeRequestErrorMessage` function is a utility for extracting meaningful 
 ## Import
 
 ```ts
-import { decodeRequestErrorMessage } from "@arkyn/server";
+import { decodeRequestErrorMessage } from "@arkyn/server/decodeRequestErrorMessage";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -31,7 +33,7 @@ The function returns a string representing the decoded error message.
 **Type:** `string`
 
 ```typescript
-import { decodeRequestErrorMessage } from "@arkyn/server";
+import { decodeRequestErrorMessage } from "@arkyn/server/decodeRequestErrorMessage";
 
 // Example with data.message
 const data = { message: "User not found" };

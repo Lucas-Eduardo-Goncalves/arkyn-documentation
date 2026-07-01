@@ -5,8 +5,10 @@ The `Found` class represents a successful HTTP response with status code 302. It
 ## Import
 
 ```ts
-import { Found } from "@arkyn/server";
+import { Found } from "@arkyn/server/found";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -22,7 +24,7 @@ import { Found } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { Found } from "@arkyn/server";
+import { Found } from "@arkyn/server/found";
 
 // Basic usage - return the response
 const response = new Found("Resource temporarily moved");

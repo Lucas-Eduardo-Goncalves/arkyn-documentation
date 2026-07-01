@@ -5,8 +5,10 @@ The `Forbidden` class represents an HTTP error response with status code 403. It
 ## Import
 
 ```ts
-import { Forbidden } from "@arkyn/server";
+import { Forbidden } from "@arkyn/server/forbidden";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Constructor
 
@@ -22,7 +24,7 @@ import { Forbidden } from "@arkyn/server";
 ## Usage example
 
 ```typescript
-import { Forbidden } from "@arkyn/server";
+import { Forbidden } from "@arkyn/server/forbidden";
 
 // Basic usage - throw the error
 throw new Forbidden("You don't have permission to access this resource");

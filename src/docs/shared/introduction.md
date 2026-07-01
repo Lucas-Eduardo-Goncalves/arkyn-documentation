@@ -38,7 +38,9 @@ The library is organized into five main categories, each serving a specific purp
 Functions for transforming and formatting data into standardized string representations. Includes formatters for dates, currencies (22+ international currencies), Brazilian documents (CPF, CNPJ, CEP), phone numbers, and text manipulation utilities.
 
 ```ts
-import { formatDate, formatToCurrency, formatToCpf } from "@arkyn/shared";
+import { formatDate } from "@arkyn/shared/formatDate";
+import { formatToCurrency } from "@arkyn/shared/formatToCurrency";
+import { formatToCpf } from "@arkyn/shared/formatToCpf";
 
 formatDate(["25/12/2025"], "brazilianDate", "YYYY-MM-DD");
 // → "2025-12-25"
@@ -55,7 +57,9 @@ formatToCpf("12345678909");
 Utilities for creating unique identifiers, slugs, and other generated content. Perfect for database IDs, URL-friendly strings, and dynamic content generation.
 
 ```ts
-import { generateId, generateSlug, generateColorByString } from "@arkyn/shared";
+import { generateId } from "@arkyn/shared/generateId";
+import { generateSlug } from "@arkyn/shared/generateSlug";
+import { generateColorByString } from "@arkyn/shared/generateColorByString";
 
 generateId("text", "v7");
 // → "018e4c5a-1b2c-7d3e-8f4a-5b6c7d8e9f0a"
@@ -72,7 +76,8 @@ generateColorByString("user@email.com");
 Functions for extracting, transforming, and sanitizing data. Includes tools for handling sensitive information, parsing dates, and processing large data fields.
 
 ```ts
-import { parseSensitiveData, parseToDate } from "@arkyn/shared";
+import { parseSensitiveData } from "@arkyn/shared/parseSensitiveData";
+import { parseToDate } from "@arkyn/shared/parseToDate";
 
 parseSensitiveData('{"password":"secret123"}', ["password"]);
 // → '{"password":"****"}'
@@ -83,7 +88,7 @@ parseSensitiveData('{"password":"secret123"}', ["password"]);
 Service classes that encapsulate complex validation and business logic. These provide reusable, stateful utilities for common operations like date validation with leap year support.
 
 ```ts
-import { ValidateDateService } from "@arkyn/shared";
+import { ValidateDateService } from "@arkyn/shared/validateDateService";
 
 const validator = new ValidateDateService();
 validator.validateDateParts(2024, 2, 29); // Validates leap year date
@@ -94,7 +99,9 @@ validator.validateDateParts(2024, 2, 29); // Validates leap year date
 General-purpose helper functions for common tasks such as HTML processing, financial calculations, string manipulation, and data cleaning.
 
 ```ts
-import { stripHtmlTags, calculateCardInstallment, isHtml } from "@arkyn/shared";
+import { stripHtmlTags } from "@arkyn/shared/stripHtmlTags";
+import { calculateCardInstallment } from "@arkyn/shared/calculateCardInstallment";
+import { isHtml } from "@arkyn/shared/isHtml";
 
 stripHtmlTags("<p>Hello <strong>World</strong></p>");
 // → "Hello World"

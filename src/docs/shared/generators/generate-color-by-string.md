@@ -5,8 +5,10 @@ The `generateColorByString` function is a utility for generating consistent hexa
 ## Import
 
 ```ts
-import { generateColorByString } from "@arkyn/shared";
+import { generateColorByString } from "@arkyn/shared/generateColorByString";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a hexadecimal color code in the format `#RRGGBB`, where RR,
 **Type:** `string`
 
 ```typescript
-import { generateColorByString } from "@arkyn/shared";
+import { generateColorByString } from "@arkyn/shared/generateColorByString";
 
 const color = generateColorByString("john_doe");
 

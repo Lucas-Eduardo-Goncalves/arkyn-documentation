@@ -5,8 +5,10 @@ The `formatToCnpj` function is a utility for formatting strings into the Brazili
 ## Import
 
 ```ts
-import { formatToCnpj } from "@arkyn/shared";
+import { formatToCnpj } from "@arkyn/shared/formatToCnpj";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a formatted CNPJ string in the pattern `XX.XXX.XXX/XXXX-XX`
 **Type:** `string`
 
 ```typescript
-import { formatToCnpj } from "@arkyn/shared";
+import { formatToCnpj } from "@arkyn/shared/formatToCnpj";
 
 const cnpj = formatToCnpj("12345678000195");
 
@@ -40,7 +42,7 @@ The function performs validation and may throw an error in the following scenari
 **Invalid CNPJ format:** An error is thrown when the input does not contain exactly 14 numeric digits after removing all non-numeric characters. The error message will include the original input value to help identify what went wrong. This includes cases where the input is too short, too long, or contains only non-numeric characters.
 
 ```typescript
-import { formatToCnpj } from "@arkyn/shared";
+import { formatToCnpj } from "@arkyn/shared/formatToCnpj";
 
 try {
     const cnpj = formatToCnpj("1234567800019");

@@ -35,7 +35,9 @@ The library is organized into five main categories, each serving a specific purp
 Standardized HTTP error response classes that automatically emit debug logs and provide consistent response structures. Includes `BadRequest` (400), `Unauthorized` (401), `Forbidden` (403), `NotFound` (404), `Conflict` (409), `UnprocessableEntity` (422), `ServerError` (500), `NotImplemented` (501), and `BadGateway` (502).
 
 ```ts
-import { BadRequest, NotFound, UnprocessableEntity } from "@arkyn/server";
+import { BadRequest } from "@arkyn/server/badRequest";
+import { NotFound } from "@arkyn/server/notFound";
+import { UnprocessableEntity } from "@arkyn/server/unprocessableEntity";
 
 // Throw errors with descriptive messages
 throw new NotFound("User not found");
@@ -53,7 +55,9 @@ throw new UnprocessableEntity({
 Standardized HTTP success response classes for successful operations. Includes `Success` (200), `Created` (201), `NoContent` (204), `Updated` (200), and `Found` (302).
 
 ```ts
-import { Created, Success, NoContent } from "@arkyn/server";
+import { Created } from "@arkyn/server/created";
+import { Success } from "@arkyn/server/success";
+import { NoContent } from "@arkyn/server/noContent";
 
 // Return created resource
 return new Created("User created successfully", {
@@ -73,7 +77,9 @@ return new NoContent("Resource deleted").toResponse();
 Service classes for API communication, debugging, and logging configuration.
 
 ```ts
-import { ApiService, DebugService, LogService } from "@arkyn/server";
+import { ApiService } from "@arkyn/server/apiService";
+import { DebugService } from "@arkyn/server/debugService";
+import { LogService } from "@arkyn/server/logService";
 
 // Configure API client
 const api = new ApiService({
@@ -99,7 +105,9 @@ LogService.setConfig({
 Functions for form parsing, schema validation, request handling, and debugging.
 
 ```ts
-import { SchemaValidator, formParse, getScopedParams } from "@arkyn/server";
+import { SchemaValidator } from "@arkyn/server/schemaValidator";
+import { formParse } from "@arkyn/server/formParse";
+import { getScopedParams } from "@arkyn/server/getScopedParams";
 import { z } from "zod";
 
 // Schema validation with multiple strategies
@@ -120,7 +128,9 @@ const filters = getScopedParams(request, "filter");
 Async validation functions for common data types including email (with DNS verification), Brazilian documents (CPF, CNPJ, CEP, RG), phone numbers, passwords, and dates.
 
 ```ts
-import { validateEmail, validateCpf, validateCnpj } from "@arkyn/server";
+import { validateEmail } from "@arkyn/server/validateEmail";
+import { validateCpf } from "@arkyn/server/validateCpf";
+import { validateCnpj } from "@arkyn/server/validateCnpj";
 
 // Email validation with DNS verification
 const isValidEmail = await validateEmail("user@example.com");

@@ -5,8 +5,10 @@ The `parseToDate` function is a utility for converting date and time strings fro
 ## Import
 
 ```ts
-import { parseToDate } from "@arkyn/shared";
+import { parseToDate } from "@arkyn/shared/parseToDate";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -42,7 +44,7 @@ The function returns a JavaScript `Date` object representing the parsed date and
 **Type:** `Date`
 
 ```typescript
-import { parseToDate } from "@arkyn/shared";
+import { parseToDate } from "@arkyn/shared/parseToDate";
 
 const date = parseToDate(["25/12/2023", "15:30:00"], "brazilianDate", -3);
 

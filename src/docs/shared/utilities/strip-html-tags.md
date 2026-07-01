@@ -5,8 +5,10 @@ The `stripHtmlTags` function is a utility for removing HTML tags from a string. 
 ## Import
 
 ```ts
-import { stripHtmlTags } from "@arkyn/shared";
+import { stripHtmlTags } from "@arkyn/shared/stripHtmlTags";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a string with all HTML tags removed, preserving only the te
 **Type:** `string`
 
 ```typescript
-import { stripHtmlTags } from "@arkyn/shared";
+import { stripHtmlTags } from "@arkyn/shared/stripHtmlTags";
 
 const result = stripHtmlTags("<p>Hello <strong>World</strong></p>");
 

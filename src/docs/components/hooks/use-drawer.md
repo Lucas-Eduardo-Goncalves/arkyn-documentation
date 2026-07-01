@@ -5,8 +5,10 @@ The `useDrawer` hook provides access to drawer state and drawer actions from dra
 ## Import
 
 ```ts
-import { useDrawer } from "@arkyn/components";
+import { useDrawer } from "@arkyn/components/useDrawer";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -55,7 +57,8 @@ Use this mode when a component is responsible for only one drawer.
 ### Global mode (without `key`)
 
 ```tsx
-import { DrawerProvider, useDrawer } from "@arkyn/components";
+import { DrawerProvider } from "@arkyn/components/drawerProvider";
+import { useDrawer } from "@arkyn/components/useDrawer";
 
 function DrawerActions() {
     const { drawerIsOpen, drawerData, openDrawer, closeDrawer } = useDrawer<{
@@ -93,7 +96,8 @@ function App() {
 ### Scoped mode (with `key`)
 
 ```tsx
-import { DrawerProvider, useDrawer } from "@arkyn/components";
+import { DrawerProvider } from "@arkyn/components/drawerProvider";
+import { useDrawer } from "@arkyn/components/useDrawer";
 
 function FiltersDrawer() {
     const { drawerIsOpen, drawerData, closeDrawer } = useDrawer<{

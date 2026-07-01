@@ -5,8 +5,10 @@ The `getScopedParams` function is a utility for extracting and filtering query p
 ## Import
 
 ```ts
-import { getScopedParams } from "@arkyn/server";
+import { getScopedParams } from "@arkyn/server/getScopedParams";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -30,7 +32,7 @@ A string representing the scope prefix for filtering query parameters. When prov
 The function returns a `URLSearchParams` object containing the filtered query parameters.
 
 ```typescript
-import { getScopedParams } from "@arkyn/server";
+import { getScopedParams } from "@arkyn/server/getScopedParams";
 
 // Without scope - returns all parameters
 const request1 = new Request("https://example.com?page=1&limit=10&search=test");

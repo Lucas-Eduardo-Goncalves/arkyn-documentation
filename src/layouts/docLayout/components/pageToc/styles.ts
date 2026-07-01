@@ -5,8 +5,8 @@ const PageTocContainer = styled.div`
   max-width: 300px;
   padding: 24px;
 
-  position: sticky;
-  top: 60px;
+  /* position: sticky;…÷ */
+  /* top: 60px; */
 
   > strong {
     font-size: 14px;

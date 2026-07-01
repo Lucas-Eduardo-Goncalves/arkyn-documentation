@@ -5,8 +5,10 @@ The `decodeRequestBody` function is a utility for parsing incoming HTTP request 
 ## Import
 
 ```ts
-import { decodeRequestBody } from "@arkyn/server";
+import { decodeRequestBody } from "@arkyn/server/decodeRequestBody";
 ```
+
+Learn how subpath and root imports differ in [How do I use imports](/docs/guides/how-do-i-use-imports).
 
 ## Parameters
 
@@ -25,7 +27,7 @@ The function returns a Promise that resolves to the decoded data as a JavaScript
 **Type:** `Promise<any>`
 
 ```typescript
-import { decodeRequestBody } from "@arkyn/server";
+import { decodeRequestBody } from "@arkyn/server/decodeRequestBody";
 
 // In a request handler
 async function handleRequest(request: Request) {

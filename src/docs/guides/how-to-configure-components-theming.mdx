@@ -1,13 +1,10 @@
-
 # Configure the theme
 
-import { 
-  AlertContainer, 
-  AlertContent, 
-  AlertDescription, 
-  AlertIcon, 
-  AlertTitle 
-} from "@arkyn/components";
+import { AlertContainer } from "@arkyn/components/alertContainer";
+import { AlertContent } from "@arkyn/components/alertContent";
+import { AlertDescription } from "@arkyn/components/alertDescription";
+import { AlertIcon } from "@arkyn/components/alertIcon";
+import { AlertTitle } from "@arkyn/components/alertTitle";
 
 Arkyn styles are shipped inside a CSS layer. This means the library can define its own style priority without depending only on selector specificity or the physical order of declarations.
 
@@ -61,17 +58,8 @@ You also need a CSS file that defines the Arkyn theme variables. These values ac
 
 	/* background */
 	--background: #f4f4f5;
+	--background-underground: #fafafa;
 	--background-foreground: #ffffff;
-
-	/* modal, drawer, popover... */
-	--card: #ffffff;
-	--card-foreground-primary: #fafafa;
-	--card-foreground-secondary: #f1f5f9;
-	--card-foreground-third: #e2e8f0;
-
-	/* skeleton */
-	--skeleton: #f8fafc;
-	--skeleton-foreground: #f1f5f9;
 
 	/* text */
 	--text-heading: #18181b;
@@ -81,34 +69,260 @@ You also need a CSS file that defines the Arkyn theme variables. These values ac
 	/* border */
 	--border: #e2e8f0;
 
+	/* inputs, textarea, select, checkbox, etc. */
+	--input-background: #fafafa;
+
 	/* tooltip */
-	--tooltip-text: #f1f5f9;
-	--tooltip-background: #0f172a;
+	--tooltip-text: #fafafa;
+	--tooltip-background: #27272a;
 
 	/* spotlight */
 	--spotlight-primary: 17, 109, 220; /* #116ddc */
-	--spotlight-secondary: 248, 250, 252; /* #f8fafc */
+	--spotlight-secondary: 100, 116, 139; /* #64748B */
 	--spotlight-success: 16, 185, 129; /* #10b981 */
 	--spotlight-danger: 244, 63, 94; /* #f43f5e */
 	--spotlight-info: 14, 165, 233; /* #0ea5e9 */
 	--spotlight-warning: 249, 115, 22; /* #f97316 */
 
-    /* spotlight light (10% about white) */
-  --spotlight-primary-light: 231, 240, 252; /* #E7F0FC */
-  --spotlight-secondary-light: 254, 255, 255; /* #FEFFFF */
-  --spotlight-success-light: 231, 248, 242; /* #E7F8F2 */
-  --spotlight-danger-light: 254, 236, 239; /* #FEECEF */
-  --spotlight-info-light: 231, 246, 253; /* #E7F6FD */
-  --spotlight-warning-light: 254, 241, 232; /* #FEF1E8 */
-
-
-	/* toast */
-	--toast-success: 16, 185, 129; /* #10B981 */
-	--toast-danger: 225, 29, 72; /* #E11D48 */
-	--toast-info: 14, 165, 233; /* #0EA5E9 */
-	--toast-warning: 251, 146, 60; /* #FB923C */
+	--spotlight-primary-foreground: 231, 240, 252; /* #E7F0FC */
+	--spotlight-secondary-foreground: 226, 232, 240; /* #E2E8F0 */
+	--spotlight-success-foreground: 231, 248, 242; /* #E7F8F2 */
+	--spotlight-danger-foreground: 254, 236, 239; /* #FEECEF */
+	--spotlight-info-foreground: 231, 246, 253; /* #E7F6FD */
+	--spotlight-warning-foreground: 254, 241, 232; /* #FEF1E8 */
 }
 ```
+
+## Adding a Dark Theme
+
+A dark theme is just a second set of values for the same variables. Instead of declaring them directly on `:root`, scope each set behind a selector that checks whether the `<html>` element carries a `dark` class. The light set stays the default, and the dark set overrides it whenever the class is present.
+
+```css
+html:not(.dark):root {
+	--white: #ffffff;
+
+	/* background */
+	--background: #f4f4f5;
+	--background-underground: #fafafa;
+	--background-foreground: #ffffff;
+
+	/* text */
+	--text-heading: #18181b;
+	--text-body: #52525b;
+	--text-muted: #a1a1aa;
+
+	/* border */
+	--border: #e2e8f0;
+
+	/* inputs, textarea, select, checkbox, etc. */
+	--input-background: #fafafa;
+
+	/* tooltip */
+	--tooltip-text: #fafafa;
+	--tooltip-background: #27272a;
+
+	/* spotlight */
+	--spotlight-primary: 17, 109, 220; /* #116ddc */
+	--spotlight-secondary: 100, 116, 139; /* #64748B */
+	--spotlight-success: 16, 185, 129; /* #10b981 */
+	--spotlight-danger: 244, 63, 94; /* #f43f5e */
+	--spotlight-info: 14, 165, 233; /* #0ea5e9 */
+	--spotlight-warning: 249, 115, 22; /* #f97316 */
+
+	--spotlight-primary-foreground: 231, 240, 252; /* #E7F0FC */
+	--spotlight-secondary-foreground: 226, 232, 240; /* #E2E8F0 */
+	--spotlight-success-foreground: 231, 248, 242; /* #E7F8F2 */
+	--spotlight-danger-foreground: 254, 236, 239; /* #FEECEF */
+	--spotlight-info-foreground: 231, 246, 253; /* #E7F6FD */
+	--spotlight-warning-foreground: 254, 241, 232; /* #FEF1E8 */
+}
+
+html.dark:root {
+	--white: #ffffff;
+
+	/* background */
+	--background: #18181b;
+	--background-underground: #202024;
+	--background-foreground: #27272a;
+
+	/* text */
+	--text-heading: #f1f5f9;
+	--text-body: #d1d5db;
+	--text-muted: #9ca3af;
+
+	/* border */
+	--border: #3f3f46;
+
+	/* inputs, textarea, select, checkbox, etc. */
+	--input-background: #1f1f22;
+
+	/* tooltip */
+	--tooltip-text: #fafafa;
+	--tooltip-background: #3f3f46;
+
+	/* spotlight */
+	--spotlight-primary: 15, 98, 204; /* #0F62CC */
+	--spotlight-secondary: 100, 116, 139; /* #64748B */
+	--spotlight-success: 14, 165, 115; /* #0EA573 */
+	--spotlight-danger: 225, 55, 85; /* #E13755 */
+	--spotlight-info: 12, 148, 210; /* #0C94D2 */
+	--spotlight-warning: 234, 102, 18; /* #EA6612 */
+
+	--spotlight-primary-foreground: 3, 28, 61; /* #475569 */
+	--spotlight-secondary-foreground: 32, 42, 58; /* #202A3A */
+	--spotlight-success-foreground: 2, 44, 34; /* #022C22 */
+	--spotlight-danger-foreground: 76, 5, 25; /* #4C0519 */
+	--spotlight-info-foreground: 8, 47, 73; /* #082F49 */
+	--spotlight-warning-foreground: 69, 26, 3; /* #451A03 */
+}
+```
+
+<AlertContainer schema="info">
+	<AlertIcon />
+	<AlertContent>
+		<AlertTitle>`:not(.dark)` avoids a specificity tie</AlertTitle>
+		<AlertDescription>
+			Both selectors target `:root`, so without `:not(.dark)` the light block
+			and the dark block would have the same specificity and the last one
+			declared in the file would always win, regardless of the class. Scoping
+			the light block to `:not(.dark)` makes the two selectors mutually
+			exclusive.
+		</AlertDescription>
+	</AlertContent>
+</AlertContainer>
+
+### Toggling the class from React
+
+Arkyn does not decide when dark mode is active — your application does, by adding or removing the `dark` class on the `<html>` element. Since `<html>` is rendered outside the React root in a regular client-side app, the class has to be applied imperatively, not through JSX. A small hook that syncs a boolean state with `document.documentElement` is enough:
+
+```tsx
+import { useEffect, useState } from "react";
+
+function useDarkMode() {
+	const [darkMode, setDarkMode] = useState(false);
+
+	useEffect(() => {
+		document.documentElement.classList.toggle("dark", darkMode);
+	}, [darkMode]);
+
+	return { darkMode, setDarkMode };
+}
+
+export { useDarkMode };
+```
+
+Any component can then read and flip that state, for example with `Switch`:
+
+```tsx
+import { Switch } from "@arkyn/components/switch";
+import { useDarkMode } from "./useDarkMode";
+
+function ThemeToggle() {
+	const { darkMode, setDarkMode } = useDarkMode();
+
+	return (
+		<Switch
+			unShowFieldTemplate
+			name="darkMode"
+			checked={darkMode}
+			onCheck={() => setDarkMode((current) => !current)}
+		/>
+	);
+}
+
+export { ThemeToggle };
+```
+
+## Adding Multiple Color Themes
+
+The same idea scales beyond a light/dark pair. Instead of a single `dark` class, use a `data-theme` attribute whose value selects a named color palette. Each theme becomes its own block, and the default palette is the one that applies when the attribute is missing.
+
+```css
+html[data-theme="ocean"]:root {
+	--background: #0b1727;
+	--background-underground: #0f1f33;
+	--background-foreground: #142c47;
+
+	--text-heading: #e2e8f0;
+	--text-body: #cbd5e1;
+	--text-muted: #94a3b8;
+
+	--border: #1e3a5f;
+
+	--spotlight-primary: 56, 189, 248; /* #38BDF8 */
+	--spotlight-success: 45, 212, 191; /* #2DD4BF */
+}
+
+html[data-theme="sunset"]:root {
+	--background: #2b1710;
+	--background-underground: #331c13;
+	--background-foreground: #3d221a;
+
+	--text-heading: #fef3e2;
+	--text-body: #fde4c9;
+	--text-muted: #c2a68d;
+
+	--border: #55301f;
+
+	--spotlight-primary: 251, 146, 60; /* #FB923C */
+	--spotlight-danger: 248, 113, 113; /* #F87171 */
+}
+```
+
+<AlertContainer schema="warning">
+	<AlertIcon />
+	<AlertContent>
+		<AlertTitle>Declare every variable your default theme uses</AlertTitle>
+		<AlertDescription>
+			A themed block only needs to override the variables that actually
+			change. Any variable it does not redeclare keeps falling back to the
+			block that applies with no `data-theme` set, so make sure that default
+			block defines the full token set.
+		</AlertDescription>
+	</AlertContent>
+</AlertContainer>
+
+The React side follows the same pattern as the dark mode hook, but stores the theme name instead of a boolean:
+
+```tsx
+import { useEffect, useState } from "react";
+
+function useAppTheme(defaultTheme = "light") {
+	const [theme, setTheme] = useState(defaultTheme);
+
+	useEffect(() => {
+		if (theme === "light") {
+			document.documentElement.removeAttribute("data-theme");
+		} else {
+			document.documentElement.setAttribute("data-theme", theme);
+		}
+	}, [theme]);
+
+	return { theme, setTheme };
+}
+
+export { useAppTheme };
+```
+
+```tsx
+import { useAppTheme } from "./useAppTheme";
+
+function ThemePicker() {
+	const { theme, setTheme } = useAppTheme();
+
+	return (
+		<select value={theme} onChange={(event) => setTheme(event.target.value)}>
+			<option value="light">Light</option>
+			<option value="ocean">Ocean</option>
+			<option value="sunset">Sunset</option>
+		</select>
+	);
+}
+
+export { ThemePicker };
+```
+
+Dark mode can be folded into this same system as just another `data-theme` value instead of a separate class, if your app already needs more than two palettes.
 
 ## Import Order
 
@@ -116,7 +330,7 @@ The import order must always place the global CSS before Arkyn's bundled stylesh
 
 ```ts
 import "<yourPath>/reset.css";
-import "@arkyn/components/dist/bundle.css";
+import "@arkyn/components/styles";
 ```
 
 If you also keep the Arkyn CSS variables in a separate file, import that file before the bundled stylesheet as well, so the tokens are available when Arkyn's components are evaluated.
@@ -125,4 +339,6 @@ If you also keep the Arkyn CSS variables in a separate file, import that file be
 
 - Keep your base resets inside a layer such as `reset`, and reserve the `arkyn` layer for the library stylesheet.
 - When you need to override a token, prefer changing the CSS variable value instead of writing stronger selectors.
-- If a component looks incorrect, first verify that the global stylesheet is imported before `@arkyn/components/dist/bundle.css`.
+- If a component looks incorrect, first verify that the global stylesheet is imported before `@arkyn/components/styles`.
+- Persisting the active theme (for example in `localStorage`) and applying it before the first paint avoids a visible flash of the wrong theme on load, but that step is optional and outside the scope of Arkyn itself.
+- Whether you use a boolean class or a `data-theme` attribute, the rule stays the same: your app owns the selector on `<html>`, and Arkyn only reacts to the resulting CSS variables.
