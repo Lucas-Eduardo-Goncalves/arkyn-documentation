@@ -17,12 +17,6 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 
 ## Basic Usage
 
-<div className="noContent">
-  <ClientOnly fallback={<div>Loading...</div>}>
-    {() => <div>Interactive content loaded on client</div>}
-  </ClientOnly>
-</div>
-
 ```tsx
 <ClientOnly fallback={<div>Loading...</div>}>
     {() => <InteractiveWidget />}
@@ -32,16 +26,6 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 ## Fallback Rendering
 
 Use `fallback` to render SSR-safe or pre-hydration content while the client is not hydrated.
-
-<div className="noContent column">
-  <ClientOnly fallback={<div>Preparing location services...</div>}>
-    {() => <div>Location enabled content</div>}
-  </ClientOnly>
-
-  <ClientOnly fallback={<div className="skeleton-loader">Loading dashboard...</div>}>
-    {() => <div>Dashboard ready</div>}
-  </ClientOnly>
-</div>
 
 ```tsx
 <ClientOnly fallback={<div>Preparing location services...</div>}>
@@ -57,12 +41,6 @@ Use `fallback` to render SSR-safe or pre-hydration content while the client is n
 
 Wrap components that depend on browser APIs to avoid hydration warnings and runtime issues during SSR.
 
-<div className="noContent">
-  <ClientOnly fallback={<div>Loading editor...</div>}>
-    {() => <div>Code editor mounted on client</div>}
-  </ClientOnly>
-</div>
-
 ```tsx
 <ClientOnly fallback={<div>Loading editor...</div>}>
     {() => <LazyCodeEditor />}
@@ -72,10 +50,6 @@ Wrap components that depend on browser APIs to avoid hydration warnings and runt
 ## No Fallback
 
 When no fallback is provided, the component renders nothing until hydration is complete.
-
-<div className="noContent">
-  <ClientOnly>{() => <div>Visible only after hydration</div>}</ClientOnly>
-</div>
 
 ```tsx
 <ClientOnly>
@@ -90,7 +64,7 @@ When no fallback is provided, the component renders nothing until hydration is c
 
 ## Notes
 
-<AlertContainer schema="info">
+<AlertContainer scheme="info">
   <AlertIcon />
   <AlertContent>
     <AlertTitle>Hydration-safe rendering</AlertTitle>

@@ -60,7 +60,7 @@ Use `AlertContainer` / `AlertContent` / `AlertTitle` / `AlertDescription` / `Ale
 When using `AlertContainer`, the `schema` prop is required and must be one of `"info"`, `"danger"`, `"success"`, or `"warning"`.
 
 ```tsx
-<AlertContainer schema="info">
+<AlertContainer scheme="info">
   <AlertIcon />
   <AlertContent>
     <AlertTitle>Hidden input value</AlertTitle>

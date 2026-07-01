@@ -1,24 +1,37 @@
-import { Layout, Server } from "lucide-react";
+import { HelpCircle, Layout } from "lucide-react";
+import { dependencies } from "../../../package.json";
 import { Card } from "./components/card";
 import { GuideLink } from "./components/guideLink";
-import { Header } from "./components/header";
-
-import { GuidesContainer } from "./styles";
+import { GuidesContainer, HeaderContainer } from "./styles";
 
 export default function GuidesRoute() {
   return (
     <GuidesContainer>
-      <Header />
+      <HeaderContainer>
+        <section>
+          <strong>How can we help?</strong>
+          <span>
+            Find answers to common questions related to Arkyn v
+            {dependencies["@arkyn/components"]}
+          </span>
+        </section>
+      </HeaderContainer>
+
+      <Card
+        title="Guides"
+        icon={HelpCircle}
+        description="How to use Arkyn packages and features"
+      >
+        <GuideLink to="/docs/guides/how-do-i-use-imports">
+          How do I use imports
+        </GuideLink>
+      </Card>
 
       <Card
         title="@arkyn/components"
         icon={Layout}
         description="Theming, configuration, styling and more"
       >
-        <GuideLink to="/docs/guides/how-do-i-use-imports">
-          How do I use imports
-        </GuideLink>
-
         <GuideLink to="/docs/guides/how-to-configure-components-theming">
           Configure theme
         </GuideLink>
@@ -27,44 +40,6 @@ export default function GuidesRoute() {
           Configure file upload
         </GuideLink>
       </Card>
-
-      {/* <Card
-        title="@arkyn/api"
-        icon={Server}
-        description="How to use, configure webhooks, manage logs"
-      >
-        <GuideLink to="/docs/guides/how-to-configure-discord-webhook">
-          Configure Discord webhook
-        </GuideLink>
-
-        <GuideLink to="/docs/guides/how-to-configure-discord-webhook">
-          Create and manage API keys
-        </GuideLink>
-
-        <GuideLink to="/docs/guides/how-to-configure-discord-webhook">
-          Create your first log monitor
-        </GuideLink>
-
-        <GuideLink to="/docs/guides/how-to-configure-discord-webhook">
-          Integrate with third-party services
-        </GuideLink>
-
-        <GuideLink to="/docs/guides/how-to-configure-discord-webhook">
-          Integrate with arkyn packages
-        </GuideLink>
-
-        <GuideLink to="/docs/guides/how-to-configure-discord-webhook">
-          Understand log levels and filtering
-        </GuideLink>
-
-        <GuideLink to="/docs/guides/how-to-configure-discord-webhook">
-          Explain coreLogs
-        </GuideLink>
-
-        <GuideLink to="/docs/guides/how-to-configure-discord-webhook">
-          Explain httpTrafficRecord
-        </GuideLink>
-      </Card> */}
     </GuidesContainer>
   );
 }

@@ -14,6 +14,13 @@ const CardContainer = styled.div`
     gap: 12px;
 
     .iconContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      height: 40px;
+      width: 40px;
+
       padding: 8px;
       border-radius: 6px;
       background-color: rgb(var(--spotlight-primary));

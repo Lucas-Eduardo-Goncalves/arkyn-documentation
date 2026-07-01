@@ -21,7 +21,7 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 ## Basic Usage
 
 <div className="noContent column">
-  <AlertContainer schema="info">
+  <AlertContainer scheme="info">
     <AlertIcon />
     <AlertContent>
       <AlertDescription>System information message.</AlertDescription>
@@ -30,7 +30,7 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 </div>
 
 ```tsx
-<AlertContainer schema="info">
+<AlertContainer scheme="info">
     <AlertIcon />
     <AlertContent>
         <AlertDescription>System information message.</AlertDescription>
@@ -43,7 +43,7 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 Use `schema` on `AlertContainer` to define semantic meaning and visual style. `AlertIcon` automatically renders the matching icon for the schema.
 
 <div className="noContent column">
-  <AlertContainer schema="success">
+  <AlertContainer scheme="success">
     <AlertIcon />
     <AlertContent>
       <AlertTitle>Success</AlertTitle>
@@ -51,7 +51,7 @@ Use `schema` on `AlertContainer` to define semantic meaning and visual style. `A
     </AlertContent>
   </AlertContainer>
 
-<AlertContainer schema="danger">
+<AlertContainer scheme="danger">
   <AlertIcon />
   <AlertContent>
     <AlertTitle>Error</AlertTitle>
@@ -61,7 +61,7 @@ Use `schema` on `AlertContainer` to define semantic meaning and visual style. `A
   </AlertContent>
 </AlertContainer>
 
-<AlertContainer schema="warning">
+<AlertContainer scheme="warning">
   <AlertIcon />
   <AlertContent>
     <AlertTitle>Warning</AlertTitle>
@@ -71,7 +71,7 @@ Use `schema` on `AlertContainer` to define semantic meaning and visual style. `A
   </AlertContent>
 </AlertContainer>
 
-  <AlertContainer schema="info">
+  <AlertContainer scheme="info">
     <AlertIcon />
     <AlertContent>
       <AlertTitle>Information</AlertTitle>
@@ -81,10 +81,10 @@ Use `schema` on `AlertContainer` to define semantic meaning and visual style. `A
 </div>
 
 ```tsx
-<AlertContainer schema="success">...</AlertContainer>
-<AlertContainer schema="danger">...</AlertContainer>
-<AlertContainer schema="warning">...</AlertContainer>
-<AlertContainer schema="info">...</AlertContainer>
+<AlertContainer scheme="success">...</AlertContainer>
+<AlertContainer scheme="danger">...</AlertContainer>
+<AlertContainer scheme="warning">...</AlertContainer>
+<AlertContainer scheme="info">...</AlertContainer>
 ```
 
 ## Title-aware Layout
@@ -92,7 +92,7 @@ Use `schema` on `AlertContainer` to define semantic meaning and visual style. `A
 When `AlertTitle` exists in the alert tree, content is left-aligned. Without `AlertTitle`, the layout becomes centered automatically.
 
 <div className="noContent column">
-  <AlertContainer schema="success">
+  <AlertContainer scheme="success">
     <AlertIcon />
     <AlertContent>
       <AlertTitle>Success</AlertTitle>
@@ -100,7 +100,7 @@ When `AlertTitle` exists in the alert tree, content is left-aligned. Without `Al
     </AlertContent>
   </AlertContainer>
 
-  <AlertContainer schema="info">
+  <AlertContainer scheme="info">
     <AlertIcon />
     <AlertContent>
       <AlertDescription>Short single-line informational message.</AlertDescription>
@@ -109,7 +109,7 @@ When `AlertTitle` exists in the alert tree, content is left-aligned. Without `Al
 </div>
 
 ```tsx
-<AlertContainer schema="success">
+<AlertContainer scheme="success">
     <AlertIcon />
     <AlertContent>
         <AlertTitle>Success</AlertTitle>
@@ -117,7 +117,7 @@ When `AlertTitle` exists in the alert tree, content is left-aligned. Without `Al
     </AlertContent>
 </AlertContainer>
 
-<AlertContainer schema="info">
+<AlertContainer scheme="info">
     <AlertIcon />
     <AlertContent>
         <AlertDescription>Short single-line informational message.</AlertDescription>
@@ -130,28 +130,28 @@ When `AlertTitle` exists in the alert tree, content is left-aligned. Without `Al
 `AlertIcon` changes automatically according to the container schema: `CheckCircle2` for `success`, `XCircle` for `danger`, `AlertTriangle` for `warning`, and `Info` for `info`.
 
 <div className="noContent column">
-  <AlertContainer schema="success">
+  <AlertContainer scheme="success">
     <AlertIcon />
     <AlertContent>
       <AlertTitle>Success</AlertTitle>
       <AlertDescription>CheckCircle2 icon is rendered.</AlertDescription>
     </AlertContent>
   </AlertContainer>
-  <AlertContainer schema="danger">
+  <AlertContainer scheme="danger">
     <AlertIcon />
     <AlertContent>
       <AlertTitle>Error</AlertTitle>
       <AlertDescription>XCircle icon is rendered.</AlertDescription>
     </AlertContent>
   </AlertContainer>
-  <AlertContainer schema="warning">
+  <AlertContainer scheme="warning">
     <AlertIcon />
     <AlertContent>
       <AlertTitle>Warning</AlertTitle>
       <AlertDescription>AlertTriangle icon is rendered.</AlertDescription>
     </AlertContent>
   </AlertContainer>
-  <AlertContainer schema="info">
+  <AlertContainer scheme="info">
     <AlertIcon />
     <AlertContent>
       <AlertTitle>Info</AlertTitle>
@@ -161,10 +161,10 @@ When `AlertTitle` exists in the alert tree, content is left-aligned. Without `Al
 </div>
 
 ```tsx
-<AlertContainer schema="success"><AlertIcon /></AlertContainer>
-<AlertContainer schema="danger"><AlertIcon /></AlertContainer>
-<AlertContainer schema="warning"><AlertIcon /></AlertContainer>
-<AlertContainer schema="info"><AlertIcon /></AlertContainer>
+<AlertContainer scheme="success"><AlertIcon /></AlertContainer>
+<AlertContainer scheme="danger"><AlertIcon /></AlertContainer>
+<AlertContainer scheme="warning"><AlertIcon /></AlertContainer>
+<AlertContainer scheme="info"><AlertIcon /></AlertContainer>
 ```
 
 ## Properties

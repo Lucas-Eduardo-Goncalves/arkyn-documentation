@@ -17,7 +17,7 @@ Rename `schema` to `scheme` in every use of Alert.
 Before
 
 ```tsx
-<AlertContainer schema="danger">...</AlertContainer>
+<AlertContainer scheme="danger">...</AlertContainer>
 ```
 
 After
