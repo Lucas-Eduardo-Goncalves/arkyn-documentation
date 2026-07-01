@@ -1,14 +1,19 @@
 import { DocSearch } from "@docsearch/react";
 import { Search } from "lucide-react";
 import { useEffect, useState } from "react";
+
+import { useTheme } from "~/hooks/useTheme";
 import {
   ALGOLIA_APP_ID,
   ALGOLIA_INDEX_NAME,
   ALGOLIA_READ_API_KEY,
 } from "~/templates/algolia";
+
 import { Container } from "./styles";
 
 function AlgoliaSearch() {
+  const { theme } = useTheme();
+
   const isConfigured = Boolean(
     ALGOLIA_APP_ID && ALGOLIA_READ_API_KEY && ALGOLIA_INDEX_NAME,
   );
@@ -43,6 +48,7 @@ function AlgoliaSearch() {
         apiKey={ALGOLIA_READ_API_KEY}
         indices={[ALGOLIA_INDEX_NAME]}
         placeholder="Search docs"
+        theme={theme}
         translations={{
           button: {
             buttonText: "Search docs",

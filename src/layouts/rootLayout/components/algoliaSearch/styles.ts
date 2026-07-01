@@ -29,7 +29,7 @@ const Container = styled.div`
     border: 1px solid var(--border);
     outline: 1px solid transparent;
 
-    background: transparent;
+    background: var(--input-background);
     color: var(--text-heading);
 
     font-size: 14px;
