@@ -10,6 +10,7 @@ import { ModalFooter } from "@arkyn/components/modalFooter";
 import { ModalHeader } from "@arkyn/components/modalHeader";
 import { Button } from "@arkyn/components/button";
 
+import { TextExample } from "../../_examples/text.example";
 import { ModalExample } from "../../_examples/modal.example";
 
 The Modal family renders an animated overlay dialog. `ModalContainer` is the animated overlay with content area and outside-click close behavior, `ModalHeader` renders its top section with an optional built-in close button, and `ModalFooter` renders the action area with configurable content alignment.
@@ -26,7 +27,9 @@ Learn how subpath and root imports differ in [How do I use imports](/docs/guides
 
 <div className="noContent">
   <ModalExample>
-    <div style={{ minWidth: 280, padding: 30 }}>Modal content</div>
+    <div style={{ minWidth: 280, padding: 30 }}>
+      Modal content
+    </div>
   </ModalExample>
 </div>
 
@@ -48,9 +51,7 @@ Use `ModalHeader` and `ModalFooter` together with `ModalContainer` to build cons
       Confirm Action
     </ModalHeader>
 
-    <main style={{ padding: 30 }}>
-      <p>Are you sure you want to continue?</p>
-    </main>
+     <TextExample />
 
     <ModalFooter>
       <Button type="button">Cancel</Button>
