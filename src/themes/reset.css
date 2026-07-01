@@ -48,7 +48,7 @@ html:not(.dark):root {
   --spotlight-warning: 249, 115, 22; /* #f97316 */
 
   --spotlight-primary-foreground: 231, 240, 252; /* #E7F0FC */
-  --spotlight-secondary-foreground: 226, 232, 240; /* #E2E8F0 */
+  --spotlight-secondary-foreground: 250, 250, 250; /* #fafafa */
   --spotlight-success-foreground: 231, 248, 242; /* #E7F8F2 */
   --spotlight-danger-foreground: 254, 236, 239; /* #FEECEF */
   --spotlight-info-foreground: 231, 246, 253; /* #E7F6FD */

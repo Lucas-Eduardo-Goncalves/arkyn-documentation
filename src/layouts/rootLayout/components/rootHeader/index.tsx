@@ -51,7 +51,7 @@ function RootHeader() {
         <AlgoliaSearch />
 
         <IconButton
-          variant="ghost"
+          variant="outline"
           scheme="secondary"
           aria-label="Toggle dark mode"
           icon={theme === "light" ? Moon : Sun}

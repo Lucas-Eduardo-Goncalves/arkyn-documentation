@@ -29,18 +29,12 @@ const Container = styled.div`
     border: 1px solid var(--border);
     outline: 1px solid transparent;
 
-    background: var(--input-background);
+    background: var(--background-foreground);
     color: var(--text-heading);
 
     font-size: 14px;
     font-weight: 400;
     line-height: 14px;
-
-    transition:
-      border-color 0.16s ease,
-      outline-color 0.16s ease,
-      color 0.16s ease,
-      background-color 0.16s ease;
   }
 
   .searchButton:hover,
@@ -48,6 +42,12 @@ const Container = styled.div`
     cursor: text;
     border-color: rgb(var(--spotlight-primary));
     outline-color: rgb(var(--spotlight-primary));
+
+    /* transition:
+      border-color 0.16s ease,
+      outline-color 0.16s ease,
+      color 0.16s ease,
+      background-color 0.16s ease; */
   }
 
   .searchButton:focus-visible,
@@ -100,6 +100,7 @@ const Container = styled.div`
     font-size: 12px;
     line-height: 12px;
     font-weight: 400;
+    transition: none !important;
     box-shadow: none;
   }
 
