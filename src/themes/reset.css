@@ -60,8 +60,8 @@ html.dark:root {
 
   /* background */
   --background: #09090b;
-  --background-underground: #18181b;
-  --background-foreground: #27272a;
+  --background-underground: #151518;
+  --background-foreground: #18181b;
 
   /* text */
   --text-heading: #e4e4e7;
@@ -72,7 +72,7 @@ html.dark:root {
   --border: #2c2c30;
 
   /* inputs, textarea, select, checkbox, etc. */
-  --input-background: #18181b;
+  --input-background: #131316;
 
   /* tooltip */
   --tooltip-text: #fafafa;
