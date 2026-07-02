@@ -6,6 +6,119 @@ Versions marked with Breaking Changes have a dedicated section with a step-by-st
 
 ---
 
+## v3.0.1-beta.199
+
+Date: 2026-07-02
+
+Status: Test coverage for `@arkyn/components` expanded with 65 new specs covering all remaining components and providers. `Popover` migrated away from `framer-motion` to CSS visibility. Bug fixes in `TableBody`, `Textarea`, and `AudioPlayer` discovered while writing the tests.
+
+### Changes By Package
+
+- `@arkyn/components`
+
+  **Component fixes**
+
+  - **`Popover`: removed `framer-motion`** — `motion.div` replaced with a plain `div` using `style={{ visibility: isOpen ? "visible" : "hidden" }}`. The opacity animation framer-motion controlled (`0 → 1`) was dropped. Open/close behavior and `closeOnClick` remain intact, now with no framer-motion runtime dependency. Corresponding adjustment in `popover/styles.css`.
+
+  - **`TableBody`: empty-state detection fixed** — `Children.count(children) === 0` replaced with `Children.toArray(children).filter(Boolean).length === 0`. `Children.count` does not filter `null`/`undefined` children, which caused the empty-state row to render even when conditional children resolved to `null`. The new approach uses `Children.toArray` with `.filter(Boolean)` to count only real children.
+
+  - **`Textarea`: controlled/uncontrolled conflict resolved** — the component was passing both `value` and `defaultValue` to the underlying `<textarea>` simultaneously under certain conditions, triggering a React warning. Introduced `domValue`: when `disabled`, `domValue = undefined` (the disabled state uses `placeholder` to show the value instead); otherwise `domValue = value`. `defaultValue` is now only passed when `domValue === undefined`, ensuring the element is never in an ambiguous controlled/uncontrolled state.
+
+  - **`AudioPlayer`: empty `src` attribute prevented** — `src={props.src}` changed to `src={props.src || undefined}`. Prevents the `<audio>` element from receiving `src=""` (an empty string), which triggers an invalid HTTP request to the base URL.
+
+  **Testing infrastructure**
+
+  - **`vitest.setup.ts` created** with two responsibilities:
+    - Imports `@testing-library/jest-dom/vitest` to enable matchers such as `toBeInTheDocument`, `toHaveClass`, `toBeDisabled`, and others across all specs.
+    - Polyfills `HTMLElement.isContentEditable` — jsdom does not implement this property, which Slate/slate-react uses internally to identify the `contenteditable` element of the editor. Without it, focus, blur, `beforeinput`, and typing events inside `RichText` silently never fire in the test environment. The polyfill walks the ancestor tree looking for the `contenteditable` attribute and returns `true` or `false` accordingly.
+
+  - **`vitest.config.ts`**: added `setupFiles: ["./vitest.setup.ts"]` so the setup file runs before every spec.
+
+  - **New devDependencies:**
+    - `@testing-library/jest-dom@^6.9.1` — custom DOM assertion matchers
+    - `@testing-library/user-event@^14.6.1` — realistic user interaction simulation (typing, clicking, focusing)
+
+  **New component specs** (`src/components/__test__/`) — 53 files:
+
+  - `alertContainer.spec.tsx` — rendering, schemes, children, HTML attribute passthrough
+  - `alertContent.spec.tsx` — internal composition and prop propagation
+  - `alertDescription.spec.tsx` — text content, truncation, and attributes
+  - `alertIcon.spec.tsx` — icons per scheme, size, accessibility
+  - `alertTitle.spec.tsx` — typography and HTML attributes
+  - `audioPlayer.spec.tsx` — play/pause, progress, volume, invalid src
+  - `audioUpload.spec.tsx` — upload, drag-and-drop, disabled/loading/error states
+  - `badge.spec.tsx` — variants, schemes, sizes, icons
+  - `button.spec.tsx` — variants, schemes, isLoading, disabled, icons
+  - `calendar.spec.tsx` — single/range modes, navigation, date selection, disabled dates
+  - `cardTabButton.spec.tsx` — active state, callbacks, accessibility
+  - `cardTabContainer.spec.tsx` — composition, activeTab, onChange
+  - `checkbox.spec.tsx` — checked, defaultChecked, disabled, error, orientations
+  - `clientOnly.spec.tsx` — SSR/client hydration, children rendering
+  - `currencyInput.spec.tsx` — locales, formatting, prefix/suffix, all states
+  - `divider.spec.tsx` — orientations, variants, attributes
+  - `drawerContainer.spec.tsx` — animations, orientations, scroll lock, makeInvisible
+  - `drawerHeader.spec.tsx` — showCloseButton, title, close callback
+  - `facebookPixel.spec.tsx` — initialization, track/trackCustom events, consent
+  - `fieldError.spec.tsx` — error message, visibility, accessibility
+  - `fieldLabel.spec.tsx` — showAsterisk, htmlFor, children
+  - `fieldWrapper.spec.tsx` — label + error + children composition
+  - `fileUpload.spec.tsx` — upload, accepted types, drag, error, disabled
+  - `fullCalendar.spec.tsx` — day/week/month views, events, navigation, blocked timestamps
+  - `googleAnalytics.spec.tsx` — script injection, showInDevMode, NODE_ENV guard
+  - `googleTagManager.spec.tsx` — GTM script injection, dataLayer, showInDevMode
+  - `iconButton.spec.tsx` — variants, schemes, sizes, disabled, aria-label
+  - `imageUpload.spec.tsx` — upload, preview, removal, accepted types, disabled
+  - `input.spec.tsx` — variants, prefix/suffix/icons, all states, password type
+  - `mapView.spec.tsx` — map initialization, markers, popups, accessToken
+  - `maskedInput.spec.tsx` — masks, variants, all states, formatting
+  - `modalContainer.spec.tsx` — animations, scroll lock, makeInvisible, children
+  - `modalFooter.spec.tsx` — layout, HTML attributes, children
+  - `modalHeader.spec.tsx` — showCloseButton, title, close callback
+  - `multiSelect.spec.tsx` — multiple selection, search, disabled, readOnly, error
+  - `pagination.spec.tsx` — navigation, stable keys, currentPage, totalPages
+  - `phoneInput.spec.tsx` — country selector, masks, disabled, readOnly, error
+  - `popover.spec.tsx` — orientations, closeOnClick, overlay, visibility toggling
+  - `radioBox.spec.tsx` — checked, error, disabled, callbacks
+  - `radioGroup.spec.tsx` — selection, options, defaultValue, disabled, error
+  - `richText.spec.tsx` — toolbar, mark/block toggles, serialization/deserialization
+  - `select.spec.tsx` — isSearchable, variants, all states, disabled, readOnly
+  - `slider.spec.tsx` — drag, click, min/max boundaries, disabled, onChange
+  - `switch.spec.tsx` — toggle, defaultChecked, disabled, error, sizes
+  - `tabButton.spec.tsx` — active state, callbacks, disabled, accessibility
+  - `tabContainer.spec.tsx` — composition, activeTab, onChange, children
+  - `tableBody.spec.tsx` — empty state, conditional children, attribute passthrough
+  - `tableCaption.spec.tsx` — text content, positioning, attributes
+  - `tableContainer.spec.tsx` — horizontal scroll, attributes, children
+  - `tableFooter.spec.tsx` — rendering, attributes, passthrough
+  - `tableHeader.spec.tsx` — columns, sorting, attributes, children
+  - `textarea.spec.tsx` — variants, controlled/uncontrolled, disabled, error, resize
+  - `tooltip.spec.tsx` — orientations, viewport-aware flipping, hover, content
+
+  **New provider specs** (`src/providers/__test__/`) — 5 files:
+
+  - `drawerProvider.spec.tsx` — open/close state, data passing, multiple independent keys
+  - `formProvider.spec.tsx` — submission state, field values, context integration
+  - `modalProvider.spec.tsx` — open/close state, data passing, multiple independent keys
+  - `placesProvider.spec.tsx` — Google Maps API mock, initialization, context
+  - `toastProvider.spec.tsx` — toast dispatch, types, duration, children rendering
+
+  **Corrections to existing specs** — 44 files updated for consistency in test descriptions, mock patterns, and assertions after introducing `vitest.setup.ts` and `@testing-library/user-event`.
+
+- `@arkyn/components` (styles)
+  - **`Button/styles.css`**: background of the `outline` variant changed from `var(--background-foreground)` to `var(--background-underground)`, improving visual contrast between the outlined button and the page background.
+  - **`IconButton/styles.css`**: same fix applied to the `outline` variant of `IconButton`.
+
+- `@arkyn/development`
+  - **`_app.css`**: `exampleContainer.foreground` updated to `var(--background-underground)`. Dark mode CSS variables adjusted — `--background`, `--background-underground`, and `--text-heading` — for better contrast in the development playground pages.
+
+### Notes
+
+- With this release, `@arkyn/components` reaches approximately **92 spec files** covering hooks, services, utilities, providers, and all public components in the library.
+- The removal of `framer-motion` from `Popover` completes the migration started in beta.184 (`DrawerContainer`) and beta.187 (`ModalContainer`). `framer-motion` remains a `peerDependency` and can still be used directly in consumer projects.
+- The `HTMLElement.isContentEditable` polyfill in `vitest.setup.ts` applies only to the jsdom test environment and has no effect in production.
+- Version bumped across all packages (`@arkyn/components`, `@arkyn/server`, `@arkyn/shared`, `@arkyn/templates`).
+
+
 ## v3.0.1-beta.198
 
 Date: 2026-07-01
@@ -25,10 +138,6 @@ Comprehensive test suite added to `@arkyn/components`, covering hooks, rich text
 
 - Adds `@testing-library/react`, `jsdom`, `vitest` (via the workspace `catalog:`), and `@types/is-hotkey` as devDependencies of `@arkyn/components`.
 - Updates `actions/setup-node` from `v4` to `v5` in the beta CI workflow.
-
-### Breaking Changes
-
-None.
 
 ### Notes
 
