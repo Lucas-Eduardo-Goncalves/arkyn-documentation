@@ -101,3 +101,63 @@ html {
 body[style*="overflow: hidden"] {
   padding-right: 0 !important;
 }
+
+/* Light */
+html:not(.dark):root {
+  --docsearch-primary-color: rgb(var(--spotlight-primary));
+
+  --docsearch-text-color: var(--text-heading);
+  --docsearch-muted-color: var(--text-body);
+
+  --docsearch-searchbox-background: var(--input-background);
+  --docsearch-searchbox-focus-background: var(--background-foreground);
+
+  --docsearch-container-background: rgba(0, 0, 0, 0.45);
+
+  --docsearch-modal-background: var(--background-foreground);
+  --docsearch-modal-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+  --docsearch-hit-background: var(--background-foreground);
+  --docsearch-hit-color: var(--text-heading);
+
+  --docsearch-hit-active-background: rgb(var(--spotlight-primary));
+  --docsearch-hit-active-color: var(--white);
+
+  --docsearch-footer-background: var(--background-underground);
+
+  --docsearch-key-gradient: var(--background);
+  --docsearch-key-shadow:
+    inset 0 -2px 0 var(--border), inset 0 0 1px var(--border);
+
+  --docsearch-border-color: var(--border);
+}
+
+/* Dark */
+html.dark:root {
+  --docsearch-primary-color: rgb(var(--spotlight-primary));
+
+  --docsearch-text-color: var(--text-heading);
+  --docsearch-muted-color: var(--text-body);
+
+  --docsearch-searchbox-background: var(--input-background);
+  --docsearch-searchbox-focus-background: var(--background-foreground);
+
+  --docsearch-container-background: rgba(0, 0, 0, 0.7);
+
+  --docsearch-modal-background: var(--background-foreground);
+  --docsearch-modal-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+
+  --docsearch-hit-background: var(--background-foreground);
+  --docsearch-hit-color: var(--text-heading);
+
+  --docsearch-hit-active-background: rgb(var(--spotlight-primary));
+  --docsearch-hit-active-color: var(--white);
+
+  --docsearch-footer-background: var(--background-underground);
+
+  --docsearch-key-gradient: var(--background);
+  --docsearch-key-shadow:
+    inset 0 -2px 0 var(--border), inset 0 0 1px var(--border);
+
+  --docsearch-border-color: var(--border);
+}
